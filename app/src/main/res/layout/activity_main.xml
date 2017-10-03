@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.azizrafsanjani.numericals.MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:text="@string/title"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.03" />
+
+
+    <EditText
+        android:id="@+id/user_input_int"
+        android:layout_width="193dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:hint="@string/integer_here"
+        android:imeOptions="actionGo"
+        android:inputType="number"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:layout_editor_absoluteY="102dp" />
+
+    <Button
+        android:id="@+id/button_calculate_int"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/calculate"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/user_input_int"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/user_input_int"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="374dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/integer_in_binary"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_input_int"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <TextView
+        android:id="@+id/text_binary_int"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="000000"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.783"
+        app:layout_constraintLeft_toRightOf="@+id/textView2"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="27dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/integer_only"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/fractional_part_only"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/user_input_fraction"
+        android:layout_width="193dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="7dp"
+        android:ems="10"
+        android:hint="@string/fraction_here"
+        android:imeOptions="actionGo"
+        android:inputType="numberDecimal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <Button
+        android:id="@+id/button_calculate_fraction"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="8dp"
+
+        android:layout_marginRight="16dp"
+        android:text="@string/calculate"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/user_input_fraction"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/user_input_fraction"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/fraction_in_binary"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_input_fraction" />
+
+    <TextView
+        android:id="@+id/text_binary_fraction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="000000"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView12"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintLeft_toRightOf="@+id/textView12"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/any_number"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <EditText
+        android:id="@+id/user_input_mixed"
+        android:layout_width="193dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="7dp"
+        android:ems="10"
+        android:hint="@string/any_number_here"
+        android:imeOptions="actionGo"
+        android:inputType="numberDecimal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14"
+        tools:layout_editor_absoluteY="405dp" />
+
+    <Button
+        android:id="@+id/button_calculate_mixed"
+        android:layout_width="120dp"
+        android:layout_height="54dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/calculate"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/user_input_mixed"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/user_input_mixed"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="18dp"
+        android:text="@string/number_in_binary"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_input_mixed" />
+
+    <TextView
+        android:id="@+id/text_binary_mixed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:text="000000"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView15"
+        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintLeft_toRightOf="@+id/textView15"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Numericals</string>
+    <string name="developer_name">Aziz Rafsanjani</string>
+    <string name="developer_email">daemon@foreverrafs.com</string>
+    <string name="title">Decimal To Binary Calculator!!!!</string>
+    <string name="integer_here">Integer Here...</string>
+    <string name="any_number_here">Any Number Here...</string>
+    <string name="calculate">Calculate</string>
+    <string name="integer_in_binary">Integer In Binary ==>></string>
+    <string name="fraction_in_binary">Fraction In Binary ==>></string>
+    <string name="number_in_binary">Number In Binary ==>></string>
+    <string name="any_number">Any Number:</string>
+    <string name="integer_only">Integer Only:</string>
+    <string name="fractional_part_only">Fractional Part Only:</string>
+    <string name="fraction_here">Fraction Here...</string>
+    <string name="answer_truncated">Answer has been truncated to 10 digits</string>
+</resources>
