@@ -157,12 +157,10 @@ public final class Numericals {
 
         //the root lies in the left part of the boundary
         if (fx1 * fx3 < 0)
-            Bisect(expr, x1, x3, --iterations,tol);
+            return Bisect(expr, x1, x3, --iterations,tol);
         else
             //the root lies in the right part of the boundary
-            Bisect(expr, x3, x2, --iterations, tol);
-
-        return x3;
+            return Bisect(expr, x3, x2, --iterations, tol);
     }
 
 

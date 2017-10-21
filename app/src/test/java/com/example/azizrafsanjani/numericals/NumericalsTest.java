@@ -19,8 +19,8 @@ public class NumericalsTest {
 
     @Test
     public void testBisectionShouldPass(){
-        double y =  Numericals.Bisect("f(x) = x^5 + x^3 + 3",-2, -1, 2, 0.005);
-        assertEquals(-1.125, y);
+        double y =  Numericals.Bisect("f(x) = x^5 + x^3 + 3",-2, -1, 4, 0.005);
+        assertEquals(-1.0625, y);
     }
 
     @Test
