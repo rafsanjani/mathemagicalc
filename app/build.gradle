@@ -17,6 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+        // ...
+        testOptions {
+            unitTests.returnDefaultValues = true
+        }
+
 }
 
 dependencies {
@@ -30,7 +36,12 @@ dependencies {
 }
 
 dependencies {
+    compile 'org.mariuszgromada.math:MathParser.org-mXparser:4.0.0'
+}
+
+dependencies {
     compile 'com.daimajia.easing:library:2.0@aar'
     compile 'com.daimajia.androidanimations:library:2.3@aar'
     compile 'com.android.support:design:26.+'
 }
+

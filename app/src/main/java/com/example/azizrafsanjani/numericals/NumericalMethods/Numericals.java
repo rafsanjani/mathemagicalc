@@ -1,6 +1,11 @@
 package com.example.azizrafsanjani.numericals.NumericalMethods;
 
 
+import android.os.Debug;
+import android.util.Log;
+
+import org.mariuszgromada.math.mxparser.Function;
+
 import java.util.Collections;
 
 public final class Numericals {
@@ -122,6 +127,45 @@ public final class Numericals {
         sb.append(bk);
         return bk;
     }
+
+    /// <summary>
+    /// Computes the roots of an equation using the bisection method
+    /// </summary>
+    /// <param name="expr">an expression of the form f(x) = 0</param>
+    /// <param name="x1">The lower boundary of the interval</param>
+    /// <param name="x2">The upper boundary of the interval</param>
+    /// <param name="iterations">The maximum number of times the interval must be bisected</param>
+    /// <param name="tol">The tolerance level of the answer produced</param>
+    /// <returns>a string representation of the root of the equation</returns>
+    public static double Bisect(String expr, double x1, double x2, int iterations, double tol)
+    {
+        double x3 = (x1 + x2) / 2;
+
+        double tolValue = Math.abs(x1 - x2) / 2;
+
+        //a mathematical function of the form f(x) = 0
+        Function fx;
+
+        //is our approximated root less than or equal to the tolerance limit or are we out of moves?
+        if (tolValue <= tol || iterations  == 1)
+            return x3;
+
+        fx = new Function(expr);
+
+        double fx1 = fx.calculate(x1);
+        double fx3 = fx.calculate(x3);
+
+        //the root lies in the left part of the boundary
+        if (fx1 * fx3 < 0)
+            Bisect(expr, x1, x3, --iterations,tol);
+        else
+            //the root lies in the right part of the boundary
+            Bisect(expr, x3, x2, --iterations, tol);
+
+        return x3;
+    }
+
+
 
     //helper method to check if an integer is an even number or an odd number
     private static boolean IsEven(double n) {
