@@ -1,11 +1,64 @@
 <resources>
 
+
+    <style name="AppTheme" parent="BaseTheme">
+
+    </style>
+
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorControlHighlight">@color/colorControlHighlight</item>
+        <item name="colorButtonNormal">@color/colorButtonNormal</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name ="actionModeStyle">@style/MyActionMode</item>
+
+        <item name="android:textColor">@color/textColorPrimary</item>
     </style>
 
+    <style name="MyActionMode" parent = "@style/Widget.AppCompat.ActionBar">
+        <item name="background">@color/contextualBackground</item>
+        <item name="titleTextStyle">@style/MyTextStyle</item>
+
+    </style>
+    
+    <style name="MyTextStyle" parent = "TextAppearance.AppCompat.Widget.ActionBar.Title">
+
+    </style>
+
+    <style name="MyToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorPrimary">@color/colorToolBarTitle</item>3
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColorSecondary">@color/colorToolBarSubtitle</item>
+    </style>
+
+    <style name="MyPopUpTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:background">@color/colorPopUpBackground</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+    </style>
+
+    <style name="MyListItemTheme" parent="BaseTheme">
+        <item name="android:textSize">31dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColorPrimary">#000000</item>
+        <item name="android:textColorSecondary">#000000</item>
+    </style>
+
+
+    <style name="MyButtonStyle">
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorButtonText</item>
+    </style>
+
+    <style name="AppMaterialTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppMaterialTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion "27.0.0"
     defaultConfig {
-        applicationId "com.example.azizrafsanjani.numericals"
-        minSdkVersion 15
-        targetSdkVersion 26
+        applicationId "com.example.azizrafsanjani.materialdesign"
+        minSdkVersion 17
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -17,12 +17,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-        // ...
-        testOptions {
-            unitTests.returnDefaultValues = true
-        }
-
 }
 
 dependencies {
@@ -30,18 +24,20 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:appcompat-v7:27.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:27.+'
     testCompile 'junit:junit:4.12'
+
 }
 
 dependencies {
-    compile 'org.mariuszgromada.math:MathParser.org-mXparser:4.0.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:27.0.0-alpha1'
+    compile 'com.android.support:design:26.0.0'
 }
 
 dependencies {
-    compile 'com.daimajia.easing:library:2.0@aar'
-    compile 'com.daimajia.androidanimations:library:2.3@aar'
-    compile 'com.android.support:design:26.+'
+    compile "com.andkulikov:transitionseverywhere:1.7.7"
 }
-

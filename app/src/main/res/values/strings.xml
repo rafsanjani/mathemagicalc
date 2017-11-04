@@ -1,17 +1,28 @@
 <resources>
-    <string name="app_name">Numericals</string>
-    <string name="developer_name">Aziz Rafsanjani</string>
-    <string name="developer_email">daemon@foreverrafs.com</string>
-    <string name="title">Decimal To Binary Calculator!!!!</string>
-    <string name="integer_here">Integer Here...</string>
-    <string name="any_number_here">Any Number Here...</string>
-    <string name="calculate">Calculate</string>
-    <string name="integer_in_binary">Integer In Binary ==>></string>
-    <string name="fraction_in_binary">Fraction In Binary ==>></string>
-    <string name="number_in_binary">Number In Binary ==>></string>
-    <string name="any_number">Any Number:</string>
-    <string name="integer_only">Integer Only:</string>
-    <string name="fractional_part_only">Fractional Part Only:</string>
-    <string name="fraction_here">Fraction Here...</string>
-    <string name="answer_truncated">Answer has been truncated to 10 digits</string>
+    <string name="app_name">Numerical Methods</string>
+    <string name="app_description">Implementation of popular algorithms</string>
+    <string name="description_text">Operation List:</string>
+    <string name="dec_frac_tobinary">1. Decimal to Binary (Fractional Part Only)</string>
+    <string name="dec_int_tobinary">2. Decimal to Binary (Integer Part Only)</string>
+    <string name="dec_tobinary">3. Decimal to Binary (Mixed)</string>
+    <string name="rootlocation_bisection">4. Location of Roots (Bisection)</string>
+    <string name="rootlocation_falseposition">5. Location Of Roots (Regula Falsi)</string>
+    <string name="rootlocation_newtonraphson">6. Locate Of Roots (Newton Raphson)</string>
+    <string name="rootlocation_secante">7. Location Of Roots (Secante)</string>
+    <string name="systemofequations_partial_pivoting">8. System of Equations (Partial Pivoting)</string>
+    <string name="systemofequations_complete_pivoting">9. System of Equations (Complete Pivoting)</string>
+    <string name="button_proceed">Compute</string>
+    <string name="button_view_source">View Source…</string>
+    <string name="decimal_to_binary_title">Decimal to Binary converter</string>
+    <string name="decimal_to_binary_subtitle">Convert Decimal Fractions To Binary</string>
+    <string name="title_activity_private_activity">private_activity</string>
+    <string name="dec_to_bin_desc">Converts a decimal number (n) to it\'s equivalent binary number where 1 > n > 0 </string>
+    <string name="enter_binary_number">Enter a decimal fraction (eg 0.123): </string>
+    <string name="dec_to_bin_int_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N >= 1 </string>
+    <string name="enter_decimal_int">Enter a decimal Integer (eg 30)</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>
