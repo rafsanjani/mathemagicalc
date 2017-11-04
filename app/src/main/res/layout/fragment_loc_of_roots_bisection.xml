@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:inputType="numberSigned"
+                    android:inputType="numberDecimal|numberSigned"
                     android:hint="Tolerance"
                     android:textAlignment="center"/>
 

@@ -28,7 +28,7 @@ public class FragmentBisection extends Fragment implements View.OnClickListener 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.location_of_roots_bisection, container, false);
+        rootView = inflater.inflate(R.layout.fragment_loc_of_roots_bisection, container, false);
         initControls();
         return rootView;
     }
