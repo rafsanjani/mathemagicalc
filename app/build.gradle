@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion "27.0.0"
     defaultConfig {
         applicationId "com.example.azizrafsanjani.materialdesign"
@@ -26,16 +26,14 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:27.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:27.+'
+    compile 'com.android.support:design:27.0.0'
     testCompile 'junit:junit:4.12'
 
 }
 
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:27.0.0-alpha1'
-    compile 'com.android.support:design:26.0.0'
+    compile 'org.mariuszgromada.math:MathParser.org-mXparser:4.0.0'
 }
 
 dependencies {
