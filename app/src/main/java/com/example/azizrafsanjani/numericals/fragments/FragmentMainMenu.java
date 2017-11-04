@@ -2,6 +2,7 @@ package com.example.azizrafsanjani.numericals.fragments;
 
 
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
@@ -50,10 +52,15 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         items.setOnItemClickListener(this);
         Button computeButton = (Button)rootView.findViewById(R.id.buttonCompute);
         Button sourceButton = (Button)rootView.findViewById(R.id.buttonSource);
-        linearLayout = rootView.findViewById(R.id.linearLayout);
+       // linearLayout = rootView.findViewById(R.id.linearLayout);
 
         computeButton.setOnClickListener(this);
         sourceButton.setOnClickListener(this);
+
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"fonts/darkandblack.otf");
+        TextView tv = (TextView)rootView.findViewById(R.id.text_header);
+        tv.setTypeface(typeface);
+
 
         populateItemList();
 
@@ -122,11 +129,13 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
                         break;
 
                     case 2:
-
+                        fragment = new FragmentDecToBin();
+                        Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
                         break;
 
                     case 3:
-
+                        fragment = new FragmentBisection();
+                        Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
                         break;
                 }
                 break;

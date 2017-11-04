@@ -1,16 +1,10 @@
 package com.example.azizrafsanjani.numericals.fragments;
 
 import android.graphics.Typeface;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
-
-import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.utils.Numericals;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
-
-import android.support.v4.graphics.TypefaceCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -21,15 +15,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.ParseException;
+import com.example.azizrafsanjani.numericals.R;
+import com.example.azizrafsanjani.numericals.activities.MainActivity;
+import com.example.azizrafsanjani.numericals.utils.Numericals;
+import com.example.azizrafsanjani.numericals.utils.Utilities;
 
-public class FragmentDecToBinFrac extends Fragment implements Button.OnClickListener, EditText.OnKeyListener {
+/**
+ * Created by Aziz Rafsanjani on 11/4/2017.
+ */
 
+public class FragmentDecToBin extends Fragment implements View.OnClickListener, View.OnKeyListener {
+    
     View rootView;
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_dec_to_bin_frac, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        rootView = inflater.inflate(R.layout.fragment_dec_to_bin, container, false);
         MainActivity.setToolBarInfo("Decimal Calculator","Convert decimals to binary");
 
         Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/FallingSky.otf");
@@ -59,8 +60,7 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
         }
     }
 
-
-    public void onCalculate(){
+    private void onCalculate() {
         EditText etInput = (EditText)rootView.findViewById(R.id.text_user_input);
         TextView tvAnswer = (TextView)rootView.findViewById(R.id.textview_answer);
 
@@ -75,16 +75,16 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
         try{
             double decDouble = Double.parseDouble(decimal);
 
-            if(decDouble >= 1){
-                Toast.makeText(getContext(), "Number should be less than 1", Toast.LENGTH_LONG).show();
+            if(decDouble <= 0){
+                Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
                 return;
             }
 
 
-            String binary = Numericals.DecimalFractionToBinary(decDouble);
+            String binary = Numericals.DecimalToBinary(decDouble);
 
-            if(binary.length() >= 21) {
-                binary = binary.substring(0, 21);
+            if(binary.length() >= 20) {
+                binary = binary.substring(0, 20);
                 Toast.makeText(getContext(), "Answer truncated to 20 significant figures", Toast.LENGTH_LONG).show();
             }
 
@@ -96,6 +96,6 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
 
     @Override
     public boolean onKey(View view, int i, KeyEvent keyEvent) {
-       return true;
+        return true;
     }
 }

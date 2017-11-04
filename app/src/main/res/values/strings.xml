@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Numerical Methods</string>
+    <string name="remarks">Implementation of Numerical Methods and Computation Algorithms</string>
+    <string name="dev_name">Rafsanjani Abdul Aziz Yaah Waduudu</string>
     <string name="app_description">Implementation of popular algorithms</string>
     <string name="description_text">Operation List:</string>
     <string name="dec_frac_tobinary">1. Decimal to Binary (Fractional Part Only)</string>
@@ -20,6 +22,10 @@
     <string name="enter_binary_number">Enter a decimal fraction (eg 0.123): </string>
     <string name="dec_to_bin_int_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N >= 1 </string>
     <string name="enter_decimal_int">Enter a decimal Integer (eg 30)</string>
+    <string name="enter_decimal">Enter a decimal Integer (eg 30 or 30.53)</string>
+    <string name="decimal_to_bin_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N > 0 </string>
+    <string name="bisection_desc">Approximately locate the root of an equation of the form f(x) = 0</string>
+    <string name="bisection_enter_eqn">Equation to evaluate (eg "f(x) = 2*x^3 + 2")</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

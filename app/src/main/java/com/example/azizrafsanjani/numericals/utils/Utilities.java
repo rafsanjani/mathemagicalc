@@ -1,5 +1,7 @@
 package com.example.azizrafsanjani.numericals.utils;
 
+import android.content.Context;
+import android.graphics.Typeface;
 import android.support.transition.Fade;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,6 +29,5 @@ public final class Utilities {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(containerViewId,  fragment);
         fragmentTransaction.commit();
-
     }
 }

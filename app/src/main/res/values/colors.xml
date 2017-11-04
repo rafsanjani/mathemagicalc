@@ -17,6 +17,6 @@
     <color name="colorToolBarSubtitle">@color/colorWhite</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="contextualBackground">#1e7ae2</color>
+    <color name="answerColor">#1a237e</color>
     <drawable name = "colorControlHighlight">#E0F2F1</drawable>
-
 </resources>

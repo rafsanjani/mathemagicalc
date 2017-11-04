@@ -30,6 +30,11 @@
 
     </style>
 
+    <style name="AnswerStyle" parent = "TextAppearance.AppCompat.Widget.ActionMode.Title" >
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/answerColor</item>
+    </style>
+
     <style name="MyToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:textColorPrimary">@color/colorToolBarTitle</item>3
         <item name="android:textStyle">bold</item>
