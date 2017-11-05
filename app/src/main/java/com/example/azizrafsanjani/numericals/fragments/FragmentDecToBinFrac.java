@@ -11,6 +11,8 @@ import com.example.azizrafsanjani.numericals.utils.Numericals;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
 import android.support.v4.graphics.TypefaceCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -23,15 +25,22 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 
-public class FragmentDecToBinFrac extends Fragment implements Button.OnClickListener, EditText.OnKeyListener {
+public class FragmentDecToBinFrac extends Fragment implements Button.OnClickListener, TextWatcher {
 
     View rootView;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_dec_to_bin_frac, container, false);
-        MainActivity.setToolBarInfo("Decimal Calculator","Convert decimals to binary");
 
+
+
+        initControls();
+        return rootView;
+    }
+
+    private void initControls() {
+        MainActivity.setToolBarInfo("Decimal Calculator","Convert decimals to binary");
         Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/FallingSky.otf");
         TextView tvAnswer = (TextView)rootView.findViewById(R.id.textview_answer);
         tvAnswer.setTypeface(typeface);
@@ -40,9 +49,11 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
         Button btnBack = (Button)rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = (Button) rootView.findViewById(R.id.buttonCalculate);
 
+        EditText etQuestion = rootView.findViewById(R.id.text_user_input);
+        etQuestion.addTextChangedListener(this);
+
         btnBack.setOnClickListener(this);
         btnCalculate.setOnClickListener(this);
-        return rootView;
     }
 
 
@@ -80,7 +91,6 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
                 return;
             }
 
-
             String binary = Numericals.DecimalFractionToBinary(decDouble);
 
             if(binary.length() >= 21) {
@@ -89,13 +99,26 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
             }
 
             tvAnswer.setText(binary);
+            Utilities.animateAnswer(tvAnswer, (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         }catch(NumberFormatException ex){
             Log.i(Utilities.Log, "cannot parse "+ decimal +" to a double value");
         }
     }
 
     @Override
-    public boolean onKey(View view, int i, KeyEvent keyEvent) {
-       return true;
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        //ignored
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+      //
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        Utilities.animateAnswer((TextView) rootView.findViewById(R.id.textview_answer),
+                (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        System.out.println("display mode is ");
     }
 }

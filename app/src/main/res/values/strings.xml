@@ -11,9 +11,11 @@
     <string name="rootlocation_falseposition">5. Location Of Roots (Regula Falsi)</string>
     <string name="rootlocation_newtonraphson">6. Locate Of Roots (Newton Raphson)</string>
     <string name="rootlocation_secante">7. Location Of Roots (Secante)</string>
-    <string name="systemofequations_partial_pivoting">8. System of Equations (Partial Pivoting)</string>
-    <string name="systemofequations_complete_pivoting">9. System of Equations (Complete Pivoting)</string>
+    <string name="systemofequations_partial_pivoting">8. Sys. of Equations (Partial Pivoting)</string>
+    <string name="systemofequations_complete_pivoting">9. Sys. of Equations (Complete Pivoting)</string>
     <string name="button_proceed">Compute</string>
+    <string name="calculate">Calculate</string>
+    <string name="back_to_main_menu">Back to main menu</string>
     <string name="button_view_source">View Source…</string>
     <string name="decimal_to_binary_title">Decimal to Binary converter</string>
     <string name="decimal_to_binary_subtitle">Convert Decimal Fractions To Binary</string>
@@ -24,11 +26,7 @@
     <string name="enter_decimal_int">Enter a decimal Integer (eg 30)</string>
     <string name="enter_decimal">Enter a decimal Integer (eg 30 or 30.53)</string>
     <string name="decimal_to_bin_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N > 0 </string>
-    <string name="bisection_desc">Approximately locate the root of an equation of the form f(x) = 0</string>
+    <string name="bisection_desc">Locate the root of an equation of the form f(x) = 0</string>
     <string name="bisection_enter_eqn">Equation to evaluate (eg "f(x) = 2*x^3 + 2")</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
 </resources>

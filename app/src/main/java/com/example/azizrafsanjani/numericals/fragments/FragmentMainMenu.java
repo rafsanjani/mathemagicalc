@@ -3,6 +3,7 @@ package com.example.azizrafsanjani.numericals.fragments;
 
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -93,7 +94,9 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         view.setSelected(true);
 
         try{
-
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                view.setElevation(20);
+            }
         }catch(NullPointerException ex){
 
         }

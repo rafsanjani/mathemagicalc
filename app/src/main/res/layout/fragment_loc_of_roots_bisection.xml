@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentContainer"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -141,9 +142,7 @@
         android:textAlignment="center"
         android:layout_gravity="center"
 
-        android:visibility="visible"/>
-
-
+        android:visibility="gone"/>
     <Button
         android:id="@+id/btnCalculate"
         android:layout_width="match_parent"
@@ -151,7 +150,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         style="@style/MyButtonStyle"
-        android:text="Calculate"/>
+        android:text="@string/calculate"/>
     <Button
         android:id="@+id/btnBack"
         android:layout_width="match_parent"
@@ -159,10 +158,10 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         style="@style/MyButtonStyle"
-        android:text="Back to main menu"/>
+        android:text="@string/back_to_main_menu"/>
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="60dp" />
+        android:layout_height="100dp" />
 
     <include
         layout="@layout/textview_footer_text"

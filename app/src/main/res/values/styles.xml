@@ -15,6 +15,7 @@
         <item name="colorControlHighlight">@color/colorControlHighlight</item>
         <item name="colorButtonNormal">@color/colorButtonNormal</item>
         <item name="windowActionModeOverlay">true</item>
+        <item name="android:textColorHint">@color/textColorPrimary</item>
         <item name ="actionModeStyle">@style/MyActionMode</item>
 
         <item name="android:textColor">@color/textColorPrimary</item>

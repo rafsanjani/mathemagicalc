@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -17,8 +19,10 @@ import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.fragments.FragmentMainMenu;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
+import java.sql.SQLOutput;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements View.OnKeyListener {
 
 
     static Toolbar toolbar;
@@ -68,4 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onKey(View view, int i, KeyEvent keyEvent) {
+        System.out.println("key input detected");
+        return true;
+    }
 }
