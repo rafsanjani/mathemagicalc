@@ -4,7 +4,8 @@ package com.example.azizrafsanjani.numericals;
  * Created by Aziz Rafsanjani on 10/21/2017.
  */
 
-import com.example.azizrafsanjani.numericals.NumericalMethods.Numericals;
+
+import com.example.azizrafsanjani.numericals.utils.Numericals;;
 
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class NumericalsTest {
 
     @Test
     public void testBisectionShouldPass(){
-        double y =  Numericals.Bisect("f(x) = x^5 + x^3 + 3",-2, -1, 4, 0.005);
+        double y =  Numericals.Bisect("x^5 + x^3 + 3",-2, -1, 4, 0.005);
         assertEquals(-1.0625, y);
     }
 

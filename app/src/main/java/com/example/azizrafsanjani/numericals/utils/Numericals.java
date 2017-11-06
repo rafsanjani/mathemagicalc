@@ -150,7 +150,10 @@ public final class Numericals {
         if (tolValue <= tol || iterations  == 1)
             return x3;
 
-        fx = new Function(expr);
+        if(expr.contains("f(x)"))
+            fx = new Function(expr);
+        else
+            fx = new Function(String.format("f(x) = %s", expr));
 
         double fx1 = fx.calculate(x1);
         double fx3 = fx.calculate(x3);

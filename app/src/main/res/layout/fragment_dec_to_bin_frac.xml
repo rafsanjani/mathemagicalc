@@ -67,7 +67,7 @@
         android:text="@string/back_to_main_menu"/>
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="170dp" />
+        android:layout_height="100dp" />
 
     <include
         layout="@layout/textview_footer_text"

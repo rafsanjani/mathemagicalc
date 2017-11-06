@@ -33,6 +33,7 @@
             android:hint="@string/bisection_enter_eqn"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:gravity="center_horizontal"
             android:textAlignment="center"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -54,6 +55,7 @@
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
+                    android:gravity="center_horizontal"
                     android:hint="x0"
                     android:layout_marginRight="30dp"
                     android:inputType="numberDecimal|numberSigned"
@@ -77,6 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
+                    android:gravity="center_horizontal"
                     android:inputType="numberDecimal|numberSigned"
                     android:textAlignment="center"/>
             </android.support.design.widget.TextInputLayout>
@@ -92,6 +95,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
             <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
@@ -102,6 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
+                    android:gravity="center_horizontal"
                     android:inputType="numberSigned"
                     android:hint="Iterations"
                     android:textAlignment="center"/>
@@ -121,7 +126,9 @@
                     android:id="@+id/text_epsilon"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:layout_marginLeft="30dp"
+
                     android:layout_marginRight="30dp"
                     android:inputType="numberDecimal|numberSigned"
                     android:hint="Tolerance"
@@ -159,12 +166,13 @@
         android:layout_marginRight="30dp"
         style="@style/MyButtonStyle"
         android:text="@string/back_to_main_menu"/>
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="100dp" />
 
-    <include
-        layout="@layout/textview_footer_text"
-        />
+
+        <include
+            layout="@layout/textview_footer_text"
+            />
+
+
+
 
 </LinearLayout>
