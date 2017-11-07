@@ -158,6 +158,10 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
                 fragment  = new FragmentRegulaFalsi();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
+            case 6:
+                fragment  = new FragmentSecante();
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                break;
             default:
 
                 break;

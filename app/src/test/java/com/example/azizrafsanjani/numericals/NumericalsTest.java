@@ -38,6 +38,13 @@ public class NumericalsTest {
     }
 
     @Test
+    public void testSecanteShouldPass(){
+        String eqn = "x^3 + x^3 + 3";
+        double y = Numericals.Secante(eqn, 1, -1, 1);
+        assertEquals(-1.5, y);
+    }
+
+    @Test
     public void testBisectionShouldFail(){
         assertEquals(-1.1056875, Numericals.Bisect("f(x) = x^5 + x^3 + 3",-2, -1, 7, 0.00005));
     }

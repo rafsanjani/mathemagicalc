@@ -233,6 +233,31 @@ public final class Numericals {
         return FalsePosition(expr, x0, x1, maxIterations - 1, 0);
     }
 
+    /***
+     * Computes the root of an equation using the secante method
+     * @param expr an equation of the form f(x) = 0
+     * @param x0
+     * @param x1
+     * @param maxIterations The maximum number of iterations to be conducted
+     * @return double
+     */
+
+    public static Double Secante(String expr, double x0, double x1, int maxIterations) {
+        if (expr.contains("=")) {
+            expr = expr.substring(expr.lastIndexOf("=") + 1);
+        }
+
+        Function fx = new Function("f(x) = "+expr);
+        double fx0 = fx.calculate(x0);
+        double fx1 = fx.calculate(x1);
+
+        double x2 = x1 - ((x1 - x0) / (fx1 - fx0));
+
+        if (maxIterations == 1)
+            return x2;
+
+        return Secante(expr, x2, x1, maxIterations - 1);
+    }
 
     private static boolean IsEven(double n) {
         return n % 2 == 0;
