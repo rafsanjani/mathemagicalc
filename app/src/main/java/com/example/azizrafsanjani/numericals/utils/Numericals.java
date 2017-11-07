@@ -17,12 +17,11 @@ public final class Numericals {
         Mixed
     }
 
-    /// <summary>
-    /// Converts a whole number from Base 10 to Base 2.
-    /// Note: Only integers (whole numbers) are supported for now
-    /// </summary>
-    /// <param name="dec"></param>
-    /// <returns>a string representation of the binary equivalent of the supplied decimal numeral</returns>
+    /***
+     * Converts a whole number from Base 10 to Base 2. Note: Only Integers
+     * @param dec A decimal number(n) where n >= 1
+     * @return string a string representation of the binary equivalent of the supplied decimal numeral
+     */
     public static String DecimalIntToBinary(int dec) {
         int Nk = dec;
         StringBuilder binary = new StringBuilder();
@@ -38,19 +37,14 @@ public final class Numericals {
         //placeholder for our final binary result
         String result = binary.reverse().toString();
 
-        //reverse the sequence of the string to portray true binary
-        //result = ReverseString(result);
-
-
-        //print the resulting binary to the user
         return result;
     }
 
-    /// <summary>
-    /// Converts the fractional part of a decimal numeral to a binary numeral
-    /// </summary>
-    /// <param name="dec">a double precision number in base 10</param>
-    ///<returns>a string representation of the binary equivalent of the supplied decimal numeral</returns>
+    /***
+     * Converts a whole number from Base 10 to Base 2. Note: Only Integers
+     * @param dec A decimal number(n) where n >= 1
+     * @return string a string representation of the binary equivalent of the supplied decimal numeral
+     */
     public static String DecimalFractionToBinary(double dec) {
         double Nk = dec;
         StringBuilder binary = new StringBuilder();
@@ -72,13 +66,14 @@ public final class Numericals {
         return result;
     }
 
-    /// <summary>
-    /// Converts a decimal integer to a binary numeral but if the decimal has a fractional part,
-    /// the number is separated into two parts, one being the whole part and the other being the fractional part.
-    /// the binary equivalent of these parts are individually computed and merged together to form a complete binary
-    /// </summary>
-    /// <param name="dec">Either a </param>
-    ///<returns>a string representation of the binary equivalent of the supplied decimal numeral</returns>
+    /**
+     * Converts a decimal integer to a binary numeral but if the decimal has a fractional part,
+     * the number is separated into two parts, one being the whole part and the other being the fractional part.
+     * the binary equivalent of these parts are individually computed and merged together to form a complete binary
+     *
+     * @param dec
+     * @return string a string representation of the binary equivalent of the supplied decimal numeral
+     */
     public static String DecimalToBinary(double dec) {
 
         String decStr = String.valueOf(dec);
@@ -101,12 +96,13 @@ public final class Numericals {
         return binary;
     }
 
-    /// <summary>
-    /// Appends the result of the ternary operation on bk to a stringbuilder object supplied as an argument
-    /// </summary>
-    /// <param name="N"></param>
-    /// <param name="sb">The stringbuilder object to which the result of the operation will be appended</param>
-    /// <returns></returns>
+    /***
+     * Appends the result of the ternary operation on bk to a stringbuilder object supplied as an argument
+     * @param N
+     * @param sb The stringbuilder object to which the result of the operation will be appended
+     * @param op
+     * @return int
+     */
     private static int AppendToResult(double N, StringBuilder sb, BinaryOperationType op) {
         int bk = 0000; //assign something dummy to prevent compiler issues
         switch (op) {
@@ -130,17 +126,16 @@ public final class Numericals {
         return bk;
     }
 
-    /// <summary>
-    /// Computes the roots of an equation using the bisection method
-    /// </summary>
-    /// <param name="expr">an expression of the form f(x) = 0</param>
-    /// <param name="x1">The lower boundary of the interval</param>
-    /// <param name="x2">The upper boundary of the interval</param>
-    /// <param name="iterations">The maximum number of times the interval must be bisected</param>
-    /// <param name="tol">The tolerance level of the answer produced</param>
-    /// <returns>a string representation of the root of the equation</returns>
-    public static double Bisect(String expr, double x1, double x2, int iterations, double tol)
-    {
+    /***
+     * Computes the roots of an equation using the bisection method
+     * @param expr  an expression of the form f(x) = 0
+     * @param x1 The lower boundary of the interval
+     * @param  x2 upper boundary of the interval
+     * @param iterations The maximum number of times the interval must be bisected
+     * @param tol The tolerance level of the answer produced
+     * @return double
+     */
+    public static double Bisect(String expr, double x1, double x2, int iterations, double tol) {
         double x3 = (x1 + x2) / 2;
 
         double tolValue = Math.abs(x1 - x2) / 2;
@@ -149,10 +144,10 @@ public final class Numericals {
         Function fx;
 
         //is our approximated root less than or equal to the tolerance limit or are we out of moves?
-        if (tolValue <= tol || iterations  == 1)
+        if (tolValue <= tol || iterations == 1)
             return x3;
 
-        if(expr.contains("f(x)"))
+        if (expr.contains("f(x)"))
             fx = new Function(expr);
         else
             fx = new Function(String.format("f(x) = %s", expr));
@@ -162,31 +157,29 @@ public final class Numericals {
 
         //the root lies in the left part of the boundary
         if (fx1 * fx3 < 0)
-            return Bisect(expr, x1, x3, --iterations,tol);
+            return Bisect(expr, x1, x3, --iterations, tol);
         else
             //the root lies in the right part of the boundary
             return Bisect(expr, x3, x2, --iterations, tol);
     }
 
-    /// <summary>
-    /// Computes the root of an equation of the form f(x) = 0 using the Newton - Raphson Forumula
-    /// </summary>
-    /// <param name="expr">a function of the form f(x) = 0</param>
-    /// <param name="x1">the initial guess of the root</param>
-    /// <param name="maxIterations">maximum number of times we are to iterate</param>
-    /// <returns></returns>
-
-    public static Double NewtonRaphson(String expr, double x1, int maxIterations)
-    {
+    /***
+     * Computes the root of an equation of the form f(x) = 0 using the Newton - Raphson Forumula
+     * @param expr a function of the form f(x) = 0
+     * @param x1 the initial guess of the root
+     * @param maxIterations maximum number of times we are to iterate
+     * @return double
+     */
+    public static Double NewtonRaphson(String expr, double x1, int maxIterations) {
         //TODO: Newton Raphson method goes here
 
-        if(expr.contains("f(x)")){
+        if (expr.contains("f(x)")) {
             expr = expr.substring(5);
         }
 
         Argument x = new Argument(String.format("x = %s", x1));
 
-        Expression ex =  new Expression("der("+expr+", x)", x);
+        Expression ex = new Expression("der(" + expr + ", x)", x);
 
         Function fx = new Function(String.format("f(x) = %s", expr));
 
@@ -200,19 +193,21 @@ public final class Numericals {
 
         return NewtonRaphson(expr, approxRoot, maxIterations - 1);
     }
-    /// <summary>
-    /// Computes the root of an equation of the form f(x) = 0 using the false position method
-    /// </summary>
-    /// <param name="expr">an expression of the form f(x) = 0</param>
-    /// <param name="x1">The lower boundary of the interval</param>
-    /// <param name="x2">The upper boundary of the interval</param>
-    /// <param name="maxIterations">The maximum number of times the interval must be bisected</param>
-    /// <returns></returns>
-    public static Double FalsePosition (String expr, double x0, double x1, int maxIterations, double tol) throws IllegalArgumentException
-    {
+
+    /***
+     * Computes the root of an equation of the form f(x) = 0 using the false position (regula falsi) method
+     * @param expr an expression of the form f(x) = 0
+     * @param x0 The lower boundary of the interval
+     * @param x1 The upper boundary of the interval
+     * @param maxIterations The maximum number of times the interval must be bisected
+     * @param tol
+     * @return double
+     * @throws IllegalArgumentException When the interval doesn't bracket the root
+     */
+    public static Double FalsePosition(String expr, double x0, double x1, int maxIterations, double tol) throws IllegalArgumentException {
         //sanitize the equation
-        if(expr.contains("="))
-            expr = expr.substring(expr.lastIndexOf("=")+1);
+        if (expr.contains("="))
+            expr = expr.substring(expr.lastIndexOf("=") + 1);
 
 
         Function fx = new Function(String.format("f(x) = %s", expr));
@@ -239,7 +234,6 @@ public final class Numericals {
     }
 
 
-    //helper method to check if an integer is an even number or an odd number
     private static boolean IsEven(double n) {
         return n % 2 == 0;
     }

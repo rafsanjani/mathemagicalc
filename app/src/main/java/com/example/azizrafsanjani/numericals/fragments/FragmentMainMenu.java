@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
 import com.example.azizrafsanjani.numericals.utils.CustomDialog;
 import com.example.azizrafsanjani.numericals.R;
+import com.example.azizrafsanjani.numericals.utils.Numericals;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
 /**
@@ -32,7 +33,6 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
 
     View rootView;
     ArrayAdapter<String> adapter;
-    ViewGroup linearLayout;
     boolean itemSelected = false;
     android.support.v4.app.FragmentManager fragmentManager;
 
