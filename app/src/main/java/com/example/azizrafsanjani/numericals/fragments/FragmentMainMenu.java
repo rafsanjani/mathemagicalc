@@ -58,7 +58,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         computeButton.setOnClickListener(this);
         sourceButton.setOnClickListener(this);
 
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"fonts/darkandblack.otf");
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"fonts/segoeuibold.ttf");
         TextView tv = (TextView)rootView.findViewById(R.id.text_header);
         tv.setTypeface(typeface);
 
