@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -24,7 +26,7 @@ import com.example.azizrafsanjani.numericals.utils.Utilities;
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentDecToBin extends Fragment implements View.OnClickListener, View.OnKeyListener {
+public class FragmentDecToBin extends Fragment implements View.OnClickListener, View.OnKeyListener, TextWatcher {
     
     View rootView;
     @Nullable
@@ -33,17 +35,22 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
         rootView = inflater.inflate(R.layout.fragment_dec_to_bin, container, false);
         MainActivity.setToolBarInfo("Decimal Calculator","Convert decimals to binary");
 
+        initControls();
+        return rootView;
+    }
+
+    private void initControls(){
         Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/FallingSky.otf");
         TextView tvAnswer = (TextView)rootView.findViewById(R.id.textview_answer);
         tvAnswer.setTypeface(typeface);
 
-
         Button btnBack = (Button)rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = (Button) rootView.findViewById(R.id.buttonCalculate);
+        EditText etInput = (EditText)rootView.findViewById(R.id.text_user_input);
+        etInput.addTextChangedListener(this);
 
         btnBack.setOnClickListener(this);
         btnCalculate.setOnClickListener(this);
-        return rootView;
     }
 
 
@@ -87,8 +94,9 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
                 binary = binary.substring(0, 20);
                 Toast.makeText(getContext(), "Answer truncated to 20 significant figures", Toast.LENGTH_LONG).show();
             }
-
             tvAnswer.setText(binary);
+
+            Utilities.animateAnswer(tvAnswer,(ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         }catch(NumberFormatException ex){
             Log.i(Utilities.Log, "cannot parse "+ decimal +" to a double value");
         }
@@ -97,5 +105,22 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
     @Override
     public boolean onKey(View view, int i, KeyEvent keyEvent) {
         return true;
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+                Utilities.animateAnswer((TextView) rootView.findViewById(R.id.textview_answer),
+                        (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
     }
 }

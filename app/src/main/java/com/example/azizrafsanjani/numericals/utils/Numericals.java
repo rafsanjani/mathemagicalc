@@ -4,6 +4,8 @@ package com.example.azizrafsanjani.numericals.utils;
 import android.os.Debug;
 import android.util.Log;
 
+import org.mariuszgromada.math.mxparser.Argument;
+import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
 
 import java.util.Collections;
@@ -166,6 +168,75 @@ public final class Numericals {
             return Bisect(expr, x3, x2, --iterations, tol);
     }
 
+    /// <summary>
+    /// Computes the root of an equation of the form f(x) = 0 using the Newton - Raphson Forumula
+    /// </summary>
+    /// <param name="expr">a function of the form f(x) = 0</param>
+    /// <param name="x1">the initial guess of the root</param>
+    /// <param name="maxIterations">maximum number of times we are to iterate</param>
+    /// <returns></returns>
+
+    public static Double NewtonRaphson(String expr, double x1, int maxIterations)
+    {
+        //TODO: Newton Raphson method goes here
+
+        if(expr.contains("f(x)")){
+            expr = expr.substring(5);
+        }
+
+        Argument x = new Argument(String.format("x = %s", x1));
+
+        Expression ex =  new Expression("der("+expr+", x)", x);
+
+        Function fx = new Function(String.format("f(x) = %s", expr));
+
+        double fx1 = fx.calculate(x1);
+        double derX1 = ex.calculate();
+
+        double approxRoot = x1 - (fx1 / derX1);
+
+        if (maxIterations == 1 || (approxRoot == x1))
+            return approxRoot;
+
+        return NewtonRaphson(expr, approxRoot, maxIterations - 1);
+    }
+    /// <summary>
+    /// Computes the root of an equation of the form f(x) = 0 using the false position method
+    /// </summary>
+    /// <param name="expr">an expression of the form f(x) = 0</param>
+    /// <param name="x1">The lower boundary of the interval</param>
+    /// <param name="x2">The upper boundary of the interval</param>
+    /// <param name="maxIterations">The maximum number of times the interval must be bisected</param>
+    /// <returns></returns>
+    public static Double FalsePosition (String expr, double x0, double x1, int maxIterations, double tol) throws IllegalArgumentException
+    {
+        //sanitize the equation
+        if(expr.contains("="))
+            expr = expr.substring(expr.lastIndexOf("=")+1);
+
+
+        Function fx = new Function(String.format("f(x) = %s", expr));
+
+        double fx0 = fx.calculate(x0);
+        double fx1 = fx.calculate(x1);
+        double fx2;
+
+        if (fx0 * fx1 > 0)
+            throw new IllegalArgumentException("The function doesn't change sign between the specified intervals");
+
+        double x2 = x1 - ((x1 - x0) / (fx1 - fx0));
+        fx2 = fx.calculate(x2);
+
+        if (maxIterations == 1)
+            return x2;
+
+        if ((fx0 * fx2) < 0)
+            x1 = x2;
+        else
+            x0 = x2;
+
+        return FalsePosition(expr, x0, x1, maxIterations - 1, 0);
+    }
 
 
     //helper method to check if an integer is an even number or an odd number

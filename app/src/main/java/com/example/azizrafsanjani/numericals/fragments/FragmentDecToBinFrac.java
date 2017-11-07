@@ -119,6 +119,5 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
     public void afterTextChanged(Editable editable) {
         Utilities.animateAnswer((TextView) rootView.findViewById(R.id.textview_answer),
                 (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
-        System.out.println("display mode is ");
     }
 }

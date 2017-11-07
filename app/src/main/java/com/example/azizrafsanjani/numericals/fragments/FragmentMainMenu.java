@@ -79,8 +79,8 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
     {
         Resources res = getResources();
         String []opList = {res.getString(R.string.dec_frac_tobinary), res.getString(R.string.dec_int_tobinary), res.getString(R.string.dec_tobinary),
-                res.getString(R.string.rootlocation_bisection), res.getString(R.string.rootlocation_falseposition),
-                res.getString(R.string.rootlocation_newtonraphson), res.getString(R.string.rootlocation_secante),
+                res.getString(R.string.rootlocation_bisection), res.getString(R.string.rootlocation_newtonraphson),
+                res.getString(R.string.rootlocation_falseposition), res.getString(R.string.rootlocation_secante),
                 res.getString(R.string.systemofequations_partial_pivoting), res.getString(R.string.systemofequations_complete_pivoting)};
 
         return opList;
@@ -104,52 +104,71 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         selectedItem = position;
         itemSelected = true;
 
+        Log.i(Utilities.Log ,"Item "+selectedItem+" selected");
     }
 
     @Override
     public void onClick(View view) {
-
         if(!itemSelected){
             Log.i(Utilities.Log, "No item selected in the listview");
             return;
         }
 
-        Fragment fragment;
-
         switch(view.getId()){
             case R.id.buttonCompute:
-                switch(selectedItem){
-                    case 0:
-                        fragment = new FragmentDecToBinFrac();
-                        Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
+               onCompute();
+            break;
 
-                        break;
-
-                    case 1:
-                        fragment = new FragmentDecToBinInt();
-                        Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
-
-                        break;
-
-                    case 2:
-                        fragment = new FragmentDecToBin();
-                        Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
-                        break;
-
-                    case 3:
-                        fragment = new FragmentBisection();
-                        Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
-                        break;
-                }
-                break;
             case R.id.buttonSource:
-                CustomDialog dialog = new CustomDialog();
+              onSource();
+        }
+    }
 
-                String msg = "The source code for the selected method will be shown here with syntax highlighting and formatting i.e "+
-                        "proper indentation and others.";
-                dialog.setMessage(msg);
-                dialog.show(getActivity().getFragmentManager(), "NoticeDialogFragment");
+    public void onCompute(){
+        Fragment fragment;
+
+        switch(selectedItem){
+            case 0:
+                fragment = new FragmentDecToBinFrac();
+                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
+
+                break;
+
+            case 1:
+                fragment = new FragmentDecToBinInt();
+                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
+
+                break;
+
+            case 2:
+                fragment = new FragmentDecToBin();
+                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
+                break;
+
+            case 3:
+                fragment = new FragmentBisection();
+                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
+                break;
+
+            case 4:
+                fragment  = new FragmentNewtonRaphson();
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                break;
+            case 5:
+                fragment  = new FragmentRegulaFalsi();
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                break;
+            default:
+
                 break;
         }
+    }
+
+    public void onSource(){
+        CustomDialog dialog = new CustomDialog();
+
+        String msg = "The source code fo ";
+        dialog.setMessage(msg);
+        dialog.show(getActivity().getFragmentManager(), "NoticeDialogFragment");
     }
 }
