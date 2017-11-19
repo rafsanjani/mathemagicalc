@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
@@ -91,17 +92,25 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
             Double tol = Double.valueOf(etEpsilon.getText().toString());
             int iter = Integer.valueOf(etIterations.getText().toString());
 
-
             double root = Numericals.Bisect(eqn, x0, x1, iter, tol);
+
+            if(Double.isNaN(root) || Double.isInfinite(root)){
+                Toast.makeText(getContext(),"Syntax Error: Please check equation", Toast.LENGTH_LONG).show();
+                Log.i(Utilities.Log,"Syntax error, unable to evaluate expression");
+                return;
+            }
 
             tvAnswer.setText(String.valueOf(root));
 
             //for transitions sake
             Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer,(ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
         }catch(NumberFormatException ex){
-            System.out.println(ex.getMessage());
-            Log.i(Utilities.Log,"One or more of the input values are invalid");
+            Toast.makeText(getContext(),"One or more of the input expressions are invalid", Toast.LENGTH_LONG).show();
+            Log.i(Utilities.Log,"Error parsing one or more of the expressions");
+        }finally {
+           MainActivity.hideKeyboard(etEquation);
         }
     }
 

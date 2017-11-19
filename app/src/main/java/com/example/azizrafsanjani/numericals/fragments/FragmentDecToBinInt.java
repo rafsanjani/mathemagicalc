@@ -28,11 +28,15 @@ public class FragmentDecToBinInt extends Fragment implements Button.OnClickListe
         MainActivity.setToolBarInfo("Decimal Calculator","Convert decimals to binary");
 
 
+
         Button button = (Button)rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = (Button) rootView.findViewById(R.id.buttonCalculate);
+        EditText etInput = (EditText)rootView.findViewById(R.id.text_user_input);
+        etInput.setOnKeyListener(this);
 
         button.setOnClickListener(this);
         btnCalculate.setOnClickListener(this);
+
 
         return rootView;
     }
@@ -80,13 +84,21 @@ public class FragmentDecToBinInt extends Fragment implements Button.OnClickListe
             }
 
             tvAnswer.setText(binary);
+            Utilities.animateAnswer(tvAnswer, (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+
         }catch(NumberFormatException ex){
             Log.i(Utilities.Log, "cannot parse "+ decimal +" to a double value");
+        }finally {
+            MainActivity.hideKeyboard(etInput);
         }
     }
 
     @Override
     public boolean onKey(View view, int i, KeyEvent keyEvent) {
-        return true;
+        if(keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER){
+            onCalculate();
+            return true;
+        }
+        return false;
     }
 }

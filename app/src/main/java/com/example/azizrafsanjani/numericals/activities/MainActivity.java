@@ -3,9 +3,12 @@ package com.example.azizrafsanjani.numericals.activities;
 
 
 
+import android.content.Context;
 import android.graphics.Typeface;
+import android.renderscript.ScriptGroup;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +16,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
@@ -26,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
 
     static Toolbar toolbar;
+    static InputMethodManager imm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
@@ -48,12 +55,18 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         toolbar.setTitle(R.string.app_name);
         toolbar.setSubtitle(R.string.app_description);
         toolbar.setLogo(ContextCompat.getDrawable(getApplicationContext(),R.drawable.numericals_icon));
+      
+        imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
     }
 
     public static void setToolBarInfo(String title, String subtitle){
         toolbar.setTitle(title);
         toolbar.setSubtitle(subtitle);
+    }
+
+    public  static void hideKeyboard(EditText et){
+        imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
     }
 
     @Override

@@ -95,6 +95,8 @@ public class FragmentNewtonRaphson extends Fragment implements View.OnClickListe
         }catch(NumberFormatException ex){
             System.out.println(ex.getMessage());
             Log.i(Utilities.Log,"One or more of the input values are invalid");
+        }finally {
+            MainActivity.hideKeyboard(etEquation);
         }
     }
 

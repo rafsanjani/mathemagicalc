@@ -1,13 +1,11 @@
 package com.example.azizrafsanjani.numericals.fragments;
 
 
-import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,19 +16,16 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-
+import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
 import com.example.azizrafsanjani.numericals.utils.CustomDialog;
-import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by Aziz Rafsanjani on 11/3/2017.
  */
 
-public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class FragmentEquationsMenu extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
 
 
     View rootView;
@@ -41,10 +36,10 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.fragment_main_menu, container, false);
+        rootView = inflater.inflate(R.layout.fragment_equations_menu, container, false);
         initControls();
 
-        MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
+        MainActivity.setToolBarInfo("Numerial Methods","System of Equations");
 
         return rootView;
     }
@@ -73,24 +68,21 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         ListView listView = (ListView)rootView.findViewById(R.id.listItems);
 
         String []operationList = getOperationList();
-        adapter = new ArrayAdapter<>(getContext(),R.layout.listview_item, operationList);
+        adapter = new ArrayAdapter<>(getContext(), R.layout.listview_item, operationList);
         listView.setAdapter(adapter);
     }
 
     private String [] getOperationList()
     {
-        Resources res = getResources();
-        String []opList = {res.getString(R.string.dec_frac_tobinary),
-                res.getString(R.string.dec_int_tobinary),
-                res.getString(R.string.dec_tobinary),
-                res.getString(R.string.rootlocation_bisection),
-                res.getString(R.string.rootlocation_newtonraphson),
-                res.getString(R.string.rootlocation_falseposition),
-                res.getString(R.string.rootlocation_secante),
-                res.getString(R.string.system_of_equations)};
+        String []opList = {
+                "Gaussian Elim. Partial Piv. ( 3 x 3) ",
+                "Gaussian Elim. Partial Piv (4 x 4)",
+                "Gaussian Elim. Complete Piv (3 x 3",
+                "Gaussian Elim. Complete Piv (4 x 4)",
+                "Gauss Seidel",
+                "Jacobi's Method"};
 
         return opList;
-
     }
 
     private int selectedItem;
@@ -101,7 +93,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
 
         try{
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                view.setElevation(2);
+                view.setElevation(20);
             }
         }catch(NullPointerException ex){
 
@@ -135,45 +127,14 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
 
         switch(selectedItem){
             case 0:
-                fragment = new FragmentDecToBinFrac();
+                fragment = new FragmentGaussian3x3();
                 Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
 
                 break;
 
             case 1:
-                fragment = new FragmentDecToBinInt();
+                fragment = new FragmentGaussian4x4();
                 Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
-
-                break;
-
-            case 2:
-                fragment = new FragmentDecToBin();
-                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
-                break;
-
-            case 3:
-                fragment = new FragmentBisection();
-                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
-                break;
-
-            case 4:
-                fragment  = new FragmentNewtonRaphson();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
-                break;
-            case 5:
-                fragment  = new FragmentRegulaFalsi();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
-                break;
-            case 6:
-                fragment  = new FragmentSecante();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
-                break;
-            case 7:
-                fragment  = new FragmentEquationsMenu();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
-                break;
-            default:
-
                 break;
         }
     }
@@ -181,23 +142,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
     public void onSource(){
         CustomDialog dialog = new CustomDialog();
 
-        String msg = " public static String DecimalIntToBinary(int dec) {\n" +
-                "        int Nk = dec;\n" +
-                "        StringBuilder binary = new StringBuilder();\n" +
-                "\n" +
-                "        int bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalInteger);\n" +
-                "\n" +
-                "        //magically manipulate and append result to the stringbuilder whilst Nk is greater than 0\n" +
-                "        while (Nk != 0 && (Nk - bk != 0)) {\n" +
-                "            Nk = (Nk - bk) / 2;\n" +
-                "            bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalInteger);\n" +
-                "        }\n" +
-                "\n" +
-                "        //placeholder for our final binary result\n" +
-                "        String result = binary.reverse().toString();\n" +
-                "\n" +
-                "        return result;\n" +
-                "    }";
+        String msg = "";
         dialog.setMessage(msg);
         dialog.show(getActivity().getFragmentManager(), "NoticeDialogFragment");
     }

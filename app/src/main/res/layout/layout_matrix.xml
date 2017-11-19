@@ -1,0 +1,445 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/matrix"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
+
+
+   <LinearLayout
+       android:id="@+id/questionMatrix"
+       android:layout_width="match_parent"
+       android:gravity="center_horizontal"
+       android:layout_height="match_parent">
+
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="15dp"
+           android:src="@drawable/left_bracket" />
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content">
+
+                   <EditText
+                       style="@style/MatrixInputStyle"
+                       android:hint="a11" />
+
+               </android.support.design.widget.TextInputLayout>
+
+
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content">
+
+                   <EditText
+                       style="@style/MatrixInputStyle"
+                       android:hint="a12" />
+               </android.support.design.widget.TextInputLayout>
+
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content">
+
+                   <EditText
+                       style="@style/MatrixInputStyle"
+                       android:hint="a13" />
+               </android.support.design.widget.TextInputLayout>
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content">
+
+                   <EditText
+                       style="@style/MatrixInputStyle"
+                       android:hint="a11" />
+
+               </android.support.design.widget.TextInputLayout>
+
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content">
+
+                   <EditText
+                       style="@style/MatrixInputStyle"
+                       android:hint="a22" />
+               </android.support.design.widget.TextInputLayout>
+
+
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content">
+
+                   <EditText
+                       style="@style/MatrixInputStyle"
+                       android:hint="a23" />
+               </android.support.design.widget.TextInputLayout>
+
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content">
+
+                   <EditText
+                       style="@style/MatrixInputStyle"
+                       android:hint="a31" />
+               </android.support.design.widget.TextInputLayout>
+
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content">
+
+                   <EditText
+                       style="@style/MatrixInputStyle"
+                       android:hint="a32" />
+               </android.support.design.widget.TextInputLayout>
+
+               <android.support.design.widget.TextInputLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content">
+
+                   <EditText
+                       style="@style/MatrixInputStyle"
+                       android:hint="a33" />
+               </android.support.design.widget.TextInputLayout>
+
+           </LinearLayout>
+
+       </LinearLayout>
+
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="15dp"
+           android:src="@drawable/right_bracket"
+           android:layout_marginRight="15dp"/>
+
+
+
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="15dp"
+           android:src="@drawable/left_bracket"
+           android:visibility="visible" />
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:visibility="visible">
+
+           <android.support.design.widget.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <EditText
+                   style="@style/MatrixInputStyle"
+                   android:hint="b1" />
+           </android.support.design.widget.TextInputLayout>
+
+           <android.support.design.widget.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <EditText
+                   style="@style/MatrixInputStyle"
+                   android:hint="b2" />
+           </android.support.design.widget.TextInputLayout>
+
+           <android.support.design.widget.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <EditText
+                   style="@style/MatrixInputStyle"
+                   android:hint="b3" />
+           </android.support.design.widget.TextInputLayout>
+
+
+       </LinearLayout>
+
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="15dp"
+           android:src="@drawable/right_bracket"
+           android:visibility="visible" />
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="32sp"
+           android:gravity="center"
+           android:textColor="#000000"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_gravity="center"
+           android:text="="/>
+
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="15dp"
+
+           android:src="@drawable/left_bracket"
+           android:visibility="visible" />
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:visibility="visible">
+
+           <android.support.design.widget.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <EditText
+                   style="@style/MatrixInputStyle"
+                   android:hint="x1" />
+           </android.support.design.widget.TextInputLayout>
+
+           <android.support.design.widget.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <EditText
+                   style="@style/MatrixInputStyle"
+                   android:hint="x2" />
+           </android.support.design.widget.TextInputLayout>
+
+           <android.support.design.widget.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <EditText
+                   style="@style/MatrixInputStyle"
+                   android:hint="x3" />
+           </android.support.design.widget.TextInputLayout>
+
+
+       </LinearLayout>
+
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="15dp"
+           android:layout_marginRight="5dp"
+           android:src="@drawable/right_bracket"
+           android:visibility="visible" />
+   </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/solutionMatrix"
+        android:visibility="visible"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/left_bracket" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    style="@style/MatrixSolutionStyle"
+                    android:text="0.3"
+                    android:layout_gravity="center"/>
+
+
+                <TextView
+                    style="@style/MatrixSolutionStyle"
+                    android:text="0.3"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    style="@style/MatrixSolutionStyle"
+                    android:text="0.3"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/MatrixSolutionStyle"
+                    android:text="0.3"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    style="@style/MatrixSolutionStyle"
+                    android:text="0.3"
+                    android:layout_gravity="center"/>
+
+
+                <TextView
+                    style="@style/MatrixSolutionStyle"
+                    android:text="0.3"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/MatrixSolutionStyle"
+                    android:text="0.3"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    style="@style/MatrixSolutionStyle"
+                    android:text="0.3"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    style="@style/MatrixSolutionStyle"
+                    android:text="0.3"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/right_bracket"
+            android:layout_marginRight="15dp"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/left_bracket"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:visibility="visible">
+
+            <TextView
+                style="@style/MatrixSolutionStyle"
+                android:text="0.3"
+                android:layout_gravity="center"/>
+
+            <TextView
+                style="@style/MatrixSolutionStyle"
+                android:text="0.3"
+                android:layout_gravity="center"/>
+
+            <TextView
+                style="@style/MatrixSolutionStyle"
+                android:text="0.3"
+                android:layout_gravity="center"/>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/right_bracket"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"
+            android:text="="/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/left_bracket"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:visibility="visible">
+
+            <TextView
+                style="@style/MatrixSolutionStyle"
+                android:text="0.3"
+                android:layout_gravity="center"/>
+
+            <TextView
+                style="@style/MatrixSolutionStyle"
+                android:text="0.3"
+                android:layout_gravity="center"/>
+
+            <TextView
+                style="@style/MatrixSolutionStyle"
+                android:text="0.3"
+                android:layout_gravity="center"/>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/right_bracket"
+            android:visibility="visible" />
+    </LinearLayout>
+</LinearLayout>

@@ -89,10 +89,19 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
 
             try {
                 root =  Numericals.FalsePosition(eqn, x0, x1, iter, tol);
+
+                if(Double.isNaN(root) || Double.isInfinite(root)){
+                    Toast.makeText(getContext(),"Syntax Error: Please check equation", Toast.LENGTH_LONG).show();
+                    Log.i(Utilities.Log,"Syntax error, unable to evaluate expression");
+                    return;
+                }
+
                 tvAnswer.setText(String.valueOf(root));
                 Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
             }catch (IllegalArgumentException ex){
                 Toast.makeText(getContext(),ex.getMessage(), Toast.LENGTH_LONG).show();
+            } finally {
+                MainActivity.hideKeyboard(etEquation);
             }
 
 

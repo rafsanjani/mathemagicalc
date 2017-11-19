@@ -6,7 +6,7 @@
     <string name="description_text">Operation List</string>
     <string name="dec_frac_tobinary">1. Decimal to Binary (Fractional Part Only)</string>
     <string name="dec_int_tobinary">2. Decimal to Binary (Integer Part Only)</string>
-    <string name="dec_tobinary">3. Decimal to Binary (Mixed)</string>
+    <string name="dec_tobinary">3. Decimal to Binary (Any Number)</string>
     <string name="rootlocation_bisection">4. Location of Roots (Bisection)</string>
     <string name="rootlocation_falseposition">5. Location Of Roots (Regula Falsi)</string>
     <string name="rootlocation_newtonraphson">6. Locate Of Roots (Newton Raphson)</string>
@@ -28,5 +28,6 @@
     <string name="decimal_to_bin_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N > 0 </string>
     <string name="bisection_desc">Locate the root of an equation of the form f(x) = 0</string>
     <string name="bisection_enter_eqn">Equation to evaluate (eg "f(x) = 2*x^3 + 2")</string>
+    <string name="system_of_equations">8. System of equations</string>
 
 </resources>

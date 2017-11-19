@@ -28,28 +28,38 @@ import java.text.ParseException;
 public class FragmentDecToBinFrac extends Fragment implements Button.OnClickListener, TextWatcher {
 
     View rootView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_dec_to_bin_frac, container, false);
-
-
 
         initControls();
         return rootView;
     }
 
     private void initControls() {
-        MainActivity.setToolBarInfo("Decimal Calculator","Convert decimals to binary");
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/FallingSky.otf");
-        TextView tvAnswer = (TextView)rootView.findViewById(R.id.textview_answer);
+        MainActivity.setToolBarInfo("Decimal Calculator", "Convert decimals to binary");
+        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
+        TextView tvAnswer = (TextView) rootView.findViewById(R.id.textview_answer);
         tvAnswer.setTypeface(typeface);
 
 
-        Button btnBack = (Button)rootView.findViewById(R.id.buttonBack);
+        Button btnBack = (Button) rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = (Button) rootView.findViewById(R.id.buttonCalculate);
 
         EditText etQuestion = rootView.findViewById(R.id.text_user_input);
+
+        etQuestion.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    onCalculate();
+                }
+                return true;
+            }
+        });
+
         etQuestion.addTextChangedListener(this);
 
         btnBack.setOnClickListener(this);
@@ -59,9 +69,9 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.buttonBack:
-                Utilities.replaceFragment(this, new FragmentMainMenu(),getFragmentManager(),R.id.fragmentContainer);
+                Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer);
                 break;
 
             case R.id.buttonCalculate:
@@ -71,37 +81,39 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
     }
 
 
-    public void onCalculate(){
-        EditText etInput = (EditText)rootView.findViewById(R.id.text_user_input);
-        TextView tvAnswer = (TextView)rootView.findViewById(R.id.textview_answer);
+    public void onCalculate() {
+        EditText etInput = (EditText) rootView.findViewById(R.id.text_user_input);
+        TextView tvAnswer = (TextView) rootView.findViewById(R.id.textview_answer);
 
 
         String decimal = etInput.getText().toString();
-        if(decimal.isEmpty()){
-            Toast.makeText(getContext(),"Input field is empty",Toast.LENGTH_LONG).show();
+        if (decimal.isEmpty()) {
+            Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
             return;
         }
 
 
-        try{
+        try {
             double decDouble = Double.parseDouble(decimal);
 
-            if(decDouble >= 1){
+            if (decDouble >= 1) {
                 Toast.makeText(getContext(), "Number should be less than 1", Toast.LENGTH_LONG).show();
                 return;
             }
 
             String binary = Numericals.DecimalFractionToBinary(decDouble);
 
-            if(binary.length() >= 21) {
+            if (binary.length() >= 21) {
                 binary = binary.substring(0, 21);
                 Toast.makeText(getContext(), "Answer truncated to 20 significant figures", Toast.LENGTH_LONG).show();
             }
 
             tvAnswer.setText(binary);
-            Utilities.animateAnswer(tvAnswer, (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        }catch(NumberFormatException ex){
-            Log.i(Utilities.Log, "cannot parse "+ decimal +" to a double value");
+            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        } catch (NumberFormatException ex) {
+            Log.i(Utilities.Log, "cannot parse " + decimal + " to a double value");
+        } finally {
+            MainActivity.hideKeyboard(etInput);
         }
     }
 
@@ -112,12 +124,14 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-      //
+        //
     }
 
     @Override
     public void afterTextChanged(Editable editable) {
-        Utilities.animateAnswer((TextView) rootView.findViewById(R.id.textview_answer),
-                (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        if (editable.length() == 0) {
+            Utilities.animateAnswer((TextView) rootView.findViewById(R.id.textview_answer),
+                    (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        }
     }
 }

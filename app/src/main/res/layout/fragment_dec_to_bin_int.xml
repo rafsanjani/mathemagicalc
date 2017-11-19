@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentContainer"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -18,7 +19,7 @@
         android:textColor="@color/colorPrimaryDark"/>
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="70dp" />
+        android:layout_height="20dp" />
 
      <android.support.design.widget.TextInputLayout
          android:layout_width="match_parent"
@@ -44,7 +45,7 @@
         android:textAlignment="center"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/answer_vertical_width"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_marginTop="@dimen/answer_vertical_width"/>
 
     <Button

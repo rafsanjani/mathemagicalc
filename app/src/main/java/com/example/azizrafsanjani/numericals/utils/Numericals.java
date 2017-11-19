@@ -1,14 +1,10 @@
 package com.example.azizrafsanjani.numericals.utils;
 
 
-import android.os.Debug;
-import android.util.Log;
-
 import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
 
-import java.util.Collections;
 
 public final class Numericals {
     public enum BinaryOperationType {
@@ -107,16 +103,11 @@ public final class Numericals {
         int bk = 0000; //assign something dummy to prevent compiler issues
         switch (op) {
             case DecimalInteger: //number is exclusively an integer (eg XXX.00000)
-                //bk = N % 2 == 0 ? 0 : 1;
-                bk = IsEven(N) ? 0 : 1;
+                bk = N % 2 == 0 ? 0 : 1;
                 break;
 
             case DecimalFraction: //number is exclusively a fraction (eg 0.XXXXX)
-                if (N >= 1)
-                    bk = 1;
-                else
-                    bk = 0;
-                break;
+                bk = (N >= 1 ? 1 : 0);
             default:
                 //oops
                 break;
@@ -247,7 +238,7 @@ public final class Numericals {
             expr = expr.substring(expr.lastIndexOf("=") + 1);
         }
 
-        Function fx = new Function("f(x) = "+expr);
+        Function fx = new Function("f(x) = " + expr);
         double fx0 = fx.calculate(x0);
         double fx1 = fx.calculate(x1);
 
@@ -259,7 +250,73 @@ public final class Numericals {
         return Secante(expr, x2, x1, maxIterations - 1);
     }
 
-    private static boolean IsEven(double n) {
-        return n % 2 == 0;
+    public static double[] GaussianWithPartialPivoting(double[][] A, double B[]) {
+        int N = B.length;
+        for (int k = 0; k < N; k++) {
+            //get the pivot row
+            int max = getPivotRow(A, k);
+
+            //swap the pivot row with the first row
+            swapRows(A, max, k);
+
+            //swap corresponding values of the pivot row in the solution matrix
+            double temp = B[k];
+            B[k] = B[max];
+            B[max] = temp;
+
+            //reduce all elements beneath the pivot row
+            killRowsBeneath(A, B, k);
+        }
+
+        //solve by backsubstitution
+        double[] solution = getSolutionByBackSubstitution(A, B, N);
+
+        return solution;
+    }
+
+    private static double[] getSolutionByBackSubstitution(double A[][], double B[], int N) {
+        double[] solution = new double[N];
+        for (int i = N - 1; i >= 0; i--) {
+            double sum = 0.0;
+            for (int j = i + 1; j < N; j++)
+                sum += A[i][j] * solution[j];
+            solution[i] = (B[i] - sum) / A[i][i];
+        }
+        return solution;
+    }
+
+    private static void killRowsBeneath(double A[][], double B[], int k) {
+        int N = A.length;
+        for (int i = k + 1; i < N; i++) {
+            double factor = A[i][k] / A[k][k];
+            B[i] -= factor * B[k];
+            for (int j = k; j < N; j++)
+                A[i][j] -= factor * A[k][j];
+        }
+    }
+
+    private static int getPivotRow(double system[][], int k) {
+        int maxRowIndex = k;
+
+        for (int i = k + 1; i < system.length; i++) {
+            if (Math.abs(system[i][k]) > Math.abs(system[maxRowIndex][k]))
+                maxRowIndex = i;
+        }
+        return maxRowIndex;
+    }
+
+    private static void swapRows(double system[][], int maxRow, int rowIndex) {
+        double[] temp = system[rowIndex];
+        system[rowIndex] = system[maxRow];
+        system[maxRow] = temp;
+    }
+
+    private static void printMatrix(double system[][]) {
+        for (int rowIndex = 0; rowIndex < system.length; rowIndex++) {
+            for (int columnIndex = 0; columnIndex < system.length; columnIndex++) {
+                System.out.print(system[rowIndex][columnIndex] + " ");
+            }
+            System.out.println();
+        }
     }
 }

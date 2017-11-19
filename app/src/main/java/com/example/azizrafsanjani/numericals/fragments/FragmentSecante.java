@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
@@ -41,15 +42,24 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
         Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
         Button btnBack = rootView.findViewById(R.id.btnBack);
         EditText etEquation = rootView.findViewById(R.id.text_equation);
+        EditText etX0 = rootView.findViewById(R.id.x0);
+        EditText etX1 = rootView.findViewById(R.id.x1);
+        EditText etIterations = rootView.findViewById(R.id.text_iterations);
+        EditText etEpsilon = rootView.findViewById(R.id.text_epsilon);
+
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
 
         etEquation.addTextChangedListener(this);
+        etX0.addTextChangedListener(this);
+        etX1.addTextChangedListener(this);
+        etEpsilon.addTextChangedListener(this);
+        etIterations.addTextChangedListener(this);
 
 
         viewGroup = (LinearLayout)rootView.findViewById(R.id.parentContainer);
-        MainActivity.setToolBarInfo("Location of Roots","Bisection Method");
+        MainActivity.setToolBarInfo("Location of Roots","Secante Method");
 
     }
 
@@ -81,20 +91,31 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
             String eqn = etEquation.getText().toString();
             Double x0 = Double.valueOf(etX0.getText().toString());
             Double x1 = Double.valueOf(etX1.getText().toString());
-            Double tol = Double.valueOf(etEpsilon.getText().toString());
+           // Double tol = Double.valueOf(etEpsilon.getText().toString());
             int iter = Integer.valueOf(etIterations.getText().toString());
 
-
+            if(eqn.trim().contains("=0")){
+                Toast.makeText(getContext(),"Equation malformed: Please take out the  = 0", Toast.LENGTH_LONG).show();
+                Log.i(Utilities.Log,"Equation is malformed");
+                return;
+            }
             double root = Numericals.Secante(eqn, x0, x1, iter);
+
+            if(Double.isNaN(root) || Double.isInfinite(root)){
+                Toast.makeText(getContext(),"Syntax Error: Please check equation", Toast.LENGTH_LONG).show();
+                Log.i(Utilities.Log,"Syntax error, unable to evaluate expression");
+                return;
+            }
 
             tvAnswer.setText(String.valueOf(root));
 
-            //for transitions sake
             Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
 
         }catch(NumberFormatException ex){
-            System.out.println(ex.getMessage());
+            Toast.makeText(getContext(),"One or more of the input values are invalid", Toast.LENGTH_LONG).show();
             Log.i(Utilities.Log,"One or more of the input values are invalid");
+        } finally {
+            MainActivity.hideKeyboard(etEquation);
         }
     }
 
