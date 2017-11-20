@@ -55,7 +55,15 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
 
         etEquation.addTextChangedListener(this);
 
-
+        etEquation.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    onCalculate();
+                }
+                return true;
+            }
+        });
         viewGroup = (LinearLayout)rootView.findViewById(R.id.parentContainer);
         MainActivity.setToolBarInfo("Location of Roots","Bisection Method");
 

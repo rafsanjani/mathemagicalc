@@ -3,6 +3,7 @@ package com.example.azizrafsanjani.numericals.utils;
 
 import android.content.Context;
 import android.support.transition.Fade;
+import android.support.transition.Transition;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.BounceInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -66,9 +68,7 @@ public final class Utilities {
         }
     }
 
-    public static void bounceTextInput(EditText input, ViewGroup viewGroup){
 
-    }
 
     public enum DisplayMode {
         SHOW,

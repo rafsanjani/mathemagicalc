@@ -55,8 +55,9 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
+                    return true;
                 }
-                return true;
+                return false;
             }
         });
 

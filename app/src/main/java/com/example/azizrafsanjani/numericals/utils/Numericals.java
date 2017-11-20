@@ -256,7 +256,7 @@ public final class Numericals {
             //get the pivot row
             int max = getPivotRow(A, k);
 
-            //swap the pivot row with the first row
+            //swap the pivot row with the first row in matrix A
             swapRows(A, max, k);
 
             //swap corresponding values of the pivot row in the solution matrix

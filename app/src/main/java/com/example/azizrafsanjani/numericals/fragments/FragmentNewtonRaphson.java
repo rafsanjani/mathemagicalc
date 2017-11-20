@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,15 @@ public class FragmentNewtonRaphson extends Fragment implements View.OnClickListe
         btnBack.setOnClickListener(this);
 
         etEquation.addTextChangedListener(this);
+        etEquation.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    onCalculate();
+                }
+                return true;
+            }
+        });
 
 
         viewGroup = (LinearLayout)rootView.findViewById(R.id.parentContainer);

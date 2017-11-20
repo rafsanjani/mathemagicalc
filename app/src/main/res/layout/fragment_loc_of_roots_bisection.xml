@@ -34,6 +34,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:gravity="center_horizontal"
+            android:inputType="text"
+            android:imeOptions="actionGo"
             android:textAlignment="center"/>
     </android.support.design.widget.TextInputLayout>
 
