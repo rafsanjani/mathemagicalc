@@ -21,6 +21,14 @@
         <item name="android:textColor">@color/textColorPrimary</item>
     </style>
 
+    <style name="SourceDialog" parent="@style/Theme.AppCompat.Dialog">
+        <item name="android:windowAnimationStyle">@style/SourceDialogAnimation</item>
+    </style>
+
+    <style name="SourceDialogAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
     <style name="MyActionMode" parent = "@style/Widget.AppCompat.ActionBar">
         <item name="background">@color/contextualBackground</item>
         <item name="titleTextStyle">@style/MyTextStyle</item>
@@ -82,6 +90,8 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+
 
     <style name="AppMaterialTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

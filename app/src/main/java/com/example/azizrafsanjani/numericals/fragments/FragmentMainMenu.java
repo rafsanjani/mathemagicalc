@@ -1,12 +1,15 @@
 package com.example.azizrafsanjani.numericals.fragments;
 
 
+import android.app.Dialog;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.transition.Fade;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +26,9 @@ import com.example.azizrafsanjani.numericals.activities.MainActivity;
 import com.example.azizrafsanjani.numericals.utils.CustomDialog;
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.transitionseverywhere.TransitionManager;
+import com.transitionseverywhere.TransitionSet;
+import com.transitionseverywhere.extra.Scale;
 
 import org.w3c.dom.Text;
 
@@ -49,19 +55,19 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         return rootView;
     }
 
-    private void initControls(){
-        ListView items = (ListView)rootView.findViewById(R.id.listItems);
+    private void initControls() {
+        ListView items = (ListView) rootView.findViewById(R.id.listItems);
 
         items.setOnItemClickListener(this);
-        Button computeButton = (Button)rootView.findViewById(R.id.buttonCompute);
-        Button sourceButton = (Button)rootView.findViewById(R.id.buttonSource);
-       // linearLayout = rootView.findViewById(R.id.linearLayout);
+        Button computeButton = (Button) rootView.findViewById(R.id.buttonCompute);
+        Button sourceButton = (Button) rootView.findViewById(R.id.buttonSource);
+        // linearLayout = rootView.findViewById(R.id.linearLayout);
 
         computeButton.setOnClickListener(this);
         sourceButton.setOnClickListener(this);
 
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"fonts/segoeuibold.ttf");
-        TextView tv = (TextView)rootView.findViewById(R.id.text_header);
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/segoeuibold.ttf");
+        TextView tv = (TextView) rootView.findViewById(R.id.text_header);
         tv.setTypeface(typeface);
 
 
@@ -69,18 +75,17 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
 
     }
 
-    private void populateItemList(){
-        ListView listView = (ListView)rootView.findViewById(R.id.listItems);
+    private void populateItemList() {
+        ListView listView = (ListView) rootView.findViewById(R.id.listItems);
 
-        String []operationList = getOperationList();
-        adapter = new ArrayAdapter<>(getContext(),R.layout.listview_item, operationList);
+        String[] operationList = getOperationList();
+        adapter = new ArrayAdapter<>(getContext(), R.layout.listview_item, operationList);
         listView.setAdapter(adapter);
     }
 
-    private String [] getOperationList()
-    {
+    private String[] getOperationList() {
         Resources res = getResources();
-        String []opList = {res.getString(R.string.dec_frac_tobinary),
+        String[] opList = {res.getString(R.string.dec_frac_tobinary),
                 res.getString(R.string.dec_int_tobinary),
                 res.getString(R.string.dec_tobinary),
                 res.getString(R.string.rootlocation_bisection),
@@ -99,77 +104,77 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         view.setSelected(true);
 
-        try{
+        try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 view.setElevation(2);
             }
-        }catch(NullPointerException ex){
+        } catch (NullPointerException ex) {
 
         }
 
         selectedItem = position;
         itemSelected = true;
 
-        Log.i(Utilities.Log ,"Item "+selectedItem+" selected");
+        Log.i(Utilities.Log, "Item " + selectedItem + " selected");
     }
 
     @Override
     public void onClick(View view) {
-        if(!itemSelected){
+        if (!itemSelected) {
             Log.i(Utilities.Log, "No item selected in the listview");
             return;
         }
 
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.buttonCompute:
-               onCompute();
-            break;
+                onCompute();
+                break;
 
             case R.id.buttonSource:
-              onSource();
+                onSource();
         }
     }
 
-    public void onCompute(){
+    public void onCompute() {
         Fragment fragment;
 
-        switch(selectedItem){
+        switch (selectedItem) {
             case 0:
                 fragment = new FragmentDecToBinFrac();
-                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
 
                 break;
 
             case 1:
                 fragment = new FragmentDecToBinInt();
-                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
 
                 break;
 
             case 2:
                 fragment = new FragmentDecToBin();
-                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
 
             case 3:
                 fragment = new FragmentBisection();
-                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
 
             case 4:
-                fragment  = new FragmentNewtonRaphson();
+                fragment = new FragmentNewtonRaphson();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             case 5:
-                fragment  = new FragmentRegulaFalsi();
+                fragment = new FragmentRegulaFalsi();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             case 6:
-                fragment  = new FragmentSecante();
+                fragment = new FragmentSecante();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             case 7:
-                fragment  = new FragmentEquationsMenu();
+                fragment = new FragmentEquationsMenu();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             default:
@@ -178,10 +183,12 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         }
     }
 
-    public void onSource(){
-        CustomDialog dialog = new CustomDialog();
+    public void onSource() {
+        final Dialog dialog = new Dialog(getActivity(), R.style.SourceDialog);
+        dialog.setContentView(R.layout.dialog_source_code);
+        dialog.setTitle("source code");
 
-        String msg = " public static String DecimalIntToBinary(int dec) {\n" +
+        String src = " public static String DecimalIntToBinary(int dec) {\n" +
                 "        int Nk = dec;\n" +
                 "        StringBuilder binary = new StringBuilder();\n" +
                 "\n" +
@@ -197,8 +204,28 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
                 "        String result = binary.reverse().toString();\n" +
                 "\n" +
                 "        return result;\n" +
+                "    }\n" +
+                "\n" +
+                "private static int AppendToResult(double N, StringBuilder sb, BinaryOperationType op) {\n" +
+                "        int bk = 0000; //assign something dummy to prevent compiler issues\n" +
+                "        switch (op) {\n" +
+                "            case DecimalInteger: //number is exclusively an integer (eg XXX.00000)\n" +
+                "                bk = N % 2 == 0 ? 0 : 1;\n" +
+                "                break;\n" +
+                "\n" +
+                "            case DecimalFraction: //number is exclusively a fraction (eg 0.XXXXX)\n" +
+                "                bk = (N >= 1 ? 1 : 0);\n" +
+                "            default:\n" +
+                "                //oops\n" +
+                "                break;\n" +
+                "        }\n" +
+                "        //append outcome to our stringbuilder\n" +
+                "        sb.append(bk);\n" +
+                "        return bk;\n" +
                 "    }";
-        dialog.setMessage(msg);
-        dialog.show(getActivity().getFragmentManager(), "NoticeDialogFragment");
+        TextView sourceCode = dialog.findViewById(R.id.sourceCode);
+        sourceCode.setText(src);
+
+        dialog.show();
     }
 }

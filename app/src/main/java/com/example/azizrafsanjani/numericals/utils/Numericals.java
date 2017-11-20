@@ -128,7 +128,7 @@ public final class Numericals {
      */
     public static double Bisect(String expr, double x1, double x2, int iterations, double tol) {
 
-        if(iterations < 1)
+        if (iterations < 1)
             return 0;
 
         double x3 = (x1 + x2) / 2;
@@ -167,7 +167,7 @@ public final class Numericals {
      */
     public static Double NewtonRaphson(String expr, double x1, int maxIterations) {
         //TODO: Newton Raphson method goes here
-        if(maxIterations < 1){
+        if (maxIterations < 1) {
             return 0.00;
         }
 
@@ -203,7 +203,7 @@ public final class Numericals {
      * @throws IllegalArgumentException When the interval doesn't bracket the root
      */
     public static Double FalsePosition(String expr, double x0, double x1, int maxIterations, double tol) throws IllegalArgumentException {
-        if(maxIterations < 1)
+        if (maxIterations < 1)
             return 0.00;
 
         //sanitize the equation
@@ -244,9 +244,9 @@ public final class Numericals {
      */
 
     public static Double Secante(String expr, double x0, double x1, int maxIterations) {
-        if(maxIterations < 1)
+        if (maxIterations < 1)
             return 0.00;
-        
+
         if (expr.contains("=")) {
             expr = expr.substring(expr.lastIndexOf("=") + 1);
         }
@@ -331,5 +331,10 @@ public final class Numericals {
             }
             System.out.println();
         }
+    }
+
+    public static double[][] Jacobi(String[][] systems) {
+
+        return new double[3][3];
     }
 }

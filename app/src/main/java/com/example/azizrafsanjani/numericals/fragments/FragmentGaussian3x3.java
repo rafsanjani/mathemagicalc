@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
@@ -58,14 +60,70 @@ public class FragmentGaussian3x3 extends Fragment implements View.OnClickListene
                 break;
 
             case R.id.buttonCalculate:
+                Toast.makeText(getContext(),"clicked me",Toast.LENGTH_LONG).show();
                 onCalculate();
                 break;
         }
     }
 
     private void onCalculate() {
+        getMatrices();
+    }
 
 
+    private void getMatrices() {
+        EditText[][] etA = new EditText[3][5];
+        double a[][] = new double[3][5];
+
+        EditText[] etB = new EditText[3];
+        double b[] = new double[3];
+
+        EditText[] etX = new EditText[3];
+        double x[] = new double[3];
+
+        etA[0][0] = (EditText) rootView.findViewById(R.id.a11);
+        etA[0][1] = (EditText) rootView.findViewById(R.id.a12);
+        etA[0][2] = (EditText) rootView.findViewById(R.id.a13);
+        etA[1][0] = (EditText) rootView.findViewById(R.id.a21);
+        etA[1][1] = (EditText) rootView.findViewById(R.id.a22);
+        etA[1][2] = (EditText) rootView.findViewById(R.id.a23);
+        etA[2][0] = (EditText) rootView.findViewById(R.id.a31);
+        etA[2][1] = (EditText) rootView.findViewById(R.id.a32);
+        etA[2][2] = (EditText) rootView.findViewById(R.id.a33);
+
+        etB[0] = (EditText) rootView.findViewById(R.id.b1);
+        etB[1] = (EditText) rootView.findViewById(R.id.b2);
+        etB[2] = (EditText) rootView.findViewById(R.id.b3);
+
+        etX[0] = (EditText) rootView.findViewById(R.id.x1);
+        etX[1] = (EditText) rootView.findViewById(R.id.x2);
+        etX[2] = (EditText) rootView.findViewById(R.id.x3);
+
+        for(int i = 0; i < etA.length; i++){
+           try{
+               b[i] = Double.parseDouble(etB[i].getText().toString());
+               x[i] = Double.parseDouble(etX[i].getText().toString());
+           }catch (NumberFormatException e){
+               e.printStackTrace();
+           }
+
+            for(int j = 0; j < etA.length; j++){
+                try{
+                    a[i][j] = Double.parseDouble(etA[i][j].getText().toString());
+                }catch(NumberFormatException ex){
+                    ex.printStackTrace();
+                }
+            }
+        }
+        //print it all out and see
+        for (int i = 0; i < etA.length; i++) {
+            for (int j = 0; j < etA.length; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.print(x[i]+ " ");
+            System.out.print(b[i]+ " ");
+            System.out.println();
+        }
     }
 
     @Override
@@ -80,7 +138,7 @@ public class FragmentGaussian3x3 extends Fragment implements View.OnClickListene
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        
+
     }
 
     @Override
