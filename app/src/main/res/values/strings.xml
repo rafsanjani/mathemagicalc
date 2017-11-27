@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Numerical Methods</string>
-    <string name="remarks">Implementation of Numerical Methods and Computation Algorithms</string>
+    <string name="remarks">Numerical Methods and Computations</string>
     <string name="dev_name">Rafsanjani Abdul Aziz Yaah Waduudu</string>
-    <string name="app_description">Implementation of popular algorithms</string>
+    <string name="app_description">Implementation of algorithms</string>
     <string name="description_text">Operation List</string>
     <string name="dec_frac_tobinary">1. Decimal to Binary (Fractional Part Only)</string>
     <string name="dec_int_tobinary">2. Decimal to Binary (Integer Part Only)</string>

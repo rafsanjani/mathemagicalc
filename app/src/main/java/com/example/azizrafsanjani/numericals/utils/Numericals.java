@@ -5,6 +5,8 @@ import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
 
+import java.text.DecimalFormat;
+
 
 public final class Numericals {
     public enum BinaryOperationType {
@@ -295,7 +297,11 @@ public final class Numericals {
                 sum += A[i][j] * solution[j];
             solution[i] = (B[i] - sum) / A[i][i];
         }
+        //round all array contents to 2dp
+        roundTo2Dp(A, B);
+        roundTo2Dp(solution);
         return solution;
+
     }
 
     private static void killRowsBeneath(double A[][], double B[], int k) {
@@ -305,6 +311,21 @@ public final class Numericals {
             B[i] -= factor * B[k];
             for (int j = k; j < N; j++)
                 A[i][j] -= factor * A[k][j];
+        }
+    }
+
+    private static void roundTo2Dp(double A[][], double B[]) {
+        for (int i = 0; i < A.length; i++) {
+            B[i] = Double.parseDouble(String.format("%.2f", B[i]));
+            for (int j = 0; j < A.length; j++) {
+                A[i][j] =Double.parseDouble(String.format("%.2f", A[i][j]));
+            }
+        }
+    }
+
+    private static void roundTo2Dp(double []B){
+        for(int i = 0; i < B.length; i++){
+            B[i] = Double.parseDouble(String.format("%.2f", B[i]));
         }
     }
 
@@ -333,8 +354,22 @@ public final class Numericals {
         }
     }
 
-    public static double[][] Jacobi(String[][] systems) {
+    /***
+     * Solves a system of linear equations using Jacobi's method
+     * @param systems
+     * @return
+     */
+    public static double[] Jacobi(String[] systems) {
 
-        return new double[3][3];
+        return new double[3];
+    }
+
+    /***
+     * Solves a system of linear equations using Gauss-Seidel's method
+     * @param systems
+     * @return
+     */
+    public static double[] gaussSeidel(String[][] systems){
+        return new double[20];
     }
 }

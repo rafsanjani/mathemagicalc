@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_weight="1"
-    android:gravity="bottom"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|bottom"
     android:layout_marginBottom="15dp"
-    android:layout_height="wrap_content">
+    android:layout_weight="1"
+    android:orientation="vertical">
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/textFooter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/remarks"
-        android:textAlignment="center"
-        android:layout_marginTop="10dp"
-        android:textColor="#78909c">
-    </TextView>
+        android:textColor="#78909c"></TextView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center|bottom"
-        android:textAlignment="center"
         android:text="@string/dev_name"
-        android:textColor="#78909c"
-        />
+        android:textAlignment="center"
+        android:textColor="#78909c" />
 </LinearLayout>
 

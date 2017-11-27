@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
+import com.example.azizrafsanjani.numericals.utils.Numericals;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
 /**
@@ -60,7 +61,7 @@ public class FragmentGaussian3x3 extends Fragment implements View.OnClickListene
                 break;
 
             case R.id.buttonCalculate:
-                Toast.makeText(getContext(),"clicked me",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "clicked me", Toast.LENGTH_LONG).show();
                 onCalculate();
                 break;
         }
@@ -79,7 +80,7 @@ public class FragmentGaussian3x3 extends Fragment implements View.OnClickListene
         double b[] = new double[3];
 
         EditText[] etX = new EditText[3];
-        double x[] = new double[3];
+
 
         etA[0][0] = (EditText) rootView.findViewById(R.id.a11);
         etA[0][1] = (EditText) rootView.findViewById(R.id.a12);
@@ -96,32 +97,31 @@ public class FragmentGaussian3x3 extends Fragment implements View.OnClickListene
         etB[2] = (EditText) rootView.findViewById(R.id.b3);
 
         etX[0] = (EditText) rootView.findViewById(R.id.x1);
-        etX[1] = (EditText) rootView.findViewById(R.id.x2);
-        etX[2] = (EditText) rootView.findViewById(R.id.x3);
 
-        for(int i = 0; i < etA.length; i++){
-           try{
-               b[i] = Double.parseDouble(etB[i].getText().toString());
-               x[i] = Double.parseDouble(etX[i].getText().toString());
-           }catch (NumberFormatException e){
-               e.printStackTrace();
-           }
+        for (int i = 0; i < etA.length; i++) {
+            try {
+                b[i] = Double.parseDouble(etB[i].getText().toString());
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
 
-            for(int j = 0; j < etA.length; j++){
-                try{
+            for (int j = 0; j < etA.length; j++) {
+                try {
                     a[i][j] = Double.parseDouble(etA[i][j].getText().toString());
-                }catch(NumberFormatException ex){
+                } catch (NumberFormatException ex) {
                     ex.printStackTrace();
                 }
             }
         }
+
+        double[] solution = Numericals.GaussianWithPartialPivoting(a, b);
+
         //print it all out and see
         for (int i = 0; i < etA.length; i++) {
             for (int j = 0; j < etA.length; j++) {
                 System.out.print(a[i][j] + " ");
             }
-            System.out.print(x[i]+ " ");
-            System.out.print(b[i]+ " ");
+            System.out.print(b[i]);
             System.out.println();
         }
     }

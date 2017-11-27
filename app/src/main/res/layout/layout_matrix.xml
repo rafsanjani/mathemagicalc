@@ -3,13 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp">
+    android:gravity="center">
 
 
    <LinearLayout
        android:id="@+id/questionMatrix"
-       android:layout_width="match_parent"
+       android:layout_width="wrap_content"
        android:gravity="center_horizontal"
        android:layout_height="match_parent">
 
@@ -166,30 +165,30 @@
                android:layout_width="match_parent"
                android:layout_height="match_parent">
 
-               <EditText
-                   android:id="@+id/x1"
-                   style="@style/MatrixInputStyle"
-                   android:hint="x1" />
+               <TextView
+                   style="@style/MatrixSolutionStyle"
+                   android:text="x1"
+                   android:layout_gravity="center"/>
            </android.support.design.widget.TextInputLayout>
 
            <android.support.design.widget.TextInputLayout
                android:layout_width="match_parent"
                android:layout_height="match_parent">
 
-               <EditText
-                   android:id="@+id/x2"
-                   style="@style/MatrixInputStyle"
-                   android:hint="x2" />
+               <TextView
+                   style="@style/MatrixSolutionStyle"
+                   android:text="x2"
+                   android:layout_gravity="center"/>
            </android.support.design.widget.TextInputLayout>
 
            <android.support.design.widget.TextInputLayout
                android:layout_width="match_parent"
                android:layout_height="match_parent">
 
-               <EditText
-                   android:id="@+id/x3"
-                   style="@style/MatrixInputStyle"
-                   android:hint="x3" />
+               <TextView
+                   style="@style/MatrixSolutionStyle"
+                   android:text="x3"
+                   android:layout_gravity="center"/>
            </android.support.design.widget.TextInputLayout>
 
 
@@ -274,7 +273,7 @@
         android:id="@+id/solutionMatrix"
         android:visibility="visible"
         android:gravity="center_horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
             android:layout_width="wrap_content"

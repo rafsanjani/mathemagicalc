@@ -55,7 +55,7 @@
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
     </style>
 
-    <style name="MyListItemTheme" parent="BaseTheme">
+    <style name="MyListItemTheme">
         <item name="android:textSize">31dp</item>
         <item name="android:textStyle">italic</item>
         <item name="android:textColorPrimary">#000000</item>
@@ -66,8 +66,8 @@
     <style name="MyButtonStyle">
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
-        <item name="android:layout_marginTop">5dp</item>
-        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/colorButtonText</item>
     </style>
@@ -90,10 +90,4 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-
-
-
-    <style name="AppMaterialTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppMaterialTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

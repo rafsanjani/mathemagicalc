@@ -16,6 +16,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.azizrafsanjani.numericals.activities.MainActivity;
 import com.transitionseverywhere.Explode;
 import com.transitionseverywhere.TransitionManager;
 import com.transitionseverywhere.TransitionSet;
@@ -38,6 +39,10 @@ public final class Utilities {
         next.setEnterTransition(enterFade);
         transaction.replace(containerViewId, next);
         transaction.commit();
+    }
+
+    public static void hideKeyboard(EditText et){
+
     }
 
     public static void loadFragment(Fragment fragment, FragmentManager fragmentManager, int containerViewId) {

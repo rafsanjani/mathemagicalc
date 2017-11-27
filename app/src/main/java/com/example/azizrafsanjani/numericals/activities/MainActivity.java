@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-       setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
         loadMenuFragment();
         initControls();
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     public  static void hideKeyboard(EditText et){
         imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
     }
+
 
     @Override
     public void onBackPressed(){
