@@ -3,13 +3,14 @@
     package="com.example.azizrafsanjani.numericals">
 
 
+
+
     <application
         android:allowBackup="true"
 
         android:label="@string/app_name"
         android:icon="@drawable/numericals_icon"
         android:supportsRtl="true"
-
         android:theme="@style/AppMaterialTheme">
         <activity android:name=".activities.MainActivity"
            >
@@ -21,5 +22,4 @@
         </activity>
 
     </application>
-
 </manifest>

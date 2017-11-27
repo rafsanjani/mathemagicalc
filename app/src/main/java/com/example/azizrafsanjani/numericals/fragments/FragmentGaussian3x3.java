@@ -73,8 +73,8 @@ public class FragmentGaussian3x3 extends Fragment implements View.OnClickListene
 
 
     private void getMatrices() {
-        EditText[][] etA = new EditText[3][5];
-        double a[][] = new double[3][5];
+        EditText[][] etA = new EditText[3][3];
+        double a[][] = new double[3][3];
 
         EditText[] etB = new EditText[3];
         double b[] = new double[3];
@@ -99,12 +99,6 @@ public class FragmentGaussian3x3 extends Fragment implements View.OnClickListene
         etX[0] = (EditText) rootView.findViewById(R.id.x1);
 
         for (int i = 0; i < etA.length; i++) {
-            try {
-                b[i] = Double.parseDouble(etB[i].getText().toString());
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            }
-
             for (int j = 0; j < etA.length; j++) {
                 try {
                     a[i][j] = Double.parseDouble(etA[i][j].getText().toString());
@@ -112,17 +106,49 @@ public class FragmentGaussian3x3 extends Fragment implements View.OnClickListene
                     ex.printStackTrace();
                 }
             }
+            try {
+                b[i] = Double.parseDouble(etB[i].getText().toString());
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+
         }
 
+
+        //get the solution matrix
         double[] solution = Numericals.GaussianWithPartialPivoting(a, b);
 
-        //print it all out and see
-        for (int i = 0; i < etA.length; i++) {
-            for (int j = 0; j < etA.length; j++) {
-                System.out.print(a[i][j] + " ");
+
+        //our previous matrices have been mutated so we can represent them on the textviews
+        TextView[][] tvA = new TextView[3][3];
+        tvA[0][0] = (TextView) rootView.findViewById(R.id.sa11);
+        tvA[0][1] = (TextView) rootView.findViewById(R.id.sa12);
+        tvA[0][2] = (TextView) rootView.findViewById(R.id.sa13);
+        tvA[1][0] = (TextView) rootView.findViewById(R.id.sa21);
+        tvA[1][1] = (TextView) rootView.findViewById(R.id.sa22);
+        tvA[1][2] = (TextView) rootView.findViewById(R.id.sa23);
+        tvA[2][0] = (TextView) rootView.findViewById(R.id.sa31);
+        tvA[2][1] = (TextView) rootView.findViewById(R.id.sa32);
+        tvA[2][2] = (TextView) rootView.findViewById(R.id.sa33);
+
+
+        TextView[] tvX = new TextView[3];
+        TextView[] tvB = new TextView[3];
+
+        tvB[0] = (TextView) rootView.findViewById(R.id.sab1);
+        tvB[1] = (TextView) rootView.findViewById(R.id.sab2);
+        tvB[2] = (TextView) rootView.findViewById(R.id.sab3);
+
+        tvX[0] = (TextView) rootView.findViewById(R.id.sax1);
+        tvX[1] = (TextView) rootView.findViewById(R.id.sax2);
+        tvX[2] = (TextView) rootView.findViewById(R.id.sax3);
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                tvA[i][j].setText(String.valueOf(a[i][j]));
             }
-            System.out.print(b[i]);
-            System.out.println();
+            tvX[i].setText(String.valueOf(solution[i]));
+            tvB[i].setText(String.valueOf(b[i]));
         }
     }
 

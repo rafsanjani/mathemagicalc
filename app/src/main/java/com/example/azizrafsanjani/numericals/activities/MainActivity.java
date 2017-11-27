@@ -12,7 +12,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -20,6 +22,7 @@ import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.fragments.FragmentMainMenu;
@@ -38,9 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
        super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_main);
-
         loadMenuFragment();
         initControls();
+
+
     }
 
     private void loadMenuFragment() {
@@ -72,6 +76,17 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
     @Override
     public void onBackPressed(){
+
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+
+        float density  = getResources().getDisplayMetrics().density;
+        float dpHeight = outMetrics.heightPixels / density;
+        float dpWidth  = outMetrics.widthPixels / density;
+        Toast.makeText(getApplicationContext(),String.valueOf(dpHeight), Toast.LENGTH_LONG).show();
+
+
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
         Log.i(Utilities.Log,f.toString() +" is the active fragment now");
 

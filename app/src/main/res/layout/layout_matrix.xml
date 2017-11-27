@@ -381,19 +381,19 @@
             android:visibility="visible">
 
             <TextView
-                android:id="@+id/sax1"
+                android:id="@+id/sab1"
                 style="@style/MatrixSolutionStyle"
                 android:text="0.3"
                 android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/sax2"
+                android:id="@+id/sab2"
                 style="@style/MatrixSolutionStyle"
                 android:text="0.3"
                 android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/sax3"
+                android:id="@+id/sab3"
                 style="@style/MatrixSolutionStyle"
                 android:text="0.3"
                 android:layout_gravity="center"/>
@@ -434,19 +434,19 @@
             android:visibility="visible">
 
             <TextView
-                android:id="@+id/sab1"
+                android:id="@+id/sax1"
                 style="@style/MatrixSolutionStyle"
                 android:text="0.3"
                 android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/sab2"
+                android:id="@+id/sax2"
                 style="@style/MatrixSolutionStyle"
                 android:text="0.3"
                 android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/sab3"
+                android:id="@+id/sax3"
                 style="@style/MatrixSolutionStyle"
                 android:text="0.3"
                 android:layout_gravity="center"/>

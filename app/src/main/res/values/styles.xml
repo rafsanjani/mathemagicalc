@@ -83,7 +83,7 @@
     <style name="MatrixSolutionStyle">
         <item name="android:layout_marginTop">@dimen/sol_answer_vertical_width</item>
         <item name="android:layout_width">@dimen/matrix_elements_width</item>
-        <item name="android:textSize">20sp</item>
+
         <item name="android:layout_marginBottom">5dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/colorHeading</item>

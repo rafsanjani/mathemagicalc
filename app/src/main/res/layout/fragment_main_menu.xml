@@ -36,7 +36,7 @@
         android:smoothScrollbar="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_height="270dp"
+        android:layout_height="200dp"
         android:choiceMode="singleChoice">
     </ListView>
 
@@ -56,7 +56,12 @@
         android:layout_height="wrap_content"
         android:text="@string/button_view_source"
         style="@style/MyButtonStyle"/>
+
+
+
+
     <include
+
         layout="@layout/textview_footer_text"
         />
 

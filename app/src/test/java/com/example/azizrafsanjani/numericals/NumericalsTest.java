@@ -35,18 +35,18 @@ public class NumericalsTest {
     @Test
     public void testGaussian() {
         double A[][] = {
-                {3, 4, 3},
-                {1, 5, -1},
-                {-6, 3, 2}
+                {1, 0, 1},
+                {2, 2, 3},
+                {1, 4, 1}
         };
-        double B[] = {1, 7, 9};
+        double B[] = {2, 6, 3};
         double solution[] = Numericals.GaussianWithPartialPivoting(A, B);
 
         for (int i = 0; i < A.length; i++) {
             for (int j = 0; j < A.length; j++) {
                 System.out.print(A[i][j] + " ");
             }
-            System.out.print(solution[i]);
+            System.out.print(B[i]);
             System.out.println();
         }
 
@@ -56,14 +56,7 @@ public class NumericalsTest {
         }
     }
 
-   /* @Test
-   public void testGaussianWithPartialPivotingShouldPass(){
-        double A = {
-                {},
-                {},
-                {}
-        }
-    }*/
+
 
     @Test
     public void testRegulaFalsi() {
