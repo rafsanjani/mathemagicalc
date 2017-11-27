@@ -265,6 +265,11 @@ public final class Numericals {
         return Secante(expr, x2, x1, maxIterations - 1);
     }
 
+    public static double[] GaussianWithCompletePivoting(double[] A, double B[]) {
+
+        return A;
+    }
+
     public static double[] GaussianWithPartialPivoting(double[][] A, double B[]) {
         int N = B.length;
         for (int k = 0; k < N; k++) {
@@ -318,24 +323,25 @@ public final class Numericals {
         for (int i = 0; i < A.length; i++) {
             B[i] = Double.parseDouble(String.format("%.2f", B[i]));
             for (int j = 0; j < A.length; j++) {
-                A[i][j] =Double.parseDouble(String.format("%.2f", A[i][j]));
+                A[i][j] = Double.parseDouble(String.format("%.2f", A[i][j]));
             }
         }
     }
 
-    private static void roundTo2Dp(double []B){
-        for(int i = 0; i < B.length; i++){
+    private static void roundTo2Dp(double[] B) {
+        for (int i = 0; i < B.length; i++) {
             B[i] = Double.parseDouble(String.format("%.2f", B[i]));
         }
     }
 
-    private static int getPivotRow(double system[][], int k) {
+    public static int getPivotRow(double system[][], int k) {
         int maxRowIndex = k;
 
         for (int i = k + 1; i < system.length; i++) {
             if (Math.abs(system[i][k]) > Math.abs(system[maxRowIndex][k]))
                 maxRowIndex = i;
         }
+
         return maxRowIndex;
     }
 
@@ -343,6 +349,30 @@ public final class Numericals {
         double[] temp = system[rowIndex];
         system[rowIndex] = system[maxRow];
         system[maxRow] = temp;
+    }
+
+    private static void swapColumns(double system[][], int maxCol, int colIndex) {
+        double[] temp = system[colIndex];
+        system[colIndex] = system[maxCol];
+        system[maxCol] = temp;
+    }
+
+    public static int getPivotColumn(double[][] system, int k) {
+        int maxColIndex = k;
+        int maxRowIndex = k;
+        double maxNumber = -1;
+
+        for (int i = k; i < system.length; i++) {
+            for (int j = k; j < system.length; j++) {
+                if (system[i][j] > maxNumber) {
+                    maxRowIndex = i;
+                    maxColIndex = j;
+                    maxNumber = system[maxRowIndex][maxColIndex];
+                }
+            }
+        }
+
+        return maxColIndex;
     }
 
     private static void printMatrix(double system[][]) {
@@ -366,10 +396,20 @@ public final class Numericals {
 
     /***
      * Solves a system of linear equations using Gauss-Seidel's method
-     * @param systems
+     * @param system
      * @return
      */
-    public static double[] gaussSeidel(String[][] systems){
+    public static double[] gaussSeidel(String[][] system) {
+        return new double[20];
+    }
+
+
+    /***
+     * Solves a system of linear equations using the Gauss-Seidel's method with Successive Over Relaxation
+     * @param system
+     * @return
+     */
+    public static double[] gaussSeidelWithXOR(String[][] system) {
         return new double[20];
     }
 }

@@ -25,14 +25,14 @@ import com.example.azizrafsanjani.numericals.utils.Utilities;
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentGaussian3x3 extends Fragment implements View.OnClickListener, View.OnKeyListener, TextWatcher {
+public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClickListener, View.OnKeyListener, TextWatcher {
 
     View rootView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_gaussian_partial3x3, container, false);
+        rootView = inflater.inflate(R.layout.fragment_gaussian_complete3x3, container, false);
         MainActivity.setToolBarInfo("System of Equations", "Gaussian Elimination (Partial Pivoting)");
 
         initControls();

@@ -35,27 +35,16 @@ public class NumericalsTest {
     @Test
     public void testGaussian() {
         double A[][] = {
-                {1, 0, 1},
-                {2, 2, 3},
-                {1, 4, 1}
+                {100, 2555, 3},
+                {4, 1, 2},
+                {7, 333, 4}
         };
+
+
         double B[] = {2, 6, 3};
-        double solution[] = Numericals.GaussianWithPartialPivoting(A, B);
-
-        for (int i = 0; i < A.length; i++) {
-            for (int j = 0; j < A.length; j++) {
-                System.out.print(A[i][j] + " ");
-            }
-            System.out.print(B[i]);
-            System.out.println();
-        }
-
-        System.out.println("the solution matrix is given as: ");
-        for(int i = 0; i < solution.length; i++){
-            System.out.println(solution[i]);
-        }
+        int a = Numericals.getPivotColumn(A, 1);
+        System.out.println(a);
     }
-
 
 
     @Test

@@ -127,7 +127,7 @@ public class FragmentEquationsMenu extends Fragment implements AdapterView.OnIte
 
         switch(selectedItem){
             case 0:
-                fragment = new FragmentGaussian3x3();
+                fragment = new FragmentGaussianPartial3x3();
                 Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
 
                 break;
