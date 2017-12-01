@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jacobi">
+        "public static double[] Jacobi(String[] system, double[] initGuess,
+        double epsilon) {
+
+        double iSolution[] = new double[3];
+
+        for (int i = 0; i &#60; system.length; i++) {
+            Function fx = new Function("f(x)= " + system[i]);
+            fx.addArguments(new Argument("x1 = " + initGuess[0]));
+            fx.addArguments(new Argument("x2 = " + initGuess[1]));
+            fx.addArguments(new Argument("x3 = " + initGuess[2]));
+
+            iSolution[i] = fx.calculate();
+
+            //prevent NaN and infinite solutions when user inputs something undesirable
+            if (Double.isNaN(iSolution[i]) || Double.isInfinite(iSolution[i]))
+                throw new IllegalArgumentException("Syntax Error, Please check expression");
+        }
+
+
+        double[] difference = new double[3];
+        for (int i = 0; i &#60; iSolution.length; i++) {
+            difference[i] = iSolution[i] - initGuess[i];
+        }
+
+        //infinite norm of the difference of kth and (k - 1)th iterate
+        double iNorm = getMaxElement(difference);
+
+        //stopping criteria
+        if (iNorm &#60; epsilon) {
+            return iSolution;
+        } else {
+            return Jacobi(system, iSolution, epsilon);
+        }
+
+    }"
+
+    </string>
+
+
+
+</resources>

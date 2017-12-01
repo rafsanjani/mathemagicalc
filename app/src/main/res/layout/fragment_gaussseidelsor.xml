@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/colorMainBackground"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Equation of the form [i]Ax[/i] = [i]b[/i]"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryDark"/>
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/text_equationx1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Eqn 1. (In terms of x1)"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center_horizontal"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:textAlignment="center"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/text_equationx2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Eqn 2. (In terms of x2)"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center_horizontal"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:textAlignment="center"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/text_equationx3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Eqm 3. (In terms of x3)"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center_horizontal"
+            android:inputType="text"
+            android:imeOptions="actionGo"
+            android:textAlignment="center"/>
+
+    </android.support.design.widget.TextInputLayout>
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:orientation="horizontal">
+       <android.support.design.widget.TextInputLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <EditText
+               android:id="@+id/x1"
+               android:layout_width="50dp"
+               android:layout_height="wrap_content"
+               android:hint="x1"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="2dp"
+               android:gravity="center_horizontal"
+               android:layout_gravity="center"
+               android:inputType="numberDecimal|numberSigned"
+               android:imeOptions="actionNext"
+               android:textAlignment="center"/>
+
+       </android.support.design.widget.TextInputLayout>
+       <android.support.design.widget.TextInputLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <EditText
+               android:id="@+id/x2"
+               android:layout_width="50dp"
+               android:layout_height="wrap_content"
+               android:hint="x2"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="2dp"
+               android:gravity="center_horizontal"
+               android:layout_gravity="center"
+               android:inputType="numberDecimal|numberSigned"
+               android:imeOptions="actionNext"
+               android:textAlignment="center"/>
+
+       </android.support.design.widget.TextInputLayout>
+       <android.support.design.widget.TextInputLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <EditText
+               android:id="@+id/x3"
+               android:layout_width="50dp"
+               android:layout_height="wrap_content"
+               android:hint="x3"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="2dp"
+               android:gravity="center_horizontal"
+               android:layout_gravity="center"
+               android:inputType="numberDecimal|numberSigned"
+               android:imeOptions="actionNext"
+               android:textAlignment="center"/>
+           <ProgressBar
+               android:id="@+id/indeterminateBar"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:visibility="gone"
+               />
+
+       </android.support.design.widget.TextInputLayout>
+       <android.support.design.widget.TextInputLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <EditText
+               android:id="@+id/text_epsilon"
+               android:layout_width="80dp"
+               android:layout_height="wrap_content"
+               android:hint="Epsilon"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:gravity="center_horizontal"
+               android:layout_gravity="center"
+               android:inputType="numberDecimal|numberSigned"
+               android:imeOptions="actionNext"
+               android:textAlignment="center"/>
+
+       </android.support.design.widget.TextInputLayout>
+       <android.support.design.widget.TextInputLayout
+           android:id="@+id/omega_textInputLayout"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <EditText
+               android:id="@+id/text_omega"
+               android:layout_width="30dp"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:gravity="center_horizontal"
+               android:layout_gravity="center"
+               android:inputType="numberDecimal|numberSigned"
+               android:imeOptions="actionDone"
+               android:textAlignment="center"/>
+
+       </android.support.design.widget.TextInputLayout>
+   </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </android.support.design.widget.TextInputLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textview_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.000000"
+        style="@style/AnswerStyle"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        style="@style/MyButtonStyle"
+        android:text="@string/calculate"/>
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        style="@style/MyButtonStyle"
+        android:text="@string/back_to_main_menu"/>
+
+
+        <include
+            layout="@layout/textview_footer_text"
+            />
+
+
+
+
+</LinearLayout>

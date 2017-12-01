@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Numerical Methods</string>
     <string name="remarks">Numerical Methods and Computations</string>
-    <string name="dev_name">Rafsanjani Abdul Aziz Yaah Waduudu</string>
+    <string name="dev_name">I.T.E GROUP TWO (2)</string>
     <string name="app_description">Implementation of algorithms</string>
     <string name="description_text">Operation List</string>
     <string name="dec_frac_tobinary">1. Decimal to Binary (Fractional Part Only)</string>
@@ -29,5 +29,17 @@
     <string name="bisection_desc">Locate the root of an equation of the form f(x) = 0</string>
     <string name="bisection_enter_eqn">Equation to evaluate (eg "f(x) = 2*x^3 + 2")</string>
     <string name="system_of_equations">8. System of equations</string>
+    <string name="credits_group_members">9. Credits (Group Members List)</string>
+    <string name="group_members">Group Members</string>
+    <string name="rafs">1. Aziz Rafsanjani : 5151040115</string>
+    <string name="eugene">2. Eugene Boakye Appianing : 5151040150 </string>
+    <string name="shari">3. Sharifa Ibrahim : 5151040147</string>
+    <string name="crispin">4. Kudaari Crispin M.M : 5151040133</string>
+    <string name="kenneth">5. Adutwum Kenneth : 5151040122</string>
+    <string name="nsafoa">6. Nsafoa Boateng Samuel : 5151040154</string>
+    <string name="essel">7. Essel Sylvester : 5151040126</string>
+    <string name="adom">8. Adom Bright : 5151040311</string>
+    <string name="christy">9. Takyi Christina: 5151040141</string>
+    <string name="bayarno">10. Maxwell Clinton : 5151040094</string>
 
 </resources>

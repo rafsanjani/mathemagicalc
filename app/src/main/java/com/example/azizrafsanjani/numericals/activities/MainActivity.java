@@ -81,12 +81,6 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         DisplayMetrics outMetrics = new DisplayMetrics();
         display.getMetrics(outMetrics);
 
-        float density  = getResources().getDisplayMetrics().density;
-        float dpHeight = outMetrics.heightPixels / density;
-        float dpWidth  = outMetrics.widthPixels / density;
-        Toast.makeText(getApplicationContext(),String.valueOf(dpHeight), Toast.LENGTH_LONG).show();
-
-
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
         Log.i(Utilities.Log,f.toString() +" is the active fragment now");
 

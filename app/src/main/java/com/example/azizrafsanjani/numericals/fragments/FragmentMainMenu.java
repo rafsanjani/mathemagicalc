@@ -42,6 +42,8 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
     View rootView;
     ArrayAdapter<String> adapter;
     boolean itemSelected = false;
+    static TextView header;
+
     android.support.v4.app.FragmentManager fragmentManager;
 
     @Override
@@ -51,13 +53,13 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         initControls();
 
         MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
-
         return rootView;
     }
 
     private void initControls() {
         ListView items = (ListView) rootView.findViewById(R.id.listItems);
-
+        header = (TextView) rootView.findViewById(R.id.text_header);
+        header.setVisibility(View.VISIBLE);
         items.setOnItemClickListener(this);
         Button computeButton = (Button) rootView.findViewById(R.id.buttonCompute);
         Button sourceButton = (Button) rootView.findViewById(R.id.buttonSource);
@@ -92,7 +94,8 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
                 res.getString(R.string.rootlocation_newtonraphson),
                 res.getString(R.string.rootlocation_falseposition),
                 res.getString(R.string.rootlocation_secante),
-                res.getString(R.string.system_of_equations)};
+                res.getString(R.string.system_of_equations),
+                res.getString(R.string.credits_group_members)};
 
         return opList;
 
@@ -103,17 +106,21 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         view.setSelected(true);
+        selectedItem = position;
+        itemSelected = true;
 
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 view.setElevation(2);
+                if (selectedItem == 8) {
+                    Fragment fragment = new FragmentCreditsMenu();
+                    Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                }
             }
         } catch (NullPointerException ex) {
 
         }
 
-        selectedItem = position;
-        itemSelected = true;
 
         Log.i(Utilities.Log, "Item " + selectedItem + " selected");
     }
@@ -177,6 +184,10 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
                 fragment = new FragmentEquationsMenu();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
+            case 8:
+                fragment = new FragmentCreditsMenu();
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                break;
             default:
 
                 break;
@@ -188,41 +199,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         dialog.setContentView(R.layout.dialog_source_code);
         dialog.setTitle("source code");
 
-        String src = " public static String DecimalIntToBinary(int dec) {\n" +
-                "        int Nk = dec;\n" +
-                "        StringBuilder binary = new StringBuilder();\n" +
-                "\n" +
-                "        int bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalInteger);\n" +
-                "\n" +
-                "        //magically manipulate and append result to the stringbuilder whilst Nk is greater than 0\n" +
-                "        while (Nk != 0 && (Nk - bk != 0)) {\n" +
-                "            Nk = (Nk - bk) / 2;\n" +
-                "            bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalInteger);\n" +
-                "        }\n" +
-                "\n" +
-                "        //placeholder for our final binary result\n" +
-                "        String result = binary.reverse().toString();\n" +
-                "\n" +
-                "        return result;\n" +
-                "    }\n" +
-                "\n" +
-                "private static int AppendToResult(double N, StringBuilder sb, BinaryOperationType op) {\n" +
-                "        int bk = 0000; //assign something dummy to prevent compiler issues\n" +
-                "        switch (op) {\n" +
-                "            case DecimalInteger: //number is exclusively an integer (eg XXX.00000)\n" +
-                "                bk = N % 2 == 0 ? 0 : 1;\n" +
-                "                break;\n" +
-                "\n" +
-                "            case DecimalFraction: //number is exclusively a fraction (eg 0.XXXXX)\n" +
-                "                bk = (N >= 1 ? 1 : 0);\n" +
-                "            default:\n" +
-                "                //oops\n" +
-                "                break;\n" +
-                "        }\n" +
-                "        //append outcome to our stringbuilder\n" +
-                "        sb.append(bk);\n" +
-                "        return bk;\n" +
-                "    }";
+        String src =  getResources().getString(R.string.jacobi);
         TextView sourceCode = dialog.findViewById(R.id.sourceCode);
         sourceCode.setText(src);
 

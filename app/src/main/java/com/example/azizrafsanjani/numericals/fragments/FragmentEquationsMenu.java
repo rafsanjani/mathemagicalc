@@ -39,24 +39,24 @@ public class FragmentEquationsMenu extends Fragment implements AdapterView.OnIte
         rootView = inflater.inflate(R.layout.fragment_equations_menu, container, false);
         initControls();
 
-        MainActivity.setToolBarInfo("Numerial Methods","System of Equations");
+        MainActivity.setToolBarInfo("Numerial Methods", "System of Equations");
 
         return rootView;
     }
 
-    private void initControls(){
-        ListView items = (ListView)rootView.findViewById(R.id.listItems);
+    private void initControls() {
+        ListView items = (ListView) rootView.findViewById(R.id.listItems);
 
         items.setOnItemClickListener(this);
-        Button computeButton = (Button)rootView.findViewById(R.id.buttonCompute);
-        Button sourceButton = (Button)rootView.findViewById(R.id.buttonSource);
-       // linearLayout = rootView.findViewById(R.id.linearLayout);
+        Button computeButton = (Button) rootView.findViewById(R.id.buttonCompute);
+        Button sourceButton = (Button) rootView.findViewById(R.id.buttonSource);
+        // linearLayout = rootView.findViewById(R.id.linearLayout);
 
         computeButton.setOnClickListener(this);
         sourceButton.setOnClickListener(this);
 
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"fonts/segoeuibold.ttf");
-        TextView tv = (TextView)rootView.findViewById(R.id.text_header);
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/segoeuibold.ttf");
+        TextView tv = (TextView) rootView.findViewById(R.id.text_header);
         tv.setTypeface(typeface);
 
 
@@ -64,23 +64,19 @@ public class FragmentEquationsMenu extends Fragment implements AdapterView.OnIte
 
     }
 
-    private void populateItemList(){
-        ListView listView = (ListView)rootView.findViewById(R.id.listItems);
+    private void populateItemList() {
+        ListView listView = (ListView) rootView.findViewById(R.id.listItems);
 
-        String []operationList = getOperationList();
+        String[] operationList = getOperationList();
         adapter = new ArrayAdapter<>(getContext(), R.layout.listview_item, operationList);
         listView.setAdapter(adapter);
     }
 
-    private String [] getOperationList()
-    {
-        String []opList = {
-                "Gaussian Elim. Partial Piv. ( 3 x 3) ",
-                "Gaussian Elim. Partial Piv (4 x 4)",
-                "Gaussian Elim. Complete Piv (3 x 3",
-                "Gaussian Elim. Complete Piv (4 x 4)",
-                "Gauss Seidel",
-                "Jacobi's Method"};
+    private String[] getOperationList() {
+        String[] opList = {"1. Gaussian Elim. Partial Piv. ( 3 x 3) ",
+                "2. Jacobi's Iterative Method",
+                "3. Gauss Seidel's Iterative Method",
+                "4. Gauss Seidel's Method with SOR"};
 
         return opList;
     }
@@ -91,55 +87,64 @@ public class FragmentEquationsMenu extends Fragment implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         view.setSelected(true);
 
-        try{
+        try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 view.setElevation(20);
             }
-        }catch(NullPointerException ex){
+        } catch (NullPointerException ex) {
 
         }
 
         selectedItem = position;
         itemSelected = true;
 
-        Log.i(Utilities.Log ,"Item "+selectedItem+" selected");
+        Log.i(Utilities.Log, "Item " + selectedItem + " selected");
     }
 
     @Override
     public void onClick(View view) {
-        if(!itemSelected){
+        if (!itemSelected) {
             Log.i(Utilities.Log, "No item selected in the listview");
             return;
         }
 
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.buttonCompute:
-               onCompute();
-            break;
+                onCompute();
+                break;
 
             case R.id.buttonSource:
-              onSource();
+                onSource();
         }
     }
 
-    public void onCompute(){
+    public void onCompute() {
         Fragment fragment;
 
-        switch(selectedItem){
+        switch (selectedItem) {
             case 0:
                 fragment = new FragmentGaussianPartial3x3();
-                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
 
                 break;
 
             case 1:
-                fragment = new FragmentGaussian4x4();
-                Utilities.replaceFragment(this,fragment, getFragmentManager(), R.id.fragmentContainer);
+                fragment = new FragmentJacobi();
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
+            case 2:
+                fragment = new FragmentGaussSeidel();
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                break;
+            case 3:
+                fragment = new FragmentGaussSeidelWithSOR();
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                break;
+
         }
     }
 
-    public void onSource(){
+    public void onSource() {
         CustomDialog dialog = new CustomDialog();
 
         String msg = "";

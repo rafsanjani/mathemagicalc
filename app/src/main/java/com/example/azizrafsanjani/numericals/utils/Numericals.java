@@ -1,11 +1,14 @@
 package com.example.azizrafsanjani.numericals.utils;
 
 
+import org.apache.commons.math3.util.Precision;
 import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
 
+import java.nio.charset.MalformedInputException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 
 public final class Numericals {
@@ -306,7 +309,6 @@ public final class Numericals {
         roundTo2Dp(A, B);
         roundTo2Dp(solution);
         return solution;
-
     }
 
     private static void killRowsBeneath(double A[][], double B[], int k) {
@@ -334,7 +336,7 @@ public final class Numericals {
         }
     }
 
-    public static int getPivotRow(double system[][], int k) {
+    private static int getPivotRow(double system[][], int k) {
         int maxRowIndex = k;
 
         for (int i = k + 1; i < system.length; i++) {
@@ -357,7 +359,7 @@ public final class Numericals {
         system[maxCol] = temp;
     }
 
-    public static int getPivotColumn(double[][] system, int k) {
+    private static int getPivotColumn(double[][] system, int k) {
         int maxColIndex = k;
         int maxRowIndex = k;
         double maxNumber = -1;
@@ -386,12 +388,51 @@ public final class Numericals {
 
     /***
      * Solves a system of linear equations using Jacobi's method
-     * @param systems
+     * @param system
      * @return
      */
-    public static double[] Jacobi(String[] systems) {
+    public static double[] Jacobi(String[] system, double[] initGuess, double epsilon) {
+        double iSolution[] = new double[3];
 
-        return new double[3];
+        for (int i = 0; i < system.length; i++) {
+            Function fx = new Function("f(x)= " + system[i]);
+            fx.addArguments(new Argument("x1 = " + initGuess[0]));
+            fx.addArguments(new Argument("x2 = " + initGuess[1]));
+            fx.addArguments(new Argument("x3 = " + initGuess[2]));
+
+            iSolution[i] = fx.calculate();
+
+            //prevent NaN and infinite solutions when user inputs something undesirable
+            if (Double.isNaN(iSolution[i]) || Double.isInfinite(iSolution[i]))
+                throw new IllegalArgumentException("Syntax Error, Please check expression");
+        }
+
+
+        double[] difference = new double[3];
+        for (int i = 0; i < iSolution.length; i++) {
+            difference[i] = iSolution[i] - initGuess[i];
+        }
+
+        //infinite norm of the difference of kth and (k - 1)th iterate
+        double iNorm = getMaxElement(difference);
+
+        //stopping criteria
+        if (iNorm < epsilon) {
+            return iSolution;
+        } else {
+            return Jacobi(system, iSolution, epsilon);
+        }
+    }
+
+
+    private static double getMaxElement(double[] array) {
+        double max = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (Math.abs(array[i]) > Math.abs(max))
+                max = array[i];
+        }
+
+        return Math.abs(max);
     }
 
     /***
@@ -399,8 +440,109 @@ public final class Numericals {
      * @param system
      * @return
      */
-    public static double[] gaussSeidel(String[][] system) {
-        return new double[20];
+    public static double[] GaussSeidel(String[] system, double initGuess[], double epsilon) {
+        double iSolution[] = new double[3];
+        double[] initGuessTemp = initGuess.clone();
+
+
+        for (int i = 0; i < system.length; i++) {
+            Function fx = new Function("f(x)= " + system[i]);
+            fx.addArguments(new Argument("x1 = " + initGuessTemp[0]));
+            fx.addArguments(new Argument("x2 = " + initGuessTemp[1]));
+            fx.addArguments(new Argument("x3 = " + initGuessTemp[2]));
+
+            iSolution[i] = fx.calculate();
+            initGuessTemp[i] = iSolution[i];
+
+            //prevent NaN and infinite solutions when user inputs something undesirable
+            if (Double.isNaN(iSolution[i]) || Double.isInfinite(iSolution[i]))
+                throw new IllegalArgumentException("Syntax Error, Please check expression");
+        }
+
+        //print out the solution vector
+        System.out.println("The solution vector is given as");
+        printArray(iSolution);
+
+        double[] difference = new double[3];
+        for (int i = 0; i < iSolution.length; i++) {
+            difference[i] = iSolution[i] - initGuess[i];
+        }
+
+        System.out.println("The difference vector is given as:");
+        printArray(difference);
+
+        //infinite norm of the difference of kth and (k - 1)th iterate
+        double iNorm = getMaxElement(difference);
+        System.out.println("Infininte norm is given as:  " + iNorm);
+        System.out.println("Epsilon is given as: " + epsilon);
+        //stopping criteria
+        if (iNorm < epsilon) {
+            System.out.println("stopping criteria met: terminating");
+            return iSolution;
+        } else {
+            System.out.println("stopping criteria not met, reiteriating with these values");
+            System.out.println("Guesses; ");
+            printArray(iSolution);
+            return GaussSeidel(system, iSolution, epsilon);
+        }
+
+    }
+
+    public static double[] GaussSeidelWithSOR(String[] system, double initGuess[], double epsilon, double omega) {
+        double iSolution[] = new double[3];
+        double[] initGuessTemp = initGuess.clone();
+
+
+        for (int i = 0; i < system.length; i++) {
+            Function fx = new Function("f(x)= " + system[i]);
+            fx.addArguments(new Argument("x1 = " + initGuessTemp[0]));
+            fx.addArguments(new Argument("x2 = " + initGuessTemp[1]));
+            fx.addArguments(new Argument("x3 = " + initGuessTemp[2]));
+
+            iSolution[i] = fx.calculate() *omega + ((1 - omega) * initGuess[i]);
+            initGuessTemp[i] = iSolution[i];
+
+            //prevent NaN and infinite solutions when user inputs something undesirable
+            if (Double.isNaN(iSolution[i]) || Double.isInfinite(iSolution[i]))
+                throw new IllegalArgumentException("Syntax Error, Please check expression");
+        }
+
+        //print out the solution vector
+        System.out.println("The solution vector is given as");
+        printArray(iSolution);
+
+        double[] difference = new double[3];
+        for (int i = 0; i < iSolution.length; i++) {
+            difference[i] = iSolution[i] - initGuess[i];
+        }
+
+        System.out.println("The difference vector is given as:");
+        printArray(difference);
+
+        //infinite norm of the difference of kth and (k - 1)th iterate
+        double iNorm = getMaxElement(difference);
+        System.out.println("Infininte norm is given as:  " + iNorm);
+        System.out.println("Epsilon is given as: " + epsilon);
+        //stopping criteria
+        if (iNorm < epsilon) {
+            System.out.println("stopping criteria met: terminating");
+            return iSolution;
+        } else {
+            System.out.println("stopping criteria not met, reiteriating with these values");
+            System.out.println("Guesses; ");
+            printArray(iSolution);
+            return GaussSeidelWithSOR(system, iSolution, epsilon, omega);
+        }
+
+    }
+
+
+    private static void printArray(double[] array) {
+        System.out.print("[ ");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println("]");
     }
 
 
