@@ -162,11 +162,11 @@
            android:visibility="visible">
 
            <android.support.design.widget.TextInputLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent">
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
 
                <TextView
-                   style="@style/MatrixSolutionStyle"
+                   style="@style/MatrixConstantStyle"
                    android:text="x1"
                    android:layout_gravity="center"/>
            </android.support.design.widget.TextInputLayout>
@@ -176,7 +176,7 @@
                android:layout_height="match_parent">
 
                <TextView
-                   style="@style/MatrixSolutionStyle"
+                   style="@style/MatrixConstantStyle"
                    android:text="x2"
                    android:layout_gravity="center"/>
            </android.support.design.widget.TextInputLayout>
@@ -186,7 +186,7 @@
                android:layout_height="match_parent">
 
                <TextView
-                   style="@style/MatrixSolutionStyle"
+                   style="@style/MatrixConstantStyle"
                    android:text="x3"
                    android:layout_gravity="center"/>
            </android.support.design.widget.TextInputLayout>
@@ -279,7 +279,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:src="@drawable/left_bracket" />
+            android:src="@drawable/left_bracket_sol" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -296,20 +296,20 @@
                 <TextView
                     android:id="@+id/sa11"
                     style="@style/MatrixSolutionStyle"
-                    android:text="0.3"
+                    android:text="0.0"
                     android:layout_gravity="center"/>
 
 
                 <TextView
                     android:id="@+id/sa12"
                     style="@style/MatrixSolutionStyle"
-                    android:text="0.3"
+                    android:text="0.0"
                     android:layout_gravity="center"/>
 
                 <TextView
                     android:id="@+id/sa13"
                     style="@style/MatrixSolutionStyle"
-                    android:text="0.3"
+                    android:text="0.0"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -321,20 +321,20 @@
                 <TextView
                     android:id="@+id/sa21"
                     style="@style/MatrixSolutionStyle"
-                    android:text="0.3"
+                    android:text="0.0"
                     android:layout_gravity="center"/>
 
                 <TextView
                     android:id="@+id/sa22"
                     style="@style/MatrixSolutionStyle"
-                    android:text="0.3"
+                    android:text="0.0"
                     android:layout_gravity="center"/>
 
 
                 <TextView
                     android:id="@+id/sa23"
                     style="@style/MatrixSolutionStyle"
-                    android:text="0.3"
+                    android:text="0.0"
                     android:layout_gravity="center"/>
 
             </LinearLayout>
@@ -347,19 +347,19 @@
                 <TextView
                     android:id="@+id/sa31"
                     style="@style/MatrixSolutionStyle"
-                    android:text="0.3"
+                    android:text="0.0"
                     android:layout_gravity="center"/>
 
                 <TextView
                     android:id="@+id/sa32"
                     style="@style/MatrixSolutionStyle"
-                    android:text="0.3"
+                    android:text="0.0"
                     android:layout_gravity="center"/>
 
                 <TextView
                     android:id="@+id/sa33"
                     style="@style/MatrixSolutionStyle"
-                    android:text="0.3"
+                    android:text="0.0"
                     android:layout_gravity="center"/>
 
             </LinearLayout>
@@ -370,7 +370,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:src="@drawable/augment_bracket" />
+            android:src="@drawable/augment_bracket_sol" />
 
 
         <LinearLayout
@@ -383,19 +383,19 @@
             <TextView
                 android:id="@+id/sab1"
                 style="@style/MatrixSolutionStyle"
-                android:text="0.3"
+                android:text="0.0"
                 android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/sab2"
                 style="@style/MatrixSolutionStyle"
-                android:text="0.3"
+                android:text="0.0"
                 android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/sab3"
                 style="@style/MatrixSolutionStyle"
-                android:text="0.3"
+                android:text="0.0"
                 android:layout_gravity="center"/>
 
 
@@ -405,7 +405,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:src="@drawable/right_bracket"
+            android:src="@drawable/right_bracket_sol"
             android:visibility="visible" />
 
         <TextView
@@ -423,7 +423,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:src="@drawable/left_bracket"
+            android:src="@drawable/left_bracket_sol"
             android:visibility="visible" />
 
         <LinearLayout
@@ -436,19 +436,19 @@
             <TextView
                 android:id="@+id/sax1"
                 style="@style/MatrixSolutionStyle"
-                android:text="0.3"
+                android:text="0.0"
                 android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/sax2"
                 style="@style/MatrixSolutionStyle"
-                android:text="0.3"
+                android:text="0.0"
                 android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/sax3"
                 style="@style/MatrixSolutionStyle"
-                android:text="0.3"
+                android:text="0.0"
                 android:layout_gravity="center"/>
 
 
@@ -456,10 +456,9 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/right_bracket"
+            android:src="@drawable/right_bracket_sol"
             android:visibility="visible" />
     </LinearLayout>
 </LinearLayout>

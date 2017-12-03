@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +34,7 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_gaussian_complete3x3, container, false);
-        MainActivity.setToolBarInfo("System of Equations", "Gaussian Elimination (Partial Pivoting)");
+        MainActivity.setToolBarInfo("System of Equations", "Gaussian Elimination (Complete Pivoting)");
 
         initControls();
         return rootView;
@@ -57,11 +58,11 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonBack:
-                Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(this, new FragmentEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
                 break;
 
             case R.id.buttonCalculate:
-                Toast.makeText(getContext(), "clicked me", Toast.LENGTH_LONG).show();
+                Log.i(Utilities.Log, "Solving gaussian with complete pivoting");
                 onCalculate();
                 break;
         }
@@ -116,7 +117,7 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
 
 
         //get the solution matrix
-        double[] solution = Numericals.GaussianWithPartialPivoting(a, b);
+        double[] solution = Numericals.GaussianWithCompletePivoting(a, b);
 
 
         //our previous matrices have been mutated so we can represent them on the textviews

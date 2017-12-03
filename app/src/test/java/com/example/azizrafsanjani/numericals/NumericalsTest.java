@@ -5,20 +5,13 @@ package com.example.azizrafsanjani.numericals;
  */
 
 
-import android.support.v4.math.MathUtils;
-import android.support.v4.widget.TextViewCompat;
-
 import com.example.azizrafsanjani.numericals.utils.Numericals;
-import com.example.azizrafsanjani.numericals.utils.Utilities;;
+import com.example.azizrafsanjani.numericals.utils.Utilities;
 
-import org.apache.commons.math3.fraction.Fraction;
-import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
-import org.apache.commons.math3.util.FastMath;
-import org.apache.commons.math3.util.Precision;
+
+import junit.framework.Assert;
+
 import org.junit.Test;
-import org.mariuszgromada.math.mxparser.mathcollection.SpecialFunctions;
-
-import java.math.MathContext;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -56,45 +49,80 @@ public class NumericalsTest {
     }
 
     @Test
+    public void testGaussianComplete() {
+        double A[][] = {
+                {0.02, 0.01, 0, 0},
+                {1, 2, 1, 0},
+                {0, 1, 2, 1},
+                {0, 0, 100, 200}
+
+        };
+
+        double B[] = {0.02,1,4,800};
+        Assert.assertEquals(A,B);
+
+
+        printMatrix(A, B);
+
+    }
+
+    private static void printMatrix(double A[][], double B[]) {
+        for (int rowIndex = 0; rowIndex < A.length; rowIndex++) {
+            for (int columnIndex = 0; columnIndex < A.length; columnIndex++) {
+                System.out.print(A[rowIndex][columnIndex] + " ");
+            }
+            System.out.print(B[rowIndex]);
+            System.out.println();
+        }
+    }
+
+    private static void printMatrix(double system[]) {
+        for (int rowIndex = 0; rowIndex < system.length; rowIndex++) {
+            System.out.print(system[rowIndex] + " ");
+        }
+    }
+
+
+    @Test
     public void testJacobi() {
         String system[] = {
                 "(1/2)*(x2+1)",
                 "(1/3)*(x1+x3+8)",
                 "(1/2)*(x2-5)"};
-        double initGuess[] = {0, 0 , 0};
-       double sol[] = Numericals.Jacobi(system, initGuess,0.15);
+        double initGuess[] = {0, 0, 0};
+        double sol[] = Numericals.Jacobi(system, initGuess, 0.15);
 
     }
 
     @Test
-    public void testGaussSeidel(){
+    public void testGaussSeidel() {
         String system[] = {
                 "(1/2)*(x2+1)",
                 "(1/3)*(x1+x3+8)",
                 "(1/2)*(x2-5)"};
-        double initGuess[] = {0, 0 , 0};
-        double sol[] = Numericals.GaussSeidel(system, initGuess,0.01);
+        double initGuess[] = {0, 0, 0};
+        double sol[] = Numericals.GaussSeidel(system, initGuess, 0.01);
     }
 
     @Test
-    public void testGaussSeidelShouldPass(){
+    public void testGaussSeidelShouldPass() {
         String system[] = {
                 "(1/4)*(x2+x3 + 3)",
                 "(1/6)*(2*x1-x3+9)",
                 "(1/7)*(x1-x2 - 6)"};
-        double initGuess[] = {0, 0 , 0};
-        double sol[] = Numericals.GaussSeidel(system, initGuess,0.00011);
+        double initGuess[] = {0, 0, 0};
+        double sol[] = Numericals.GaussSeidel(system, initGuess, 0.000001);
     }
 
     @Test
-    public void testGaussSeidelXOR(){
+    public void testGaussSeidelXOR() {
         String system[] = {
-                "(2*x2+3*x3)",
-                "(1/5)*(-3*x1-2*x3)",
-                "(1+2*x1+3*x2)"};
-        double initGuess[] = {0, 0 , 0};
-        double omega = 1.5;
-        double sol[] = Numericals.GaussSeidelWithSOR(system, initGuess,0.00011, omega);
+                "(-1+x2-x3)/3",
+                "(7+x1+x3)/3",
+                "(-7-x1+x2)/3"};
+        double initGuess[] = {0, 0, 0};
+        double omega = 1.25;
+        double sol[] = Numericals.GaussSeidelWithSOR(system, initGuess, 0.00011, omega);
     }
 
     @Test

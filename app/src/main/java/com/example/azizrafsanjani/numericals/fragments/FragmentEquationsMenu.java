@@ -73,10 +73,13 @@ public class FragmentEquationsMenu extends Fragment implements AdapterView.OnIte
     }
 
     private String[] getOperationList() {
-        String[] opList = {"1. Gaussian Elim. Partial Piv. ( 3 x 3) ",
-                "2. Jacobi's Iterative Method",
-                "3. Gauss Seidel's Iterative Method",
-                "4. Gauss Seidel's Method with SOR"};
+        String[] opList = {
+                "1. Gaussian Elim. Partial Piv. ( 3 x 3) ",
+                "2. Gaussian Elim. Complete Piv. (3 x 3)",
+                "3. Jacobi's Iterative Method",
+                "4. Gauss Seidel's Iterative Method",
+                "5. Gauss Seidel's Method with SOR"
+        };
 
         return opList;
     }
@@ -125,21 +128,24 @@ public class FragmentEquationsMenu extends Fragment implements AdapterView.OnIte
             case 0:
                 fragment = new FragmentGaussianPartial3x3();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
-
                 break;
-
             case 1:
-                fragment = new FragmentJacobi();
+                fragment = new FragmentGaussianComplete3x3();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             case 2:
-                fragment = new FragmentGaussSeidel();
+                fragment = new FragmentJacobi();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             case 3:
+                fragment = new FragmentGaussSeidel();
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                break;
+            case 4:
                 fragment = new FragmentGaussSeidelWithSOR();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
+
 
         }
     }

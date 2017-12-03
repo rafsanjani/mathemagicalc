@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +62,7 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
                 break;
 
             case R.id.buttonCalculate:
-                Toast.makeText(getContext(), "clicked me", Toast.LENGTH_LONG).show();
+                Log.i(Utilities.Log,"solving the system using gaussian with partial pivoting");
                 onCalculate();
                 break;
         }

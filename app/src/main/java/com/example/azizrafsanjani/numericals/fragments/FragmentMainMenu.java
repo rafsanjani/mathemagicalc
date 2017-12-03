@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
 import android.support.transition.Fade;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
@@ -108,15 +109,26 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         view.setSelected(true);
         selectedItem = position;
         itemSelected = true;
+        Button btn = rootView.findViewById(R.id.buttonCompute);
 
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                 view.setElevation(2);
-                if (selectedItem == 8) {
+
+            switch (selectedItem) {
+                case 8:
                     Fragment fragment = new FragmentCreditsMenu();
                     Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
-                }
+                    break;
+                case 7:
+
+                    btn.setText(R.string.proceed);
+                    break;
+                default:
+                    btn.setText(R.string.calculate);
+                    break;
             }
+
         } catch (NullPointerException ex) {
 
         }
@@ -149,13 +161,11 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
             case 0:
                 fragment = new FragmentDecToBinFrac();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
-
                 break;
 
             case 1:
                 fragment = new FragmentDecToBinInt();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
-
                 break;
 
             case 2:
@@ -189,7 +199,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             default:
-
+                Log.i(Utilities.Log, "No menu item selected");
                 break;
         }
     }
@@ -199,7 +209,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         dialog.setContentView(R.layout.dialog_source_code);
         dialog.setTitle("source code");
 
-        String src =  getResources().getString(R.string.jacobi);
+        String src = getResources().getString(R.string.jacobi);
         TextView sourceCode = dialog.findViewById(R.id.sourceCode);
         sourceCode.setText(src);
 

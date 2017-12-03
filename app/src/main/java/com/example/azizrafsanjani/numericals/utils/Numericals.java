@@ -1,6 +1,7 @@
 package com.example.azizrafsanjani.numericals.utils;
 
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.util.Precision;
 import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
@@ -268,9 +269,32 @@ public final class Numericals {
         return Secante(expr, x2, x1, maxIterations - 1);
     }
 
-    public static double[] GaussianWithCompletePivoting(double[] A, double B[]) {
+    public static double[] GaussianWithCompletePivoting(double[][] A, double B[]) {
+        int N = B.length;
+        for (int k = 0; k < N; k++) {
+            //get pivot column
+            int maxColumn = getPivotColumn(A, k);
+            //swap pivot column
+            swapColumns(A, maxColumn, k);
 
-        return A;
+            //get the pivot row
+            int maxRow = getPivotRow(A, k);
+            //swap the pivot row with the first row in matrix A
+            swapRows(A, maxRow, k);
+
+            //swap corresponding values of the pivot row in the solution matrix
+            double temp = B[k];
+            B[k] = B[maxRow];
+            B[maxRow] = temp;
+
+            //reduce all elements beneath the pivot row
+            killRowsBeneath(A, B, k);
+        }
+
+        //solve by backsubstitution
+        double[] solution = getSolutionByBackSubstitution(A, B, N);
+
+        return solution;
     }
 
     public static double[] GaussianWithPartialPivoting(double[][] A, double B[]) {
@@ -353,19 +377,21 @@ public final class Numericals {
         system[maxRow] = temp;
     }
 
-    private static void swapColumns(double system[][], int maxCol, int colIndex) {
-        double[] temp = system[colIndex];
-        system[colIndex] = system[maxCol];
-        system[maxCol] = temp;
+    public static void swapColumns(double system[][], int maxCol, int colIndex) {
+        for (int i = 0; i < system.length; i++) {
+            ArrayUtils.swap(system[i], maxCol, colIndex);
+        }
     }
 
-    private static int getPivotColumn(double[][] system, int k) {
+    public static int getPivotColumn(double[][] system, int k) {
+        int N = system.length;
         int maxColIndex = k;
-        int maxRowIndex = k;
+        int maxRowIndex;
+
         double maxNumber = -1;
 
-        for (int i = k; i < system.length; i++) {
-            for (int j = k; j < system.length; j++) {
+        for (int i = k; i < N; i++) {
+            for (int j = k; j < N; j++) {
                 if (system[i][j] > maxNumber) {
                     maxRowIndex = i;
                     maxColIndex = j;
@@ -499,7 +525,7 @@ public final class Numericals {
             fx.addArguments(new Argument("x2 = " + initGuessTemp[1]));
             fx.addArguments(new Argument("x3 = " + initGuessTemp[2]));
 
-            iSolution[i] = fx.calculate() *omega + ((1 - omega) * initGuess[i]);
+            iSolution[i] = (fx.calculate() * omega) + (((1 - omega) * initGuess[i]));
             initGuessTemp[i] = iSolution[i];
 
             //prevent NaN and infinite solutions when user inputs something undesirable

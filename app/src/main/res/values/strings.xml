@@ -15,6 +15,7 @@
     <string name="systemofequations_complete_pivoting">9. Sys. of Equations (Complete Pivoting)</string>
     <string name="button_proceed">Compute</string>
     <string name="calculate">Calculate</string>
+    <string name="proceed">Proceed...</string>
     <string name="back_to_main_menu">Back to main menu</string>
     <string name="button_view_source">View Source…</string>
     <string name="decimal_to_binary_title">Decimal to Binary converter</string>
@@ -31,15 +32,15 @@
     <string name="system_of_equations">8. System of equations</string>
     <string name="credits_group_members">9. Credits (Group Members List)</string>
     <string name="group_members">Group Members</string>
-    <string name="rafs">1. Aziz Rafsanjani : 5151040115</string>
-    <string name="eugene">2. Eugene Boakye Appianing : 5151040150 </string>
-    <string name="shari">3. Sharifa Ibrahim : 5151040147</string>
-    <string name="crispin">4. Kudaari Crispin M.M : 5151040133</string>
-    <string name="kenneth">5. Adutwum Kenneth : 5151040122</string>
-    <string name="nsafoa">6. Nsafoa Boateng Samuel : 5151040154</string>
-    <string name="essel">7. Essel Sylvester : 5151040126</string>
-    <string name="adom">8. Adom Bright : 5151040311</string>
-    <string name="christy">9. Takyi Christina: 5151040141</string>
-    <string name="bayarno">10. Maxwell Clinton : 5151040094</string>
+    <string name="rafs">"1. Aziz Rafsanjani      5151040115"</string>
+    <string name="eugene">"2. Eugene Boakye Appianing    5151040150"</string>
+    <string name="shari">"3. Sharifa Ibrahim    5151040147"</string>
+    <string name="crispin">"4. Kudaari Crispin M.M   5151040133"</string>
+    <string name="kenneth">"5. Adutwum Kenneth      5151040122"</string>
+    <string name="nsafoa">"6. Nsafoa Boateng Samuel     5151040154"</string>
+    <string name="essel">"7. Essel Sylvester     151040126"</string>
+    <string name="adom">"8. Adom Bright     5151040311"</string>
+    <string name="christy">"9. Takyi Christina   5151040141"</string>
+    <string name="bayarno">"10. Maxwell Clinton     5151040094"</string>
 
 </resources>

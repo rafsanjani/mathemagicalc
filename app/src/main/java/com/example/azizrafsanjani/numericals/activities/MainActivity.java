@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         toolbar.setSubtitle(subtitle);
     }
 
-    public  static void hideKeyboard(EditText et){
-        imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
+    public  static void hideKeyboard(View view){
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 

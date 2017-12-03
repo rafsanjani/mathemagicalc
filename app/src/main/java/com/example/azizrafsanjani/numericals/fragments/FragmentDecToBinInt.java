@@ -64,6 +64,7 @@ public class FragmentDecToBinInt extends Fragment implements Button.OnClickListe
         switch (view.getId()) {
             case R.id.buttonBack:
                 Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer);
+
                 break;
 
             case R.id.buttonCalculate:

@@ -90,4 +90,16 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <style name="MatrixConstantStyle">
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_width">@dimen/matrix_elements_width</item>
+
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/colorHeading</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

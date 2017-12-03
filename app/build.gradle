@@ -36,6 +36,7 @@ dependencies {
 dependencies {
     compile 'org.mariuszgromada.math:MathParser.org-mXparser:4.0.0'
     compile group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
 }
 
 dependencies {
