@@ -1,24 +1,16 @@
 package com.example.azizrafsanjani.numericals.utils;
-
-
+import android.util.Log;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.math3.util.Precision;
 import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
 
-import java.nio.charset.MalformedInputException;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
+/**
+ * Created by Aziz Rafsanjani on 11/2/2017.
+ */
 
 
 public final class Numericals {
-    public enum BinaryOperationType {
-        DecimalInteger,
-        DecimalFraction,
-        Mixed
-    }
-
     /***
      * Converts a whole number from Base 10 to Base 2. Note: Only Integers
      * @param dec A decimal number(n) where n >= 1
@@ -450,7 +442,6 @@ public final class Numericals {
         }
     }
 
-
     private static double getMaxElement(double[] array) {
         double max = 0;
         for (int i = 0; i < array.length; i++) {
@@ -494,7 +485,7 @@ public final class Numericals {
             difference[i] = iSolution[i] - initGuess[i];
         }
 
-        System.out.println("The difference vector is given as:");
+        Log.i(Utilities.Log, "The difference vector is given as:");
         printArray(difference);
 
         //infinite norm of the difference of kth and (k - 1)th iterate
@@ -503,7 +494,7 @@ public final class Numericals {
         System.out.println("Epsilon is given as: " + epsilon);
         //stopping criteria
         if (iNorm < epsilon) {
-            System.out.println("stopping criteria met: terminating");
+            Log.i(Utilities.Log, "stopping criteria met: terminating");
             return iSolution;
         } else {
             System.out.println("stopping criteria not met, reiteriating with these values");
@@ -534,7 +525,7 @@ public final class Numericals {
         }
 
         //print out the solution vector
-        System.out.println("The solution vector is given as");
+        Log.i(Utilities.Log,"The solution vector is given as");
         printArray(iSolution);
 
         double[] difference = new double[3];
@@ -542,42 +533,37 @@ public final class Numericals {
             difference[i] = iSolution[i] - initGuess[i];
         }
 
-        System.out.println("The difference vector is given as:");
+        Log.i(Utilities.Log,"The difference vector is given as:");
         printArray(difference);
 
         //infinite norm of the difference of kth and (k - 1)th iterate
         double iNorm = getMaxElement(difference);
-        System.out.println("Infininte norm is given as:  " + iNorm);
-        System.out.println("Epsilon is given as: " + epsilon);
+        Log.i(Utilities.Log,"Infininte norm is given as:  " + iNorm);
+        Log.i(Utilities.Log,"Epsilon is given as: " + epsilon);
         //stopping criteria
         if (iNorm < epsilon) {
-            System.out.println("stopping criteria met: terminating");
+            Log.i(Utilities.Log,"stopping criteria met: terminating");
             return iSolution;
         } else {
-            System.out.println("stopping criteria not met, reiteriating with these values");
-            System.out.println("Guesses; ");
+            Log.i(Utilities.Log,"stopping criteria not met, reiteriating with these values");
+            Log.i(Utilities.Log,"Guesses; ");
             printArray(iSolution);
             return GaussSeidelWithSOR(system, iSolution, epsilon, omega);
         }
 
     }
 
-
     private static void printArray(double[] array) {
-        System.out.print("[ ");
+        Log.i(Utilities.Log,"[ ");
         for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
+            Log.i(Utilities.Log,array[i] + " ");
         }
-        System.out.println("]");
+        Log.i(Utilities.Log,"]");
     }
 
-
-    /***
-     * Solves a system of linear equations using the Gauss-Seidel's method with Successive Over Relaxation
-     * @param system
-     * @return
-     */
-    public static double[] gaussSeidelWithXOR(String[][] system) {
-        return new double[20];
+    public enum BinaryOperationType {
+        DecimalInteger,
+        DecimalFraction,
+        Mixed
     }
 }

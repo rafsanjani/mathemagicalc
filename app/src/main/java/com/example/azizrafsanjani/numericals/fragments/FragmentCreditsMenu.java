@@ -6,6 +6,8 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -31,8 +33,9 @@ public class FragmentCreditsMenu extends Fragment implements AdapterView.OnItemC
 
     View rootView;
     ArrayAdapter<String> adapter;
+    ListView items;
     boolean itemSelected = false;
-    android.support.v4.app.FragmentManager fragmentManager;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,7 +49,7 @@ public class FragmentCreditsMenu extends Fragment implements AdapterView.OnItemC
     }
 
     private void initControls() {
-        ListView items = (ListView) rootView.findViewById(R.id.listItems);
+        items = (ListView) rootView.findViewById(R.id.listItems);
 
         items.setOnItemClickListener(this);
 
@@ -62,6 +65,25 @@ public class FragmentCreditsMenu extends Fragment implements AdapterView.OnItemC
             }
         });
         populateItemList();
+        performSomeMagic();
+    }
+
+    private void performSomeMagic(){
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                 items.smoothScrollToPosition(items.getCount() - 1);
+
+            }
+        }, 2000);
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                items.smoothScrollToPosition(0);
+
+            }
+        }, 4000);
     }
     private void onBack(){
         Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer);

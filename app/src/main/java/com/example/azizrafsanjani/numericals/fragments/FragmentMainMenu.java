@@ -6,6 +6,8 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.transition.Fade;
@@ -56,9 +58,9 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
         return rootView;
     }
-
+    ListView items;
     private void initControls() {
-        ListView items = (ListView) rootView.findViewById(R.id.listItems);
+        items = (ListView) rootView.findViewById(R.id.listItems);
         header = (TextView) rootView.findViewById(R.id.text_header);
         header.setVisibility(View.VISIBLE);
         items.setOnItemClickListener(this);
@@ -75,7 +77,27 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
 
 
         populateItemList();
+        performSomeMagic();
 
+    }
+
+    private void performSomeMagic(){
+        int waitTime = 2000;
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                items.smoothScrollToPosition(items.getCount() - 1);
+
+            }
+        }, waitTime);
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                items.smoothScrollToPosition(0);
+
+            }
+        }, waitTime + 500);
     }
 
     private void populateItemList() {
