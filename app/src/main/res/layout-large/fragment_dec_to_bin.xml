@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:background="@color/colorMainBackground"
     android:layout_height="match_parent"
-    android:weightSum="1"
     >
 
     <TextView
@@ -33,7 +32,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:gravity="center_horizontal"
-            android:hint="Enter a decimal Fraction"
+            android:hint="Enter a Number"
             android:inputType = "numberDecimal"
             android:textAlignment="center"/>
     </android.support.design.widget.TextInputLayout>
@@ -70,8 +69,9 @@
         android:layout_width="wrap_content"
         android:layout_height="100dp" />
 
-    <include
 
+
+    <include
         layout="@layout/textview_footer_text"
         />
 

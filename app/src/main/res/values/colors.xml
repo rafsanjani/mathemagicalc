@@ -8,6 +8,7 @@
     <color name="colorButtonText">#EDE7F6</color>
     <color name="colorPopUpBackground">#9e9e9e</color>
     <color name="colorMainBackground">#cfd8dc</color>
+    <color name="colorMainBackgroundCardView">#bdbdbd</color>
     <color name="textColorPrimary">#6D4C41</color>
     <color name="textColorSecondary">#FF6A1B9A</color>
     <color name="colorHeading">#000000</color>

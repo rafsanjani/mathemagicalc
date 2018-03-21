@@ -25,14 +25,15 @@
         android:layout_marginRight="10dp"
         android:choiceMode="singleChoice"
         android:smoothScrollbar="true"></ListView>
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="DEFAULT Screen"/>
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LARGE Screen" />
 
     <Button
         android:id="@+id/btnBack"

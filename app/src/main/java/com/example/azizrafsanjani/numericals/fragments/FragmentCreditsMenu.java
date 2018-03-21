@@ -1,7 +1,5 @@
 package com.example.azizrafsanjani.numericals.fragments;
 
-
-import android.app.Dialog;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -18,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
@@ -49,7 +46,7 @@ public class FragmentCreditsMenu extends Fragment implements AdapterView.OnItemC
     }
 
     private void initControls() {
-        items = (ListView) rootView.findViewById(R.id.listItems);
+        items = rootView.findViewById(R.id.listItems);
 
         items.setOnItemClickListener(this);
 
@@ -57,7 +54,7 @@ public class FragmentCreditsMenu extends Fragment implements AdapterView.OnItemC
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/segoeuibold.ttf");
 
 
-        Button backButton = (Button)rootView.findViewById(R.id.btnBack);
+        Button backButton = rootView.findViewById(R.id.btnBack);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,31 +87,9 @@ public class FragmentCreditsMenu extends Fragment implements AdapterView.OnItemC
     }
 
     private void populateItemList() {
-        ListView listView = (ListView) rootView.findViewById(R.id.listItems);
-
-        String[] operationList = getOperationList();
-        adapter = new ArrayAdapter<>(getContext(), R.layout.listview_item, operationList);
-        listView.setAdapter(adapter);
-    }
-
-    private String[] getOperationList() {
-        Resources res = getResources();
-        String[] opList = {res.getString(R.string.rafs),
-                res.getString(R.string.eugene),
-                res.getString(R.string.shari),
-                res.getString(R.string.crispin),
-                res.getString(R.string.kenneth),
-                res.getString(R.string.nsafoa),
-                res.getString(R.string.essel),
-                res.getString(R.string.adom),
-                res.getString(R.string.christy),
-                res.getString(R.string.bayarno)};
-
-        return opList;
 
     }
 
-    private int selectedItem;
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -128,7 +103,7 @@ public class FragmentCreditsMenu extends Fragment implements AdapterView.OnItemC
 
         }
 
-        selectedItem = position;
+        int selectedItem = position;
         itemSelected = true;
 
         Log.i(Utilities.Log, "Item " + selectedItem + " selected");

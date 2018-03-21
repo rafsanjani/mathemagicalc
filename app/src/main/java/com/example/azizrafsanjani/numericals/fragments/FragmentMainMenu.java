@@ -9,11 +9,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.transition.Fade;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.animation.LinearOutSlowInInterpolator;
-import android.text.Layout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,16 +22,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-
-import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.utils.CustomDialog;
 import com.example.azizrafsanjani.numericals.R;
+import com.example.azizrafsanjani.numericals.activities.MainActivity;
+import com.example.azizrafsanjani.numericals.adapter.TopicAdapter;
+import com.example.azizrafsanjani.numericals.model.Topic;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
-import com.transitionseverywhere.TransitionManager;
-import com.transitionseverywhere.TransitionSet;
-import com.transitionseverywhere.extra.Scale;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Aziz Rafsanjani on 11/3/2017.
@@ -42,86 +38,87 @@ import org.w3c.dom.Text;
 public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
 
 
-    View rootView;
+    private View rootView;
     ArrayAdapter<String> adapter;
     boolean itemSelected = false;
     static TextView header;
+    private ListView  items;
 
-    android.support.v4.app.FragmentManager fragmentManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         rootView = inflater.inflate(R.layout.fragment_main_menu, container, false);
         initControls();
 
         MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
         return rootView;
     }
-    ListView items;
+
     private void initControls() {
-        items = (ListView) rootView.findViewById(R.id.listItems);
-        header = (TextView) rootView.findViewById(R.id.text_header);
+        items = rootView.findViewById(R.id.listItems);
+
+        //items.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        header = rootView.findViewById(R.id.text_header);
         header.setVisibility(View.VISIBLE);
-        items.setOnItemClickListener(this);
-        Button computeButton = (Button) rootView.findViewById(R.id.buttonCompute);
-        Button sourceButton = (Button) rootView.findViewById(R.id.buttonSource);
-        // linearLayout = rootView.findViewById(R.id.linearLayout);
+
+        Button computeButton = rootView.findViewById(R.id.buttonCompute);
+        Button sourceButton = rootView.findViewById(R.id.buttonSource);
 
         computeButton.setOnClickListener(this);
         sourceButton.setOnClickListener(this);
 
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/segoeuibold.ttf");
-        TextView tv = (TextView) rootView.findViewById(R.id.text_header);
-        tv.setTypeface(typeface);
+        header.setTypeface(typeface);
 
 
         populateItemList();
-        performSomeMagic();
+        //performSomeMagic();
 
     }
 
-    private void performSomeMagic(){
-        int waitTime = 2000;
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                items.smoothScrollToPosition(items.getCount() - 1);
 
-            }
-        }, waitTime);
-
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                items.smoothScrollToPosition(0);
-
-            }
-        }, waitTime + 500);
-    }
 
     private void populateItemList() {
-        ListView listView = (ListView) rootView.findViewById(R.id.listItems);
+        ListView listView = rootView.findViewById(R.id.listItems);
 
         String[] operationList = getOperationList();
-        adapter = new ArrayAdapter<>(getContext(), R.layout.listview_item, operationList);
-        listView.setAdapter(adapter);
+        adapter = new ArrayAdapter<>(getContext(), R.layout.list_item, operationList);
+        listView.setAdapter(adapter);/*
+        RecyclerView recyclerView = rootView.findViewById(R.id.listItems);
+
+        List<Topic> topicList = new ArrayList<>();
+        topicList.add(
+                new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
+        );
+
+        topicList.add(
+                new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
+        );
+        topicList.add(
+                new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
+        );
+
+        topicList.add(
+                new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
+        );
+        topicList.add(
+                new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
+        );
+
+        topicList.add(
+                new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
+        );
+
+        recyclerView.setAdapter(new TopicAdapter( getContext(), topicList));
+        */
+
     }
 
     private String[] getOperationList() {
         Resources res = getResources();
-        String[] opList = {res.getString(R.string.dec_frac_tobinary),
-                res.getString(R.string.dec_int_tobinary),
-                res.getString(R.string.dec_tobinary),
-                res.getString(R.string.rootlocation_bisection),
-                res.getString(R.string.rootlocation_newtonraphson),
-                res.getString(R.string.rootlocation_falseposition),
-                res.getString(R.string.rootlocation_secante),
-                res.getString(R.string.system_of_equations),
-                res.getString(R.string.credits_group_members)};
 
-        return opList;
-
+        return res.getStringArray(R.array.main_menu_legacy);
     }
 
     private int selectedItem;
@@ -143,7 +140,6 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
                     Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                     break;
                 case 7:
-
                     btn.setText(R.string.proceed);
                     break;
                 default:
@@ -154,8 +150,6 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         } catch (NullPointerException ex) {
 
         }
-
-
         Log.i(Utilities.Log, "Item " + selectedItem + " selected");
     }
 
@@ -214,10 +208,6 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
                 break;
             case 7:
                 fragment = new FragmentEquationsMenu();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
-                break;
-            case 8:
-                fragment = new FragmentCreditsMenu();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             default:

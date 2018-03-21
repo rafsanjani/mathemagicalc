@@ -42,11 +42,11 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
 
     private void initControls() {
         Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
-        TextView tvAnswer = (TextView) rootView.findViewById(R.id.textview_answer);
+        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
         tvAnswer.setTypeface(typeface);
 
-        Button btnBack = (Button) rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = (Button) rootView.findViewById(R.id.buttonCalculate);
+        Button btnBack = rootView.findViewById(R.id.buttonBack);
+        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
 
 
         btnBack.setOnClickListener(this);
@@ -83,21 +83,21 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
         EditText[] etX = new EditText[3];
 
 
-        etA[0][0] = (EditText) rootView.findViewById(R.id.a11);
-        etA[0][1] = (EditText) rootView.findViewById(R.id.a12);
-        etA[0][2] = (EditText) rootView.findViewById(R.id.a13);
-        etA[1][0] = (EditText) rootView.findViewById(R.id.a21);
-        etA[1][1] = (EditText) rootView.findViewById(R.id.a22);
-        etA[1][2] = (EditText) rootView.findViewById(R.id.a23);
-        etA[2][0] = (EditText) rootView.findViewById(R.id.a31);
-        etA[2][1] = (EditText) rootView.findViewById(R.id.a32);
-        etA[2][2] = (EditText) rootView.findViewById(R.id.a33);
+        etA[0][0] = rootView.findViewById(R.id.a11);
+        etA[0][1] = rootView.findViewById(R.id.a12);
+        etA[0][2] = rootView.findViewById(R.id.a13);
+        etA[1][0] = rootView.findViewById(R.id.a21);
+        etA[1][1] = rootView.findViewById(R.id.a22);
+        etA[1][2] = rootView.findViewById(R.id.a23);
+        etA[2][0] = rootView.findViewById(R.id.a31);
+        etA[2][1] = rootView.findViewById(R.id.a32);
+        etA[2][2] = rootView.findViewById(R.id.a33);
 
-        etB[0] = (EditText) rootView.findViewById(R.id.b1);
-        etB[1] = (EditText) rootView.findViewById(R.id.b2);
-        etB[2] = (EditText) rootView.findViewById(R.id.b3);
+        etB[0] = rootView.findViewById(R.id.b1);
+        etB[1] = rootView.findViewById(R.id.b2);
+        etB[2] = rootView.findViewById(R.id.b3);
 
-        etX[0] = (EditText) rootView.findViewById(R.id.x1);
+        etX[0] = rootView.findViewById(R.id.x1);
 
         for (int i = 0; i < etA.length; i++) {
             for (int j = 0; j < etA.length; j++) {
@@ -122,27 +122,27 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
 
         //our previous matrices have been mutated so we can represent them on the textviews
         TextView[][] tvA = new TextView[3][3];
-        tvA[0][0] = (TextView) rootView.findViewById(R.id.sa11);
-        tvA[0][1] = (TextView) rootView.findViewById(R.id.sa12);
-        tvA[0][2] = (TextView) rootView.findViewById(R.id.sa13);
-        tvA[1][0] = (TextView) rootView.findViewById(R.id.sa21);
-        tvA[1][1] = (TextView) rootView.findViewById(R.id.sa22);
-        tvA[1][2] = (TextView) rootView.findViewById(R.id.sa23);
-        tvA[2][0] = (TextView) rootView.findViewById(R.id.sa31);
-        tvA[2][1] = (TextView) rootView.findViewById(R.id.sa32);
-        tvA[2][2] = (TextView) rootView.findViewById(R.id.sa33);
+        tvA[0][0] = rootView.findViewById(R.id.sa11);
+        tvA[0][1] = rootView.findViewById(R.id.sa12);
+        tvA[0][2] = rootView.findViewById(R.id.sa13);
+        tvA[1][0] = rootView.findViewById(R.id.sa21);
+        tvA[1][1] = rootView.findViewById(R.id.sa22);
+        tvA[1][2] = rootView.findViewById(R.id.sa23);
+        tvA[2][0] = rootView.findViewById(R.id.sa31);
+        tvA[2][1] = rootView.findViewById(R.id.sa32);
+        tvA[2][2] = rootView.findViewById(R.id.sa33);
 
 
         TextView[] tvX = new TextView[3];
         TextView[] tvB = new TextView[3];
 
-        tvB[0] = (TextView) rootView.findViewById(R.id.sab1);
-        tvB[1] = (TextView) rootView.findViewById(R.id.sab2);
-        tvB[2] = (TextView) rootView.findViewById(R.id.sab3);
+        tvB[0] = rootView.findViewById(R.id.sab1);
+        tvB[1] = rootView.findViewById(R.id.sab2);
+        tvB[2] = rootView.findViewById(R.id.sab3);
 
-        tvX[0] = (TextView) rootView.findViewById(R.id.sax1);
-        tvX[1] = (TextView) rootView.findViewById(R.id.sax2);
-        tvX[2] = (TextView) rootView.findViewById(R.id.sax3);
+        tvX[0] = rootView.findViewById(R.id.sax1);
+        tvX[1] = rootView.findViewById(R.id.sax2);
+        tvX[2] = rootView.findViewById(R.id.sax3);
 
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a.length; j++) {
@@ -170,7 +170,7 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
 
     @Override
     public void afterTextChanged(Editable editable) {
-        Utilities.animateAnswer((TextView) rootView.findViewById(R.id.textview_answer),
+        Utilities.animateAnswer(rootView.findViewById(R.id.textview_answer),
                 (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
     }
 }

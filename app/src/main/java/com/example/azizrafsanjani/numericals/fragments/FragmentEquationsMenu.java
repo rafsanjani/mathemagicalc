@@ -45,18 +45,18 @@ public class FragmentEquationsMenu extends Fragment implements AdapterView.OnIte
     }
 
     private void initControls() {
-        ListView items = (ListView) rootView.findViewById(R.id.listItems);
+        ListView items = rootView.findViewById(R.id.listItems);
 
         items.setOnItemClickListener(this);
-        Button computeButton = (Button) rootView.findViewById(R.id.buttonCompute);
-        Button sourceButton = (Button) rootView.findViewById(R.id.buttonSource);
+        Button computeButton = rootView.findViewById(R.id.buttonCompute);
+        Button sourceButton = rootView.findViewById(R.id.buttonSource);
         // linearLayout = rootView.findViewById(R.id.linearLayout);
 
         computeButton.setOnClickListener(this);
         sourceButton.setOnClickListener(this);
 
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/segoeuibold.ttf");
-        TextView tv = (TextView) rootView.findViewById(R.id.text_header);
+        TextView tv = rootView.findViewById(R.id.text_header);
         tv.setTypeface(typeface);
 
 
@@ -65,10 +65,10 @@ public class FragmentEquationsMenu extends Fragment implements AdapterView.OnIte
     }
 
     private void populateItemList() {
-        ListView listView = (ListView) rootView.findViewById(R.id.listItems);
+        ListView listView = rootView.findViewById(R.id.listItems);
 
         String[] operationList = getOperationList();
-        adapter = new ArrayAdapter<>(getContext(), R.layout.listview_item, operationList);
+        adapter = new ArrayAdapter<>(getContext(), R.layout.list_item, operationList);
         listView.setAdapter(adapter);
     }
 

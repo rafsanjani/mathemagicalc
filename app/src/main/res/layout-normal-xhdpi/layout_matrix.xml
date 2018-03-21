@@ -2,7 +2,6 @@
     android:id="@+id/matrix"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
     android:orientation="vertical">
 
 
@@ -10,17 +9,18 @@
         android:id="@+id/questionMatrix"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp">
+        android:gravity="center_horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="15dp"
+
             android:src="@drawable/left_bracket" />
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
@@ -261,23 +261,31 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
+
             android:layout_marginTop="15dp"
             android:src="@drawable/right_bracket"
             android:visibility="visible" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/solHeader1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Reduced Matrix form is given as:"
+        android:textAlignment="center"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/solutionMatrix"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:visibility="visible">
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="15dp"
             android:src="@drawable/left_bracket_sol" />
 
@@ -376,7 +384,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:visibility="visible">
 
@@ -407,27 +415,35 @@
             android:layout_marginTop="15dp"
             android:src="@drawable/right_bracket_sol"
             android:visibility="visible" />
+    </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:text=">>"
-            android:textColor="#000000"
-            android:textSize="32sp" />
+    <TextView
+        android:id="@+id/solHeader2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="The solution Matrix is given by:"
+        android:textAlignment="center"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/solutionMatrix2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/left_bracket_sol"
             android:visibility="visible" />
 
         <LinearLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -461,5 +477,8 @@
             android:layout_marginTop="15dp"
             android:src="@drawable/right_bracket_sol"
             android:visibility="visible" />
+
     </LinearLayout>
+
+
 </LinearLayout>

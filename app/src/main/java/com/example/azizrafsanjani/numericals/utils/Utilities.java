@@ -47,7 +47,7 @@ public final class Utilities {
         fragmentTransaction.commit();
     }
 
-    public static void animateAnswer(TextView answerView, ViewGroup viewGroup, DisplayMode displayMode) {
+    public static void animateAnswer(View answerView, ViewGroup viewGroup, DisplayMode displayMode) {
 
         switch (displayMode) {
             case SHOW:

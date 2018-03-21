@@ -54,7 +54,7 @@
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <LinearLayout
@@ -63,7 +63,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
             <android.support.design.widget.TextInputLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
                     android:id="@+id/text_iterations"
@@ -71,37 +71,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:gravity="center_horizontal"
+                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:inputType="numberSigned"
                     android:hint="Iterations"
+
                     android:textAlignment="center"/>
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/text_epsilon"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_marginLeft="30dp"
-
-                    android:layout_marginRight="30dp"
-                    android:inputType="numberDecimal|numberSigned"
-                    android:hint="Tolerance"
-                    android:textAlignment="center"/>
-
-            </android.support.design.widget.TextInputLayout>
-
-
-        </LinearLayout>
 
     </LinearLayout>
     <TextView

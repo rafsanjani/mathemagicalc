@@ -37,11 +37,11 @@ public class FragmentGaussian4x4 extends Fragment implements View.OnClickListene
 
     private void initControls(){
         Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/FallingSky.otf");
-        TextView tvAnswer = (TextView)rootView.findViewById(R.id.textview_answer);
+        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
         tvAnswer.setTypeface(typeface);
 
-        Button btnBack = (Button)rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = (Button) rootView.findViewById(R.id.buttonCalculate);
+        Button btnBack = rootView.findViewById(R.id.buttonBack);
+        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
 
 
         btnBack.setOnClickListener(this);
@@ -85,7 +85,7 @@ public class FragmentGaussian4x4 extends Fragment implements View.OnClickListene
     @Override
     public void afterTextChanged(Editable editable) {
 
-                Utilities.animateAnswer((TextView) rootView.findViewById(R.id.textview_answer),
+                Utilities.animateAnswer(rootView.findViewById(R.id.textview_answer),
                         (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
     }
 }

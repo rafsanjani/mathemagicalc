@@ -47,7 +47,7 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
                 return;
             }
             double solution[] = msg.getData().getDoubleArray("results");
-            TextView tvAnswer = (TextView) rootView.findViewById(R.id.textview_answer);
+            TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
 
             tvAnswer.setText(String.valueOf("[ " +

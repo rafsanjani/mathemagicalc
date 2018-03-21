@@ -34,7 +34,7 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_loc_of_roots_bisection, container, false);
+        rootView = inflater.inflate(R.layout.fragment_loc_of_roots_regfalsi, container, false);
         initControls();
         return rootView;
     }
@@ -48,15 +48,7 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
         btnBack.setOnClickListener(this);
 
         etEquation.addTextChangedListener(this);
-        etEquation.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    onCalculate();
-                }
-                return true;
-            }
-        });
+
 
 
         viewGroup = (LinearLayout)rootView.findViewById(R.id.parentContainer);

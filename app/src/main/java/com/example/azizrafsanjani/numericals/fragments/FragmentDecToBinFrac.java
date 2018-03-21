@@ -33,20 +33,21 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_dec_to_bin_frac, container, false);
-
+        System.out.println("Hhi here");
         initControls();
         return rootView;
+
     }
 
     private void initControls() {
         MainActivity.setToolBarInfo("Decimal Calculator", "Convert decimals to binary");
         Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
-        TextView tvAnswer = (TextView) rootView.findViewById(R.id.textview_answer);
+        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
         tvAnswer.setTypeface(typeface);
 
 
-        Button btnBack = (Button) rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = (Button) rootView.findViewById(R.id.buttonCalculate);
+        Button btnBack = rootView.findViewById(R.id.buttonBack);
+        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
 
         EditText etQuestion = rootView.findViewById(R.id.text_user_input);
 
@@ -83,8 +84,8 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
 
 
     public void onCalculate() {
-        EditText etInput = (EditText) rootView.findViewById(R.id.text_user_input);
-        TextView tvAnswer = (TextView) rootView.findViewById(R.id.textview_answer);
+        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
 
         String decimal = etInput.getText().toString();
@@ -131,7 +132,7 @@ public class FragmentDecToBinFrac extends Fragment implements Button.OnClickList
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer((TextView) rootView.findViewById(R.id.textview_answer),
+            Utilities.animateAnswer(rootView.findViewById(R.id.textview_answer),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }

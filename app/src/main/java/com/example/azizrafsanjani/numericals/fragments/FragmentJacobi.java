@@ -46,7 +46,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
                 return;
             }
             double solution[] = msg.getData().getDoubleArray("results");
-            TextView tvAnswer = (TextView) rootView.findViewById(R.id.textview_answer);
+            TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
 
             tvAnswer.setText(String.valueOf("[ " +

@@ -50,12 +50,11 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     private void loadMenuFragment() {
         FragmentMainMenu fragment = new FragmentMainMenu();
         Utilities.loadFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
-
     }
 
 
     private void initControls(){
-        toolbar  = (Toolbar) findViewById(R.id.toolBar);
+        toolbar  = findViewById(R.id.toolBar);
         toolbar.setTitle(R.string.app_name);
         toolbar.setSubtitle(R.string.app_description);
         toolbar.setLogo(ContextCompat.getDrawable(getApplicationContext(),R.drawable.numericals_icon));

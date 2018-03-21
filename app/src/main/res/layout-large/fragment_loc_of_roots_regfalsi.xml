@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="20dp" />
 
+
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -32,14 +34,16 @@
             android:layout_marginRight="30dp"
             android:gravity="center_horizontal"
             android:hint="@string/bisection_enter_eqn"
+            android:imeOptions="actionGo"
+            android:inputType="text"
             android:textAlignment="center" />
     </android.support.design.widget.TextInputLayout>
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <android.support.design.widget.TextInputLayout
@@ -50,12 +54,11 @@
                 android:id="@+id/x0"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
+                android:layout_marginRight="50dp"
                 android:gravity="center_horizontal"
                 android:hint="x0"
                 android:inputType="numberDecimal|numberSigned"
                 android:textAlignment="center" />
-
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -66,21 +69,22 @@
                 android:id="@+id/x1"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginLeft="50dp"
                 android:gravity="center_horizontal"
-                android:imeOptions="actionDone"
+
                 android:hint="x1"
                 android:inputType="numberDecimal|numberSigned"
                 android:textAlignment="center" />
         </android.support.design.widget.TextInputLayout>
+
+
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="horizontal">
-
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
@@ -90,10 +94,10 @@
                 android:id="@+id/text_iterations"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
+
+                android:layout_marginRight="50dp"
                 android:gravity="center_horizontal"
-                android:imeOptions="actionDone"
-                android:hint="@string/iterations"
+                android:hint="Iterations"
                 android:inputType="numberSigned"
                 android:textAlignment="center" />
 
@@ -108,13 +112,16 @@
                 android:id="@+id/text_epsilon"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginLeft="50dp"
+
+
                 android:gravity="center_horizontal"
-                android:imeOptions="actionDone"
-                android:hint="@string/tolerance"
+                android:hint="Tolerance"
                 android:inputType="numberDecimal|numberSigned"
                 android:textAlignment="center" />
+
         </android.support.design.widget.TextInputLayout>
+
 
     </LinearLayout>
 
@@ -126,6 +133,7 @@
         android:layout_gravity="center"
         android:text="0.000000"
         android:textAlignment="center"
+
         android:visibility="gone" />
 
     <Button
@@ -145,8 +153,10 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:text="@string/back_to_main_menu" />
-
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="LARGE layout"/>
     <include layout="@layout/textview_footer_text" />
 
 

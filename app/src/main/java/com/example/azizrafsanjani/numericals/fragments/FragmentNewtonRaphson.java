@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +29,7 @@ public class FragmentNewtonRaphson extends Fragment implements View.OnClickListe
 
     View rootView;
     ViewGroup viewGroup;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class FragmentNewtonRaphson extends Fragment implements View.OnClickListe
         return rootView;
     }
 
-    public void initControls(){
+    public void initControls() {
         Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
         Button btnBack = rootView.findViewById(R.id.btnBack);
         EditText etEquation = rootView.findViewById(R.id.text_equation);
@@ -47,25 +47,15 @@ public class FragmentNewtonRaphson extends Fragment implements View.OnClickListe
         btnBack.setOnClickListener(this);
 
         etEquation.addTextChangedListener(this);
-        etEquation.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    onCalculate();
-                }
-                return true;
-            }
-        });
 
 
-        viewGroup = (LinearLayout)rootView.findViewById(R.id.parentContainer);
-        MainActivity.setToolBarInfo("Location of Roots","Newton Raphson Method");
-
+        viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
+        MainActivity.setToolBarInfo("Location of Roots", "Newton Raphson Method");
     }
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.btnBack:
                 Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer);
                 break;
@@ -81,17 +71,17 @@ public class FragmentNewtonRaphson extends Fragment implements View.OnClickListe
     private void onCalculate() {
         EditText etEquation = rootView.findViewById(R.id.text_equation);
         EditText etX0 = rootView.findViewById(R.id.x0);
-      //  EditText etX1 = rootView.findViewById(R.id.x1);
+        //  EditText etX1 = rootView.findViewById(R.id.x1);
         EditText etEpsilon = rootView.findViewById(R.id.text_epsilon);
         EditText etIterations = rootView.findViewById(R.id.text_iterations);
 
         TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
-        try{
+        try {
             String eqn = etEquation.getText().toString();
             Double x0 = Double.valueOf(etX0.getText().toString());
             //Double x1 = Double.valueOf(etX1.getText().toString());
-            Double tol = Double.valueOf(etEpsilon.getText().toString());
+           // Double tol = Double.valueOf(etEpsilon.getText().toString());
             int iter = Integer.valueOf(etIterations.getText().toString());
 
 
@@ -102,10 +92,10 @@ public class FragmentNewtonRaphson extends Fragment implements View.OnClickListe
             //for transitions sake
             Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
 
-        }catch(NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             System.out.println(ex.getMessage());
-            Log.i(Utilities.Log,"One or more of the input values are invalid");
-        }finally {
+            Log.i(Utilities.Log, "One or more of the input values are invalid");
+        } finally {
             MainActivity.hideKeyboard(etEquation);
         }
     }
@@ -123,12 +113,12 @@ public class FragmentNewtonRaphson extends Fragment implements View.OnClickListe
 
     @Override
     public void afterTextChanged(Editable editable) {
-       onEquationChanged();
+        onEquationChanged();
     }
 
     private void onEquationChanged() {
         TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
-       Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
     }
 }

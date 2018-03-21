@@ -22,7 +22,7 @@ public final class Numericals {
 
         int bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalInteger);
 
-        //magically manipulate and append result to the stringbuilder whilst Nk is greater than 0
+        //magically manipulate and append result to the stringbuilder while Nk is greater than 0
         while (Nk != 0 && (Nk - bk != 0)) {
             Nk = (Nk - bk) / 2;
             bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalInteger);
@@ -148,6 +148,8 @@ public final class Numericals {
         double fx1 = fx.calculate(x1);
         double fx3 = fx.calculate(x3);
 
+
+
         //the root lies in the left part of the boundary
         if (fx1 * fx3 < 0)
             return Bisect(expr, x1, x3, --iterations, tol);
@@ -229,7 +231,7 @@ public final class Numericals {
         else
             x0 = x2;
 
-        return FalsePosition(expr, x0, x1, maxIterations - 1, 0);
+        return FalsePosition(expr, x0, x1, maxIterations - 1, tol);
     }
 
     /***
@@ -324,6 +326,8 @@ public final class Numericals {
         //round all array contents to 2dp
         roundTo2Dp(A, B);
         roundTo2Dp(solution);
+
+
         return solution;
     }
 

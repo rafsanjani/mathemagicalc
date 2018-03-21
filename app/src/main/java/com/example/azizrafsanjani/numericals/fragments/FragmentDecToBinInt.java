@@ -35,9 +35,9 @@ public class FragmentDecToBinInt extends Fragment implements Button.OnClickListe
     }
 
     private void initControls() {
-        Button button = (Button) rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = (Button) rootView.findViewById(R.id.buttonCalculate);
-        EditText etInput = (EditText) rootView.findViewById(R.id.text_user_input);
+        Button button = rootView.findViewById(R.id.buttonBack);
+        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+        EditText etInput = rootView.findViewById(R.id.text_user_input);
 
         etInput.addTextChangedListener(this);
 
@@ -75,8 +75,8 @@ public class FragmentDecToBinInt extends Fragment implements Button.OnClickListe
     }
 
     public void onCalculate() {
-        EditText etInput = (EditText) rootView.findViewById(R.id.text_user_input);
-        TextView tvAnswer = (TextView) rootView.findViewById(R.id.textview_answer);
+        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
 
         String decimal = etInput.getText().toString();
@@ -134,7 +134,7 @@ public class FragmentDecToBinInt extends Fragment implements Button.OnClickListe
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer((TextView) rootView.findViewById(R.id.textview_answer),
+            Utilities.animateAnswer(rootView.findViewById(R.id.textview_answer),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }
