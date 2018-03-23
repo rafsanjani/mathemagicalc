@@ -27,6 +27,7 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="10dp" />
@@ -35,7 +36,7 @@
     <ListView
         android:id="@+id/listItems"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="450dp"
         android:choiceMode="singleChoice"
         android:smoothScrollbar="true" />
 

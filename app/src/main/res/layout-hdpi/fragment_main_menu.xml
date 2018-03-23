@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/colorMainBackground"
     android:orientation="vertical">
+
     <include
         layout="@layout/toolbar"
         android:id="@+id/toolBar"/>
-
     <Space
         android:id="@+id/space"
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
     <ListView
         android:id="@+id/listItems"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="450dp"
         android:choiceMode="singleChoice"
         android:smoothScrollbar="true" />
 

@@ -53,14 +53,15 @@
     </string-array>
 
     <string-array name="main_menu_legacy">
-        <item>1. Decimal to Binary (Fractional Part Only)</item>
-        <item>2. Decimal to Binary (Integer Part Only)</item>
+        <item>1. Decimal to Binary (Fractions)</item>
+        <item>2. Decimal to Binary (Integers)</item>
         <item>3. Decimal to Binary (Any Number)</item>
         <item>4. Location Of Roots (Bisection)</item>
         <item>5. Location Of Roots (Newton Raphson)</item>
         <item>6. Location Of Roots (Regula Falsi) </item>
         <item>7. Location Of Roots (Secante)</item>
         <item>8. System of Equations</item>
+        <item>9. Ordinary Differential Equations</item>
     </string-array>
 
 </resources>

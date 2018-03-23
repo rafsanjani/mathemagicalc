@@ -56,6 +56,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
 
     private void initControls() {
         items = rootView.findViewById(R.id.listItems);
+        items.setOnItemClickListener(this);
 
         //items.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -125,6 +126,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Log.i("TAG", "Item Selected");
         view.setSelected(true);
         selectedItem = position;
         itemSelected = true;

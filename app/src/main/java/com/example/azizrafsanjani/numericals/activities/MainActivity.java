@@ -34,7 +34,7 @@ import java.sql.SQLOutput;
 public class MainActivity extends AppCompatActivity implements View.OnKeyListener {
 
 
-    static Toolbar toolbar;
+    //static Toolbar toolbar;
     static InputMethodManager imm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,18 +54,18 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
 
     private void initControls(){
-        toolbar  = findViewById(R.id.toolBar);
-        toolbar.setTitle(R.string.app_name);
-        toolbar.setSubtitle(R.string.app_description);
-        toolbar.setLogo(ContextCompat.getDrawable(getApplicationContext(),R.drawable.numericals_icon));
+      //  toolbar  = findViewById(R.id.toolBar);
+       // toolbar.setTitle(R.string.app_name);
+        //toolbar.setSubtitle(R.string.app_description);
+        //toolbar.setLogo(ContextCompat.getDrawable(getApplicationContext(),R.drawable.numericals_icon));
       
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
     }
 
     public static void setToolBarInfo(String title, String subtitle){
-        toolbar.setTitle(title);
-        toolbar.setSubtitle(subtitle);
+       // toolbar.setTitle(title);
+        //toolbar.setSubtitle(subtitle);
     }
 
     public  static void hideKeyboard(View view){
