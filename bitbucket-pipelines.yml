@@ -4,13 +4,8 @@
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
 image: java:8
-
 pipelines:
   default:
     - step:
-        caches:
-          - gradle
-        script: # Modify the commands below to build your repository.
-          # You must commit the Gradle wrapper to your repository
-          # https://docs.gradle.org/current/userguide/gradle_wrapper.html
-          - build.sh
+        script:
+          - bash ./gradlew build
