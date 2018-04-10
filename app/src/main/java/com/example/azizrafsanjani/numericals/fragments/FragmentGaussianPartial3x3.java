@@ -82,16 +82,12 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
 
     private void getMatrices() {
         EditText[][] etA = new EditText[3][3];
-        double a[][] = new double[3][3];
-
-
-
+        double[][] a = new double[3][3];
 
         EditText[] etB = new EditText[3];
         double b[] = new double[3];
 
         EditText[] etX = new EditText[3];
-
 
         etA[0][0] = rootView.findViewById(R.id.a11);
         etA[0][1] = rootView.findViewById(R.id.a12);
@@ -163,8 +159,6 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
             tvX[i].setText(String.valueOf(solution[i]));
             tvB[i].setText(String.valueOf(b[i]));
         }
-
-
     }
 
     @Override

@@ -6,7 +6,6 @@
     android:background="@color/colorMainBackground"
     android:orientation="vertical">
 
-
     <Space
         android:layout_width="wrap_content"
         android:layout_height="5dp" />

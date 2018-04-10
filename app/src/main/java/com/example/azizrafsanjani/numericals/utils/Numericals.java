@@ -1,9 +1,15 @@
 package com.example.azizrafsanjani.numericals.utils;
+
 import android.util.Log;
+
 import org.apache.commons.lang3.ArrayUtils;
 import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Aziz Rafsanjani on 11/2/2017.
@@ -149,7 +155,6 @@ public final class Numericals {
         double fx3 = fx.calculate(x3);
 
 
-
         //the root lies in the left part of the boundary
         if (fx1 * fx3 < 0)
             return Bisect(expr, x1, x3, --iterations, tol);
@@ -265,14 +270,35 @@ public final class Numericals {
 
     public static double[] GaussianWithCompletePivoting(double[][] A, double B[]) {
         int N = B.length;
+
+        List<double[][]> Qn = new ArrayList<>();
+        final double[][] iMatrix = {
+                {1, 0, 0},
+                {0, 1, 0},
+                {0, 0, 1}
+        };
+
         for (int k = 0; k < N; k++) {
+            double[][] Qx = {
+                    {1, 0, 0},
+                    {0, 1, 0},
+                    {0, 0, 1}
+            };
+
             //get pivot column
             int maxColumn = getPivotColumn(A, k);
             //swap pivot column
             swapColumns(A, maxColumn, k);
 
+            //perform corresponding swapping in the identity matrix but only add if swapping occurs
+            swapColumns(Qx, maxColumn, k);
+            if (!Arrays.deepEquals(Qx, iMatrix)) {
+                Qn.add(Qx);
+            }
+
             //get the pivot row
             int maxRow = getPivotRow(A, k);
+
             //swap the pivot row with the first row in matrix A
             swapRows(A, maxRow, k);
 
@@ -285,13 +311,81 @@ public final class Numericals {
             killRowsBeneath(A, B, k);
         }
 
-        //solve by backsubstitution
-        double[] solution = getSolutionByBackSubstitution(A, B, N);
 
-        return solution;
+        //solve by backsubstitution to obtain the intermediate solution
+        double[] iSolution = getSolutionByBackSubstitution(A, B, N);
+
+        if (Qn.size() != 0) {
+            return getFinalSolution(iSolution, Qn);
+        }
+
+        return iSolution;
     }
 
-    public static double[] GaussianWithPartialPivoting(double[][] A, double B[]) {
+    private static double[] getFinalSolution(double[] iSolution, List<double[][]> Qn) {
+
+        double[][] iMatrix = {
+                {1, 0, 0},
+                {0, 1, 0},
+                {0, 0, 1}
+        };
+        double[][] Q = null;
+
+        for( double[][] Qx : Qn){
+            Q = multiplyMatrix(iMatrix, Qx);
+        }
+        printMatrix(Q);
+        double [][]abc = new double[iSolution.length][iSolution.length];
+        for(int a = 0; a < iSolution.length; a++){
+            abc[0][a] = iSolution[a];
+        }
+        double [][]def = multiplyMatrix(Q, abc);
+
+        double []finalsol = new double[iSolution.length];
+        for(int a = 0; a <iSolution.length; a++){
+            finalsol[a] = def[1][a];
+        }
+        return finalsol;
+    }
+
+    public static double[][] multiplyMatrix(double[][] A, double[][] B) {
+        int aRows = A.length;
+        int aCols = A[0].length;
+
+        int bRows = B.length;
+        int bCols = B[0].length;
+
+        double[][] soln = new double[aRows][aCols];
+        if (aCols != bRows) {
+            throw new IllegalArgumentException("Illegal Matrix Sizes");
+        }
+
+        for (int i = 0; i < aRows; i++)
+            for (int j = 0; j < bCols; j++)
+                for (int k = 0; k < aCols; k++)
+                    soln[i][j] += A[i][k] * B[k][j];
+
+        return soln;
+    }
+
+
+    public static double[] multiplyMatrix(double[][] iSolution, double[] x) {
+        double[] soln = new double[x.length];
+        int sLength = iSolution.length;
+        double accumulator;
+
+        for (int i = 0; i < sLength; i++) {
+            accumulator = 0;
+            for (int j = 0; j < sLength; j++) {
+                accumulator += iSolution[i][j] * x[j];
+            }
+            soln[i] = accumulator;
+        }
+        return soln;
+    }
+
+
+    public static double[] GaussianWithPartialPivoting(double[][] A, double[] B) {
         int N = B.length;
         for (int k = 0; k < N; k++) {
             //get the pivot row
@@ -315,7 +409,7 @@ public final class Numericals {
         return solution;
     }
 
-    private static double[] getSolutionByBackSubstitution(double A[][], double B[], int N) {
+    private static double[] getSolutionByBackSubstitution(double[][] A, double[] B, int N) {
         double[] solution = new double[N];
         for (int i = N - 1; i >= 0; i--) {
             double sum = 0.0;
@@ -331,7 +425,7 @@ public final class Numericals {
         return solution;
     }
 
-    private static void killRowsBeneath(double A[][], double B[], int k) {
+    private static void killRowsBeneath(double[][] A, double[] B, int k) {
         int N = A.length;
         for (int i = k + 1; i < N; i++) {
             double factor = A[i][k] / A[k][k];
@@ -341,7 +435,7 @@ public final class Numericals {
         }
     }
 
-    private static void roundTo2Dp(double A[][], double B[]) {
+    private static void roundTo2Dp(double[][] A, double[] B) {
         for (int i = 0; i < A.length; i++) {
             B[i] = Double.parseDouble(String.format("%.2f", B[i]));
             for (int j = 0; j < A.length; j++) {
@@ -356,7 +450,7 @@ public final class Numericals {
         }
     }
 
-    private static int getPivotRow(double system[][], int k) {
+    private static int getPivotRow(double[][] system, int k) {
         int maxRowIndex = k;
 
         for (int i = k + 1; i < system.length; i++) {
@@ -367,17 +461,18 @@ public final class Numericals {
         return maxRowIndex;
     }
 
-    private static void swapRows(double system[][], int maxRow, int rowIndex) {
+    private static void swapRows(double[][] system, int maxRow, int rowIndex) {
         double[] temp = system[rowIndex];
         system[rowIndex] = system[maxRow];
         system[maxRow] = temp;
     }
 
-    public static void swapColumns(double system[][], int maxCol, int colIndex) {
+    private static void swapColumns(double system[][], int maxCol, int colIndex) {
         for (int i = 0; i < system.length; i++) {
             ArrayUtils.swap(system[i], maxCol, colIndex);
         }
     }
+
 
     public static int getPivotColumn(double[][] system, int k) {
         int N = system.length;
@@ -529,7 +624,7 @@ public final class Numericals {
         }
 
         //print out the solution vector
-        Log.i(Utilities.Log,"The solution vector is given as");
+        Log.i(Utilities.Log, "The solution vector is given as");
         printArray(iSolution);
 
         double[] difference = new double[3];
@@ -537,20 +632,20 @@ public final class Numericals {
             difference[i] = iSolution[i] - initGuess[i];
         }
 
-        Log.i(Utilities.Log,"The difference vector is given as:");
+        Log.i(Utilities.Log, "The difference vector is given as:");
         printArray(difference);
 
         //infinite norm of the difference of kth and (k - 1)th iterate
         double iNorm = getMaxElement(difference);
-        Log.i(Utilities.Log,"Infininte norm is given as:  " + iNorm);
-        Log.i(Utilities.Log,"Epsilon is given as: " + epsilon);
+        Log.i(Utilities.Log, "Infininte norm is given as:  " + iNorm);
+        Log.i(Utilities.Log, "Epsilon is given as: " + epsilon);
         //stopping criteria
         if (iNorm < epsilon) {
-            Log.i(Utilities.Log,"stopping criteria met: terminating");
+            Log.i(Utilities.Log, "stopping criteria met: terminating");
             return iSolution;
         } else {
-            Log.i(Utilities.Log,"stopping criteria not met, reiteriating with these values");
-            Log.i(Utilities.Log,"Guesses; ");
+            Log.i(Utilities.Log, "stopping criteria not met, reiteriating with these values");
+            Log.i(Utilities.Log, "Guesses; ");
             printArray(iSolution);
             return GaussSeidelWithSOR(system, iSolution, epsilon, omega);
         }
@@ -558,11 +653,11 @@ public final class Numericals {
     }
 
     private static void printArray(double[] array) {
-        Log.i(Utilities.Log,"[ ");
+        Log.i(Utilities.Log, "[ ");
         for (int i = 0; i < array.length; i++) {
-            Log.i(Utilities.Log,array[i] + " ");
+            Log.i(Utilities.Log, array[i] + " ");
         }
-        Log.i(Utilities.Log,"]");
+        Log.i(Utilities.Log, "]");
     }
 
     public enum BinaryOperationType {

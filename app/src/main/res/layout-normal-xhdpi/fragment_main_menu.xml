@@ -6,10 +6,6 @@
     android:background="@color/colorMainBackground"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/toolBar"
-        layout="@layout/toolbar" />
-
     <Space
         android:id="@+id/space"
         android:layout_width="match_parent"

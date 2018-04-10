@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Numerical Methods</string>
     <string name="remarks">Numerical Methods and Computations</string>
-    <string name="footer_text">Mathematics is the Way!!</string>
+    <string name="footer_text">Algorithms implementation!!</string>
     <string name="app_description">Implementation of algorithms</string>
     <string name="description_text">Operation List</string>
     <string name="dec_frac_tobinary">1. Decimal to Binary (Fractional Part Only)</string>

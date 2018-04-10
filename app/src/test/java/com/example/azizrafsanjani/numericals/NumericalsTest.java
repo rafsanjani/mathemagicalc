@@ -6,11 +6,8 @@ package com.example.azizrafsanjani.numericals;
 
 
 import com.example.azizrafsanjani.numericals.utils.Numericals;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
 
-
-import junit.framework.Assert;
-
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
@@ -36,6 +33,20 @@ public class NumericalsTest {
     }
 
     @Test
+    public void add3and4ShouldPass(){
+        assertEquals(7, addition(3, 4));
+    }
+
+    @Test
+    public void add3and4ShouldFail(){
+        assertEquals(9, addition(3, 4));
+    }
+
+    public int  addition(int a , int b ){
+        return a +b;
+    }
+
+    @Test
     public void testGaussian() {
         double A[][] = {
                 {100, 2555, 3},
@@ -50,22 +61,75 @@ public class NumericalsTest {
 
     @Test
     public void testGaussianComplete() {
-        double A[][] = {
-                {0.02, 0.01, 0, 0},
-                {1, 2, 1, 0},
-                {0, 1, 2, 1},
-                {0, 0, 100, 200}
-
+        double[][] A = {
+                {1, -2, -3},
+                {3, 5, 2},
+                {2, 3, -1}
         };
 
-        double B[] = {0.02,1,4,800};
-        Assert.assertEquals(A,B);
+        double B[] = {0, 0, -1};
+
+        //Note: final answer to this system is {-0.5, 0.5, 0.5}
+
+        double sol[] = Numericals.GaussianWithCompletePivoting(A, B);
 
 
-        printMatrix(A, B);
+        printMatrix(sol);
+    }
+
+    @Test
+    //This test should pass
+    public void testMultiplicationOfMatrixPass() {
+        double A[][] = {
+                {4, 3, 5},
+                {4, 1, 2},
+                {5, 6, 8}
+        };
+
+        double[] B = {2, 3, 5};
+
+        double[] solution = Numericals.multiplyMatrix(A, B);
+        double[] expected = {42, 21, 68};
+
+        int valid = 0;
+        for (int a = 0; a < solution.length; a++) {
+            if (solution[a] == expected[a]) {
+                valid++;
+            }
+        }
+        assertEquals(valid, solution.length);
+    }
+
+    @Test
+    public void testMultiplicationofMatrix() {
+        double A[][] = {
+                {0, 1, 0},
+                {1, 0, 0},
+                {0, 0, 1}
+        };
+
+        double B[][] = {
+                {-0.5, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        double C[] = {-0.5, 0.5, 0.5};
+
+        double D[] = Numericals.multiplyMatrix(A, C);
+        printMatrix(D);
 
     }
 
+
+    private static void printMatrix(double[][] matrix){
+        for(int i = 0; i < matrix.length; i++){
+            for(int j = 0; j < matrix.length; j++){
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
     private static void printMatrix(double A[][], double B[]) {
         for (int rowIndex = 0; rowIndex < A.length; rowIndex++) {
             for (int columnIndex = 0; columnIndex < A.length; columnIndex++) {
@@ -75,6 +139,7 @@ public class NumericalsTest {
             System.out.println();
         }
     }
+
 
     private static void printMatrix(double system[]) {
         for (int rowIndex = 0; rowIndex < system.length; rowIndex++) {
