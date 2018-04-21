@@ -225,7 +225,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        style="@style/MyButtonStyle"
+        style="@style/AppMaterialTheme.ButtonStyle"
         android:text="@string/calculate"/>
     <Button
         android:id="@+id/btnBack"
@@ -233,7 +233,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        style="@style/MyButtonStyle"
+        style="@style/AppMaterialTheme.ButtonStyle"
         android:text="@string/back_to_main_menu"/>
 
 

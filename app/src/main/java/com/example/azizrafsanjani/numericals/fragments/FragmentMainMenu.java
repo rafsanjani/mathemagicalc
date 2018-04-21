@@ -1,17 +1,13 @@
 package com.example.azizrafsanjani.numericals.fragments;
 
 
-import android.app.Dialog;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +20,7 @@ import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.adapter.TopicAdapter;
-import com.example.azizrafsanjani.numericals.model.Topic;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Aziz Rafsanjani on 11/3/2017.
@@ -42,80 +33,96 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
     ArrayAdapter<String> adapter;
     boolean itemSelected = false;
     static TextView header;
-    private ListView  items;
+    private ListView items;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_main_menu, container, false);
         initControls();
-
         MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
+
         return rootView;
+
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     private void initControls() {
-        items = rootView.findViewById(R.id.listItems);
-        items.setOnItemClickListener(this);
+        //items = rootView.findViewById(R.id.listItems);
+        //items.setOnItemClickListener(this);
 
         //items.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        header = rootView.findViewById(R.id.text_header);
+        header = rootView.findViewById(R.id.Header);
         header.setVisibility(View.VISIBLE);
 
-        Button computeButton = rootView.findViewById(R.id.buttonCompute);
+        Button btnBinary = rootView.findViewById(R.id.btn_number_conversion);
+        btnBinary.setOnClickListener(this);
+
+        // TextView footer = rootView.findViewById(R.id.footer);
+        Typeface footerTf = Typeface.createFromAsset(getContext().getAssets(), "fonts/WorkSans-Regular.ttf");
+
+
+       /* Button computeButton = rootView.findViewById(R.id.buttonCompute);
         Button sourceButton = rootView.findViewById(R.id.buttonSource);
 
         computeButton.setOnClickListener(this);
-        sourceButton.setOnClickListener(this);
+        sourceButton.setOnClickListener(this);*/
 
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/segoeuibold.ttf");
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
         header.setTypeface(typeface);
+        // footer.setTypeface(typeface);
 
 
-        populateItemList();
+        //populateItemList();
         //performSomeMagic();
 
     }
 
 
+    /*
+        private void populateItemList() {
+            ListView listView = rootView.findViewById(R.id.listItems);
 
-    private void populateItemList() {
-        ListView listView = rootView.findViewById(R.id.listItems);
+            String[] operationList = getOperationList();
+            adapter = new ArrayAdapter<>(getContext(), R.layout.list_item, operationList);
+            listView.setAdapter(adapter);/*
+            RecyclerView recyclerView = rootView.findViewById(R.id.listItems);
 
-        String[] operationList = getOperationList();
-        adapter = new ArrayAdapter<>(getContext(), R.layout.list_item, operationList);
-        listView.setAdapter(adapter);/*
-        RecyclerView recyclerView = rootView.findViewById(R.id.listItems);
+            List<Topic> topicList = new ArrayList<>();
+            topicList.add(
+                    new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
+            );
 
-        List<Topic> topicList = new ArrayList<>();
-        topicList.add(
-                new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
-        );
+            topicList.add(
+                    new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
+            );
+            topicList.add(
+                    new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
+            );
 
-        topicList.add(
-                new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
-        );
-        topicList.add(
-                new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
-        );
+            topicList.add(
+                    new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
+            );
+            topicList.add(
+                    new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
+            );
 
-        topicList.add(
-                new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
-        );
-        topicList.add(
-                new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
-        );
+            topicList.add(
+                    new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
+            );
 
-        topicList.add(
-                new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
-        );
+            recyclerView.setAdapter(new TopicAdapter( getContext(), topicList));
 
-        recyclerView.setAdapter(new TopicAdapter( getContext(), topicList));
-        */
 
-    }
+        }
 
+    */
     private String[] getOperationList() {
         Resources res = getResources();
 
@@ -136,7 +143,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                 view.setElevation(2);
 
-            switch (selectedItem) {
+            /*switch (selectedItem) {
                 case 8:
                     Fragment fragment = new FragmentCreditsMenu();
                     Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
@@ -147,7 +154,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
                 default:
                     btn.setText(R.string.calculate);
                     break;
-            }
+            }*/
 
         } catch (NullPointerException ex) {
 
@@ -157,11 +164,11 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onClick(View view) {
-        if (!itemSelected) {
+       /* if (!itemSelected) {
             Log.i(Utilities.Log, "No item selected in the listview");
             return;
         }
-
+*/
         switch (view.getId()) {
             case R.id.buttonCompute:
                 onCompute();
@@ -169,14 +176,21 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
 
             case R.id.buttonSource:
                 onSource();
+
+                break;
+            case R.id.btn_number_conversion:
+                Fragment fragment = new FragmentConversionsMenu();
+                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer, false);
+                break;
         }
+
     }
 
     public void onCompute() {
         Fragment fragment;
 
         switch (selectedItem) {
-            case 0:
+            /*case 0:
                 fragment = new FragmentDecToBinFrac();
                 Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
@@ -214,12 +228,12 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
                 break;
             default:
                 Log.i(Utilities.Log, "No menu item selected");
-                break;
+                break;*/
         }
     }
 
     public void onSource() {
-        final Dialog dialog = new Dialog(getActivity(), R.style.SourceDialog);
+        /*final Dialog dialog = new Dialog(getActivity(), R.style.SourceDialog);
         dialog.setContentView(R.layout.dialog_source_code);
         dialog.setTitle("source code");
 
@@ -227,6 +241,6 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         TextView sourceCode = dialog.findViewById(R.id.sourceCode);
         sourceCode.setText(src);
 
-        dialog.show();
+        dialog.show();*/
     }
 }

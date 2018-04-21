@@ -139,7 +139,7 @@
 
     <Button
         android:id="@+id/btnCalculate"
-        style="@style/MyButtonStyle"
+        style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -148,7 +148,7 @@
 
     <Button
         android:id="@+id/btnBack"
-        style="@style/MyButtonStyle"
+        style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"

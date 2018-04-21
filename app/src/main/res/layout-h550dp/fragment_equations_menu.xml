@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_proceed"
-        style="@style/MyButtonStyle" />
+        style="@style/AppMaterialTheme.ButtonStyle" />
 
     <Button
         android:id="@+id/buttonSource"
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:text="@string/button_view_source"
         android:layout_marginBottom="2dp"
-        style="@style/MyButtonStyle"/>
+        style="@style/AppMaterialTheme.ButtonStyle"/>
     <include
         layout="@layout/textview_footer_text"
         />

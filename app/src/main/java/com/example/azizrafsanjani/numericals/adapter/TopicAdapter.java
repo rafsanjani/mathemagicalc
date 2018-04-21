@@ -54,8 +54,8 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicViewHol
 
         TopicViewHolder(View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.topic);
-            description = itemView.findViewById(R.id.description);
+          //  title = itemView.findViewById(R.id.topic);
+           // description = itemView.findViewById(R.id.description);
         }
 
 

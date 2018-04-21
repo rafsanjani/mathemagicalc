@@ -1,58 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearLayout"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="@color/colorMainBackground"
-    android:orientation="vertical">
-
-
-    <Space
-        android:id="@+id/space"
-        android:layout_width="match_parent"
-        android:layout_height="5dp" />
+    android:background="@color/colorMainBackground">
 
     <TextView
-        android:id="@+id/text_header"
-        android:layout_width="match_parent"
+        android:id="@+id/Header"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:text="@string/description_text"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:text="Choose An Operation Below"
         android:textAlignment="center"
-        android:textColor="@color/colorHeading"
-        android:textSize="30sp"
+        android:textSize="38sp"
         android:textStyle="bold" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
-
-
-    <ListView
-        android:id="@+id/listItems"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:choiceMode="singleChoice"
-        android:smoothScrollbar="true" />
-
-    <Button
-        android:id="@+id/buttonCompute"
-        style="@style/MyButtonStyle"
+    <ScrollView
+        android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cont" />
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/Header">
 
-    <Button
-        android:id="@+id/buttonSource"
-        style="@style/MyButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/exit" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Header"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_number_conversion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_number_conversion_menu"
+                    android:elevation="5dp"
+                    android:text="@string/number_conversions"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_loc_of_roots"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_location_of_roots"
+                    android:elevation="5dp"
+                    android:text="@string/loc_of_rooots"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_sys_of_eqn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_number_conversion"
+                    android:elevation="5dp"
+                    android:text="@string/sys_of_eqns"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_ord_diff_eqn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_number_conversion"
+                    android:elevation="5dp"
+                    android:text="@string/ordinary_diff_eqn"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_self_assess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_number_conversion"
+                    android:elevation="5dp"
+                    android:text="Interpolation"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_number_conversion"
+                    android:elevation="5dp"
+                    android:text="About"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
-    <include layout="@layout/textview_footer_text" />
 
-
-</LinearLayout>
+</RelativeLayout>

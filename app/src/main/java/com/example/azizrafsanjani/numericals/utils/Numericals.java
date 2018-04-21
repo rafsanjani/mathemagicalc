@@ -3,6 +3,8 @@ package com.example.azizrafsanjani.numericals.utils;
 import android.util.Log;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.math3.linear.MatrixUtils;
+import org.apache.commons.math3.linear.RealMatrix;
 import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
@@ -270,35 +272,14 @@ public final class Numericals {
 
     public static double[] GaussianWithCompletePivoting(double[][] A, double B[]) {
         int N = B.length;
-
-        List<double[][]> Qn = new ArrayList<>();
-        final double[][] iMatrix = {
-                {1, 0, 0},
-                {0, 1, 0},
-                {0, 0, 1}
-        };
-
         for (int k = 0; k < N; k++) {
-            double[][] Qx = {
-                    {1, 0, 0},
-                    {0, 1, 0},
-                    {0, 0, 1}
-            };
-
             //get pivot column
             int maxColumn = getPivotColumn(A, k);
             //swap pivot column
             swapColumns(A, maxColumn, k);
 
-            //perform corresponding swapping in the identity matrix but only add if swapping occurs
-            swapColumns(Qx, maxColumn, k);
-            if (!Arrays.deepEquals(Qx, iMatrix)) {
-                Qn.add(Qx);
-            }
-
             //get the pivot row
             int maxRow = getPivotRow(A, k);
-
             //swap the pivot row with the first row in matrix A
             swapRows(A, maxRow, k);
 
@@ -311,42 +292,14 @@ public final class Numericals {
             killRowsBeneath(A, B, k);
         }
 
+        //solve by backsubstitution
+        double[] solution = getSolutionByBackSubstitution(A, B, N);
 
-        //solve by backsubstitution to obtain the intermediate solution
-        double[] iSolution = getSolutionByBackSubstitution(A, B, N);
-
-        if (Qn.size() != 0) {
-            return getFinalSolution(iSolution, Qn);
-        }
-
-        return iSolution;
+        return solution;
     }
 
-    private static double[] getFinalSolution(double[] iSolution, List<double[][]> Qn) {
 
-        double[][] iMatrix = {
-                {1, 0, 0},
-                {0, 1, 0},
-                {0, 0, 1}
-        };
-        double[][] Q = null;
 
-        for( double[][] Qx : Qn){
-            Q = multiplyMatrix(iMatrix, Qx);
-        }
-        printMatrix(Q);
-        double [][]abc = new double[iSolution.length][iSolution.length];
-        for(int a = 0; a < iSolution.length; a++){
-            abc[0][a] = iSolution[a];
-        }
-        double [][]def = multiplyMatrix(Q, abc);
-
-        double []finalsol = new double[iSolution.length];
-        for(int a = 0; a <iSolution.length; a++){
-            finalsol[a] = def[1][a];
-        }
-        return finalsol;
-    }
 
     public static double[][] multiplyMatrix(double[][] A, double[][] B) {
         int aRows = A.length;
@@ -370,18 +323,10 @@ public final class Numericals {
 
 
     public static double[] multiplyMatrix(double[][] iSolution, double[] x) {
-        double[] soln = new double[x.length];
-        int sLength = iSolution.length;
-        double accumulator;
+        RealMatrix lhs = MatrixUtils.createRealMatrix(iSolution);
+        RealMatrix rhs = MatrixUtils.createColumnRealMatrix(x);
 
-        for (int i = 0; i < sLength; i++) {
-            accumulator = 0;
-            for (int j = 0; j < sLength; j++) {
-                accumulator += iSolution[i][j] * x[j];
-            }
-            soln[i] = accumulator;
-        }
-        return soln;
+        return lhs.multiply(rhs).getColumn(0);
     }
 
 
@@ -411,15 +356,21 @@ public final class Numericals {
 
     private static double[] getSolutionByBackSubstitution(double[][] A, double[] B, int N) {
         double[] solution = new double[N];
-        for (int i = N - 1; i >= 0; i--) {
-            double sum = 0.0;
-            for (int j = i + 1; j < N; j++)
-                sum += A[i][j] * solution[j];
-            solution[i] = (B[i] - sum) / A[i][i];
+        try {
+            for (int i = N - 1; i >= 0; i--) {
+                double sum = 0.0;
+
+                for (int j = i + 1; j < N; j++)
+                    sum += A[i][j] * solution[j];
+
+                solution[i] = (B[i] - sum) / A[i][i];
+            }
+            //round all array contents to 2dp
+            roundTo2Dp(A, B);
+            roundTo2Dp(solution);
+        } catch (ArrayIndexOutOfBoundsException ay) {
+            System.out.println(ay.getMessage());
         }
-        //round all array contents to 2dp
-        roundTo2Dp(A, B);
-        roundTo2Dp(solution);
 
 
         return solution;
@@ -430,8 +381,13 @@ public final class Numericals {
         for (int i = k + 1; i < N; i++) {
             double factor = A[i][k] / A[k][k];
             B[i] -= factor * B[k];
-            for (int j = k; j < N; j++)
-                A[i][j] -= factor * A[k][j];
+            try {
+                for (int j = k; j < N; j++)
+                    A[i][j] -= factor * A[k][j];
+            } catch (ArrayIndexOutOfBoundsException ay) {
+                System.out.println(ay.getMessage());
+
+            }
         }
     }
 
@@ -476,13 +432,28 @@ public final class Numericals {
 
     public static int getPivotColumn(double[][] system, int k) {
         int N = system.length;
+
         int maxColIndex = k;
         int maxRowIndex;
 
         double maxNumber = -1;
+        /*RealMatrix matrix = MatrixUtils.createRealMatrix(system);
 
+        for (int a = k; a < N; a++) {
+            double[] col = matrix.getColumn(a);
+            for (int b = 0; b < col.length; b++) {
+                if (col[b] > maxNumber) {
+                    maxNumber = col[b];
+                    maxColIndex = a;
+                }
+            }
+        }
+
+
+        /*try {*/
         for (int i = k; i < N; i++) {
             for (int j = k; j < N; j++) {
+                System.out.println("Working on system[" + (i + 1) + "][" + (j + 1) + "]. Which is " + system[i][j]);
                 if (system[i][j] > maxNumber) {
                     maxRowIndex = i;
                     maxColIndex = j;
@@ -490,6 +461,7 @@ public final class Numericals {
                 }
             }
         }
+        System.out.println();
 
         return maxColIndex;
     }
@@ -500,6 +472,12 @@ public final class Numericals {
                 System.out.print(system[rowIndex][columnIndex] + " ");
             }
             System.out.println();
+        }
+    }
+
+    private static void printMatrix(double system[]) {
+        for (int columnIndex = 0; columnIndex < system.length; columnIndex++) {
+            System.out.println(system[columnIndex] + " ");
         }
     }
 

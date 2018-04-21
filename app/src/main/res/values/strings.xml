@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Numerical Methods</string>
     <string name="remarks">Numerical Methods and Computations</string>
-    <string name="footer_text">Algorithms implementation!!</string>
+    <string name="footer_text">...and Computations</string>
     <string name="app_description">Implementation of algorithms</string>
     <string name="description_text">Operation List</string>
     <string name="dec_frac_tobinary">1. Decimal to Binary (Fractional Part Only)</string>
@@ -36,6 +36,11 @@
     <string name="iterations">Iterations</string>
     <string name="exit">Exit</string>
     <string name="cont">Continue...</string>
+    <string name="loc_of_rooots">Location of Roots</string>
+    <string name="sys_of_eqns">Sys of Equations</string>
+    <string name="number_conversions">Converter</string>
+    <string name="ordinary_diff_eqn">Ord. Diff. Eqns (ODE)</string>
+    <string name="show_algorithm">Show Algorithm</string>
 
 
     <string-array name="main_menu">

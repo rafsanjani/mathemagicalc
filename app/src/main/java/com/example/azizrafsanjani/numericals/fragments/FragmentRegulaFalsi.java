@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +30,7 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
 
     View rootView;
     ViewGroup viewGroup;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
         return rootView;
     }
 
-    public void initControls(){
+    public void initControls() {
         Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
         Button btnBack = rootView.findViewById(R.id.btnBack);
         EditText etEquation = rootView.findViewById(R.id.text_equation);
@@ -50,16 +50,16 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
         etEquation.addTextChangedListener(this);
 
 
-
-        viewGroup = (LinearLayout)rootView.findViewById(R.id.parentContainer);
-        MainActivity.setToolBarInfo("Location of Roots","False Position");
+        viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
+        MainActivity.setToolBarInfo("Location of Roots", "False Position");
     }
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.btnBack:
-                Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(),
+                        R.id.fragmentContainer, true);
                 break;
 
             case R.id.btnCalculate:
@@ -79,7 +79,7 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
 
         TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
-        try{
+        try {
             String eqn = etEquation.getText().toString();
             Double x0 = Double.valueOf(etX0.getText().toString());
             Double x1 = Double.valueOf(etX1.getText().toString());
@@ -90,26 +90,26 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
             double root = 0.00;
 
             try {
-                root =  Numericals.FalsePosition(eqn, x0, x1, iter, tol);
+                root = Numericals.FalsePosition(eqn, x0, x1, iter, tol);
 
-                if(Double.isNaN(root) || Double.isInfinite(root)){
-                    Toast.makeText(getContext(),"Syntax Error: Please check equation", Toast.LENGTH_LONG).show();
-                    Log.i(Utilities.Log,"Syntax error, unable to evaluate expression");
+                if (Double.isNaN(root) || Double.isInfinite(root)) {
+                    Toast.makeText(getContext(), "Syntax Error: Please check equation", Toast.LENGTH_LONG).show();
+                    Log.i(Utilities.Log, "Syntax error, unable to evaluate expression");
                     return;
                 }
 
                 tvAnswer.setText(String.valueOf(root));
                 Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
-            }catch (IllegalArgumentException ex){
-                Toast.makeText(getContext(),ex.getMessage(), Toast.LENGTH_LONG).show();
+            } catch (IllegalArgumentException ex) {
+                Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
             } finally {
                 MainActivity.hideKeyboard(etEquation);
             }
 
 
-        }catch(NumberFormatException ex){
-            Toast.makeText(getContext(),"Invalid equation", Toast.LENGTH_LONG).show();
-            Log.i(Utilities.Log,"One or more of the input values are invalid");
+        } catch (NumberFormatException ex) {
+            Toast.makeText(getContext(), "Invalid equation", Toast.LENGTH_LONG).show();
+            Log.i(Utilities.Log, "One or more of the input values are invalid");
         }
     }
 
@@ -126,12 +126,12 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
 
     @Override
     public void afterTextChanged(Editable editable) {
-       onEquationChanged();
+        onEquationChanged();
     }
 
     private void onEquationChanged() {
         TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
-       Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
     }
 }

@@ -67,7 +67,7 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btnBack:
-                Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer, false);
                 break;
 
             case R.id.btnCalculate:

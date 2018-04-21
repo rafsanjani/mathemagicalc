@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -66,12 +67,17 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
         btnCalculate.setOnClickListener(this);
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonBack:
-                Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(this, new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.buttonCalculate:
@@ -111,6 +117,9 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
             tvAnswer.setText(binary);
 
             Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            if (rootView.findViewById(R.id.textview_answer).getVisibility() == View.VISIBLE) {
+
+            }
 
         } catch (NumberFormatException ex) {
             Log.i(Utilities.Log, "cannot parse " + decimal + " to a double value");

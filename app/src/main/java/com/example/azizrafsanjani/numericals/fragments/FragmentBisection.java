@@ -65,7 +65,7 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btnBack:
-                Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.btnCalculate:

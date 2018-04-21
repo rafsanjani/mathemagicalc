@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.utils.CustomDialog;
+
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
 /**
@@ -151,10 +151,6 @@ public class FragmentEquationsMenu extends Fragment implements AdapterView.OnIte
     }
 
     public void onSource() {
-        CustomDialog dialog = new CustomDialog();
 
-        String msg = "";
-        dialog.setMessage(msg);
-        dialog.show(getActivity().getFragmentManager(), "NoticeDialogFragment");
     }
 }

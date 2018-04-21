@@ -2,44 +2,32 @@
 
 
     <style name="AppMaterialTheme" parent="BaseTheme">
-
+        <item name="android:textColor">@color/textColorPrimary</item>
     </style>
 
     <!-- Base application theme. -->
 
-    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="BaseTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>33
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-
-        <item name="colorControlHighlight">@color/colorControlHighlight</item>
         <item name="colorButtonNormal">@color/colorButtonNormal</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:textColorHint">@color/textColorPrimary</item>
-        <item name ="actionModeStyle">@style/MyActionMode</item>
-
-        <item name="android:textColor">@color/textColorPrimary</item>
     </style>
 
-    <style name="SourceDialog" parent="@style/Theme.AppCompat.Dialog">
-        <item name="android:windowAnimationStyle">@style/SourceDialogAnimation</item>
-    </style>
 
-    <style name="SourceDialogAnimation">
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
-    </style>
-    <style name="MyActionMode" parent = "@style/Widget.AppCompat.ActionBar">
-        <item name="background">@color/contextualBackground</item>
-        <item name="titleTextStyle">@style/MyTextStyle</item>
-
-    </style>
-    
-    <style name="MyTextStyle" parent = "TextAppearance.AppCompat.Widget.ActionBar.Title">
+    <style name="AppTheme.FooterText" parent="TextAppearance.AppCompat">
+        <item name="android:background">@color/colorMainBackground</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
 
     </style>
 
-    <style name="AnswerStyle" parent = "TextAppearance.AppCompat.Widget.ActionMode.Title" >
+    <style name="AnswerStyle" parent="TextAppearance.AppCompat.Widget.ActionMode.Title">
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/answerColor</item>
     </style>
@@ -63,16 +51,18 @@
     </style>
 
 
-    <style name="MyButtonStyle">
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginRight">10dp</item>
-        <item name="android:layout_marginTop">1dp</item>
-        <item name="android:layout_marginBottom">1dp</item>
+    <style name="AppMaterialTheme.ButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
         <item name="android:textColor">@color/colorButtonText</item>
     </style>
 
-    <style name = "MatrixInputStyle">
+    <style name="AppMaterialTheme.ButtonStyle.Exit">
+        <item name="android:textColor">#aca3a0</item>
+    </style>
+
+    <style name="MatrixInputStyle">
         <item name="android:inputType">numberSigned|numberDecimal</item>
 
         <item name="android:layout_width">@dimen/matrix_elements_width</item>
