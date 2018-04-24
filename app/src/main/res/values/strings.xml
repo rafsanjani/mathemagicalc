@@ -21,7 +21,7 @@
     <string name="decimal_to_binary_title">Decimal to Binary converter</string>
     <string name="decimal_to_binary_subtitle">Convert Decimal Fractions To Binary</string>
     <string name="title_activity_private_activity">private_activity</string>
-    <string name="dec_to_bin_desc">Converts a decimal number (n) to it\'s equivalent binary number where 1 > n > 0 </string>
+    <string name="dec_to_bin_frac_desc">Converts a decimal number (n) to it\'s equivalent binary number where 1 > n > 0 </string>
     <string name="enter_binary_number">Enter a decimal fraction (eg 0.123): </string>
     <string name="dec_to_bin_int_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N >= 1 </string>
     <string name="enter_decimal_int">Enter a decimal Integer (eg 30)</string>

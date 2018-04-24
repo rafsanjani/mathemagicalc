@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.transitionseverywhere.TransitionManager;
@@ -26,10 +25,10 @@ public final class Utilities {
 
     public static void replaceFragment(Fragment current, Fragment next, FragmentManager fragmentManager, int containerViewId, boolean isGoingBack) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-                if(!isGoingBack)
-                    transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                else
-                    transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        if (!isGoingBack)
+            transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+        else
+            transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
         //Fade enterFade = new Fade();
         //enterFade.setDuration(500);
 
@@ -37,6 +36,7 @@ public final class Utilities {
         transaction.replace(containerViewId, next);
         transaction.commit();
     }
+
     public static void replaceFragment(Fragment current, Fragment next, FragmentManager fragmentManager, int containerViewId) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fade enterFade = new Fade();
@@ -76,6 +76,9 @@ public final class Utilities {
                 break;
         }
     }
+
+
+
 
 
     public enum DisplayMode {

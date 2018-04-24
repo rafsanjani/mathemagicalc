@@ -1,8 +1,12 @@
 package com.example.azizrafsanjani.numericals.fragments;
 
+import android.app.AlertDialog;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -19,14 +23,19 @@ import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
 import com.example.azizrafsanjani.numericals.utils.Numericals;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 
-public class FragmentDecToBinInt extends Fragment implements Button.OnClickListener, View.OnKeyListener, TextWatcher {
+/**
+ * Created by Aziz Rafsanjani on 11/4/2017.
+ */
+
+public class FragmentDecToBinInt extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_dec_to_bin_int, container, false);
         MainActivity.setToolBarInfo("Decimal Calculator", "Convert decimals to binary");
 
@@ -35,49 +44,71 @@ public class FragmentDecToBinInt extends Fragment implements Button.OnClickListe
     }
 
     private void initControls() {
-        Button button = rootView.findViewById(R.id.buttonBack);
+        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
+        TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
+        tvAnswer.setTypeface(typeface);
+
+        Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
         EditText etInput = rootView.findViewById(R.id.text_user_input);
 
-        etInput.addTextChangedListener(this);
+//        rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
+                    return true;
                 }
-                return true;
+                return false;
             }
         });
 
-        etInput.setOnKeyListener(this);
+        etInput.addTextChangedListener(this);
 
-        button.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
         btnCalculate.setOnClickListener(this);
+    }
 
-
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonBack:
-                Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(), R.id.fragmentContainer);
-
+                Utilities.replaceFragment(this, new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.buttonCalculate:
-
                 onCalculate();
                 break;
+
+            /*case R.id.show_all:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View detailsView = View.inflate(getContext(), R.layout.number_conversion_details, null);
+
+
+                builder.setView(detailsView)
+                        .create();
+                builder.show();
+
+                ExpandableTextView expTv1 = detailsView.findViewById(R.id.expand_text_view);
+                expTv1.setText(rawBinary);
+                break;*/
         }
     }
 
-    public void onCalculate() {
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
+    String rawBinary;
 
+    private void onCalculate() {
+        boolean isAnswerTruncated = false;
+        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
@@ -89,37 +120,43 @@ public class FragmentDecToBinInt extends Fragment implements Button.OnClickListe
         try {
             int decInt = Integer.parseInt(decimal);
 
-            if (decInt < 1) {
-                Toast.makeText(getContext(), "Number should be greater than 1", Toast.LENGTH_LONG).show();
+            if (decInt < 1 ) {
+                Toast.makeText(getContext(), "Number should be equal to or greater than 1", Toast.LENGTH_LONG).show();
                 return;
             }
 
-
             String binary = Numericals.DecimalIntToBinary(decInt);
+            Log.i("TAG", ""+binary.length());
 
-            if (binary.length() >= 21) {
+            //keep a reference in case user wants to display all
+            rawBinary = binary;
+
+           /* if (binary.length() >= 20) {
                 binary = binary.substring(0, 20);
                 Toast.makeText(getContext(), "Answer truncated to 20 significant figures", Toast.LENGTH_LONG).show();
-            }
+                isAnswerTruncated = true;
+            }*/
 
-            tvAnswer.setText(binary);
-            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            tvAnswer.setText(rawBinary);
+
+            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+                    (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+
+            //rootView.findViewById(R.id.show_all).setVisibility(isAnswerTruncated ? View.VISIBLE : View.GONE);
+
 
         } catch (NumberFormatException ex) {
             Log.i(Utilities.Log, "cannot parse " + decimal + " to a double value");
+            Toast.makeText(getContext(), "Number entered isn't an integer", Toast.LENGTH_SHORT).show();
+
+            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+                    (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+            
         } finally {
             MainActivity.hideKeyboard(etInput);
         }
     }
 
-    @Override
-    public boolean onKey(View view, int i, KeyEvent keyEvent) {
-        if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-            onCalculate();
-            return true;
-        }
-        return false;
-    }
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -134,7 +171,7 @@ public class FragmentDecToBinInt extends Fragment implements Button.OnClickListe
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.textview_answer),
+            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }

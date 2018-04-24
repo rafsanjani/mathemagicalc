@@ -1,5 +1,6 @@
 package com.example.azizrafsanjani.numericals.fragments;
 
+import android.app.AlertDialog;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,6 +23,7 @@ import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
 import com.example.azizrafsanjani.numericals.utils.Numericals;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -43,12 +45,14 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
     private void initControls() {
         Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
+        TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
         tvAnswer.setTypeface(typeface);
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
         EditText etInput = rootView.findViewById(R.id.text_user_input);
+
+//        rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -83,13 +87,28 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
             case R.id.buttonCalculate:
                 onCalculate();
                 break;
+
+            /*case R.id.show_all:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View detailsView = View.inflate(getContext(), R.layout.number_conversion_details, null);
+
+
+                builder.setView(detailsView)
+                        .create();
+                builder.show();
+
+                ExpandableTextView expTv1 = detailsView.findViewById(R.id.expand_text_view);
+                expTv1.setText(rawBinary);
+                break;*/
         }
     }
 
-    private void onCalculate() {
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
+    String rawBinary;
 
+    private void onCalculate() {
+        boolean isAnswerTruncated = false;
+        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
@@ -106,20 +125,24 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
                 return;
             }
 
-
             String binary = Numericals.DecimalToBinary(decDouble);
 
-            if (binary.length() >= 20) {
+            //keep a reference in case user wants to display all
+            rawBinary = binary;
+
+           /* if (binary.length() >= 20) {
                 binary = binary.substring(0, 20);
                 Toast.makeText(getContext(), "Answer truncated to 20 significant figures", Toast.LENGTH_LONG).show();
-            }
+                isAnswerTruncated = true;
+            }*/
 
-            tvAnswer.setText(binary);
+            tvAnswer.setText(rawBinary);
 
-            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-            if (rootView.findViewById(R.id.textview_answer).getVisibility() == View.VISIBLE) {
+            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+                    (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
-            }
+            //rootView.findViewById(R.id.show_all).setVisibility(isAnswerTruncated ? View.VISIBLE : View.GONE);
+
 
         } catch (NumberFormatException ex) {
             Log.i(Utilities.Log, "cannot parse " + decimal + " to a double value");
@@ -142,7 +165,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.textview_answer),
+            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }
