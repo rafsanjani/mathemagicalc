@@ -1,6 +1,7 @@
 package com.example.azizrafsanjani.numericals.activities;
 
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,17 +13,19 @@ import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
+import com.example.azizrafsanjani.numericals.dialog.OperationListDialog;
 import com.example.azizrafsanjani.numericals.fragments.FragmentMainMenu;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnKeyListener {
+public class MainActivity extends AppCompatActivity implements View.OnKeyListener, View.OnClickListener {
 
 
     static Toolbar toolbar;
@@ -106,4 +109,22 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         return true;
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.menuExit:
+                Log.i(Utilities.Log, "closing");
+                finish();
+                break;
+        }
+    }
+
+    public void onExit(MenuItem item) {
+        finish();
+    }
+
+    public void onGoToOperation(MenuItem item) {
+        Dialog dialog = new OperationListDialog(this);
+        dialog.show();
+    }
 }

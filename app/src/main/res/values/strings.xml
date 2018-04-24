@@ -61,12 +61,24 @@
         <item>1. Decimal to Binary (Fractions)</item>
         <item>2. Decimal to Binary (Integers)</item>
         <item>3. Decimal to Binary (Any Number)</item>
-        <item>4. Location Of Roots (Bisection)</item>
-        <item>5. Location Of Roots (Newton Raphson)</item>
-        <item>6. Location Of Roots (Regula Falsi) </item>
-        <item>7. Location Of Roots (Secante)</item>
-        <item>8. System of Equations</item>
-        <item>9. Ordinary Differential Equations</item>
+        <item>4. Binary to Decimal</item>
+        <item>5. Decimal to Hexadecimal</item>
+        <item>6. Decimal to Octal</item>
+        <item>7. Location Of Roots (Bisection)</item>
+        <item>8. Location Of Roots (Newton Raphson)</item>
+        <item>9. Location Of Roots (Regula Falsi) </item>
+        <item>10. Location Of Roots (Secante)</item>
+        <item>11. System of Equations (3 x 3) Partial Pivoting</item>
+        <item>12. System of Equations (3 x 3) Complete Pivoting</item>
+        <item>13. System of Equations (4 x 4) Partial Pivoting</item>
+        <item>14. System of Equations (4 x 4) Complete Pivoting</item>
+        <item>15. System of Equations (Gauss Seidel)</item>
+        <item>16. System of Equations (Gauss Seidel with SOR)</item>
+        <item>17. System of Equations (Jacobi's iterative method)</item>
+        <item>18. Ordinary Differential Equations</item>
+        <item>19. Interpolation</item>
+        <item>20. Numerical Interpolation</item>
+        <item>21. Numerical Differentiation</item>
     </string-array>
 
 </resources>

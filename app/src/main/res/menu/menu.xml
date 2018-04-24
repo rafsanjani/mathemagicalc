@@ -3,11 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:title="Go to operation...."
+        android:onClick="onGoToOperation"
         app:showAsAction="never" />
     <item
         android:title="Settings"
         app:showAsAction="never" />
     <item
+        android:id="@+id/menuExit"
+        android:onClick="onExit"
         android:title="Exit"
         app:showAsAction="never" />
 </menu>
