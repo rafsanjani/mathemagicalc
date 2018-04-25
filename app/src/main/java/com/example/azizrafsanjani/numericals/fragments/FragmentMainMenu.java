@@ -180,7 +180,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
                 break;
             case R.id.btn_number_conversion:
                 Fragment fragment = new FragmentConversionsMenu();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer, false);
+                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
         }
 

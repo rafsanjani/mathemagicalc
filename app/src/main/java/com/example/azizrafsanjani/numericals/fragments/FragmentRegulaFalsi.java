@@ -58,7 +58,7 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnBack:
-                Utilities.replaceFragment(this, new FragmentMainMenu(), getFragmentManager(),
+                Utilities.replaceFragment( new FragmentMainMenu(), getFragmentManager(),
                         R.id.fragmentContainer, true);
                 break;
 

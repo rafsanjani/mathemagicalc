@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
         if (!(f instanceof FragmentMainMenu)) {
             //transition between the open fragment and mainmenu
-            Utilities.replaceFragment(f, new FragmentMainMenu(), getSupportFragmentManager(), R.id.fragmentContainer, true);
+            Utilities.replaceFragment( new FragmentMainMenu(), getSupportFragmentManager(), R.id.fragmentContainer, true);
             return;
         }
 
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     }
 
     public void onGoToOperation(MenuItem item) {
-        Dialog dialog = new OperationListDialog(this);
-        dialog.show();
+        OperationListDialog dialog = new OperationListDialog();
+        dialog.show(getFragmentManager(), "Fragment dialog");
     }
 }

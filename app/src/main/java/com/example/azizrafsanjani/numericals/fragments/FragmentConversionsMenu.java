@@ -71,17 +71,17 @@ public class FragmentConversionsMenu extends Fragment implements View.OnClickLis
         switch (view.getId()) {
             case R.id.btn_dec_to_binary_integer:
                 fragment = new FragmentDecToBinInt();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer, false);
+                Utilities.replaceFragment( fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
 
             case R.id.btn_dec_to_binary_fraction:
                 fragment = new FragmentDecToBinFrac();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer, false);
+                Utilities.replaceFragment( fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
 
             case R.id.btn_dec_to_binary_any_number:
                 fragment = new FragmentDecToBin();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer, false);
+                Utilities.replaceFragment( fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
         }
     }

@@ -21,9 +21,9 @@ import com.transitionseverywhere.extra.Scale;
 
 public final class Utilities {
 
-    public static final String Log = "Numericals";
+    public static final String Log = "TAG";
 
-    public static void replaceFragment(Fragment current, Fragment next, FragmentManager fragmentManager, int containerViewId, boolean isGoingBack) {
+    public static void replaceFragment(Fragment next, FragmentManager fragmentManager, int containerViewId, boolean isGoingBack) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if (!isGoingBack)
             transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -37,7 +37,7 @@ public final class Utilities {
         transaction.commit();
     }
 
-    public static void replaceFragment(Fragment current, Fragment next, FragmentManager fragmentManager, int containerViewId) {
+    public static void replaceFragment(Fragment next, FragmentManager fragmentManager, int containerViewId) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fade enterFade = new Fade();
         enterFade.setDuration(300);

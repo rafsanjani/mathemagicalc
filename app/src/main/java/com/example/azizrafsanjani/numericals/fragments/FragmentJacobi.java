@@ -102,7 +102,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnBack:
-                Utilities.replaceFragment(this, new FragmentEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+                Utilities.replaceFragment( new FragmentEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.btnCalculate:

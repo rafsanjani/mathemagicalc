@@ -53,7 +53,7 @@ public class FragmentGaussian4x4 extends Fragment implements View.OnClickListene
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.buttonBack:
-                Utilities.replaceFragment(this, new FragmentMainMenu(),getFragmentManager(),R.id.fragmentContainer);
+                Utilities.replaceFragment( new FragmentMainMenu(),getFragmentManager(),R.id.fragmentContainer);
                 break;
 
             case R.id.buttonCalculate:

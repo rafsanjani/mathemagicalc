@@ -9,10 +9,6 @@ import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Created by Aziz Rafsanjani on 11/2/2017.
  */
@@ -297,8 +293,6 @@ public final class Numericals {
 
         return solution;
     }
-
-
 
 
     public static double[][] multiplyMatrix(double[][] A, double[][] B) {
@@ -628,6 +622,21 @@ public final class Numericals {
             return GaussSeidelWithSOR(system, iSolution, epsilon, omega);
         }
 
+    }
+
+    //get the number of iterations required using the tolerance given
+    public static int getIterations(double tolerance, double x1, double x2) {
+       double iterations = (Math.log(x2 - x1) - Math.log(tolerance))/Math.log(2);
+
+        return Math.round((float) iterations);
+    }
+
+
+    //get the tolerance level required using the number of iterations given
+    public static double getTolerance(int iterations, double x1, double x2) {
+        double tolerance = (x2 - x1)/Math.pow(2, iterations);
+
+        return tolerance;
     }
 
     private static void printArray(double[] array) {

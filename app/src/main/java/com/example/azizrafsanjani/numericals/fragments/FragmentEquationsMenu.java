@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
-
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
 /**
@@ -127,26 +126,24 @@ public class FragmentEquationsMenu extends Fragment implements AdapterView.OnIte
         switch (selectedItem) {
             case 0:
                 fragment = new FragmentGaussianPartial3x3();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             case 1:
                 fragment = new FragmentGaussianComplete3x3();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             case 2:
                 fragment = new FragmentJacobi();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             case 3:
                 fragment = new FragmentGaussSeidel();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
             case 4:
                 fragment = new FragmentGaussSeidelWithSOR();
-                Utilities.replaceFragment(this, fragment, getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
                 break;
-
-
         }
     }
 

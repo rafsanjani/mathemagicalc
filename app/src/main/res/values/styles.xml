@@ -2,7 +2,11 @@
 
 
     <style name="AppMaterialTheme" parent="BaseTheme">
-        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="editTextStyle">@style/AppMaterialTheme.EditTextStyle</item>
+    </style>
+
+    <style name="AppMaterialTheme.EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item  name="android:textColor">@color/textColorSecondary</item>
     </style>
 
     <!-- Base application theme. -->
@@ -13,6 +17,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorButtonNormal">@color/colorButtonNormal</item>
         <item name="windowActionModeOverlay">true</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/textColorPrimary</item>
     </style>
 

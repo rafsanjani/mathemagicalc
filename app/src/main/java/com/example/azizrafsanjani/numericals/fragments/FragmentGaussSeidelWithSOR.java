@@ -108,7 +108,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnBack:
-                Utilities.replaceFragment(this, new FragmentEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment( new FragmentEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
                 break;
 
             case R.id.btnCalculate:

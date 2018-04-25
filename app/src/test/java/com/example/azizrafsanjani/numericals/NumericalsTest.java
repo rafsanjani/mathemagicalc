@@ -6,6 +6,7 @@ package com.example.azizrafsanjani.numericals;
 
 
 import com.example.azizrafsanjani.numericals.utils.Numericals;
+import com.example.azizrafsanjani.numericals.utils.Utilities;
 
 import org.junit.Test;
 
@@ -29,6 +30,30 @@ public class NumericalsTest {
             System.out.print(B[rowIndex]);
             System.out.println();
         }
+    }
+
+    @Test
+    public  void testIterationsWithtolerance(){
+        double x1 = -2;
+        double x2 = -1;
+        double tol = 0.0039;
+
+        int iterations = Numericals.getIterations(tol, x1, x2);
+        System.out.println(iterations);
+
+        assertEquals(iterations, 8);
+    }
+
+    @Test
+    public void testToleranceWithIterations(){
+        double x1 = -2;
+        double x2 = -1;
+        int iterations = 8;
+
+        double tolerance = Numericals.getTolerance(iterations, x1, x2);
+
+        assertEquals(tolerance, 0.00390625);
+
     }
 
     private static void printMatrix(double system[]) {
