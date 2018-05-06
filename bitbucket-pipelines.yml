@@ -15,4 +15,4 @@ pipelines:
           # https://docs.gradle.org/current/userguide/gradle_wrapper.html
           - bash ./gradlew build
           
-          deployment: test
+        deployment: test
