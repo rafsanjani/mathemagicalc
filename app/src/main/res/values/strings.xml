@@ -28,7 +28,7 @@
     <string name="enter_decimal">Enter a decimal Integer (eg 30 or 30.53)</string>
     <string name="decimal_to_bin_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N > 0 </string>
     <string name="bisection_desc">Locate the root of an equation of the form f(x) = 0</string>
-    <string name="bisection_enter_eqn">Equation to evaluate (eg "f(x) = 2*x^3 + 2")</string>
+    <string name="bisection_enter_eqn">Equation to evaluate [eg "f(x) = 2*x^3 + 2"]</string>
     <string name="system_of_equations">8. System of equations</string>
     <string name="credits_group_members">9. Credits (Group Members List)</string>
     <string name="group_members">Group Members</string>
@@ -41,6 +41,14 @@
     <string name="number_conversions">Converter</string>
     <string name="ordinary_diff_eqn">Ord. Diff. Eqns (ODE)</string>
     <string name="show_algorithm">Show Algorithm</string>
+    <string name="stopping_criteria">Stopping Criteria</string>
+    <string name="initial_guess">Initial Guess:</string>
+    <string name="back_to_location_of_roots_menu">Back to lOR Menu</string>
+    <string name="empty_answer">0.000000</string>
+    <string name="x1">x1</string>
+    <string name="x0">x0</string>
+    <string name="header_bisection">Bisection Method</string>
+    <string name="show_iterations">show iterations</string>
 
 
     <string-array name="main_menu">
@@ -68,15 +76,14 @@
         <item>8. Location Of Roots (Newton Raphson)</item>
         <item>9. Location Of Roots (Regula Falsi) </item>
         <item>10. Location Of Roots (Secante)</item>
-        <item>11. System of Equations (3 x 3) Partial Pivoting</item>
-        <item>12. System of Equations (3 x 3) Complete Pivoting</item>
-        <item>13. System of Equations (4 x 4) Partial Pivoting</item>
-        <item>14. System of Equations (4 x 4) Complete Pivoting</item>
-        <item>15. System of Equations (Gauss Seidel)</item>
-        <item>16. System of Equations (Gauss Seidel with SOR)</item>
-        <item>17. System of Equations (Jacobi's iterative method)</item>
+        <item>11. Sys of Eqns (3 x 3) Partial Pivoting</item>
+        <item>12. Sys of Eqns (3 x 3) Complete Pivoting</item>
+        <item>13. Sys of Eqns (4 x 4) Partial Pivoting</item>
+        <item>14. Sys of Eqns (4 x 4) Complete Pivoting</item>
+        <item>15. Sys of Eqns (Gauss Seidel)</item>
+        <item>16. Sys of Eqns (Gauss Seidel with SOR)</item>
+        <item>17. Sys of Eqns (Jacobi)</item>
         <item>18. Ordinary Differential Equations</item>
-        <item>19. Interpolation</item>
         <item>20. Numerical Interpolation</item>
         <item>21. Numerical Differentiation</item>
     </string-array>

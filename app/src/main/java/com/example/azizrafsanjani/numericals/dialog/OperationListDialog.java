@@ -1,5 +1,6 @@
 package com.example.azizrafsanjani.numericals.dialog;
 
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -13,22 +14,34 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.fragments.FragmentBisection;
-import com.example.azizrafsanjani.numericals.fragments.FragmentDecToBin;
-import com.example.azizrafsanjani.numericals.fragments.FragmentDecToBinFrac;
-import com.example.azizrafsanjani.numericals.fragments.FragmentDecToBinInt;
-import com.example.azizrafsanjani.numericals.fragments.FragmentNewtonRaphson;
+import com.example.azizrafsanjani.numericals.adapter.MyListAdapter;
+import com.example.azizrafsanjani.numericals.fragments.roots.FragmentBisection;
+import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToBin;
+import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToBinFrac;
+import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToBinInt;
+import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussianComplete3x3;
+import com.example.azizrafsanjani.numericals.fragments.roots.FragmentNewtonRaphson;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
-public class OperationListDialog extends DialogFragment implements ListView.OnItemSelectedListener, AdapterView.OnItemClickListener {
+public class OperationListDialog extends DialogFragment implements AdapterView.OnItemClickListener {
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //initialize all view items
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Dialog dialog = getDialog();
+        if (dialog != null) {
+            int width = ViewGroup.LayoutParams.MATCH_PARENT;
+            int height = ViewGroup.LayoutParams.MATCH_PARENT;
+            dialog.getWindow().setLayout(width, height);
+        }
     }
 
     private FragmentActivity myContext;
@@ -51,7 +64,7 @@ public class OperationListDialog extends DialogFragment implements ListView.OnIt
     private void onInit() {
         String[] operationStringList = getActivity().getResources().getStringArray(R.array.main_menu_legacy);
         ListView operationList = rootView.findViewById(R.id.operationList);
-        ArrayAdapter<String> operationListAdapter = new ArrayAdapter<>(getActivity(), R.layout.list_item,
+        ArrayAdapter<String> operationListAdapter = new MyListAdapter(getActivity(), R.layout.list_item,
                 operationStringList);
 
         operationList.setAdapter(operationListAdapter);
@@ -59,49 +72,10 @@ public class OperationListDialog extends DialogFragment implements ListView.OnIt
         operationList.setOnItemClickListener(this);
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch (position) {
-            case 1:
-                Utilities.replaceFragment(new FragmentDecToBinFrac(), myContext.getSupportFragmentManager(), R.id.fragmentContainer);
-                break;
-
-
-            case 2:
-
-                break;
-
-            case 3:
-
-                break;
-
-            case 4:
-
-                break;
-
-
-            case 5:
-                break;
-
-            case 6:
-
-                break;
-
-
-            case 7:
-
-                break;
-        }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        switch (position) {
+        switch (position+1) {
             case 1:
                 Utilities.replaceFragment(new FragmentDecToBinFrac(), myContext.getSupportFragmentManager(), R.id.fragmentContainer);
                 break;
@@ -124,12 +98,17 @@ public class OperationListDialog extends DialogFragment implements ListView.OnIt
 
                 break;
 
-            case 6:
+            case 7:
                 Utilities.replaceFragment(new FragmentBisection(), myContext.getSupportFragmentManager(), R.id.fragmentContainer);
                 break;
 
-            case 7:
+            case 8:
                 Utilities.replaceFragment(new FragmentNewtonRaphson(), myContext.getSupportFragmentManager(), R.id.fragmentContainer);
+                break;
+
+
+            case 12:
+                Utilities.replaceFragment(new FragmentGaussianComplete3x3(), myContext.getSupportFragmentManager(), R.id.fragmentContainer);
                 break;
         }
         dismiss();

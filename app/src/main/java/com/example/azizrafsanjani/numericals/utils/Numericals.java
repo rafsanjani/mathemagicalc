@@ -9,6 +9,10 @@ import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Aziz Rafsanjani on 11/2/2017.
  */
@@ -21,6 +25,7 @@ public final class Numericals {
      * @return string a string representation of the binary equivalent of the supplied decimal numeral
      */
     public static String DecimalIntToBinary(int dec) {
+
         int Nk = dec;
         StringBuilder binary = new StringBuilder();
 
@@ -119,6 +124,7 @@ public final class Numericals {
         return bk;
     }
 
+
     /***
      * Computes the roots of an equation using the bisection method
      * @param expr  an expression of the form f(x) = 0
@@ -129,7 +135,6 @@ public final class Numericals {
      * @return double
      */
     public static double Bisect(String expr, double x1, double x2, int iterations, double tol) {
-
         if (iterations < 1)
             return 0;
 
@@ -161,6 +166,49 @@ public final class Numericals {
             return Bisect(expr, x3, x2, --iterations, tol);
     }
 
+    public static List<Double> BisectAll(String expr, double x1, double x2, int iterations, double tol) {
+        double x3 = 0;
+        List<Double> results = new ArrayList<>();
+
+        while (iterations > 0) {
+            x3 = (x1 + x2) / 2;
+            results.add(x3);
+
+            double tolValue = Math.abs(x1 - x2) / 2;
+
+            //a mathematical function of the form f(x) = 0
+            Function fx;
+
+            //is our approximated root less than or equal to the tolerance limit or are we out of moves?
+            if (tolValue <= tol || iterations == 1)
+                break;
+
+            if (expr.contains("f(x)"))
+                fx = new Function(expr);
+            else
+                fx = new Function(String.format("f(x) = %s", expr));
+
+            double fx1 = fx.calculate(x1);
+            double fx3 = fx.calculate(x3);
+
+            //the root lies in the left part of the boundary
+            if (fx1 * fx3 < 0) {
+                x2 = x3;
+                x1 = x1;
+            }
+            //return Bisect(expr, x1, x3, --iterations, tol);
+            else {
+                x1 = x3;
+                x2 = x2;
+            }
+            //the root lies in the right part of the boundary
+            // return Bisect(expr, x3, x2, --iterations, tol);
+            --iterations;
+        }
+
+        return results;
+    }
+
     /***
      * Computes the root of an equation of the form f(x) = 0 using the Newton - Raphson Forumula
      * @param expr a function of the form f(x) = 0
@@ -169,7 +217,6 @@ public final class Numericals {
      * @return double
      */
     public static Double NewtonRaphson(String expr, double x1, int maxIterations) {
-        //TODO: Newton Raphson method goes here
         if (maxIterations < 1) {
             return 0.00;
         }
@@ -226,7 +273,9 @@ public final class Numericals {
         double x2 = x1 - ((x1 - x0) / (fx1 - fx0));
         fx2 = fx.calculate(x2);
 
-        if (maxIterations == 1)
+        double tolValue = (x2 - x1) / x1;
+
+        if (maxIterations == 1 || tol <= tolValue)
             return x2;
 
         if ((fx0 * fx2) < 0)
@@ -595,8 +644,7 @@ public final class Numericals {
                 throw new IllegalArgumentException("Syntax Error, Please check expression");
         }
 
-        //print out the solution vector
-        Log.i(Utilities.Log, "The solution vector is given as");
+
         printArray(iSolution);
 
         double[] difference = new double[3];
@@ -604,7 +652,7 @@ public final class Numericals {
             difference[i] = iSolution[i] - initGuess[i];
         }
 
-        Log.i(Utilities.Log, "The difference vector is given as:");
+//        Log.i(Utilities.Log, "The difference vector is given as:");
         printArray(difference);
 
         //infinite norm of the difference of kth and (k - 1)th iterate
@@ -624,9 +672,14 @@ public final class Numericals {
 
     }
 
+    public static int BinaryToDecimal(String binaryNumber) {
+        BigInteger num = new BigInteger(binaryNumber, 2);
+        return num.intValue();
+    }
+
     //get the number of iterations required using the tolerance given
     public static int getIterations(double tolerance, double x1, double x2) {
-       double iterations = (Math.log(x2 - x1) - Math.log(tolerance))/Math.log(2);
+        double iterations = (Math.log(x2 - x1) - Math.log(tolerance)) / Math.log(2);
 
         return Math.round((float) iterations);
     }
@@ -634,17 +687,25 @@ public final class Numericals {
 
     //get the tolerance level required using the number of iterations given
     public static double getTolerance(int iterations, double x1, double x2) {
-        double tolerance = (x2 - x1)/Math.pow(2, iterations);
+        double tolerance = (x2 - x1) / Math.pow(2, iterations);
 
         return tolerance;
     }
 
     private static void printArray(double[] array) {
-        Log.i(Utilities.Log, "[ ");
-        for (int i = 0; i < array.length; i++) {
-            Log.i(Utilities.Log, array[i] + " ");
+
+    }
+
+    public static String generateTexEquation(String equation) {
+        if (equation.isEmpty()) {
+            return "";
         }
-        Log.i(Utilities.Log, "]");
+
+        StringBuilder str = new StringBuilder(equation.replace("*", "").trim());
+        str.insert(0, "$$");
+        str.append("$$");
+        return str.toString().toLowerCase();
+
     }
 
     public enum BinaryOperationType {
@@ -652,4 +713,6 @@ public final class Numericals {
         DecimalFraction,
         Mixed
     }
+
+
 }

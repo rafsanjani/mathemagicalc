@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMainBackground"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/header_margin_top"
+        android:text="Expansion of Iterations"
+        android:textAlignment="center"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerText"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="The results of each iteration step is given below"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp" />
+
+
+    <LinearLayout
+        android:id="@+id/lEquation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:gravity="center">
+
+        <katex.hourglass.in.mathlib.MathView
+            android:id="@+id/equation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#2a2f7c"
+            android:textSize="23sp"
+            app:setTextColor="#9c592c"
+            app:setTextSize="10sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/interval"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lEquation"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center"
+        android:textColor="#8f1c9e"
+        android:textSize="12sp" />
+
+
+    <ListView
+        android:id="@+id/resultList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttons"
+        android:layout_below="@id/interval" />
+
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonShowAlgo"
+            style="@style/AppMaterialTheme.ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/show_algorithm" />
+
+        <Button
+            android:id="@+id/buttonBack"
+            style="@style/AppMaterialTheme.ButtonStyle.Exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back to bisection"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>

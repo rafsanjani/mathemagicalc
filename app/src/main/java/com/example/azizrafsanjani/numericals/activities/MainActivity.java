@@ -1,7 +1,6 @@
 package com.example.azizrafsanjani.numericals.activities;
 
 
-import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
         if (!(f instanceof FragmentMainMenu)) {
             //transition between the open fragment and mainmenu
-            Utilities.replaceFragment( new FragmentMainMenu(), getSupportFragmentManager(), R.id.fragmentContainer, true);
+            Utilities.replaceFragment(new FragmentMainMenu(), getSupportFragmentManager(), R.id.fragmentContainer, true);
             return;
         }
 
@@ -124,7 +123,14 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     }
 
     public void onGoToOperation(MenuItem item) {
+        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
+        int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
+
+
         OperationListDialog dialog = new OperationListDialog();
+
+
         dialog.show(getFragmentManager(), "Fragment dialog");
+
     }
 }

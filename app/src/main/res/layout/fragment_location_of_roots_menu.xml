@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/colorMainBackground">
+
+    <TextView
+        android:id="@+id/Header"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/header_margin_top"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:text="Location of Roots"
+        android:textAlignment="center"
+        android:textSize="32sp"/>
+
+    <ScrollView
+        android:id="@+id/mainContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/Header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_loc_of_roots_bisection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_number_conversion_db_fractions"
+                    android:elevation="5dp"
+                    android:text="Bisection"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_loc_of_roots_newton_raphson"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_number_conversion_db_integers"
+                    android:elevation="5dp"
+                    android:text="Newton Raphson"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_loc_of_roots_false_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_number_conversion_db_anynumber"
+                    android:elevation="5dp"
+                    android:text="False Position (Reg. Falsi)"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_loc_of_roots_secante"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_number_conversion_db_bintodecimal"
+                    android:elevation="5dp"
+                    android:text="Secante"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

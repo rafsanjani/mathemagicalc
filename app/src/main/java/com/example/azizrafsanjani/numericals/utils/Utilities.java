@@ -1,6 +1,8 @@
 package com.example.azizrafsanjani.numericals.utils;
 
 
+import android.content.Context;
+import android.graphics.Typeface;
 import android.support.transition.Fade;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +10,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.transitionseverywhere.TransitionManager;
@@ -35,6 +39,29 @@ public final class Utilities {
         //next.setEnterTransition(enterFade);
         transaction.replace(containerViewId, next);
         transaction.commit();
+    }
+
+    public static void setLobsterTypeface(View view, Context mCtx) {
+        //cast the view to a TextView
+        try {
+            TextView tv = (TextView) view;
+            tv.setTypeface(Typeface.createFromAsset(mCtx.getAssets(), "fonts/Lobster-Regular.ttf"));
+
+        } catch (ClassCastException ex) {
+            EditText editText = (EditText) view;
+            editText.setTypeface(Typeface.createFromAsset(mCtx.getAssets(), "fonts/Lobster-Regular.ttf"));
+        }
+
+    }
+
+    public static void setItalicTypeface(View view, Context mCtx) {
+        try {
+            TextView tv = (TextView) view;
+            tv.setTypeface(Typeface.createFromAsset(mCtx.getAssets(), "fonts/Bitter-Italic.ttf"));
+        } catch (ClassCastException ex) {
+            EditText editText = (EditText) view;
+            editText.setTypeface(Typeface.createFromAsset(mCtx.getAssets(), "fonts/Bitter-Italic.ttf"));
+        }
     }
 
     public static void replaceFragment(Fragment next, FragmentManager fragmentManager, int containerViewId) {
@@ -76,9 +103,6 @@ public final class Utilities {
                 break;
         }
     }
-
-
-
 
 
     public enum DisplayMode {

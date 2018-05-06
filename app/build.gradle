@@ -34,6 +34,10 @@ dependencies {
     implementation 'com.ms-square:expandableTextView:0.1.4'
 }
 
+//Mathview
+dependencies {
+    implementation 'in.hourglass.mathrender:katexmathview:1.0'
+}
 
 dependencies {
     implementation 'org.mariuszgromada.math:MathParser.org-mXparser:4.0.0'

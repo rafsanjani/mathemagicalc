@@ -10,6 +10,8 @@ import com.example.azizrafsanjani.numericals.utils.Utilities;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static junit.framework.Assert.assertEquals;
 
 public class NumericalsTest {
@@ -69,9 +71,20 @@ public class NumericalsTest {
     }
 
     @Test
+    public void testGenerateTexEquation(){
+        String tex = Numericals.generateTexEquation("f(x) = 3*x^2 - 2");
+        System.out.println(tex);
+    }
+    @Test
     public void testBisectionShouldPass() {
         double y = Numericals.Bisect("x^5 + x^3 + 3", -2, -1, 4, 0.005);
         assertEquals(-1.0625, y);
+    }
+
+    @Test
+    public void testBisectionAllShouldPass() {
+        List<Double> longBisection = Numericals.BisectAll("x^5 + x^3 + 3", -2, -1, 4, 0.005);
+        assertEquals(-1.0625, longBisection.get(3));
     }
 
     @Test

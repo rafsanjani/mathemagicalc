@@ -7,18 +7,24 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/header_margin_top"
+        android:text="Secante"
+        android:textAlignment="center"
+        android:textSize="32sp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_margin="20dp"
         android:text="@string/bisection_desc"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="15sp" />
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="20dp" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -35,6 +41,12 @@
             android:textAlignment="center" />
     </android.support.design.widget.TextInputLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/std_layout_margin"
+        android:text="@string/initial_guess"
+        android:textColor="#7e2c1e" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -68,12 +80,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:gravity="center_horizontal"
-                android:imeOptions="actionDone"
                 android:hint="x1"
+                android:imeOptions="actionDone"
                 android:inputType="numberDecimal|numberSigned"
                 android:textAlignment="center" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/std_layout_margin"
+        android:text="@string/stopping_criteria"
+        android:textColor="#7e2c1e" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -92,8 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"
                 android:gravity="center_horizontal"
-                android:imeOptions="actionDone"
                 android:hint="@string/iterations"
+                android:imeOptions="actionDone"
                 android:inputType="numberSigned"
                 android:textAlignment="center" />
 
@@ -110,8 +129,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:gravity="center_horizontal"
-                android:imeOptions="actionDone"
                 android:hint="@string/tolerance"
+                android:imeOptions="actionDone"
                 android:inputType="numberDecimal|numberSigned"
                 android:textAlignment="center" />
         </android.support.design.widget.TextInputLayout>
@@ -129,25 +148,27 @@
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/btnCalculate"
+        android:id="@+id/buttonCalculate"
         style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+
         android:text="@string/calculate" />
 
     <Button
-        android:id="@+id/btnBack"
+        android:id="@+id/buttonShowAlgo"
         style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:text="@string/back_to_main_menu" />
+        android:text="@string/show_algorithm" />
 
-
-    <include layout="@layout/textview_footer_text" />
-
-
+    <Button
+        android:id="@+id/buttonBack"
+        style="@style/AppMaterialTheme.ButtonStyle.Exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to Equations Menu"
+        android:textStyle="bold" />
 </LinearLayout>

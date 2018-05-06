@@ -14,12 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
+import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentConversionsMenu;
+import com.example.azizrafsanjani.numericals.fragments.roots.FragmentLocationOfRootsMenu;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
 /**
@@ -61,68 +62,15 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         header = rootView.findViewById(R.id.Header);
         header.setVisibility(View.VISIBLE);
 
-        Button btnBinary = rootView.findViewById(R.id.btn_number_conversion);
-        btnBinary.setOnClickListener(this);
-
-        // TextView footer = rootView.findViewById(R.id.footer);
-        Typeface footerTf = Typeface.createFromAsset(getContext().getAssets(), "fonts/WorkSans-Regular.ttf");
-
-
-       /* Button computeButton = rootView.findViewById(R.id.buttonCompute);
-        Button sourceButton = rootView.findViewById(R.id.buttonSource);
-
-        computeButton.setOnClickListener(this);
-        sourceButton.setOnClickListener(this);*/
+        //click listeners for all the buttons from the main menu
+        rootView.findViewById(R.id.btn_number_conversion).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_loc_of_roots).setOnClickListener(this);
 
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
         header.setTypeface(typeface);
-        // footer.setTypeface(typeface);
-
-
-        //populateItemList();
-        //performSomeMagic();
-
     }
 
 
-    /*
-        private void populateItemList() {
-            ListView listView = rootView.findViewById(R.id.listItems);
-
-            String[] operationList = getOperationList();
-            adapter = new ArrayAdapter<>(getContext(), R.layout.list_item, operationList);
-            listView.setAdapter(adapter);/*
-            RecyclerView recyclerView = rootView.findViewById(R.id.listItems);
-
-            List<Topic> topicList = new ArrayList<>();
-            topicList.add(
-                    new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
-            );
-
-            topicList.add(
-                    new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
-            );
-            topicList.add(
-                    new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
-            );
-
-            topicList.add(
-                    new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
-            );
-            topicList.add(
-                    new Topic("Decimal to Binary (Fractions)", " Converts fractional numbers to binary")
-            );
-
-            topicList.add(
-                    new Topic("Decimal to Binary (Integers)", " Converts Whole Numbers to Binary")
-            );
-
-            recyclerView.setAdapter(new TopicAdapter( getContext(), topicList));
-
-
-        }
-
-    */
     private String[] getOperationList() {
         Resources res = getResources();
 
@@ -137,7 +85,7 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
         view.setSelected(true);
         selectedItem = position;
         itemSelected = true;
-        Button btn = rootView.findViewById(R.id.buttonCompute);
+        //Button btn = rootView.findViewById(R.id.buttonCompute);
 
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -164,22 +112,15 @@ public class FragmentMainMenu extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onClick(View view) {
-       /* if (!itemSelected) {
-            Log.i(Utilities.Log, "No item selected in the listview");
-            return;
-        }
-*/
+        Fragment fragment;
         switch (view.getId()) {
-            case R.id.buttonCompute:
-                onCompute();
-                break;
-
-            case R.id.buttonSource:
-                onSource();
-
-                break;
             case R.id.btn_number_conversion:
-                Fragment fragment = new FragmentConversionsMenu();
+                fragment = new FragmentConversionsMenu();
+                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
+                break;
+
+            case R.id.btn_loc_of_roots:
+                fragment = new FragmentLocationOfRootsMenu();
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
         }
