@@ -2,6 +2,8 @@ package com.example.azizrafsanjani.numericals.utils;
 
 import android.util.Log;
 
+import com.example.azizrafsanjani.numericals.model.BisectionResult;
+
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
@@ -166,15 +168,15 @@ public final class Numericals {
             return Bisect(expr, x3, x2, --iterations, tol);
     }
 
-    public static List<Double> BisectAll(String expr, double x1, double x2, int iterations, double tol) {
-        double x3 = 0;
-        List<Double> results = new ArrayList<>();
+    public static List<BisectionResult> BisectAll(String expr, double x1, double x2, int iterations, double tol) {
+        List<BisectionResult> results = new ArrayList<>();
 
         while (iterations > 0) {
-            x3 = (x1 + x2) / 2;
-            results.add(x3);
-
+            double x3 = (x1 + x2) / 2;
             double tolValue = Math.abs(x1 - x2) / 2;
+
+            BisectionResult tempRes = new BisectionResult(x1, x2, x3, iterations, tolValue);
+            results.add(tempRes);
 
             //a mathematical function of the form f(x) = 0
             Function fx;
@@ -192,20 +194,14 @@ public final class Numericals {
             double fx3 = fx.calculate(x3);
 
             //the root lies in the left part of the boundary
-            if (fx1 * fx3 < 0) {
+            if (fx1 * fx3 < 0)
                 x2 = x3;
-                x1 = x1;
-            }
-            //return Bisect(expr, x1, x3, --iterations, tol);
-            else {
+
+            else
                 x1 = x3;
-                x2 = x2;
-            }
-            //the root lies in the right part of the boundary
-            // return Bisect(expr, x3, x2, --iterations, tol);
+
             --iterations;
         }
-
         return results;
     }
 

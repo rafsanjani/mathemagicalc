@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.adapter.BisectionAdapter;
+import com.example.azizrafsanjani.numericals.adapter.BisectionRecyclerAdapter;
+import com.example.azizrafsanjani.numericals.model.BisectionResult;
 import com.example.azizrafsanjani.numericals.utils.Numericals;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
@@ -30,8 +34,8 @@ public class FragmentBisectionResults extends Fragment {
 
     private View rootView;
 
-    private BisectionAdapter adapter;
-    List<Double> results;
+    private BisectionRecyclerAdapter adapter;
+    List<BisectionResult> results;
     private String eqn;
     private double x0, x1, tolerance;
     private int iterations;
@@ -49,7 +53,7 @@ public class FragmentBisectionResults extends Fragment {
     }
 
 
-    public void setResults(List<Double> results) {
+    public void setResults(List<BisectionResult> results) {
         this.results = results;
     }
 
@@ -84,9 +88,11 @@ public class FragmentBisectionResults extends Fragment {
         equation = rootView.findViewById(R.id.equation);
         equation.setDisplayText(Numericals.generateTexEquation(this.eqn));
 
-        adapter = new BisectionAdapter(getActivity(), R.layout.list_item, results);
-        ListView listView = rootView.findViewById(R.id.resultList);
-        listView.setAdapter(adapter);
+        adapter = new BisectionRecyclerAdapter(results, getContext());
+        RecyclerView resultView = rootView.findViewById(R.id.resultList);
+        resultView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        resultView.setAdapter(adapter);
 
         TextView tvInterval = rootView.findViewById(R.id.interval);
         TextView tvIterations = rootView.findViewById(R.id.iterations);

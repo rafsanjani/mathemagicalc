@@ -69,7 +69,8 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -103,13 +104,75 @@
 
     </LinearLayout>
 
+    <TableLayout
+        android:id="@+id/tableHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/parameters">
 
-    <ListView
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:id="@+id/iteration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="step"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:id="@+id/x1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+
+                android:text="x1" />
+
+            <TextView
+                style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:id="@+id/x2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="x2"
+
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:id="@+id/x3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:text="x3"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:id="@+id/difference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="epsilon"
+                android:textAlignment="center" />
+        </TableRow>
+    </TableLayout>
+
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/resultList"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/buttons"
-        android:layout_below="@id/parameters" />
+        android:layout_below="@id/tableHeader"
+        android:layout_margin="10dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical|horizontal" />
 
 
     <LinearLayout
