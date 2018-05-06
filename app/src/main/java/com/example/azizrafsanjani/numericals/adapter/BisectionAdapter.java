@@ -31,8 +31,7 @@ public class BisectionAdapter extends ArrayAdapter<Double> {
         }
 
         TextView myView = (TextView) view;
-        myView.setText("Iteration Number: " + (position + 1) + "  " +myView.getText());
-
+        myView.setText("Iteration " + (position + 1) + ": " + myView.getText());
 
         return view;
     }

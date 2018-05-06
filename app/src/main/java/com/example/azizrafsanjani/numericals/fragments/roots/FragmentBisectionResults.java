@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,61 +32,88 @@ public class FragmentBisectionResults extends Fragment {
 
     private BisectionAdapter adapter;
     List<Double> results;
-    private String equation;
-    private double x1, x2;
+    private String eqn;
+    private double x0, x1, tolerance;
+    private int iterations;
 
     private String getInterval() {
-        return String.format(Locale.US, "[%.2f, %.2f]", x1, x2);
+        return String.format(Locale.US, "[%.2f, %.2f]", x0, x1);
+    }
+
+    private String getIteration() {
+        return String.format(Locale.US, "[%d]", iterations);
+    }
+
+    private String getTolerance() {
+        return String.format(Locale.US, "[%.7f]", tolerance);
     }
 
 
-
-    public void setResults(List<Double> results, String equation, double x1, double x2) {
+    public void setResults(List<Double> results) {
         this.results = results;
-        this.x1 = x1;
-        this.x2 = x2;
-        this.equation = equation;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_loc_of_roots_bisection_results, container, false);
-        initControls();
+
         return rootView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        adapter = new BisectionAdapter(getActivity(), R.layout.list_item, results);
-        ListView listView = rootView.findViewById(R.id.resultList);
-        TextView textView = rootView.findViewById(R.id.interval);
-        textView.setText(getInterval());
+        Bundle eqnArgs = getArguments();
+        if (eqnArgs != null) {
+            this.eqn = eqnArgs.getString("equation");
+            this.x0 = eqnArgs.getDouble("x0");
+            this.x1 = eqnArgs.getDouble("x1");
+            this.iterations = eqnArgs.getInt("iterations");
+            this.tolerance = eqnArgs.getDouble("tolerance");
+        }
 
-        listView.setAdapter(adapter);
+        initControls();
     }
 
     public void initControls() {
         Button btnBack = rootView.findViewById(R.id.buttonBack);
 
-        MathView formula_two;
-       // String tex = " $$f(x) = 3x^3 + 2x - 5$$";
+        MathView equation;
+        // String tex = " $$f(x) = 3x^3 + 2x - 5$$";
 
-        formula_two = (MathView) rootView.findViewById(R.id.equation);
-        formula_two.setDisplayText(Numericals.generateTexEquation(equation));
+        equation = rootView.findViewById(R.id.equation);
+        equation.setDisplayText(Numericals.generateTexEquation(this.eqn));
 
+        adapter = new BisectionAdapter(getActivity(), R.layout.list_item, results);
+        ListView listView = rootView.findViewById(R.id.resultList);
+        listView.setAdapter(adapter);
+
+        TextView tvInterval = rootView.findViewById(R.id.interval);
+        TextView tvIterations = rootView.findViewById(R.id.iterations);
+        TextView tvTolerance = rootView.findViewById(R.id.tolerance);
+
+
+        tvInterval.setText(getInterval());
+        tvIterations.setText(getIteration());
+        tvTolerance.setText(getTolerance());
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utilities.replaceFragment(new FragmentBisection(), getFragmentManager(), R.id.fragmentContainer, true);
+                Fragment fragment = new FragmentBisection();
+                Bundle eqnArgs = new Bundle();
+
+                //pass eqn and it's paramenters back to the calling fragment
+                eqnArgs.putDouble("x0", x0);
+                eqnArgs.putString("equation", eqn);
+                eqnArgs.putDouble("x1", x1);
+                eqnArgs.putInt("iterations", iterations);
+                eqnArgs.putDouble("tolerance", tolerance);
+
+                fragment.setArguments(eqnArgs);
+                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
             }
         });
-
         Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
-
-
-        ListView listView = rootView.findViewById(R.id.resultList);
-        listView.setAdapter(adapter);
     }
 }

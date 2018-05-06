@@ -29,34 +29,79 @@
         android:textSize="15sp" />
 
 
-    <LinearLayout
-        android:id="@+id/lEquation"
+    <katex.hourglass.in.mathlib.MathView
+        android:id="@+id/equation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
-        android:gravity="center">
+        android:layout_gravity="center"
+        android:textColor="#2a2f7c"
+        android:textSize="23sp"
+        app:setTextColor="#9c592c"
+        app:setTextSize="10sp" />
 
-        <katex.hourglass.in.mathlib.MathView
-            android:id="@+id/equation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="#2a2f7c"
-            android:textSize="23sp"
-            app:setTextColor="#9c592c"
-            app:setTextSize="10sp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/interval"
+    <LinearLayout
+        android:id="@+id/parameters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lEquation"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
-        android:textAlignment="center"
-        android:textColor="#8f1c9e"
-        android:textSize="12sp" />
+        android:layout_below="@id/equation"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/std_layout_margin"
+                android:text="Interval: " />
+
+            <TextView
+                android:id="@+id/interval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[-2, -5]"
+                android:textColor="#37963b" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Iterations: " />
+
+            <TextView
+                android:id="@+id/iterations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[9]"
+                android:textColor="#37963b" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/std_layout_margin"
+                android:text="Tol: " />
+
+            <TextView
+                android:id="@+id/tolerance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="[-0.00000]"
+                android:textColor="#8c1453" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
     <ListView
@@ -64,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/buttons"
-        android:layout_below="@id/interval" />
+        android:layout_below="@id/parameters" />
 
 
     <LinearLayout

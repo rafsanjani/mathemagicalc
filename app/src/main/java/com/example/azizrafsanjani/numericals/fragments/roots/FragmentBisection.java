@@ -41,7 +41,7 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_loc_of_roots_bisection, container, false);
-        initControls();
+
         return rootView;
     }
 
@@ -62,6 +62,16 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
         final EditText etX0 = rootView.findViewById(R.id.x0);
         final EditText etX1 = rootView.findViewById(R.id.x1);
 
+        Bundle bisectionArgs = getArguments();
+
+        if (bisectionArgs != null) {
+            etEquation.setText(bisectionArgs.getString("equation"));
+            etX0.setText(String.valueOf(bisectionArgs.getDouble("x0")));
+            etX1.setText(String.valueOf(bisectionArgs.getDouble("x1")));
+            etTolerance.setText(String.valueOf(bisectionArgs.getDouble("tolerance")));
+            etIterations.setText(String.valueOf(bisectionArgs.getInt("iterations")));
+        }
+
         etIterations.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
@@ -75,7 +85,6 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
                 return false;
             }
         });
-
 
         etIterationsTextWatcher = new TextWatcher() {
             @Override
@@ -163,7 +172,13 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
 
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
         MainActivity.setToolBarInfo("Location of Roots", "Bisection Method");
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        //repopulate textview entries with values. this usually happens when we are transitioning back from
+        //the resultspane fragment
+        initControls();
     }
 
     @Override
@@ -227,7 +242,16 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
             } else if (buttonText == getResources().getString(R.string.show_iterations)) {
                 List<Double> roots = Numericals.BisectAll(eqn, x0, x1, iter, tol);
                 FragmentBisectionResults resultPane = new FragmentBisectionResults();
-                resultPane.setResults(roots, eqn, x0, x1);
+                Bundle eqnArgs = new Bundle();
+
+                eqnArgs.putString("equation", eqn);
+                eqnArgs.putDouble("x0", x0);
+                eqnArgs.putInt("iterations", iter);
+                eqnArgs.putDouble("tolerance", tol);
+                eqnArgs.putDouble("x1", x1);
+
+                resultPane.setArguments(eqnArgs);
+                resultPane.setResults(roots);
 
                 Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
             }
