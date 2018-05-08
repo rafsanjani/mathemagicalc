@@ -7,5 +7,6 @@
     <dimen name="matrix_elements_width">40dp</dimen>
     <dimen name="desc_text_size">17sp</dimen>
     <dimen name="header_margin_top">10dp</dimen>
+    <dimen name="menu_text_size">11sp</dimen>
 
 </resources>

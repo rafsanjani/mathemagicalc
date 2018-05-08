@@ -43,7 +43,7 @@
                     android:drawableTop="@drawable/button_number_conversion_menu"
                     android:elevation="5dp"
                     android:text="@string/number_conversions"
-                    android:textSize="11sp"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
 
                 <Button
@@ -55,7 +55,7 @@
                     android:drawableTop="@drawable/button_location_of_roots"
                     android:elevation="5dp"
                     android:text="@string/loc_of_rooots"
-                    android:textSize="11sp"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -73,7 +73,7 @@
                     android:drawableTop="@drawable/button_system_of_eqns"
                     android:elevation="5dp"
                     android:text="@string/sys_of_eqns"
-                    android:textSize="11sp"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
 
                 <Button
@@ -85,7 +85,7 @@
                     android:drawableTop="@drawable/button_ordinary_differential_eqns"
                     android:elevation="5dp"
                     android:text="@string/ordinary_diff_eqn"
-                    android:textSize="11sp"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -103,7 +103,7 @@
                     android:drawableTop="@drawable/button_interpolation"
                     android:elevation="5dp"
                     android:text="Interpolation"
-                    android:textSize="11sp"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
 
                 <Button
@@ -115,7 +115,7 @@
                     android:drawableTop="@drawable/button_about"
                     android:elevation="5dp"
                     android:text="About"
-                    android:textSize="11sp"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>

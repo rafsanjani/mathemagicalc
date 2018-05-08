@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-import java.util.List;
-
 public class MyListAdapter extends ArrayAdapter<String> {
     private Context mCtx;
 
@@ -22,11 +20,11 @@ public class MyListAdapter extends ArrayAdapter<String> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view  = super.getView(position, convertView, parent);
-        if(position % 2 == 0){
-            view.setBackgroundColor(Color.argb(30, 238,232,232));
-        }else{
-            view.setBackgroundColor(Color.argb(30, 120, 200,250));
+        View view = super.getView(position, convertView, parent);
+        if (position % 2 == 0) {
+            view.setBackgroundColor(Color.argb(30, 238, 232, 232));
+        } else {
+            view.setBackgroundColor(Color.argb(30, 120, 200, 250));
         }
 
         return view;

@@ -2,7 +2,7 @@ package com.example.azizrafsanjani.numericals.utils;
 
 import android.util.Log;
 
-import com.example.azizrafsanjani.numericals.model.BisectionResult;
+import com.example.azizrafsanjani.numericals.model.LocationOfRootResult;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.MatrixUtils;
@@ -168,14 +168,14 @@ public final class Numericals {
             return Bisect(expr, x3, x2, --iterations, tol);
     }
 
-    public static List<BisectionResult> BisectAll(String expr, double x1, double x2, int iterations, double tol) {
-        List<BisectionResult> results = new ArrayList<>();
+    public static List<LocationOfRootResult> BisectAll(String expr, double x1, double x2, int iterations, double tol) {
+        List<LocationOfRootResult> results = new ArrayList<>();
 
         while (iterations > 0) {
             double x3 = (x1 + x2) / 2;
             double tolValue = Math.abs(x1 - x2) / 2;
 
-            BisectionResult tempRes = new BisectionResult(x1, x2, x3, iterations, tolValue);
+            LocationOfRootResult tempRes = new LocationOfRootResult(x1, x2, x3, iterations, tolValue);
             results.add(tempRes);
 
             //a mathematical function of the form f(x) = 0

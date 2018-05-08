@@ -5,4 +5,11 @@
         <item name="android:textColor">@color/textColorSecondary</item>
         <item name="android:backgroundTint">#000000</item>
     </style>
+
+    <style name="AppMaterialTheme" parent="BaseTheme">
+        <item name="editTextStyle">@style/AppMaterialTheme.EditTextStyle</item>
+        <item name="colorControlActivated">#00796B</item>
+        <item name="colorControlHighlight">#c5c5c5</item>
+        <item name="android:colorAccent">#546e7a</item>
+    </style>
 </resources>

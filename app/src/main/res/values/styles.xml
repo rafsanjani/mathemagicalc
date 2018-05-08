@@ -105,10 +105,11 @@
     </style>
 
     <style name="AppMaterialTheme.TableHeaderStyle" parent="android:TextAppearance">
-       <item  name="android:textColor">#143864</item>
+        <item name="android:textColor">#143864</item>
     </style>
+
     <style name="AppMaterialTheme.TableTextStyle" parent="android:TextAppearance">
-        <item  name="android:textColor">#3a5e70</item>
+        <item name="android:textColor">#3a5e70</item>
     </style>
 
 </resources>

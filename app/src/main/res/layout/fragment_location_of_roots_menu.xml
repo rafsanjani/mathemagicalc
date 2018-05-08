@@ -6,14 +6,14 @@
     <TextView
         android:id="@+id/Header"
         android:layout_width="wrap_content"
-        android:layout_marginTop="@dimen/header_margin_top"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/header_margin_top"
         android:text="Location of Roots"
         android:textAlignment="center"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <ScrollView
         android:id="@+id/mainContent"
@@ -38,10 +38,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_number_conversion_db_fractions"
-                    android:elevation="5dp"
+                    android:drawableTop="@drawable/button_location_of_roots"
                     android:text="Bisection"
-                    android:textSize="11sp"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
 
                 <Button
@@ -50,10 +49,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_number_conversion_db_integers"
-                    android:elevation="5dp"
+                    android:drawableTop="@drawable/button_location_of_roots"
                     android:text="Newton Raphson"
-                    android:textSize="11sp"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -68,10 +66,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_number_conversion_db_anynumber"
-                    android:elevation="5dp"
+                    android:drawableTop="@drawable/button_location_of_roots"
                     android:text="False Position (Reg. Falsi)"
-                    android:textSize="11sp"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
 
                 <Button
@@ -80,10 +77,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_number_conversion_db_bintodecimal"
-                    android:elevation="5dp"
+                    android:drawableTop="@drawable/button_location_of_roots"
                     android:text="Secante"
-                    android:textSize="11sp"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>

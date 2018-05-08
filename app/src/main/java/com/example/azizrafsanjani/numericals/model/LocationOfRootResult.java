@@ -1,10 +1,11 @@
 package com.example.azizrafsanjani.numericals.model;
 
-public class BisectionResult {
+public class LocationOfRootResult {
     double x1, x2, x3, tolerance;
     int iteration;
 
-    public BisectionResult(double x1, double x2, double x3, int iteration,  double tolerance) {
+    //Bisection Method Signature
+    public LocationOfRootResult(double x1, double x2, double x3, int iteration, double tolerance) {
         this.x1 = x1;
         this.x2 = x2;
         this.x3 = x3;

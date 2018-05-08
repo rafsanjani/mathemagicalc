@@ -39,6 +39,7 @@ dependencies {
     implementation 'in.hourglass.mathrender:katexmathview:1.0'
 }
 
+//Apache commons for simple math operations and mXparser, the heart of the software
 dependencies {
     implementation 'org.mariuszgromada.math:MathParser.org-mXparser:4.0.0'
     implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'

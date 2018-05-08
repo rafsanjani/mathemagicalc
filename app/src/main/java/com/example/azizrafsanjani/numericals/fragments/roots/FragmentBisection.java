@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.model.BisectionResult;
+import com.example.azizrafsanjani.numericals.model.LocationOfRootResult;
 import com.example.azizrafsanjani.numericals.utils.Numericals;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
@@ -241,10 +241,10 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
                 Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
                 Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
             } else if (buttonText == getResources().getString(R.string.show_iterations)) {
-                List<BisectionResult> roots = Numericals.BisectAll(eqn, x0, x1, iter, tol);
+                List<LocationOfRootResult> roots = Numericals.BisectAll(eqn, x0, x1, iter, tol);
                 FragmentBisectionResults resultPane = new FragmentBisectionResults();
                 Bundle eqnArgs = new Bundle();
-
+                
                 eqnArgs.putString("equation", eqn);
                 eqnArgs.putDouble("x0", x0);
                 eqnArgs.putInt("iterations", iter);

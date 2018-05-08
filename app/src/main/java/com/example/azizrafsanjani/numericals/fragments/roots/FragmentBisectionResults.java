@@ -10,13 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.adapter.BisectionAdapter;
-import com.example.azizrafsanjani.numericals.adapter.BisectionRecyclerAdapter;
-import com.example.azizrafsanjani.numericals.model.BisectionResult;
+import com.example.azizrafsanjani.numericals.adapter.RootResultsAdapter;
+import com.example.azizrafsanjani.numericals.model.LocationOfRootResult;
+import com.example.azizrafsanjani.numericals.model.LocationOfRootType;
 import com.example.azizrafsanjani.numericals.utils.Numericals;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
@@ -34,8 +33,8 @@ public class FragmentBisectionResults extends Fragment {
 
     private View rootView;
 
-    private BisectionRecyclerAdapter adapter;
-    List<BisectionResult> results;
+    private RootResultsAdapter adapter;
+    List<LocationOfRootResult> results;
     private String eqn;
     private double x0, x1, tolerance;
     private int iterations;
@@ -53,7 +52,7 @@ public class FragmentBisectionResults extends Fragment {
     }
 
 
-    public void setResults(List<BisectionResult> results) {
+    public void setResults(List<LocationOfRootResult> results) {
         this.results = results;
     }
 
@@ -88,7 +87,7 @@ public class FragmentBisectionResults extends Fragment {
         equation = rootView.findViewById(R.id.equation);
         equation.setDisplayText(Numericals.generateTexEquation(this.eqn));
 
-        adapter = new BisectionRecyclerAdapter(results, getContext());
+        adapter = new RootResultsAdapter(results, getContext(), LocationOfRootType.BISECTION);
         RecyclerView resultView = rootView.findViewById(R.id.resultList);
         resultView.setLayoutManager(new LinearLayoutManager(getContext()));
 

@@ -49,6 +49,7 @@
     <string name="x0">x0</string>
     <string name="header_bisection">Bisection Method</string>
     <string name="show_iterations">show iterations</string>
+    <string name="iteration_table">Iteration: %d</string>
 
 
     <string-array name="main_menu">
