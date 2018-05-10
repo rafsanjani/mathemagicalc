@@ -107,7 +107,7 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
                     x1 = Double.parseDouble(etX1.getText().toString());
 
 
-                    double tolerance = Numericals.getTolerance(iterations, x0, x1);
+                    double tolerance = Numericals.getBisectionTolerance(iterations, x0, x1);
 
                     etTolerance.setText(String.valueOf(tolerance));
                 } catch (NumberFormatException ex) {
@@ -146,7 +146,7 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
                     x0 = Double.parseDouble(etX0.getText().toString());
                     x1 = Double.parseDouble(etX1.getText().toString());
 
-                    int iterations = Numericals.getIterations(tolerance, x0, x1);
+                    int iterations = Numericals.getBisectionIterations(tolerance, x0, x1);
 
                     etIterations.setText(String.valueOf(iterations));
                 } catch (NumberFormatException ex) {

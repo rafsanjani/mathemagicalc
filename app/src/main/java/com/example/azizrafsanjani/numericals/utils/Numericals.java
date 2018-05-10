@@ -14,6 +14,7 @@ import org.mariuszgromada.math.mxparser.Function;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Aziz Rafsanjani on 11/2/2017.
@@ -39,10 +40,7 @@ public final class Numericals {
             bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalInteger);
         }
 
-        //placeholder for our final binary result
-        String result = binary.reverse().toString();
-
-        return result;
+        return binary.reverse().toString();
     }
 
     /***
@@ -67,16 +65,15 @@ public final class Numericals {
             bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalFraction);
         }
 
-        String result = binary.toString();
-        return result;
+        return binary.toString();
     }
 
     /**
      * Converts a decimal integer to a binary numeral but if the decimal has a fractional part,
-     * the number is separated into two parts, one being the whole part and the other being the fractional part.
+     * the number is separated into two parts using . as the delimiter, one being the whole part and the other being the fractional part.
      * the binary equivalent of these parts are individually computed and merged together to form a complete binary
      *
-     * @param dec
+     * @param dec a decimal number of the form xx.xxxx
      * @return string a string representation of the binary equivalent of the supplied decimal numeral
      */
     public static String DecimalToBinary(double dec) {
@@ -96,20 +93,19 @@ public final class Numericals {
 
 
         //join it all together
-        String binary = integerResult + fractionalResult;
 
-        return binary;
+        return integerResult + fractionalResult;
     }
 
     /***
      * Appends the result of the ternary operation on bk to a stringbuilder object supplied as an argument
-     * @param N
+     * @param N the number to be analyzed
      * @param sb The stringbuilder object to which the result of the operation will be appended
-     * @param op
+     * @param op the operationType whether decimal integer or decimal fraction
      * @return int
      */
     private static int AppendToResult(double N, StringBuilder sb, BinaryOperationType op) {
-        int bk = 0000; //assign something dummy to prevent compiler issues
+        int bk = 0; //assign something dummy to prevent compiler issues
         switch (op) {
             case DecimalInteger: //number is exclusively an integer (eg XXX.00000)
                 bk = N % 2 == 0 ? 0 : 1;
@@ -142,13 +138,13 @@ public final class Numericals {
 
         double x3 = (x1 + x2) / 2;
 
-        double tolValue = Math.abs(x1 - x2) / 2;
+        double stoppingCriteria = Math.abs(x1 - x2) / 2;
 
         //a mathematical function of the form f(x) = 0
         Function fx;
 
         //is our approximated root less than or equal to the tolerance limit or are we out of moves?
-        if (tolValue <= tol || iterations == 1)
+        if (stoppingCriteria <= tol || iterations == 1)
             return x3;
 
         if (expr.contains("f(x)"))
@@ -173,16 +169,16 @@ public final class Numericals {
 
         while (iterations > 0) {
             double x3 = (x1 + x2) / 2;
-            double tolValue = Math.abs(x1 - x2) / 2;
+            double stoppingCriteria = Math.abs(x1 - x2) / 2;
 
-            LocationOfRootResult tempRes = new LocationOfRootResult(x1, x2, x3, iterations, tolValue);
+            LocationOfRootResult tempRes = new LocationOfRootResult(x1, x2, x3, iterations, stoppingCriteria);
             results.add(tempRes);
 
             //a mathematical function of the form f(x) = 0
             Function fx;
 
             //is our approximated root less than or equal to the tolerance limit or are we out of moves?
-            if (tolValue <= tol || iterations == 1)
+            if (stoppingCriteria <= tol || iterations == 1)
                 break;
 
             if (expr.contains("f(x)"))
@@ -202,6 +198,7 @@ public final class Numericals {
 
             --iterations;
         }
+
         return results;
     }
 
@@ -235,7 +232,45 @@ public final class Numericals {
         if (maxIterations == 1 || (approxRoot == x1))
             return approxRoot;
 
-        return NewtonRaphson(expr, approxRoot, maxIterations - 1);
+        //replace x1 with the approximated root and recur
+        x1 = approxRoot;
+        return NewtonRaphson(expr, x1, maxIterations - 1);
+    }
+
+    public static List<LocationOfRootResult> NewtonRaphsonAll(String expr, double x1, int maxIterations) {
+        List<LocationOfRootResult> results = new ArrayList<>();
+
+        Argument x;
+        Expression ex;
+        Function fx;
+        while (maxIterations > 0) {
+
+            if (expr.contains("f(x)")) {
+                expr = expr.substring(5);
+            }
+
+            x = new Argument(String.format("x = %s", x1));
+
+            ex = new Expression("der(" + expr + ", x)", x);
+
+            fx = new Function(String.format("f(x) = %s", expr));
+
+            double fx1 = fx.calculate(x1);
+            double derX1 = ex.calculate();
+
+            double approxRoot = x1 - (fx1 / derX1);
+
+            results.add(new LocationOfRootResult(approxRoot, maxIterations, fx1, x1));
+
+            //check if current root is equal to the previous root then break from the loop
+            if (approxRoot == x1)
+                break;
+
+            //set x1 to the current root obtained and store the result. after that we loop again
+            x1 = approxRoot;
+            maxIterations--;
+        }
+        return results;
     }
 
     /***
@@ -244,7 +279,7 @@ public final class Numericals {
      * @param x0 The lower boundary of the interval
      * @param x1 The upper boundary of the interval
      * @param maxIterations The maximum number of times the interval must be bisected
-     * @param tol
+     * @param tol Specifies the tolerance value for which the solution answer must adhere to
      * @return double
      * @throws IllegalArgumentException When the interval doesn't bracket the root
      */
@@ -269,9 +304,9 @@ public final class Numericals {
         double x2 = x1 - ((x1 - x0) / (fx1 - fx0));
         fx2 = fx.calculate(x2);
 
-        double tolValue = (x2 - x1) / x1;
+        double stoppingCriteria = (x2 - x1) / x1;
 
-        if (maxIterations == 1 || tol <= tolValue)
+        if (maxIterations == 1 || tol <= stoppingCriteria)
             return x2;
 
         if ((fx0 * fx2) < 0)
@@ -285,8 +320,8 @@ public final class Numericals {
     /***
      * Computes the root of an equation using the secante method
      * @param expr an equation of the form f(x) = 0
-     * @param x0
-     * @param x1
+     * @param x0 the lower limit
+     * @param x1 the upper limit
      * @param maxIterations The maximum number of iterations to be conducted
      * @return double
      */
@@ -305,10 +340,39 @@ public final class Numericals {
 
         double x2 = x1 - ((x1 - x0) / (fx1 - fx0));
 
-        if (maxIterations == 1)
+        boolean stoppingCriteria = (Math.abs(x2 - x1) == x1);
+
+        if (maxIterations == 1 || stoppingCriteria)
             return x2;
 
         return Secante(expr, x2, x1, maxIterations - 1);
+    }
+
+    public static List<LocationOfRootResult> SecanteAll(String expr, Double x0, Double x1, int maxIterations) {
+        List<LocationOfRootResult> result = new ArrayList<>();
+
+
+        while (maxIterations > 0) {
+            if (expr.contains("=")) {
+                expr = expr.substring(expr.lastIndexOf("=") + 1);
+            }
+
+            Function fx = new Function("f(x) = " + expr);
+            double fx0 = fx.calculate(x0);
+            double fx1 = fx.calculate(x1);
+
+            double x2 = x1 - ((x1 - x0) / (fx1 - fx0));
+
+            double difference = Math.abs(Math.abs(x2) - Math.abs(x0));
+
+            result.add(new LocationOfRootResult(maxIterations, x0, x1, x2, difference));
+            x0 = x2;
+
+            if (difference == 0)
+                break;
+            maxIterations--;
+        }
+        return result;
     }
 
     public static double[] GaussianWithCompletePivoting(double[][] A, double B[]) {
@@ -316,11 +380,13 @@ public final class Numericals {
         for (int k = 0; k < N; k++) {
             //get pivot column
             int maxColumn = getPivotColumn(A, k);
+
             //swap pivot column
             swapColumns(A, maxColumn, k);
 
             //get the pivot row
             int maxRow = getPivotRow(A, k);
+
             //swap the pivot row with the first row in matrix A
             swapRows(A, maxRow, k);
 
@@ -334,9 +400,8 @@ public final class Numericals {
         }
 
         //solve by backsubstitution
-        double[] solution = getSolutionByBackSubstitution(A, B, N);
 
-        return solution;
+        return getSolutionByBackSubstitution(A, B, N);
     }
 
 
@@ -388,9 +453,8 @@ public final class Numericals {
         }
 
         //solve by backsubstitution
-        double[] solution = getSolutionByBackSubstitution(A, B, N);
 
-        return solution;
+        return getSolutionByBackSubstitution(A, B, N);
     }
 
     private static double[] getSolutionByBackSubstitution(double[][] A, double[] B, int N) {
@@ -432,16 +496,16 @@ public final class Numericals {
 
     private static void roundTo2Dp(double[][] A, double[] B) {
         for (int i = 0; i < A.length; i++) {
-            B[i] = Double.parseDouble(String.format("%.2f", B[i]));
+            B[i] = Double.parseDouble(String.format(Locale.US, "%.2f", B[i]));
             for (int j = 0; j < A.length; j++) {
-                A[i][j] = Double.parseDouble(String.format("%.2f", A[i][j]));
+                A[i][j] = Double.parseDouble(String.format(Locale.US, "%.2f", A[i][j]));
             }
         }
     }
 
     private static void roundTo2Dp(double[] B) {
         for (int i = 0; i < B.length; i++) {
-            B[i] = Double.parseDouble(String.format("%.2f", B[i]));
+            B[i] = Double.parseDouble(String.format(Locale.US, "%.2f", B[i]));
         }
     }
 
@@ -463,33 +527,20 @@ public final class Numericals {
     }
 
     private static void swapColumns(double system[][], int maxCol, int colIndex) {
-        for (int i = 0; i < system.length; i++) {
-            ArrayUtils.swap(system[i], maxCol, colIndex);
+        for (double[] aSystem : system) {
+            ArrayUtils.swap(aSystem, maxCol, colIndex);
         }
     }
 
 
-    public static int getPivotColumn(double[][] system, int k) {
+    private static int getPivotColumn(double[][] system, int k) {
         int N = system.length;
 
         int maxColIndex = k;
         int maxRowIndex;
 
         double maxNumber = -1;
-        /*RealMatrix matrix = MatrixUtils.createRealMatrix(system);
 
-        for (int a = k; a < N; a++) {
-            double[] col = matrix.getColumn(a);
-            for (int b = 0; b < col.length; b++) {
-                if (col[b] > maxNumber) {
-                    maxNumber = col[b];
-                    maxColIndex = a;
-                }
-            }
-        }
-
-
-        /*try {*/
         for (int i = k; i < N; i++) {
             for (int j = k; j < N; j++) {
                 System.out.println("Working on system[" + (i + 1) + "][" + (j + 1) + "]. Which is " + system[i][j]);
@@ -506,24 +557,24 @@ public final class Numericals {
     }
 
     private static void printMatrix(double system[][]) {
-        for (int rowIndex = 0; rowIndex < system.length; rowIndex++) {
+        for (double[] aSystem : system) {
             for (int columnIndex = 0; columnIndex < system.length; columnIndex++) {
-                System.out.print(system[rowIndex][columnIndex] + " ");
+                System.out.print(aSystem[columnIndex] + " ");
             }
             System.out.println();
         }
     }
 
     private static void printMatrix(double system[]) {
-        for (int columnIndex = 0; columnIndex < system.length; columnIndex++) {
-            System.out.println(system[columnIndex] + " ");
+        for (double aSystem : system) {
+            System.out.println(aSystem + " ");
         }
     }
 
     /***
      * Solves a system of linear equations using Jacobi's method
-     * @param system
-     * @return
+     * @param system the system of linear equation to be computed
+     * @return an array which is the final system computed after the last Jacobi iterate
      */
     public static double[] Jacobi(String[] system, double[] initGuess, double epsilon) {
         double iSolution[] = new double[3];
@@ -540,7 +591,6 @@ public final class Numericals {
             if (Double.isNaN(iSolution[i]) || Double.isInfinite(iSolution[i]))
                 throw new IllegalArgumentException("Syntax Error, Please check expression");
         }
-
 
         double[] difference = new double[3];
         for (int i = 0; i < iSolution.length; i++) {
@@ -560,9 +610,9 @@ public final class Numericals {
 
     private static double getMaxElement(double[] array) {
         double max = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (Math.abs(array[i]) > Math.abs(max))
-                max = array[i];
+        for (double anArray : array) {
+            if (Math.abs(anArray) > Math.abs(max))
+                max = anArray;
         }
 
         return Math.abs(max);
@@ -570,8 +620,8 @@ public final class Numericals {
 
     /***
      * Solves a system of linear equations using Gauss-Seidel's method
-     * @param system
-     * @return
+     * @param system the system generated after computing all steps
+     * @return the system generated after the last gauss seidel iterate
      */
     public static double[] GaussSeidel(String[] system, double initGuess[], double epsilon) {
         double iSolution[] = new double[3];
@@ -608,6 +658,7 @@ public final class Numericals {
         double iNorm = getMaxElement(difference);
         System.out.println("Infininte norm is given as:  " + iNorm);
         System.out.println("Epsilon is given as: " + epsilon);
+
         //stopping criteria
         if (iNorm < epsilon) {
             Log.i(Utilities.Log, "stopping criteria met: terminating");
@@ -618,7 +669,6 @@ public final class Numericals {
             printArray(iSolution);
             return GaussSeidel(system, iSolution, epsilon);
         }
-
     }
 
     public static double[] GaussSeidelWithSOR(String[] system, double initGuess[], double epsilon, double omega) {
@@ -640,7 +690,6 @@ public final class Numericals {
                 throw new IllegalArgumentException("Syntax Error, Please check expression");
         }
 
-
         printArray(iSolution);
 
         double[] difference = new double[3];
@@ -655,6 +704,7 @@ public final class Numericals {
         double iNorm = getMaxElement(difference);
         Log.i(Utilities.Log, "Infininte norm is given as:  " + iNorm);
         Log.i(Utilities.Log, "Epsilon is given as: " + epsilon);
+
         //stopping criteria
         if (iNorm < epsilon) {
             Log.i(Utilities.Log, "stopping criteria met: terminating");
@@ -674,7 +724,7 @@ public final class Numericals {
     }
 
     //get the number of iterations required using the tolerance given
-    public static int getIterations(double tolerance, double x1, double x2) {
+    public static int getBisectionIterations(double tolerance, double x1, double x2) {
         double iterations = (Math.log(x2 - x1) - Math.log(tolerance)) / Math.log(2);
 
         return Math.round((float) iterations);
@@ -682,10 +732,8 @@ public final class Numericals {
 
 
     //get the tolerance level required using the number of iterations given
-    public static double getTolerance(int iterations, double x1, double x2) {
-        double tolerance = (x2 - x1) / Math.pow(2, iterations);
-
-        return tolerance;
+    public static double getBisectionTolerance(int iterations, double x1, double x2) {
+        return (x2 - x1) / Math.pow(2, iterations);
     }
 
     private static void printArray(double[] array) {
@@ -704,11 +752,10 @@ public final class Numericals {
 
     }
 
+
     public enum BinaryOperationType {
         DecimalInteger,
         DecimalFraction,
         Mixed
     }
-
-
 }

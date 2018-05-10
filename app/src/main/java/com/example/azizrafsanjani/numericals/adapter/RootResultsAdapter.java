@@ -25,8 +25,8 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
     private LocationOfRootType rootType;
 
 
-    public RootResultsAdapter(List<LocationOfRootResult> bisectionResults, Context mCtx, LocationOfRootType rootType) {
-        this.locationOfRootResult = bisectionResults;
+    public RootResultsAdapter(List<LocationOfRootResult> locationOfRootResult, Context mCtx, LocationOfRootType rootType) {
+        this.locationOfRootResult = locationOfRootResult;
         this.mCtx = mCtx;
         this.rootType = rootType;
     }
@@ -40,6 +40,13 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
         switch (rootType) {
             case BISECTION:
                 view = LayoutInflater.from(mCtx).inflate(R.layout.bisection_results_view, null);
+                break;
+            case NEWTON_RAPHSON:
+                view = LayoutInflater.from(mCtx).inflate(R.layout.newton_raphson_results_view, null);
+                break;
+
+            case SECANTE:
+                view = LayoutInflater.from(mCtx).inflate(R.layout.secante_results_view, null);
                 break;
 
             default:
@@ -62,12 +69,21 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
 
         switch (rootType) {
             case BISECTION:
-                holder.etDifference.setText(String.format(Locale.US, "[%f]", result.getTolerance()));
+            case SECANTE:
+                holder.etDifference.setText(String.format(Locale.US, "[%4.4f]", result.getTolerance()));
                 holder.etIteration.setText(String.format(Locale.US, "[%d] ", position + 1));
-                holder.etX1.setText(String.format(Locale.US, "[%.4f]", result.getX1()));
-                holder.etX2.setText(String.format(Locale.US, "[%.4f]", result.getX2()));
-                holder.etX3.setText(String.format(Locale.US, "[%.6f]", result.getX3()));
+                holder.etX1.setText(String.format(Locale.US, "[%4.4f]", result.getX1()));
+                holder.etX2.setText(String.format(Locale.US, "[%4.4f]", result.getX2()));
+                holder.etX3.setText(String.format(Locale.US, "[%4.6f]", result.getX3()));
                 break;
+            case NEWTON_RAPHSON:
+                holder.etIteration.setText(String.format(Locale.US, "[%d] ", position + 1));
+                //holder.etX1.setText(String.format(Locale.US, "[%.4f]", result.getX1()));
+                holder.etfX1.setText(String.format(Locale.US, "[%4.4f]", result.getFx1()));
+                holder.etDerX1.setText(String.format(Locale.US, "[%4.4f]", result.getDerX1()));
+                holder.etRoot.setText(String.format(Locale.US, "[%4.4f]", result.getX1()));
+                break;
+
         }
     }
 
@@ -79,7 +95,7 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
     class RootResultViewHOlder extends RecyclerView.ViewHolder {
 
         ViewGroup bg;
-        TextView etX1, etX2, etX3, etDifference, etIteration;
+        TextView etX1, etX2, etX3, etDifference, etIteration, etDerX1, etfX1, etRoot;
 
         public RootResultViewHOlder(View itemView) {
             super(itemView);
@@ -87,10 +103,17 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
 
             switch (rootType) {
                 case BISECTION:
+                case SECANTE:
                     etDifference = itemView.findViewById(R.id.difference);
                     etX1 = itemView.findViewById(R.id.x1);
                     etX2 = itemView.findViewById(R.id.x2);
                     etX3 = itemView.findViewById(R.id.x3);
+                    etIteration = itemView.findViewById(R.id.iteration);
+                    break;
+                case NEWTON_RAPHSON:
+                    etRoot = itemView.findViewById(R.id.root);
+                    etfX1 = itemView.findViewById(R.id.fx1);
+                    etDerX1 = itemView.findViewById(R.id.derx1);
                     etIteration = itemView.findViewById(R.id.iteration);
                     break;
             }

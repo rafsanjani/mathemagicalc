@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorMainBackground">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/iteration"
+                style="@style/AppMaterialTheme.TableTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="x"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/fx1"
+                style="@style/AppMaterialTheme.TableTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="fx1"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/derx1"
+                style="@style/AppMaterialTheme.TableTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="derx1"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/root"
+                style="@style/AppMaterialTheme.TableTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="root"
+                android:textAlignment="center" />
+            />
+        </TableRow>
+
+    </TableLayout>
+</RelativeLayout>

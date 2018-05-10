@@ -5,8 +5,8 @@ package com.example.azizrafsanjani.numericals;
  */
 
 
+import com.example.azizrafsanjani.numericals.model.LocationOfRootResult;
 import com.example.azizrafsanjani.numericals.utils.Numericals;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
 
 import org.junit.Test;
 
@@ -35,24 +35,24 @@ public class NumericalsTest {
     }
 
     @Test
-    public  void testIterationsWithtolerance(){
+    public void testIterationsWithtolerance() {
         double x1 = -2;
         double x2 = -1;
         double tol = 0.0039;
 
-        int iterations = Numericals.getIterations(tol, x1, x2);
+        int iterations = Numericals.getBisectionIterations(tol, x1, x2);
         System.out.println(iterations);
 
         assertEquals(iterations, 8);
     }
 
     @Test
-    public void testToleranceWithIterations(){
+    public void testToleranceWithIterations() {
         double x1 = -2;
         double x2 = -1;
         int iterations = 8;
 
-        double tolerance = Numericals.getTolerance(iterations, x1, x2);
+        double tolerance = Numericals.getBisectionTolerance(iterations, x1, x2);
 
         assertEquals(tolerance, 0.00390625);
 
@@ -71,10 +71,11 @@ public class NumericalsTest {
     }
 
     @Test
-    public void testGenerateTexEquation(){
+    public void testGenerateTexEquation() {
         String tex = Numericals.generateTexEquation("f(x) = 3*x^2 - 2");
         System.out.println(tex);
     }
+
     @Test
     public void testBisectionShouldPass() {
         double y = Numericals.Bisect("x^5 + x^3 + 3", -2, -1, 4, 0.005);
@@ -83,15 +84,24 @@ public class NumericalsTest {
 
     @Test
     public void testBisectionAllShouldPass() {
-        List<Double> longBisection = Numericals.BisectAll("x^5 + x^3 + 3", -2, -1, 4, 0.005);
-        assertEquals(-1.0625, longBisection.get(3));
+        List<LocationOfRootResult> longBisection = Numericals.BisectAll("x^5 + x^3 + 3", -2, -1, 4, 0.005);
+        assertEquals(-1.0625, longBisection.get(3).getX3());
     }
 
     @Test
     public void testNewtonRaphson() {
-        String eqn = "x^2 - 3";
-        double y = Numericals.NewtonRaphson(eqn, 1, 20);
-        assertEquals(-1.0625, y);
+        String eqn = "x^5 + x^3+3";
+        double y = Numericals.NewtonRaphson(eqn, -1, 20);
+        assertEquals(-1.105298546, y);
+    }
+
+    @Test
+    public void testNewtonRaphsonAll() {
+        String eqn = "x^5 + x^3+3";
+        List<LocationOfRootResult> results = Numericals.NewtonRaphsonAll(eqn, -1, 20);
+        for (LocationOfRootResult x : results) {
+            System.out.println(x.getX1());
+        }
     }
 
     @Test
@@ -241,9 +251,21 @@ public class NumericalsTest {
     @Test
     public void testSecanteShouldPass() {
         String eqn = "x^3 + x^3 + 3";
-        double y = Numericals.Secante(eqn, 1, -1, 1);
+        double y = Numericals.Secante(eqn, 1, -1, 100);
         System.out.println(y);
         assertEquals(-1.5, y);
+    }
+
+    @Test
+    public void testSecanteAllShouldPass() {
+        String eqn = "x^3 + x^3 + 3";
+        List<LocationOfRootResult> result = Numericals.SecanteAll(eqn, 1.0, -1.0, 800);
+        System.out.println("X1      X2        X3      DIFFERENCE");
+
+        for (LocationOfRootResult y : result) {
+            System.out.println(y.getIteration() + ":::::" + y.getX1() + " " + y.getX2() + " " + y.getX3() + " " + y.getDifference());
+        }
+        assertEquals(-1.5, result.get(0).getX3());
     }
 
     @Test

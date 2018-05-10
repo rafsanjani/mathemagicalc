@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="Go to operation...."
         android:onClick="onGoToOperation"
+        android:title="@string/go_to_operation"
         app:showAsAction="never" />
     <item
-        android:title="Settings"
+        android:title="@string/settings"
         app:showAsAction="never" />
     <item
         android:id="@+id/menuExit"
         android:onClick="onExit"
-        android:title="Exit"
+        android:title="@string/exit"
         app:showAsAction="never" />
 </menu>

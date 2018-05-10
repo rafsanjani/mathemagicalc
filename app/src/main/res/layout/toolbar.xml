@@ -19,7 +19,7 @@
             android:id="@+id/toolbarAppTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Numerical Methods..."
+            android:text="Numericals..."
             android:textColor="#000000"
             android:textSize="30sp"
             android:textStyle="bold" />

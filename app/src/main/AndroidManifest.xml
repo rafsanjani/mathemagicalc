@@ -18,6 +18,7 @@
         android:theme="@style/AppMaterialTheme">
         <activity
             android:name=".activities.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait">
 
             <intent-filter>
