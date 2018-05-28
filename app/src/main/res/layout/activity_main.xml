@@ -7,23 +7,23 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_above="@id/footer"
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@id/footer"
+        android:orientation="vertical">
 
         <include
             android:id="@+id/toolBar"
             layout="@layout/toolbar" />
-
     </LinearLayout>
+
     <TextView
         android:id="@+id/footer"
         style="@style/AppTheme.FooterText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/footer_text" />
+        android:text="..." />
 </RelativeLayout>
 

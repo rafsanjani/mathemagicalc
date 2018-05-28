@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:text="Numerical Converter"
+        android:text="@string/numerical_converter"
         android:textAlignment="center"
         android:textSize="38sp"
         android:textStyle="bold" />
@@ -19,7 +19,6 @@
         android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/footer"
         android:layout_below="@+id/Header">
 
         <LinearLayout
@@ -39,9 +38,8 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_number_conversion_db_fractions"
-                    android:elevation="5dp"
-                    android:text="Dec to Bin (Fractions)"
-                    android:textSize="11sp"
+                    android:text="@string/dec_to_bin_fractions"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
 
                 <Button
@@ -51,9 +49,8 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_number_conversion_db_integers"
-                    android:elevation="5dp"
-                    android:text="Dec to Bin (Integers)"
-                    android:textSize="11sp"
+                    android:text="@string/dec_to_bin_integers"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -69,9 +66,8 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_number_conversion_db_anynumber"
-                    android:elevation="5dp"
-                    android:text="Dec to Bin (Any Number)"
-                    android:textSize="11sp"
+                    android:text="@string/dec_to_bin_any_number"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
 
                 <Button
@@ -81,9 +77,8 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_number_conversion_db_bintodecimal"
-                    android:elevation="5dp"
-                    android:text="Bin to Decimal"
-                    android:textSize="11sp"
+                    android:text="@string/bin_to_decimal"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -99,9 +94,8 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_number_conversion_dectohexa"
-                    android:elevation="5dp"
-                    android:text="Dec to Hexadecimal"
-                    android:textSize="11sp"
+                    android:text="@string/dec_to_hexadecimal"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
 
                 <Button
@@ -111,14 +105,29 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_number_conversion_dectooctal"
-                    android:elevation="5dp"
-                    android:text="Dec to Octal"
-                    android:textSize="11sp"
+                    android:text="@string/dec_to_octal"
+                    android:textSize="@dimen/menu_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_allinone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_number_conversion_dectohexa"
+                    android:text="@string/all_in_one_converter"
+                    android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
 
 
 </RelativeLayout>

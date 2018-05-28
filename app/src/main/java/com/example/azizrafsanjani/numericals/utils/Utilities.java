@@ -11,12 +11,17 @@ import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.transitionseverywhere.TransitionManager;
 import com.transitionseverywhere.TransitionSet;
 import com.transitionseverywhere.extra.Scale;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -81,6 +86,7 @@ public final class Utilities {
         fragmentTransaction.replace(containerViewId, fragment);
         fragmentTransaction.commit();
     }
+
 
     public static void animateAnswer(View answerView, ViewGroup viewGroup, DisplayMode displayMode) {
 

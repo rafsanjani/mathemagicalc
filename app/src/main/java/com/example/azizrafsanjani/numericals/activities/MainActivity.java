@@ -128,8 +128,6 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
 
         OperationListDialog dialog = new OperationListDialog();
-
-
         dialog.show(getFragmentManager(), "Fragment dialog");
 
     }

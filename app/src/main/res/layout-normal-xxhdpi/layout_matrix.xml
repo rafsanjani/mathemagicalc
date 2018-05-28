@@ -1,8 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/matrix"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:showIn="@layout/fragment_gaussian_partial3x3">
 
 
     <LinearLayout
@@ -274,7 +276,7 @@
         android:layout_marginTop="10dp"
         android:text="Reduced Matrix form is given as:"
         android:textAlignment="center"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <LinearLayout
         android:id="@+id/solutionMatrix"

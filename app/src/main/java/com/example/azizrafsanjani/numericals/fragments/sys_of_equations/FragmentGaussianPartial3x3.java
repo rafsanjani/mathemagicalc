@@ -59,7 +59,7 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonBack:
-//                Utilities.replaceFragment( new FragmentEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment( new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
                 break;
 
             case R.id.buttonCalculate:
@@ -71,10 +71,10 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
 
     private void onCalculate() {
         getMatrices();
-        LinearLayout solutionMatrix = rootView.findViewById(R.id.solutionMatrix);
-        LinearLayout solutionMatrix2 = rootView.findViewById(R.id.solutionMatrix2);
-        Utilities.animateAnswer(solutionMatrix, (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        Utilities.animateAnswer(solutionMatrix2, (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+       // LinearLayout solutionMatrix = rootView.findViewById(R.id.solutionMatrix);
+        //LinearLayout solutionMatrix2 = rootView.findViewById(R.id.solutionMatrix2);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
     }
@@ -105,10 +105,13 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
 
         etX[0] = rootView.findViewById(R.id.x1);
 
+
+
         MainActivity.hideKeyboard(etA[0][0]);
 
         for (int i = 0; i < etA.length; i++) {
             for (int j = 0; j < etA.length; j++) {
+                etA[i][j].addTextChangedListener(this);
                 try {
                     a[i][j] = Double.parseDouble(etA[i][j].getText().toString());
                 } catch (NumberFormatException ex) {
@@ -168,12 +171,12 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+        int c = 9;
     }
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+      int x = 3;
     }
 
     @Override

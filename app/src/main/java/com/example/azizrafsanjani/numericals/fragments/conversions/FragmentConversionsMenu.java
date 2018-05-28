@@ -42,11 +42,6 @@ public class FragmentConversionsMenu extends Fragment implements View.OnClickLis
     }
 
     private void initControls() {
-        //items = rootView.findViewById(R.id.listItems);
-        //items.setOnItemClickListener(this);
-
-        //items.setLayoutManager(new LinearLayoutManager(getContext()));
-
         header = rootView.findViewById(R.id.Header);
         header.setVisibility(View.VISIBLE);
 
@@ -56,6 +51,7 @@ public class FragmentConversionsMenu extends Fragment implements View.OnClickLis
         rootView.findViewById(R.id.btn_bin_to_decimal).setOnClickListener(this);
         rootView.findViewById(R.id.btn_decimal_to_octal).setOnClickListener(this);
         rootView.findViewById(R.id.btn_decimal_to_hexadecimal).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_allinone).setOnClickListener(this);
 
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
         header.setTypeface(typeface);
@@ -63,28 +59,37 @@ public class FragmentConversionsMenu extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        Fragment fragment;
+        Fragment fragment = null;
         switch (view.getId()) {
             case R.id.btn_dec_to_binary_integer:
                 fragment = new FragmentDecToBinInt();
-                Utilities.replaceFragment( fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
 
             case R.id.btn_dec_to_binary_fraction:
                 fragment = new FragmentDecToBinFrac();
-                Utilities.replaceFragment( fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
 
             case R.id.btn_dec_to_binary_any_number:
                 fragment = new FragmentDecToBin();
-                Utilities.replaceFragment( fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
 
             case R.id.btn_bin_to_decimal:
                 fragment = new FragmentBinToDec();
-                Utilities.replaceFragment( fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
 
+            case R.id.btn_decimal_to_hexadecimal:
+                fragment = new FragmentDecToHexadecimal();
+                break;
+
+            case R.id.btn_decimal_to_octal:
+                fragment = new FragmentDecToOctal();
+                break;
+            case R.id.btn_allinone:
+                fragment = new FragmentAllInOne();
+                break;
         }
+
+        if (fragment != null)
+            Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
     }
 }

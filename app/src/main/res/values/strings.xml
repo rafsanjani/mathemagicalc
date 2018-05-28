@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Numerical Methods</string>
+    <string name="app_name">Mathemagi-calC</string>
     <string name="remarks">Numerical Methods and Computations</string>
     <string name="footer_text">...and Computations</string>
     <string name="app_description">Implementation of algorithms</string>
@@ -27,6 +27,7 @@
     <string name="enter_decimal_int">Enter a decimal Integer (eg 30)</string>
     <string name="enter_decimal">Enter a decimal Integer (eg 30 or 30.53)</string>
     <string name="decimal_to_bin_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N > 0 </string>
+    <string name="decimal_to_hexadecimal_desc">Converts a decimal integer (N) to it\'s equivalent hexadecimal where  N > 0 </string>
     <string name="bisection_desc">Locate the root of an equation of the form f(x) = 0</string>
     <string name="bisection_enter_eqn">Equation to evaluate [eg "f(x) = 2*x^3 + 2"]</string>
     <string name="system_of_equations">8. System of equations</string>
@@ -36,7 +37,7 @@
     <string name="iterations">Iterations</string>
     <string name="cont">Continue...</string>
     <string name="loc_of_rooots">Location of Roots</string>
-    <string name="sys_of_eqns">Sys of Equations</string>
+    <string name="sys_of_eqns">System of Equations</string>
     <string name="number_conversions">Converter</string>
     <string name="ordinary_diff_eqn">Ord. Diff. Eqns (ODE)</string>
     <string name="show_algorithm">Show Algorithm</string>
@@ -52,6 +53,17 @@
     <string name="go_to_operation">Go to operation....</string>
     <string name="settings">Settings</string>
     <string name="exit">Exit</string>
+    <string name="dec_to_hexadecimal">Dec to Hexadecimal</string>
+    <string name="dec_to_octal">Dec to Octal</string>
+    <string name="dec_to_bin_any_number">Dec to Bin (Any Number)</string>
+    <string name="bin_to_decimal">Bin to Decimal</string>
+    <string name="numerical_converter">Numerical Converter</string>
+    <string name="dec_to_bin_fractions">Dec to Bin (Fractions)</string>
+    <string name="dec_to_bin_integers">Dec to Bin (Integers)</string>
+    <string name="decimal_to_octal_desc"><![CDATA[Converts a decimal integer (N) to it\'s equivalent octal value where N > 0]]></string>
+    <string name="back_to_sys_of_eqns">Back to Sys of Eqns</string>
+    <string name="all_in_one_converter">ALL IN ONE CONVERTER</string>
+    <string name="conversion_all_in_one">Input a decimal number and it will be converted to binary, octal and hexadecimal</string>
 
 
     <string-array name="main_menu">

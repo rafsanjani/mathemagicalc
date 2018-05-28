@@ -16,9 +16,9 @@ import static junit.framework.Assert.assertEquals;
 
 public class NumericalsTest {
     private static void printMatrix(double[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
+        for (double[] aMatrix : matrix) {
             for (int j = 0; j < matrix.length; j++) {
-                System.out.print(matrix[i][j] + " ");
+                System.out.print(aMatrix[j] + " ");
             }
             System.out.println();
         }
@@ -59,8 +59,8 @@ public class NumericalsTest {
     }
 
     private static void printMatrix(double system[]) {
-        for (int rowIndex = 0; rowIndex < system.length; rowIndex++) {
-            System.out.print(system[rowIndex] + " ");
+        for (double aSystem : system) {
+            System.out.print(aSystem + " ");
         }
     }
 
@@ -105,19 +105,6 @@ public class NumericalsTest {
     }
 
     @Test
-    public void testGaussian() {
-        double A[][] = {
-                {100, 2555, 3},
-                {4, 1, 2},
-                {7, 333, 4}
-        };
-
-
-        double B[] = {2, 6, 3};
-
-    }
-
-    @Test
     public void testGaussianComplete() {
         double[][] A = {
                 {1, -2, -3},
@@ -136,6 +123,37 @@ public class NumericalsTest {
     }
 
     @Test
+    public void testGaussianWithPartialPivoting() {
+        double[][] A = {
+                {1, -2, -3},
+                {3, 5, 2},
+                {2, 3, -1}
+        };
+
+        double B[] = {0, 0, -1};
+
+        //Note: final answer to this system is {0.5, -0.5, 0.5}
+
+        double sol[] = Numericals.GaussianWithPartialPivoting(A, B);
+
+    }
+
+    @Test
+    public void testKillRowsBeneath() {
+        double[][] A = {
+                {1, -2, -3},
+                {3, 5, 2},
+                {2, 3, -1}
+        };
+
+        double B[] = {0, 0, -1};
+
+
+        printMatrix(A);
+    }
+
+
+    @Test
     public void testGaussianComplete4x4Matrix() {
         double[][] A = {
                 {1, -4, 4, 7},
@@ -144,14 +162,28 @@ public class NumericalsTest {
                 {2, -3, 2, -5}
         };
 
+
         double[] solution = {-14.48, 19.56, 34.12, -5.68};
 
         double B[] = {4, 5, 2, 9};
 
-        //Note: final answer to this system is {-0.5, 0.5, 0.5}
-        double sol[] = Numericals.GaussianWithCompletePivoting(A, B);
+        //double sol[] = Numericals.lsolve(A, B);
 
-        printMatrix(sol);
+        //ANOTHER EXAMPLE
+        double[][] AA = {
+                {1, 2, 4, 3, 5},
+                {3, 5, 3, 1, 2},
+                {1, 4, 4, 2, 1},
+                {4, 1, 2, 5, 3},
+                {5, 2, 1, 4, 1}
+        };
+
+        double BB[] = {5, 6, 7, 8, 9};
+
+        double iSolution[] = Numericals.GaussianWithCompletePivoting(AA, BB);
+        //note solution to the above big matrix is {59.5, -67.5, 87,-55, -20.5}
+        printMatrix(iSolution);
+
     }
 
     @Test
@@ -268,8 +300,18 @@ public class NumericalsTest {
         assertEquals(-1.5, result.get(0).getX3());
     }
 
+
     @Test
     public void testBisectionShouldFail() {
         assertEquals(-1.1056875, Numericals.Bisect("f(x) = x^5 + x^3 + 3", -2, -1, 7, 0.00005));
+    }
+
+    @Test
+    public void testDecimalToHexadecimal(){
+        String decimal = "123994839";
+        String hex = Numericals.DecimalToHexadecimal(decimal);
+
+        assertEquals(hex, "f");
+
     }
 }

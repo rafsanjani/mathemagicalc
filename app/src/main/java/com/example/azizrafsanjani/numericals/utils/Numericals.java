@@ -13,6 +13,7 @@ import org.mariuszgromada.math.mxparser.Function;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -44,8 +45,8 @@ public final class Numericals {
     }
 
     /***
-     * Converts a whole number from Base 10 to Base 2. Note: Only Integers
-     * @param dec A decimal number(n) where n >= 1
+     * Converts a whole number from Base 10 to Base 2. Note: Only Fractions
+     * @param dec A decimal number(n) where 0 < n < 1
      * @return string a string representation of the binary equivalent of the supplied decimal numeral
      */
     public static String DecimalFractionToBinary(double dec) {
@@ -375,14 +376,30 @@ public final class Numericals {
         return result;
     }
 
+
     public static double[] GaussianWithCompletePivoting(double[][] A, double B[]) {
+
         int N = B.length;
+        final double[][] IDENTITY = generateIdentityMatrix(N);
+
+
+        List<double[][]> Qn = new ArrayList<>();
+
+
         for (int k = 0; k < N; k++) {
+            double[][] iMatrix = generateIdentityMatrix(N);
+
             //get pivot column
             int maxColumn = getPivotColumn(A, k);
 
             //swap pivot column
             swapColumns(A, maxColumn, k);
+            swapColumns(iMatrix, maxColumn, k);
+
+            //has any swapping occurred at the column matrix
+            if (!Arrays.deepEquals(iMatrix, IDENTITY)) {
+                Qn.add(iMatrix);
+            }
 
             //get the pivot row
             int maxRow = getPivotRow(A, k);
@@ -404,27 +421,76 @@ public final class Numericals {
         return getSolutionByBackSubstitution(A, B, N);
     }
 
+    /***
+     *
+     * @param dimension the dimension of the matrix for which an identity is to be generated
+     * @return a square matrix identity matrix where dimension  = dimension
+     */
+    private static double[][] generateIdentityMatrix(int dimension) {
+        double matrix[][] = null;
+        switch (dimension) {
+            case 3:
+                double[][] iMatrix3x3 = {
+                        {1, 0, 0},
+                        {0, 1, 0},
+                        {0, 0, 1}
+                };
 
-    public static double[][] multiplyMatrix(double[][] A, double[][] B) {
-        int aRows = A.length;
-        int aCols = A[0].length;
+                matrix = iMatrix3x3;
+                break;
+            case 4:
+                double[][] iMatrix4x4 = {
+                        {1, 0, 0, 0},
+                        {0, 1, 0, 0},
+                        {0, 0, 1, 0},
+                        {0, 0, 0, 1}
+                };
+                matrix = iMatrix4x4;
+                break;
 
-        int bRows = B.length;
-        int bCols = B[0].length;
-
-        double[][] soln = new double[aRows][aCols];
-        if (aCols != bRows) {
-            throw new IllegalArgumentException("Illegal Matrix Sizes");
+            case 5:
+                double[][] iMatrix5x5 = {
+                        {1, 0, 0, 0, 0},
+                        {0, 1, 0, 0, 0},
+                        {0, 0, 1, 0, 0},
+                        {0, 0, 0, 1, 0}
+                };
+                matrix = iMatrix5x5;
+                break;
         }
-
-        for (int i = 0; i < aRows; i++)
-            for (int j = 0; j < bCols; j++)
-                for (int k = 0; k < aCols; k++)
-                    soln[i][j] += A[i][k] * B[k][j];
-
-        return soln;
+        return matrix;
     }
 
+    public static String DecimalToHexadecimal(String decimal) {
+        if (decimal.contains("."))
+            return "?????";
+
+        BigInteger toHex = new BigInteger(decimal);
+
+        return toHex.toString(16).toUpperCase();
+    }
+
+    public static String DecimalToOctal(Double dec) {
+        String decimal = String.valueOf(dec);
+
+        //differentiate decimal numeral into fractional and whole parts
+        String wholeStr = decimal.substring(0, decimal.indexOf("."));
+        String fractionalStr = decimal.substring(wholeStr.length() + 1);
+
+        int whole = Integer.parseInt(wholeStr);
+        int fractional = Integer.parseInt(fractionalStr);
+
+        BigInteger toWholeHex = new BigInteger(String.valueOf(whole));
+        BigInteger toFracHex = new BigInteger(String.valueOf(fractional));
+
+        return (toWholeHex.toString(8) + "." + toFracHex.toString(8)).toUpperCase();
+    }
+
+
+    enum GaussianType {
+        ThreeByThree,
+        FourByFour
+    }
 
     public static double[] multiplyMatrix(double[][] iSolution, double[] x) {
         RealMatrix lhs = MatrixUtils.createRealMatrix(iSolution);
@@ -438,15 +504,15 @@ public final class Numericals {
         int N = B.length;
         for (int k = 0; k < N; k++) {
             //get the pivot row
-            int max = getPivotRow(A, k);
+            int maxRow = getPivotRow(A, k);
 
             //swap the pivot row with the first row in matrix A
-            swapRows(A, max, k);
+            swapRows(A, maxRow, k);
 
             //swap corresponding values of the pivot row in the solution matrix
             double temp = B[k];
-            B[k] = B[max];
-            B[max] = temp;
+            B[k] = B[maxRow];
+            B[maxRow] = temp;
 
             //reduce all elements beneath the pivot row
             killRowsBeneath(A, B, k);
@@ -456,6 +522,7 @@ public final class Numericals {
 
         return getSolutionByBackSubstitution(A, B, N);
     }
+
 
     private static double[] getSolutionByBackSubstitution(double[][] A, double[] B, int N) {
         double[] solution = new double[N];
@@ -479,7 +546,7 @@ public final class Numericals {
         return solution;
     }
 
-    private static void killRowsBeneath(double[][] A, double[] B, int k) {
+    public static void killRowsBeneath(double[][] A, double[] B, int k) {
         int N = A.length;
         for (int i = k + 1; i < N; i++) {
             double factor = A[i][k] / A[k][k];
@@ -493,6 +560,7 @@ public final class Numericals {
             }
         }
     }
+
 
     private static void roundTo2Dp(double[][] A, double[] B) {
         for (int i = 0; i < A.length; i++) {
@@ -521,9 +589,9 @@ public final class Numericals {
     }
 
     private static void swapRows(double[][] system, int maxRow, int rowIndex) {
-        double[] temp = system[rowIndex];
-        system[rowIndex] = system[maxRow];
-        system[maxRow] = temp;
+        double tmpRow[] = system[maxRow];
+        system[maxRow] = system[rowIndex];
+        system[rowIndex] = tmpRow;
     }
 
     private static void swapColumns(double system[][], int maxCol, int colIndex) {
@@ -531,7 +599,6 @@ public final class Numericals {
             ArrayUtils.swap(aSystem, maxCol, colIndex);
         }
     }
-
 
     private static int getPivotColumn(double[][] system, int k) {
         int N = system.length;
