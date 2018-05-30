@@ -22,7 +22,7 @@
 
     <include
         android:id="@+id/matrix"
-        layout="@layout/layout_matrix" />
+        layout="@layout/layout_matrix3x3" />
 
 
     <Button

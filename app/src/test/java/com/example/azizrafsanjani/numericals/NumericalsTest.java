@@ -152,6 +152,26 @@ public class NumericalsTest {
         printMatrix(A);
     }
 
+    @Test
+    public void testGaussianPartial4x4Matrix() {
+        double[][] A = {
+                {8, 3, 4, 5},
+                {14, 4, 33, 23},
+                {15, 4, 23, 7},
+                {4, 11, 17, 16}
+        };
+
+
+       // double[] solution = {-14.48, 19.56, 34.12, -5.68};
+
+        double B[] = {31, 17, 22, 51};
+
+
+        double iSolution[] = Numericals.GaussianWithCompletePivoting(A, B);
+        //note solution to the above big matrix is {59.5, -67.5, 87,-55, -20.5}
+        printMatrix(A);
+
+    }
 
     @Test
     public void testGaussianComplete4x4Matrix() {
@@ -307,7 +327,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void testDecimalToHexadecimal(){
+    public void testDecimalToHexadecimal() {
         String decimal = "123994839";
         String hex = Numericals.DecimalToHexadecimal(decimal);
 

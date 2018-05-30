@@ -13,12 +13,6 @@ import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentBinToDec;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToBin;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToBinFrac;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToBinInt;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToHexadecimal;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToOctal;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
 
 /**
@@ -86,6 +80,12 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements View.OnCl
             case R.id.btn_sys_of_eqn_jacobi:
                 fragment = new FragmentJacobi();
                 break;
+
+            case R.id.btn_sys_of_eqn_gaussian4x4partial:
+                fragment = new FragmentGaussianPartial4x4();
+                break;
+            case R.id.btn_sys_of_eqn_gaussian4x4complete:
+                fragment = new FragmentGaussianComplete4x4();
         }
 
         if (fragment != null)
