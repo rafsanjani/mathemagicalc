@@ -244,7 +244,7 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
                 List<LocationOfRootResult> roots = Numericals.BisectAll(eqn, x0, x1, iter, tol);
                 FragmentBisectionResults resultPane = new FragmentBisectionResults();
                 Bundle eqnArgs = new Bundle();
-                
+
                 eqnArgs.putString("equation", eqn);
                 eqnArgs.putDouble("x0", x0);
                 eqnArgs.putInt("iterations", iter);
@@ -288,6 +288,4 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
         btnCalculate.setText(getResources().getString(R.string.calculate));
         Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
     }
-
-
 }
