@@ -116,3 +116,14 @@ public final class Utilities {
         HIDE
     }
 }
+/*
+    LATEX TEXTS
+    JACOBI'S METHOD
+    $$x^{(k)}_{1} = \frac{1}{a_{11}}[b_{1} - (a_{12}x^{(k-1)}_{2})+a_{13}x^{(k-1)}_{3}] \newline\newline
+
+    x^{(k)}_{2} = \frac{1}{a_{22}}[b_{2} - (a_{21}x^{(k-1)}_{1})+a_{23}x^{(k-1)}_{3}] \newline\newline
+
+    x^{(k)}_{3} = \frac{1}{a_{33}}[b_{3} - (a_{31}x^{(k-1)}_{1})+a_{32}x^{(k-1)}_{2}]
+
+    GAUSS SEIDEL'S METHOD
+ */

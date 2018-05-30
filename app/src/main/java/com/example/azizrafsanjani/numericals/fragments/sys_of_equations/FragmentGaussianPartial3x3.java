@@ -14,9 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
@@ -42,9 +40,8 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
     }
 
     private void initControls() {
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
-        tvAnswer.setTypeface(typeface);
+
+        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
@@ -59,11 +56,11 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonBack:
-                Utilities.replaceFragment( new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
                 break;
 
             case R.id.buttonCalculate:
-                Log.i(Utilities.Log,"solving the system using gaussian with partial pivoting");
+                Log.i(Utilities.Log, "solving the system using gaussian with partial pivoting");
                 onCalculate();
                 break;
         }
@@ -71,12 +68,12 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
 
     private void onCalculate() {
         getMatrices();
-       // LinearLayout solutionMatrix = rootView.findViewById(R.id.solutionMatrix);
+        // LinearLayout solutionMatrix = rootView.findViewById(R.id.solutionMatrix);
         //LinearLayout solutionMatrix2 = rootView.findViewById(R.id.solutionMatrix2);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup)rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
     }
 
 
@@ -106,7 +103,6 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
         etX[0] = rootView.findViewById(R.id.x1);
 
 
-
         MainActivity.hideKeyboard(etA[0][0]);
 
         for (int i = 0; i < etA.length; i++) {
@@ -119,6 +115,7 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
                 }
             }
             try {
+                etB[i].addTextChangedListener(this);
                 b[i] = Double.parseDouble(etB[i].getText().toString());
             } catch (NumberFormatException e) {
                 e.printStackTrace();
@@ -171,17 +168,20 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        int c = 9;
+
+
     }
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-      int x = 3;
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
     }
 
     @Override
     public void afterTextChanged(Editable editable) {
-        Utilities.animateAnswer(rootView.findViewById(R.id.textview_answer),
-                (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+
     }
 }

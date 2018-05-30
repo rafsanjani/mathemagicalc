@@ -1,6 +1,5 @@
 package com.example.azizrafsanjani.numericals.fragments.sys_of_equations;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
@@ -29,22 +27,20 @@ import com.example.azizrafsanjani.numericals.utils.Utilities;
 public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClickListener, View.OnKeyListener, TextWatcher {
 
     View rootView;
-    final String TAG = "numericals";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_gaussian_complete3x3, container, false);
-        MainActivity.setToolBarInfo("System of Equations", "Gaussian Elimination (Complete Pivoting)");
+        MainActivity.setToolBarInfo("System of Equations", "Gaussian Elimination (Partial Pivoting)");
 
         initControls();
         return rootView;
     }
 
     private void initControls() {
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
-        tvAnswer.setTypeface(typeface);
+
+        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
@@ -59,11 +55,11 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonBack:
-//                Utilities.replaceFragment( new FragmentEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
+                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
                 break;
 
             case R.id.buttonCalculate:
-                Log.i(Utilities.Log, "Solving gaussian with complete pivoting");
+                Log.i(Utilities.Log, "solving the system using gaussian with partial pivoting");
                 onCalculate();
                 break;
         }
@@ -71,14 +67,12 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
 
     private void onCalculate() {
         getMatrices();
-
-        LinearLayout solutionMatrix = rootView.findViewById(R.id.solutionMatrix);
-        LinearLayout solutionMatrix2 = rootView.findViewById(R.id.solutionMatrix2);
-        Utilities.animateAnswer(solutionMatrix, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        Utilities.animateAnswer(solutionMatrix2, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        // LinearLayout solutionMatrix = rootView.findViewById(R.id.solutionMatrix);
+        //LinearLayout solutionMatrix2 = rootView.findViewById(R.id.solutionMatrix2);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-
     }
 
 
@@ -90,7 +84,6 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
         double b[] = new double[3];
 
         EditText[] etX = new EditText[3];
-
 
         etA[0][0] = rootView.findViewById(R.id.a11);
         etA[0][1] = rootView.findViewById(R.id.a12);
@@ -108,16 +101,20 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
 
         etX[0] = rootView.findViewById(R.id.x1);
 
+
+        MainActivity.hideKeyboard(etA[0][0]);
+
         for (int i = 0; i < etA.length; i++) {
             for (int j = 0; j < etA.length; j++) {
+                etA[i][j].addTextChangedListener(this);
                 try {
                     a[i][j] = Double.parseDouble(etA[i][j].getText().toString());
-                    etA[i][j].addTextChangedListener(this);
                 } catch (NumberFormatException ex) {
                     ex.printStackTrace();
                 }
             }
             try {
+                etB[i].addTextChangedListener(this);
                 b[i] = Double.parseDouble(etB[i].getText().toString());
             } catch (NumberFormatException e) {
                 e.printStackTrace();
@@ -125,10 +122,8 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
 
         }
 
-
         //get the solution matrix
         double[] solution = Numericals.GaussianWithCompletePivoting(a, b);
-
 
         //our previous matrices have been mutated so we can represent them on the textviews
         TextView[][] tvA = new TextView[3][3];
@@ -171,17 +166,19 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+
     }
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
     }
 
     @Override
     public void afterTextChanged(Editable editable) {
-        Utilities.animateAnswer(rootView.findViewById(R.id.textview_answer),
-                (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
-        Log.i(TAG, "Text has been changed");
+
     }
 }
