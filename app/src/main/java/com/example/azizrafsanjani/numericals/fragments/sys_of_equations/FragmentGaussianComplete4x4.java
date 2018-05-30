@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
@@ -66,15 +67,18 @@ public class FragmentGaussianComplete4x4 extends Fragment implements View.OnClic
     }
 
     private void onCalculate() {
-        getMatrices();
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        if (getMatrices()) {
+            Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        }else{
+            Toast.makeText(getContext(), "Error with input", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
-    private void getMatrices() {
+    private boolean getMatrices() {
         EditText[][] etA = new EditText[4][4];
         double[][] a = new double[4][4];
 
@@ -85,22 +89,22 @@ public class FragmentGaussianComplete4x4 extends Fragment implements View.OnClic
         etA[0][0] = rootView.findViewById(R.id.a11);
         etA[0][1] = rootView.findViewById(R.id.a12);
         etA[0][2] = rootView.findViewById(R.id.a13);
-        etA[0][3] = rootView.findViewById(R.id.a13);
+        etA[0][3] = rootView.findViewById(R.id.a14);
 
         etA[1][0] = rootView.findViewById(R.id.a21);
         etA[1][1] = rootView.findViewById(R.id.a22);
         etA[1][2] = rootView.findViewById(R.id.a23);
-        etA[1][3] = rootView.findViewById(R.id.a23);
+        etA[1][3] = rootView.findViewById(R.id.a24);
 
         etA[2][0] = rootView.findViewById(R.id.a31);
         etA[2][1] = rootView.findViewById(R.id.a32);
         etA[2][2] = rootView.findViewById(R.id.a33);
-        etA[2][3] = rootView.findViewById(R.id.a33);
+        etA[2][3] = rootView.findViewById(R.id.a34);
 
         etA[3][0] = rootView.findViewById(R.id.a41);
         etA[3][1] = rootView.findViewById(R.id.a42);
         etA[3][2] = rootView.findViewById(R.id.a43);
-        etA[3][3] = rootView.findViewById(R.id.a43);
+        etA[3][3] = rootView.findViewById(R.id.a44);
 
         etB[0] = rootView.findViewById(R.id.b1);
         etB[1] = rootView.findViewById(R.id.b2);
@@ -116,6 +120,7 @@ public class FragmentGaussianComplete4x4 extends Fragment implements View.OnClic
                     a[i][j] = Double.parseDouble(etA[i][j].getText().toString());
                 } catch (NumberFormatException ex) {
                     ex.printStackTrace();
+                    return false;
                 }
             }
             try {
@@ -124,7 +129,6 @@ public class FragmentGaussianComplete4x4 extends Fragment implements View.OnClic
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             }
-
         }
 
         //get the solution matrix
@@ -174,6 +178,7 @@ public class FragmentGaussianComplete4x4 extends Fragment implements View.OnClic
             tvX[i].setText(String.valueOf(solution[i]));
             tvB[i].setText(String.valueOf(b[i]));
         }
+        return true;
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
@@ -66,17 +67,20 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
     }
 
     private void onCalculate() {
-        getMatrices();
-        // LinearLayout solutionMatrix = rootView.findViewById(R.id.solutionMatrix);
-        //LinearLayout solutionMatrix2 = rootView.findViewById(R.id.solutionMatrix2);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        if (getMatrices()) {
+            // LinearLayout solutionMatrix = rootView.findViewById(R.id.solutionMatrix);
+            //LinearLayout solutionMatrix2 = rootView.findViewById(R.id.solutionMatrix2);
+            Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        }else{
+            Toast.makeText(getContext(), "Error with input", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
-    private void getMatrices() {
+    private boolean getMatrices() {
         EditText[][] etA = new EditText[3][3];
         double[][] a = new double[3][3];
 
@@ -111,6 +115,7 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
                     a[i][j] = Double.parseDouble(etA[i][j].getText().toString());
                 } catch (NumberFormatException ex) {
                     ex.printStackTrace();
+                    return false;
                 }
             }
             try {
@@ -156,6 +161,8 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
             tvX[i].setText(String.valueOf(solution[i]));
             tvB[i].setText(String.valueOf(b[i]));
         }
+
+        return true;
     }
 
     @Override

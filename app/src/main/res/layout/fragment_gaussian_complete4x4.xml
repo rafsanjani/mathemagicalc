@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/header_margin_top"
-            android:text="Gaussian Elimination with Partial Pivoting"
+            android:text="Gaussian Elimination with Complete Pivoting"
             android:textAlignment="center"
             android:textSize="30sp" />
 

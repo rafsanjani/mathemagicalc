@@ -371,9 +371,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Reduced Matrix form is given as:"
+        android:text="Reduced Matrix form:"
         android:textAlignment="center"
-        android:visibility="visible" />
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <LinearLayout
         android:id="@+id/solutionMatrix"
@@ -579,9 +580,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:text="The solution Matrix is given by:"
+        android:text="The solution Matrix:"
         android:textAlignment="center"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <LinearLayout
         android:id="@+id/solutionMatrix2"
