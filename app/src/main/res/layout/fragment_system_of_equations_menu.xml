@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorMainBackground">
 
     <TextView
@@ -104,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_system_of_eqns"
+                    android:drawableTop="@drawable/button_system_of_eqns_gaussseidel"
                     android:text="Gauss Seidel"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
@@ -121,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_system_of_eqns"
+                    android:drawableTop="@drawable/button_system_of_eqns_gaussseidel"
                     android:gravity="left"
                     android:text="gAUSS Seidel (SOR)"
                     android:textSize="@dimen/menu_text_size"
