@@ -52,3 +52,7 @@ dependencies {
 dependencies {
     implementation "com.andkulikov:transitionseverywhere:1.7.7"
 }
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}

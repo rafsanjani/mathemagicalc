@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="AppMaterialTheme.EditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/textColorSecondary</item>
         <item name="android:backgroundTint">#000000</item>
