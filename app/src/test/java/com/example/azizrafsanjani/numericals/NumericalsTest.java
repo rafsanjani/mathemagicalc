@@ -162,7 +162,7 @@ public class NumericalsTest {
         };
 
 
-       // double[] solution = {-14.48, 19.56, 34.12, -5.68};
+        // double[] solution = {-14.48, 19.56, 34.12, -5.68};
 
         double B[] = {31, 17, 22, 51};
 
@@ -295,9 +295,20 @@ public class NumericalsTest {
 
     @Test
     public void testRegulaFalsi() {
-        String eqn = "f(x)=x^2 - 3";
-        double y = Numericals.FalsePosition(eqn, -1, 2, 10, 0);
+        String eqn = "f(x)=x^5 + x^3+3";
+        double y = Numericals.FalsePosition(eqn, -2, -1, 100, 0);
         System.out.println(y);
+    }
+
+    @Test
+    public void testRegulaFalsiAll() {
+        String eqn = "x^5 + x^3 +3";
+        List<LocationOfRootResult> here = Numericals.FalsePositionAll(eqn, -2, -1, 100, 0);
+        System.out.println("  x1     x2      x3     fx1    fx2     fx3   diff");
+        for (LocationOfRootResult x : here) {
+            System.out.printf("%f %f %f %f %f %f %f", x.getX1(), x.getX2(), x.getX3(), x.getFx1(), x.getFx2(), x.getFx3(), x.getDifference());
+            System.out.println();
+        }
     }
 
     @Test
