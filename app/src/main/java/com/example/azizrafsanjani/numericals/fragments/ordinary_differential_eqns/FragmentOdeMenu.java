@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.fragments.roots;
+package com.example.azizrafsanjani.numericals.fragments.ordinary_differential_eqns;
 
 
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import com.example.azizrafsanjani.numericals.utils.Utilities;
  * Created by Aziz Rafsanjani on 11/3/2017.
  */
 
-public class FragmentLocationOfRootsMenu extends Fragment implements View.OnClickListener {
+public class FragmentOdeMenu extends Fragment implements View.OnClickListener {
 
 
     private View rootView;
@@ -26,9 +26,9 @@ public class FragmentLocationOfRootsMenu extends Fragment implements View.OnClic
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_location_of_roots_menu, container, false);
+        rootView = inflater.inflate(R.layout.fragment_ode_menu, container, false);
         initControls();
-        MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
+        MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), "Ordinary Differential Equations");
 
         return rootView;
 
@@ -45,10 +45,7 @@ public class FragmentLocationOfRootsMenu extends Fragment implements View.OnClic
         Utilities.setLobsterTypeface(header, getContext());
         header.setVisibility(View.VISIBLE);
 
-        rootView.findViewById(R.id.btn_loc_of_roots_bisection).setOnClickListener(this);
-        rootView.findViewById(R.id.btn_loc_of_roots_false_position).setOnClickListener(this);
-        rootView.findViewById(R.id.btn_loc_of_roots_newton_raphson).setOnClickListener(this);
-        rootView.findViewById(R.id.btn_loc_of_roots_secante).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_ode_euler).setOnClickListener(this);
     }
 
     @Override
@@ -56,18 +53,6 @@ public class FragmentLocationOfRootsMenu extends Fragment implements View.OnClic
         Fragment fragment = null;
         switch (view.getId()) {
             case R.id.btn_loc_of_roots_bisection:
-                fragment = new FragmentBisection();
-                break;
-            case R.id.btn_loc_of_roots_false_position:
-                fragment = new FragmentRegulaFalsi();
-                break;
-
-            case R.id.btn_loc_of_roots_newton_raphson:
-                fragment = new FragmentNewtonRaphson();
-                break;
-
-            case R.id.btn_loc_of_roots_secante:
-                fragment = new FragmentSecante();
                 break;
         }
 

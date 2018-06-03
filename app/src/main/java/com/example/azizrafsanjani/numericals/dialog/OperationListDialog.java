@@ -22,6 +22,7 @@ import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecTo
 import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToBinInt;
 import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToHexadecimal;
 import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToOctal;
+import com.example.azizrafsanjani.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
 import com.example.azizrafsanjani.numericals.fragments.roots.FragmentBisection;
 import com.example.azizrafsanjani.numericals.fragments.roots.FragmentNewtonRaphson;
 import com.example.azizrafsanjani.numericals.fragments.roots.FragmentRegulaFalsi;
@@ -154,6 +155,7 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
                 fragment = new FragmentJacobi();
                 break;
             case 18:
+                fragment = new FragmentOdeMenu();
                 break;
         }
         if (fragment != null)

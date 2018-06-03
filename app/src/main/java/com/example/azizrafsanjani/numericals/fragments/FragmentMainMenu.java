@@ -16,6 +16,7 @@ import com.example.azizrafsanjani.numericals.R;
 import com.example.azizrafsanjani.numericals.activities.About;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
 import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentConversionsMenu;
+import com.example.azizrafsanjani.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
 import com.example.azizrafsanjani.numericals.fragments.roots.FragmentLocationOfRootsMenu;
 import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentSystemOfEquationsMenu;
 import com.example.azizrafsanjani.numericals.utils.Utilities;
@@ -56,6 +57,7 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
         rootView.findViewById(R.id.btn_loc_of_roots).setOnClickListener(this);
         rootView.findViewById(R.id.btn_sys_of_eqn).setOnClickListener(this);
         rootView.findViewById(R.id.btn_about).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_ord_diff_eqn).setOnClickListener(this);
 
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
         header.setTypeface(typeface);
@@ -78,7 +80,10 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
                 fragment = new FragmentSystemOfEquationsMenu();
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
-
+            case R.id.btn_ord_diff_eqn:
+                fragment = new FragmentOdeMenu();
+                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
+                break;
             case R.id.btn_about:
                 startActivity(new Intent(getContext(), About.class));
                 break;
