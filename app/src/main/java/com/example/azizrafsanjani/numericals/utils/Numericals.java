@@ -507,12 +507,32 @@ public final class Numericals {
     }
 
     public static String DecimalToHexadecimal(String decimal) {
-        if (decimal.contains("."))
-            return "?????";
+        StringBuilder stringBuilder = new StringBuilder();
+        double decimalDouble = Double.parseDouble(decimal);
 
-        BigInteger toHex = new BigInteger(decimal);
+        //obtain just the integer part and convert to hex first
+        int wholePart = (int)decimalDouble;
 
-        return toHex.toString(16).toUpperCase();
+        stringBuilder.append(Integer.toHexString(wholePart));
+        decimalDouble = decimalDouble - wholePart;
+
+        if (decimalDouble == 0) {
+            return stringBuilder.toString().toUpperCase();
+        }
+
+        stringBuilder.append(".");
+
+        for (int i = 0; i < 16; i++) {
+            decimalDouble *= 16;
+            int digit = (int)decimalDouble;
+            stringBuilder.append(Integer.toHexString(digit));
+            decimalDouble = decimalDouble - digit;
+
+            if (decimalDouble == 0)
+                break;
+        }
+
+        return stringBuilder.toString().toUpperCase();
     }
 
     public static String DecimalToOctal(Double dec) {
