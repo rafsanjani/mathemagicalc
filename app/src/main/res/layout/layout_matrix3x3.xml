@@ -276,7 +276,8 @@
         android:layout_marginTop="10dp"
         android:text="Reduced Matrix form:"
         android:textAlignment="center"
-        android:visibility="visible" />
+        tools:visibility="visible"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/solutionMatrix"
