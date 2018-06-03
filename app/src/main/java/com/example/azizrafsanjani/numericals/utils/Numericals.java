@@ -302,12 +302,13 @@ public final class Numericals {
         if (fx0 * fx1 > 0)
             throw new IllegalArgumentException("The function doesn't change sign between the specified intervals");
 
-        double x2 = x1 - ((x1 - x0) / (fx1 - fx0));
+        double x2 = x1 - ((x1 - x0) / (fx1 - fx0)) * fx1;
+        ;
         fx2 = fx.calculate(x2);
 
         double stoppingCriteria = (x2 - x1) / x1;
 
-        if (maxIterations == 1 || tol <= stoppingCriteria)
+        if (maxIterations == 1 || stoppingCriteria <= tol)
             return x2;
 
         if ((fx0 * fx2) < 0)
@@ -316,6 +317,43 @@ public final class Numericals {
             x0 = x2;
 
         return FalsePosition(expr, x0, x1, maxIterations - 1, tol);
+    }
+
+    public static List<LocationOfRootResult> FalsePositionAll(String expr, double x0, double x1, int maxIterations, double tol) {
+        List<LocationOfRootResult> results = new ArrayList<>();
+        double stoppingCriteria;
+        //sanitize the equation
+        if (expr.contains("="))
+            expr = expr.substring(expr.lastIndexOf("=") + 1);
+
+
+        Function fx = new Function(String.format("f(x) = %s", expr));
+
+        do {
+            double fx0 = fx.calculate(x0);
+            double fx1 = fx.calculate(x1);
+            double fx2;
+
+            //these are just to test whether the function changes sign or not but will not be used in the computations.
+            //only fx2 is used in the actual computation
+
+            double x2 = x1 - ((x1 - x0) / (fx1 - fx0)) * fx1;
+            fx2 = fx.calculate(x2);
+
+            stoppingCriteria = (Math.abs(x2 - x1) / x1);
+
+            results.add(new LocationOfRootResult(maxIterations, x0, x1, x2, fx0, fx1, fx2, stoppingCriteria));
+
+
+            if ((fx0 * fx2) < 0)
+                x1 = x2;
+            else
+                x0 = x2;
+            maxIterations--;
+
+        } while (maxIterations > 0 && stoppingCriteria <= tol);
+
+        return results;
     }
 
     /***
@@ -364,8 +402,10 @@ public final class Numericals {
 
             double x2 = x1 - ((x1 - x0) / (fx1 - fx0));
 
-            double difference = Math.abs(Math.abs(x2) - Math.abs(x0));
+            double difference = Math.abs(x2 - x0);
 
+            //we are not using maxiterations in the output because we would need to reverse it. instead
+            //the sequence of the list gives us an idea of the iteration number. lets use that instead
             result.add(new LocationOfRootResult(maxIterations, x0, x1, x2, difference));
             x0 = x2;
 
@@ -415,9 +455,14 @@ public final class Numericals {
             //reduce all elements beneath the pivot row
             killRowsBeneath(A, B, k);
         }
+        //get the product of all items in Qn
+
+        //multiply the product with the result obtained after solving by back subtitution
+        //x = Q.x* where x* is the result obtained after solving by back substitution
+
+        //reordering should take place after that
 
         //solve by backsubstitution
-
         return getSolutionByBackSubstitution(A, B, N);
     }
 

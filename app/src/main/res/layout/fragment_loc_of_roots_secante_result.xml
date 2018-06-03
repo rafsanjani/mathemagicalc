@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/header_margin_top"
-        android:text="Expansion of Iterations"
+        android:text="Expansion of Iterations for Secante"
         android:textAlignment="center"
         android:textSize="32sp" />
 

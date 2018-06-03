@@ -1,23 +1,19 @@
 package com.example.azizrafsanjani.numericals.fragments;
 
 
-import android.content.res.Resources;
+import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
+import com.example.azizrafsanjani.numericals.activities.About;
 import com.example.azizrafsanjani.numericals.activities.MainActivity;
 import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentConversionsMenu;
 import com.example.azizrafsanjani.numericals.fragments.roots.FragmentLocationOfRootsMenu;
@@ -28,7 +24,7 @@ import com.example.azizrafsanjani.numericals.utils.Utilities;
  * Created by Aziz Rafsanjani on 11/3/2017.
  */
 
-public class FragmentMainMenu extends Fragment implements  View.OnClickListener {
+public class FragmentMainMenu extends Fragment implements View.OnClickListener {
 
 
     private View rootView;
@@ -59,6 +55,7 @@ public class FragmentMainMenu extends Fragment implements  View.OnClickListener 
         rootView.findViewById(R.id.btn_number_conversion).setOnClickListener(this);
         rootView.findViewById(R.id.btn_loc_of_roots).setOnClickListener(this);
         rootView.findViewById(R.id.btn_sys_of_eqn).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_about).setOnClickListener(this);
 
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
         header.setTypeface(typeface);
@@ -80,6 +77,10 @@ public class FragmentMainMenu extends Fragment implements  View.OnClickListener 
             case R.id.btn_sys_of_eqn:
                 fragment = new FragmentSystemOfEquationsMenu();
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
+                break;
+
+            case R.id.btn_about:
+                startActivity(new Intent(getContext(), About.class));
                 break;
         }
 

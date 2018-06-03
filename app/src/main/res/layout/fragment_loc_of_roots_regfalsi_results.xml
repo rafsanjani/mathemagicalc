@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/header_margin_top"
-        android:text="Expansion of Iterations for Newton Raphson"
+        android:text="Expansion of Iterations for False Position"
         android:textAlignment="center"
         android:textSize="32sp" />
 
@@ -57,14 +57,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/std_layout_margin"
-                android:text="@string/initial_guess" />
+                android:text="Interval: " />
 
             <TextView
-                android:id="@+id/initGuess"
+                android:id="@+id/interval"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="[-2]"
+                android:text="[-2, -5]"
                 android:textColor="#37963b" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -78,6 +84,21 @@
                 android:layout_height="wrap_content"
                 android:text="[9]"
                 android:textColor="#37963b" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/std_layout_margin"
+                android:text="Tol: " />
+
+            <TextView
+                android:id="@+id/tolerance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="[-0.00000]"
+                android:textColor="#8c1453" />
+
         </LinearLayout>
 
 
@@ -94,43 +115,52 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/iteration"
                 style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:id="@+id/iteration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="step"
                 android:textAlignment="center" />
 
+            <TextView
+                style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:id="@+id/x1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+
+                android:text="x1" />
 
             <TextView
-                android:id="@+id/fx1"
                 style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:id="@+id/x2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="f(x1)"
+                android:text="x2"
 
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/derX1"
                 style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:id="@+id/x3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="der(x1)"
+
+                android:text="x3"
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/root"
                 style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:id="@+id/difference"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_weight="1"
-
-                android:text="root" />
+                android:text="epsilon"
+                android:textAlignment="center" />
         </TableRow>
     </TableLayout>
 
@@ -166,7 +196,7 @@
             style="@style/AppMaterialTheme.ButtonStyle.Exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Back to Newtons"
+            android:text="Back to False Position"
             android:textStyle="bold" />
 
     </LinearLayout>

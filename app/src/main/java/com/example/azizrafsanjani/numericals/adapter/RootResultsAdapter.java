@@ -18,7 +18,7 @@ import com.example.azizrafsanjani.numericals.utils.Utilities;
 import java.util.List;
 import java.util.Locale;
 
-public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.RootResultViewHOlder> {
+public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.RootResultViewHolder> {
 
     private List<LocationOfRootResult> locationOfRootResult;
     private Context mCtx;
@@ -33,7 +33,7 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
 
     @NonNull
     @Override
-    public RootResultViewHOlder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RootResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = null;
 
         //inflate a view based on the location of root type
@@ -48,17 +48,20 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
             case SECANTE:
                 view = LayoutInflater.from(mCtx).inflate(R.layout.secante_results_view, null);
                 break;
+            case FALSE_POSITION:
+                view = LayoutInflater.from(mCtx).inflate(R.layout.regfalsi_results_view, null);
+                break;
 
             default:
                 Log.i(Utilities.Log, "Equation type not found");
                 break;
         }
 
-        return new RootResultViewHOlder(view);
+        return new RootResultViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RootResultViewHOlder holder, int position) {
+    public void onBindViewHolder(@NonNull RootResultViewHolder holder, int position) {
         if (position % 2 == 0) {
             holder.bg.setBackgroundColor(Color.argb(30, 238, 232, 232));
         } else {
@@ -70,6 +73,7 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
         switch (rootType) {
             case BISECTION:
             case SECANTE:
+            case FALSE_POSITION:
                 holder.etDifference.setText(String.format(Locale.US, "[%4.4f]", result.getTolerance()));
                 holder.etIteration.setText(String.format(Locale.US, "[%d] ", position + 1));
                 holder.etX1.setText(String.format(Locale.US, "[%4.4f]", result.getX1()));
@@ -83,6 +87,13 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
                 holder.etDerX1.setText(String.format(Locale.US, "[%4.4f]", result.getDerX1()));
                 holder.etRoot.setText(String.format(Locale.US, "[%4.4f]", result.getX1()));
                 break;
+            /*case FALSE_POSITION:
+                holder.etDifference.setText(String.format(Locale.US, "[%4.4f]", result.getDifference()));
+                holder.etIteration.setText(String.format(Locale.US, "[%d] ", position + 1));
+                holder.etX1.setText(String.format(Locale.US, "[%4.4f]", result.getX1()));
+                holder.etX2.setText(String.format(Locale.US, "[%4.4f]", result.getX2()));
+                holder.etX3.setText(String.format(Locale.US, "[%4.6f]", result.getX3()));
+                break;*/
 
         }
     }
@@ -92,18 +103,19 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
         return locationOfRootResult.size();
     }
 
-    class RootResultViewHOlder extends RecyclerView.ViewHolder {
+    class RootResultViewHolder extends RecyclerView.ViewHolder {
 
         ViewGroup bg;
         TextView etX1, etX2, etX3, etDifference, etIteration, etDerX1, etfX1, etRoot;
 
-        public RootResultViewHOlder(View itemView) {
+        public RootResultViewHolder(View itemView) {
             super(itemView);
             bg = itemView.findViewById(R.id.background);
 
             switch (rootType) {
                 case BISECTION:
                 case SECANTE:
+                case FALSE_POSITION:
                     etDifference = itemView.findViewById(R.id.difference);
                     etX1 = itemView.findViewById(R.id.x1);
                     etX2 = itemView.findViewById(R.id.x2);

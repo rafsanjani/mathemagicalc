@@ -28,6 +28,7 @@ import com.example.azizrafsanjani.numericals.fragments.roots.FragmentRegulaFalsi
 import com.example.azizrafsanjani.numericals.fragments.roots.FragmentSecante;
 import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussSeidel;
 import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussSeidelWithSOR;
+import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussianComplete4x4;
 import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussianPartial4x4;
 import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussianComplete3x3;
 import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussianPartial3x3;
@@ -137,6 +138,10 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
                 fragment = new FragmentGaussianPartial4x4();
                 break;
 
+            case 14:
+                fragment = new FragmentGaussianComplete4x4();
+                break;
+
             case 15:
                 fragment = new FragmentGaussSeidel();
                 break;
@@ -147,6 +152,8 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
 
             case 17:
                 fragment = new FragmentJacobi();
+                break;
+            case 18:
                 break;
         }
         if (fragment != null)
