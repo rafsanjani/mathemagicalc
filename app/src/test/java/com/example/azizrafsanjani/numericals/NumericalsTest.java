@@ -92,7 +92,7 @@ public class NumericalsTest {
     public void testNewtonRaphson() {
         String eqn = "x^5 + x^3+3";
         double y = Numericals.NewtonRaphson(eqn, -1, 20);
-        assertEquals(-1.105298546, y);
+        assertEquals(-1.1052985460061695, y);
     }
 
     @Test
@@ -261,37 +261,8 @@ public class NumericalsTest {
 
     }
 
-    @Test
-    public void testGaussSeidel() {
-        String system[] = {
-                "(1/2)*(x2+1)",
-                "(1/3)*(x1+x3+8)",
-                "(1/2)*(x2-5)"};
-        double initGuess[] = {0, 0, 0};
-        double sol[] = Numericals.GaussSeidel(system, initGuess, 0.01);
-    }
 
-    @Test
-    public void testGaussSeidelShouldPass() {
-        String system[] = {
-                "(1/4)*(x2+x3 + 3)",
-                "(1/6)*(2*x1-x3+9)",
-                "(1/7)*(x1-x2 - 6)"};
-        double initGuess[] = {0, 0, 0};
-        double sol[] = Numericals.GaussSeidel(system, initGuess, 0.000001);
-    }
 
-    @Test
-    public void testGaussSeidelXOR() {
-        String system[] = {
-                "(-1+x2-x3)/3",
-                "(7+x1+x3)/3",
-                "(-7-x1+x2)/3"
-        };
-        double initGuess[] = {0, 0, 0};
-        double omega = 1.25;
-        double sol[] = Numericals.GaussSeidelWithSOR(system, initGuess, 0.00011, omega);
-    }
 
     @Test
     public void testRegulaFalsi() {
@@ -312,14 +283,6 @@ public class NumericalsTest {
     }
 
     @Test
-    public void testSecanteShouldPass() {
-        String eqn = "x^3 + x^3 + 3";
-        double y = Numericals.Secante(eqn, 1, -1, 100);
-        System.out.println(y);
-        assertEquals(-1.5, y);
-    }
-
-    @Test
     public void testSecanteAllShouldPass() {
         String eqn = "x^3 + x^3 + 3";
         List<LocationOfRootResult> result = Numericals.SecanteAll(eqn, 1.0, -1.0, 800);
@@ -332,17 +295,20 @@ public class NumericalsTest {
     }
 
 
-    @Test
-    public void testBisectionShouldFail() {
-        assertEquals(-1.1056875, Numericals.Bisect("f(x) = x^5 + x^3 + 3", -2, -1, 7, 0.00005));
-    }
 
     @Test
     public void testDecimalToHexadecimal() {
-        String decimal = "123994839";
+        String decimal = "10";
         String hex = Numericals.DecimalToHexadecimal(decimal);
 
-        assertEquals(hex, "f");
+        assertEquals(hex, "A");
+    }
 
+    @Test
+    public void testDecimalToHexadecimalFraction() {
+        String decimal = String.valueOf(Math.PI);
+        String hex = Numericals.DecimalToHexadecimal(decimal);
+
+        assertEquals(hex, "3.243F6A8885A3");
     }
 }
