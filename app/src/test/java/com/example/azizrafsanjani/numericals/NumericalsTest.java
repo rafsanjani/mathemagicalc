@@ -6,6 +6,7 @@ package com.example.azizrafsanjani.numericals;
 
 
 import com.example.azizrafsanjani.numericals.model.LocationOfRootResult;
+import com.example.azizrafsanjani.numericals.model.OdeResult;
 import com.example.azizrafsanjani.numericals.utils.Numericals;
 
 import org.junit.Test;
@@ -262,8 +263,6 @@ public class NumericalsTest {
     }
 
 
-
-
     @Test
     public void testRegulaFalsi() {
         String eqn = "f(x)=x^5 + x^3+3";
@@ -295,7 +294,6 @@ public class NumericalsTest {
     }
 
 
-
     @Test
     public void testDecimalToHexadecimal() {
         String decimal = "10";
@@ -310,5 +308,35 @@ public class NumericalsTest {
         String hex = Numericals.DecimalToHexadecimal(decimal);
 
         assertEquals(hex, "3.243F6A8885A3");
+    }
+
+    @Test
+    public void EulerForwardMethodTest() {
+        String eqn = "x-y^2";
+        double yo = 0;
+        double height = 0.2;
+        double[] interval = {0, 1};
+
+        List<OdeResult> results = Numericals.SolveOdeByEulersMethod(eqn, height, interval, yo);
+
+
+        assertEquals(0.23681533952, results.get(4).getY());
+
+    }
+
+    @Test
+    public void EulerForwardMethodTest2() {
+        String eqn = "-2*x*y^2";
+        double yo = 1;
+        double height = 0.2;
+        double[] interval = {0, 1};
+
+        List<OdeResult> results = Numericals.SolveOdeByEulersMethod(eqn, height, interval, yo);
+
+        for (OdeResult result : results) {
+            System.out.println(result.getN() + " " + result.getX()+"  " + result.getY());
+        }
+
+        // assertEquals(0.23681533952, results.get(5).getY());
     }
 }
