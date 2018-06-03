@@ -3,6 +3,7 @@ package com.example.azizrafsanjani.numericals.utils;
 import android.util.Log;
 
 import com.example.azizrafsanjani.numericals.model.LocationOfRootResult;
+import com.example.azizrafsanjani.numericals.model.OdeResult;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.MatrixUtils;
@@ -511,7 +512,7 @@ public final class Numericals {
         double decimalDouble = Double.parseDouble(decimal);
 
         //obtain just the integer part and convert to hex first
-        int wholePart = (int)decimalDouble;
+        int wholePart = (int) decimalDouble;
 
         stringBuilder.append(Integer.toHexString(wholePart));
         decimalDouble = decimalDouble - wholePart;
@@ -524,7 +525,7 @@ public final class Numericals {
 
         for (int i = 0; i < 16; i++) {
             decimalDouble *= 16;
-            int digit = (int)decimalDouble;
+            int digit = (int) decimalDouble;
             stringBuilder.append(Integer.toHexString(digit));
             decimalDouble = decimalDouble - digit;
 
@@ -704,6 +705,50 @@ public final class Numericals {
     }
 
     /***
+     *
+     * @param function a differential equation whose initial conditions will be provided
+     * @param h the step size of the interval. for eg. a height of 0.2 for [0,1] will yield 5 results because 1/0.2 = 5
+     * @param interval the interval to be considered during the computation. a 1d array of 2 elements
+     * @return
+     */
+    public static List<OdeResult> SolveOdeByEulersMethod(String function, double h, double[] interval, double initY) {
+        if (interval.length == 0)
+            throw new IllegalArgumentException("Error:interval Not Found!!");
+
+        List<OdeResult> results = new ArrayList<>();
+
+        //set the first x value to the lower interval
+        double initX = interval[0];
+
+        int steps = (int) (interval[1] / h);
+
+        //intialize an array of size (steps + 2) to hold each iterative output and initialize it's firt element
+        //allow additional space for initial conditions
+        double[] yn = new double[steps + 2];
+        double[] xn = new double[steps + 2];
+
+        //the initial value will be given and stored in the additional space provided during array declaration
+        yn[0] = initY;
+
+        //start counting the distance from zero the first given value
+        xn[0] = initX;
+
+        for (int i = 0; i < steps + 1; i++) {
+            Argument x = new Argument("x", xn[i]);
+            Argument y = new Argument("y", yn[i]);
+
+            Expression expression = new Expression(function, x, y);
+            double fxResult = expression.calculate();
+
+            yn[i + 1] = yn[i] + (h * fxResult);
+            xn[i + 1] = xn[i] + h;
+
+            results.add(new OdeResult(yn[i], xn[i], i));
+        }
+        return results;
+    }
+
+    /***
      * Solves a system of linear equations using Jacobi's method
      * @param system the system of linear equation to be computed
      * @return an array which is the final system computed after the last Jacobi iterate
@@ -829,7 +874,7 @@ public final class Numericals {
             difference[i] = iSolution[i] - initGuess[i];
         }
 
-//        Log.i(Utilities.Log, "The difference vector is given as:");
+
         printArray(difference);
 
         //infinite norm of the difference of kth and (k - 1)th iterate
