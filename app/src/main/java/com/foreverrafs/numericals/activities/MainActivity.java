@@ -18,7 +18,7 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
-import com.example.azizrafsanjani.numericals.R;
+import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.dialog.OperationListDialog;
 import com.foreverrafs.numericals.fragments.FragmentMainMenu;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -27,7 +27,6 @@ import com.foreverrafs.numericals.utils.Utilities;
 public class MainActivity extends AppCompatActivity implements View.OnKeyListener, View.OnClickListener {
 
 
-    static Toolbar toolbar;
     static InputMethodManager imm;
 
     @Override
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
 
     private void initControls() {
-        toolbar = findViewById(R.id.toolBar);
+        Toolbar toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -61,9 +60,9 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         footer.setTypeface(typeface);
     }
 
+    //TODO: Delete this method but there are 23 usages as at now.
     public static void setToolBarInfo(String title, String subtitle) {
-        toolbar.setTitle(title);
-        toolbar.setSubtitle(subtitle);
+
     }
 
     public static void hideKeyboard(View view) {
@@ -125,7 +124,6 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     public void onGoToOperation(MenuItem item) {
         int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
         int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
-
 
         OperationListDialog dialog = new OperationListDialog();
         dialog.show(getFragmentManager(), "Fragment dialog");

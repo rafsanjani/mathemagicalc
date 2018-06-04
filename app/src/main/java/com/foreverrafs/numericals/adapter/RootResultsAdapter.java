@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.azizrafsanjani.numericals.R;
+import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.core.LocationOfRootType;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;

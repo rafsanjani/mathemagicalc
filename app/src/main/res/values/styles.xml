@@ -116,4 +116,8 @@
         <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
 
+    <style name="AppMaterialTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppMaterialTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

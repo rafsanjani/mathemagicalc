@@ -103,5 +103,32 @@
         <item>20. Numerical Interpolation</item>
         <item>21. Numerical Differentiation</item>
     </string-array>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+
+
+    <string name="overview">
+        <![CDATA[
+        This application\'s primary motive is to solve <b>NUMERICAL METHODS AND COMPUTATIONAL</b> problems.
+        "The main topics covered in this version of the software are <b>Location of roots</b>, <b>Numerical Conversions</b>,
+        <b>Ordinary Differential Equations</b> and <b>Location of roots</b>. Under these main topics, several subtopics have
+        been covered as well. Users are to <font color = "brown"><b>Note</b></font> however that answers provided in this application may be more accurate that those presented in text books because in most cases, rounding
+        off is disabled making the final solution as accurate as possible.
+        ]]>
+    </string>
+
+    <string name="credits">
+        <![CDATA[
+        <b><a href="http://www.facebook.com/rafsanjani>"MR. FRANCIS O. BOATENG"</a></b><br/>
+           His immense contributions as the main <b>Project Initiator</b>,
+           <b>primary sponsor</b> and <b>supervisor</b>
+           made this whole project possible and worthwhile."<br/><br/>
+        <b><a href="http://www.facebook.com/rafsanjani>"AZIZ RAFSANJANI"</a></b>    -  Main Developer"<br/><br/>
+        <b><a href="http://www.facebook.com/rafsanjani>"SAMUEL NSAFOA BOATENG</a></b>   -  Main Tester"<br/><br/>
+        <b><a href="http://www.facebook.com/rafsanjani>"ANDERSON ANNOR</a></b> -  Project Documentation"<br/><br/>
+        <b><a href="http://www.facebook.com/rafsanjani>"FRANCISCA YEBOAH</a></b>   -  Project Documentation"<br/><br/>
+        <b><a href="http://www.facebook.com/rafsanjani>"YEBOAH LAWRENCE</a></b>   -  Project Documentation"<br/><br/>
+        ]]>
+    </string>
+    <string name="action_settings">Settings</string>
 
 </resources>

@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.azizrafsanjani.numericals.R;
+import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.MyListAdapter;
 import com.foreverrafs.numericals.fragments.conversions.FragmentBinToDec;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBin;
@@ -24,8 +24,8 @@ import com.foreverrafs.numericals.fragments.conversions.FragmentDecToHexadecimal
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToOctal;
 import com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
 import com.foreverrafs.numericals.fragments.roots.FragmentBisection;
-import com.foreverrafs.numericals.fragments.roots.FragmentNewtonRaphson;
 import com.foreverrafs.numericals.fragments.roots.FragmentFalsePosition;
+import com.foreverrafs.numericals.fragments.roots.FragmentNewtonRaphson;
 import com.foreverrafs.numericals.fragments.roots.FragmentSecante;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidel;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidelWithSOR;
@@ -43,8 +43,6 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //initialize all view items
-
     }
 
     @Override

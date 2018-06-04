@@ -11,8 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.azizrafsanjani.numericals.R;
+import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.About;
 import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.fragments.conversions.FragmentConversionsMenu;
@@ -58,6 +59,8 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
         rootView.findViewById(R.id.btn_sys_of_eqn).setOnClickListener(this);
         rootView.findViewById(R.id.btn_about).setOnClickListener(this);
         rootView.findViewById(R.id.btn_ord_diff_eqn).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_interpolation).setOnClickListener(this);
+
 
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
         header.setTypeface(typeface);
@@ -83,6 +86,9 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
             case R.id.btn_ord_diff_eqn:
                 fragment = new FragmentOdeMenu();
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
+                break;
+            case R.id.btn_interpolation:
+                Toast.makeText(getContext(), "Not Implemented yet", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_about:
                 startActivity(new Intent(getContext(), About.class));
