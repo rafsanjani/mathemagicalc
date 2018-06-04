@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.model;
+package com.foreverrafs.numericals.model;
 
 public class OdeResult {
     private double x, y, n;

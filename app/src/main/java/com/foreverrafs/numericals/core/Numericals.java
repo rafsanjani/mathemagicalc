@@ -1,9 +1,8 @@
-package com.example.azizrafsanjani.numericals.utils;
+package com.foreverrafs.numericals.core;
 
-import android.util.Log;
 
-import com.example.azizrafsanjani.numericals.model.LocationOfRootResult;
-import com.example.azizrafsanjani.numericals.model.OdeResult;
+import com.foreverrafs.numericals.model.LocationOfRootResult;
+import com.foreverrafs.numericals.model.OdeResult;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.MatrixUtils;
@@ -676,7 +675,6 @@ public final class Numericals {
 
         for (int i = k; i < N; i++) {
             for (int j = k; j < N; j++) {
-                System.out.println("Working on system[" + (i + 1) + "][" + (j + 1) + "]. Which is " + system[i][j]);
                 if (system[i][j] > maxNumber) {
                     maxRowIndex = i;
                     maxColIndex = j;
@@ -684,7 +682,6 @@ public final class Numericals {
                 }
             }
         }
-        System.out.println();
 
         return maxColIndex;
     }
@@ -828,22 +825,12 @@ public final class Numericals {
             difference[i] = iSolution[i] - initGuess[i];
         }
 
-        Log.i(Utilities.Log, "The difference vector is given as:");
-        printArray(difference);
-
         //infinite norm of the difference of kth and (k - 1)th iterate
         double iNorm = getMaxElement(difference);
-        System.out.println("Infininte norm is given as:  " + iNorm);
-        System.out.println("Epsilon is given as: " + epsilon);
-
         //stopping criteria
         if (iNorm < epsilon) {
-            Log.i(Utilities.Log, "stopping criteria met: terminating");
             return iSolution;
         } else {
-            System.out.println("stopping criteria not met, reiteriating with these values");
-            System.out.println("Guesses; ");
-            printArray(iSolution);
             return GaussSeidel(system, iSolution, epsilon);
         }
     }
@@ -879,16 +866,11 @@ public final class Numericals {
 
         //infinite norm of the difference of kth and (k - 1)th iterate
         double iNorm = getMaxElement(difference);
-        Log.i(Utilities.Log, "Infininte norm is given as:  " + iNorm);
-        Log.i(Utilities.Log, "Epsilon is given as: " + epsilon);
 
         //stopping criteria
         if (iNorm < epsilon) {
-            Log.i(Utilities.Log, "stopping criteria met: terminating");
             return iSolution;
         } else {
-            Log.i(Utilities.Log, "stopping criteria not met, reiteriating with these values");
-            Log.i(Utilities.Log, "Guesses; ");
             printArray(iSolution);
             return GaussSeidelWithSOR(system, iSolution, epsilon, omega);
         }

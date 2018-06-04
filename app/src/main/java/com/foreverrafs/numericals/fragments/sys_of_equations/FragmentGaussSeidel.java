@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.fragments.sys_of_equations;
+package com.foreverrafs.numericals.fragments.sys_of_equations;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,9 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.utils.Numericals;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.core.Numericals;
+import com.foreverrafs.numericals.utils.Utilities;
 
 import org.apache.commons.math3.util.Precision;
 
@@ -108,7 +108,7 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnBack:
-               // Utilities.replaceFragment(new FragmentEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+                // Utilities.replaceFragment(new FragmentEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.btnCalculate:

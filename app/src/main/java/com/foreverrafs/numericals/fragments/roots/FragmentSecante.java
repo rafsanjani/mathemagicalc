@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.fragments.roots;
+package com.foreverrafs.numericals.fragments.roots;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,10 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.model.LocationOfRootResult;
-import com.example.azizrafsanjani.numericals.utils.Numericals;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.core.Numericals;
+import com.foreverrafs.numericals.model.LocationOfRootResult;
+import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.List;
 

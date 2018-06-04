@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.fragments.conversions;
+package com.foreverrafs.numericals.fragments.conversions;
 
 
 import android.graphics.Typeface;
@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.utils.Utilities;
 
 /**
  * Created by Aziz Rafsanjani on 11/3/2017.

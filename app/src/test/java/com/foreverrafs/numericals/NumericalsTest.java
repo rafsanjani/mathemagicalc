@@ -7,7 +7,7 @@ package com.example.azizrafsanjani.numericals;
 
 import com.example.azizrafsanjani.numericals.model.LocationOfRootResult;
 import com.example.azizrafsanjani.numericals.model.OdeResult;
-import com.example.azizrafsanjani.numericals.utils.Numericals;
+import com.foreverrafs.numericals.core.Numericals;
 
 import org.junit.Test;
 

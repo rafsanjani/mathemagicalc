@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.activities;
+package com.foreverrafs.numericals.activities;
 
 
 import android.content.Context;
@@ -19,9 +19,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.dialog.OperationListDialog;
-import com.example.azizrafsanjani.numericals.fragments.FragmentMainMenu;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.foreverrafs.numericals.dialog.OperationListDialog;
+import com.foreverrafs.numericals.fragments.FragmentMainMenu;
+import com.foreverrafs.numericals.utils.Utilities;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnKeyListener, View.OnClickListener {

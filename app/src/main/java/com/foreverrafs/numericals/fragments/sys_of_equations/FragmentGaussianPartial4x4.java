@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.fragments.sys_of_equations;
+package com.foreverrafs.numericals.fragments.sys_of_equations;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,9 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.utils.Numericals;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.core.Numericals;
+import com.foreverrafs.numericals.utils.Utilities;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -72,7 +72,7 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
             Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
             Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
             Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        }else{
+        } else {
             Toast.makeText(getContext(), "Error with input", Toast.LENGTH_SHORT).show();
         }
     }

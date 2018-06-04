@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.model;
+package com.foreverrafs.numericals.model;
 
 public class LocationOfRootResult {
     private double x1, x2, x3, tolerance;  //for bisection and secante

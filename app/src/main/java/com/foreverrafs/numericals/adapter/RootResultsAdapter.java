@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.adapter;
+package com.foreverrafs.numericals.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.model.LocationOfRootResult;
-import com.example.azizrafsanjani.numericals.model.LocationOfRootType;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.foreverrafs.numericals.core.LocationOfRootType;
+import com.foreverrafs.numericals.model.LocationOfRootResult;
+import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.List;
 import java.util.Locale;

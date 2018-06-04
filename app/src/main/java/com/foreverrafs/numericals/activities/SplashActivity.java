@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.activities;
+package com.foreverrafs.numericals.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

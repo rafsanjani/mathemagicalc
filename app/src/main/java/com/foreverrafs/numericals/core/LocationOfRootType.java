@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.model;
+package com.foreverrafs.numericals.core;
 
 public enum LocationOfRootType {
     BISECTION,

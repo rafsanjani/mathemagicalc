@@ -1,6 +1,5 @@
-package com.example.azizrafsanjani.numericals.fragments.conversions;
+package com.foreverrafs.numericals.fragments.conversions;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,9 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.utils.Numericals;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.core.Numericals;
+import com.foreverrafs.numericals.utils.Utilities;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 /**

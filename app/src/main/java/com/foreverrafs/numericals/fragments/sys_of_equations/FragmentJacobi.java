@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.fragments.sys_of_equations;
+package com.foreverrafs.numericals.fragments.sys_of_equations;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,9 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.utils.Numericals;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.core.Numericals;
+import com.foreverrafs.numericals.utils.Utilities;
 
 import org.apache.commons.math3.util.Precision;
 
@@ -33,35 +33,35 @@ import org.apache.commons.math3.util.Precision;
 
 public class FragmentJacobi extends Fragment implements View.OnClickListener, TextWatcher, View.OnKeyListener {
 
-     Handler handler = new Handler(new Handler.Callback() {
-         @Override
-         public boolean handleMessage(Message msg) {
-             Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
-             btnCalculate.setText("CALCULATE");
+    Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
+            btnCalculate.setText("CALCULATE");
 
-             boolean success = msg.getData().getBoolean("success");
-             if (!success) {
-                 Toast.makeText(getContext(), msg.getData().getString("exception"), Toast.LENGTH_LONG).show();
+            boolean success = msg.getData().getBoolean("success");
+            if (!success) {
+                Toast.makeText(getContext(), msg.getData().getString("exception"), Toast.LENGTH_LONG).show();
 
-                 return false;
-             }
-             double solution[] = msg.getData().getDoubleArray("results");
-             TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
-
-
-             tvAnswer.setText(String.valueOf("[ " +
-                     Precision.round(solution[0], 2) + ", "
-                     + Precision.round(solution[1], 2) + ", " +
-                     Precision.round(solution[2], 2) +
-                     " ]"));
+                return false;
+            }
+            double solution[] = msg.getData().getDoubleArray("results");
+            TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
 
-             //for transitions sake
-             Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
-             Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-             return true;
-         }
-     });
+            tvAnswer.setText(String.valueOf("[ " +
+                    Precision.round(solution[0], 2) + ", "
+                    + Precision.round(solution[1], 2) + ", " +
+                    Precision.round(solution[2], 2) +
+                    " ]"));
+
+
+            //for transitions sake
+            Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            return true;
+        }
+    });
 
     View rootView;
     ViewGroup viewGroup;

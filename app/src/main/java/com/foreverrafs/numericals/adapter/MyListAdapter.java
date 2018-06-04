@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.adapter;
+package com.foreverrafs.numericals.adapter;
 
 import android.content.Context;
 import android.graphics.Color;

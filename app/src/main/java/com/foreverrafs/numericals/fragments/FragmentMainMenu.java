@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.fragments;
+package com.foreverrafs.numericals.fragments;
 
 
 import android.content.Intent;
@@ -13,13 +13,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.activities.About;
-import com.example.azizrafsanjani.numericals.activities.MainActivity;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentConversionsMenu;
-import com.example.azizrafsanjani.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
-import com.example.azizrafsanjani.numericals.fragments.roots.FragmentLocationOfRootsMenu;
-import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentSystemOfEquationsMenu;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.foreverrafs.numericals.activities.About;
+import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.fragments.conversions.FragmentConversionsMenu;
+import com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
+import com.foreverrafs.numericals.fragments.roots.FragmentLocationOfRootsMenu;
+import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentSystemOfEquationsMenu;
+import com.foreverrafs.numericals.utils.Utilities;
 
 /**
  * Created by Aziz Rafsanjani on 11/3/2017.

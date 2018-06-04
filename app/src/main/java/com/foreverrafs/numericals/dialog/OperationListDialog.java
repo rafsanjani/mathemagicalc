@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals.dialog;
+package com.foreverrafs.numericals.dialog;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -15,26 +15,27 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.azizrafsanjani.numericals.R;
-import com.example.azizrafsanjani.numericals.adapter.MyListAdapter;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentBinToDec;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToBin;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToBinFrac;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToBinInt;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToHexadecimal;
-import com.example.azizrafsanjani.numericals.fragments.conversions.FragmentDecToOctal;
-import com.example.azizrafsanjani.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
-import com.example.azizrafsanjani.numericals.fragments.roots.FragmentBisection;
-import com.example.azizrafsanjani.numericals.fragments.roots.FragmentNewtonRaphson;
-import com.example.azizrafsanjani.numericals.fragments.roots.FragmentRegulaFalsi;
-import com.example.azizrafsanjani.numericals.fragments.roots.FragmentSecante;
-import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussSeidel;
-import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussSeidelWithSOR;
-import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussianComplete4x4;
-import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussianPartial4x4;
-import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussianComplete3x3;
-import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentGaussianPartial3x3;
-import com.example.azizrafsanjani.numericals.fragments.sys_of_equations.FragmentJacobi;
-import com.example.azizrafsanjani.numericals.utils.Utilities;
+import com.foreverrafs.numericals.adapter.MyListAdapter;
+import com.foreverrafs.numericals.fragments.conversions.FragmentBinToDec;
+import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBin;
+import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinFrac;
+import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinInt;
+import com.foreverrafs.numericals.fragments.conversions.FragmentDecToHexadecimal;
+import com.foreverrafs.numericals.fragments.conversions.FragmentDecToOctal;
+import com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
+import com.foreverrafs.numericals.fragments.roots.FragmentBisection;
+import com.foreverrafs.numericals.fragments.roots.FragmentNewtonRaphson;
+import com.foreverrafs.numericals.fragments.roots.FragmentRegulaFalsi;
+import com.foreverrafs.numericals.fragments.roots.FragmentSecante;
+import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidel;
+import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidelWithSOR;
+import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete3x3;
+import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete4x4;
+import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial3x3;
+import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial4x4;
+import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentJacobi;
+import com.foreverrafs.numericals.utils.Utilities;
+
 
 public class OperationListDialog extends DialogFragment implements AdapterView.OnItemClickListener {
 
