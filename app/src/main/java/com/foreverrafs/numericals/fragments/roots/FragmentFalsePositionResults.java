@@ -29,7 +29,7 @@ import katex.hourglass.in.mathlib.MathView;
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentRegulaFalsiResults extends Fragment {
+public class FragmentFalsePositionResults extends Fragment {
 
     private View rootView;
 
@@ -59,7 +59,7 @@ public class FragmentRegulaFalsiResults extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_loc_of_roots_regfalsi_results, container, false);
+        rootView = inflater.inflate(R.layout.fragment_loc_of_roots_falseposition_results, container, false);
 
         return rootView;
     }
@@ -105,7 +105,7 @@ public class FragmentRegulaFalsiResults extends Fragment {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new FragmentRegulaFalsi();
+                Fragment fragment = new FragmentFalsePosition();
                 Bundle eqnArgs = new Bundle();
 
                 //pass eqn and it's paramenters back to the calling fragment

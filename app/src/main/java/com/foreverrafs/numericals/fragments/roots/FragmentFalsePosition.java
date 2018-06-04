@@ -30,7 +30,7 @@ import java.util.List;
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentRegulaFalsi extends Fragment implements View.OnClickListener, TextWatcher {
+public class FragmentFalsePosition extends Fragment implements View.OnClickListener, TextWatcher {
 
     private View rootView;
     private ViewGroup viewGroup;
@@ -41,7 +41,7 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_loc_of_roots_regfalsi, container, false);
+        rootView = inflater.inflate(R.layout.fragment_loc_of_roots_falseposition, container, false);
 
         return rootView;
     }
@@ -245,7 +245,7 @@ public class FragmentRegulaFalsi extends Fragment implements View.OnClickListene
                 Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
             } else if (buttonText == getResources().getString(R.string.show_iterations)) {
                 List<LocationOfRootResult> roots = Numericals.FalsePositionAll(eqn, x0, x1, iter, tol);
-                FragmentRegulaFalsiResults resultPane = new FragmentRegulaFalsiResults();
+                FragmentFalsePositionResults resultPane = new FragmentFalsePositionResults();
                 Bundle eqnArgs = new Bundle();
 
                 eqnArgs.putString("equation", eqn);

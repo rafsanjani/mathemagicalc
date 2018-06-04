@@ -25,7 +25,7 @@ import com.foreverrafs.numericals.fragments.conversions.FragmentDecToOctal;
 import com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
 import com.foreverrafs.numericals.fragments.roots.FragmentBisection;
 import com.foreverrafs.numericals.fragments.roots.FragmentNewtonRaphson;
-import com.foreverrafs.numericals.fragments.roots.FragmentRegulaFalsi;
+import com.foreverrafs.numericals.fragments.roots.FragmentFalsePosition;
 import com.foreverrafs.numericals.fragments.roots.FragmentSecante;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidel;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidelWithSOR;
@@ -124,7 +124,7 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
                 break;
 
             case 9:
-                fragment = new FragmentRegulaFalsi();
+                fragment = new FragmentFalsePosition();
                 break;
             case 10:
                 fragment = new FragmentSecante();

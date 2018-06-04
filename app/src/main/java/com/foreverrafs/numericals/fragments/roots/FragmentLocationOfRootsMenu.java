@@ -59,7 +59,7 @@ public class FragmentLocationOfRootsMenu extends Fragment implements View.OnClic
                 fragment = new FragmentBisection();
                 break;
             case R.id.btn_loc_of_roots_false_position:
-                fragment = new FragmentRegulaFalsi();
+                fragment = new FragmentFalsePosition();
                 break;
 
             case R.id.btn_loc_of_roots_newton_raphson:

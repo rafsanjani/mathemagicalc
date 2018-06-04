@@ -49,7 +49,7 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
                 view = LayoutInflater.from(mCtx).inflate(R.layout.secante_results_view, null);
                 break;
             case FALSE_POSITION:
-                view = LayoutInflater.from(mCtx).inflate(R.layout.regfalsi_results_view, null);
+                view = LayoutInflater.from(mCtx).inflate(R.layout.falseposition_results_view, null);
                 break;
 
             default:

@@ -1,13 +1,13 @@
-package com.example.azizrafsanjani.numericals;
+package com.foreverrafs.numericals;
 
 /**
  * Created by Aziz Rafsanjani on 10/21/2017.
  */
 
 
-import com.example.azizrafsanjani.numericals.model.LocationOfRootResult;
-import com.example.azizrafsanjani.numericals.model.OdeResult;
 import com.foreverrafs.numericals.core.Numericals;
+import com.foreverrafs.numericals.model.LocationOfRootResult;
+import com.foreverrafs.numericals.model.OdeResult;
 
 import org.junit.Test;
 
