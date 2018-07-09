@@ -1,48 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentContainer"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@color/colorMainBackground"
     android:layout_height="match_parent"
-    >
+    android:background="@color/colorMainBackground"
+    android:orientation="vertical">
 
     <Space
         android:layout_width="wrap_content"
         android:layout_height="5dp" />
-    <include
-        android:id="@+id/matrix"
-        layout="@layout/layout_matrix"
-        />
+
     <TextView
-        android:id="@+id/textview_answer"
-        android:layout_width="wrap_content"
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="0.000000"
-        style="@style/AnswerStyle"
+        android:layout_marginTop="@dimen/header_margin_top"
+        android:text="Gaussian Elimination with Complete Pivoting"
         android:textAlignment="center"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/answer_vertical_width"
-        android:visibility="gone"
-        android:layout_marginTop="@dimen/answer_vertical_width"/>
-    <Button
-        android:id="@+id/buttonCalculate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        style="@style/MyButtonStyle"
-        android:text="@string/calculate"/>
-    <Button
-        android:id="@+id/buttonBack"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        style="@style/MyButtonStyle"
-        android:text="@string/back_to_main_menu"/>
+        android:textSize="30sp" />
 
     <include
-        layout="@layout/textview_footer_text"/>
+        android:id="@+id/matrix"
+        layout="@layout/layout_matrix3x3" />
+
+
+    <Button
+        android:id="@+id/buttonCalculate"
+
+        style="@style/AppMaterialTheme.ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/solve" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        style="@style/AppMaterialTheme.ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/back_to_sys_of_eqns" />
+
 </LinearLayout>

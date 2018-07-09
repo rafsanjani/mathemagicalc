@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/parentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorMainBackground"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="5dp" />
+
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/header_margin_top"
+            android:text="Gaussian Elimination with Complete Pivoting"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <include
+            android:id="@+id/matrix"
+            layout="@layout/layout_matrix4x4" />
+
+
+        <Button
+            android:id="@+id/buttonCalculate"
+
+            style="@style/AppMaterialTheme.ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/solve" />
+
+        <Button
+            android:id="@+id/buttonBack"
+            style="@style/AppMaterialTheme.ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/back_to_sys_of_eqns" />
+
+    </LinearLayout>
+</ScrollView>

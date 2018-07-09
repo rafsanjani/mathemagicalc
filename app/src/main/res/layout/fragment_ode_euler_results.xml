@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMainBackground"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/header_margin_top"
+        android:text="Expansion of Iterations for Euler's Method"
+        android:textAlignment="center"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerText"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="The results of each iteration step is given below"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp" />
+
+
+    <katex.hourglass.in.mathlib.MathView
+        android:id="@+id/equation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_gravity="center"
+        android:textColor="#2a2f7c"
+        android:textSize="23sp"
+        app:setTextColor="#9c592c"
+        app:setTextSize="10sp" />
+
+    <LinearLayout
+        android:id="@+id/parameters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/equation"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/std_layout_margin"
+                android:text="Interval: " />
+
+            <TextView
+                android:id="@+id/interval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[-2, -5]"
+                android:textColor="#37963b" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="h: " />
+
+            <TextView
+                android:id="@+id/h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[9]"
+                android:textColor="#37963b" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/std_layout_margin"
+                android:text="y(0): " />
+
+            <TextView
+                android:id="@+id/initY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="[-0.00]"
+                android:textColor="#8c1453" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/tableHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/parameters">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Iterate (n)"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Interval x(n) "
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/AppMaterialTheme.TableHeaderStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="solution(yn)"
+                android:textAlignment="center" />
+
+
+        </TableRow>
+    </TableLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/resultList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttons"
+        android:layout_below="@id/tableHeader"
+        android:layout_margin="10dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical|horizontal" />
+
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonShowAlgo"
+            style="@style/AppMaterialTheme.ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/show_algorithm" />
+
+        <Button
+            android:id="@+id/buttonBack"
+            style="@style/AppMaterialTheme.ButtonStyle.Exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back to bisection"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>

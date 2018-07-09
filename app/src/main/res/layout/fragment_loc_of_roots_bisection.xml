@@ -1,67 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parentContainer"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
     android:background="@color/colorMainBackground"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/header_margin_top"
+        android:text="@string/header_bisection"
+        android:textAlignment="center"
+        android:textSize="32sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
         android:text="@string/bisection_desc"
         android:textAlignment="center"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"/>
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="20dp" />
-
-
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="17sp" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:hintTextAppearance="@style/AppMaterialTheme.TextInputHintStyle">
+
         <EditText
             android:id="@+id/text_equation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/bisection_enter_eqn"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="@dimen/std_layout_margin"
+            android:layout_marginRight="@dimen/std_layout_margin"
             android:gravity="center_horizontal"
-            android:inputType="text"
+            android:hint="@string/bisection_enter_eqn"
             android:imeOptions="actionGo"
-            android:textAlignment="center"/>
+            android:inputType="text"
+            android:textAlignment="center" />
     </android.support.design.widget.TextInputLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/std_layout_margin"
+        android:text="@string/initial_guess"
+        android:textColor="#7e2c1e" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <EditText
                     android:id="@+id/x0"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="@dimen/std_layout_margin"
+                    android:layout_marginRight="@dimen/std_layout_margin"
                     android:gravity="center_horizontal"
-                    android:hint="x0"
-                    android:layout_marginRight="30dp"
+                    android:hint="@string/x0"
                     android:inputType="numberDecimal|numberSigned"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -74,48 +89,60 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <EditText
                     android:id="@+id/x1"
                     android:layout_width="110dp"
-                    android:hint="x1"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="@dimen/std_layout_margin"
+                    android:layout_marginRight="@dimen/std_layout_margin"
                     android:gravity="center_horizontal"
+                    android:hint="@string/x1"
                     android:inputType="numberDecimal|numberSigned"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/std_layout_margin"
+        android:text="@string/stopping_criteria"
+        android:textColor="#7e2c1e" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:baselineAligned="false"
         android:orientation="horizontal">
 
-
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <EditText
                     android:id="@+id/text_iterations"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="@dimen/std_layout_margin"
+                    android:layout_marginRight="@dimen/std_layout_margin"
                     android:gravity="center_horizontal"
+                    android:hint="@string/iterations"
                     android:inputType="numberSigned"
-                    android:hint="Iterations"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center" />
 
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,57 +151,58 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <EditText
                     android:id="@+id/text_epsilon"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="@dimen/std_layout_margin"
+                    android:layout_marginRight="@dimen/std_layout_margin"
 
-                    android:layout_marginRight="30dp"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/tolerance"
                     android:inputType="numberDecimal|numberSigned"
-                    android:hint="Tolerance"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center" />
 
             </android.support.design.widget.TextInputLayout>
-
-
         </LinearLayout>
 
     </LinearLayout>
+
     <TextView
         android:id="@+id/textview_answer"
+        style="@style/AnswerStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0.000000"
-        style="@style/AnswerStyle"
-        android:textAlignment="center"
         android:layout_gravity="center"
+        android:text="@string/empty_answer"
+        android:textAlignment="center"
 
-        android:visibility="gone"/>
+        android:visibility="gone" />
+
     <Button
-        android:id="@+id/btnCalculate"
+        android:id="@+id/buttonCalculate"
+        style="@style/AppMaterialTheme.ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/calculate" />
+
+    <Button
+        android:id="@+id/buttonShowAlgo"
+        style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        style="@style/MyButtonStyle"
-        android:text="@string/calculate"/>
+        android:text="@string/show_algorithm" />
+
     <Button
-        android:id="@+id/btnBack"
+        android:id="@+id/buttonBack"
+        style="@style/AppMaterialTheme.ButtonStyle.Exit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        style="@style/MyButtonStyle"
-        android:text="@string/back_to_main_menu"/>
-
-
-        <include
-            layout="@layout/textview_footer_text"
-            />
-
-
-
+        android:text="@string/back_to_location_of_roots_menu"
+        android:textStyle="bold" />
 
 </LinearLayout>

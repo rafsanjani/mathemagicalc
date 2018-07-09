@@ -1,0 +1,136 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorMainBackground">
+
+    <TextView
+        android:id="@+id/Header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:text="@string/sys_of_eqns"
+        android:textAlignment="center"
+        android:textSize="38sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:id="@+id/mainContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_sys_of_eqn_gaussian3x3partial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_system_of_eqns_gaussian3x3"
+                    android:text="Gaussian (Partial)[3 x 3]"
+                    android:textSize="@dimen/menu_text_size"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_sys_of_eqn_gaussian3x3complete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_system_of_eqns_gaussian3x3"
+                    android:text="Gaussian (Complete)[3 x 3"
+                    android:textSize="@dimen/menu_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_sys_of_eqn_gaussian4x4partial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_system_of_eqns"
+                    android:text="Gaussian (Partial)[4 x 4]"
+                    android:textSize="@dimen/menu_text_size"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_sys_of_eqn_gaussian4x4complete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_system_of_eqns"
+                    android:text="Gaussian (Complete)[4 x 4]"
+                    android:textSize="@dimen/menu_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_sys_of_eqn_jacobi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_system_of_eqns_jacobi"
+                    android:text="Jacobi"
+                    android:textSize="@dimen/menu_text_size"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_sys_of_eqn_gaussseidel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_system_of_eqns_gaussseidel"
+                    android:text="Gauss Seidel"
+                    android:textSize="@dimen/menu_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_sys_of_eqn_gaussseidel_SOR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:drawableTop="@drawable/button_system_of_eqns_gaussseidel"
+                    android:gravity="left"
+                    android:text="gAUSS Seidel (SOR)"
+                    android:textSize="@dimen/menu_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
