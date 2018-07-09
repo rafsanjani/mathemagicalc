@@ -52,7 +52,8 @@ public class FragmentOdeMenu extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         Fragment fragment = null;
         switch (view.getId()) {
-            case R.id.btn_loc_of_roots_bisection:
+            case R.id.btn_ode_euler:
+                fragment = new FragmentEuler();
                 break;
         }
 

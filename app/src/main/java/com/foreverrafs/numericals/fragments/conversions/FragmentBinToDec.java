@@ -89,22 +89,9 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
                 onCalculate();
                 break;
 
-            /*case R.id.show_all:
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                View detailsView = View.inflate(getContext(), R.layout.number_conversion_details, null);
 
-
-                builder.setView(detailsView)
-                        .create();
-                builder.show();
-
-                ExpandableTextView expTv1 = detailsView.findViewById(R.id.expand_text_view);
-                expTv1.setText(rawBinary);
-                break;*/
         }
     }
-
-    String rawBinary;
 
     private void onCalculate() {
         String decimal = "00";

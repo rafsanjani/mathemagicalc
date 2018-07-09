@@ -130,5 +130,7 @@
         ]]>
     </string>
     <string name="action_settings">Settings</string>
+    <string name="euler_forward_method">Euler\'s Forward Method</string>
+    <string name="back_to_ode_menu">Back to ODE Menu</string>
 
 </resources>

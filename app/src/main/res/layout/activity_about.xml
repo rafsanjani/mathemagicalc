@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/header_margin_top"
                     android:layout_marginBottom="@dimen/header_margin_top"
-                    android:text="Mathemagi-Calc"
+                    android:text="Mathemagi-Calc\n1.0"
                     android:textAlignment="center"
                     android:textColor="#05202d"
                     android:textSize="30sp" />

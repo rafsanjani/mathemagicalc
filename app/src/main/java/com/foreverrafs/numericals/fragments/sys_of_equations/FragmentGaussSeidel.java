@@ -37,7 +37,7 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
+            Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
             btnCalculate.setText("CALCULATE");
 
             boolean success = msg.getData().getBoolean("success");
@@ -76,8 +76,9 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
     }
 
     public void initControls() {
-        Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
-        Button btnBack = rootView.findViewById(R.id.btnBack);
+        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
+        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+        Button btnBack = rootView.findViewById(R.id.buttonBack);
 
         TextInputLayout til = rootView.findViewById(R.id.omega_textInputLayout);
 
@@ -107,11 +108,11 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnBack:
-                // Utilities.replaceFragment(new FragmentEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+            case R.id.buttonBack:
+                 Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.btnCalculate:
+            case R.id.buttonCalculate:
                 Log.i(Utilities.Log, "performing Jacobi's calculation");
                 onCalculate();
                 break;
@@ -143,7 +144,7 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
                 initGuess[i] = Double.valueOf(etx0[i].getText().toString());
             }
 
-            Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
+            Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
             btnCalculate.setText("CALCULATING....");
 
 

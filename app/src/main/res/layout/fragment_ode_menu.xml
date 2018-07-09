@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_location_of_roots"
+                    android:drawableTop="@drawable/button_ode_euler"
                     android:text="Euler's Forward Method"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
