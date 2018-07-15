@@ -5,7 +5,7 @@ android {
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.foreverrafs.numericals"
-        minSdkVersion 17
+        minSdkVersion 18
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -59,4 +59,12 @@ dependencies {
 
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
 }
