@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/googlefonts.css"/>
+    <link rel="stylesheet" href="css/katex.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+
+
+    <meta charset="UTF-8">
+    <title>Decimal to Converter</title>
+</head>
+<body>
+<div class="container_fluid m-2">
+    <h5 class="text-center">Algorithm for converting a decimal fraction to a binary number</h5>
+    <hr/>
+    <p class="text-info text-justify ">
+        <strong>This algorithm is valid only for a number (n) where n is an fraction,
+            that is anumber greater than or equal to one</strong>
+    </p>
+
+    <!-- each card represents an algorithm step -->
+    <div class="accordion" id="algorithm">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#stepOne"
+                            aria-expanded="true" aria-controls="stepOne">
+                        <strong>Step 1</strong>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="stepOne" class="collapse show" aria-labelledby="headingOne" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Given a decimal number(N), let N<sub>1</sub> be the number to convert. That is, let N<sub>1</sub> =
+                    N
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong>Step 2</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Solve for 2N<sub>1</sub> by multiplying N<sub>1</sub> by two (2) and keep the results.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#step3" aria-expanded="false" aria-controls="collapseThree">
+                        <strong>Step 3</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="step3" class="collapse" aria-labelledby="headingThree" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    If 2N<sub>1</sub> is greater than or equal to one (1) i.e (2N<sub>1</sub> >= 1), take b<sub>-1</sub> = 1 <br>
+                    If 2N<sub>1</sub> is less than one (1), take b<sub>-1</sub> = 0 <br>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#step4" aria-expanded="false" aria-controls="collapseFour">
+                        <strong>Step 4</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="step4" class="collapse" aria-labelledby="headingFour" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Using the information gathered in steps 1, 2 and 3, the binary number can be computed using the
+                    iterative equation<br>
+                    $$N_{k+1} = 2Nk - b_{-k}$$
+                    The value obtained is reused in subsequent iterations until the stopping criteria is met i.e
+                    N<sub>k</sub> becomes 0
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingFive">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#step5" aria-expanded="false" aria-controls="callapseFive">
+                        <strong>Step 5</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="step5" class="collapse" aria-labelledby="headingFive" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    The final binary equivalent of the decimal number is read in terms of b<sub>-k</sub> in the order
+                    $$b_{-1}b_{-2}...b_{-k}$$
+                    where <strong>k</strong> is the number of iterations performed in <strong>step 4</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- bootstrap scripts and jquery -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/katex.js"></script>
+<script src="js/auto-render.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

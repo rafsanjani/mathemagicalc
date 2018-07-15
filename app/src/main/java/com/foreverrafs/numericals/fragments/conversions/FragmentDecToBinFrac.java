@@ -1,5 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
@@ -69,6 +71,7 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
 
         btnBack.setOnClickListener(this);
         btnCalculate.setOnClickListener(this);
+        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(this);
     }
 
     @Override
@@ -88,25 +91,21 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
                 onCalculate();
                 break;
 
-            /*case R.id.show_all:
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                View detailsView = View.inflate(getContext(), R.layout.number_conversion_details, null);
-
-
-                builder.setView(detailsView)
-                        .create();
-                builder.show();
-
-                ExpandableTextView expTv1 = detailsView.findViewById(R.id.expand_text_view);
-                expTv1.setText(rawBinary);
-                break;*/
+            case R.id.buttonShowAlgo:
+                onShowAlgorithm();
         }
+    }
+
+    private void onShowAlgorithm() {
+        Bundle bundle = new Bundle();
+        bundle.putString("algorithm_name","dectobinfrac");
+
+        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
     String rawBinary;
 
     private void onCalculate() {
-        boolean isAnswerTruncated = false;
         EditText etInput = rootView.findViewById(R.id.text_user_input);
         ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
 
@@ -130,19 +129,11 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
             //keep a reference in case user wants to display all
             rawBinary = binary;
 
-           /* if (binary.length() >= 20) {
-                binary = binary.substring(0, 20);
-                Toast.makeText(getContext(), "Answer truncated to 20 significant figures", Toast.LENGTH_LONG).show();
-                isAnswerTruncated = true;
-            }*/
 
             tvAnswer.setText(rawBinary);
 
             Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-
-            //rootView.findViewById(R.id.show_all).setVisibility(isAnswerTruncated ? View.VISIBLE : View.GONE);
-
 
         } catch (NumberFormatException ex) {
             Log.i(Utilities.Log, "cannot parse " + decimal + " to a double value");

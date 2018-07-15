@@ -76,7 +76,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
 
     private void onShowAlgorithm() {
         Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name","dectobinwhole");
+        bundle.putString("algorithm_name","dectobinint");
 
        // Intent intent = new Intent(getContext(), ShowAlgorithm.class);
         //intent.putExtras(bundle);
