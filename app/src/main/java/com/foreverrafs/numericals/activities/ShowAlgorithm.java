@@ -2,6 +2,7 @@ package com.foreverrafs.numericals.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.webkit.WebView;
 
 import com.foreverrafs.numericals.R;
@@ -28,5 +29,9 @@ public class ShowAlgorithm extends AppCompatActivity {
         WebView webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(algoName);
+    }
+
+    public void onBack(View view) {
+        finish();
     }
 }
