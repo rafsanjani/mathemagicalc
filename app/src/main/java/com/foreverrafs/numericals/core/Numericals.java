@@ -876,10 +876,41 @@ public final class Numericals {
         }
 
     }
+    public static double BinaryToDecimal(String bin)
+    {
+        int len = bin.length();
+        // Fetch the radix point
+        int point = bin.indexOf('.');
 
-    public static int BinaryToDecimal(String binaryNumber) {
-        BigInteger num = new BigInteger(binaryNumber, 2);
-        return num.intValue();
+        char[] binary = bin.toCharArray();
+        // Update point if not found
+        if (point == -1)
+            point = len;
+
+
+        double intDecimal = 0, fracDecimal = 0, twos = 1;
+
+        // Convert integral part of binary to decimal
+        // equivalent
+        for (int i = point-1; i>=0; --i)
+        {
+            // Subtract '0' to convert character
+            // into integer
+            intDecimal += (binary[i] - '0') * twos;
+            twos *= 2;
+        }
+
+        // Convert fractional part of binary to
+        // decimal equivalent
+        twos = 2;
+        for (int i = point+1; i < len; ++i)
+        {
+            fracDecimal += (binary[i] - '0') / twos;
+            twos *= 2.0;
+        }
+
+        // Add both integral and fractional part
+        return intDecimal + fracDecimal;
     }
 
     //get the number of iterations required using the tolerance given
