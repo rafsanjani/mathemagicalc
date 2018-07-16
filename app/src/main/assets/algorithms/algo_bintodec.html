@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/googlefonts.css"/>
+    <link rel="stylesheet" href="css/katex.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+
+
+    <meta charset="UTF-8">
+    <title>Binary to Decimal Converter</title>
+</head>
+<body>
+<div class="container_fluid m-2">
+    <h5 class="text-center">Algorithm for converting any binary number to a decimal number</h5>
+    <hr/>
+    <p class="text-info text-justify ">
+        <strong>This algorithm is valid for any binary number (n) where n can either be a whole number or a
+            fraction</strong>
+    </p>
+
+    <!-- each card represents an algorithm step -->
+    <div class="accordion" id="algorithm">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#stepOne"
+                            aria-expanded="true" aria-controls="stepOne">
+                        <strong>Step 1</strong>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="stepOne" class="collapse show" aria-labelledby="headingOne" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Given a decimal number(N), we differentiate the number into fractional and whole parts
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong>Step 2</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    The binary equivalent of the whole part is computed using the steps in <a
+                        href="algo_dectobinfrac.html">converting a decimal fraction to binary</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#step3" aria-expanded="false" aria-controls="collapseThree">
+                        <strong>Step 3</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="step3" class="collapse" aria-labelledby="headingThree" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    The binary equivalent of the fractional part is computed using the steps in <a href="algo_dectobinint.html">
+                    converting a decimal integer to binary
+                </a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#step4" aria-expanded="false" aria-controls="collapseFour">
+                        <strong>Step 4</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="step4" class="collapse" aria-labelledby="headingFour" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    The results obtained in step 3 is joined to the results obtained in step 2 to produce the binary equivalent
+                    of the decimal number provided
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- bootstrap scripts and jquery -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/katex.js"></script>
+<script src="js/auto-render.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
