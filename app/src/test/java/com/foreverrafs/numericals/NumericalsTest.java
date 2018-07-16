@@ -59,6 +59,12 @@ public class NumericalsTest {
 
     }
 
+    @Test
+    public void testbintodecnew(){
+        String bin = "1010.101";
+        System.out.println(Numericals.BinaryToDecimal(bin));
+    }
+
     private static void printMatrix(double system[]) {
         for (double aSystem : system) {
             System.out.print(aSystem + " ");

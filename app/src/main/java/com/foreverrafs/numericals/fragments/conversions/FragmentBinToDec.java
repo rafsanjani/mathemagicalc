@@ -100,7 +100,9 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     }
 
     private void onShowAlgorithm() {
-        startActivity(new Intent(getContext(), ShowAlgorithm.class));
+        Bundle bundle = new Bundle();
+        bundle.putString("algorithm_name","bintodec");
+        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
     private void onCalculate() {
@@ -115,8 +117,8 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
             return;
         }
 
-        if (binary.length() >= 32) {
-            Toast.makeText(getContext(), "Lets keep it below 32 bits please", Toast.LENGTH_SHORT).show();
+        if (binary.length() >= 24) {
+            Toast.makeText(getContext(), "Lets keep it below 24 bits, shall we", Toast.LENGTH_SHORT).show();
         }
 
         try {

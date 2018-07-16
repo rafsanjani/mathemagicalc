@@ -1,6 +1,5 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
-import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
@@ -48,7 +46,6 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
-        Button btnShowAlgo = rootView.findViewById(R.id.buttonShowAlgo);
 
         EditText etInput = rootView.findViewById(R.id.text_user_input);
 
@@ -68,7 +65,6 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
 
         btnBack.setOnClickListener(this);
         btnCalculate.setOnClickListener(this);
-        btnShowAlgo.setOnClickListener(this);
     }
 
     @Override
@@ -87,15 +83,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
             case R.id.buttonCalculate:
                 onCalculate();
                 break;
-
-            case R.id.buttonShowAlgo:
-                onShowAlgorithm();
-                break;
         }
-    }
-
-    private void onShowAlgorithm() {
-        startActivity(new Intent(getContext(), ShowAlgorithm.class));
     }
 
     private void onCalculate() {
