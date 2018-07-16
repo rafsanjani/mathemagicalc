@@ -1,5 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
@@ -73,6 +75,14 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
 
         btnBack.setOnClickListener(this);
         btnCalculate.setOnClickListener(this);
+        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(this);
+    }
+
+    private void onShowAlgorithm() {
+        Bundle bundle = new Bundle();
+        bundle.putString("algorithm_name", "dectohexa");
+
+        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
     @Override
@@ -92,18 +102,9 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
                 onCalculate();
                 break;
 
-            /*case R.id.show_all:
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                View detailsView = View.inflate(getContext(), R.layout.number_conversion_details, null);
-
-
-                builder.setView(detailsView)
-                        .create();
-                builder.show();
-
-                ExpandableTextView expTv1 = detailsView.findViewById(R.id.expand_text_view);
-                expTv1.setText(rawBinary);
-                break;*/
+            case R.id.buttonShowAlgo:
+                onShowAlgorithm();
+                break;
         }
     }
 

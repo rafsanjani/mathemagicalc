@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/googlefonts.css"/>
+    <link rel="stylesheet" href="css/katex.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+
+
+    <meta charset="UTF-8">
+    <title>Decimal to Binary Converter</title>
+</head>
+<body>
+<div class="container_fluid m-2">
+    <h5 class="text-center">Algorithm for converting any decimal number to a hexadecimal number</h5>
+    <hr/>
+    <p class="text-info text-justify ">
+        <strong>This algorithm is valid for both whole numbers and fractions</strong>
+    </p>
+
+    <!-- each card represents an algorithm step -->
+    <div class="accordion" id="algorithm">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#stepOne"
+                            aria-expanded="true" aria-controls="stepOne">
+                        <strong>Step 1</strong>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="stepOne" class="collapse show" aria-labelledby="headingOne" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Given a decimal number(N) <br>
+                    <strong>Case A: number is a fraction( N < 1) </strong><br>
+                    Multiply the fractional part ( i.e integer part = 0) by 16. <br>
+                    Divide the integer portion of the product obtained by 16 and store the remainder <br><br>
+
+                    <strong>Case B: number is an integer (N >= 1)</strong><br>
+                    divide the number by 16 and store the remainder. <br><br>
+
+                    <strong>treat the divisions as integer divisions</strong>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong>Step 2</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Repeat step 1 until the number(n) becomes zero
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- bootstrap scripts and jquery -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/katex.js"></script>
+<script src="js/auto-render.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

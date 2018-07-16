@@ -1,11 +1,15 @@
 package com.foreverrafs.numericals.activities;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebView;
 
 import com.foreverrafs.numericals.R;
+
+import java.lang.reflect.Method;
 
 public class ShowAlgorithm extends AppCompatActivity {
 
@@ -14,6 +18,15 @@ public class ShowAlgorithm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_algorithm);
         Bundle bundle = getIntent().getExtras();
+
+        if (Build.VERSION.SDK_INT >= 24) {
+            try {
+                Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
+                m.invoke(null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         String algoName = "";
         if (bundle != null) {
