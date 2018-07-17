@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/googlefonts.css"/>
+    <link rel="stylesheet" href="css/katex.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+
+
+    <meta charset="UTF-8">
+    <title>Bisection Method</title>
+</head>
+<body>
+<div class="container_fluid m-2">
+    <h5 class="text-center">Algorithm for approximating the root of an equation using the Bisection Method</h5>
+    <hr/>
+    <p class="text-info text-justify ">
+        <strong>This algorithm is valid for equations of the form f(x) = 0</strong>
+    </p>
+
+    <!-- each card represents an algorithm step -->
+    <div class="accordion" id="algorithm">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#stepOne"
+                            aria-expanded="true" aria-controls="stepOne">
+                        <strong>Step 1</strong>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="stepOne" class="collapse show" aria-labelledby="headingOne" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Given that the root of a function f(x) lies in a given interval say [x<sub>0</sub>,
+                    x<sub>1</sub>]<br>,
+                    <br>
+                    Compute f(x<sub>0</sub>) and f(x<sub>1</sub>).
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong>Step 2</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    <strong>Case 1</strong><br>
+                    If f(x<sub>0</sub>)f(x<sub>1</sub>) = 0, then the objective of the algorithm has been fulfilled.
+                    That is,
+                    one of the end points of the interval x<sub>0</sub> or x<sub>1</sub> is the root of f(x).<br>
+
+                    <strong>Case 2</strong><br>
+                    If f(x<sub>0</sub>)f(x<sub>1</sub>) < 0, then the root actually lies in [x<sub>0</sub>,
+                    x<sub>1</sub>]<br>
+                    Proceed to step 3
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepThree" aria-expanded="false" aria-controls="collapseThree">
+                        <strong>Step 3</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepThree" class="collapse" aria-labelledby="headingThree" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Bisect the interval [x<sub>0</sub>, x<sub>1</sub>] to get the midpoint x<sup>1</sup> using the
+                    formula
+                    $$x^{1}=\frac{x_{0}+x_{1}}{2}$$ <br>
+
+                    <strong>Case 1</strong><br>
+                    if f(x<sub>0</sub>)f(x<sup>1</sup>)<0, then the root lies in [x<sub>0</sub>, x<sup>1</sup>], Discard
+                    the interval [x<sup>1</sup>, x<sub>1</sub>].<br>
+                    Take [x<sub>0</sub>, x<sup>1</sup> as the new interval and set x<sub>1</sub> = x<sup>1</sup><br>
+
+                    <strong>Case 2</strong><br>
+                    If f(x<sup>1</sup>)f(x<sub>1</sub>)<0, then the root lies in [x<sup>1</sup>, x<sub>1</sub>].<br>
+                    Discard the interval [x<sub>0</sub>, x<sup>1</sup>] and take [x<sup>1</sup>, x<sub>1</sub>] as the
+                    new
+                    interval by setting x<sub>0</sub> = x<sup>1</sup><br>
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepFour" aria-expanded="false" aria-controls="collapseFour">
+                        <strong>Step 4</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepFour" class="collapse" aria-labelledby="headingFour" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    if $\frac{\left | x_{1}-x_{0}\right |}{2} < tol$, <br>
+                    then take $x^{*} = \frac{x_{1}+x_{0}}{2}$ <br>
+                    <span style="color:red;"><strong>STOP</strong></span>: else go back to step 3
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- bootstrap scripts and jquery -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/katex.js"></script>
+<script src="js/auto-render.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
