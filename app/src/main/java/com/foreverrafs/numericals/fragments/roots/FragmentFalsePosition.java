@@ -1,5 +1,6 @@
 package com.foreverrafs.numericals.fragments.roots;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -146,9 +148,6 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
                     x0 = Double.parseDouble(etX0.getText().toString());
                     x1 = Double.parseDouble(etX1.getText().toString());
 
-                    //int iterations = Numericals.getBisectionIterations(tolerance, x0, x1);
-
-                    //etIterations.setText(String.valueOf(iterations));
                 } catch (NumberFormatException ex) {
                     Log.i(Utilities.Log, "Initial guesses are not provided");
                 } finally {
@@ -167,6 +166,7 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
+        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(this);
 
         etEquation.addTextChangedListener(this);
 
@@ -195,7 +195,17 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
                 onCalculate(btn.getText().toString());
                 break;
 
+            case R.id.buttonShowAlgo:
+                onShowAlgorithm();
+                break;
+
         }
+    }
+
+    private void onShowAlgorithm() {
+        Bundle bundle = new Bundle();
+        bundle.putString("algorithm_name","falseposition");
+        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
     private void onCalculate(final String buttonText) {

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/googlefonts.css"/>
+    <link rel="stylesheet" href="css/katex.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+
+
+    <meta charset="UTF-8">
+    <title>False Position Method</title>
+</head>
+<body>
+<div class="container_fluid m-2">
+    <h5 class="text-center">Algorithm for approximating the root of an equation using the False Position Method</h5>
+    <hr/>
+    <p class="text-info text-justify text-center">
+        <strong>This algorithm is valid for equations of the form f(x) = 0</strong>
+    </p>
+
+    <!-- each card represents an algorithm step -->
+    <div class="accordion" id="algorithm">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#stepOne"
+                            aria-expanded="true" aria-controls="stepOne">
+                        <strong>Step 1</strong>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="stepOne" class="collapse show" aria-labelledby="headingOne" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Given that the root of a function f(x) lies in a given interval $[x_{0}, x_{1}]$<br>
+                    <br>
+                    Compute $f_{0} = f(x_{0})$ and $f_{1} = f(x_{1})$;
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong>Step 2</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    compute $$x^{1} = x_{2} = x_{1} - \left ( \frac{x_{1}-x_{0}}{f_{1}-f_{0}} \right )f_{1}$$
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepThree" aria-expanded="false" aria-controls="collapseThree">
+                        <strong>Step 3</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepThree" class="collapse" aria-labelledby="headingThree" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Compute $f_{2} = f(x_{2})$
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepFour" aria-expanded="false" aria-controls="collapseFour">
+                        <strong>Step 4</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepFour" class="collapse" aria-labelledby="headingFour" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    <strong>Case 1</strong><br>
+                    If $f(x_{0})f(x_{2})<0$, then the root lies in $[x_{0}, x_{2}]$.<br>
+                    Discard the interval $[x_{2}, x_{1}]$ and take $[x_{0}, x_{2}]$ as new interval by setting $x_{1} =
+                    x_{2}$ <br><br>
+
+                    <strong>Case 2</strong><br>
+                    If $f(x_{2})f(x_{1}) < 0$, then the root lies in $[x_{2}, x_{1}]$.<br>
+                    Discard the interval $[x_{0}, x_{1}]$ and take $[x_{2}, x_{1}]$ as new interval by setting $x_{0} =
+                    x_{2}$ <br>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingFive">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepFive" aria-expanded="false" aria-controls="collapseFive">
+                        <strong>Step 5</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepFive" class="collapse" aria-labelledby="headingFive" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    if $$\left | \frac{x_{0}-x_{1}}{x_{0}} \right | < tol$$
+
+                    then $x^{*} = x_{2}$ <br>
+                    STOP: <br>
+                    Else go back to step 2
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- bootstrap scripts and jquery -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/katex.js"></script>
+<script src="js/auto-render.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
