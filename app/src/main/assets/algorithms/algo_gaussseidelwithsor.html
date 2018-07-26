@@ -8,14 +8,15 @@
 
 
     <meta charset="UTF-8">
-    <title>Bisection Method</title>
+    <title>Gauss - Seidel Method with successecive over-relaxation</title>
 </head>
 <body>
 <div class="container_fluid m-2">
-    <h5 class="text-center">Algorithm for approximating the root of an equation using the Bisection Method</h5>
+    <h5 class="text-center">Algorithm for approximating the solution of a system of equation using the Gauss Seidel
+        method with Successive Over-Relaxation</h5>
     <hr/>
-    <p class="text-info text-justify ">
-        <strong>This algorithm is valid for equations of the form f(x) = 0</strong>
+    <p class="text-info text-justify text-center">
+        <strong>This algorithm is valid for non - singular linear equations</strong>
     </p>
 
     <!-- each card represents an algorithm step -->
@@ -32,11 +33,15 @@
 
             <div id="stepOne" class="collapse show" aria-labelledby="headingOne" data-parent="#algorithm">
                 <div class="card-body text-justify">
-                    Given that the root of a function f(x) lies in a given interval say [x<sub>0</sub>,
-                    x<sub>1</sub>],<br>
-                    <br>
-                    Compute f(x<sub>0</sub>) and f(x<sub>1</sub>).
+                    Given a system of linear equations such as <br>
+                    $$a_{11}x_{1} + a_{12}x_{2} + a_{13}x_{3} = b_{1}$$
+                    $$a_{21}x_{1} + a_{22}x_{2} + a_{23}x_{3} = b_{2}$$
+                    $$a_{31}x_{1} + a_{32}x_{2} + a_{33}x_{3} = b_{3}$$
+                    With initial approximations $x^{0} = (0,0,0)$<br><br>
 
+                    Make $x_{1}$ the subject of equation 1<br>
+                    Make $x_{2}$ the subject of equation 2<br>
+                    Make $x_{3}$ the subject of equation 3<br>
                 </div>
             </div>
         </div>
@@ -51,15 +56,23 @@
             </div>
             <div id="stepTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#algorithm">
                 <div class="card-body text-justify">
-                    <strong>Case 1</strong><br>
-                    If f(x<sub>0</sub>)f(x<sub>1</sub>) = 0, then the objective of the algorithm has been fulfilled.
-                    That is,
-                    one of the end points of the interval x<sub>0</sub> or x<sub>1</sub> is the root of f(x).<br>
+                    From STEP 1, we obtain,
+                    $$x_{1}^{k} = \frac{1}{a_{11}}[b_{1} - (a_{12}x_{2}^{(k-1)})+a_{13}x_{3}^{k-1}]$$
 
-                    <strong>Case 2</strong><br>
-                    If f(x<sub>0</sub>)f(x<sub>1</sub>) < 0, then the root actually lies in [x<sub>0</sub>,
-                    x<sub>1</sub>]<br>
-                    Proceed to step 3
+                    $$x_{2}^{k} = \frac{1}{a_{22}}[b_{2} - (a_{21}x_{1}^{(k-1)})+a_{23}x_{3}^{k-1}]$$
+
+                    $$x_{3}^{k} = \frac{1}{a_{33}}[b_{3} - (a_{31}x_{1}^{(k-1)})+a_{32}x_{2}^{k-1}]$$
+                    <br><br>
+                    Multiply each equation by the relaxation factor $\omega$ and add the product to $(1-\omega)x^{(k-1)}_{i}$ such that
+                    equation 1 becomes
+                    $$x_{1}^{k} =w[\frac{1}{a_{11}}[b_{1} - (a_{12}x_{2}^{(k-1)})+a_{13}x_{3}^{k-1}]]+(1-\omega)x^{(k-1)}_{1}$$<br>
+                    This is repeated for the remainder of the equations.<br>
+                    <br>
+                    <strong>Note that</strong><br>
+                    <ol>
+                        <li>A releaxtion paramaeter $\omega$ which is less than one (1) establishes convergence of a diverging iterative process.</li>
+                        <li>A relaxation parameter $\omega$ which is greater than one (1) speeds up convergence of a slow-converging process</li>
+                    </ol>
                 </div>
             </div>
         </div>
@@ -74,21 +87,10 @@
             </div>
             <div id="stepThree" class="collapse" aria-labelledby="headingThree" data-parent="#algorithm">
                 <div class="card-body text-justify">
-                    Bisect the interval [x<sub>0</sub>, x<sub>1</sub>] to get the midpoint x<sup>1</sup> using the
-                    formula
-                    $$x^{1}=\frac{x_{0}+x_{1}}{2}$$ <br>
 
-                    <strong>Case 1</strong><br>
-                    if f(x<sub>0</sub>)f(x<sup>1</sup>)<0, then the root lies in [x<sub>0</sub>, x<sup>1</sup>], Discard
-                    the interval [x<sup>1</sup>, x<sub>1</sub>].<br>
-                    Take [x<sub>0</sub>, x<sup>1</sup> as the new interval and set x<sub>1</sub> = x<sup>1</sup><br>
-
-                    <strong>Case 2</strong><br>
-                    If f(x<sup>1</sup>)f(x<sub>1</sub>)<0, then the root lies in [x<sup>1</sup>, x<sub>1</sub>].<br>
-                    Discard the interval [x<sub>0</sub>, x<sup>1</sup>] and take [x<sup>1</sup>, x<sub>1</sub>] as the
-                    new
-                    interval by setting x<sub>0</sub> = x<sup>1</sup><br>
-
+                    Substitute the value of $x^{0}$ into equation 1 to find the value of $x^{1}\\_{1}$.<br><br>
+                    Substitute the values of $x^{0}$ and $x^{1}$ into equation 2 to find the value of $x^{2}\\_{1}$.<br><br>
+                    Substitute the values of $x^{0}$ and $x^{2}$ into equation 3 to find the value of $x^{3}\\_{1}$.<br><br>
                 </div>
             </div>
         </div>
@@ -103,9 +105,10 @@
             </div>
             <div id="stepFour" class="collapse" aria-labelledby="headingFour" data-parent="#algorithm">
                 <div class="card-body text-justify">
-                    if $\frac{\left | x_{1}-x_{0}\right |}{2} < tol$, <br>
-                    then take $x^{*} = \frac{x_{1}+x_{0}}{2}$ <br>
-                    <span style="color:red;"><strong>STOP</strong></span>: else go back to step 3
+                    <strong>STOP</strong> when the Infinity norm of two successive iterates is less than or equal to the
+                    maximum permissible error
+                    i. e $\left | \right |x-y\left|\right| < tol$ <br>
+                    Where x and y are successive iteratives
                 </div>
             </div>
         </div>

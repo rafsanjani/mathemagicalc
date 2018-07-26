@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/googlefonts.css"/>
+    <link rel="stylesheet" href="css/katex.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+
+
+    <meta charset="UTF-8">
+    <title>Jacobi Method</title>
+</head>
+<body>
+<div class="container_fluid m-2">
+    <h5 class="text-center">Algorithm for approximating the solution of a system of equation using the Jacobi
+        method</h5>
+    <hr/>
+    <p class="text-info text-justify text-center">
+        <strong>This algorithm is valid for non - singular linear equations</strong>
+    </p>
+
+    <!-- each card represents an algorithm step -->
+    <div class="accordion" id="algorithm">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#stepOne"
+                            aria-expanded="true" aria-controls="stepOne">
+                        <strong>Step 1</strong>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="stepOne" class="collapse show" aria-labelledby="headingOne" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Given a system of linear equations such as <br>
+                    $$a_{11}x_{1} + a_{12}x_{2} + a_{13}x_{3} = b_{1}$$
+                    $$a_{21}x_{1} + a_{22}x_{2} + a_{23}x_{3} = b_{2}$$
+                    $$a_{31}x_{1} + a_{32}x_{2} + a_{33}x_{3} = b_{3}$$
+                    With initial approximations $x^{0}$<br><br>
+
+                    Make $x_{1}$ the subject of equation 1<br>
+                    Make $x_{2}$ the subject of equation 2<br>
+                    Make $x_{3}$ the subject of equation 3<br>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong>Step 2</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    From STEP 1, we obtain,
+                    $$x_{1}^{k} = \frac{1}{a_{11}}[b_{1} - (a_{12}x_{2}^{(k-1)})+a_{13}x_{3}^{k-1}]$$
+
+                    $$x_{2}^{k} = \frac{1}{a_{22}}[b_{2} - (a_{21}x_{1}^{(k-1)})+a_{23}x_{3}^{k-1}]$$
+
+                    $$x_{3}^{k} = \frac{1}{a_{33}}[b_{3} - (a_{31}x_{1}^{(k-1)})+a_{32}x_{2}^{k-1}]$$
+
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepThree" aria-expanded="false" aria-controls="collapseThree">
+                        <strong>Step 3</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepThree" class="collapse" aria-labelledby="headingThree" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Substitute the values of $x^{0}$ into equations 1, 2 and 3 and solve to generate $x^{1}$ <br>
+                    Repeat the Process to generate $x^{2}$, $x^{3} etc. <br><br>
+
+                    <strong>STOP</strong> when the Infinity norm of two successive iterates is less than or equal to the
+                    maximum permissible error
+                    i. e $\left |  \right |x-y\left|\right| < tol$ <br>
+                    Where x and y are successive iteratives
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- bootstrap scripts and jquery -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/katex.js"></script>
+<script src="js/auto-render.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
