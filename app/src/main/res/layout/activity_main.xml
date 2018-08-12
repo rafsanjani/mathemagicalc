@@ -17,13 +17,5 @@
             android:id="@+id/toolBar"
             layout="@layout/toolbar" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/footer"
-        style="@style/AppTheme.FooterText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="..." />
 </RelativeLayout>
 

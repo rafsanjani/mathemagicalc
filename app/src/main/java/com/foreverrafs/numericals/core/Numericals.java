@@ -303,7 +303,7 @@ public final class Numericals {
             throw new IllegalArgumentException("The function doesn't change sign between the specified intervals");
 
         double x2 = x1 - ((x1 - x0) / (fx1 - fx0)) * fx1;
-        ;
+
         fx2 = fx.calculate(x2);
 
         double stoppingCriteria = (x2 - x1) / x1;
@@ -611,7 +611,7 @@ public final class Numericals {
         return solution;
     }
 
-    public static void killRowsBeneath(double[][] A, double[] B, int k) {
+    private static void killRowsBeneath(double[][] A, double[] B, int k) {
         int N = A.length;
         for (int i = k + 1; i < N; i++) {
             double factor = A[i][k] / A[k][k];
@@ -706,7 +706,7 @@ public final class Numericals {
      * @param function a differential equation whose initial conditions will be provided
      * @param h the step size of the interval. for eg. a height of 0.2 for [0,1] will yield 5 results because 1/0.2 = 5
      * @param interval the interval to be considered during the computation. a 1d array of 2 elements
-     * @return
+     * @return list of OdeResults
      */
     public static List<OdeResult> SolveOdeByEulersMethod(String function, double h, double[] interval, double initY) {
         if (interval.length == 0)
@@ -876,8 +876,8 @@ public final class Numericals {
         }
 
     }
-    public static double BinaryToDecimal(String bin)
-    {
+
+    public static double BinaryToDecimal(String bin) {
         int len = bin.length();
         // Fetch the radix point
         int point = bin.indexOf('.');
@@ -892,8 +892,7 @@ public final class Numericals {
 
         // Convert integral part of binary to decimal
         // equivalent
-        for (int i = point-1; i>=0; --i)
-        {
+        for (int i = point - 1; i >= 0; --i) {
             // Subtract '0' to convert character
             // into integer
             intDecimal += (binary[i] - '0') * twos;
@@ -903,8 +902,7 @@ public final class Numericals {
         // Convert fractional part of binary to
         // decimal equivalent
         twos = 2;
-        for (int i = point+1; i < len; ++i)
-        {
+        for (int i = point + 1; i < len; ++i) {
             fracDecimal += (binary[i] - '0') / twos;
             twos *= 2.0;
         }

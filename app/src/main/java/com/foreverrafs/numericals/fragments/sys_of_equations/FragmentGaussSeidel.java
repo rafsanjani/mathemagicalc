@@ -1,5 +1,6 @@
 package com.foreverrafs.numericals.fragments.sys_of_equations;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 
@@ -98,6 +100,7 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
+        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(this);
 
 
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
@@ -116,8 +119,17 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
                 Log.i(Utilities.Log, "performing Jacobi's calculation");
                 onCalculate();
                 break;
+            case R.id.buttonShowAlgo:
+                onShowAlgorithm();
+                break;
 
         }
+    }
+
+    private void onShowAlgorithm() {
+        Bundle bundle = new Bundle();
+        bundle.putString("algorithm_name","gaussseidel");
+        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
     private void onCalculate() {

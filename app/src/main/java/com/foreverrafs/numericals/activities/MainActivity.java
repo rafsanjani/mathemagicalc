@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        TextView footer = findViewById(R.id.footer);
+        /*TextView footer = findViewById(R.id.footer);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Lobster-Regular.ttf");
-        footer.setTypeface(typeface);
+        footer.setTypeface(typeface);*/
     }
 
     //TODO: Delete this method but there are 23 usages as at now.

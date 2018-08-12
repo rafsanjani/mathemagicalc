@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/googlefonts.css"/>
+    <link rel="stylesheet" href="css/katex.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+
+
+    <meta charset="UTF-8">
+    <title>Gaussian Partial 3x3</title>
+</head>
+<body>
+<div class="container_fluid m-2">
+    <h5 class="text-center">Algorithm for solving a system of equation using the Gaussian Elimination with Partial Pivoting</h5>
+    <hr/>
+    <p class="text-info text-justify ">
+        <strong>This algorithm is valid for a system of equations consisting of three (3) unknowns</strong>
+    </p>
+
+    <!-- each card represents an algorithm step -->
+    <div class="accordion" id="algorithm">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#stepOne"
+                            aria-expanded="true" aria-controls="stepOne">
+                        <strong>Step 1</strong>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="stepOne" class="collapse show" aria-labelledby="headingOne" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Given a system of equation of the form,
+                    $$\begin{pmatrix}
+                    a_{11}&  a_{12}& a_{13}
+                    a_{21}&  a_{22}& a_{23}
+                    a_{31}&  a_{32}& a_{33}
+                    \end{pmatrix}$$
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong>Step 2</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    The individual digits are multiplied by <strong>2<sup>n</sup></strong> where <strong>n</strong> is the placeholder
+                    value.<br>
+                    The products are summed to obtain the decimal numeral of the binary number. <br>
+                    In the case of 1010, we obtain <br>
+                    $$(1\times2^{3}) + (0\times2^{2})+(1\times2^{1}) +(0\times2^{0})$$
+                    $$(8+0+2+0)$$
+                    $$10$$<br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- bootstrap scripts and jquery -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/katex.js"></script>
+<script src="js/auto-render.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

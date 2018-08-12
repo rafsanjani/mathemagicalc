@@ -1,5 +1,6 @@
 package com.foreverrafs.numericals.fragments.roots;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -86,7 +88,7 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
-
+        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(this);
         etEquation.addTextChangedListener(this);
 
 
@@ -113,8 +115,18 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
                 Log.i(Utilities.Log, "performing Secate calculation");
                 onCalculate(btn.getText().toString());
                 break;
+            case R.id.buttonShowAlgo:
+                onShowAlgorithm();
+                break;
+
 
         }
+    }
+
+    private void onShowAlgorithm() {
+        Bundle bundle = new Bundle();
+        bundle.putString("algorithm_name","secant");
+        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
     private void onCalculate(final String buttonText) {
