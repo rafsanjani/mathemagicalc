@@ -204,7 +204,7 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
 
     private void onShowAlgorithm() {
         Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name","falseposition");
+        bundle.putString("algorithm_name", "falseposition");
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
@@ -242,6 +242,7 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
             if (buttonText == getResources().getString(R.string.calculate)) {
                 double root = Numericals.FalsePosition(eqn, x0, x1, iter, tol);
 
+
                 if (Double.isNaN(root) || Double.isInfinite(root)) {
                     Toast.makeText(getContext(), "Syntax Error: Please check equation", Toast.LENGTH_LONG).show();
                     Log.i(Utilities.Log, "Syntax error, unable to evaluate expression");
@@ -274,9 +275,14 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
         } catch (NumberFormatException ex) {
             Toast.makeText(getContext(), "One or more of the input expressions are invalid", Toast.LENGTH_LONG).show();
             Log.i(Utilities.Log, "Error parsing one or more of the expressions");
-        } finally {
+        } catch (IllegalArgumentException ex) {
+            Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
+        } finally
+
+        {
             MainActivity.hideKeyboard(etEquation);
         }
+
     }
 
 

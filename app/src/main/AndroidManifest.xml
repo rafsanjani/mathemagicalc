@@ -8,7 +8,6 @@
         android:normalScreens="true"
         android:smallScreens="false"
         android:xlargeScreens="false" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:icon="@mipmap/ic_launcher"

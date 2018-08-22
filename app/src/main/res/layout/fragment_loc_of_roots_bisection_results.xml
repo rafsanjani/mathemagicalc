@@ -108,16 +108,16 @@
         android:id="@+id/tableHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/parameters">
+        android:layout_below="@id/parameters"
+        android:layout_centerHorizontal="true">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:id="@+id/iteration"
+                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -125,17 +125,17 @@
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:id="@+id/x1"
+                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textAlignment="center"
-                android:text="x1" />
+                android:text="x1"
+                android:textAlignment="center" />
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:id="@+id/x2"
+                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -144,8 +144,8 @@
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:id="@+id/x3"
+                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -154,8 +154,8 @@
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:id="@+id/difference"
+                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -173,7 +173,6 @@
         android:layout_margin="10dp"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="vertical|horizontal" />
-
 
     <LinearLayout
         android:id="@+id/buttons"

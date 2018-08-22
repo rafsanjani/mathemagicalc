@@ -59,6 +59,5 @@
                 android:text="TextView"
                 android:textAlignment="center" />
         </TableRow>
-
     </TableLayout>
 </RelativeLayout>

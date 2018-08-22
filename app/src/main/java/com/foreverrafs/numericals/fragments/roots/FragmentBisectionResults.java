@@ -80,18 +80,8 @@ public class FragmentBisectionResults extends Fragment {
     public void initControls() {
         Button btnBack = rootView.findViewById(R.id.buttonBack);
 
-        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Utilities.showAlgorithmScreen(getContext(), "bisection");
-            }
-        });
-
         MathView equation;
         // String tex = " $$f(x) = 3x^3 + 2x - 5$$";
-
-        equation = rootView.findViewById(R.id.equation);
-        equation.setDisplayText(Numericals.generateTexEquation(this.eqn));
 
         RootResultsAdapter adapter = new RootResultsAdapter(results, getContext(), LocationOfRootType.BISECTION);
         RecyclerView resultView = rootView.findViewById(R.id.resultList);
@@ -103,6 +93,15 @@ public class FragmentBisectionResults extends Fragment {
         TextView tvIterations = rootView.findViewById(R.id.iterations);
         TextView tvTolerance = rootView.findViewById(R.id.tolerance);
 
+        equation = rootView.findViewById(R.id.equation);
+        equation.setDisplayText(Numericals.generateTexEquation(this.eqn));
+
+        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utilities.showAlgorithmScreen(getContext(), "bisection");
+            }
+        });
 
         tvInterval.setText(getInterval());
         tvIterations.setText(getIteration());
@@ -125,6 +124,7 @@ public class FragmentBisectionResults extends Fragment {
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
             }
         });
+
         Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
     }
 }
