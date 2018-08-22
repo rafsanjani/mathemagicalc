@@ -19,7 +19,9 @@
 
     <style name="BaseTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>33
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_left</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorButtonNormal">@color/colorButtonNormal</item>
         <item name="windowActionModeOverlay">true</item>
@@ -41,6 +43,12 @@
     <style name="AnswerStyle" parent="TextAppearance.AppCompat.Widget.ActionMode.Title">
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/answerColor</item>
+    </style>
+
+    <style name="AboutTheme" parent="Theme.Mal.Light">
+        <item name="colorControlActivated">#00796B</item>
+        <item name="colorControlHighlight">#c5c5c5</item>
+        <item name="mal_toolbarTheme">@style/MyToolBarTheme</item>
     </style>
 
     <style name="MyToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
@@ -119,5 +127,4 @@
     <style name="AppMaterialTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppMaterialTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 </resources>

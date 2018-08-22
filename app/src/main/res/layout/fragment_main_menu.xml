@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:text="Choose An Operation Below"
+        android:text="@string/choose_an_operation_below"
         android:textAlignment="center"
         android:textSize="32sp"/>
 
@@ -19,14 +19,11 @@
         android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/footer"
         android:layout_below="@+id/Header">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Header"
-            android:layout_centerInParent="true"
             android:orientation="vertical">
 
             <LinearLayout
@@ -41,7 +38,6 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_number_conversion_menu"
-                    android:elevation="5dp"
                     android:text="@string/number_conversions"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
@@ -53,7 +49,6 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_location_of_roots"
-                    android:elevation="5dp"
                     android:text="@string/loc_of_rooots"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
@@ -71,7 +66,6 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_system_of_eqns"
-                    android:elevation="5dp"
                     android:text="@string/sys_of_eqns"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
@@ -83,7 +77,6 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_ordinary_differential_eqns"
-                    android:elevation="5dp"
                     android:text="@string/ordinary_diff_eqn"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
@@ -95,14 +88,13 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/btn_interpolation"
+                    android:id="@+id/btn_algorithms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_interpolation"
-                    android:elevation="5dp"
-                    android:text="Interpolation"
+                    android:drawableTop="@drawable/button_algorithms"
+                    android:text="@string/algorithms"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
 
@@ -113,8 +105,7 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_about"
-                    android:elevation="5dp"
-                    android:text="About"
+                    android:text="@string/mal_title_about"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
             </LinearLayout>

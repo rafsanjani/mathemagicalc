@@ -22,10 +22,12 @@ allprojects {
         maven {
             url "https://maven.google.com"
         }
+
+        maven { url 'https://jitpack.io' }
+
     }
 }
 // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
-
 
 
 task clean(type: Delete) {

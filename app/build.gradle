@@ -14,6 +14,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -27,12 +28,17 @@ dependencies {
     })
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-
     implementation 'com.android.support:design:27.1.1'
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.ms-square:expandableTextView:0.1.4'
+
+    //iconics for svg drawable rendering
+    implementation 'com.mikepenz:iconics-core:3.0.4'
+
+    //awesomedialogs
+    implementation 'com.github.blennerSilva:AwesomeDialog:2.0.5'
 }
 
 //Mathview
@@ -50,4 +56,20 @@ dependencies {
 
 dependencies {
     implementation "com.andkulikov:transitionseverywhere:1.7.7"
+    implementation 'com.github.daniel-stoneuk:material-about-library:2.3.0'
+
+    implementation 'com.mikepenz:google-material-typeface:3.0.1.2.original@aar'
+    implementation 'com.mikepenz:material-design-iconic-typeface:2.2.0.4@aar'
+    implementation 'com.mikepenz:fontawesome-typeface:5.0.13.0@aar'
+    implementation 'com.mikepenz:octicons-typeface:3.2.0.4@aar'
+    implementation 'com.mikepenz:meteocons-typeface:1.1.0.4@aar'
+    implementation 'com.mikepenz:community-material-typeface:2.0.46.1@aar'
+    implementation 'com.mikepenz:weather-icons-typeface:2.0.10.4@aar'
+    implementation 'com.mikepenz:typeicons-typeface:2.0.7.4@aar'
+    implementation 'com.mikepenz:entypo-typeface:1.0.0.4@aar'
+    implementation 'com.mikepenz:devicon-typeface:2.0.0.4@aar'
+    implementation 'com.mikepenz:foundation-icons-typeface:3.0.0.4@aar'
+    implementation 'com.mikepenz:ionicons-typeface:2.0.1.4@aar'
+    implementation 'com.mikepenz:pixeden-7-stroke-typeface:1.2.0.2@aar'
 }
+

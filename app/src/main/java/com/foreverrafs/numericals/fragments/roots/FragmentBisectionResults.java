@@ -80,6 +80,13 @@ public class FragmentBisectionResults extends Fragment {
     public void initControls() {
         Button btnBack = rootView.findViewById(R.id.buttonBack);
 
+        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utilities.showAlgorithmScreen(getContext(), "bisection");
+            }
+        });
+
         MathView equation;
         // String tex = " $$f(x) = 3x^3 + 2x - 5$$";
 

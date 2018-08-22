@@ -4,10 +4,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.utils.Utilities;
 
 import java.lang.reflect.Method;
 
@@ -31,8 +33,13 @@ public class ShowAlgorithm extends AppCompatActivity {
         String algoName = "";
         if (bundle != null) {
             algoName = bundle.getString("algorithm_name");
-            loadAlgorithm(algoName);
+        } else {
+            //load index page if no file is provided
+            Log.i(Utilities.Log, "no file provided, loading index page");
+            algoName = "index";
         }
+
+        loadAlgorithm(algoName);
     }
 
     //the algoName is part of an html string so this name is just concatenated to an html file path to load the corresponding html

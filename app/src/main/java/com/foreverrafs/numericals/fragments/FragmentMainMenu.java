@@ -11,11 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.About;
 import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.fragments.conversions.FragmentConversionsMenu;
 import com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
 import com.foreverrafs.numericals.fragments.roots.FragmentLocationOfRootsMenu;
@@ -30,7 +30,8 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
 
 
     private View rootView;
-    static TextView header;
+    TextView header;
+    private AppCompatActivity mActivity;
 
 
     @Override
@@ -46,7 +47,8 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        mActivity = ((AppCompatActivity) getActivity());
+        mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     private void initControls() {
@@ -59,7 +61,7 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
         rootView.findViewById(R.id.btn_sys_of_eqn).setOnClickListener(this);
         rootView.findViewById(R.id.btn_about).setOnClickListener(this);
         rootView.findViewById(R.id.btn_ord_diff_eqn).setOnClickListener(this);
-        rootView.findViewById(R.id.btn_interpolation).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_algorithms).setOnClickListener(this);
 
 
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
@@ -87,11 +89,15 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
                 fragment = new FragmentOdeMenu();
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
-            case R.id.btn_interpolation:
-                Toast.makeText(getContext(), "Not Implemented yet", Toast.LENGTH_SHORT).show();
+            case R.id.btn_algorithms:
+               // Bundle bundle = new Bundle();
+                //bundle.putString("algorithm_name","index");
+                startActivity(new Intent(getContext(), ShowAlgorithm.class));
+                mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.btn_about:
                 startActivity(new Intent(getContext(), About.class));
+                mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
         }
 

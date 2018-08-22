@@ -6,11 +6,7 @@
         android:title="@string/go_to_operation"
         app:showAsAction="never" />
     <item
-        android:title="@string/settings"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/menuExit"
-        android:onClick="onExit"
-        android:title="@string/exit"
+        android:title="@string/mal_title_about"
+        android:onClick="onAbout"
         app:showAsAction="never" />
 </menu>

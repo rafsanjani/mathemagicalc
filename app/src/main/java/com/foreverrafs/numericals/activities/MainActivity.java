@@ -2,6 +2,7 @@ package com.foreverrafs.numericals.activities;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -97,7 +98,6 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
-
         return true;
     }
 
@@ -110,15 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.menuExit:
-                Log.i(Utilities.Log, "closing");
-                finish();
-                break;
         }
-    }
-
-    public void onExit(MenuItem item) {
-        finish();
     }
 
     public void onGoToOperation(MenuItem item) {
@@ -128,5 +120,9 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         OperationListDialog dialog = new OperationListDialog();
         dialog.show(getFragmentManager(), "Fragment dialog");
 
+    }
+
+    public void onAbout(MenuItem item) {
+        startActivity(new Intent(this, About.class));
     }
 }

@@ -108,6 +108,7 @@
         android:id="@+id/tableHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/parameters">
 
         <TableRow
@@ -128,9 +129,8 @@
                 android:id="@+id/x1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_weight="1"
-
+                android:textAlignment="center"
                 android:text="x1" />
 
             <TextView

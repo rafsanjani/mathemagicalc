@@ -2,7 +2,9 @@ package com.foreverrafs.numericals.utils;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.transition.Fade;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.transitionseverywhere.TransitionManager;
 import com.transitionseverywhere.TransitionSet;
 import com.transitionseverywhere.extra.Scale;
@@ -51,7 +54,6 @@ public final class Utilities {
             EditText editText = (EditText) view;
             editText.setTypeface(Typeface.createFromAsset(mCtx.getAssets(), "fonts/Lobster-Regular.ttf"));
         }
-
     }
 
     public static void setItalicTypeface(View view, Context mCtx) {
@@ -105,6 +107,11 @@ public final class Utilities {
         }
     }
 
+    public static void showAlgorithmScreen(Context c, String algoName){
+        Bundle bundle = new Bundle();
+        bundle.putString("algorithm_name",algoName);
+        c.startActivity(new Intent(c, ShowAlgorithm.class).putExtras(bundle));
+    }
 
     public enum DisplayMode {
         SHOW,

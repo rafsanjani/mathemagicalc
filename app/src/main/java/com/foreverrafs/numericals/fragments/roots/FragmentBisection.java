@@ -1,6 +1,5 @@
 package com.foreverrafs.numericals.fragments.roots;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
-import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -203,9 +201,10 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
     }
 
     private void onShowAlgorithm() {
-        Bundle bundle = new Bundle();
+       /* Bundle bundle = new Bundle();
         bundle.putString("algorithm_name","bisection");
-        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
+        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));*/
+       Utilities.showAlgorithmScreen(getContext(), "bisection");
     }
 
     private void onCalculate(final String buttonText) {
