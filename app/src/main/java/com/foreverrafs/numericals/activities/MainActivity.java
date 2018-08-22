@@ -55,10 +55,6 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         toolbarAppTitle.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Philosopher-Bold.ttf"));
 
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        /*TextView footer = findViewById(R.id.footer);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Lobster-Regular.ttf");
-        footer.setTypeface(typeface);*/
     }
 
     //TODO: Delete this method but there are 23 usages as at now.
