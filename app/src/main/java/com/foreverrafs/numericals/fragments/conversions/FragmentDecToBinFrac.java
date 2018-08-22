@@ -84,7 +84,7 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonBack:
-                Utilities.replaceFragment( new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+                Utilities.replaceFragment(new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.buttonCalculate:
@@ -98,7 +98,7 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
 
     private void onShowAlgorithm() {
         Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name","dectobinfrac");
+        bundle.putString("algorithm_name", "dectobinfrac");
 
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
@@ -119,7 +119,7 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
         try {
             double decDouble = Double.parseDouble(decimal);
 
-            if (decDouble >= 1 ) {
+            if (decDouble >= 1) {
                 Toast.makeText(getContext(), "Number should be less than 1", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -136,7 +136,9 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
         } catch (NumberFormatException ex) {
-            Log.i(Utilities.Log, "cannot parse " + decimal + " to a double value");
+            Log.e(Utilities.Log, "cannot parse " + decimal + " to a double value");
+        } catch (Exception ex) {
+            Log.e(Utilities.Log, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }

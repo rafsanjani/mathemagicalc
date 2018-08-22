@@ -126,8 +126,11 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
 
 
         } catch (NumberFormatException ex) {
-            Log.i(Utilities.Log, "cannot parse " + decimal + " to an integer value");
-        } finally {
+            Log.e(Utilities.Log, "cannot parse " + decimal + " to an integer value");
+        } catch(Exception ex) {
+            Log.e(Utilities.Log,ex.getMessage());
+        }finally
+        {
             MainActivity.hideKeyboard(etInput);
         }
     }

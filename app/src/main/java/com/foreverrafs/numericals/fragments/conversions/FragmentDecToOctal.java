@@ -136,7 +136,9 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
 
 
         } catch (NumberFormatException ex) {
-            Log.i(Utilities.Log, "cannot parse " + decimal + " to an integer value");
+            Log.e(Utilities.Log, "cannot parse " + decimal + " to an integer value");
+        } catch (Exception ex) {
+            Log.e(Utilities.Log, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }

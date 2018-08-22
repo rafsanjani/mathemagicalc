@@ -76,7 +76,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
 
     private void onShowAlgorithm() {
         Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name","dectobinint");
+        bundle.putString("algorithm_name", "dectobinint");
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
@@ -107,7 +107,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
     String rawBinary;
 
     private void onCalculate() {
-        boolean isAnswerTruncated = false;
+        //boolean isAnswerTruncated = false;
         EditText etInput = rootView.findViewById(R.id.text_user_input);
         ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
 
@@ -132,12 +132,6 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
             //keep a reference in case user wants to display all
             rawBinary = binary;
 
-           /* if (binary.length() >= 20) {
-                binary = binary.substring(0, 20);
-                Toast.makeText(getContext(), "Answer truncated to 20 significant figures", Toast.LENGTH_LONG).show();
-                isAnswerTruncated = true;
-            }*/
-
             tvAnswer.setText(rawBinary);
 
             Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
@@ -147,12 +141,14 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
 
 
         } catch (NumberFormatException ex) {
-            Log.i(Utilities.Log, "cannot parse " + decimal + " to a double value");
+            Log.e(Utilities.Log, "cannot parse " + decimal + " to a double value");
             Toast.makeText(getContext(), "Number entered isn't an integer", Toast.LENGTH_SHORT).show();
 
             Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
 
+        } catch (Exception ex) {
+            Log.e(Utilities.Log, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }

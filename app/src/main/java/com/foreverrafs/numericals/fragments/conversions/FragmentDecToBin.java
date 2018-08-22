@@ -130,26 +130,18 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
             String binary = Numericals.DecimalToBinary(decLong);
 
-            //keep a reference in case user wants to display all
             rawBinary = binary;
-
-           /* if (binary.length() >= 20) {
-                binary = binary.substring(0, 20);
-                Toast.makeText(getContext(), "Answer truncated to 20 significant figures", Toast.LENGTH_LONG).show();
-                isAnswerTruncated = true;
-            }*/
 
             tvAnswer.setText(rawBinary);
 
             Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
-            //rootView.findViewById(R.id.show_all).setVisibility(isAnswerTruncated ? View.VISIBLE : View.GONE);
-
-
         } catch (NumberFormatException ex) {
-            Log.i(Utilities.Log, "cannot parse " + decimal + " to an integer value");
-        } finally {
+            Log.e(Utilities.Log, "cannot parse " + decimal + " to an integer value");
+        } catch(Exception ex){
+            Log.e(Utilities.Log, ex.getMessage());
+        }finally  {
             MainActivity.hideKeyboard(etInput);
         }
     }

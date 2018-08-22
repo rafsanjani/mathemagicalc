@@ -1,6 +1,5 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,7 +20,6 @@ import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
-import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
@@ -100,9 +98,7 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     }
 
     private void onShowAlgorithm() {
-        Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name","bintodec");
-        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
+        Utilities.showAlgorithmScreen(getContext(), "");
     }
 
     private void onCalculate() {
@@ -129,9 +125,11 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
         } catch (NumberFormatException ex) {
-            Log.i(Utilities.Log, ex.getMessage());
+            Log.e(Utilities.Log, ex.getMessage());
             Toast.makeText(getContext(), "Binary only please", Toast.LENGTH_SHORT).show();
             etInput.setText(null);
+        } catch (Exception ex) {
+            Log.e(Utilities.Log, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }

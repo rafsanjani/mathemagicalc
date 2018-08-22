@@ -85,8 +85,8 @@ public class About extends MaterialAboutActivity {
                     public void onClick() {
                         new AwesomeInfoDialog(c)
                                 .setTitle("Contributors")
-                                .setMessage("1. Nsafoa Boateng - Testing\n" +
-                                        "2. First Last - Contribution\n" +
+                                .setMessage("1. Francis O. Boateng - Lecturer\n" +
+                                        "2. Samuel Boateng - Auditing and Testing\n" +
                                         "3. First Last - Contribution\n" +
                                         "4. First Last - Contribution")
                                 .setColoredCircle(R.color.dialogNoticeBackgroundColor)
