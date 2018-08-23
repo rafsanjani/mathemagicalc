@@ -85,13 +85,13 @@ public class NumericalsTest {
 
     @Test
     public void testBisectionShouldPass() {
-        double y = Numericals.Bisect("x^5 + x^3 + 3", -2, -1, 4, 0.005);
+        double y = Numericals.Bisect("x^5 + x^3 + 3x", -2, -1, 4, 0.005);
         assertEquals(-1.0625, y);
     }
 
     @Test
     public void testBisectionAllShouldPass() {
-        List<LocationOfRootResult> longBisection = Numericals.BisectAll("x^5 + x^3 + 3", -2, -1, 4, 0.005);
+        List<LocationOfRootResult> longBisection = Numericals.BisectAll("x^5 + x^3 + 3x", -2, -1, 4, 0.005);
         assertEquals(-1.0625, longBisection.get(3).getX3());
     }
 
