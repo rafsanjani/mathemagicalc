@@ -215,15 +215,21 @@ public final class Numericals {
             return 0.00;
         }
 
-        if (expr.contains("f(x)")) {
+        /*if (expr.contains("f(x)")) {
             expr = expr.substring(5);
-        }
+        }*/
 
         Argument x = new Argument(String.format("x = %s", x1));
 
         Expression ex = new Expression("der(" + expr + ", x)", x);
 
-        Function fx = new Function(String.format("f(x) = %s", expr));
+        Function fx;
+
+        if (expr.contains("f(x)"))
+            fx = new Function(expr);
+        else
+            fx = new Function(String.format("f(x) = %s", expr));
+
 
         double fx1 = fx.calculate(x1);
         double derX1 = ex.calculate();
