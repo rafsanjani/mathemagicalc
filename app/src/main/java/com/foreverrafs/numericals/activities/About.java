@@ -1,6 +1,7 @@
 package com.foreverrafs.numericals.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -217,6 +218,19 @@ public class About extends MaterialAboutActivity {
     protected MaterialAboutList getMaterialAboutList(@NonNull Context context) {
         return createMaterialAboutList(this, R.color.mal_color_icon_light_theme, R.style.Theme_Mal_Light);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, MainActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Nullable
