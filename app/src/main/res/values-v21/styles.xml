@@ -15,11 +15,12 @@
     </style>
 
     <style name="AboutTheme" parent="Theme.Mal.Light">
-        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorControlActivated">#00796B</item>
         <item name="colorControlHighlight">#c5c5c5</item>
-        <item name="mal_toolbarTheme">@style/AboutToolBarTheme</item>
+        <item name="mal_toolbarTheme">@style/MyToolBarTheme</item>
+        <item name="mal_card_background">@color/colorMainBackground</item>
     </style>
+
 
     <style name="AboutToolBarTheme">
         <item name="android:background">#a6bdc7</item>

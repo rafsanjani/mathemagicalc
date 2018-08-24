@@ -25,6 +25,7 @@ import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
 public class About extends MaterialAboutActivity {
+    @Nullable
     public static MaterialAboutList createMaterialAboutList(final Context c, final int colorIcon, final int theme) {
         MaterialAboutCard.Builder appCardBuilder = new MaterialAboutCard.Builder();
 
@@ -35,7 +36,6 @@ public class About extends MaterialAboutActivity {
                 .desc("© 2018 Abdul - Aziz Rafsanjani")
                 .icon(R.mipmap.ic_launcher)
                 .build());
-
         appCardBuilder.addItem(ConvenienceBuilder.createVersionActionItem(c,
                 new IconicsDrawable(c)
                         .icon(CommunityMaterial.Icon.cmd_information_outline)
@@ -217,7 +217,6 @@ public class About extends MaterialAboutActivity {
     @Override
     protected MaterialAboutList getMaterialAboutList(@NonNull Context context) {
         return createMaterialAboutList(this, R.color.mal_color_icon_light_theme, R.style.Theme_Mal_Light);
-
     }
 
     @Override

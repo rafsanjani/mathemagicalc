@@ -93,7 +93,6 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
 
             }
 
-
             //get the tolerance value based on the number of iterations
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -204,7 +203,7 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
        /* Bundle bundle = new Bundle();
         bundle.putString("algorithm_name","bisection");
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));*/
-       Utilities.showAlgorithmScreen(getContext(), "bisection");
+        Utilities.showAlgorithmScreen(getContext(), "bisection");
     }
 
     private void onCalculate(final String buttonText) {
