@@ -1,8 +1,20 @@
 <resources>
-
+    <!-- Base application theme. -->
+    <style name="BaseTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_left</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorButtonNormal">@color/colorButtonNormal</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+    </style>
 
     <style name="AppMaterialTheme" parent="BaseTheme">
         <item name="editTextStyle">@style/AppMaterialTheme.EditTextStyle</item>
+        <item name="android:popupMenuStyle">@style/MyPopUpTheme</item>
         <item name="colorControlActivated">#00796B</item>
         <item name="colorControlHighlight">#c5c5c5</item>
     </style>
@@ -15,20 +27,6 @@
         <item name="android:textColor">#26a69a</item>
     </style>
 
-    <!-- Base application theme. -->
-
-    <style name="BaseTheme" parent="Theme.AppCompat.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="android:popupMenuStyle">@style/MyPopUpTheme</item>
-        <item name="android:windowEnterAnimation">@anim/slide_in_left</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_left</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorButtonNormal">@color/colorButtonNormal</item>
-        <item name="windowActionModeOverlay">true</item>
-        <item name="android:textColor">@color/textColorPrimary</item>
-        <item name="android:textColorHint">@color/textColorHint</item>
-    </style>
 
     <style name="AnswerStyle" parent="TextAppearance.AppCompat.Widget.ActionMode.Title">
         <item name="android:textSize">32sp</item>
@@ -43,23 +41,13 @@
     </style>
 
     <style name="MyToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:background">#a6bdc7</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColorSecondary">@color/colorToolBarSubtitle</item>
+        <!--<item name="android:background">#a6bdc7</item> -->
     </style>
 
-    <style name="MyPopUpTheme" parent="android:Widget.Holo.Light.ListPopupWindow">
-        <item name="android:background">@color/colorPopUpBackground</item>
-        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+    <style name="MyPopUpTheme" parent="@android:style/Widget.PopupMenu">
+        <item name="android:popupBackground">@color/colorMainBackground</item>
+        <item name="android:textColorPrimary">@color/black</item>
     </style>
-
-    <style name="MyListItemTheme">
-        <item name="android:textSize">31dp</item>
-        <item name="android:textStyle">italic</item>
-        <item name="android:textColorPrimary">#000000</item>
-        <item name="android:textColorSecondary">#000000</item>
-    </style>
-
 
     <style name="AppMaterialTheme.ButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:textStyle">bold</item>
@@ -118,4 +106,8 @@
     <style name="AppMaterialTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppMaterialTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AboutToolBarTheme">
+        <item name="android:background">#a6bdc7</item>
+    </style>
 </resources>
