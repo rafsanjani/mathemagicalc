@@ -84,6 +84,10 @@ public final class Utilities {
         fragmentTransaction.commit();
     }
 
+    public static void setToolbarTypeface(Context c, TextView tv){
+        tv.setTypeface(Typeface.createFromAsset(c.getAssets(), "fonts/Philosopher-Bold.ttf"));
+    }
+
 
     public static void animateAnswer(View answerView, ViewGroup viewGroup, DisplayMode displayMode) {
 
