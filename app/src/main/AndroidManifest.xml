@@ -7,6 +7,7 @@
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="false"
+        android:requiresSmallestWidthDp="320"
         android:xlargeScreens="false" />
 
     <application

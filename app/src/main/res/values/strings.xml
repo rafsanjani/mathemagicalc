@@ -128,7 +128,7 @@
     <string name="back_to_ode_menu">Back to ODE Menu</string>
     <string name="title_activity_show_algorithm">ShowAlgorithm</string>
     <string name="algorithms">Algorithms</string>
-    <string name="choose_an_operation_below">Operations</string>
+    <string name="operations">Operations</string>
 
 
 </resources>
