@@ -100,8 +100,8 @@
         <item>16. Sys of Eqns (Gauss Seidel with SOR)</item>
         <item>17. Sys of Eqns (Jacobi)</item>
         <item>18. Ordinary Differential Equations</item>
-        <item>20. Numerical Interpolation</item>
-        <item>21. Numerical Differentiation</item>
+        <!--<item>20. Numerical Interpolation</item>
+        <item>21. Numerical Differentiation</item>!-->
     </string-array>
     <string name="title_activity_scrolling">ScrollingActivity</string>
 
