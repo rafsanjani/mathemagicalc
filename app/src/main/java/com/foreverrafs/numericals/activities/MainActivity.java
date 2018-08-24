@@ -110,9 +110,6 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     }
 
     public void onGoToOperation(MenuItem item) {
-        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
-        int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
-
         OperationListDialog dialog = new OperationListDialog();
         dialog.show(getFragmentManager(), "Fragment dialog");
 

@@ -1,21 +1,41 @@
 package com.foreverrafs.numericals.activities;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.dialog.OperationListDialog;
 import com.foreverrafs.numericals.utils.Utilities;
 
 import java.lang.reflect.Method;
 
 public class ShowAlgorithm extends AppCompatActivity {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public void onAbout(MenuItem item) {
+        startActivity(new Intent(this, About.class));
+    }
+
+
+    public void onGoToOperation(MenuItem item) {
+        OperationListDialog dialog = new OperationListDialog();
+        dialog.show(getFragmentManager(), "Fragment dialog");
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

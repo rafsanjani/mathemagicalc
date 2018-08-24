@@ -20,6 +20,7 @@
     <style name="BaseTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:popupMenuStyle">@style/MyPopUpTheme</item>
         <item name="android:windowEnterAnimation">@anim/slide_in_left</item>
         <item name="android:windowExitAnimation">@anim/slide_out_left</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -27,17 +28,6 @@
         <item name="windowActionModeOverlay">true</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/textColorHint</item>
-    </style>
-
-
-    <style name="AppTheme.FooterText" parent="TextAppearance.AppCompat">
-        <item name="android:background">@color/colorMainBackground</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/colorPrimaryDark</item>
-        <item name="android:textSize">24sp</item>
-        <item name="android:textStyle">bold</item>
-
     </style>
 
     <style name="AnswerStyle" parent="TextAppearance.AppCompat.Widget.ActionMode.Title">
@@ -48,7 +38,7 @@
     <style name="AboutTheme" parent="Theme.Mal.Light">
         <item name="colorControlActivated">#00796B</item>
         <item name="colorControlHighlight">#c5c5c5</item>
-        <item  name="android:background">@color/colorMainBackground</item>
+        <item name="android:background">@color/colorMainBackground</item>
         <item name="mal_toolbarTheme">@style/MyToolBarTheme</item>
     </style>
 
@@ -58,7 +48,7 @@
         <item name="android:textColorSecondary">@color/colorToolBarSubtitle</item>
     </style>
 
-    <style name="MyPopUpTheme" parent="ThemeOverlay.AppCompat.Light">
+    <style name="MyPopUpTheme" parent="android:Widget.Holo.Light.ListPopupWindow">
         <item name="android:background">@color/colorPopUpBackground</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
     </style>
