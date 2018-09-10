@@ -6,8 +6,8 @@
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="true"
-        android:smallScreens="false"
         android:requiresSmallestWidthDp="320"
+        android:smallScreens="false"
         android:xlargeScreens="false" />
 
     <application
@@ -19,6 +19,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppMaterialTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.SplashActivity"
@@ -29,9 +30,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.ShowAlgorithm" />
-        <activity
-            android:name=".activities.About"
-            android:theme="@style/AboutTheme" />
     </application>
 
 </manifest>
