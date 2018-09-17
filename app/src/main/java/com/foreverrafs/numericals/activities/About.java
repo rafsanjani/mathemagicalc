@@ -45,14 +45,14 @@ public class About extends MaterialAboutFragment {
                 "Version",
                 false));
 
-        appCardBuilder.addItem(new MaterialAboutActionItem.Builder()
+      /*  appCardBuilder.addItem(new MaterialAboutActionItem.Builder()
                 .text("Changelog")
                 .icon(new IconicsDrawable(c)
                         .icon(CommunityMaterial.Icon.cmd_history)
                         .color(ContextCompat.getColor(c, colorIcon))
                         .sizeDp(18))
                 .setOnClickAction(ConvenienceBuilder.createWebViewDialogOnClickAction(c, "Releases", "##", true, false))
-                .build());
+                .build()); */
 
         MaterialAboutCard.Builder authorCardBuilder = new MaterialAboutCard.Builder();
         authorCardBuilder.title("Author");
