@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppMaterialTheme.EditTextStyle" parent="Widget.AppCompat.EditText">
-        <item name="android:textColor">@color/textColorSecondary</item>
-        <item name="android:backgroundTint">#000000</item>
-    </style>
 
     <style name="AppMaterialTheme" parent="BaseTheme">
         <item name="editTextStyle">@style/AppMaterialTheme.EditTextStyle</item>
-        <item name="android:popupMenuStyle">@style/MyPopUpTheme</item>
         <item name="colorControlActivated">#00796B</item>
         <item name="colorControlHighlight">#c5c5c5</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:colorAccent">#546e7a</item>
+        <item name="android:actionBarPopupTheme">@style/MyPopUpTheme</item>
+    </style>
+
+    <style name="AppMaterialTheme.EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:backgroundTint">#000000</item>
     </style>
 
     <style name="AboutTheme" parent="Theme.Mal.Light">
@@ -18,10 +21,5 @@
         <item name="colorControlHighlight">#c5c5c5</item>
         <item name="mal_toolbarTheme">@style/MyToolBarTheme</item>
         <item name="mal_card_background">@color/colorMainBackground</item>
-    </style>
-
-
-    <style name="AboutToolBarTheme">
-        <item name="android:background">#a6bdc7</item>
     </style>
 </resources>

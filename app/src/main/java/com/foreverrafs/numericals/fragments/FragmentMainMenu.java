@@ -96,8 +96,11 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
                 mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.btn_about:
+                fragment = new About();
+                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
+                /*
                 startActivity(new Intent(getContext(), About.class));
-                mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);*/
                 break;
         }
 

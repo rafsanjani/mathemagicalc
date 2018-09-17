@@ -6,7 +6,7 @@
         android:title="@string/go_to_operation"
         app:showAsAction="never" />
     <item
-        android:title="@string/mal_title_about"
         android:onClick="onAbout"
+        android:title="@string/mal_title_about"
         app:showAsAction="never" />
 </menu>

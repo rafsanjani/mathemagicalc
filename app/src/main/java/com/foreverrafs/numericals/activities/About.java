@@ -1,17 +1,18 @@
 package com.foreverrafs.numericals.activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeInfoDialog;
 import com.awesomedialog.blennersilva.awesomedialoglibrary.interfaces.Closure;
 import com.danielstone.materialaboutlibrary.ConvenienceBuilder;
-import com.danielstone.materialaboutlibrary.MaterialAboutActivity;
+import com.danielstone.materialaboutlibrary.MaterialAboutFragment;
 import com.danielstone.materialaboutlibrary.items.MaterialAboutActionItem;
 import com.danielstone.materialaboutlibrary.items.MaterialAboutItemOnClickAction;
 import com.danielstone.materialaboutlibrary.items.MaterialAboutTitleItem;
@@ -24,7 +25,7 @@ import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
-public class About extends MaterialAboutActivity {
+public class About extends MaterialAboutFragment {
     @Nullable
     public static MaterialAboutList createMaterialAboutList(final Context c, final int colorIcon, final int theme) {
         MaterialAboutCard.Builder appCardBuilder = new MaterialAboutCard.Builder();
@@ -216,25 +217,13 @@ public class About extends MaterialAboutActivity {
     @NonNull
     @Override
     protected MaterialAboutList getMaterialAboutList(@NonNull Context context) {
-        return createMaterialAboutList(this, R.color.mal_color_icon_light_theme, R.style.Theme_Mal_Light);
+        return createMaterialAboutList(context, R.color.mal_color_icon_light_theme, R.style.Theme_Mal_Light);
     }
 
     @Override
-    public void onBackPressed() {
-        startActivity(new Intent(this, MainActivity.class));
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        finish();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
-    @Nullable
-    @Override
-    protected CharSequence getActivityTitle() {
-        return null;
-    }
 }
