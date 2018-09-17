@@ -86,6 +86,12 @@ public class ShowAlgorithm extends AppCompatActivity {
         webView.loadUrl(algoName);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     public void onBack(View view) {
         finish();
     }
