@@ -87,10 +87,8 @@ public class About extends MaterialAboutFragment {
                     public void onClick() {
                         new AwesomeInfoDialog(c)
                                 .setTitle("Contributors")
-                                .setMessage("1. Francis O. Boateng - Lecturer\n" +
-                                        "2. Samuel Boateng - Auditing and Testing\n" +
-                                        "3. First Last - Contribution\n" +
-                                        "4. First Last - Contribution")
+                                .setMessage("1. Francis O. Boateng - Snr. Lecturer\n" +
+                                        "2. Samuel Boateng - Auditing and Testing\n")
                                 .setColoredCircle(R.color.dialogNoticeBackgroundColor)
                                 .setDialogIconAndColor(R.drawable.ic_people, R.color.white)
                                 .setCancelable(true)
@@ -157,7 +155,7 @@ public class About extends MaterialAboutFragment {
                         "<li>System of Equations</li>" +
                         "<li>Ordinary Differential Equations</li><br>" +
                         "</ol>" +
-                        "Based on inspiration and ideas from <br><b>Mr. Francis O. Boateng</b> - Lecturer (UEW-K)")
+                        "Based on inspiration and ideas from <br><b>Mr. Francis O. Boateng</b> - Snr. Lecturer (UEW-K)")
                 .setIconGravity(MaterialAboutActionItem.GRAVITY_TOP)
                 .build()
         );
