@@ -2,7 +2,6 @@ package com.foreverrafs.numericals.activities;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -116,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     }
 
     public void onAbout(MenuItem item) {
-        startActivity(new Intent(this, About.class));
+        Fragment fragment = new About();
+        Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer, false);
     }
 }

@@ -56,6 +56,7 @@ public class ShowAlgorithm extends AppCompatActivity {
         toolbarAppTitle.setText("Algorithm");
         Utilities.setToolbarTypeface(this, toolbarAppTitle);
 
+        //TODO: Find something better to do about this region
         if (Build.VERSION.SDK_INT >= 24) {
             try {
                 Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
