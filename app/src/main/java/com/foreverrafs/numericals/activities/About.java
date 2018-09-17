@@ -87,8 +87,9 @@ public class About extends MaterialAboutFragment {
                     public void onClick() {
                         new AwesomeInfoDialog(c)
                                 .setTitle("Contributors")
-                                .setMessage("1. Francis O. Boateng - Snr. Lecturer\n" +
-                                        "2. Samuel Boateng - Auditing and Testing\n")
+                                .setMessage("Francis O. Boateng  - Snr. Lecturer\n" +
+                                        "Samuel Boateng - Testing\n" +
+                                        "Aboagye Kwame Gyamfi - Testing\n")
                                 .setColoredCircle(R.color.dialogNoticeBackgroundColor)
                                 .setDialogIconAndColor(R.drawable.ic_people, R.color.white)
                                 .setCancelable(true)
