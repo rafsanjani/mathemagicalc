@@ -1,6 +1,5 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -43,14 +42,10 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
     }
 
     private void initControls() {
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
-
-
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
 
-        tvAnswer.setTypeface(typeface);
-        //tvHeader.setTypeface(typeface2);
-        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
+        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
+        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);

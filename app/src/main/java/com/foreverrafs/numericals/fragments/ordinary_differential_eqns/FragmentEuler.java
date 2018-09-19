@@ -51,8 +51,9 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
         Button btnBack = rootView.findViewById(R.id.buttonBack);
 
         //  Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Bitter-Italic.ttf");
-        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
-        Utilities.setItalicTypeface(rootView.findViewById(R.id.text_equation), getContext());
+        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
+
 
         EditText etEquation = rootView.findViewById(R.id.text_equation);
         // etEquation.setTypeface(typeface);

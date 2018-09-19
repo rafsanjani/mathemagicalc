@@ -125,6 +125,6 @@ public class FragmentBisectionResults extends Fragment {
             }
         });
 
-        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
+        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
     }
 }

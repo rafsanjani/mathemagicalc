@@ -42,7 +42,7 @@ public class FragmentLocationOfRootsMenu extends Fragment implements View.OnClic
 
     private void initControls() {
         header = rootView.findViewById(R.id.Header);
-        Utilities.setLobsterTypeface(header, getContext());
+        Utilities.setTypeFace(header, getContext(), Utilities.TypeFaceName.lobster_regular);
         header.setVisibility(View.VISIBLE);
 
         rootView.findViewById(R.id.btn_loc_of_roots_bisection).setOnClickListener(this);

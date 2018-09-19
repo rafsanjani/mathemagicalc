@@ -1,7 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -45,15 +44,10 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
     }
 
     private void initControls() {
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
-        // Typeface typeface2 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Lobster-Regular.ttf");
-
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
-        TextView tvHeader = rootView.findViewById(R.id.headerText);
 
-        tvAnswer.setTypeface(typeface);
-        //tvHeader.setTypeface(typeface2);
-        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
+        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
@@ -103,7 +97,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
     private void onShowAlgorithm() {
         Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name","dectobin");
+        bundle.putString("algorithm_name", "dectobin");
 
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
@@ -139,9 +133,9 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
         } catch (NumberFormatException ex) {
             Log.e(Utilities.Log, "cannot parse " + decimal + " to an integer value");
-        } catch(Exception ex){
+        } catch (Exception ex) {
             Log.e(Utilities.Log, ex.getMessage());
-        }finally  {
+        } finally {
             MainActivity.hideKeyboard(etInput);
         }
     }

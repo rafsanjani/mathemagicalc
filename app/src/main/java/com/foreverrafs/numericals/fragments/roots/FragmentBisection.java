@@ -52,8 +52,8 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
         Button btnBack = rootView.findViewById(R.id.buttonBack);
 
         //  Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Bitter-Italic.ttf");
-        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
-        Utilities.setItalicTypeface(rootView.findViewById(R.id.text_equation), getContext());
+        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
         EditText etEquation = rootView.findViewById(R.id.text_equation);
         // etEquation.setTypeface(typeface);
@@ -235,7 +235,8 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
 
 
             if (buttonText == getResources().getString(R.string.calculate)) {
-                double root = Numericals.Bisect(eqn, x0, x1, iter, tol);
+               //double root = Numericals.Bisect(eqn, x0, x1, iter, tol);
+                double root = Numericals.BisectAll(eqn, x0, x1, iter, tol).get(0).getX3();
 
                 if (Double.isNaN(root) || Double.isInfinite(root)) {
                     Toast.makeText(getContext(), "Syntax Error: Please check equation", Toast.LENGTH_LONG).show();

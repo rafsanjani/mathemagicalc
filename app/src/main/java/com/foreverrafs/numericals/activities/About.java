@@ -89,7 +89,8 @@ public class About extends MaterialAboutFragment {
                                 .setTitle("Contributors")
                                 .setMessage("Francis O. Boateng  - Snr. Lecturer\n" +
                                         "Samuel Boateng - Testing\n" +
-                                        "Aboagye Kwame Gyamfi - Testing\n")
+                                        "Aboagye Kwame Gyamfi - Testing\n " +
+                                        "Annor Dominic Anderson - Testing\n")
                                 .setColoredCircle(R.color.dialogNoticeBackgroundColor)
                                 .setDialogIconAndColor(R.drawable.ic_people, R.color.white)
                                 .setCancelable(true)

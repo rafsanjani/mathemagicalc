@@ -60,7 +60,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void testbintodecnew(){
+    public void testbintodecnew() {
         String bin = "1010.101";
         System.out.println(Numericals.BinaryToDecimal(bin));
     }
@@ -85,8 +85,14 @@ public class NumericalsTest {
 
     @Test
     public void testBisectionShouldPass() {
-        double y = Numericals.Bisect("x^5 + x^3 + 3x", -2, -1, 4, 0.005);
-        assertEquals(-1.0625, y);
+        String expr = "x^5 + x^3 + 3x";
+        double x1 = -2;
+        double x2 = -1;
+        int iterations = 1;
+        double tolerance = 0.005;
+        double y = Numericals.Bisect(expr, x1, x2, iterations, tolerance);
+        double root = Numericals.BisectAll(expr, x1, x2, iterations, tolerance).get(0).getX3();
+        assertEquals(y, root);
     }
 
     @Test
@@ -340,7 +346,7 @@ public class NumericalsTest {
         List<OdeResult> results = Numericals.SolveOdeByEulersMethod(eqn, height, interval, yo);
 
         for (OdeResult result : results) {
-            System.out.println(result.getN() + " " + result.getX()+"  " + result.getY());
+            System.out.println(result.getN() + " " + result.getX() + "  " + result.getY());
         }
 
         // assertEquals(0.23681533952, results.get(5).getY());

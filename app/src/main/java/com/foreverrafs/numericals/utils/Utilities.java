@@ -44,7 +44,38 @@ public final class Utilities {
         transaction.commit();
     }
 
-    public static void setLobsterTypeface(View view, Context mCtx) {
+    public static void setTypeFace(View view, Context mCtx, TypeFaceName typeFaceName) {
+        //cast the view to a TextView, if casting fails then we cast to an edittext and apply the necessary font
+
+        Typeface typeface = null;
+
+        switch (typeFaceName) {
+            case bitter_italic:
+                typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/Bitter-Italic.ttf");
+                break;
+
+            case lobster_regular:
+                typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/Lobster-Regular.ttf");
+                break;
+
+            case philosopher_bold:
+                typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/Philosopher-Bold.ttf");
+
+            case fallingsky:
+               typeface =  Typeface.createFromAsset(mCtx.getAssets(), "fonts/FallingSky.otf");
+        }
+
+        try {
+            TextView tv = (TextView) view;
+            tv.setTypeface(typeface);
+
+        } catch (ClassCastException ex) {
+            EditText editText = (EditText) view;
+            editText.setTypeface(typeface);
+        }
+    }
+
+   /* public static void setLobsterTypeface(View view, Context mCtx) {
         //cast the view to a TextView
         try {
             TextView tv = (TextView) view;
@@ -65,6 +96,7 @@ public final class Utilities {
             editText.setTypeface(Typeface.createFromAsset(mCtx.getAssets(), "fonts/Bitter-Italic.ttf"));
         }
     }
+    */
 
     public static void replaceFragment(Fragment next, FragmentManager fragmentManager, int containerViewId) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -84,9 +116,9 @@ public final class Utilities {
         fragmentTransaction.commit();
     }
 
-    public static void setToolbarTypeface(Context c, TextView tv){
+   /* public static void setToolbarTypeface(Context c, TextView tv) {
         tv.setTypeface(Typeface.createFromAsset(c.getAssets(), "fonts/Philosopher-Bold.ttf"));
-    }
+    }*/
 
 
     public static void animateAnswer(View answerView, ViewGroup viewGroup, DisplayMode displayMode) {
@@ -111,15 +143,23 @@ public final class Utilities {
         }
     }
 
-    public static void showAlgorithmScreen(Context c, String algoName){
+    public static void showAlgorithmScreen(Context c, String algoName) {
         Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name",algoName);
+        bundle.putString("algorithm_name", algoName);
         c.startActivity(new Intent(c, ShowAlgorithm.class).putExtras(bundle));
     }
 
     public enum DisplayMode {
         SHOW,
         HIDE
+    }
+
+    public enum TypeFaceName {
+        //Add more typefaces when necessary
+        lobster_regular,
+        bitter_italic,
+        fallingsky,
+        philosopher_bold
     }
 }
 /*

@@ -1,7 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -45,14 +44,16 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
     }
 
     private void initControls() {
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
+       // Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
-        tvAnswer.setTypeface(typeface);
+        //tvAnswer.setTypeface(typeface);
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
         EditText etInput = rootView.findViewById(R.id.text_user_input);
-        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
+
+        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
+        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
 
 //        rootView.findViewById(R.id.show_all).setOnClickListener(this);
 

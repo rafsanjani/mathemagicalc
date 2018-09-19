@@ -1,7 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -45,14 +44,15 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
     }
 
     private void initControls() {
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
+        //Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
 
 
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
 
-        tvAnswer.setTypeface(typeface);
+       // tvAnswer.setTypeface(typeface);
         //tvHeader.setTypeface(typeface2);
-        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
+        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);

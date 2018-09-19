@@ -78,7 +78,7 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
     }
 
     public void initControls() {
-        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
+        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
         Button btnBack = rootView.findViewById(R.id.buttonBack);
 

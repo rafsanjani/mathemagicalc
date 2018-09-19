@@ -80,7 +80,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
         Button btnBack = rootView.findViewById(R.id.buttonBack);
 
-        Utilities.setLobsterTypeface(rootView.findViewById(R.id.headerText), getContext());
+        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
 
         EditText etEqn[] = new EditText[3];
         etEqn[0] = rootView.findViewById(R.id.text_equationx1);
