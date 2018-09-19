@@ -38,7 +38,7 @@ dependencies {
     implementation 'com.mikepenz:iconics-core:3.0.4'
 
     //awesomedialogs
-    implementation 'com.github.blennerSilva:AwesomeDialog:2.0.5'
+    //implementation 'com.github.blennerSilva:AwesomeDialog:2.0.5'
 }
 
 //Mathview
@@ -65,6 +65,12 @@ dependencies {
     //implementation 'com.mikepenz:octicons-typeface:3.2.0.4@aar'
     //implementation 'com.mikepenz:meteocons-typeface:1.1.0.4@aar'
     implementation 'com.mikepenz:community-material-typeface:2.0.46.1@aar'
+
+
+    //custom awesomedialog
+    dependencies {
+        implementation project(":awesomedialoglib-debug")
+    }
     //implementation 'com.mikepenz:weather-icons-typeface:2.0.10.4@aar'
     //implementation 'com.mikepenz:typeicons-typeface:2.0.7.4@aar'
     //implementation 'com.mikepenz:entypo-typeface:1.0.0.4@aar'

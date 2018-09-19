@@ -17,6 +17,7 @@
     <color name="colorToolBarTitle">#81D4FA</color>
     <color name="colorToolBarSubtitle">@color/colorWhite</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="contextualBackground">#1e7ae2</color>
     <color name="answerColor">#1a237e</color>
     <color name="textColorHint">#10132e</color>
