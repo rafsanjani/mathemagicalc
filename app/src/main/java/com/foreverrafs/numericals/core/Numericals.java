@@ -133,7 +133,7 @@ public final class Numericals {
      * @param tol The tolerance level of the answer produced
      * @return double
      */
-    public static double Bisect(String expr, double x1, double x2, int iterations, double tol) {
+    /*public static double Bisect(String expr, double x1, double x2, int iterations, double tol) {
         if (iterations < 1)
             return 0;
 
@@ -163,7 +163,7 @@ public final class Numericals {
         else
             //the root lies in the right part of the boundary
             return Bisect(expr, x3, x2, --iterations, tol);
-    }
+    }*/
 
     public static List<LocationOfRootResult> BisectAll(String expr, double x1, double x2, int iterations, double tol) {
         List<LocationOfRootResult> results = new ArrayList<>();
@@ -209,6 +209,7 @@ public final class Numericals {
      * @param x1 the initial guess of the root
      * @param maxIterations maximum number of times we are to iterate
      * @return double
+     * todo replace with full variant of the method
      */
     public static Double NewtonRaphson(String expr, double x1, int maxIterations) {
         if (maxIterations < 1) {
@@ -369,8 +370,8 @@ public final class Numericals {
      * @param x1 the upper limit
      * @param maxIterations The maximum number of iterations to be conducted
      * @return double
+     * todo replace with full variant of the method
      */
-
     public static Double Secante(String expr, double x0, double x1, int maxIterations) {
         if (maxIterations < 1)
             return 0.00;

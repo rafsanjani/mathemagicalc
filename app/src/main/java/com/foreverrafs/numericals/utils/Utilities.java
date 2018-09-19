@@ -46,7 +46,6 @@ public final class Utilities {
 
     public static void setTypeFace(View view, Context mCtx, TypeFaceName typeFaceName) {
         //cast the view to a TextView, if casting fails then we cast to an edittext and apply the necessary font
-
         Typeface typeface = null;
 
         switch (typeFaceName) {
@@ -60,9 +59,11 @@ public final class Utilities {
 
             case philosopher_bold:
                 typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/Philosopher-Bold.ttf");
+                break;
 
             case fallingsky:
                typeface =  Typeface.createFromAsset(mCtx.getAssets(), "fonts/FallingSky.otf");
+               break;
         }
 
         try {

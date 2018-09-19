@@ -235,8 +235,9 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
 
 
             if (buttonText == getResources().getString(R.string.calculate)) {
-               //double root = Numericals.Bisect(eqn, x0, x1, iter, tol);
-                double root = Numericals.BisectAll(eqn, x0, x1, iter, tol).get(0).getX3();
+                //double root = Numericals. Bisect(eqn, x0, x1, iter, tol);
+                List<LocationOfRootResult> allRoots = Numericals.BisectAll(eqn, x0, x1, iter, tol);
+                double root = allRoots.get(allRoots.size() - 1).getX3();
 
                 if (Double.isNaN(root) || Double.isInfinite(root)) {
                     Toast.makeText(getContext(), "Syntax Error: Please check equation", Toast.LENGTH_LONG).show();
