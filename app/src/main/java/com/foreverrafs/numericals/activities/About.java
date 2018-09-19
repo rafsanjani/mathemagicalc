@@ -1,6 +1,7 @@
 package com.foreverrafs.numericals.activities;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -88,16 +89,16 @@ public class About extends MaterialAboutFragment {
                         new AwesomeInfoDialog(c)
                                 .setTitle("Contributors")
                                 .setMessage("Francis O. Boateng  - Snr. Lecturer\n" +
-                                        "Samuel Boateng - Product Testing\n" +
-                                        "Aboagye Kwame Gyamfi - Product Testing\n " +
-                                        "Annor Dominic Anderson - Product Testing\n")
+                                        "Samuel Boateng  - Product Testing\n" +
+                                        "Aboagye Gyamfi  - Product Testing\n" +
+                                        "Annor  Anderson - Product Testing\n")
                                 .setColoredCircle(R.color.dialogNoticeBackgroundColor)
                                 .setDialogIconAndColor(R.drawable.ic_people, R.color.white)
+                                .setDialogMessageColor(Color.BLACK)
                                 .setCancelable(true)
                                 .setPositiveButtonText("OK")
                                 .setPositiveButtonbackgroundColor(R.color.dialogNoticeBackgroundColor)
                                 .setPositiveButtonTextColor(R.color.white)
-
                                 .setPositiveButtonClick(new Closure() {
                                     @Override
                                     public void exec() {
