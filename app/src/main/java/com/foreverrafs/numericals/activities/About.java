@@ -19,18 +19,18 @@ import com.danielstone.materialaboutlibrary.items.MaterialAboutItemOnClickAction
 import com.danielstone.materialaboutlibrary.items.MaterialAboutTitleItem;
 import com.danielstone.materialaboutlibrary.model.MaterialAboutCard;
 import com.danielstone.materialaboutlibrary.model.MaterialAboutList;
-import com.danielstone.materialaboutlibrary.util.OpenSourceLicense;
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.utils.Utilities;
-import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
 public class About extends MaterialAboutFragment {
+    private static final int iconSize = 20;
+
     @Nullable
     public static MaterialAboutList createMaterialAboutList(final Context c, final int colorIcon, final int theme) {
-        MaterialAboutCard.Builder appCardBuilder = new MaterialAboutCard.Builder();
 
+        MaterialAboutCard.Builder appCardBuilder = new MaterialAboutCard.Builder();
         // Add items to card
 
         appCardBuilder.addItem(new MaterialAboutTitleItem.Builder()
@@ -40,38 +40,27 @@ public class About extends MaterialAboutFragment {
                 .build());
         appCardBuilder.addItem(ConvenienceBuilder.createVersionActionItem(c,
                 new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_information_outline)
+                        .icon(FontAwesome.Icon.faw_info)
                         .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
+                        .sizeDp(iconSize),
                 "Version",
                 false));
-
-      /*  appCardBuilder.addItem(new MaterialAboutActionItem.Builder()
-                .text("Changelog")
-                .icon(new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_history)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18))
-                .setOnClickAction(ConvenienceBuilder.createWebViewDialogOnClickAction(c, "Releases", "##", true, false))
-                .build()); */
-
         MaterialAboutCard.Builder authorCardBuilder = new MaterialAboutCard.Builder();
         authorCardBuilder.title("Author");
-//        authorCardBuilder.titleColor(ContextCompat.getColor(c, R.color.colorAccent));
 
         authorCardBuilder.addItem(new MaterialAboutActionItem.Builder()
                 .text("Abdul-Aziz Rafsanjani")
                 .subText("Main Developer")
                 .icon(new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_account)
+                        .icon(FontAwesome.Icon.faw_user)
                         .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18))
+                        .sizeDp(iconSize))
                 .build());
         authorCardBuilder.addItem(ConvenienceBuilder.createWebsiteActionItem(c,
                 new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_earth)
+                        .icon(FontAwesome.Icon.faw_globe_africa)
                         .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
+                        .sizeDp(iconSize),
                 "Visit Website",
                 true,
                 Uri.parse("http://foreverrafs.com"))).
@@ -80,9 +69,9 @@ public class About extends MaterialAboutFragment {
         authorCardBuilder.addItem(new MaterialAboutActionItem.Builder()
                 .text("Credits")
                 .icon(new IconicsDrawable(c)
-                        .icon(FontAwesome.Icon.faw_handshake2)
+                        .icon(FontAwesome.Icon.faw_handshake)
                         .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18))
+                        .sizeDp(iconSize))
                 .setOnClickAction(new MaterialAboutItemOnClickAction() {
                     @Override
                     public void onClick() {
@@ -109,12 +98,11 @@ public class About extends MaterialAboutFragment {
                 })
                 .build());
 
-
         authorCardBuilder.addItem(ConvenienceBuilder.createEmailItem(c,
                 new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_email)
+                        .icon(FontAwesome.Icon.faw_envelope)
                         .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
+                        .sizeDp(iconSize),
                 "Send an email",
                 true,
                 "daemon@foreverrafs.com",
@@ -122,9 +110,9 @@ public class About extends MaterialAboutFragment {
 
         authorCardBuilder.addItem(ConvenienceBuilder.createPhoneItem(c,
                 new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_phone)
+                        .icon(FontAwesome.Icon.faw_mobile_alt)
                         .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
+                        .sizeDp(iconSize),
                 "Call me",
                 true,
                 "+233205843690"));
@@ -134,9 +122,9 @@ public class About extends MaterialAboutFragment {
         convenienceCardBuilder.title("Rating");
         convenienceCardBuilder.addItem(ConvenienceBuilder.createRateActionItem(c,
                 new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_star)
+                        .icon(FontAwesome.Icon.faw_star)
                         .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
+                        .sizeDp(iconSize),
                 "Rate this app",
                 null
         ));
@@ -148,7 +136,7 @@ public class About extends MaterialAboutFragment {
                 .icon(new IconicsDrawable(c)
                         .icon(FontAwesome.Icon.faw_comment)
                         .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18))
+                        .sizeDp(iconSize))
                 .text("A Numerical Methods Suite")
                 .subTextHtml("<p>This app is intended to be a Numerical Methods and Computation suite for students." +
                         "The topics covered in this version are:<p>" +
@@ -166,55 +154,56 @@ public class About extends MaterialAboutFragment {
         return new MaterialAboutList(appCardBuilder.build(), authorCardBuilder.build(), convenienceCardBuilder.build(), overviewCardBuilder.build());
     }
 
-    public static MaterialAboutList createMaterialAboutLicenseList(final Context c, int colorIcon) {
+    /*
+        public static MaterialAboutList createMaterialAboutLicenseList(final Context c, int colorIcon) {
 
-        MaterialAboutCard materialAboutLIbraryLicenseCard = ConvenienceBuilder.createLicenseCard(c,
-                new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_book)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
-                "material-about-library", "2016", "Daniel Stone",
-                OpenSourceLicense.APACHE_2);
+            MaterialAboutCard materialAboutLIbraryLicenseCard = ConvenienceBuilder.createLicenseCard(c,
+                    new IconicsDrawable(c)
+                            .icon(CommunityMaterial.Icon.cmd_book)
+                            .color(ContextCompat.getColor(c, colorIcon))
+                            .sizeDp(iconSize),
+                    "material-about-library", "2016", "Daniel Stone",
+                    OpenSourceLicense.APACHE_2);
 
-        MaterialAboutCard androidIconicsLicenseCard = ConvenienceBuilder.createLicenseCard(c,
-                new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_book)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
-                "Android Iconics", "2016", "Mike Penz",
-                OpenSourceLicense.APACHE_2);
+            MaterialAboutCard androidIconicsLicenseCard = ConvenienceBuilder.createLicenseCard(c,
+                    new IconicsDrawable(c)
+                            .icon(CommunityMaterial.Icon.cmd_book)
+                            .color(ContextCompat.getColor(c, colorIcon))
+                            .sizeDp(iconSize),
+                    "Android Iconics", "2016", "Mike Penz",
+                    OpenSourceLicense.APACHE_2);
 
-        MaterialAboutCard leakCanaryLicenseCard = ConvenienceBuilder.createLicenseCard(c,
-                new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_book)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
-                "LeakCanary", "2015", "Square, Inc",
-                OpenSourceLicense.APACHE_2);
+            MaterialAboutCard leakCanaryLicenseCard = ConvenienceBuilder.createLicenseCard(c,
+                    new IconicsDrawable(c)
+                            .icon(CommunityMaterial.Icon.cmd_book)
+                            .color(ContextCompat.getColor(c, colorIcon))
+                            .sizeDp(18),
+                    "LeakCanary", "2015", "Square, Inc",
+                    OpenSourceLicense.APACHE_2);
 
-        MaterialAboutCard mitLicenseCard = ConvenienceBuilder.createLicenseCard(c,
-                new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_book)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
-                "MIT Example", "2017", "Matthew Ian Thomson",
-                OpenSourceLicense.MIT);
+            MaterialAboutCard mitLicenseCard = ConvenienceBuilder.createLicenseCard(c,
+                    new IconicsDrawable(c)
+                            .icon(CommunityMaterial.Icon.cmd_book)
+                            .color(ContextCompat.getColor(c, colorIcon))
+                            .sizeDp(iconSize),
+                    "MIT Example", "2017", "Matthew Ian Thomson",
+                    OpenSourceLicense.MIT);
 
-        MaterialAboutCard gplLicenseCard = ConvenienceBuilder.createLicenseCard(c,
-                new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_book)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
-                "GPL Example", "2017", "George Perry Lindsay",
-                OpenSourceLicense.GNU_GPL_3);
+            MaterialAboutCard gplLicenseCard = ConvenienceBuilder.createLicenseCard(c,
+                    new IconicsDrawable(c)
+                            .icon(CommunityMaterial.Icon.cmd_book)
+                            .color(ContextCompat.getColor(c, colorIcon))
+                            .sizeDp(iconSize),
+                    "GPL Example", "2017", "George Perry Lindsay",
+                    OpenSourceLicense.GNU_GPL_3);
 
-        return new MaterialAboutList(materialAboutLIbraryLicenseCard,
-                androidIconicsLicenseCard,
-                leakCanaryLicenseCard,
-                mitLicenseCard,
-                gplLicenseCard);
-    }
-
+            return new MaterialAboutList(materialAboutLIbraryLicenseCard,
+                    androidIconicsLicenseCard,
+                    leakCanaryLicenseCard,
+                    mitLicenseCard,
+                    gplLicenseCard);
+        }
+     */
     @NonNull
     @Override
     protected MaterialAboutList getMaterialAboutList(@NonNull Context context) {

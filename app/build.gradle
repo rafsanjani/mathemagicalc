@@ -70,6 +70,6 @@ dependencies {
     implementation 'com.mikepenz:octicons-typeface:3.2.0.4@aar'
     implementation 'com.mikepenz:meteocons-typeface:1.1.0.4@aar'*/
     implementation 'com.mikepenz:fontawesome-typeface:5.3.1.1@aar'
-    implementation 'com.mikepenz:community-material-typeface:2.7.94.1@aar'
+    //implementation 'com.mikepenz:community-material-typeface:2.7.94.1@aar'
 }
 
