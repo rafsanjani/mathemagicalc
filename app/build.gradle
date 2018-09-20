@@ -7,8 +7,8 @@ android {
         applicationId "com.foreverrafs.numericals"
         minSdkVersion 18
         targetSdkVersion 27
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.0.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -33,12 +33,6 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.ms-square:expandableTextView:0.1.4'
-
-    //iconics for svg drawable rendering
-    implementation 'com.mikepenz:iconics-core:3.0.4'
-
-    //awesomedialogs
-    //implementation 'com.github.blennerSilva:AwesomeDialog:2.0.5'
 }
 
 //Mathview
@@ -56,27 +50,26 @@ dependencies {
 
 
 dependencies {
-    implementation "com.andkulikov:transitionseverywhere:1.7.7"
-    implementation 'com.github.daniel-stoneuk:material-about-library:2.3.0'
-
-    implementation 'com.mikepenz:google-material-typeface:3.0.1.2.original@aar'
-    //implementation 'com.mikepenz:material-design-iconic-typeface:2.2.0.4@aar'
-    implementation 'com.mikepenz:fontawesome-typeface:5.0.13.0@aar'
-    //implementation 'com.mikepenz:octicons-typeface:3.2.0.4@aar'
-    //implementation 'com.mikepenz:meteocons-typeface:1.1.0.4@aar'
-    implementation 'com.mikepenz:community-material-typeface:2.0.46.1@aar'
-
-
     //custom awesomedialog
     dependencies {
         implementation project(":awesomedialoglib-debug")
     }
-    //implementation 'com.mikepenz:weather-icons-typeface:2.0.10.4@aar'
-    //implementation 'com.mikepenz:typeicons-typeface:2.0.7.4@aar'
-    //implementation 'com.mikepenz:entypo-typeface:1.0.0.4@aar'
-    //implementation 'com.mikepenz:devicon-typeface:2.0.0.4@aar'
-    //implementation 'com.mikepenz:foundation-icons-typeface:3.0.0.4@aar'
-    //implementation 'com.mikepenz:ionicons-typeface:2.0.1.4@aar'
-    //implementation 'com.mikepenz:pixeden-7-stroke-typeface:1.2.0.2@aar'
+
+    //iconics for svg drawable rendering
+    implementation 'com.mikepenz:iconics-core:3.0.4'
+
+    //transition everywhere
+    implementation "com.andkulikov:transitionseverywhere:1.7.7"
+
+    //material about
+    implementation 'com.github.daniel-stoneuk:material-about-library:2.3.0'
+
+    //typefaces for material about
+    /*implementation 'com.mikepenz:google-material-typeface:3.0.1.2.original@aar'
+    implementation 'com.mikepenz:material-design-iconic-typeface:2.2.0.4@aar'
+    implementation 'com.mikepenz:octicons-typeface:3.2.0.4@aar'
+    implementation 'com.mikepenz:meteocons-typeface:1.1.0.4@aar'*/
+    implementation 'com.mikepenz:fontawesome-typeface:5.3.1.1@aar'
+    implementation 'com.mikepenz:community-material-typeface:2.7.94.1@aar'
 }
 
