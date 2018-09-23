@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -27,7 +28,8 @@ public class ShowAlgorithm extends AppCompatActivity {
     }
 
     public void onAbout(MenuItem item) {
-        startActivity(new Intent(this, About.class));
+        Fragment fragment = new About();
+        Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer, false);
     }
 
 
