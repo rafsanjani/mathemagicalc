@@ -23,14 +23,14 @@ import java.lang.reflect.Method;
 public class ShowAlgorithm extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu_showalgorithm, menu);
         return true;
     }
 
-    public void onAbout(MenuItem item) {
+    /*public void onAbout(MenuItem item) {
         Fragment fragment = new About();
         Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer, false);
-    }
+    }*/
 
 
     public void onGoToOperation(MenuItem item) {
