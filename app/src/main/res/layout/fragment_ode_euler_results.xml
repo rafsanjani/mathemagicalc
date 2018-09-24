@@ -174,7 +174,7 @@
             style="@style/AppMaterialTheme.ButtonStyle.Exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Back to bisection"
+            android:text="Back to Euler"
             android:textStyle="bold" />
 
     </LinearLayout>
