@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/googlefonts.css"/>
+    <link rel="stylesheet" href="css/katex.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+
+
+    <meta charset="UTF-8">
+    <title>Euler's Forward Method</title>
+</head>
+<body>
+<div class="container_fluid m-2">
+    <h5 class="text-center">Algorithm for Solving an IVP using the Euler's forward method</h5>
+    <hr/>
+    <p class="text-info text-justify ">
+        <strong>This algorithm is valid for any Initial Value Problem together with it's Initial
+            condition</strong>
+    </p>
+
+    <!-- each card represents an algorithm step -->
+    <div class="accordion" id="algorithm">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse"
+                            data-target="#stepOne"
+                            aria-expanded="true" aria-controls="stepOne">
+                        <strong>Step 1</strong>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="stepOne" class="collapse show" aria-labelledby="headingOne"
+                 data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Given an Initial Value Problem together with the step size (h), interval
+                    $[x_{0}, x_{n}]$ where one is required
+                    to determine the number of times it will take to iterate the function, that is
+                    $[h + h]$ until $h > x_{n}$
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                        <strong>Step 2</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepTwo" class="collapse" aria-labelledby="headingTwo"
+                 data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Substitute the given function, $[f(x, y)]$ into the formula $Yn+hf(Xn, Yn)$,
+                    where $X,Y$ will take the values in the function defined with the current value of
+                    $n$.
+                </div>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#stepThree" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                        <strong>Step 3</strong>
+                    </button>
+                </h5>
+            </div>
+            <div id="stepThree" class="collapse" aria-labelledby="headingThree"
+                 data-parent="#algorithm">
+                <div class="card-body text-justify">
+                    Iterate the function until you get the number of iterations generated at <b>step 1.</b><br/>
+                    <b>Note:</b> At each level of iteration, the value of $h$ will be the <b>nth</b>
+                    iterate. For eg. during the 2nd iteration, the value of $h$ will be the
+                    second step size generated when $[h+h]$ was performed.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- bootstrap scripts and jquery -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/katex.js"></script>
+<script src="js/auto-render.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
