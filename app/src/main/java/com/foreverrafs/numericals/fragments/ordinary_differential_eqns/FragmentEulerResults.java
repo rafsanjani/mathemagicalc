@@ -83,6 +83,7 @@ public class FragmentEulerResults extends Fragment {
 
     public void initControls() {
         Button btnBack = rootView.findViewById(R.id.buttonBack);
+        Button btnShowAlgorithm = rootView.findViewById(R.id.buttonShowAlgo);
 
         MathView equation;
         // String tex = " $$f(x) = 3x^3 + 2x - 5$$";
@@ -97,13 +98,13 @@ public class FragmentEulerResults extends Fragment {
         resultView.setAdapter(adapter);
 
         TextView tvInterval = rootView.findViewById(R.id.interval);
-       // TextView tvIterations = rootView.findViewById(R.id.iterations);
+        // TextView tvIterations = rootView.findViewById(R.id.iterations);
         TextView tvInitY = rootView.findViewById(R.id.initY);
         TextView tvH = rootView.findViewById(R.id.h);
 
 
         tvInterval.setText(getInterval());
-       // tvIterations.setText(getIteration());
+        // tvIterations.setText(getIteration());
         tvInitY.setText(getInitY());
         tvH.setText(getInitH());
 
@@ -125,6 +126,14 @@ public class FragmentEulerResults extends Fragment {
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
             }
         });
+
+        btnShowAlgorithm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utilities.showAlgorithmScreen(getContext(), "euler");
+            }
+        });
+
         Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
     }
 }

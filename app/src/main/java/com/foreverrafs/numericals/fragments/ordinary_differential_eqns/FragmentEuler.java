@@ -49,6 +49,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
     public void initControls() {
         final Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
         Button btnBack = rootView.findViewById(R.id.buttonBack);
+        Button btnShowAlgorithm = rootView.findViewById(R.id.buttonShowAlgo);
 
         //  Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Bitter-Italic.ttf");
         Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
@@ -93,6 +94,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
+        btnShowAlgorithm.setOnClickListener(this);
 
         etEquation.addTextChangedListener(this);
 
@@ -119,6 +121,9 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
                 Button btn = (Button) view;
                 Log.i(Utilities.Log, "performing Euler's Forward calculation");
                 onCalculate(btn.getText().toString());
+                break;
+            case R.id.buttonShowAlgo:
+                 Utilities.showAlgorithmScreen(getContext(), "euler");
                 break;
 
         }
