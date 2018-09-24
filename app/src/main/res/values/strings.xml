@@ -129,6 +129,8 @@
     <string name="title_activity_show_algorithm">ShowAlgorithm</string>
     <string name="algorithms">Algorithms</string>
     <string name="operations">Operations</string>
+    <string name="xo">Xo</string>
+    <string name="xn">Xn</string>
 
 
 </resources>

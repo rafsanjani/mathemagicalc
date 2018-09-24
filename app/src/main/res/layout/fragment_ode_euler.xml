@@ -39,7 +39,7 @@
             android:layout_marginLeft="@dimen/std_layout_margin"
             android:layout_marginRight="@dimen/std_layout_margin"
             android:gravity="center_horizontal"
-            android:hint="Input differential equation"
+            android:hint="Initial Value Problem (IVP)"
             android:imeOptions="actionGo"
             android:inputType="text"
             android:textAlignment="center" />
@@ -74,7 +74,7 @@
                     android:layout_marginLeft="@dimen/std_layout_margin"
                     android:layout_marginRight="@dimen/std_layout_margin"
                     android:gravity="center_horizontal"
-                    android:hint="@string/x0"
+                    android:hint="@string/xo"
                     android:inputType="numberDecimal|numberSigned"
                     android:textAlignment="center" />
 
@@ -97,7 +97,7 @@
                     android:layout_marginLeft="@dimen/std_layout_margin"
                     android:layout_marginRight="@dimen/std_layout_margin"
                     android:gravity="center_horizontal"
-                    android:hint="@string/x1"
+                    android:hint="@string/xn"
                     android:inputType="numberDecimal|numberSigned"
                     android:textAlignment="center" />
             </android.support.design.widget.TextInputLayout>
@@ -135,7 +135,7 @@
                     android:layout_marginLeft="@dimen/std_layout_margin"
                     android:layout_marginRight="@dimen/std_layout_margin"
                     android:gravity="center_horizontal"
-                    android:hint="h"
+                    android:hint="step size (h)"
                     android:inputType="numberDecimal"
                     android:textAlignment="center" />
 
@@ -195,7 +195,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:visibility="gone"
         android:text="@string/show_algorithm" />
 
     <Button
