@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mathemagi-calC</string>
+    <string name="app_name">MathemagicalC</string>
     <string name="remarks">Numerical Methods and Computations</string>
     <string name="footer_text">...and Computations</string>
     <string name="app_description">Implementation of algorithms</string>
