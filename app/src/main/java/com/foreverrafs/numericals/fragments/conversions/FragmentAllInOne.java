@@ -3,6 +3,8 @@ package com.foreverrafs.numericals.fragments.conversions;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -15,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
@@ -30,6 +31,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class FragmentAllInOne extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
+    private TextInputLayout inputLayout;
 
     @Nullable
     @Override
@@ -43,16 +45,21 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
 
     private void initControls() {
         Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        inputLayout = rootView.findViewById(R.id.til_user_input);
+        inputLayout.setErrorEnabled(true);
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
 
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
 
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                //take the error message away
+                inputLayout.setErrorEnabled(false);
+
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
                     return true;
@@ -99,7 +106,9 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
-            Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            inputLayout.setError("Input field is empty");
+
+            //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -107,7 +116,8 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
             Double decLong = Double.parseDouble(decimal);
 
             if (decLong <= 0) {
-                Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
+                inputLayout.setError("Number should be greater than 0");
+                //Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
                 return;
             }
 
@@ -127,10 +137,9 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
 
         } catch (NumberFormatException ex) {
             Log.e(Utilities.Log, "cannot parse " + decimal + " to an integer value");
-        } catch(Exception ex) {
-            Log.e(Utilities.Log,ex.getMessage());
-        }finally
-        {
+        } catch (Exception ex) {
+            Log.e(Utilities.Log, ex.getMessage());
+        } finally {
             MainActivity.hideKeyboard(etInput);
         }
     }

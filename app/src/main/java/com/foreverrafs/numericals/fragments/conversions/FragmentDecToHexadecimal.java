@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -32,6 +34,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class FragmentDecToHexadecimal extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
+    TextInputLayout inputLayout;
 
     @Nullable
     @Override
@@ -56,7 +59,7 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         // rootView.findViewById(R.id.show_all).setOnClickListener(this);
 

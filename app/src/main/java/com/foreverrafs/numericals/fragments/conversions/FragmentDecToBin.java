@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -32,6 +34,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class FragmentDecToBin extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
+    private TextInputLayout inputLayout;
 
     @Nullable
     @Override
@@ -45,19 +48,21 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
     private void initControls() {
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
+        inputLayout = rootView.findViewById(R.id.til_user_input);
 
         Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         // rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                inputLayout.setErrorEnabled(false);
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
                     return true;
@@ -110,7 +115,9 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
-            Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Input cannot be empty");
+            //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -118,7 +125,9 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
             double decLong = Double.parseDouble(decimal);
 
             if (decLong <= 0) {
-                Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
+                inputLayout.setErrorEnabled(true);
+                inputLayout.setError("Decimal should be greater than 0");
+                //Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
                 return;
             }
 

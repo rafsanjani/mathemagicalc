@@ -164,16 +164,15 @@ public final class Numericals {
             //the root lies in the right part of the boundary
             return Bisect(expr, x3, x2, --iterations, tol);
     }*/
-
-    public static List<LocationOfRootResult> BisectAll(String expr, double x1, double x2, int iterations, double tol) {
-        List<LocationOfRootResult> results = new ArrayList<>();
+    public static List<LocationOfRootResult> BisectAll(String expr, double x1, double x2, int iterations, double tol) throws InvalidEquationException {
+        List<LocationOfRootResult> roots = new ArrayList<>();
 
         while (iterations > 0) {
             double x3 = (x1 + x2) / 2;
             double stoppingCriteria = Math.abs(x1 - x2) / 2;
 
             LocationOfRootResult tempRes = new LocationOfRootResult(x1, x2, x3, iterations, stoppingCriteria);
-            results.add(tempRes);
+            roots.add(tempRes);
 
             //a mathematical function of the form f(x) = 0
             Function fx;
@@ -187,20 +186,23 @@ public final class Numericals {
             else
                 fx = new Function(String.format("f(x) = %s", expr));
 
+            //if any of these computations returns NaN, it is assumed that the equation was improperly formatted.
             double fx1 = fx.calculate(x1);
             double fx3 = fx.calculate(x3);
 
+            if (Double.isNaN(fx1) || Double.isNaN(fx3)) {
+                throw new InvalidEquationException("Invalid Equation: " + fx.getFunctionExpressionString());
+            }
             //the root lies in the left part of the boundary
             if (fx1 * fx3 < 0)
                 x2 = x3;
-
             else
                 x1 = x3;
 
             --iterations;
         }
 
-        return results;
+        return roots;
     }
 
     /***
@@ -216,10 +218,6 @@ public final class Numericals {
             return 0.00;
         }
 
-        /*if (expr.contains("f(x)")) {
-            expr = expr.substring(5);
-        }*/
-
         Argument x = new Argument(String.format("x = %s", x1));
 
         Expression ex = new Expression("der(" + expr + ", x)", x);
@@ -232,8 +230,13 @@ public final class Numericals {
             fx = new Function(String.format("f(x) = %s", expr));
 
 
+        //if any of these computations return NaN, then it is assumed that the equation was improperly formatted
         double fx1 = fx.calculate(x1);
         double derX1 = ex.calculate();
+
+        if (Double.isNaN(fx1) || Double.isNaN(derX1)) {
+            throw new InvalidEquationException("Invalid Equation: " + fx.getFunctionExpressionString());
+        }
 
         double approxRoot = x1 - (fx1 / derX1);
 
@@ -246,7 +249,7 @@ public final class Numericals {
     }
 
     public static List<LocationOfRootResult> NewtonRaphsonAll(String expr, double x1, int maxIterations) {
-        List<LocationOfRootResult> results = new ArrayList<>();
+        List<LocationOfRootResult> roots = new ArrayList<>();
 
         Argument x;
         Expression ex;
@@ -266,9 +269,13 @@ public final class Numericals {
             double fx1 = fx.calculate(x1);
             double derX1 = ex.calculate();
 
+            if (Double.isNaN(fx1) || Double.isNaN(derX1)) {
+                throw new InvalidEquationException("Invalid Equation: " + fx.getFunctionExpressionString());
+            }
+
             double approxRoot = x1 - (fx1 / derX1);
 
-            results.add(new LocationOfRootResult(approxRoot, maxIterations, fx1, x1));
+            roots.add(new LocationOfRootResult(approxRoot, maxIterations, fx1, x1));
 
             //check if current root is equal to the previous root then break from the loop
             if (approxRoot == x1)
@@ -278,7 +285,7 @@ public final class Numericals {
             x1 = approxRoot;
             maxIterations--;
         }
-        return results;
+        return roots;
     }
 
     /***
@@ -291,7 +298,7 @@ public final class Numericals {
      * @return double
      * @throws IllegalArgumentException When the interval doesn't bracket the root
      */
-    public static Double FalsePosition(String expr, double x0, double x1, int maxIterations, double tol) throws IllegalArgumentException {
+    public static Double FalsePosition(String expr, double x0, double x1, int maxIterations, double tol) throws InvalidIntervalException {
         if (maxIterations < 1)
             return 0.00;
 
@@ -307,7 +314,7 @@ public final class Numericals {
         double fx2;
 
         if (fx0 * fx1 > 0)
-            throw new IllegalArgumentException("The function doesn't change sign between the specified intervals");
+            throw new InvalidIntervalException(String.format("The function doesn't change sign between the specified intervals: [%f],[%f] ", x0, x1));
 
         double x2 = x1 - ((x1 - x0) / (fx1 - fx0)) * fx1;
 
@@ -628,7 +635,6 @@ public final class Numericals {
                     A[i][j] -= factor * A[k][j];
             } catch (ArrayIndexOutOfBoundsException ay) {
                 System.out.println(ay.getMessage());
-
             }
         }
     }
@@ -717,7 +723,7 @@ public final class Numericals {
      */
     public static List<OdeResult> SolveOdeByEulersMethod(String function, double h, double[] interval, double initY) {
         if (interval.length == 0)
-            throw new IllegalArgumentException("Error:interval Not Found!!");
+            throw new InvalidIntervalException("No Interval Provided");
 
         List<OdeResult> results = new ArrayList<>();
 
@@ -884,7 +890,12 @@ public final class Numericals {
 
     }
 
-    public static double BinaryToDecimal(String bin) {
+    public static double BinaryToDecimal(String bin) throws NotABinaryException {
+        //if string is not a correct binary, then return
+        if (!isBinary(bin)) {
+            throw new NotABinaryException("Input is not a binary");
+        }
+
         int len = bin.length();
         // Fetch the radix point
         int point = bin.indexOf('.');
@@ -918,6 +929,16 @@ public final class Numericals {
         return intDecimal + fracDecimal;
     }
 
+    /**
+     * Determine whether a value is a binary or not. for example 11010 is binary whereas 11021 is not
+     *
+     * @param input
+     * @return
+     */
+    private static boolean isBinary(String input) {
+        return true;
+    }
+
     //get the number of iterations required using the tolerance given
     public static int getBisectionIterations(double tolerance, double x1, double x2) {
         double iterations = (Math.log(x2 - x1) - Math.log(tolerance)) / Math.log(2);
@@ -934,6 +955,7 @@ public final class Numericals {
     private static void printArray(double[] array) {
 
     }
+
 
     public static String generateTexEquation(String equation) {
         if (equation.isEmpty()) {

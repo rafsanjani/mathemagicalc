@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -32,6 +33,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class FragmentDecToBinInt extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
+    TextInputLayout inputLayout;
 
     @Nullable
     @Override
@@ -61,6 +63,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                inputLayout.setErrorEnabled(false);
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
                     return true;
@@ -115,7 +118,9 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
-            Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Input cannot be empty!");
+            //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -124,7 +129,9 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
             int decInt = Integer.parseInt(decimal);
 
             if (decInt < 1) {
-                Toast.makeText(getContext(), "Number should be equal to or greater than 1", Toast.LENGTH_LONG).show();
+                inputLayout.setErrorEnabled(true);
+                inputLayout.setError("Should be equal to or greater than 1!");
+                //Toast.makeText(getContext(), "Number should be equal to or greater than 1", Toast.LENGTH_LONG).show();
                 return;
             }
 
@@ -144,7 +151,9 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
 
         } catch (NumberFormatException ex) {
             Log.e(Utilities.Log, "cannot parse " + decimal + " to a double value");
-            Toast.makeText(getContext(), "Number entered isn't an integer", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "Number entered isn't an integer", Toast.LENGTH_SHORT).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Input isn't an Integer");
 
             Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);

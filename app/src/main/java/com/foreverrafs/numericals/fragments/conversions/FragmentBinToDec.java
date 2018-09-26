@@ -3,6 +3,8 @@ package com.foreverrafs.numericals.fragments.conversions;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -15,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
@@ -30,6 +31,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class FragmentBinToDec extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
+    TextInputLayout inputLayout;
 
     @Nullable
     @Override
@@ -42,14 +44,15 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     }
 
     private void initControls() {
-       // Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
+        // Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
+        inputLayout = rootView.findViewById(R.id.til_user_input);
         //tvAnswer.setTypeface(typeface);
 
         Button btnBack = rootView.findViewById(R.id.buttonBack);
         Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
         Button btnShowAlgo = rootView.findViewById(R.id.buttonShowAlgo);
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
         Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
@@ -59,6 +62,8 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                //remove the error message from the input layout if any
+                inputLayout.setErrorEnabled(false);
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
                     return true;
@@ -109,12 +114,23 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
 
         String binary = etInput.getText().toString();
         if (binary.isEmpty()) {
-            Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Cannot be empty");
+            //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(Integer.parseInt(binary) <= 0){
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Must be greater than 0");
+            //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
             return;
         }
 
         if (binary.length() >= 24) {
-            Toast.makeText(getContext(), "Lets keep it below 24 bits, shall we", Toast.LENGTH_SHORT).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Below 24 bits please :)");
+            //Toast.makeText(getContext(), "Lets keep it below 24 bits, shall we", Toast.LENGTH_SHORT).show();
         }
 
         try {
@@ -126,7 +142,9 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
 
         } catch (NumberFormatException ex) {
             Log.e(Utilities.Log, ex.getMessage());
-            Toast.makeText(getContext(), "Binary only please", Toast.LENGTH_SHORT).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Binary only please :)");
+            //Toast.makeText(getContext(), "Binary only please", Toast.LENGTH_SHORT).show();
             etInput.setText(null);
         } catch (Exception ex) {
             Log.e(Utilities.Log, ex.getMessage());
