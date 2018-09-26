@@ -109,7 +109,7 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     private void onCalculate() {
         String decimal = "00";
 
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
         ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
 
         String binary = etInput.getText().toString();

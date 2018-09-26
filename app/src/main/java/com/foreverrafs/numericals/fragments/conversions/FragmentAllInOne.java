@@ -94,7 +94,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     }
 
     private void onCalculate() {
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         //answer textviews
         ExpandableTextView tvBinary = rootView.findViewById(R.id.answer_binary);

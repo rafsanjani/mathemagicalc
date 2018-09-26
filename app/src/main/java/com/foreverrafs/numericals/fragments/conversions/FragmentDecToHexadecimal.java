@@ -66,6 +66,7 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                inputLayout.setErrorEnabled(false);
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
                     return true;
@@ -113,12 +114,14 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
 
 
     private void onCalculate() {
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
         ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
-            Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Input cannot be empty!");
+            //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -126,7 +129,9 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
             double decLong = Double.parseDouble(decimal);
 
             if (decLong <= 0) {
-                Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
+                inputLayout.setErrorEnabled(true);
+                inputLayout.setError("Should be greater than 0!");
+               // Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
                 return;
             }
 

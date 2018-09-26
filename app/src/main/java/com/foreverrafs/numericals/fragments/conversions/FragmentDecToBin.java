@@ -110,7 +110,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
     String rawBinary;
 
     private void onCalculate() {
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
         ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
 
         String decimal = etInput.getText().toString();
