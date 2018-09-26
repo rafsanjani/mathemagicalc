@@ -78,7 +78,7 @@ public class About extends MaterialAboutFragment {
                         new AwesomeInfoDialog(c)
                                 .setTitle("Contributors")
                                 .setMessage("1. Mr. Francis O. Boateng  - Snr. Lecturer\n" +
-                                        "2. Samuel Boateng     -   Product Testing\n" +
+                                        "2. Nsafoa Boateng     -   Product Testing\n" +
                                         "3. Samuel Odoom       -   Euler Description\n" +
                                         "4. Aboagye Gyamfi     -   Product Testing\n" +
                                         "5. Annor  Anderson    -   Product Testing\n" +
