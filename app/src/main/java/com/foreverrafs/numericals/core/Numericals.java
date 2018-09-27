@@ -281,14 +281,14 @@ public final class Numericals {
             expr = expr.substring(expr.lastIndexOf("=") + 1);
 
 
-        Function fx = new Function(String.format("f(x) = %s", expr));
+        Function fx = new Function(String.format("f(x) = %s", expr.toLowerCase()));
 
         double fx0 = fx.calculate(x0);
         double fx1 = fx.calculate(x1);
         double fx2;
 
         if (fx0 * fx1 > 0)
-            throw new InvalidIntervalException(String.format("The function doesn't change sign between the specified intervals: [%f],[%f] ", x0, x1));
+            throw new InvalidIntervalException(String.format("The function doesn't change sign between the specified intervals: [%.2f],[%.2f] ", x0, x1));
 
         double x2 = x1 - ((x1 - x0) / (fx1 - fx0)) * fx1;
 
@@ -315,7 +315,7 @@ public final class Numericals {
             expr = expr.substring(expr.lastIndexOf("=") + 1);
 
 
-        Function fx = new Function(String.format("f(x) = %s", expr));
+        Function fx = new Function(String.format("f(x) = %s", expr.toLowerCase()));
 
         do {
             double fx0 = fx.calculate(x0);
