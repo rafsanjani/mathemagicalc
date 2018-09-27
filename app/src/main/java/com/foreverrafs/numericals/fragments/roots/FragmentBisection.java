@@ -196,7 +196,7 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
 
 
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        MainActivity.setToolBarInfo("Location of Roots", "Bisection Method");
+        //MainActivity.setToolBarInfo("Location of Roots", "Bisection Method");
     }
 
     @Override
