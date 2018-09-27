@@ -277,7 +277,7 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
 
             tvAnswer.setText(String.valueOf(root));
 
-            //for transitions sake
+            //animate the answer into view
             Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
             Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         } else if (buttonText == getResources().getString(R.string.show_iterations)) {
