@@ -125,7 +125,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/text_epsilon"
+                android:id="@+id/text_tolerance"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

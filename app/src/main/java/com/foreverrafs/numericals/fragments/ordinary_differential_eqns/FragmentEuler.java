@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,7 +34,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
     private View rootView;
     private ViewGroup viewGroup;
-    private EditText etH, etX0, etX1, etInitY, etEquation;
+    private TextInputEditText etH, etX0, etX1, etInitY, etEquation;
     private TextInputLayout tilX0, tilX1, tilH, tilInitY, tilEquation;
 
     List<OdeResult> eulerResults = null;
@@ -90,7 +89,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 tilEquation.setErrorEnabled(false);
-                tilEquation.setErrorEnabled(false);
+                // tilEquation.setErrorEnabled(false);
                 tilH.setErrorEnabled(false);
                 tilX0.setErrorEnabled(false);
                 tilX1.setErrorEnabled(false);
@@ -155,14 +154,14 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
             return;
         }
 
-        TextInputEditText etEquation = rootView.findViewById(R.id.text_equation);
+        //etEquation = rootView.findViewById(R.id.text_equation);
 
         TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
         Button calculateButton = rootView.findViewById(R.id.button_calculate);
 
-        String eqn = "";
-        double x0 = 0, x1 = 0, h = 0, interval[] = {0, 0};
-        int initY = 0;
+        String eqn;
+        double x0, x1, h, interval[];
+        int initY;
 
         try {
             eqn = etEquation.getText().toString();
@@ -185,14 +184,16 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
         //are we displaying all answers or just the last iteration
         if (buttonText == getResources().getString(R.string.solve)) {
             double answerAtLastIterate = 0;
+
             try {
                 eulerResults = Numericals.SolveOdeByEulersMethod(eqn, h, interval, initY);
-                answerAtLastIterate = eulerResults.get(eulerResults.size() - 1).getY();
             } catch (Exception ex) {
                 tilEquation.setErrorEnabled(true);
                 tilEquation.setError(ex.getMessage());
                 return;
             }
+
+            answerAtLastIterate = eulerResults.get(eulerResults.size() - 1).getY();
 
             tvAnswer.setText(String.valueOf(answerAtLastIterate));
 

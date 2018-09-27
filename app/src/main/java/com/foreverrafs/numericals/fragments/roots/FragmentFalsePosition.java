@@ -60,7 +60,7 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
         EditText etEquation = rootView.findViewById(R.id.text_equation);
         // etEquation.setTypeface(typeface);
         final EditText etIterations = rootView.findViewById(R.id.text_iterations);
-        final EditText etTolerance = rootView.findViewById(R.id.text_epsilon);
+        final EditText etTolerance = rootView.findViewById(R.id.text_tolerance);
 
         final EditText etX0 = rootView.findViewById(R.id.x0);
         final EditText etX1 = rootView.findViewById(R.id.x1);
@@ -212,7 +212,7 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
         EditText etEquation = rootView.findViewById(R.id.text_equation);
         EditText etX0 = rootView.findViewById(R.id.x0);
         EditText etX1 = rootView.findViewById(R.id.x1);
-        EditText etEpsilon = rootView.findViewById(R.id.text_epsilon);
+        EditText etEpsilon = rootView.findViewById(R.id.text_tolerance);
         EditText etIterations = rootView.findViewById(R.id.text_iterations);
 
         if (etEpsilon.getText() == null)

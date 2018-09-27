@@ -76,29 +76,6 @@ public final class Utilities {
         }
     }
 
-   /* public static void setLobsterTypeface(View view, Context mCtx) {
-        //cast the view to a TextView
-        try {
-            TextView tv = (TextView) view;
-            tv.setTypeface(Typeface.createFromAsset(mCtx.getAssets(), "fonts/Lobster-Regular.ttf"));
-
-        } catch (ClassCastException ex) {
-            EditText editText = (EditText) view;
-            editText.setTypeface(Typeface.createFromAsset(mCtx.getAssets(), "fonts/Lobster-Regular.ttf"));
-        }
-    }
-
-    public static void setItalicTypeface(View view, Context mCtx) {
-        try {
-            TextView tv = (TextView) view;
-            tv.setTypeface(Typeface.createFromAsset(mCtx.getAssets(), "fonts/Bitter-Italic.ttf"));
-        } catch (ClassCastException ex) {
-            EditText editText = (EditText) view;
-            editText.setTypeface(Typeface.createFromAsset(mCtx.getAssets(), "fonts/Bitter-Italic.ttf"));
-        }
-    }
-    */
-
     public static void replaceFragment(Fragment next, FragmentManager fragmentManager, int containerViewId) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fade enterFade = new Fade();
