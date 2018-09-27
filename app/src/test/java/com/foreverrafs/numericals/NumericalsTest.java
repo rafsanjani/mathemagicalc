@@ -352,4 +352,10 @@ public class NumericalsTest {
 
         // assertEquals(0.23681533952, results.get(5).getY());
     }
+
+    @Test
+    public void testIsBinary(){
+        boolean isBinary = Numericals.isBinary("101010101010101");
+        assertEquals(isBinary, true);
+    }
 }

@@ -41,10 +41,10 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
 
     private void initControls() {
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
 
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
 
 
         btnBack.setOnClickListener(this);
@@ -55,11 +55,11 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 Log.i(Utilities.Log, "solving the system using gaussian with partial pivoting");
                 onCalculate();
                 break;

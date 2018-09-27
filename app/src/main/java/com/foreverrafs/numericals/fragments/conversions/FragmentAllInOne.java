@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
@@ -44,12 +43,12 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     }
 
     private void initControls() {
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
         inputLayout = rootView.findViewById(R.id.til_user_input);
         inputLayout.setErrorEnabled(true);
 
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
 
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
@@ -83,11 +82,11 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 onCalculate();
                 break;
         }
@@ -129,7 +128,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
             tvOctal.setText(octal);
             tvHexadecimal.setText(hexadecimal);
 
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
             //rootView.findViewById(R.id.show_all).setVisibility(isAnswerTruncated ? View.VISIBLE : View.GONE);
@@ -158,7 +157,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }

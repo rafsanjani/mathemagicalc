@@ -16,9 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
@@ -50,11 +48,11 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
         inputLayout = rootView.findViewById(R.id.til_user_input);
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
 
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         // rootView.findViewById(R.id.show_all).setOnClickListener(this);
@@ -75,7 +73,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
         btnBack.setOnClickListener(this);
         btnCalculate.setOnClickListener(this);
-        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(this);
+        rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
     }
 
     @Override
@@ -87,14 +85,14 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 onCalculate();
                 break;
-            case R.id.buttonShowAlgo:
+            case R.id.button_show_algo:
                 onShowAlgorithm();
                 break;
         }
@@ -137,7 +135,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
             tvAnswer.setText(rawBinary);
 
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
         } catch (NumberFormatException ex) {
@@ -163,7 +161,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }

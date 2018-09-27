@@ -39,7 +39,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+            Button btnCalculate = rootView.findViewById(R.id.button_calculate);
             btnCalculate.setText("CALCULATE");
 
             boolean success = msg.getData().getBoolean("success");
@@ -79,9 +79,9 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
 
     public void initControls() {
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
+        Button btnBack = rootView.findViewById(R.id.button_back);
 
         TextInputLayout til = rootView.findViewById(R.id.omega_textInputLayout);
 
@@ -101,7 +101,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
-        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(this);
+        rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
 
 
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
@@ -112,15 +112,15 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment( new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 Log.i(Utilities.Log, "performing Jacobi's calculation");
                 onCalculate();
                 break;
-            case R.id.buttonShowAlgo:
+            case R.id.button_show_algo:
                 onShowAlgorithm();
                 break;
 
@@ -157,7 +157,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
                 initGuess[i] = Double.valueOf(etx0[i].getText().toString());
             }
 
-            Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+            Button btnCalculate = rootView.findViewById(R.id.button_calculate);
             btnCalculate.setText("CALCULATING....");
 
 

@@ -51,11 +51,11 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
     public void initControls() {
         final Button btnCalculate = rootView.findViewById(R.id.button_calculate);
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
-        Button btnShowAlgorithm = rootView.findViewById(R.id.buttonShowAlgo);
+        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnShowAlgorithm = rootView.findViewById(R.id.button_show_algo);
 
         //Initialize and set typefaces
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
         Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
 
@@ -131,7 +131,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentOdeMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
@@ -140,7 +140,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
                 Log.i(Utilities.Log, "performing Euler's Forward calculation");
                 onCalculate(btn.getText().toString());
                 break;
-            case R.id.buttonShowAlgo:
+            case R.id.button_show_algo:
                 Utilities.showAlgorithmScreen(getContext(), "euler");
                 break;
 

@@ -77,7 +77,7 @@ public class FragmentSecanteResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
+        Button btnBack = rootView.findViewById(R.id.button_back);
 
         MathView equation;
 
@@ -113,6 +113,6 @@ public class FragmentSecanteResults extends Fragment {
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
             }
         });
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
     }
 }

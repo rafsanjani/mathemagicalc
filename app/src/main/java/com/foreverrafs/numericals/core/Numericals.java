@@ -133,37 +133,7 @@ public final class Numericals {
      * @param tol The tolerance level of the answer produced
      * @return double
      */
-    /*public static double Bisect(String expr, double x1, double x2, int iterations, double tol) {
-        if (iterations < 1)
-            return 0;
 
-        double x3 = (x1 + x2) / 2;
-
-        double stoppingCriteria = Math.abs(x1 - x2) / 2;
-
-        //a mathematical function of the form f(x) = 0
-        Function fx;
-
-        //is our approximated root less than or equal to the tolerance limit or are we out of moves?
-        if (stoppingCriteria <= tol || iterations == 1)
-            return x3;
-
-        if (expr.contains("f(x)"))
-            fx = new Function(expr);
-        else
-            fx = new Function(String.format("f(x) = %s", expr));
-
-        double fx1 = fx.calculate(x1);
-        double fx3 = fx.calculate(x3);
-
-
-        //the root lies in the left part of the boundary
-        if (fx1 * fx3 < 0)
-            return Bisect(expr, x1, x3, --iterations, tol);
-        else
-            //the root lies in the right part of the boundary
-            return Bisect(expr, x3, x2, --iterations, tol);
-    }*/
     public static List<LocationOfRootResult> BisectAll(String expr, double x1, double x2, int iterations, double tol) throws InvalidEquationException {
         List<LocationOfRootResult> roots = new ArrayList<>();
 
@@ -261,7 +231,7 @@ public final class Numericals {
         while (maxIterations > 0) {
 
             if (expr.contains("f(x)"))
-                expr = expr.substring(expr.indexOf("=") + 1).trim();
+                expr = expr.substring(expr.lastIndexOf("=") + 1).trim();
 
 
             x = new Argument(String.format("x = %s", x1));
@@ -516,7 +486,8 @@ public final class Numericals {
                         {1, 0, 0, 0, 0},
                         {0, 1, 0, 0, 0},
                         {0, 0, 1, 0, 0},
-                        {0, 0, 0, 1, 0}
+                        {0, 0, 0, 1, 0},
+                        {0, 0, 0, 0, 1}
                 };
                 matrix = iMatrix5x5;
                 break;

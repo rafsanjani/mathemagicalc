@@ -47,11 +47,11 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
 
 
     public void initControls() {
-        final Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
+        final Button btnCalculate = rootView.findViewById(R.id.button_calculate);
+        Button btnBack = rootView.findViewById(R.id.button_back);
 
         //  Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Bitter-Italic.ttf");
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
         Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
         EditText etEquation = rootView.findViewById(R.id.text_equation);
@@ -88,7 +88,7 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
-        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(this);
+        rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
         etEquation.addTextChangedListener(this);
 
 
@@ -106,16 +106,16 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentLocationOfRootsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 Button btn = (Button) view;
                 Log.i(Utilities.Log, "performing Secate calculation");
                 onCalculate(btn.getText().toString());
                 break;
-            case R.id.buttonShowAlgo:
+            case R.id.button_show_algo:
                 onShowAlgorithm();
                 break;
 
@@ -137,7 +137,7 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
 
         TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
-        Button calculateButton = rootView.findViewById(R.id.buttonCalculate);
+        Button calculateButton = rootView.findViewById(R.id.button_calculate);
 
         try {
             String eqn = etEquation.getText().toString();
@@ -213,7 +213,7 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
 
     private void onEquationChanged() {
         TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         btnCalculate.setText(getResources().getString(R.string.calculate));
         Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
     }

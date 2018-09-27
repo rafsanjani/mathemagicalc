@@ -38,7 +38,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
-            Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+            Button btnCalculate = rootView.findViewById(R.id.button_calculate);
             btnCalculate.setText("CALCULATE");
 
             boolean success = msg.getData().getBoolean("success");
@@ -77,10 +77,10 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     }
 
     public void initControls() {
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
+        Button btnBack = rootView.findViewById(R.id.button_back);
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
 
         EditText etEqn[] = new EditText[3];
         etEqn[0] = rootView.findViewById(R.id.text_equationx1);
@@ -94,7 +94,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
-        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(this);
+        rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
 
 
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
@@ -105,15 +105,15 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 Log.i(Utilities.Log, "performing Jacobi's calculation");
                 onCalculate();
                 break;
-            case R.id.buttonShowAlgo:
+            case R.id.button_show_algo:
                 onShowAlgorithm();
                 break;
         }
@@ -150,7 +150,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
                 initGuess[i] = Double.valueOf(etx0[i].getText().toString());
             }
 
-            Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+            Button btnCalculate = rootView.findViewById(R.id.button_calculate);
             btnCalculate.setText("CALCULATING....");
 
 

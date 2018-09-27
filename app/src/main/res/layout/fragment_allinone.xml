@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/headerText"
+                android:id="@+id/text_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/header_margin_top"
@@ -61,7 +61,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
-                android:id="@+id/answerArea"
+                android:id="@+id/layout_answer_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -178,14 +178,14 @@
 
 
             <Button
-                android:id="@+id/buttonCalculate"
+                android:id="@+id/button_calculate"
                 style="@style/AppMaterialTheme.ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/calculate" />
 
             <Button
-                android:id="@+id/buttonBack"
+                android:id="@+id/button_back"
                 style="@style/AppMaterialTheme.ButtonStyle.Exit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

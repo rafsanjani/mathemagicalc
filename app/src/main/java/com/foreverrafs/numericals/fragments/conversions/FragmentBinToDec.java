@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
@@ -49,13 +48,13 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
         inputLayout = rootView.findViewById(R.id.til_user_input);
         //tvAnswer.setTypeface(typeface);
 
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
-        Button btnShowAlgo = rootView.findViewById(R.id.buttonShowAlgo);
+        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
+        Button btnShowAlgo = rootView.findViewById(R.id.button_show_algo);
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
 
 //        rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
@@ -88,14 +87,14 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 onCalculate();
                 break;
-            case R.id.buttonShowAlgo:
+            case R.id.button_show_algo:
                 onShowAlgorithm();
                 break;
 
@@ -137,7 +136,7 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
             decimal = String.valueOf(Numericals.BinaryToDecimal(binary));
             tvAnswer.setText(decimal);
 
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
         } catch (NumberFormatException ex) {
@@ -169,7 +168,7 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }
