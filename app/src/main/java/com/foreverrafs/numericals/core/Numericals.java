@@ -218,16 +218,20 @@ public final class Numericals {
             return 0.00;
         }
 
+
+        if (expr.contains("f(x)"))
+            expr = expr.substring(expr.indexOf("=") + 1).trim();
+
         Argument x = new Argument(String.format("x = %s", x1));
 
         Expression ex = new Expression("der(" + expr + ", x)", x);
 
         Function fx;
 
-        if (expr.contains("f(x)"))
-            fx = new Function(expr);
-        else
-            fx = new Function(String.format("f(x) = %s", expr));
+        // if (expr.contains("f(x)"))
+        //    fx = new Function(expr);
+        //else
+        fx = new Function(String.format("f(x)=%s", expr));
 
 
         //if any of these computations return NaN, then it is assumed that the equation was improperly formatted
@@ -256,9 +260,9 @@ public final class Numericals {
         Function fx;
         while (maxIterations > 0) {
 
-            if (expr.contains("f(x)")) {
-                expr = expr.substring(5);
-            }
+            if (expr.contains("f(x)"))
+                expr = expr.substring(expr.indexOf("=") + 1).trim();
+
 
             x = new Argument(String.format("x = %s", x1));
 
@@ -721,9 +725,13 @@ public final class Numericals {
      * @param interval the interval to be considered during the computation. a 1d array of 2 elements
      * @return list of OdeResults
      */
-    public static List<OdeResult> SolveOdeByEulersMethod(String function, double h, double[] interval, double initY) {
+    public static List<OdeResult> SolveOdeByEulersMethod(String function, double h, double[] interval, double initY) throws InvalidEquationException {
         if (interval.length == 0)
             throw new InvalidIntervalException("No Interval Provided");
+
+        if (function.trim().contains("f(x)")) {
+            function = function.substring(5);
+        }
 
         List<OdeResult> results = new ArrayList<>();
 
@@ -747,8 +755,16 @@ public final class Numericals {
             Argument x = new Argument("x", xn[i]);
             Argument y = new Argument("y", yn[i]);
 
+
             Expression expression = new Expression(function, x, y);
+
+
             double fxResult = expression.calculate();
+
+            //if the answer is infinity or NaN, then we can conclude that the syntax of the equation was wrong
+            if (Double.isNaN(fxResult) || Double.isInfinite(fxResult)) {
+                throw new InvalidEquationException("Invalid Equation: " + expression.getExpressionString());
+            }
 
             yn[i + 1] = yn[i] + (h * fxResult);
             xn[i + 1] = xn[i] + h;
@@ -935,8 +951,8 @@ public final class Numericals {
      * @param input
      * @return
      */
-    private static boolean isBinary(String input) {
-        return true;
+    public static boolean isBinary(String input) {
+        return input.matches("[01]+");
     }
 
     //get the number of iterations required using the tolerance given
