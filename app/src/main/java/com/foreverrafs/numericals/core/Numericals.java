@@ -730,7 +730,7 @@ public final class Numericals {
             throw new InvalidIntervalException("No Interval Provided");
 
         if (function.trim().contains("f(x)")) {
-            function = function.substring(5);
+            function = function.substring(function.indexOf("=") + 1);
         }
 
         List<OdeResult> results = new ArrayList<>();
