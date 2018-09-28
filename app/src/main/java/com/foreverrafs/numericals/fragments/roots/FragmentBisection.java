@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -269,11 +268,11 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
             //get the last item from the roots and display in single mode to the user
             double root = roots.get(roots.size() - 1).getX3();
 
-            if (Double.isNaN(root) || Double.isInfinite(root)) {
+            /*if (Double.isNaN(root) || Double.isInfinite(root)) {
                 Toast.makeText(getContext(), "Syntax Error: Please check equation", Toast.LENGTH_LONG).show();
                 Log.i(Utilities.Log, "Syntax error, unable to evaluate expression");
                 return;
-            }
+            }*/
 
             tvAnswer.setText(String.valueOf(root));
 

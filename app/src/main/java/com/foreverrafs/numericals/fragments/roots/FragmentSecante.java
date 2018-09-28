@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
@@ -214,7 +213,6 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
 
     private boolean checkForEmptyInput() {
         boolean validated = true;
-
         if (etEquation.getText().toString().isEmpty()) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("Cannot be empty");
