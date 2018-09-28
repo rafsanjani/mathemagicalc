@@ -27,15 +27,17 @@
 
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_user_input"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/std_layout_margin"
+        android:layout_marginRight="@dimen/std_layout_margin">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/text_equation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+
             android:gravity="center_horizontal"
             android:hint="@string/bisection_enter_eqn"
             android:textAlignment="center" />
@@ -55,14 +57,16 @@
         android:orientation="horizontal">
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_x0"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_layout_margin"
+            android:layout_marginEnd="@dimen/std_layout_margin">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/x0"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
                 android:gravity="center_horizontal"
                 android:hint="x0"
                 android:inputType="numberDecimal|numberSigned"
@@ -71,14 +75,16 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_x1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_layout_margin"
+            android:layout_marginEnd="@dimen/std_layout_margin">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/x1"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:gravity="center_horizontal"
                 android:hint="x1"
                 android:imeOptions="actionDone"
@@ -102,14 +108,16 @@
 
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_iterations"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_layout_margin"
+            android:layout_marginEnd="@dimen/std_layout_margin">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/text_iterations"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
                 android:gravity="center_horizontal"
                 android:hint="@string/iterations"
                 android:imeOptions="actionDone"
@@ -117,8 +125,6 @@
                 android:textAlignment="center" />
 
         </android.support.design.widget.TextInputLayout>
-
-
 
 
     </LinearLayout>
@@ -138,7 +144,6 @@
         style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:text="@string/calculate" />
 
     <Button
@@ -146,8 +151,8 @@
         style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="@dimen/std_layout_margin"
+        android:layout_marginRight="@dimen/std_layout_margin"
         android:text="@string/show_algorithm" />
 
     <Button
