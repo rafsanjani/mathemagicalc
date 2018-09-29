@@ -6,11 +6,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,11 +29,7 @@ import java.util.List;
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentSecante extends Fragment implements View.OnClickListener, TextWatcher {
-
-    private View rootView;
-    private ViewGroup viewGroup;
-
+public class FragmentSecante extends FragmentRootBase implements View.OnClickListener, TextWatcher {
     private TextInputLayout tilX0, tilX1, tilIterations, tilEquation;
     private TextInputEditText etIterations, etX0, etX1, etEquation;
 
@@ -78,7 +72,7 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
             etIterations.setText(String.valueOf(secanteArgs.getInt("iterations")));
         }
 
-        View.OnKeyListener myKeyListener = new View.OnKeyListener() {
+        /*View.OnKeyListener myKeyListener = new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 tilEquation.setErrorEnabled(false);
@@ -98,14 +92,15 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
         };
 
         etIterations.setOnKeyListener(myKeyListener);
-        etEquation.setOnKeyListener(myKeyListener);
+        etEquation.setOnKeyListener(myKeyListener);*/
+        registerOnKeyListener(tilEquation, tilIterations, tilX0, tilX1);
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
         rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
         etEquation.addTextChangedListener(this);
 
-        viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
+        parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
         //MainActivity.setToolBarInfo("Location of Roots", "Secante Method");
     }
 
@@ -141,7 +136,7 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
-    private void onCalculate(final String buttonText) {
+    protected void onCalculate(final String buttonText) {
         //only handle empty inputs in this module and display using their corresponding TextInputLayouts.
         //Any other errors are handled in Numericals.java. This may check most of the NumberFormatException which
         //gets thrown as a result of passing empty parameters to Type.ParseType(string param)
@@ -160,7 +155,7 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
 
 
         String eqn;
-        double x0, x1, tol;
+        double x0, x1;
         int iter;
 
         try {
@@ -178,7 +173,7 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
         //are we displaying all answers or just the last iteration
 
 
-        if (buttonText == getResources().getString(R.string.calculate)) {
+        if (buttonText.equals(getResources().getString(R.string.calculate))) {
             double root = Numericals.Secante(eqn, x0, x1, iter);
 
             /*if (Double.isNaN(root) || Double.isInfinite(root)) {
@@ -190,9 +185,9 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
             tvAnswer.setText(String.valueOf(root));
 
             //for transitions sake
-            Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
             Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        } else if (buttonText == getResources().getString(R.string.show_iterations)) {
+        } else if (buttonText.equals(getResources().getString(R.string.show_iterations))) {
             List<LocationOfRootResult> roots = Numericals.SecanteAll(eqn, x0, x1, iter);
             FragmentSecanteResults resultPane = new FragmentSecanteResults();
 
@@ -253,13 +248,4 @@ public class FragmentSecante extends Fragment implements View.OnClickListener, T
     public void afterTextChanged(Editable editable) {
         onEquationChanged();
     }
-
-    private void onEquationChanged() {
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
-        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
-        btnCalculate.setText(getResources().getString(R.string.calculate));
-        Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
-    }
-
-
 }

@@ -1,16 +1,13 @@
 package com.foreverrafs.numericals.fragments.roots;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -32,11 +28,7 @@ import java.util.List;
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentFalsePosition extends Fragment implements View.OnClickListener, TextWatcher {
-
-    private View rootView;
-    private ViewGroup viewGroup;
-
+public class FragmentFalsePosition extends FragmentRootBase implements View.OnClickListener, TextWatcher {
     private TextWatcher etToleranceTextWatcher = null;
     private TextWatcher etIterationsTextWatcher = null;
 
@@ -47,7 +39,6 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_loc_of_roots_falseposition, container, false);
-
         return rootView;
     }
 
@@ -60,9 +51,6 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
         Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
         Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
-        //EditText etEquation = rootView.findViewById(R.id.text_equation);
-        // etEquation.setTypeface(typeface);
-
         //initialize TextInputLayouts
         tilX0 = rootView.findViewById(R.id.til_x0);
         tilX1 = rootView.findViewById(R.id.til_x1);
@@ -70,14 +58,12 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
         tilTolerance = rootView.findViewById(R.id.til_tolerance);
         tilEquation = rootView.findViewById(R.id.til_user_input);
 
-
         //initialize EditTexts
         etEquation = rootView.findViewById(R.id.text_equation);
         etTolerance = rootView.findViewById(R.id.text_tolerance);
         etIterations = rootView.findViewById(R.id.text_iterations);
         etX0 = rootView.findViewById(R.id.x0);
         etX1 = rootView.findViewById(R.id.x1);
-
 
         Bundle falsePositionArgs = getArguments();
 
@@ -89,28 +75,7 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
             etIterations.setText(String.valueOf(falsePositionArgs.getInt("iterations")));
         }
 
-        View.OnKeyListener myKeyListener = new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                tilEquation.setErrorEnabled(false);
-                tilIterations.setErrorEnabled(false);
-                tilX0.setErrorEnabled(false);
-                tilX1.setErrorEnabled(false);
-                tilTolerance.setErrorEnabled(false);
-                if (keyEvent.getAction() != KeyEvent.ACTION_DOWN)
-                    return false;
-
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    onCalculate(btnCalculate.getText().toString());
-                    return true;
-                }
-                return false;
-            }
-        };
-
-        etIterations.setOnKeyListener(myKeyListener);
-        etTolerance.setOnKeyListener(myKeyListener);
-        etEquation.setOnKeyListener(myKeyListener);
+        registerOnKeyListener(tilEquation, tilTolerance, tilIterations, tilX0, tilX1);
 
         etIterationsTextWatcher = new TextWatcher() {
             @Override
@@ -147,54 +112,13 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
             }
         };
 
-        etToleranceTextWatcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            //get the number of iterations based on the tolerance value
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                onEquationChanged();
-                try {
-                    etIterations.removeTextChangedListener(etIterationsTextWatcher);
-                    double tolerance = Double.parseDouble(etTolerance.getText().toString());
-
-                    if (tolerance == 0) {
-                        return;
-                    }
-
-                    double x0 = 0, x1 = 0;
-
-                    x0 = Double.parseDouble(etX0.getText().toString());
-                    x1 = Double.parseDouble(etX1.getText().toString());
-
-                } catch (NumberFormatException ex) {
-                    Log.i(Utilities.Log, "Initial guesses are not provided");
-                } finally {
-                    etIterations.addTextChangedListener(etIterationsTextWatcher);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        };
-
-        etIterations.addTextChangedListener(etIterationsTextWatcher);
-        etTolerance.addTextChangedListener(etToleranceTextWatcher);
-
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
         rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
 
         etEquation.addTextChangedListener(this);
 
-
-        viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        //MainActivity.setToolBarInfo("Location of Roots", "False Position Method");
+        parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
     }
 
     @Override
@@ -223,17 +147,14 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
     }
 
     private void onShowAlgorithm() {
-        Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name", "falseposition");
-        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
+        Utilities.showAlgorithmScreen(getContext(), "falseposition");
     }
 
-    private void onCalculate(final String buttonText) {
-
+    protected void onCalculate(final String buttonText) {
         //only handle empty inputs in this module and display using their corresponding TextInputLayouts.
         //Any other errors are handled in Numericals.java. This may check most of the NumberFormatException which
         //gets thrown as a result of passing empty parameters to Type.ParseType(string param)
-        if (!checkForEmptyInput()) {
+        if (!checkForEmptyInput(tilEquation, tilIterations, tilX0, tilX1)) {
             return;
         }
 
@@ -245,7 +166,6 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
 
         if (etEpsilon.getText() == null)
             etEpsilon.setText("0.00");
-
 
         TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
@@ -280,9 +200,9 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
 
             tvAnswer.setText(String.valueOf(root));
             //for transitions sake
-            Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
             Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        } else if (buttonText == getResources().getString(R.string.show_iterations)) {
+        } else if (buttonText.equals(getResources().getString(R.string.show_iterations))) {
             List<LocationOfRootResult> roots = Numericals.FalsePositionAll(eqn, x0, x1, iter, tol);
             FragmentFalsePositionResults resultPane = new FragmentFalsePositionResults();
             Bundle eqnArgs = new Bundle();
@@ -302,42 +222,6 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
 
     }
 
-    private boolean checkForEmptyInput() {
-        boolean validated = true;
-
-        if (etEquation.getText().toString().isEmpty()) {
-            tilEquation.setErrorEnabled(true);
-            tilEquation.setError("Cannot be empty");
-            validated = false;
-        }
-
-        if (etTolerance.getText().toString().isEmpty()) {
-            tilTolerance.setErrorEnabled(true);
-            tilTolerance.setError("error");
-            validated = false;
-        }
-
-        if (etX0.getText().toString().isEmpty()) {
-            tilX0.setErrorEnabled(true);
-            tilX0.setError("error");
-            validated = false;
-        }
-
-        if (etX1.getText().toString().isEmpty()) {
-            tilX1.setErrorEnabled(true);
-            tilX1.setError("error");
-            validated = false;
-        }
-
-        if (etIterations.getText().toString().isEmpty()) {
-            tilIterations.setErrorEnabled(true);
-            tilIterations.setError("error");
-            validated = false;
-        }
-        return validated;
-    }
-
-
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         onEquationChanged();
@@ -353,10 +237,4 @@ public class FragmentFalsePosition extends Fragment implements View.OnClickListe
         onEquationChanged();
     }
 
-    private void onEquationChanged() {
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
-        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
-        btnCalculate.setText(getResources().getString(R.string.calculate));
-        Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
-    }
 }

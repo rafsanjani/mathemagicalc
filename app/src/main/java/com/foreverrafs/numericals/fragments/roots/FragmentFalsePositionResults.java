@@ -31,10 +31,9 @@ import katex.hourglass.in.mathlib.MathView;
 
 public class FragmentFalsePositionResults extends Fragment {
 
-    private View rootView;
-
-    private RootResultsAdapter adapter;
     List<LocationOfRootResult> results;
+    private View rootView;
+    private RootResultsAdapter adapter;
     private String eqn;
     private double x0, x1, tolerance;
     private int iterations;

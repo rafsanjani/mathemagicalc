@@ -5,18 +5,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.core.Numericals;
@@ -30,19 +27,13 @@ import java.util.List;
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentBisection extends Fragment implements View.OnClickListener, TextWatcher {
-
-    private View rootView;
-    private ViewGroup viewGroup;
-
-    private TextWatcher etToleranceTextWatcher = null;
-    private TextWatcher etIterationsTextWatcher = null;
-
-    private TextInputLayout tilX0, tilX1, tilIterations, tilTolerance, tilEquation;
-    private TextInputEditText etIterations, etX0, etX1, etTolerance, etEquation;
+public class FragmentBisection extends FragmentRootBase implements View.OnClickListener, TextWatcher {
 
     List<LocationOfRootResult> roots = null;
-
+    private TextWatcher etToleranceTextWatcher = null;
+    private TextWatcher etIterationsTextWatcher = null;
+    private TextInputLayout tilX0, tilX1, tilIterations, tilTolerance, tilEquation;
+    private TextInputEditText etIterations, etX0, etX1, etTolerance, etEquation;
 
     @Nullable
     @Override
@@ -87,28 +78,8 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
             etIterations.setText(String.valueOf(bisectionArgs.getInt("iterations")));
         }
 
-        View.OnKeyListener myKeyListener = new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                tilEquation.setErrorEnabled(false);
-                tilIterations.setErrorEnabled(false);
-                tilX0.setErrorEnabled(false);
-                tilX1.setErrorEnabled(false);
-                tilTolerance.setErrorEnabled(false);
-                if (keyEvent.getAction() != KeyEvent.ACTION_DOWN)
-                    return false;
+        registerOnKeyListener(tilEquation, tilIterations, tilTolerance, tilX0, tilX1);
 
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    onCalculate(btnCalculate.getText().toString());
-                    return true;
-                }
-                return false;
-            }
-        };
-
-        etIterations.setOnKeyListener(myKeyListener);
-        etTolerance.setOnKeyListener(myKeyListener);
-        etEquation.setOnKeyListener(myKeyListener);
 
         etIterationsTextWatcher = new TextWatcher() {
             @Override
@@ -194,7 +165,7 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
         etEquation.addTextChangedListener(this);
 
 
-        viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
+        parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
         //MainActivity.setToolBarInfo("Location of Roots", "Bisection Method");
     }
 
@@ -226,11 +197,12 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
         Utilities.showAlgorithmScreen(getContext(), "bisection");
     }
 
-    private void onCalculate(final String buttonText) {
+    @Override
+    protected void onCalculate(final String buttonText) {
         //only handle empty inputs in this module and display using their corresponding TextInputLayouts.
         //Any other errors are handled in Numericals.java. This may check most of the NumberFormatException which
         //gets thrown as a result of passing empty parameters to Type.ParseType(string param)
-        if (!checkForEmptyInput()) {
+        if (!checkForEmptyInput(tilEquation, tilX1, tilX0, tilTolerance, tilIterations)) {
             return;
         }
 
@@ -268,16 +240,11 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
             //get the last item from the roots and display in single mode to the user
             double root = roots.get(roots.size() - 1).getX3();
 
-            /*if (Double.isNaN(root) || Double.isInfinite(root)) {
-                Toast.makeText(getContext(), "Syntax Error: Please check equation", Toast.LENGTH_LONG).show();
-                Log.i(Utilities.Log, "Syntax error, unable to evaluate expression");
-                return;
-            }*/
 
             tvAnswer.setText(String.valueOf(root));
 
             //animate the answer into view
-            Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
             Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         } else if (buttonText == getResources().getString(R.string.show_iterations)) {
             List<LocationOfRootResult> roots = Numericals.BisectAll(eqn, x0, x1, iter, tol);
@@ -298,42 +265,6 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
         calculateButton.setText(getResources().getString(R.string.show_iterations));
     }
 
-    private boolean checkForEmptyInput() {
-        boolean validated = true;
-
-        if (etEquation.getText().toString().isEmpty()) {
-            tilEquation.setErrorEnabled(true);
-            tilEquation.setError("Cannot be empty");
-            validated = false;
-        }
-
-        if (etTolerance.getText().toString().isEmpty()) {
-            tilTolerance.setErrorEnabled(true);
-            tilTolerance.setError("error");
-            validated = false;
-        }
-
-        if (etX0.getText().toString().isEmpty()) {
-            tilX0.setErrorEnabled(true);
-            tilX0.setError("error");
-            validated = false;
-        }
-
-        if (etX1.getText().toString().isEmpty()) {
-            tilX1.setErrorEnabled(true);
-            tilX1.setError("error");
-            validated = false;
-        }
-
-        if (etIterations.getText().toString().isEmpty()) {
-            tilIterations.setErrorEnabled(true);
-            tilIterations.setError("error");
-            validated = false;
-        }
-        return validated;
-    }
-
-
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         onEquationChanged();
@@ -348,11 +279,5 @@ public class FragmentBisection extends Fragment implements View.OnClickListener,
     public void afterTextChanged(Editable editable) {
         onEquationChanged();
     }
-
-    private void onEquationChanged() {
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
-        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
-        btnCalculate.setText(getResources().getString(R.string.calculate));
-        Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
-    }
 }
+
