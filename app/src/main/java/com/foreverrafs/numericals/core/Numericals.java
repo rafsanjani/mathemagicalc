@@ -11,7 +11,6 @@ import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -183,44 +182,6 @@ public final class Numericals {
      * @return double
      * todo replace with full variant of the method
      */
-    public static Double NewtonRaphson(String expr, double x1, int maxIterations) {
-        if (maxIterations < 1) {
-            return 0.00;
-        }
-
-
-        if (expr.contains("f(x)"))
-            expr = expr.substring(expr.indexOf("=") + 1).trim();
-
-        Argument x = new Argument(String.format("x = %s", x1));
-
-        Expression ex = new Expression("der(" + expr + ", x)", x);
-
-        Function fx;
-
-        // if (expr.contains("f(x)"))
-        //    fx = new Function(expr);
-        //else
-        fx = new Function(String.format("f(x)=%s", expr));
-
-
-        //if any of these computations return NaN, then it is assumed that the equation was improperly formatted
-        double fx1 = fx.calculate(x1);
-        double derX1 = ex.calculate();
-
-        if (Double.isNaN(fx1) || Double.isNaN(derX1)) {
-            throw new InvalidEquationException("Invalid Equation: " + fx.getFunctionExpressionString());
-        }
-
-        double approxRoot = x1 - (fx1 / derX1);
-
-        if (maxIterations == 1 || (approxRoot == x1))
-            return approxRoot;
-
-        //replace x1 with the approximated root and recur
-        x1 = approxRoot;
-        return NewtonRaphson(expr, x1, maxIterations - 1);
-    }
 
     public static List<LocationOfRootResult> NewtonRaphsonAll(String expr, double x1, int maxIterations) {
         List<LocationOfRootResult> roots = new ArrayList<>();
@@ -524,26 +485,32 @@ public final class Numericals {
         return stringBuilder.toString().toUpperCase();
     }
 
-    public static String DecimalToOctal(Double dec) {
-        String decimal = String.valueOf(dec);
+    public static String DecimalToOctal(String decimal) {
+        StringBuilder stringBuilder = new StringBuilder();
+        double decimalDouble = Double.parseDouble(decimal);
 
-        //differentiate decimal numeral into fractional and whole parts
-        String wholeStr = decimal.substring(0, decimal.indexOf("."));
-        String fractionalStr = decimal.substring(wholeStr.length() + 1);
+        //obtain just the integer part and convert to hex first
+        int wholePart = (int) decimalDouble;
 
-        int whole = Integer.parseInt(wholeStr);
-        int fractional = Integer.parseInt(fractionalStr);
+        stringBuilder.append(Integer.toOctalString(wholePart));
+        decimalDouble = decimalDouble - wholePart;
 
-        BigInteger toWholeHex = new BigInteger(String.valueOf(whole));
-        BigInteger toFracHex = new BigInteger(String.valueOf(fractional));
+        if (decimalDouble == 0) {
+            return stringBuilder.toString().toUpperCase();
+        }
 
-        return (toWholeHex.toString(8) + "." + toFracHex.toString(8)).toUpperCase();
-    }
+        stringBuilder.append(".");
 
+        for (int i = 0; i < 8; i++) {
+            decimalDouble *= 8;
+            int digit = (int) decimalDouble;
+            stringBuilder.append(Integer.toOctalString(digit));
+            decimalDouble = decimalDouble - digit;
+            if (decimalDouble == 0)
+                break;
+        }
 
-    enum GaussianType {
-        ThreeByThree,
-        FourByFour
+        return stringBuilder.toString().toUpperCase();
     }
 
     public static double[] multiplyMatrix(double[][] iSolution, double[] x) {
@@ -552,7 +519,6 @@ public final class Numericals {
 
         return lhs.multiply(rhs).getColumn(0);
     }
-
 
     public static double[] GaussianWithPartialPivoting(double[][] A, double[] B) {
         int N = B.length;
@@ -576,7 +542,6 @@ public final class Numericals {
 
         return getSolutionByBackSubstitution(A, B, N);
     }
-
 
     private static double[] getSolutionByBackSubstitution(double[][] A, double[] B, int N) {
         double[] solution = new double[N];
@@ -613,7 +578,6 @@ public final class Numericals {
             }
         }
     }
-
 
     private static void roundTo2Dp(double[][] A, double[] B) {
         for (int i = 0; i < A.length; i++) {
@@ -880,7 +844,7 @@ public final class Numericals {
     public static double BinaryToDecimal(String bin) throws NotABinaryException {
         //if string is not a correct binary, then return
         if (!isBinary(bin)) {
-            throw new NotABinaryException("Input is not a binary");
+            throw new NotABinaryException("Input is not a binary: " + bin);
         }
 
         int len = bin.length();
@@ -923,7 +887,15 @@ public final class Numericals {
      * @return
      */
     public static boolean isBinary(String input) {
-        return input.matches("[01]+");
+//        int index = input.indexOf(".");
+//
+//        String afterDot = input.substring(index + 1);
+//        boolean moreDots = afterDot.contains(".");
+
+        return input.matches("[01]+") || input.matches("[01.]+");
+
+//        return matches;
+        // return input.matches("[01.]+") && input.lastIndexOf(input.substring(input.indexOf(".") + 1)) == -1;
     }
 
     //get the number of iterations required using the tolerance given
@@ -933,7 +905,6 @@ public final class Numericals {
         return Math.round((float) iterations);
     }
 
-
     //get the tolerance level required using the number of iterations given
     public static double getBisectionTolerance(int iterations, double x1, double x2) {
         return (x2 - x1) / Math.pow(2, iterations);
@@ -942,7 +913,6 @@ public final class Numericals {
     private static void printArray(double[] array) {
 
     }
-
 
     public static String generateTexEquation(String equation) {
         if (equation.isEmpty()) {
@@ -954,6 +924,12 @@ public final class Numericals {
         str.append("$$");
         return str.toString().toLowerCase();
 
+    }
+
+
+    enum GaussianType {
+        ThreeByThree,
+        FourByFour
     }
 
 
