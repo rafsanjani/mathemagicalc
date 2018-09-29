@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.core.NotABinaryException;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
@@ -102,7 +103,7 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     }
 
     private void onShowAlgorithm() {
-        Utilities.showAlgorithmScreen(getContext(), "");
+        Utilities.showAlgorithmScreen(getContext(), "bintodec");
     }
 
     private void onCalculate() {
@@ -114,44 +115,38 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
         String binary = etInput.getText().toString();
         if (binary.isEmpty()) {
             inputLayout.setErrorEnabled(true);
-            inputLayout.setError("Cannot be empty");
-            //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            inputLayout.setError("Cannot be empty!");
             return;
         }
 
-        if(Integer.parseInt(binary) <= 0){
+
+        if (Double.parseDouble(binary) <= 0) {
             inputLayout.setErrorEnabled(true);
-            inputLayout.setError("Must be greater than 0");
-            //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            inputLayout.setError("Must be greater than 0!");
             return;
         }
 
         if (binary.length() >= 24) {
             inputLayout.setErrorEnabled(true);
-            inputLayout.setError("Below 24 bits please :)");
-            //Toast.makeText(getContext(), "Lets keep it below 24 bits, shall we", Toast.LENGTH_SHORT).show();
+            inputLayout.setError("Below 24 bits please (::)");
         }
 
         try {
             decimal = String.valueOf(Numericals.BinaryToDecimal(binary));
             tvAnswer.setText(decimal);
-
             Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
-        } catch (NumberFormatException ex) {
+        } catch (NotABinaryException ex) {
             Log.e(Utilities.Log, ex.getMessage());
             inputLayout.setErrorEnabled(true);
-            inputLayout.setError("Binary only please :)");
-            //Toast.makeText(getContext(), "Binary only please", Toast.LENGTH_SHORT).show();
+            inputLayout.setError(ex.getMessage());
             etInput.setText(null);
         } catch (Exception ex) {
             Log.e(Utilities.Log, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }
-
-
     }
 
 

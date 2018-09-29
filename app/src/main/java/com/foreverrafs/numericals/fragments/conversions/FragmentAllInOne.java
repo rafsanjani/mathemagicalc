@@ -121,7 +121,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
             }
 
             binary = Numericals.DecimalToBinary(decLong);
-            octal = Numericals.DecimalToOctal(decLong);
+            octal = Numericals.DecimalToOctal(decimal);
             hexadecimal = Numericals.DecimalToHexadecimal(decimal);
 
             tvBinary.setText(binary);

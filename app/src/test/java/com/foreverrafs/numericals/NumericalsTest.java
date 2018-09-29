@@ -280,7 +280,7 @@ public class NumericalsTest {
     public void testRegulaFalsi() {
         String eqn = "f(x)=x^5 + x^3+3";
         double y = Numericals.FalsePosition(eqn, -2, -1, 100, 0);
-        System.out.println(y);
+
     }
 
     @Test
@@ -355,7 +355,7 @@ public class NumericalsTest {
 
     @Test
     public void testIsBinary(){
-        boolean isBinary = Numericals.isBinary("101010101010101");
+        boolean isBinary = Numericals.isBinary("101010.1010.10101");
         assertEquals(isBinary, true);
     }
 }

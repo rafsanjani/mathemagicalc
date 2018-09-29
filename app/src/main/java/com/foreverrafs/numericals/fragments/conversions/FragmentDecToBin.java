@@ -32,6 +32,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class FragmentDecToBin extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
+    String rawBinary;
     private TextInputLayout inputLayout;
 
     @Nullable
@@ -104,8 +105,6 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
-
-    String rawBinary;
 
     private void onCalculate() {
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);

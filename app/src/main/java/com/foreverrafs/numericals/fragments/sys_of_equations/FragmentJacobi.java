@@ -35,6 +35,8 @@ import org.apache.commons.math3.util.Precision;
 
 public class FragmentJacobi extends Fragment implements View.OnClickListener, TextWatcher, View.OnKeyListener {
 
+    View rootView;
+    ViewGroup viewGroup;
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -64,9 +66,6 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
             return true;
         }
     });
-
-    View rootView;
-    ViewGroup viewGroup;
 
     @Nullable
     @Override
@@ -121,7 +120,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
 
     private void onShowAlgorithm() {
         Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name","jacobi");
+        bundle.putString("algorithm_name", "jacobi");
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 

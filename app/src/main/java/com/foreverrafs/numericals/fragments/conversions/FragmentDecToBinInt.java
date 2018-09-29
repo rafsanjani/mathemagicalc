@@ -34,6 +34,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
 
     View rootView;
     TextInputLayout inputLayout;
+    String rawBinary;
 
     @Nullable
     @Override
@@ -86,7 +87,6 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -109,8 +109,6 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
                 break;
         }
     }
-
-    String rawBinary;
 
     private void onCalculate() {
         //boolean isAnswerTruncated = false;

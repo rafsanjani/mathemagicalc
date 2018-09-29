@@ -32,12 +32,11 @@ import java.util.List;
 
 public class FragmentEuler extends Fragment implements View.OnClickListener, TextWatcher {
 
+    List<OdeResult> eulerResults = null;
     private View rootView;
     private ViewGroup viewGroup;
     private TextInputEditText etH, etX0, etX1, etInitY, etEquation;
     private TextInputLayout tilX0, tilX1, tilH, tilInitY, tilEquation;
-
-    List<OdeResult> eulerResults = null;
 
     @Nullable
     @Override

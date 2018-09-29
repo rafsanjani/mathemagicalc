@@ -30,9 +30,8 @@ import katex.hourglass.in.mathlib.MathView;
 
 public class FragmentEulerResults extends Fragment {
 
-    private View rootView;
-
     List<OdeResult> results;
+    private View rootView;
     private String eqn;
     private double x0, x1, h, initY;
     private int iterations;

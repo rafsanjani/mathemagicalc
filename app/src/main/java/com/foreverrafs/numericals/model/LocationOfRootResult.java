@@ -16,7 +16,7 @@ public class LocationOfRootResult {
         this.tolerance = tolerance;
     }
 
-    //Newton Raphson Signature
+    //Newton Raphson Signature ::: x1 is what most users are interested in
     public LocationOfRootResult(double x1, int iteration, double fx1, double derX1) {
         this.x1 = x1;
         this.iteration = iteration;
@@ -24,7 +24,7 @@ public class LocationOfRootResult {
         this.derX1 = derX1;
     }
 
-    //Secante Signature
+    //Secante Signature::: x3 is what most users are interested in
     public LocationOfRootResult(int iteration, double x1, double x2, double x3, double difference) {
         this.iteration = iteration;
         this.x1 = x1;
@@ -33,7 +33,7 @@ public class LocationOfRootResult {
         this.difference = difference;
     }
 
-    //False Position signature
+    //False Position signature :: x3 is what most users are interested in
     public LocationOfRootResult(int iteration, double x1, double x2, double x3, double fx1, double fx2, double fx3, double difference) {
         this.iteration = iteration;
         this.x1 = x1;

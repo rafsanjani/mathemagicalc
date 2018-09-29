@@ -29,8 +29,8 @@ import com.foreverrafs.numericals.utils.Utilities;
 public class FragmentMainMenu extends Fragment implements View.OnClickListener {
 
 
-    private View rootView;
     TextView header;
+    private View rootView;
     private AppCompatActivity mActivity;
 
 
@@ -90,7 +90,7 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
             case R.id.btn_algorithms:
-               // Bundle bundle = new Bundle();
+                // Bundle bundle = new Bundle();
                 //bundle.putString("algorithm_name","index");
                 startActivity(new Intent(getContext(), ShowAlgorithm.class));
                 mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

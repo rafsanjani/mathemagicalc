@@ -34,6 +34,7 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
 
     View rootView;
     TextInputLayout inputLayout;
+    String rawBinary;
 
     @Nullable
     @Override
@@ -108,8 +109,6 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
-    String rawBinary;
-
     private void onCalculate() {
         EditText etInput = rootView.findViewById(R.id.text_user_input);
         ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
@@ -128,7 +127,7 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
 
             if (decDouble >= 1) {
                 inputLayout.setErrorEnabled(true);
-                inputLayout.setError("Cannot be greater than 1!");
+                inputLayout.setError("Must be less than 1!");
                 //Toast.makeText(getContext(), "Number should be less than 1", Toast.LENGTH_LONG).show();
                 return;
             }

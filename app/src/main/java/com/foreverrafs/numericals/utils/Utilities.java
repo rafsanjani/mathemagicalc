@@ -62,8 +62,8 @@ public final class Utilities {
                 break;
 
             case fallingsky:
-               typeface =  Typeface.createFromAsset(mCtx.getAssets(), "fonts/FallingSky.otf");
-               break;
+                typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/FallingSky.otf");
+                break;
         }
 
         try {
@@ -110,7 +110,7 @@ public final class Utilities {
 
                 TransitionManager.beginDelayedTransition(viewGroup);
                 answerView.setVisibility(View.VISIBLE);
-                //  TransitionManager.beginDelayedTransition(viewGroup, set);
+                //  TransitionManager.beginDelayedTransition(parentContainer, set);
 
                 break;
 
@@ -122,6 +122,8 @@ public final class Utilities {
     }
 
     public static void showAlgorithmScreen(Context c, String algoName) {
+        if (algoName.isEmpty())
+            algoName = "index";
         Bundle bundle = new Bundle();
         bundle.putString("algorithm_name", algoName);
         c.startActivity(new Intent(c, ShowAlgorithm.class).putExtras(bundle));

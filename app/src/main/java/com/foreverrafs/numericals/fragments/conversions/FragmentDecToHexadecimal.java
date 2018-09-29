@@ -32,7 +32,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class FragmentDecToHexadecimal extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
-    TextInputLayout inputLayout;
+    TextInputLayout tilUserInput;
 
     @Nullable
     @Override
@@ -50,21 +50,20 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
 
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
 
-       // tvAnswer.setTypeface(typeface);
-        //tvHeader.setTypeface(typeface2);
+        tilUserInput = rootView.findViewById(R.id.til_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
+
         Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
-        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
-        // rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                inputLayout.setErrorEnabled(false);
+                tilUserInput.setErrorEnabled(false);
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
                     return true;
@@ -117,8 +116,8 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
-            inputLayout.setErrorEnabled(true);
-            inputLayout.setError("Input cannot be empty!");
+            tilUserInput.setErrorEnabled(true);
+            tilUserInput.setError("Input cannot be empty!");
             //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
             return;
         }
@@ -127,14 +126,13 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
             double decLong = Double.parseDouble(decimal);
 
             if (decLong <= 0) {
-                inputLayout.setErrorEnabled(true);
-                inputLayout.setError("Should be greater than 0!");
-               // Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
+                tilUserInput.setErrorEnabled(true);
+                tilUserInput.setError("Should be greater than 0!");
+                // Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
                 return;
             }
 
             String hexadecimal = Numericals.DecimalToHexadecimal(decimal);
-
 
             tvAnswer.setText(hexadecimal);
 

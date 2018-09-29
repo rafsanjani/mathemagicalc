@@ -1,6 +1,6 @@
 package com.foreverrafs.numericals.core;
 
-class NotABinaryException extends RuntimeException {
+public class NotABinaryException extends RuntimeException {
     public NotABinaryException(String message) {
         super(message);
     }

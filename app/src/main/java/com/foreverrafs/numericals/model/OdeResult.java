@@ -14,16 +14,16 @@ public class OdeResult {
         return x;
     }
 
+    public void setX(double x) {
+        this.x = x;
+    }
+
     public double getN() {
         return n;
     }
 
     public double getY() {
         return y;
-    }
-
-    public void setX(double x) {
-        this.x = x;
     }
 
     public void setY(double y) {

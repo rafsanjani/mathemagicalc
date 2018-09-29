@@ -36,6 +36,8 @@ import org.apache.commons.math3.util.Precision;
 
 public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClickListener, TextWatcher, View.OnKeyListener {
 
+    View rootView;
+    ViewGroup viewGroup;
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -65,9 +67,6 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
 
         }
     };
-
-    View rootView;
-    ViewGroup viewGroup;
 
     @Nullable
     @Override
@@ -113,7 +112,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_back:
-                Utilities.replaceFragment( new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.button_calculate:
@@ -129,7 +128,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
 
     private void onShowAlgorithm() {
         Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name","gaussseidelwithsor");
+        bundle.putString("algorithm_name", "gaussseidelwithsor");
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
 
