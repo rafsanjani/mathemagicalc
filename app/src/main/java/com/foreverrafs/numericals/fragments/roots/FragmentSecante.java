@@ -72,27 +72,6 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
             etIterations.setText(String.valueOf(secanteArgs.getInt("iterations")));
         }
 
-        /*View.OnKeyListener myKeyListener = new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                tilEquation.setErrorEnabled(false);
-                tilIterations.setErrorEnabled(false);
-                tilX0.setErrorEnabled(false);
-                tilX1.setErrorEnabled(false);
-                //tilTolerance.setErrorEnabled(false);
-                if (keyEvent.getAction() != KeyEvent.ACTION_DOWN)
-                    return false;
-
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    onCalculate(btnCalculate.getText().toString());
-                    return true;
-                }
-                return false;
-            }
-        };
-
-        etIterations.setOnKeyListener(myKeyListener);
-        etEquation.setOnKeyListener(myKeyListener);*/
         registerOnKeyListener(tilEquation, tilIterations, tilX0, tilX1);
 
         btnCalculate.setOnClickListener(this);
@@ -144,11 +123,6 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
             return;
         }
 
-        /*EditText etEquation = rootView.findViewById(R.id.text_equation);
-        EditText etX0 = rootView.findViewById(R.id.x0);
-        EditText etX1 = rootView.findViewById(R.id.x1);
-        EditText etIterations = rootView.findViewById(R.id.text_iterations);*/
-
         TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
         Button calculateButton = rootView.findViewById(R.id.button_calculate);
@@ -176,12 +150,6 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
         if (buttonText.equals(getResources().getString(R.string.calculate))) {
             double root = Numericals.Secante(eqn, x0, x1, iter);
 
-            /*if (Double.isNaN(root) || Double.isInfinite(root)) {
-                Toast.makeText(getContext(), "Syntax Error: Please check equation", Toast.LENGTH_LONG).show();
-                Log.i(Utilities.Log, "Syntax error, unable to evaluate expression");
-                return;
-            }*/
-
             tvAnswer.setText(String.valueOf(root));
 
             //for transitions sake
@@ -204,34 +172,6 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
             Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
         }
         calculateButton.setText(getResources().getString(R.string.show_iterations));
-    }
-
-    private boolean checkForEmptyInput() {
-        boolean validated = true;
-        if (etEquation.getText().toString().isEmpty()) {
-            tilEquation.setErrorEnabled(true);
-            tilEquation.setError("Cannot be empty");
-            validated = false;
-        }
-
-        if (etX0.getText().toString().isEmpty()) {
-            tilX0.setErrorEnabled(true);
-            tilX0.setError("error");
-            validated = false;
-        }
-
-        if (etX1.getText().toString().isEmpty()) {
-            tilX1.setErrorEnabled(true);
-            tilX1.setError("error");
-            validated = false;
-        }
-
-        if (etIterations.getText().toString().isEmpty()) {
-            tilIterations.setErrorEnabled(true);
-            tilIterations.setError("error");
-            validated = false;
-        }
-        return validated;
     }
 
     @Override

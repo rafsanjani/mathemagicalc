@@ -30,7 +30,7 @@ import java.util.List;
 
 public class FragmentFalsePosition extends FragmentRootBase implements View.OnClickListener, TextWatcher {
     private TextWatcher etToleranceTextWatcher = null;
-    private TextWatcher etIterationsTextWatcher = null;
+    //private TextWatcher etIterationsTextWatcher = null;
 
     private TextInputLayout tilX0, tilX1, tilIterations, tilTolerance, tilEquation;
     private TextInputEditText etIterations, etX0, etX1, etTolerance, etEquation;
@@ -77,46 +77,9 @@ public class FragmentFalsePosition extends FragmentRootBase implements View.OnCl
 
         registerOnKeyListener(tilEquation, tilTolerance, tilIterations, tilX0, tilX1);
 
-        etIterationsTextWatcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            //get the tolerance value based on the number of iterations
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                onEquationChanged();
-                try {
-                    etTolerance.removeTextChangedListener(etToleranceTextWatcher);
-                    int iterations = Integer.parseInt(etIterations.getText().toString());
-                    double x0 = 0, x1 = 0;
-
-                    x0 = Double.parseDouble(etX0.getText().toString());
-                    x1 = Double.parseDouble(etX1.getText().toString());
-
-
-                    //double tolerance = Numericals.getBisectionTolerance(iterations, x0, x1);
-
-                    //etTolerance.setText(String.valueOf(tolerance));
-                } catch (NumberFormatException ex) {
-                    Log.i(Utilities.Log, "Initial guesses are not provided");
-                } finally {
-                    etTolerance.addTextChangedListener(etToleranceTextWatcher);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        };
-
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
         rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
-
-        etEquation.addTextChangedListener(this);
 
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
     }
@@ -236,5 +199,4 @@ public class FragmentFalsePosition extends FragmentRootBase implements View.OnCl
     public void afterTextChanged(Editable editable) {
         onEquationChanged();
     }
-
 }
