@@ -3,6 +3,8 @@ package com.foreverrafs.numericals.fragments.conversions;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -15,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
@@ -30,6 +31,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class FragmentDecToOctal extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
+    TextInputLayout tilUserInput;
 
     @Nullable
     @Override
@@ -45,17 +47,19 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
 
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
 
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
 
-        // rootView.findViewById(R.id.show_all).setOnClickListener(this);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
+        tilUserInput = rootView.findViewById(R.id.til_user_input);
+
 
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                tilUserInput.setErrorEnabled(false);
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
                     return true;
@@ -79,11 +83,11 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 onCalculate();
                 break;
 
@@ -109,7 +113,9 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
-            Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            tilUserInput.setErrorEnabled(true);
+            tilUserInput.setError("Input cannot be empty!");
+            //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -117,16 +123,17 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
             double decLong = Double.parseDouble(decimal);
 
             if (decLong <= 0) {
-                Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
+                tilUserInput.setErrorEnabled(true);
+                tilUserInput.setError("Should be greater than 0!");
+                //Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
                 return;
             }
 
-            String octalDecimal = Numericals.DecimalToOctal(decLong);
-
+            String octalDecimal = Numericals.DecimalToOctal(decimal);
 
             tvAnswer.setText(octalDecimal);
 
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
 
@@ -153,7 +160,7 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }

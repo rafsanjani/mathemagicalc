@@ -98,7 +98,7 @@ public class NumericalsTest {
 
     @Test
     public void testBisectionAllShouldPass() {
-        List<LocationOfRootResult> longBisection = Numericals.BisectAll("x^5 + x^3 + 3x", -2, -1, 4, 0.005);
+        List<LocationOfRootResult> longBisection = Numericals.BisectAll("x^5 + x^3 + 3*x", -2, -1, 4, 0.005);
         assertEquals(-1.0625, longBisection.get(3).getX3());
     }
 
@@ -280,7 +280,7 @@ public class NumericalsTest {
     public void testRegulaFalsi() {
         String eqn = "f(x)=x^5 + x^3+3";
         double y = Numericals.FalsePosition(eqn, -2, -1, 100, 0);
-        System.out.println(y);
+
     }
 
     @Test
@@ -351,5 +351,11 @@ public class NumericalsTest {
         }
 
         // assertEquals(0.23681533952, results.get(5).getY());
+    }
+
+    @Test
+    public void testIsBinary(){
+        boolean isBinary = Numericals.isBinary("101010.1010.10101");
+        assertEquals(isBinary, true);
     }
 }

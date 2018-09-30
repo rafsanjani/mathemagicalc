@@ -30,9 +30,8 @@ import katex.hourglass.in.mathlib.MathView;
 
 public class FragmentEulerResults extends Fragment {
 
-    private View rootView;
-
     List<OdeResult> results;
+    private View rootView;
     private String eqn;
     private double x0, x1, h, initY;
     private int iterations;
@@ -82,8 +81,8 @@ public class FragmentEulerResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
-        Button btnShowAlgorithm = rootView.findViewById(R.id.buttonShowAlgo);
+        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnShowAlgorithm = rootView.findViewById(R.id.button_show_algo);
 
         MathView equation;
         // String tex = " $$f(x) = 3x^3 + 2x - 5$$";
@@ -134,6 +133,6 @@ public class FragmentEulerResults extends Fragment {
             }
         });
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
     }
 }

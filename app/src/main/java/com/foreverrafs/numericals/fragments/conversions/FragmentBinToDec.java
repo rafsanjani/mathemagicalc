@@ -3,6 +3,8 @@ package com.foreverrafs.numericals.fragments.conversions;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -13,12 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.core.NotABinaryException;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
@@ -30,6 +31,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class FragmentBinToDec extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
+    TextInputLayout inputLayout;
 
     @Nullable
     @Override
@@ -42,23 +44,26 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     }
 
     private void initControls() {
-       // Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
+        // Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
+        inputLayout = rootView.findViewById(R.id.til_user_input);
         //tvAnswer.setTypeface(typeface);
 
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
-        Button btnShowAlgo = rootView.findViewById(R.id.buttonShowAlgo);
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
+        Button btnShowAlgo = rootView.findViewById(R.id.button_show_algo);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
 
 //        rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                //remove the error message from the input layout if any
+                inputLayout.setErrorEnabled(false);
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
                     return true;
@@ -83,14 +88,14 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 onCalculate();
                 break;
-            case R.id.buttonShowAlgo:
+            case R.id.button_show_algo:
                 onShowAlgorithm();
                 break;
 
@@ -98,43 +103,50 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     }
 
     private void onShowAlgorithm() {
-        Utilities.showAlgorithmScreen(getContext(), "");
+        Utilities.showAlgorithmScreen(getContext(), "bintodec");
     }
 
     private void onCalculate() {
         String decimal = "00";
 
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
         ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
 
         String binary = etInput.getText().toString();
         if (binary.isEmpty()) {
-            Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Cannot be empty!");
+            return;
+        }
+
+
+        if (Double.parseDouble(binary) <= 0) {
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Must be greater than 0!");
             return;
         }
 
         if (binary.length() >= 24) {
-            Toast.makeText(getContext(), "Lets keep it below 24 bits, shall we", Toast.LENGTH_SHORT).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Below 24 bits please (::)");
         }
 
         try {
             decimal = String.valueOf(Numericals.BinaryToDecimal(binary));
             tvAnswer.setText(decimal);
-
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
-        } catch (NumberFormatException ex) {
+        } catch (NotABinaryException ex) {
             Log.e(Utilities.Log, ex.getMessage());
-            Toast.makeText(getContext(), "Binary only please", Toast.LENGTH_SHORT).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError(ex.getMessage());
             etInput.setText(null);
         } catch (Exception ex) {
             Log.e(Utilities.Log, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }
-
-
     }
 
 
@@ -151,7 +163,7 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }

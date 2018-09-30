@@ -31,9 +31,8 @@ import katex.hourglass.in.mathlib.MathView;
 
 public class FragmentBisectionResults extends Fragment {
 
-    private View rootView;
-
     List<LocationOfRootResult> results;
+    private View rootView;
     private String eqn;
     private double x0, x1, tolerance;
     private int iterations;
@@ -78,7 +77,7 @@ public class FragmentBisectionResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
+        Button btnBack = rootView.findViewById(R.id.button_back);
 
         MathView equation;
         // String tex = " $$f(x) = 3x^3 + 2x - 5$$";
@@ -96,7 +95,7 @@ public class FragmentBisectionResults extends Fragment {
         equation = rootView.findViewById(R.id.equation);
         equation.setDisplayText(Numericals.generateTexEquation(this.eqn));
 
-        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(new View.OnClickListener() {
+        rootView.findViewById(R.id.button_show_algo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Utilities.showAlgorithmScreen(getContext(), "bisection");
@@ -125,6 +124,6 @@ public class FragmentBisectionResults extends Fragment {
             }
         });
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
     }
 }

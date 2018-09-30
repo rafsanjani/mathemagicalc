@@ -21,8 +21,8 @@ import com.foreverrafs.numericals.utils.Utilities;
 public class FragmentLocationOfRootsMenu extends Fragment implements View.OnClickListener {
 
 
-    private View rootView;
     static TextView header;
+    private View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

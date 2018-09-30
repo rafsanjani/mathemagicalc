@@ -31,10 +31,9 @@ import katex.hourglass.in.mathlib.MathView;
 
 public class FragmentFalsePositionResults extends Fragment {
 
-    private View rootView;
-
-    private RootResultsAdapter adapter;
     List<LocationOfRootResult> results;
+    private View rootView;
+    private RootResultsAdapter adapter;
     private String eqn;
     private double x0, x1, tolerance;
     private int iterations;
@@ -79,7 +78,7 @@ public class FragmentFalsePositionResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
+        Button btnBack = rootView.findViewById(R.id.button_back);
 
         MathView equation;
         // String tex = " $$f(x) = 3x^3 + 2x - 5$$";
@@ -119,6 +118,6 @@ public class FragmentFalsePositionResults extends Fragment {
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
             }
         });
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
     }
 }

@@ -11,7 +11,6 @@ import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -133,47 +132,16 @@ public final class Numericals {
      * @param tol The tolerance level of the answer produced
      * @return double
      */
-    /*public static double Bisect(String expr, double x1, double x2, int iterations, double tol) {
-        if (iterations < 1)
-            return 0;
 
-        double x3 = (x1 + x2) / 2;
-
-        double stoppingCriteria = Math.abs(x1 - x2) / 2;
-
-        //a mathematical function of the form f(x) = 0
-        Function fx;
-
-        //is our approximated root less than or equal to the tolerance limit or are we out of moves?
-        if (stoppingCriteria <= tol || iterations == 1)
-            return x3;
-
-        if (expr.contains("f(x)"))
-            fx = new Function(expr);
-        else
-            fx = new Function(String.format("f(x) = %s", expr));
-
-        double fx1 = fx.calculate(x1);
-        double fx3 = fx.calculate(x3);
-
-
-        //the root lies in the left part of the boundary
-        if (fx1 * fx3 < 0)
-            return Bisect(expr, x1, x3, --iterations, tol);
-        else
-            //the root lies in the right part of the boundary
-            return Bisect(expr, x3, x2, --iterations, tol);
-    }*/
-
-    public static List<LocationOfRootResult> BisectAll(String expr, double x1, double x2, int iterations, double tol) {
-        List<LocationOfRootResult> results = new ArrayList<>();
+    public static List<LocationOfRootResult> BisectAll(String expr, double x1, double x2, int iterations, double tol) throws InvalidEquationException {
+        List<LocationOfRootResult> roots = new ArrayList<>();
 
         while (iterations > 0) {
             double x3 = (x1 + x2) / 2;
             double stoppingCriteria = Math.abs(x1 - x2) / 2;
 
             LocationOfRootResult tempRes = new LocationOfRootResult(x1, x2, x3, iterations, stoppingCriteria);
-            results.add(tempRes);
+            roots.add(tempRes);
 
             //a mathematical function of the form f(x) = 0
             Function fx;
@@ -187,20 +155,23 @@ public final class Numericals {
             else
                 fx = new Function(String.format("f(x) = %s", expr));
 
+            //if any of these computations returns NaN, it is assumed that the equation was improperly formatted.
             double fx1 = fx.calculate(x1);
             double fx3 = fx.calculate(x3);
 
+            if (Double.isNaN(fx1) || Double.isNaN(fx3)) {
+                throw new InvalidEquationException("Invalid Equation: " + fx.getFunctionExpressionString());
+            }
             //the root lies in the left part of the boundary
             if (fx1 * fx3 < 0)
                 x2 = x3;
-
             else
                 x1 = x3;
 
             --iterations;
         }
 
-        return results;
+        return roots;
     }
 
     /***
@@ -211,51 +182,18 @@ public final class Numericals {
      * @return double
      * todo replace with full variant of the method
      */
-    public static Double NewtonRaphson(String expr, double x1, int maxIterations) {
-        if (maxIterations < 1) {
-            return 0.00;
-        }
-
-        /*if (expr.contains("f(x)")) {
-            expr = expr.substring(5);
-        }*/
-
-        Argument x = new Argument(String.format("x = %s", x1));
-
-        Expression ex = new Expression("der(" + expr + ", x)", x);
-
-        Function fx;
-
-        if (expr.contains("f(x)"))
-            fx = new Function(expr);
-        else
-            fx = new Function(String.format("f(x) = %s", expr));
-
-
-        double fx1 = fx.calculate(x1);
-        double derX1 = ex.calculate();
-
-        double approxRoot = x1 - (fx1 / derX1);
-
-        if (maxIterations == 1 || (approxRoot == x1))
-            return approxRoot;
-
-        //replace x1 with the approximated root and recur
-        x1 = approxRoot;
-        return NewtonRaphson(expr, x1, maxIterations - 1);
-    }
 
     public static List<LocationOfRootResult> NewtonRaphsonAll(String expr, double x1, int maxIterations) {
-        List<LocationOfRootResult> results = new ArrayList<>();
+        List<LocationOfRootResult> roots = new ArrayList<>();
 
         Argument x;
         Expression ex;
         Function fx;
         while (maxIterations > 0) {
 
-            if (expr.contains("f(x)")) {
-                expr = expr.substring(5);
-            }
+            if (expr.contains("f(x)"))
+                expr = expr.substring(expr.lastIndexOf("=") + 1).trim();
+
 
             x = new Argument(String.format("x = %s", x1));
 
@@ -266,9 +204,13 @@ public final class Numericals {
             double fx1 = fx.calculate(x1);
             double derX1 = ex.calculate();
 
+            if (Double.isNaN(fx1) || Double.isNaN(derX1)) {
+                throw new InvalidEquationException("Invalid Equation: " + fx.getFunctionExpressionString());
+            }
+
             double approxRoot = x1 - (fx1 / derX1);
 
-            results.add(new LocationOfRootResult(approxRoot, maxIterations, fx1, x1));
+            roots.add(new LocationOfRootResult(approxRoot, maxIterations, fx1, x1));
 
             //check if current root is equal to the previous root then break from the loop
             if (approxRoot == x1)
@@ -278,7 +220,7 @@ public final class Numericals {
             x1 = approxRoot;
             maxIterations--;
         }
-        return results;
+        return roots;
     }
 
     /***
@@ -291,7 +233,7 @@ public final class Numericals {
      * @return double
      * @throws IllegalArgumentException When the interval doesn't bracket the root
      */
-    public static Double FalsePosition(String expr, double x0, double x1, int maxIterations, double tol) throws IllegalArgumentException {
+    public static Double FalsePosition(String expr, double x0, double x1, int maxIterations, double tol) throws InvalidIntervalException {
         if (maxIterations < 1)
             return 0.00;
 
@@ -300,14 +242,14 @@ public final class Numericals {
             expr = expr.substring(expr.lastIndexOf("=") + 1);
 
 
-        Function fx = new Function(String.format("f(x) = %s", expr));
+        Function fx = new Function(String.format("f(x) = %s", expr.toLowerCase()));
 
         double fx0 = fx.calculate(x0);
         double fx1 = fx.calculate(x1);
         double fx2;
 
         if (fx0 * fx1 > 0)
-            throw new IllegalArgumentException("The function doesn't change sign between the specified intervals");
+            throw new InvalidIntervalException(String.format("The function doesn't change sign between the specified intervals: [%.2f],[%.2f] ", x0, x1));
 
         double x2 = x1 - ((x1 - x0) / (fx1 - fx0)) * fx1;
 
@@ -334,7 +276,7 @@ public final class Numericals {
             expr = expr.substring(expr.lastIndexOf("=") + 1);
 
 
-        Function fx = new Function(String.format("f(x) = %s", expr));
+        Function fx = new Function(String.format("f(x) = %s", expr.toLowerCase()));
 
         do {
             double fx0 = fx.calculate(x0);
@@ -505,7 +447,8 @@ public final class Numericals {
                         {1, 0, 0, 0, 0},
                         {0, 1, 0, 0, 0},
                         {0, 0, 1, 0, 0},
-                        {0, 0, 0, 1, 0}
+                        {0, 0, 0, 1, 0},
+                        {0, 0, 0, 0, 1}
                 };
                 matrix = iMatrix5x5;
                 break;
@@ -542,26 +485,32 @@ public final class Numericals {
         return stringBuilder.toString().toUpperCase();
     }
 
-    public static String DecimalToOctal(Double dec) {
-        String decimal = String.valueOf(dec);
+    public static String DecimalToOctal(String decimal) {
+        StringBuilder stringBuilder = new StringBuilder();
+        double decimalDouble = Double.parseDouble(decimal);
 
-        //differentiate decimal numeral into fractional and whole parts
-        String wholeStr = decimal.substring(0, decimal.indexOf("."));
-        String fractionalStr = decimal.substring(wholeStr.length() + 1);
+        //obtain just the integer part and convert to hex first
+        int wholePart = (int) decimalDouble;
 
-        int whole = Integer.parseInt(wholeStr);
-        int fractional = Integer.parseInt(fractionalStr);
+        stringBuilder.append(Integer.toOctalString(wholePart));
+        decimalDouble = decimalDouble - wholePart;
 
-        BigInteger toWholeHex = new BigInteger(String.valueOf(whole));
-        BigInteger toFracHex = new BigInteger(String.valueOf(fractional));
+        if (decimalDouble == 0) {
+            return stringBuilder.toString().toUpperCase();
+        }
 
-        return (toWholeHex.toString(8) + "." + toFracHex.toString(8)).toUpperCase();
-    }
+        stringBuilder.append(".");
 
+        for (int i = 0; i < 8; i++) {
+            decimalDouble *= 8;
+            int digit = (int) decimalDouble;
+            stringBuilder.append(Integer.toOctalString(digit));
+            decimalDouble = decimalDouble - digit;
+            if (decimalDouble == 0)
+                break;
+        }
 
-    enum GaussianType {
-        ThreeByThree,
-        FourByFour
+        return stringBuilder.toString().toUpperCase();
     }
 
     public static double[] multiplyMatrix(double[][] iSolution, double[] x) {
@@ -570,7 +519,6 @@ public final class Numericals {
 
         return lhs.multiply(rhs).getColumn(0);
     }
-
 
     public static double[] GaussianWithPartialPivoting(double[][] A, double[] B) {
         int N = B.length;
@@ -594,7 +542,6 @@ public final class Numericals {
 
         return getSolutionByBackSubstitution(A, B, N);
     }
-
 
     private static double[] getSolutionByBackSubstitution(double[][] A, double[] B, int N) {
         double[] solution = new double[N];
@@ -628,11 +575,9 @@ public final class Numericals {
                     A[i][j] -= factor * A[k][j];
             } catch (ArrayIndexOutOfBoundsException ay) {
                 System.out.println(ay.getMessage());
-
             }
         }
     }
-
 
     private static void roundTo2Dp(double[][] A, double[] B) {
         for (int i = 0; i < A.length; i++) {
@@ -715,9 +660,13 @@ public final class Numericals {
      * @param interval the interval to be considered during the computation. a 1d array of 2 elements
      * @return list of OdeResults
      */
-    public static List<OdeResult> SolveOdeByEulersMethod(String function, double h, double[] interval, double initY) {
+    public static List<OdeResult> SolveOdeByEulersMethod(String function, double h, double[] interval, double initY) throws InvalidEquationException {
         if (interval.length == 0)
-            throw new IllegalArgumentException("Error:interval Not Found!!");
+            throw new InvalidIntervalException("No Interval Provided");
+
+        if (function.trim().contains("f(x)")) {
+            function = function.substring(function.indexOf("=") + 1);
+        }
 
         List<OdeResult> results = new ArrayList<>();
 
@@ -741,8 +690,16 @@ public final class Numericals {
             Argument x = new Argument("x", xn[i]);
             Argument y = new Argument("y", yn[i]);
 
+
             Expression expression = new Expression(function, x, y);
+
+
             double fxResult = expression.calculate();
+
+            //if the answer is infinity or NaN, then we can conclude that the syntax of the equation was wrong
+            if (Double.isNaN(fxResult) || Double.isInfinite(fxResult)) {
+                throw new InvalidEquationException("Invalid Equation: " + expression.getExpressionString());
+            }
 
             yn[i + 1] = yn[i] + (h * fxResult);
             xn[i + 1] = xn[i] + h;
@@ -884,7 +841,12 @@ public final class Numericals {
 
     }
 
-    public static double BinaryToDecimal(String bin) {
+    public static double BinaryToDecimal(String bin) throws NotABinaryException {
+        //if string is not a correct binary, then return
+        if (!isBinary(bin)) {
+            throw new NotABinaryException("Input is not a binary: " + bin);
+        }
+
         int len = bin.length();
         // Fetch the radix point
         int point = bin.indexOf('.');
@@ -918,13 +880,30 @@ public final class Numericals {
         return intDecimal + fracDecimal;
     }
 
+    /**
+     * Determine whether a value is a binary or not. for example 11010 is binary whereas 11021 is not
+     *
+     * @param input
+     * @return
+     */
+    public static boolean isBinary(String input) {
+//        int index = input.indexOf(".");
+//
+//        String afterDot = input.substring(index + 1);
+//        boolean moreDots = afterDot.contains(".");
+
+        return input.matches("[01]+") || input.matches("[01.]+");
+
+//        return matches;
+        // return input.matches("[01.]+") && input.lastIndexOf(input.substring(input.indexOf(".") + 1)) == -1;
+    }
+
     //get the number of iterations required using the tolerance given
     public static int getBisectionIterations(double tolerance, double x1, double x2) {
         double iterations = (Math.log(x2 - x1) - Math.log(tolerance)) / Math.log(2);
 
         return Math.round((float) iterations);
     }
-
 
     //get the tolerance level required using the number of iterations given
     public static double getBisectionTolerance(int iterations, double x1, double x2) {
@@ -945,6 +924,12 @@ public final class Numericals {
         str.append("$$");
         return str.toString().toLowerCase();
 
+    }
+
+
+    enum GaussianType {
+        ThreeByThree,
+        FourByFour
     }
 
 

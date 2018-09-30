@@ -65,6 +65,7 @@
     <string name="all_in_one_converter">ALL IN ONE CONVERTER</string>
     <string name="conversion_all_in_one">Input a decimal number and it will be converted to binary, octal and hexadecimal</string>
     <string name="solve">Solve</string>
+    <string name="question_mark">#63</string>
 
 
     <string-array name="main_menu">

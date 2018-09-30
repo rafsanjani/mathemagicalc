@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -16,7 +18,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
@@ -32,6 +33,8 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class FragmentDecToBinInt extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
+    TextInputLayout inputLayout;
+    String rawBinary;
 
     @Nullable
     @Override
@@ -47,20 +50,22 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
         //Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
 
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
+        inputLayout = rootView.findViewById(R.id.til_user_input);
         //tvAnswer.setTypeface(typeface);
 
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
 
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         EditText etInput = rootView.findViewById(R.id.text_user_input);
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
 
 
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                inputLayout.setErrorEnabled(false);
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
                     return true;
@@ -73,7 +78,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
 
         btnBack.setOnClickListener(this);
         btnCalculate.setOnClickListener(this);
-        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(this);
+        rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
     }
 
     private void onShowAlgorithm() {
@@ -81,7 +86,6 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
         bundle.putString("algorithm_name", "dectobinint");
         startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
     }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -92,30 +96,30 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 onCalculate();
                 break;
 
-            case R.id.buttonShowAlgo:
+            case R.id.button_show_algo:
                 onShowAlgorithm();
                 break;
         }
     }
 
-    String rawBinary;
-
     private void onCalculate() {
         //boolean isAnswerTruncated = false;
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
         ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
-            Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Input cannot be empty!");
+            //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -124,7 +128,9 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
             int decInt = Integer.parseInt(decimal);
 
             if (decInt < 1) {
-                Toast.makeText(getContext(), "Number should be equal to or greater than 1", Toast.LENGTH_LONG).show();
+                inputLayout.setErrorEnabled(true);
+                inputLayout.setError("Should be equal to or greater than 1!");
+                //Toast.makeText(getContext(), "Number should be equal to or greater than 1", Toast.LENGTH_LONG).show();
                 return;
             }
 
@@ -136,7 +142,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
 
             tvAnswer.setText(rawBinary);
 
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
             //rootView.findViewById(R.id.show_all).setVisibility(isAnswerTruncated ? View.VISIBLE : View.GONE);
@@ -144,9 +150,11 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
 
         } catch (NumberFormatException ex) {
             Log.e(Utilities.Log, "cannot parse " + decimal + " to a double value");
-            Toast.makeText(getContext(), "Number entered isn't an integer", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "Number entered isn't an integer", Toast.LENGTH_SHORT).show();
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Input isn't an Integer");
 
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
 
         } catch (Exception ex) {
@@ -170,7 +178,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }

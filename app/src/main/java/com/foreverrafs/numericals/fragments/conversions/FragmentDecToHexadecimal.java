@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -14,9 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
@@ -32,6 +32,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class FragmentDecToHexadecimal extends Fragment implements View.OnClickListener, TextWatcher {
 
     View rootView;
+    TextInputLayout tilUserInput;
 
     @Nullable
     @Override
@@ -49,20 +50,20 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
 
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
 
-       // tvAnswer.setTypeface(typeface);
-        //tvHeader.setTypeface(typeface2);
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        tilUserInput = rootView.findViewById(R.id.til_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
+
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
 
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
 
-        // rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
         etInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                tilUserInput.setErrorEnabled(false);
                 if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     onCalculate();
                     return true;
@@ -75,7 +76,7 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
 
         btnBack.setOnClickListener(this);
         btnCalculate.setOnClickListener(this);
-        rootView.findViewById(R.id.buttonShowAlgo).setOnClickListener(this);
+        rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
     }
 
     private void onShowAlgorithm() {
@@ -94,15 +95,15 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 onCalculate();
                 break;
 
-            case R.id.buttonShowAlgo:
+            case R.id.button_show_algo:
                 onShowAlgorithm();
                 break;
         }
@@ -110,12 +111,14 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
 
 
     private void onCalculate() {
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
+        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
         ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
-            Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
+            tilUserInput.setErrorEnabled(true);
+            tilUserInput.setError("Input cannot be empty!");
+            //Toast.makeText(getContext(), "Input field is empty", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -123,16 +126,17 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
             double decLong = Double.parseDouble(decimal);
 
             if (decLong <= 0) {
-                Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
+                tilUserInput.setErrorEnabled(true);
+                tilUserInput.setError("Should be greater than 0!");
+                // Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
                 return;
             }
 
             String hexadecimal = Numericals.DecimalToHexadecimal(decimal);
 
-
             tvAnswer.setText(hexadecimal);
 
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
 
@@ -159,7 +163,7 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.answerArea),
+            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }

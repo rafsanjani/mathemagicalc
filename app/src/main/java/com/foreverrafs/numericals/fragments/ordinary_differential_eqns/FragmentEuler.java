@@ -3,6 +3,8 @@ package com.foreverrafs.numericals.fragments.ordinary_differential_eqns;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,10 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
@@ -32,10 +32,11 @@ import java.util.List;
 
 public class FragmentEuler extends Fragment implements View.OnClickListener, TextWatcher {
 
+    List<OdeResult> eulerResults = null;
     private View rootView;
     private ViewGroup viewGroup;
-
-    List<OdeResult> eulerResults = null;
+    private TextInputEditText etH, etX0, etX1, etInitY, etEquation;
+    private TextInputLayout tilX0, tilX1, tilH, tilInitY, tilEquation;
 
     @Nullable
     @Override
@@ -47,36 +48,51 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
 
     public void initControls() {
-        final Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
-        Button btnBack = rootView.findViewById(R.id.buttonBack);
-        Button btnShowAlgorithm = rootView.findViewById(R.id.buttonShowAlgo);
+        final Button btnCalculate = rootView.findViewById(R.id.button_calculate);
+        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnShowAlgorithm = rootView.findViewById(R.id.button_show_algo);
 
-        //  Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Bitter-Italic.ttf");
-        Utilities.setTypeFace(rootView.findViewById(R.id.headerText), getContext(), Utilities.TypeFaceName.lobster_regular);
+        //Initialize and set typefaces
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
         Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
 
-        EditText etEquation = rootView.findViewById(R.id.text_equation);
-        // etEquation.setTypeface(typeface);
-        final EditText h = rootView.findViewById(R.id.text_h);
-        final EditText initY = rootView.findViewById(R.id.text_initial_y);
+        //initialize TextInputLayouts
+        tilX0 = rootView.findViewById(R.id.til_x0);
+        tilX1 = rootView.findViewById(R.id.til_x1);
+        tilInitY = rootView.findViewById(R.id.til_initY);
+        tilH = rootView.findViewById(R.id.til_step_size);
+        tilEquation = rootView.findViewById(R.id.til_user_input);
 
-        final EditText etX0 = rootView.findViewById(R.id.x0);
-        final EditText etX1 = rootView.findViewById(R.id.x1);
 
+        //initialize EditTexts
+        etEquation = rootView.findViewById(R.id.text_equation);
+        etH = rootView.findViewById(R.id.text_h);
+        etInitY = rootView.findViewById(R.id.text_initial_y);
+        etX0 = rootView.findViewById(R.id.x0);
+        etX1 = rootView.findViewById(R.id.x1);
+
+
+        //Helps us to return app to normal state after navigation between results viewer and input area
         Bundle eulerArgs = getArguments();
 
         if (eulerArgs != null) {
             etEquation.setText(eulerArgs.getString("equation"));
             etX0.setText(String.valueOf(eulerArgs.getDouble("x0")));
             etX1.setText(String.valueOf(eulerArgs.getDouble("x1")));
-            initY.setText(String.valueOf(eulerArgs.getDouble("initY")));
-            h.setText(String.valueOf(eulerArgs.getInt("h")));
+            etInitY.setText(String.valueOf(eulerArgs.getDouble("initY")));
+            etH.setText(String.valueOf(eulerArgs.getInt("h")));
         }
 
         View.OnKeyListener myKeyListener = new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                tilEquation.setErrorEnabled(false);
+                // tilEquation.setErrorEnabled(false);
+                tilH.setErrorEnabled(false);
+                tilX0.setErrorEnabled(false);
+                tilX1.setErrorEnabled(false);
+                tilInitY.setErrorEnabled(false);
                 if (keyEvent.getAction() != KeyEvent.ACTION_DOWN)
                     return false;
 
@@ -88,8 +104,9 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
             }
         };
 
-        h.setOnKeyListener(myKeyListener);
-        initY.setOnKeyListener(myKeyListener);
+        etH.setOnKeyListener(myKeyListener);
+        etInitY.setOnKeyListener(myKeyListener);
+        etEquation.setOnKeyListener(myKeyListener);
 
 
         btnCalculate.setOnClickListener(this);
@@ -105,98 +122,136 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        //repopulate textview entries with values. this usually happens when we are transitioning back from
-        //the resultspane fragment
+        //lets initialize all our views, shall we?
         initControls();
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonBack:
+            case R.id.button_back:
                 Utilities.replaceFragment(new FragmentOdeMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
-            case R.id.buttonCalculate:
+            case R.id.button_calculate:
                 Button btn = (Button) view;
                 Log.i(Utilities.Log, "performing Euler's Forward calculation");
                 onCalculate(btn.getText().toString());
                 break;
-            case R.id.buttonShowAlgo:
-                 Utilities.showAlgorithmScreen(getContext(), "euler");
+            case R.id.button_show_algo:
+                Utilities.showAlgorithmScreen(getContext(), "euler");
                 break;
 
         }
     }
 
     private void onCalculate(final String buttonText) {
-        EditText etEquation = rootView.findViewById(R.id.text_equation);
-        EditText etX0 = rootView.findViewById(R.id.x0);
-        EditText etX1 = rootView.findViewById(R.id.x1);
-        EditText etH = rootView.findViewById(R.id.text_h);
-        EditText etInitY = rootView.findViewById(R.id.text_initial_y);
+        //only handle empty inputs in this module and display using their corresponding TextInputLayouts.
+        //Any other errors are handled in Numericals.java. This may check most of the NumberFormatException which
+        //gets thrown as a result of passing empty parameters to Type.ParseType(string param)
+        if (!checkForEmptyInput()) {
+            return;
+        }
 
+        //etEquation = rootView.findViewById(R.id.text_equation);
 
         TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
+        Button calculateButton = rootView.findViewById(R.id.button_calculate);
 
-        Button calculateButton = rootView.findViewById(R.id.buttonCalculate);
+        String eqn;
+        double x0, x1, h, interval[];
+        int initY;
 
         try {
-            String eqn = etEquation.getText().toString();
-            Double x0 = Double.valueOf(etX0.getText().toString());
-            Double x1 = Double.valueOf(etX1.getText().toString());
+            eqn = etEquation.getText().toString();
+            x0 = Double.valueOf(etX0.getText().toString());
+            x1 = Double.valueOf(etX1.getText().toString());
 
-            double[] interval = new double[]{x0, x1};
+            interval = new double[]{x0, x1};
 
-            Double h = Double.valueOf(etH.getText().toString());
-            int initY = Integer.valueOf(etInitY.getText().toString());
-
-            if (eqn.isEmpty()) {
-                Toast.makeText(getContext(), "No equation provided", Toast.LENGTH_LONG).show();
-                Log.i(Utilities.Log, "Equation is empty");
-                return;
-            }
-            //are we displaying all answers or just the last iteration
-
-
-            if (buttonText == getResources().getString(R.string.solve)) {
-                eulerResults = Numericals.SolveOdeByEulersMethod(eqn, h, interval, initY);
-                double answerAtLastIterate = eulerResults.get(eulerResults.size() - 1).getY();
-
-                if (Double.isNaN(answerAtLastIterate) || Double.isInfinite(answerAtLastIterate)) {
-                    Toast.makeText(getContext(), "Syntax Error: Please check equation", Toast.LENGTH_LONG).show();
-                    Log.i(Utilities.Log, "Syntax error, unable to evaluate expression");
-                    return;
-                }
-
-                tvAnswer.setText(String.valueOf(answerAtLastIterate));
-
-                //for transitions sake
-                Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
-                Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-            } else if (buttonText == getResources().getString(R.string.show_iterations)) {
-                FragmentEulerResults resultPane = new FragmentEulerResults();
-                Bundle eqnArgs = new Bundle();
-
-                eqnArgs.putString("equation", eqn);
-                eqnArgs.putDouble("x0", x0);
-                eqnArgs.putDouble("x1", x1);
-                eqnArgs.putDouble("h", h);
-                eqnArgs.putDouble("initY", initY);
-
-                resultPane.setArguments(eqnArgs);
-                resultPane.setResults(eulerResults);
-
-                Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
-            }
-            calculateButton.setText(getResources().getString(R.string.show_iterations));
+            h = Double.valueOf(etH.getText().toString());
+            initY = Integer.valueOf(etInitY.getText().toString());
 
         } catch (NumberFormatException ex) {
-            Toast.makeText(getContext(), "One or more of the input expressions are invalid", Toast.LENGTH_LONG).show();
+            tilEquation.setErrorEnabled(true);
+            tilEquation.setError("One or more of the input expressions are invalid!");
+            //Toast.makeText(getContext(), "One or more of the input expressions are invalid", Toast.LENGTH_LONG).show();
             Log.i(Utilities.Log, "Error parsing one or more of the expressions");
-        } finally {
-            MainActivity.hideKeyboard(etEquation);
+            return;
         }
+
+        //are we displaying all answers or just the last iteration
+        if (buttonText == getResources().getString(R.string.solve)) {
+            double answerAtLastIterate = 0;
+
+            try {
+                eulerResults = Numericals.SolveOdeByEulersMethod(eqn, h, interval, initY);
+            } catch (Exception ex) {
+                tilEquation.setErrorEnabled(true);
+                tilEquation.setError(ex.getMessage());
+                return;
+            }
+
+            answerAtLastIterate = eulerResults.get(eulerResults.size() - 1).getY();
+
+            tvAnswer.setText(String.valueOf(answerAtLastIterate));
+
+            //display the answer
+            Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+        } else if (buttonText == getResources().getString(R.string.show_iterations)) {
+            FragmentEulerResults resultPane = new FragmentEulerResults();
+            Bundle eqnArgs = new Bundle();
+
+            eqnArgs.putString("equation", eqn);
+            eqnArgs.putDouble("x0", x0);
+            eqnArgs.putDouble("x1", x1);
+            eqnArgs.putDouble("h", h);
+            eqnArgs.putDouble("initY", initY);
+
+            resultPane.setArguments(eqnArgs);
+            resultPane.setResults(eulerResults);
+
+            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
+        }
+
+        //replace the calculate button with show iterations so that clicking will show the iteration steps rather
+        calculateButton.setText(getResources().getString(R.string.show_iterations));
+    }
+
+    private boolean checkForEmptyInput() {
+        boolean validated = true;
+
+        if (etEquation.getText().toString().isEmpty()) {
+            tilEquation.setErrorEnabled(true);
+            tilEquation.setError("Cannot be empty");
+            validated = false;
+        }
+
+        if (etInitY.getText().toString().isEmpty()) {
+            tilInitY.setErrorEnabled(true);
+            tilInitY.setError("error");
+            validated = false;
+        }
+
+        if (etX0.getText().toString().isEmpty()) {
+            tilX0.setErrorEnabled(true);
+            tilX0.setError("error");
+            validated = false;
+        }
+
+        if (etX1.getText().toString().isEmpty()) {
+            tilX1.setErrorEnabled(true);
+            tilX1.setError("error");
+            validated = false;
+        }
+
+        if (etH.getText().toString().isEmpty()) {
+            tilH.setErrorEnabled(true);
+            tilH.setError("error");
+            validated = false;
+        }
+        return validated;
     }
 
 
@@ -217,7 +272,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
     private void onEquationChanged() {
         TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
-        Button btnCalculate = rootView.findViewById(R.id.buttonCalculate);
+        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         btnCalculate.setText(getResources().getString(R.string.solve));
         Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
     }

@@ -46,7 +46,7 @@ public class OdeResultsAdapter extends RecyclerView.Adapter<OdeResultsAdapter.Ro
         holder.tvIteration.setText(String.valueOf(position));
         holder.tvSolX.setText(String.format(Locale.US, "%.3f", resultAtPosition.getX()));
         holder.tvSolY.setText(String.format(Locale.US, "%.6f", resultAtPosition.getY()));
-       // holder.tvSolH.setText(String.format(Locale.US, "%.2f", resultAtPosition.getN()));
+        // holder.tvSolH.setText(String.format(Locale.US, "%.2f", resultAtPosition.getN()));
 
     }
 
@@ -66,7 +66,7 @@ public class OdeResultsAdapter extends RecyclerView.Adapter<OdeResultsAdapter.Ro
             tvIteration = itemView.findViewById(R.id.n);
             tvSolX = itemView.findViewById(R.id.solX);
             tvSolY = itemView.findViewById(R.id.solY);
-           // tvSolH = itemView.findViewById(R.id.solH);
+            // tvSolH = itemView.findViewById(R.id.solH);
 
 
         }

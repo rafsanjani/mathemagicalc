@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/headerText"
+            android:id="@+id/text_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/header_margin_top"
@@ -37,15 +37,16 @@
             android:layout_height="20dp" />
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_user_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/std_layout_margin"
+            android:layout_marginRight="@dimen/std_layout_margin">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/text_user_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
                 android:gravity="center_horizontal"
                 android:hint="Enter a Number"
                 android:inputType="numberDecimal"
@@ -54,7 +55,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
-            android:id="@+id/answerArea"
+            android:id="@+id/layout_answer_area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -76,8 +77,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="@dimen/answer_vertical_width"
                     android:layout_marginTop="@dimen/answer_vertical_width"
+                    android:layout_marginBottom="@dimen/answer_vertical_width"
                     android:text="0.000000"
                     android:textAlignment="center"
                     android:visibility="visible" />
@@ -95,7 +96,7 @@
 
 
         <Button
-            android:id="@+id/buttonCalculate"
+            android:id="@+id/button_calculate"
             style="@style/AppMaterialTheme.ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,7 +104,7 @@
             android:text="@string/calculate" />
 
         <Button
-            android:id="@+id/buttonBack"
+            android:id="@+id/button_back"
             style="@style/AppMaterialTheme.ButtonStyle.Exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

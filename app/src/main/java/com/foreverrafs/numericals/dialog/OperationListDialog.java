@@ -40,6 +40,9 @@ import com.foreverrafs.numericals.utils.Utilities;
 public class OperationListDialog extends DialogFragment implements AdapterView.OnItemClickListener {
 
 
+    private FragmentActivity myContext;
+    private View rootView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +58,6 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
             dialog.getWindow().setLayout(width, height);
         }
     }
-
-    private FragmentActivity myContext;
-    private View rootView;
 
     @Override
     public void onAttach(Context context) {
