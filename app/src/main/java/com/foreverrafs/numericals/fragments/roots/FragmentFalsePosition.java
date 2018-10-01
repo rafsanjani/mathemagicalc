@@ -29,7 +29,7 @@ import java.util.List;
  */
 
 public class FragmentFalsePosition extends FragmentRootBase implements View.OnClickListener, TextWatcher {
-    private TextWatcher etToleranceTextWatcher = null;
+    //private TextWatcher etToleranceTextWatcher = null;
     //private TextWatcher etIterationsTextWatcher = null;
 
     private TextInputLayout tilX0, tilX1, tilIterations, tilTolerance, tilEquation;
@@ -152,7 +152,7 @@ public class FragmentFalsePosition extends FragmentRootBase implements View.OnCl
         }
 
         double root;
-        if (buttonText == getResources().getString(R.string.calculate)) {
+        if (buttonText.equals(getResources().getString(R.string.calculate))) {
             try {
                 root = Numericals.FalsePosition(eqn, x0, x1, iter, tol);
             } catch (Exception ex) {

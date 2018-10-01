@@ -77,6 +77,8 @@ public final class Utilities {
     }
 
     public static void replaceFragment(Fragment next, FragmentManager fragmentManager, int containerViewId) {
+        String name = fragmentManager.getClass().getSimpleName();
+
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fade enterFade = new Fade();
         enterFade.setDuration(300);
@@ -86,6 +88,24 @@ public final class Utilities {
         next.setEnterTransition(enterFade);
         transaction.replace(containerViewId, next);
         transaction.commit();
+    }
+
+    public static void replaceFragment(Context mCtx, Fragment next, FragmentManager fragmentManager, int containerViewId) {
+        if (mCtx.getClass().getSimpleName().equals("MainActivity")) {
+            String name = fragmentManager.getClass().getSimpleName();
+
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            Fade enterFade = new Fade();
+            enterFade.setDuration(300);
+            //Fade enterFade = new Fade();
+            //enterFade.setDuration(500);
+
+            next.setEnterTransition(enterFade);
+            transaction.replace(containerViewId, next);
+            transaction.commit();
+            return;
+        }
+        android.util.Log.e(Log, "Only MainActivity can process fragments");
     }
 
     public static void loadFragment(Fragment fragment, FragmentManager fragmentManager, int containerViewId) {
@@ -126,6 +146,7 @@ public final class Utilities {
             algoName = "index";
         Bundle bundle = new Bundle();
         bundle.putString("algorithm_name", algoName);
+
         c.startActivity(new Intent(c, ShowAlgorithm.class).putExtras(bundle));
     }
 

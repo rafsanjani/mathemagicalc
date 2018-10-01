@@ -3,6 +3,7 @@ package com.foreverrafs.numericals.dialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.adapter.MyListAdapter;
 import com.foreverrafs.numericals.fragments.conversions.FragmentBinToDec;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBin;
@@ -157,8 +159,11 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
                 fragment = new FragmentOdeMenu();
                 break;
         }
-        if (fragment != null)
-            Utilities.replaceFragment(fragment, myContext.getSupportFragmentManager(), R.id.fragmentContainer);
+
+        Utilities.replaceFragment(myContext, fragment, myContext.getSupportFragmentManager(), R.id.fragmentContainer);
+
+        startActivity(new Intent(myContext, MainActivity.class));
+        Utilities.replaceFragment(fragment, myContext.getSupportFragmentManager(), R.id.fragmentContainer);
 
         dismiss();
     }

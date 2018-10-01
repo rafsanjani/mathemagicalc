@@ -21,11 +21,11 @@ import com.foreverrafs.numericals.utils.Utilities;
 import java.lang.reflect.Method;
 
 public class ShowAlgorithm extends AppCompatActivity {
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_showalgorithm, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_showalgorithm, menu);
+//        return true;
+//    }
 
     /*public void onAbout(MenuItem item) {
         Fragment fragment = new About();
