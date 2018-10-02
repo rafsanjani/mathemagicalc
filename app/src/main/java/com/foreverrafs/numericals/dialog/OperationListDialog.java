@@ -160,9 +160,9 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
                 break;
         }
 
-        Utilities.replaceFragment(myContext, fragment, myContext.getSupportFragmentManager(), R.id.fragmentContainer);
+        //Utilities.replaceFragment(myContext, fragment, myContext.getSupportFragmentManager(), R.id.fragmentContainer);
 
-        startActivity(new Intent(myContext, MainActivity.class));
+        //startActivity(new Intent(myContext, MainActivity.class));
         Utilities.replaceFragment(fragment, myContext.getSupportFragmentManager(), R.id.fragmentContainer);
 
         dismiss();
