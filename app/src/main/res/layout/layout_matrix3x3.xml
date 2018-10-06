@@ -31,12 +31,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:weightSum="3">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
 
                         <android.support.design.widget.TextInputLayout
                             android:layout_width="wrap_content"
@@ -46,7 +49,6 @@
                                 android:id="@+id/a11"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a11" />
-
                         </android.support.design.widget.TextInputLayout>
 
 
@@ -73,7 +75,8 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <android.support.design.widget.TextInputLayout
@@ -112,7 +115,8 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <android.support.design.widget.TextInputLayout
@@ -152,8 +156,8 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
                     android:src="@drawable/right_bracket" />
 
 
@@ -166,13 +170,15 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="visible"
+                    android:weightSum="3">
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
 
                         <TextView
                             style="@style/MatrixConstantStyle"
@@ -182,7 +188,8 @@
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
 
                         <TextView
                             style="@style/MatrixConstantStyle"
@@ -192,7 +199,8 @@
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
 
                         <TextView
                             style="@style/MatrixConstantStyle"
@@ -231,13 +239,15 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="visible"
+                    android:weightSum="3">
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
 
                         <EditText
                             android:id="@+id/b1"
@@ -247,7 +257,8 @@
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
 
                         <EditText
                             android:id="@+id/b2"
@@ -257,7 +268,8 @@
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
 
                         <EditText
                             android:id="@+id/b3"
@@ -303,22 +315,22 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="3">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_marginTop="10dp"
+                        android:layout_weight="1"
                         android:orientation="horizontal">
-
 
                         <TextView
                             android:id="@+id/sa11"
                             style="@style/MatrixSolutionStyle"
                             android:layout_gravity="center"
                             android:text="0.0" />
-
 
                         <TextView
                             android:id="@+id/sa12"
@@ -335,7 +347,8 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <TextView
@@ -361,7 +374,8 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <TextView
@@ -395,27 +409,34 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="visible"
+                    android:weightSum="3">
 
                     <TextView
                         android:id="@+id/sab1"
                         style="@style/MatrixSolutionStyle"
+                        android:layout_height="0dp"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:text="0.0" />
 
                     <TextView
                         android:id="@+id/sab2"
                         style="@style/MatrixSolutionStyle"
+                        android:layout_height="0dp"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:text="0.0" />
 
                     <TextView
                         android:id="@+id/sab3"
                         style="@style/MatrixSolutionStyle"
+                        android:layout_height="0dp"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:text="0.0" />
 
 
@@ -457,29 +478,35 @@
                     android:visibility="visible" />
 
                 <LinearLayout
-
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="visible"
+                    android:weightSum="3">
 
                     <TextView
                         android:id="@+id/sax1"
                         style="@style/MatrixSolutionStyle"
+                        android:layout_height="0dp"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:text="0.0" />
 
                     <TextView
                         android:id="@+id/sax2"
                         style="@style/MatrixSolutionStyle"
+                        android:layout_height="0dp"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:text="0.0" />
 
                     <TextView
                         android:id="@+id/sax3"
                         style="@style/MatrixSolutionStyle"
+                        android:layout_height="0dp"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:text="0.0" />
 
 
