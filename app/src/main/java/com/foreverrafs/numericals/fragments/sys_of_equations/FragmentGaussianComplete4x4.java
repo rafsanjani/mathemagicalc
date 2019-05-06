@@ -41,7 +41,7 @@ public class FragmentGaussianComplete4x4 extends Fragment implements View.OnClic
 
     private void initControls() {
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
@@ -60,7 +60,7 @@ public class FragmentGaussianComplete4x4 extends Fragment implements View.OnClic
                 break;
 
             case R.id.button_calculate:
-                Log.i(Utilities.Log, "solving the system using gaussian with partial pivoting");
+                Log.i(Utilities.LOG_TAG, "solving the system using gaussian with partial pivoting");
                 onCalculate();
                 break;
         }

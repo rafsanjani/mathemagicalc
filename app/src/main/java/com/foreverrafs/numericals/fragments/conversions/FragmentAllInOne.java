@@ -43,7 +43,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     }
 
     private void initControls() {
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
         inputLayout = rootView.findViewById(R.id.til_user_input);
         inputLayout.setErrorEnabled(true);
 
@@ -135,9 +135,9 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
 
 
         } catch (NumberFormatException ex) {
-            Log.e(Utilities.Log, "cannot parse " + decimal + " to an integer value");
+            Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to an integer value");
         } catch (Exception ex) {
-            Log.e(Utilities.Log, ex.getMessage());
+            Log.e(Utilities.LOG_TAG, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }

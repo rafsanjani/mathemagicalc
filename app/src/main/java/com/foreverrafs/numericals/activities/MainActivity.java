@@ -4,7 +4,6 @@ package com.foreverrafs.numericals.activities;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         TextView toolbarAppTitle = findViewById(R.id.toolbarAppTitle);
-        toolbarAppTitle.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Philosopher-Bold.ttf"));
+        toolbarAppTitle.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/philosopher_bold.ttf"));
 
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     }
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         display.getMetrics(outMetrics);
 
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
-        Log.i(Utilities.Log, f.toString() + " is the active fragment now");
+        Log.i(Utilities.LOG_TAG, f.toString() + " is the active fragment now");
 
         if (!(f instanceof FragmentMainMenu)) {
             //transition between the open fragment and mainmenu

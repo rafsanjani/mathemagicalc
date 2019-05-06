@@ -53,7 +53,7 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
                 break;
 
             default:
-                Log.i(Utilities.Log, "Equation type not found");
+                Log.i(Utilities.LOG_TAG, "Equation type not found");
                 break;
         }
 

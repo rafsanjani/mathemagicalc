@@ -53,13 +53,13 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
         inputLayout = rootView.findViewById(R.id.til_user_input);
         //tvAnswer.setTypeface(typeface);
 
-        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
+        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         EditText etInput = rootView.findViewById(R.id.text_user_input);
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
 
 
         etInput.setOnKeyListener(new View.OnKeyListener() {
@@ -149,7 +149,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
 
 
         } catch (NumberFormatException ex) {
-            Log.e(Utilities.Log, "cannot parse " + decimal + " to a double value");
+            Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to a double value");
             //Toast.makeText(getContext(), "Number entered isn't an integer", Toast.LENGTH_SHORT).show();
             inputLayout.setErrorEnabled(true);
             inputLayout.setError("Input isn't an Integer");
@@ -158,7 +158,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
 
         } catch (Exception ex) {
-            Log.e(Utilities.Log, ex.getMessage());
+            Log.e(Utilities.LOG_TAG, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }

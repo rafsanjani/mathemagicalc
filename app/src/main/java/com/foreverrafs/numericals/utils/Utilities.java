@@ -4,6 +4,8 @@ package com.foreverrafs.numericals.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.transition.Fade;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,7 @@ import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
@@ -28,7 +31,7 @@ import com.transitionseverywhere.extra.Scale;
 
 public final class Utilities {
 
-    public static final String Log = "TAG";
+    public static final String LOG_TAG = "TAG";
 
     public static void replaceFragment(Fragment next, FragmentManager fragmentManager, int containerViewId, boolean isGoingBack) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -48,22 +51,10 @@ public final class Utilities {
         //cast the view to a TextView, if casting fails then we cast to an edittext and apply the necessary font
         Typeface typeface = null;
 
-        switch (typeFaceName) {
-            case bitter_italic:
-                typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/Bitter-Italic.ttf");
-                break;
-
-            case lobster_regular:
-                typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/Lobster-Regular.ttf");
-                break;
-
-            case philosopher_bold:
-                typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/Philosopher-Bold.ttf");
-                break;
-
-            case fallingsky:
-                typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/FallingSky.otf");
-                break;
+        try {
+            typeface = Typeface.createFromAsset(mCtx.getAssets(), typeFaceName.toString());
+        } catch (Exception exception) {
+            android.util.Log.e(LOG_TAG, exception.getMessage());
         }
 
         try {
@@ -105,7 +96,7 @@ public final class Utilities {
             transaction.commit();
             return;
         }
-        android.util.Log.e(Log, "Only MainActivity can process fragments");
+        android.util.Log.e(LOG_TAG, "Only MainActivity can process fragments");
     }
 
     public static void loadFragment(Fragment fragment, FragmentManager fragmentManager, int containerViewId) {
@@ -156,13 +147,20 @@ public final class Utilities {
     }
 
     public enum TypeFaceName {
-        //Add more typefaces when necessary
-        lobster_regular,
+        //TypeFace should be the exact name of file stored in assets/fonts without the extension
+        raleway_bold,
+        falling_sky,
         bitter_italic,
-        fallingsky,
-        philosopher_bold
+        philosopher_bold,
+    }
+
+    private void animateButtonDrawable(ImageButton target, Drawable toDrawable) {
+        target.setImageDrawable(toDrawable);
+        final Animatable animatable = (Animatable) target.getDrawable();
+        animatable.start();
     }
 }
+
 /*
     LATEX TEXTS
     JACOBI'S METHOD

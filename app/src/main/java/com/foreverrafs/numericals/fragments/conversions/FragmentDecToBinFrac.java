@@ -56,8 +56,8 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
-        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
 
 //        rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
@@ -149,9 +149,9 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
         } catch (NumberFormatException ex) {
-            Log.e(Utilities.Log, "cannot parse " + decimal + " to a double value");
+            Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to a double value");
         } catch (Exception ex) {
-            Log.e(Utilities.Log, ex.getMessage());
+            Log.e(Utilities.LOG_TAG, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }

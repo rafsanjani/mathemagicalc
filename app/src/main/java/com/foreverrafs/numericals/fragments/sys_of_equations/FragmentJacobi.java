@@ -79,7 +79,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         Button btnBack = rootView.findViewById(R.id.button_back);
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
 
         EditText etEqn[] = new EditText[3];
         etEqn[0] = rootView.findViewById(R.id.text_equationx1);
@@ -109,7 +109,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
                 break;
 
             case R.id.button_calculate:
-                Log.i(Utilities.Log, "performing Jacobi's calculation");
+                Log.i(Utilities.LOG_TAG, "performing Jacobi's calculation");
                 onCalculate();
                 break;
             case R.id.button_show_algo:

@@ -48,7 +48,7 @@ public class FragmentFalsePosition extends FragmentRootBase implements View.OnCl
         Button btnBack = rootView.findViewById(R.id.button_back);
 
         //  Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Bitter-Italic.ttf");
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
         Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
         //initialize TextInputLayouts
@@ -99,7 +99,7 @@ public class FragmentFalsePosition extends FragmentRootBase implements View.OnCl
 
             case R.id.button_calculate:
                 Button btn = (Button) view;
-                Log.i(Utilities.Log, "performing False Position calculation");
+                Log.i(Utilities.LOG_TAG, "performing False Position calculation");
                 onCalculate(btn.getText().toString());
                 break;
 
@@ -147,7 +147,7 @@ public class FragmentFalsePosition extends FragmentRootBase implements View.OnCl
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
-            Log.i(Utilities.Log, "Error parsing one or more of the expressions");
+            Log.i(Utilities.LOG_TAG, "Error parsing one or more of the expressions");
             return;
         }
 

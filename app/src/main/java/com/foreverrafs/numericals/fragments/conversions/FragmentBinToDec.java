@@ -1,7 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -16,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.support.annotation.NonNull;
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.core.NotABinaryException;
@@ -54,8 +53,8 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
         Button btnShowAlgo = rootView.findViewById(R.id.button_show_algo);
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
-        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
 
 //        rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
@@ -138,12 +137,12 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
         } catch (NotABinaryException ex) {
-            Log.e(Utilities.Log, ex.getMessage());
+            Log.e(Utilities.LOG_TAG, ex.getMessage());
             inputLayout.setErrorEnabled(true);
             inputLayout.setError(ex.getMessage());
             etInput.setText(null);
         } catch (Exception ex) {
-            Log.e(Utilities.Log, ex.getMessage());
+            Log.e(Utilities.LOG_TAG, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }

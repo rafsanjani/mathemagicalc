@@ -53,7 +53,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
         Button btnShowAlgorithm = rootView.findViewById(R.id.button_show_algo);
 
         //Initialize and set typefaces
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
         Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
 
@@ -135,7 +135,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
             case R.id.button_calculate:
                 Button btn = (Button) view;
-                Log.i(Utilities.Log, "performing Euler's Forward calculation");
+                Log.i(Utilities.LOG_TAG, "performing Euler's Forward calculation");
                 onCalculate(btn.getText().toString());
                 break;
             case R.id.button_show_algo:
@@ -176,7 +176,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
             //Toast.makeText(getContext(), "One or more of the input expressions are invalid", Toast.LENGTH_LONG).show();
-            Log.i(Utilities.Log, "Error parsing one or more of the expressions");
+            Log.i(Utilities.LOG_TAG, "Error parsing one or more of the expressions");
             return;
         }
 

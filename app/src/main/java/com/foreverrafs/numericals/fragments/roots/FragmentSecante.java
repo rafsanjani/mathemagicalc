@@ -47,7 +47,7 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
         Button btnBack = rootView.findViewById(R.id.button_back);
 
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
         Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
         //Initialize TextInputLayouts
@@ -98,7 +98,7 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
 
             case R.id.button_calculate:
                 Button btn = (Button) view;
-                Log.i(Utilities.Log, "performing Secate calculation");
+                Log.i(Utilities.LOG_TAG, "performing Secate calculation");
                 onCalculate(btn.getText().toString());
                 break;
             case R.id.button_show_algo:
@@ -140,7 +140,7 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
-            Log.i(Utilities.Log, "Error parsing one or more of the expressions");
+            Log.i(Utilities.LOG_TAG, "Error parsing one or more of the expressions");
             return;
         }
 

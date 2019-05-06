@@ -49,8 +49,8 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
         inputLayout = rootView.findViewById(R.id.til_user_input);
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
-        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
@@ -138,9 +138,9 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
         } catch (NumberFormatException ex) {
-            Log.e(Utilities.Log, "cannot parse " + decimal + " to an integer value");
+            Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to an integer value");
         } catch (Exception ex) {
-            Log.e(Utilities.Log, ex.getMessage());
+            Log.e(Utilities.LOG_TAG, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }

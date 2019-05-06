@@ -18,7 +18,7 @@ import java.util.List;
 
 //All fragments which will solve a location of root problem must extend from this Fragment and assign
 //appropriate values to the protected field members else a NullPointerException will be thrown when
-//any of the protected field methods attempts to execute
+//any of the protected methods attempts to execute in the subclasses
 public abstract class FragmentRootBase extends Fragment {
     protected List<LocationOfRootResult> roots = null;
     protected View rootView;
@@ -35,7 +35,7 @@ public abstract class FragmentRootBase extends Fragment {
 
     protected void registerOnKeyListener(final TextInputLayout... inputLayouts) throws RuntimeException {
         if (inputLayouts.length == 0) {
-            Log.e(Utilities.Log, "At least one inputLayout must be supplied to registerOnKeyListener");
+            Log.e(Utilities.LOG_TAG, "At least one inputLayout must be supplied to registerOnKeyListener");
             return;
         }
         myKeyListener = new View.OnKeyListener() {
@@ -73,7 +73,7 @@ public abstract class FragmentRootBase extends Fragment {
 
     protected boolean checkForEmptyInput(final TextInputLayout... inputLayouts) {
         if (inputLayouts.length == 0) {
-            Log.e(Utilities.Log, "At least one inputLayout must be supplied to registerOnKeyListener");
+            Log.e(Utilities.LOG_TAG, "At least one inputLayout must be supplied to registerOnKeyListener");
             return false;
         }
 

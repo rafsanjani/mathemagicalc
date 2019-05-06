@@ -46,8 +46,8 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
     private void initControls() {
         TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
 
-        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.fallingsky);
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
@@ -138,9 +138,9 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
 
 
         } catch (NumberFormatException ex) {
-            Log.e(Utilities.Log, "cannot parse " + decimal + " to an integer value");
+            Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to an integer value");
         } catch (Exception ex) {
-            Log.e(Utilities.Log, ex.getMessage());
+            Log.e(Utilities.LOG_TAG, ex.getMessage());
         } finally {
             MainActivity.hideKeyboard(etInput);
         }

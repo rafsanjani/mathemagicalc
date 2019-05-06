@@ -94,7 +94,7 @@ public class About extends MaterialAboutFragment {
                                 .setPositiveButtonClick(new Closure() {
                                     @Override
                                     public void exec() {
-                                        Log.i(Utilities.Log, "[About::Credits] - clicked the okay button");
+                                        Log.i(Utilities.LOG_TAG, "[About::Credits] - clicked the okay button");
                                     }
                                 }).show();
                     }

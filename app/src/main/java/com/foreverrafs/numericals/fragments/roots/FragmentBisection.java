@@ -49,7 +49,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
         Button btnBack = rootView.findViewById(R.id.button_back);
 
         //Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Bitter-Italic.ttf");
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
         Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
 
@@ -104,7 +104,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
 
                     etTolerance.setText(String.valueOf(tolerance));
                 } catch (NumberFormatException ex) {
-                    Log.i(Utilities.Log, "Initial guesses are not provided");
+                    Log.i(Utilities.LOG_TAG, "Initial guesses are not provided");
                 } finally {
                     etTolerance.addTextChangedListener(etToleranceTextWatcher);
                 }
@@ -143,7 +143,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
 
                     etIterations.setText(String.valueOf(iterations));
                 } catch (NumberFormatException ex) {
-                    Log.i(Utilities.Log, "Initial guesses are not provided");
+                    Log.i(Utilities.LOG_TAG, "Initial guesses are not provided");
                 } finally {
                     etIterations.addTextChangedListener(etIterationsTextWatcher);
                 }
@@ -183,7 +183,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
 
             case R.id.button_calculate:
                 Button btn = (Button) view;
-                Log.i(Utilities.Log, "performing bisection calculation");
+                Log.i(Utilities.LOG_TAG, "performing bisection calculation");
                 onCalculate(btn.getText().toString());
                 break;
             case R.id.button_show_algo:
@@ -223,7 +223,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
-            Log.i(Utilities.Log, "Error parsing one or more of the expressions");
+            Log.i(Utilities.LOG_TAG, "Error parsing one or more of the expressions");
             return;
         }
 

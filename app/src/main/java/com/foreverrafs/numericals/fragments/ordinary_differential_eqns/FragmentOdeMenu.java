@@ -42,7 +42,7 @@ public class FragmentOdeMenu extends Fragment implements View.OnClickListener {
 
     private void initControls() {
         header = rootView.findViewById(R.id.Header);
-        Utilities.setTypeFace(header, getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(header, getContext(), Utilities.TypeFaceName.raleway_bold);
         header.setVisibility(View.VISIBLE);
 
         rootView.findViewById(R.id.btn_ode_euler).setOnClickListener(this);

@@ -78,7 +78,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
 
     public void initControls() {
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.lobster_regular);
+        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         Button btnBack = rootView.findViewById(R.id.button_back);
 
@@ -116,7 +116,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
                 break;
 
             case R.id.button_calculate:
-                Log.i(Utilities.Log, "performing Jacobi's calculation");
+                Log.i(Utilities.LOG_TAG, "performing Jacobi's calculation");
                 onCalculate();
                 break;
             case R.id.button_show_algo:

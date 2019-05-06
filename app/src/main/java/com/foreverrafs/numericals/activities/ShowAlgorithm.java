@@ -1,14 +1,11 @@
 package com.foreverrafs.numericals.activities;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
@@ -72,7 +69,7 @@ public class ShowAlgorithm extends AppCompatActivity {
             algoName = bundle.getString("algorithm_name");
         } else {
             //load index page if no file is provided
-            Log.i(Utilities.Log, "no file provided, loading index page");
+            Log.i(Utilities.LOG_TAG, "no file provided, loading index page");
             algoName = "index";
         }
 
