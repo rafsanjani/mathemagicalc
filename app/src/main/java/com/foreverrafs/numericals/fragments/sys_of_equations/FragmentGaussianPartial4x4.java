@@ -33,7 +33,7 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_gaussian_partial4x4, container, false);
-        MainActivity.setToolBarInfo("System of Equations", "Gaussian Elimination (Partial Pivoting)");
+        //("System of Equations", "Gaussian Elimination (Partial Pivoting)");
 
         initControls();
         return rootView;

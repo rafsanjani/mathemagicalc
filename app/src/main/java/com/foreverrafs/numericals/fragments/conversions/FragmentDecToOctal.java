@@ -38,7 +38,7 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_dec_to_octal, container, false);
-        MainActivity.setToolBarInfo("Decimal Calculator", "Convert decimals to binary");
+        //("Decimal Calculator", "Convert decimals to binary");
 
         initControls();
         return rootView;

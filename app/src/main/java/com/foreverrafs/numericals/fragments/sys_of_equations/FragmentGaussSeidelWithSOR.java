@@ -104,7 +104,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
 
 
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        MainActivity.setToolBarInfo("System of Equations", "Gauss Seidel With SOR");
+        //("System of Equations", "Gauss Seidel With SOR");
 
     }
 

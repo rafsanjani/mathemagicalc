@@ -28,7 +28,7 @@ public class FragmentConversionsMenu extends Fragment implements View.OnClickLis
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_conversions_menu, container, false);
         initControls();
-        MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
+        //(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
 
         return rootView;
 

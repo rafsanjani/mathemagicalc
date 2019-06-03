@@ -103,7 +103,7 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
 
 
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        MainActivity.setToolBarInfo("System of Equations", "Gauss Seidel's Method");
+        //("System of Equations", "Gauss Seidel's Method");
 
     }
 

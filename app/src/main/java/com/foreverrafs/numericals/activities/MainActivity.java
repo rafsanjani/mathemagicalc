@@ -29,10 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
     static InputMethodManager imm;
 
-    //TODO: Delete this method but there are 23 usages as at now.
-    public static void setToolBarInfo(String title, String subtitle) {
-
-    }
 
     public static void hideKeyboard(View view) {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);

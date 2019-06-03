@@ -29,7 +29,7 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements View.OnCl
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_system_of_equations_menu, container, false);
         initControls();
-        MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
+        //(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
 
         return rootView;
 

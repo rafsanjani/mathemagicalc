@@ -97,7 +97,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
 
 
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        MainActivity.setToolBarInfo("System of Equations", "Jacobi's Method");
+        //("System of Equations", "Jacobi's Method");
 
     }
 

@@ -33,7 +33,7 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_gaussian_complete3x3, container, false);
-        MainActivity.setToolBarInfo("System of Equations", "Gaussian Elimination (Partial Pivoting)");
+        //("System of Equations", "Gaussian Elimination (Partial Pivoting)");
 
         initControls();
         return rootView;

@@ -80,7 +80,7 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
         etEquation.addTextChangedListener(this);
 
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        //MainActivity.setToolBarInfo("Location of Roots", "Secante Method");
+        ////("Location of Roots", "Secante Method");
     }
 
     @Override

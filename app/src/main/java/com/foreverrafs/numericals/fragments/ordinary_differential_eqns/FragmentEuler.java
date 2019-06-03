@@ -117,7 +117,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
 
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        MainActivity.setToolBarInfo("Location of Roots", "Bisection Method");
+        //("Location of Roots", "Bisection Method");
     }
 
     @Override

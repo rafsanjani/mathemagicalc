@@ -76,7 +76,7 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnCl
         etEquation.addTextChangedListener(this);
 
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        MainActivity.setToolBarInfo("Location of Roots", "NR Method");
+        //("Location of Roots", "NR Method");
     }
 
     @Override

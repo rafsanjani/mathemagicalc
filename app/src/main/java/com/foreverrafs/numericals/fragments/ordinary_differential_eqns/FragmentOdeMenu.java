@@ -28,7 +28,7 @@ public class FragmentOdeMenu extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_ode_menu, container, false);
         initControls();
-        MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), "Ordinary Differential Equations");
+        //(getResources().getString(R.string.app_name), "Ordinary Differential Equations");
 
         return rootView;
 
