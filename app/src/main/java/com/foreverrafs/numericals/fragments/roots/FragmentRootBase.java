@@ -1,8 +1,6 @@
 package com.foreverrafs.numericals.fragments.roots;
 
 
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -10,9 +8,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -38,23 +40,20 @@ public abstract class FragmentRootBase extends Fragment {
             Log.e(Utilities.LOG_TAG, "At least one inputLayout must be supplied to registerOnKeyListener");
             return;
         }
-        myKeyListener = new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                onEquationChanged();
-                for (TextInputLayout inputLayout : inputLayouts) {
-                    inputLayout.setErrorEnabled(false);
-                }
-
-                if (keyEvent.getAction() != KeyEvent.ACTION_DOWN)
-                    return false;
-
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    onCalculate(btnCalculate.getText().toString());
-                    return true;
-                }
-                return false;
+        myKeyListener = (view, i, keyEvent) -> {
+            onEquationChanged();
+            for (TextInputLayout inputLayout : inputLayouts) {
+                inputLayout.setErrorEnabled(false);
             }
+
+            if (keyEvent.getAction() != KeyEvent.ACTION_DOWN)
+                return false;
+
+            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                onCalculate(btnCalculate.getText().toString());
+                return true;
+            }
+            return false;
         };
 
         for (TextInputLayout inputLayout : inputLayouts) {
@@ -62,7 +61,7 @@ public abstract class FragmentRootBase extends Fragment {
         }
     }
 
-    protected void unRegisterOnKeyListener(final TextInputLayout... inputLayouts) throws RuntimeException {
+    protected void unRegisterOnKeyListeners(@NonNull final TextInputLayout... inputLayouts) throws RuntimeException {
         if (myKeyListener == null) {
             throw new RuntimeException("You must call register before calling unregister");
         }
@@ -71,7 +70,7 @@ public abstract class FragmentRootBase extends Fragment {
         }
     }
 
-    protected boolean checkForEmptyInput(final TextInputLayout... inputLayouts) {
+    protected boolean checkForEmptyInput(@NonNull final TextInputLayout... inputLayouts) {
         if (inputLayouts.length == 0) {
             Log.e(Utilities.LOG_TAG, "At least one inputLayout must be supplied to registerOnKeyListener");
             return false;
@@ -97,5 +96,5 @@ public abstract class FragmentRootBase extends Fragment {
         return validated;
     }
 
-    protected abstract void onCalculate(final String buttonText);
+    protected abstract void onCalculate(@NonNull final String buttonText);
 }

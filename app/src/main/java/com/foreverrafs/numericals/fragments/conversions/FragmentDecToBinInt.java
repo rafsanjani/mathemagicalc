@@ -59,7 +59,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         EditText etInput = rootView.findViewById(R.id.text_user_input);
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
 
 
         etInput.setOnKeyListener(new View.OnKeyListener() {

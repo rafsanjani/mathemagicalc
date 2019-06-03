@@ -52,7 +52,23 @@ public final class Utilities {
         Typeface typeface = null;
 
         try {
-            typeface = Typeface.createFromAsset(mCtx.getAssets(), typeFaceName.toString());
+            typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/" + typeFaceName.toString() + ".ttf");
+            TextView tv = (TextView) view;
+            tv.setTypeface(typeface);
+        } catch (ClassCastException exception) {
+            EditText editText = (EditText) view;
+            editText.setTypeface(typeface);
+        } catch (Exception exception) {
+            android.util.Log.e(LOG_TAG, exception.getMessage());
+        }
+    }
+
+    public static void setTypeFace(View view, Context mCtx, String typeFaceName) {
+        //cast the view to a TextView, if casting fails then we cast to an edittext and apply the necessary font
+        Typeface typeface = null;
+
+        try {
+            typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/" + typeFaceName + ".ttf");
             TextView tv = (TextView) view;
             tv.setTypeface(typeface);
         } catch (ClassCastException exception) {

@@ -49,7 +49,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
         TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
         inputLayout = rootView.findViewById(R.id.til_user_input);
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+//        ////Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
 
         Button btnBack = rootView.findViewById(R.id.button_back);

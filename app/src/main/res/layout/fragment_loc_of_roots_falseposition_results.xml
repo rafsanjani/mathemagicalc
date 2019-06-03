@@ -7,14 +7,12 @@
     android:background="@color/colorMainBackground"
     android:orientation="vertical">
 
-    <TextView
+    <com.foreverrafs.numericals.custom_views.HeaderTextView
         android:id="@+id/text_header"
+        style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/header_margin_top"
-        android:text="Expansion of Iterations for False Position"
-        android:textAlignment="center"
-        android:textSize="32sp" />
+        android:text="@string/false_position_expansion_header" />
 
     <TextView
         android:id="@+id/title"
@@ -23,7 +21,7 @@
         android:layout_below="@id/text_header"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="The results of each iteration step is given below"
+        android:text="@string/false_position_expansion_desc"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="15sp" />
@@ -115,8 +113,8 @@
             android:layout_height="wrap_content">
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:id="@+id/iteration"
+                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -124,8 +122,8 @@
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:id="@+id/x1"
+                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -134,8 +132,8 @@
                 android:text="x1" />
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:id="@+id/x2"
+                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -144,8 +142,8 @@
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:id="@+id/x3"
+                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -154,8 +152,8 @@
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:id="@+id/difference"
+                style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

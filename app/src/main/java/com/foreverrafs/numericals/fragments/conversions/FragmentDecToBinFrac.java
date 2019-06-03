@@ -48,30 +48,23 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
     }
 
     private void initControls() {
-        // Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
         TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
         inputLayout = rootView.findViewById(R.id.til_user_input);
-        //tvAnswer.setTypeface(typeface);
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
 
-//        rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
-        etInput.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                inputLayout.setErrorEnabled(false);
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    onCalculate();
-                    return true;
-                }
-                return false;
+        etInput.setOnKeyListener((view, i, keyEvent) -> {
+            inputLayout.setErrorEnabled(false);
+            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                onCalculate();
+                return true;
             }
+            return false;
         });
 
         etInput.addTextChangedListener(this);

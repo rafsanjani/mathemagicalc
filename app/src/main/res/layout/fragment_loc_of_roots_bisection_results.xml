@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMainBackground"
     android:orientation="vertical">
 
-    <TextView
+    <com.foreverrafs.numericals.custom_views.HeaderTextView
         android:id="@+id/text_header"
+        style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/header_margin_top"
-        android:text="Expansion of Iterations for Bisection"
-        android:textAlignment="center"
-        android:textSize="32sp" />
+        android:text="@string/bisection_expansion_header" />
 
     <TextView
         android:id="@+id/title"
@@ -23,7 +22,7 @@
         android:layout_below="@id/text_header"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="The results of each iteration step is given below"
+        android:text="@string/bisection_expansion_desc"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="15sp" />
@@ -56,14 +55,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/std_layout_margin"
-                android:text="Interval: " />
+                android:layout_marginStart="@dimen/std_layout_margin"
+                android:text="@string/interval" />
 
             <TextView
                 android:id="@+id/interval"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="[-2, -5]"
+                android:text="@string/custom_interval"
                 android:textColor="#37963b" />
         </LinearLayout>
 
@@ -75,8 +74,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="Iterations: " />
+                android:layout_marginStart="8dp"
+                android:text="@string/iterations_colon" />
 
             <TextView
                 android:id="@+id/iterations"

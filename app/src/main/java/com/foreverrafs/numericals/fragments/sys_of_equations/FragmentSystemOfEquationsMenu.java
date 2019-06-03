@@ -42,7 +42,7 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements View.OnCl
     }
 
     private void initControls() {
-        header = rootView.findViewById(R.id.Header);
+        header = rootView.findViewById(R.id.text_header);
         header.setVisibility(View.VISIBLE);
 
         rootView.findViewById(R.id.btn_sys_of_eqn_gaussian3x3complete).setOnClickListener(this);

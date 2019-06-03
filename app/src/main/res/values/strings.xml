@@ -133,6 +133,30 @@
     <string name="xo">Xo</string>
     <string name="xn">Xn</string>
     <string name="about">About</string>
+    <string name="gaussian_complete_header">Gaussian Elimination with Complete Pivoting</string>
+    <string name="gaussian_partial_header">Gaussian Elimination with Partial Pivoting</string>
+    <string name="gauss_seidel_desc">Equation of the form [i]Ax[/i] = [i]b[/i]</string>
+    <string name="gauss_seidel_header">Gauss Seidel\'s Method</string>
+    <string name="gauss_seidel_sor_header">Gauss Seidel\'s Method With SOR</string>
+    <string name="jacobi_header">Jacobi\'s Method</string>
+    <string name="jacobi_desc">Equation of the form [i]Ax[/i] = [i]b[/i]</string>
+    <string name="bisection_expansion_header">Expansion of Iterations for Bisection</string>
+    <string name="bisection_expansion_desc">The results of each iteration step is given below</string>
+    <string name="interval">Interval:</string>
+    <string name="custom_interval">[-2, -5]</string>
+    <string name="iterations_colon">Iterations:</string>
+    <string name="false_position_header">False Position Method</string>
+    <string name="false_position_expansion_header">Expansion of Iterations for False Position</string>
+    <string name="false_position_expansion_desc">The results of each iteration step is given below</string>
+    <string name="newton_raphson_header">Newton Raphson</string>
+    <string name="newton_raphson_expansion_header">Expansion of Iterations for Newton Raphson</string>
+    <string name="newton_raphson_expansion_desc">The results of each iteration step is given below</string>
+    <string name="secante_method_header">Secante Method</string>
+    <string name="secante_expansion_header">Expansion of Iterations for Secante</string>
+    <string name="secante_expansion_desc">The results of each iteration step is given below</string>
+    <string name="euler_expansion_header">Expansion of Iterations for Euler\'s Method</string>
+    <string name="method_expansion_desc">The results of each iteration step is given below</string>
+    <string name="ode_header">Ordinary Differential Equations</string>
 
 
 </resources>

@@ -44,7 +44,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     }
 
     private void initControls() {
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+//        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.philosopher_bold);
         inputLayout = rootView.findViewById(R.id.til_user_input);
         inputLayout.setErrorEnabled(true);
 

@@ -3,51 +3,25 @@
     android:layout_height="match_parent"
     android:background="@color/colorMainBackground">
 
-    <TextView
-        android:id="@+id/Header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/header_margin_top"
-        android:text="Ordinary Differential Equations"
-        android:textAlignment="center"
-        android:textSize="32sp" />
-
-    <ScrollView
-        android:id="@+id/mainContent"
+    <com.foreverrafs.numericals.custom_views.HeaderTextView
+        android:id="@+id/text_header"
+        style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Header">
+        android:text="@string/ode_header" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/btn_ode_euler"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="@null"
-                    android:drawableTop="@drawable/button_ode_euler"
-                    android:text="Euler's Forward Method"
-                    android:textSize="@dimen/menu_text_size"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-    </ScrollView>
+    <Button
+        android:id="@+id/btn_ode_euler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_header"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:background="@null"
+        android:drawableTop="@drawable/button_ode_euler"
+        android:text="Euler's Forward Method"
+        android:textSize="@dimen/menu_text_size"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

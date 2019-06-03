@@ -1,12 +1,10 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +21,7 @@ import com.foreverrafs.numericals.utils.Utilities;
 public class FragmentConversionsMenu extends Fragment implements View.OnClickListener {
 
 
-    private static TextView header;
+    //    private static TextView header;
     private View rootView;
 
     @Override
@@ -43,8 +41,8 @@ public class FragmentConversionsMenu extends Fragment implements View.OnClickLis
     }
 
     private void initControls() {
-        header = rootView.findViewById(R.id.Header);
-        header.setVisibility(View.VISIBLE);
+//        header = rootView.findViewById(R.id.text_header);
+//        header.setVisibility(View.VISIBLE);
 
         rootView.findViewById(R.id.btn_dec_to_binary_integer).setOnClickListener(this);
         rootView.findViewById(R.id.btn_dec_to_binary_fraction).setOnClickListener(this);
@@ -54,8 +52,8 @@ public class FragmentConversionsMenu extends Fragment implements View.OnClickLis
         rootView.findViewById(R.id.btn_decimal_to_hexadecimal).setOnClickListener(this);
         rootView.findViewById(R.id.btn_allinone).setOnClickListener(this);
 
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
-        header.setTypeface(typeface);
+//        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
+//        header.setTypeface(typeface);
     }
 
     @Override

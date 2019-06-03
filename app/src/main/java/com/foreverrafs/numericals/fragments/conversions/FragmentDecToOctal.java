@@ -48,7 +48,7 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
         TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
 
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+        ////Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);

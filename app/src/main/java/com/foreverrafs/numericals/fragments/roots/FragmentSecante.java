@@ -47,7 +47,7 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
         Button btnBack = rootView.findViewById(R.id.button_back);
 
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
         Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
         //Initialize TextInputLayouts

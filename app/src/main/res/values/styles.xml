@@ -26,6 +26,16 @@
         <item name="android:backgroundTint">#000000</item>
     </style>
 
+    <style name="AppMaterialTheme.HeaderStyle" parent="">
+        <item name="font_name">raleway_bold.ttf</item>
+        <item name="android:layout_marginTop">@dimen/header_margin_top</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
     <style name="AppMaterialTheme.TextInputHintStyle" parent="@android:style/TextAppearance">
         <item name="android:textColor">#26a69a</item>
     </style>

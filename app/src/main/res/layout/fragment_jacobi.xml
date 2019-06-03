@@ -6,21 +6,19 @@
     android:background="@color/colorMainBackground"
     android:orientation="vertical">
 
-    <TextView
+    <com.foreverrafs.numericals.custom_views.HeaderTextView
         android:id="@+id/text_header"
+        style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/header_margin_top"
-        android:text="Jacobi's Method"
-        android:textAlignment="center"
-        android:textSize="30sp" />
+        android:text="@string/jacobi_header" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Equation of the form [i]Ax[/i] = [i]b[/i]"
+        android:text="@string/jacobi_desc"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="15sp" />

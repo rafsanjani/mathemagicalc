@@ -53,7 +53,7 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
         tilUserInput = rootView.findViewById(R.id.til_user_input);
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+        ////Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
 
         Button btnBack = rootView.findViewById(R.id.button_back);

@@ -13,14 +13,12 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
+        <com.foreverrafs.numericals.custom_views.HeaderTextView
             android:id="@+id/text_header"
+            style="@style/AppMaterialTheme.HeaderStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/header_margin_top"
-            android:text="Convert decimals to Octal"
-            android:textAlignment="center"
-            android:textSize="30sp" />
+            android:text="Convert decimals to Octal" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,46 +52,17 @@
                 android:textColor="@color/answerColor" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--<LinearLayout-->
-            <!--android:id="@+id/layout_answer_area"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="20dp"-->
-            <!--android:layout_marginRight="20dp"-->
-            <!--android:orientation="vertical"-->
-            <!--android:visibility="visible">-->
-
-            <!--<com.ms.square.android.expandabletextview.ExpandableTextView xmlns:android="http://schemas.android.com/apk/res/android"-->
-                <!--xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"-->
-                <!--android:id="@+id/expand_text_view"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--expandableTextView:animDuration="200"-->
-                <!--expandableTextView:maxCollapsedLines="1">-->
-
-                <TextView
-                    android:id="@+id/text_answer_octal"
-                    style="@style/AnswerStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/answer_vertical_width"
-                    android:layout_marginBottom="@dimen/answer_vertical_width"
-                    android:text="0.000000"
-                    android:textAlignment="center"
-                    android:visibility="visible" />
-
-                <!--<ImageButton-->
-        <!--android:id="@id/expand_collapse"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="right|bottom"-->
-        <!--android:background="@android:color/transparent"-->
-        <!--android:padding="16dp" />-->
-        <!--</com.ms.square.android.expandabletextview.ExpandableTextView>-->
-
-        <!--</LinearLayout>-->
-
+        <TextView
+            android:id="@+id/text_answer_octal"
+            style="@style/AnswerStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/answer_vertical_width"
+            android:layout_marginBottom="@dimen/answer_vertical_width"
+            android:text="0.000000"
+            android:textAlignment="center"
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/button_calculate"

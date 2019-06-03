@@ -2,15 +2,14 @@ package com.foreverrafs.numericals.fragments;
 
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
@@ -28,7 +27,6 @@ import com.foreverrafs.numericals.utils.Utilities;
 public class FragmentMainMenu extends Fragment implements View.OnClickListener {
 
 
-    TextView header;
     private View rootView;
     private AppCompatActivity mActivity;
 
@@ -51,9 +49,6 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
     }
 
     private void initControls() {
-        header = rootView.findViewById(R.id.Header);
-        header.setVisibility(View.VISIBLE);
-
         //click listeners for all the buttons from the main menu
         rootView.findViewById(R.id.btn_number_conversion).setOnClickListener(this);
         rootView.findViewById(R.id.btn_loc_of_roots).setOnClickListener(this);
@@ -61,10 +56,6 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
         rootView.findViewById(R.id.btn_about).setOnClickListener(this);
         rootView.findViewById(R.id.btn_ord_diff_eqn).setOnClickListener(this);
         rootView.findViewById(R.id.btn_algorithms).setOnClickListener(this);
-
-
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
-        header.setTypeface(typeface);
     }
 
     @Override
@@ -89,17 +80,11 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
             case R.id.btn_algorithms:
-                // Bundle bundle = new Bundle();
-                //bundle.putString("algorithm_name","index");
                 startActivity(new Intent(getContext(), ShowAlgorithm.class));
                 mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.btn_about:
-//                fragment = new About();
-//                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
-                /*
-                startActivity(new Intent(getContext(), About.class));
-                mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);*/
+
                 break;
         }
 

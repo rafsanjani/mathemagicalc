@@ -41,7 +41,7 @@ public class FragmentLocationOfRootsMenu extends Fragment implements View.OnClic
     }
 
     private void initControls() {
-        header = rootView.findViewById(R.id.Header);
+        header = rootView.findViewById(R.id.text_header);
         Utilities.setTypeFace(header, getContext(), Utilities.TypeFaceName.raleway_bold);
         header.setVisibility(View.VISIBLE);
 

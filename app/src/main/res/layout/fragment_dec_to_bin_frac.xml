@@ -17,14 +17,12 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
+            <com.foreverrafs.numericals.custom_views.HeaderTextView
                 android:id="@+id/text_header"
+                style="@style/AppMaterialTheme.HeaderStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/header_margin_top"
-                android:text="Convert decimals to binary"
-                android:textAlignment="center"
-                android:textSize="30sp" />
+                android:text="Convert decimals to binary" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -58,35 +56,6 @@
                     android:textColor="@color/answerColor" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!--<LinearLayout-->
-            <!--android:id="@+id/layout_answer_area"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="20dp"-->
-            <!--android:layout_marginRight="20dp"-->
-            <!--android:orientation="vertical"-->
-            <!--android:visibility="visible">-->
-
-            <!--&lt;!&ndash;<com.ms.square.android.expandabletextview.ExpandableTextView xmlns:android="http://schemas.android.com/apk/res/android"&ndash;&gt;-->
-            <!--&lt;!&ndash;xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:id="@+id/expand_text_view"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-            <!--&lt;!&ndash;expandableTextView:animDuration="200"&ndash;&gt;-->
-            <!--&lt;!&ndash;expandableTextView:maxCollapsedLines="1">&ndash;&gt;-->
-
-            <!---->
-
-            <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
-            <!--&lt;!&ndash;android:id="@id/expand_collapse"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_gravity="right|bottom"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:background="@android:color/transparent"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:padding="16dp" />&ndash;&gt;-->
-            <!--&lt;!&ndash;</com.ms.square.android.expandabletextview.ExpandableTextView>&ndash;&gt;-->
-
-            <!--</LinearLayout>-->
             <TextView
                 android:id="@+id/text_answer_binary"
                 style="@style/AnswerStyle"
