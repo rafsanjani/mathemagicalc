@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#a6bdc7"
+    android:background="@color/colorPrimary"
     android:elevation="4dp"
     android:minHeight="?attr/actionBarSize"
     app:contentInsetStartWithNavigation="0dp"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="MathemagicalC"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/colorWhite"
             android:textSize="30sp"
             android:textStyle="bold" />
 

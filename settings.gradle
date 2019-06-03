@@ -1,2 +1,2 @@
-include ':app', ':awesomedialoglib-debug'
+include ':app'
 

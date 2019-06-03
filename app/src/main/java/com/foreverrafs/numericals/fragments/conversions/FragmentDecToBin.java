@@ -2,12 +2,6 @@ package com.foreverrafs.numericals.fragments.conversions;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -18,12 +12,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
-import com.ms.square.android.expandabletextview.ExpandableTextView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+//import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -31,8 +32,7 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 public class FragmentDecToBin extends Fragment implements View.OnClickListener, TextWatcher {
 
-    View rootView;
-    String rawBinary;
+    private View rootView;
     private TextInputLayout inputLayout;
 
     @Nullable
@@ -46,7 +46,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
     }
 
     private void initControls() {
-        TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
         inputLayout = rootView.findViewById(R.id.til_user_input);
 
         Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
@@ -58,16 +58,13 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
         // rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
-        etInput.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                inputLayout.setErrorEnabled(false);
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    onCalculate();
-                    return true;
-                }
-                return false;
+        etInput.setOnKeyListener((view, i, keyEvent) -> {
+            inputLayout.setErrorEnabled(false);
+            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                onCalculate();
+                return true;
             }
+            return false;
         });
 
         etInput.addTextChangedListener(this);
@@ -108,7 +105,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
     private void onCalculate() {
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
-        ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
@@ -128,14 +125,12 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
                 return;
             }
 
-            String binary = Numericals.DecimalToBinary(decLong);
-
-            rawBinary = binary;
+            String rawBinary = Numericals.DecimalToBinary(decLong);
 
             tvAnswer.setText(rawBinary);
 
             Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
-                    (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+                    rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
         } catch (NumberFormatException ex) {
             Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to an integer value");
@@ -160,8 +155,8 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
-                    (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+            Utilities.animateAnswer(rootView.findViewById(R.id.text_answer_binary),
+                    rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }
 }

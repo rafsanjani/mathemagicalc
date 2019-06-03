@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     }
 
     public void onAbout(MenuItem item) {
-        Fragment fragment = new About();
-        Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer, false);
+        //Fragment fragment = new About();
+       // Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer, false);
     }
 }

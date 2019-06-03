@@ -54,25 +54,25 @@
                 android:textColor="@color/answerColor" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
-            android:id="@+id/layout_answer_area"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:orientation="vertical"
-            android:visibility="visible">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/layout_answer_area"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:orientation="vertical"-->
+            <!--android:visibility="visible">-->
 
-            <com.ms.square.android.expandabletextview.ExpandableTextView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/expand_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                expandableTextView:animDuration="200"
-                expandableTextView:maxCollapsedLines="1">
+            <!--<com.ms.square.android.expandabletextview.ExpandableTextView xmlns:android="http://schemas.android.com/apk/res/android"-->
+                <!--xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"-->
+                <!--android:id="@+id/expand_text_view"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--expandableTextView:animDuration="200"-->
+                <!--expandableTextView:maxCollapsedLines="1">-->
 
                 <TextView
-                    android:id="@+id/expandable_text"
+                    android:id="@+id/text_answer_octal"
                     style="@style/AnswerStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -83,16 +83,16 @@
                     android:textAlignment="center"
                     android:visibility="visible" />
 
-                <ImageButton
-                    android:id="@id/expand_collapse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
-                    android:background="@android:color/transparent"
-                    android:padding="16dp" />
-            </com.ms.square.android.expandabletextview.ExpandableTextView>
+                <!--<ImageButton-->
+        <!--android:id="@id/expand_collapse"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="right|bottom"-->
+        <!--android:background="@android:color/transparent"-->
+        <!--android:padding="16dp" />-->
+        <!--</com.ms.square.android.expandabletextview.ExpandableTextView>-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
 
         <Button

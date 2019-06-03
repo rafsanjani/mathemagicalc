@@ -106,7 +106,7 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_about"
-                    android:text="@string/mal_title_about"
+                    android:text="@string/about"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
             </LinearLayout>

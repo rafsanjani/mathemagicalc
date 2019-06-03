@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.About;
 import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.fragments.conversions.FragmentConversionsMenu;
@@ -96,8 +95,8 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
                 mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.btn_about:
-                fragment = new About();
-                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
+//                fragment = new About();
+//                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 /*
                 startActivity(new Intent(getContext(), About.class));
                 mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);*/

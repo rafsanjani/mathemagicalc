@@ -3,13 +3,14 @@ package com.foreverrafs.numericals.fragments.conversions;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
@@ -22,7 +23,7 @@ import com.foreverrafs.numericals.utils.Utilities;
 public class FragmentConversionsMenu extends Fragment implements View.OnClickListener {
 
 
-    static TextView header;
+    private static TextView header;
     private View rootView;
 
     @Override
