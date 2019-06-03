@@ -4,15 +4,16 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.MyListAdapter;
@@ -158,9 +159,6 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
                 break;
         }
 
-        //Utilities.replaceFragment(myContext, fragment, myContext.getSupportFragmentManager(), R.id.fragmentContainer);
-
-        //startActivity(new Intent(myContext, MainActivity.class));
         Utilities.replaceFragment(fragment, myContext.getSupportFragmentManager(), R.id.fragmentContainer);
 
         dismiss();

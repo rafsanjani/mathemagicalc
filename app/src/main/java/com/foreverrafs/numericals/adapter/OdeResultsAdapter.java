@@ -29,7 +29,7 @@ public class OdeResultsAdapter extends RecyclerView.Adapter<OdeResultsAdapter.Ro
     @NonNull
     @Override
     public RootResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mCtx).inflate(R.layout.euler_results_view, null);
+        View view = LayoutInflater.from(mCtx).inflate(R.layout.item_euler_results, null);
         return new RootResultViewHolder(view);
     }
 
