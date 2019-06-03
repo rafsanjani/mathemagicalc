@@ -41,7 +41,7 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -50,10 +50,10 @@
                                 style="@style/MatrixInputStyle"
                                 android:hint="a11" />
 
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -61,9 +61,9 @@
                                 android:id="@+id/a12"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a12" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -71,9 +71,9 @@
                                 android:id="@+id/a13"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a13" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -81,7 +81,7 @@
                                 android:id="@+id/a14"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a14" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -90,7 +90,7 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -99,9 +99,9 @@
                                 style="@style/MatrixInputStyle"
                                 android:hint="a21" />
 
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -109,10 +109,10 @@
                                 android:id="@+id/a22"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a22" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -120,9 +120,9 @@
                                 android:id="@+id/a23"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a23" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -130,7 +130,7 @@
                                 android:id="@+id/a24"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a24" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
 
@@ -140,7 +140,7 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -148,9 +148,9 @@
                                 android:id="@+id/a31"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a31" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -158,9 +158,9 @@
                                 android:id="@+id/a32"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a32" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -168,9 +168,9 @@
                                 android:id="@+id/a33"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a33" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -178,7 +178,7 @@
                                 android:id="@+id/a34"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a34" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
 
@@ -188,7 +188,7 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -196,9 +196,9 @@
                                 android:id="@+id/a41"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a41" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -206,9 +206,9 @@
                                 android:id="@+id/a42"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a42" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -216,9 +216,9 @@
                                 android:id="@+id/a43"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a43" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -226,7 +226,7 @@
                                 android:id="@+id/a44"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a44" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
 
@@ -254,7 +254,7 @@
                     android:visibility="visible"
                     android:weightSum="4">
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -263,9 +263,9 @@
                             style="@style/MatrixConstantStyle"
                             android:layout_gravity="center"
                             android:text="x1" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -274,9 +274,9 @@
                             style="@style/MatrixConstantStyle"
                             android:layout_gravity="center"
                             android:text="x2" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -285,9 +285,9 @@
                             style="@style/MatrixConstantStyle"
                             android:layout_gravity="center"
                             android:text="x3" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -296,7 +296,7 @@
                             style="@style/MatrixConstantStyle"
                             android:layout_gravity="center"
                             android:text="x4" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
                 </LinearLayout>
@@ -334,7 +334,7 @@
                     android:visibility="visible"
                     android:weightSum="4">
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -343,9 +343,9 @@
                             android:id="@+id/b1"
                             style="@style/MatrixInputStyle"
                             android:hint="b1" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -354,9 +354,9 @@
                             android:id="@+id/b2"
                             style="@style/MatrixInputStyle"
                             android:hint="b2" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -365,9 +365,9 @@
                             android:id="@+id/b3"
                             style="@style/MatrixInputStyle"
                             android:hint="b3" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1">
@@ -376,7 +376,7 @@
                             android:id="@+id/b4"
                             style="@style/MatrixInputStyle"
                             android:hint="b4" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
                 </LinearLayout>

@@ -36,7 +36,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="17sp" />
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_user_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
                 android:layout_marginRight="@dimen/std_layout_margin"
                 app:hintTextAppearance="@style/AppMaterialTheme.TextInputHintStyle">
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_equation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                     android:imeOptions="actionGo"
                     android:inputType="text"
                     android:textAlignment="center" />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -73,14 +73,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_x0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/std_layout_margin"
                         android:layout_marginRight="@dimen/std_layout_margin">
 
-                        <android.support.design.widget.TextInputEditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/x0"
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                             android:inputType="numberDecimal|numberSigned"
                             android:textAlignment="center" />
 
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -97,14 +97,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_x1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/std_layout_margin"
                         android:layout_marginRight="@dimen/std_layout_margin">
 
-                        <android.support.design.widget.TextInputEditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/x1"
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
                             android:hint="@string/x1"
                             android:inputType="numberDecimal|numberSigned"
                             android:textAlignment="center" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
             </LinearLayout>
 
@@ -136,14 +136,14 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_iterations"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/std_layout_margin"
                         android:layout_marginRight="@dimen/std_layout_margin">
 
-                        <android.support.design.widget.TextInputEditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/text_iterations"
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
                             android:inputType="numberSigned"
                             android:textAlignment="center" />
 
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
@@ -161,14 +161,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_tolerance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/std_layout_margin"
                         android:layout_marginRight="@dimen/std_layout_margin">
 
-                        <android.support.design.widget.TextInputEditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/text_tolerance"
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
@@ -176,7 +176,7 @@
                             android:hint="@string/tolerance"
                             android:inputType="numberDecimal|numberSigned"
                             android:textAlignment="center" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
             </LinearLayout>
