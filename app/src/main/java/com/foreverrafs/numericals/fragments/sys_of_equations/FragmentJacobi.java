@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.activities.MainMenuActivity;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -181,7 +181,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
             Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
 
         } finally {
-            MainActivity.hideKeyboard(etEpsilon);
+            Utilities.hideKeyboard(etEpsilon);
         }
     }
 

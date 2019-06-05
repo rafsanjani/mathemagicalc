@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.foreverrafs.numericals.activities.MainMenuActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.fragment.app.Fragment;
@@ -19,7 +21,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -145,7 +146,7 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
         } catch (Exception ex) {
             Log.e(Utilities.LOG_TAG, ex.getMessage());
         } finally {
-            MainActivity.hideKeyboard(etInput);
+            Utilities.hideKeyboard(etInput);
         }
     }
 

@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.OdeResult;
 import com.foreverrafs.numericals.utils.Utilities;

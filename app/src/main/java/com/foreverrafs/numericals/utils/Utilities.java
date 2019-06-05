@@ -9,6 +9,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -96,7 +98,7 @@ public final class Utilities {
 
     public static void replaceFragment(Context mCtx, Fragment next, FragmentManager
             fragmentManager, int containerViewId) {
-        if (mCtx.getClass().getSimpleName().equals("MainActivity")) {
+        if (mCtx.getClass().getSimpleName().equals("MainMenuActivity")) {
             String name = fragmentManager.getClass().getSimpleName();
 
             FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -110,7 +112,7 @@ public final class Utilities {
             transaction.commit();
             return;
         }
-        android.util.Log.e(LOG_TAG, "Only MainActivity can process fragments");
+        android.util.Log.e(LOG_TAG, "Only MainMenuActivity can process fragments");
     }
 
     public static void loadFragment(Fragment fragment, FragmentManager fragmentManager,
@@ -161,6 +163,11 @@ public final class Utilities {
     public enum DisplayMode {
         SHOW,
         HIDE
+    }
+
+    public static void hideKeyboard(View view){
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(),0);
     }
 
     public enum TypeFaceName {

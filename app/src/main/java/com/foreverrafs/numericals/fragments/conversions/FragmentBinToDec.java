@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.activities.MainMenuActivity;
 import com.foreverrafs.numericals.core.NotABinaryException;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -138,7 +138,7 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
         } catch (Exception ex) {
             Log.e(Utilities.LOG_TAG, ex.getMessage());
         } finally {
-            MainActivity.hideKeyboard(etInput);
+            Utilities.hideKeyboard(etInput);
         }
     }
 
