@@ -1,5 +1,7 @@
 package com.foreverrafs.numericals.adapter;
 
+import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,31 +22,38 @@ import butterknife.ButterKnife;
 /**
  * Created by Rafsanjani on 6/5/2019
  */
-public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class OperationsMenuAdapter extends RecyclerView.Adapter<OperationsMenuAdapter.MenuViewHolder> {
 
 
     private final List<OperationMenu> menuList;
 
-    public MenuAdapter(List<OperationMenu> menuList) {
+    public OperationsMenuAdapter(List<OperationMenu> menuList) {
         this.menuList = menuList;
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu, parent, false);
 
         return new MenuViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
 
+        OperationMenu menu = menuList.get(position);
+
+        Context mCtx = holder.itemView.getContext();
+
+        holder.menuImage.setImageBitmap(BitmapFactory.decodeResource(mCtx.getResources(),
+                menu.getImageResource()));
+        holder.menuTitle.setText(menu.getTitle());
     }
 
     @Override
     public int getItemCount() {
-       return menuList.size();
+        return menuList.size();
     }
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
@@ -57,7 +66,6 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);
-
             ButterKnife.bind(this, itemView);
         }
     }
