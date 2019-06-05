@@ -2,17 +2,18 @@ package com.foreverrafs.numericals.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-public class MyListAdapter extends ArrayAdapter<String> {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+public class MethodListAdapter extends ArrayAdapter<String> {
     private Context mCtx;
 
 
-    public MyListAdapter(@NonNull Context context, int resource, @NonNull String[] objects) {
+    public MethodListAdapter(@NonNull Context context, int resource, @NonNull String[] objects) {
         super(context, resource, objects);
         this.mCtx = context;
     }

@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.adapter.MyListAdapter;
+import com.foreverrafs.numericals.adapter.MethodListAdapter;
 import com.foreverrafs.numericals.fragments.conversions.FragmentBinToDec;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBin;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinFrac;
@@ -77,7 +77,7 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
     private void onInit() {
         String[] operationStringList = getActivity().getResources().getStringArray(R.array.main_menu_legacy);
         ListView operationList = rootView.findViewById(R.id.operationList);
-        ArrayAdapter<String> operationListAdapter = new MyListAdapter(getActivity(), R.layout.list_item,
+        ArrayAdapter<String> operationListAdapter = new MethodListAdapter(getActivity(), R.layout.list_item,
                 operationStringList);
 
         operationList.setAdapter(operationListAdapter);
