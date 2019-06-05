@@ -2,8 +2,8 @@ package com.foreverrafs.numericals.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,17 +39,17 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
         //inflate a view based on the location of root type
         switch (rootType) {
             case BISECTION:
-                view = LayoutInflater.from(mCtx).inflate(R.layout.bisection_results_view, null);
+                view = LayoutInflater.from(mCtx).inflate(R.layout.item_bisection_results, null);
                 break;
             case NEWTON_RAPHSON:
-                view = LayoutInflater.from(mCtx).inflate(R.layout.newton_raphson_results_view, null);
+                view = LayoutInflater.from(mCtx).inflate(R.layout.item_newton_raphson_results, null);
                 break;
 
             case SECANTE:
-                view = LayoutInflater.from(mCtx).inflate(R.layout.secante_results_view, null);
+                view = LayoutInflater.from(mCtx).inflate(R.layout.item_secante_results, null);
                 break;
             case FALSE_POSITION:
-                view = LayoutInflater.from(mCtx).inflate(R.layout.falseposition_results_view, null);
+                view = LayoutInflater.from(mCtx).inflate(R.layout.item_falseposition_results, null);
                 break;
 
             default:

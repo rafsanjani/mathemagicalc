@@ -15,14 +15,12 @@
             android:layout_width="wrap_content"
             android:layout_height="5dp" />
 
-        <TextView
+        <com.foreverrafs.numericals.custom_views.HeaderTextView
             android:id="@+id/text_header"
+            style="@style/AppMaterialTheme.HeaderStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/header_margin_top"
-            android:text="Gaussian Elimination with Complete Pivoting"
-            android:textAlignment="center"
-            android:textSize="30sp" />
+            android:text="@string/gaussian_complete_header" />
 
         <include
             android:id="@+id/matrix"

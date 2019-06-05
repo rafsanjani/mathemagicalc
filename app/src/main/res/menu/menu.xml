@@ -7,6 +7,6 @@
         app:showAsAction="never" />
     <item
         android:onClick="onAbout"
-        android:title="@string/mal_title_about"
+        android:title="@string/about"
         app:showAsAction="never" />
 </menu>

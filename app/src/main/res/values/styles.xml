@@ -14,13 +14,26 @@
 
     <style name="AppMaterialTheme" parent="BaseTheme">
         <item name="editTextStyle">@style/AppMaterialTheme.EditTextStyle</item>
-        <item name="android:popupMenuStyle">@style/MyPopUpTheme</item>
         <item name="colorControlActivated">#00796B</item>
         <item name="colorControlHighlight">#c5c5c5</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:colorAccent">#546e7a</item>
+        <item name="android:actionBarPopupTheme">@style/MyPopUpTheme</item>
     </style>
 
     <style name="AppMaterialTheme.EditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:backgroundTint">#000000</item>
+    </style>
+
+    <style name="AppMaterialTheme.HeaderStyle" parent="">
+        <item name="font_name">raleway_bold.ttf</item>
+        <item name="android:layout_marginTop">@dimen/header_margin_top</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
     </style>
 
     <style name="AppMaterialTheme.TextInputHintStyle" parent="@android:style/TextAppearance">
@@ -31,13 +44,6 @@
     <style name="AnswerStyle" parent="TextAppearance.AppCompat.Widget.ActionMode.Title">
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/answerColor</item>
-    </style>
-
-    <style name="AboutTheme" parent="Theme.Mal.Light">
-        <item name="colorControlActivated">#00796B</item>
-        <item name="colorControlHighlight">#c5c5c5</item>
-        <item name="android:background">@color/colorMainBackground</item>
-        <item name="mal_toolbarTheme">@style/MyToolBarTheme</item>
     </style>
 
     <style name="MyToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
@@ -52,6 +58,7 @@
     <style name="AppMaterialTheme.ButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:background">@drawable/btn_rounded_primary</item>
         <item name="android:layout_marginRight">30dp</item>
         <item name="android:textColor">@color/colorButtonText</item>
     </style>

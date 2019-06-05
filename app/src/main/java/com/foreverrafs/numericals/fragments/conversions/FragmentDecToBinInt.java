@@ -2,12 +2,12 @@ package com.foreverrafs.numericals.fragments.conversions;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -24,7 +24,7 @@ import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
-import com.ms.square.android.expandabletextview.ExpandableTextView;
+//import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -40,7 +40,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_dec_to_bin_int, container, false);
-        MainActivity.setToolBarInfo("Decimal Calculator", "Convert decimals to binary");
+        //("Decimal Calculator", "Convert decimals to binary");
 
         initControls();
         return rootView;
@@ -49,7 +49,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
     private void initControls() {
         //Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
 
-        TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
         inputLayout = rootView.findViewById(R.id.til_user_input);
         //tvAnswer.setTypeface(typeface);
 
@@ -59,7 +59,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         EditText etInput = rootView.findViewById(R.id.text_user_input);
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
 
 
         etInput.setOnKeyListener(new View.OnKeyListener() {
@@ -113,7 +113,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
     private void onCalculate() {
         //boolean isAnswerTruncated = false;
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
-        ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer_hexadecimal);
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
@@ -178,8 +178,8 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
-                    (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+            Utilities.animateAnswer(rootView.findViewById(R.id.text_answer_binary),
+                    rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }
 }

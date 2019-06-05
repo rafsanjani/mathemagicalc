@@ -3,24 +3,18 @@
     android:layout_height="match_parent"
     android:background="@color/colorMainBackground">
 
-    <TextView
-        android:id="@+id/Header"
+    <com.foreverrafs.numericals.custom_views.HeaderTextView
+        android:id="@+id/text_header"
+        style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/header_margin_top"
-        android:background="#07000000"
-        android:text="@string/operations"
-        android:textAlignment="center"
-        android:textSize="32sp" />
+        android:text="@string/operations" />
 
     <ScrollView
         android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Header">
+        android:layout_below="@+id/text_header">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,7 +100,7 @@
                     android:layout_margin="5dp"
                     android:background="@null"
                     android:drawableTop="@drawable/button_about"
-                    android:text="@string/mal_title_about"
+                    android:text="@string/about"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
             </LinearLayout>

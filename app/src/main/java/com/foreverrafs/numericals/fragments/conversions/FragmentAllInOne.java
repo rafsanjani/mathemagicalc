@@ -1,12 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,11 +11,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
-import com.ms.square.android.expandabletextview.ExpandableTextView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+//import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -36,14 +37,14 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_allinone, container, false);
-        MainActivity.setToolBarInfo("Decimal Calculator", "Convert decimals to binary");
+        //("Decimal Calculator", "Convert decimals to binary");
 
         initControls();
         return rootView;
     }
 
     private void initControls() {
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+//        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.philosopher_bold);
         inputLayout = rootView.findViewById(R.id.til_user_input);
         inputLayout.setErrorEnabled(true);
 
@@ -53,18 +54,15 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
 
-        etInput.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                //take the error message away
-                inputLayout.setErrorEnabled(false);
+        etInput.setOnKeyListener((view, i, keyEvent) -> {
+            //take the error message away
+            inputLayout.setErrorEnabled(false);
 
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    onCalculate();
-                    return true;
-                }
-                return false;
+            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                onCalculate();
+                return true;
             }
+            return false;
         });
 
         etInput.addTextChangedListener(this);
@@ -96,9 +94,9 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         //answer textviews
-        ExpandableTextView tvBinary = rootView.findViewById(R.id.answer_binary);
-        TextView tvOctal = rootView.findViewById(R.id.answer_octal);
-        TextView tvHexadecimal = rootView.findViewById(R.id.answer_hexadecimal);
+        TextView tvBinary = rootView.findViewById(R.id.text_answer_binary);
+        TextView tvOctal = rootView.findViewById(R.id.text_answer_octal);
+        TextView tvHexadecimal = rootView.findViewById(R.id.text_answer_hexadecimal);
 
 
         String binary, octal, hexadecimal;
@@ -158,7 +156,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
             Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
-                    (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+                    rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }
 }

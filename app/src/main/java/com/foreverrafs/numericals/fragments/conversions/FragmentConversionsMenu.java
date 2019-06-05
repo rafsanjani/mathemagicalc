@@ -1,15 +1,14 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
 
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
@@ -22,14 +21,14 @@ import com.foreverrafs.numericals.utils.Utilities;
 public class FragmentConversionsMenu extends Fragment implements View.OnClickListener {
 
 
-    static TextView header;
+    //    private static TextView header;
     private View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_conversions_menu, container, false);
         initControls();
-        MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
+        //(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
 
         return rootView;
 
@@ -42,8 +41,8 @@ public class FragmentConversionsMenu extends Fragment implements View.OnClickLis
     }
 
     private void initControls() {
-        header = rootView.findViewById(R.id.Header);
-        header.setVisibility(View.VISIBLE);
+//        header = rootView.findViewById(R.id.text_header);
+//        header.setVisibility(View.VISIBLE);
 
         rootView.findViewById(R.id.btn_dec_to_binary_integer).setOnClickListener(this);
         rootView.findViewById(R.id.btn_dec_to_binary_fraction).setOnClickListener(this);
@@ -53,8 +52,8 @@ public class FragmentConversionsMenu extends Fragment implements View.OnClickLis
         rootView.findViewById(R.id.btn_decimal_to_hexadecimal).setOnClickListener(this);
         rootView.findViewById(R.id.btn_allinone).setOnClickListener(this);
 
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
-        header.setTypeface(typeface);
+//        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
+//        header.setTypeface(typeface);
     }
 
     @Override

@@ -7,14 +7,12 @@
     android:background="@color/colorMainBackground"
     android:orientation="vertical">
 
-    <TextView
+    <com.foreverrafs.numericals.custom_views.HeaderTextView
         android:id="@+id/text_header"
+        style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/header_margin_top"
-        android:text="Expansion of Iterations for Newton Raphson"
-        android:textAlignment="center"
-        android:textSize="32sp" />
+        android:text="@string/newton_raphson_expansion_header" />
 
     <TextView
         android:id="@+id/title"
@@ -23,7 +21,7 @@
         android:layout_below="@id/text_header"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="The results of each iteration step is given below"
+        android:text="@string/newton_raphson_expansion_desc"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="15sp" />
@@ -134,7 +132,7 @@
         </TableRow>
     </TableLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/resultList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,11 +1,11 @@
 package com.foreverrafs.numericals.fragments.ordinary_differential_eqns;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -53,7 +53,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
         Button btnShowAlgorithm = rootView.findViewById(R.id.button_show_algo);
 
         //Initialize and set typefaces
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
         Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
 
@@ -117,7 +117,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
 
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        MainActivity.setToolBarInfo("Location of Roots", "Bisection Method");
+        //("Location of Roots", "Bisection Method");
     }
 
     @Override

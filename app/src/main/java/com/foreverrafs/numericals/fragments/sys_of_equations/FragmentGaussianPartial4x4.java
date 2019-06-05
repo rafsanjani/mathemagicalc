@@ -1,9 +1,9 @@
 package com.foreverrafs.numericals.fragments.sys_of_equations;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -33,7 +33,7 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_gaussian_partial4x4, container, false);
-        MainActivity.setToolBarInfo("System of Equations", "Gaussian Elimination (Partial Pivoting)");
+        //("System of Equations", "Gaussian Elimination (Partial Pivoting)");
 
         initControls();
         return rootView;
@@ -41,7 +41,7 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
 
     private void initControls() {
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);

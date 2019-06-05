@@ -102,12 +102,12 @@ public class NumericalsTest {
         assertEquals(-1.0625, longBisection.get(3).getX3());
     }
 
-    @Test
-    public void testNewtonRaphson() {
-        String eqn = "x^5 + x^3+3";
-        double y = Numericals.NewtonRaphson(eqn, -1, 20);
-        assertEquals(-1.1052985460061695, y);
-    }
+//    @Test
+//    public void testNewtonRaphson() {
+//        String eqn = "x^5 + x^3+3";
+//        double y = Numericals.NewtonRaphsonAll(eqn, -1, 20);
+//        assertEquals(-1.1052985460061695, y);
+//    }
 
     @Test
     public void testNewtonRaphsonAll() {

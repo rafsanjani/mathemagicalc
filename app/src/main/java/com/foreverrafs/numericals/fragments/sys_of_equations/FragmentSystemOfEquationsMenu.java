@@ -3,9 +3,9 @@ package com.foreverrafs.numericals.fragments.sys_of_equations;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +29,7 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements View.OnCl
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_system_of_equations_menu, container, false);
         initControls();
-        MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
+        //(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
 
         return rootView;
 
@@ -42,7 +42,7 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements View.OnCl
     }
 
     private void initControls() {
-        header = rootView.findViewById(R.id.Header);
+        header = rootView.findViewById(R.id.text_header);
         header.setVisibility(View.VISIBLE);
 
         rootView.findViewById(R.id.btn_sys_of_eqn_gaussian3x3complete).setOnClickListener(this);

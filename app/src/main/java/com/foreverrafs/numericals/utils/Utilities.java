@@ -7,22 +7,22 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.transition.Fade;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
+import androidx.transition.Fade;
+import androidx.transition.TransitionManager;
+import androidx.transition.TransitionSet;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
-import com.transitionseverywhere.TransitionManager;
-import com.transitionseverywhere.TransitionSet;
-import com.transitionseverywhere.extra.Scale;
 
 
 /**
@@ -52,22 +52,35 @@ public final class Utilities {
         Typeface typeface = null;
 
         try {
-            typeface = Typeface.createFromAsset(mCtx.getAssets(), typeFaceName.toString());
+            typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/" + typeFaceName.toString() + ".ttf");
+            TextView tv = (TextView) view;
+            tv.setTypeface(typeface);
+        } catch (ClassCastException exception) {
+            EditText editText = (EditText) view;
+            editText.setTypeface(typeface);
         } catch (Exception exception) {
             android.util.Log.e(LOG_TAG, exception.getMessage());
         }
+    }
+
+    public static void setTypeFace(View view, Context mCtx, String typeFaceName) {
+        //cast the view to a TextView, if casting fails then we cast to an edittext and apply the necessary font
+        Typeface typeface = null;
 
         try {
+            typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/" + typeFaceName + ".ttf");
             TextView tv = (TextView) view;
             tv.setTypeface(typeface);
-
-        } catch (ClassCastException ex) {
+        } catch (ClassCastException exception) {
             EditText editText = (EditText) view;
             editText.setTypeface(typeface);
+        } catch (Exception exception) {
+            android.util.Log.e(LOG_TAG, exception.getMessage());
         }
     }
 
-    public static void replaceFragment(Fragment next, FragmentManager fragmentManager, int containerViewId) {
+    public static void replaceFragment(Fragment next, FragmentManager fragmentManager,
+                                       int containerViewId) {
         String name = fragmentManager.getClass().getSimpleName();
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -81,7 +94,8 @@ public final class Utilities {
         transaction.commit();
     }
 
-    public static void replaceFragment(Context mCtx, Fragment next, FragmentManager fragmentManager, int containerViewId) {
+    public static void replaceFragment(Context mCtx, Fragment next, FragmentManager
+            fragmentManager, int containerViewId) {
         if (mCtx.getClass().getSimpleName().equals("MainActivity")) {
             String name = fragmentManager.getClass().getSimpleName();
 
@@ -99,24 +113,21 @@ public final class Utilities {
         android.util.Log.e(LOG_TAG, "Only MainActivity can process fragments");
     }
 
-    public static void loadFragment(Fragment fragment, FragmentManager fragmentManager, int containerViewId) {
+    public static void loadFragment(Fragment fragment, FragmentManager fragmentManager,
+                                    int containerViewId) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(containerViewId, fragment);
         fragmentTransaction.commit();
     }
 
-   /* public static void setToolbarTypeface(Context c, TextView tv) {
-        tv.setTypeface(Typeface.createFromAsset(c.getAssets(), "fonts/Philosopher-Bold.ttf"));
-    }*/
 
-
-    public static void animateAnswer(View answerView, ViewGroup viewGroup, DisplayMode displayMode) {
+    public static void animateAnswer(View answerView, ViewGroup viewGroup, DisplayMode
+            displayMode) {
 
         switch (displayMode) {
             case SHOW:
                 TransitionSet set = new TransitionSet()
-                        .addTransition(new Scale(0.7f))
-                        .addTransition(new com.transitionseverywhere.Fade())
+                        .addTransition(new Fade())
                         .setInterpolator(new LinearOutSlowInInterpolator());
 
                 TransitionManager.beginDelayedTransition(viewGroup);
@@ -141,6 +152,12 @@ public final class Utilities {
         c.startActivity(new Intent(c, ShowAlgorithm.class).putExtras(bundle));
     }
 
+    private void animateButtonDrawable(ImageButton target, Drawable toDrawable) {
+        target.setImageDrawable(toDrawable);
+        final Animatable animatable = (Animatable) target.getDrawable();
+        animatable.start();
+    }
+
     public enum DisplayMode {
         SHOW,
         HIDE
@@ -152,12 +169,6 @@ public final class Utilities {
         falling_sky,
         bitter_italic,
         philosopher_bold,
-    }
-
-    private void animateButtonDrawable(ImageButton target, Drawable toDrawable) {
-        target.setImageDrawable(toDrawable);
-        final Animatable animatable = (Animatable) target.getDrawable();
-        animatable.start();
     }
 }
 

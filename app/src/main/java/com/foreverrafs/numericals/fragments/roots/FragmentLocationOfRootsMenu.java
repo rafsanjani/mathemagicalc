@@ -2,9 +2,9 @@ package com.foreverrafs.numericals.fragments.roots;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +28,7 @@ public class FragmentLocationOfRootsMenu extends Fragment implements View.OnClic
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_location_of_roots_menu, container, false);
         initControls();
-        MainActivity.setToolBarInfo(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
+        //(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
 
         return rootView;
 
@@ -41,7 +41,7 @@ public class FragmentLocationOfRootsMenu extends Fragment implements View.OnClic
     }
 
     private void initControls() {
-        header = rootView.findViewById(R.id.Header);
+        header = rootView.findViewById(R.id.text_header);
         Utilities.setTypeFace(header, getContext(), Utilities.TypeFaceName.raleway_bold);
         header.setVisibility(View.VISIBLE);
 

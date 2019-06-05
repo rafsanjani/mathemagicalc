@@ -2,10 +2,10 @@ package com.foreverrafs.numericals.fragments.roots;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -47,7 +47,7 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
         Button btnBack = rootView.findViewById(R.id.button_back);
 
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
         Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
         //Initialize TextInputLayouts
@@ -80,7 +80,7 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
         etEquation.addTextChangedListener(this);
 
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        //MainActivity.setToolBarInfo("Location of Roots", "Secante Method");
+        ////("Location of Roots", "Secante Method");
     }
 
     @Override

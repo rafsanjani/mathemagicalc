@@ -1,12 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -18,11 +12,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
-import com.ms.square.android.expandabletextview.ExpandableTextView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+//import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -37,17 +38,17 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_dec_to_octal, container, false);
-        MainActivity.setToolBarInfo("Decimal Calculator", "Convert decimals to binary");
+        //("Decimal Calculator", "Convert decimals to binary");
 
         initControls();
         return rootView;
     }
 
     private void initControls() {
-        TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
 
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+        ////Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
@@ -109,7 +110,7 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
 
     private void onCalculate() {
         EditText etInput = rootView.findViewById(R.id.text_user_input);
-        ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer_octal);
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
@@ -160,8 +161,8 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
-                    (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+            Utilities.animateAnswer(rootView.findViewById(R.id.text_answer_octal),
+                    rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }
 }

@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -79,7 +79,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         Button btnBack = rootView.findViewById(R.id.button_back);
 
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
+        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
 
         EditText etEqn[] = new EditText[3];
         etEqn[0] = rootView.findViewById(R.id.text_equationx1);
@@ -97,7 +97,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
 
 
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        MainActivity.setToolBarInfo("System of Equations", "Jacobi's Method");
+        //("System of Equations", "Jacobi's Method");
 
     }
 

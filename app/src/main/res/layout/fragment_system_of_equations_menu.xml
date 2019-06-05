@@ -1,26 +1,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorMainBackground">
 
-    <TextView
-        android:id="@+id/Header"
-        android:layout_width="wrap_content"
+    <com.foreverrafs.numericals.custom_views.HeaderTextView
+        android:id="@+id/text_header"
+        style="@style/AppMaterialTheme.HeaderStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:text="@string/sys_of_eqns"
-        android:textAlignment="center"
-        android:textSize="38sp"
-        android:textStyle="bold" />
+        android:text="@string/sys_of_eqns" />
 
     <ScrollView
         android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Header">
+        android:layout_below="@+id/text_header">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -1,11 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -15,13 +10,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.core.NotABinaryException;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
-import com.ms.square.android.expandabletextview.ExpandableTextView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -29,24 +30,22 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 public class FragmentBinToDec extends Fragment implements View.OnClickListener, TextWatcher {
 
-    View rootView;
-    TextInputLayout inputLayout;
+    private View rootView;
+    private TextInputLayout inputLayout;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_bin_to_dec, container, false);
-        MainActivity.setToolBarInfo("Decimal Calculator", "Convert decimals to binary");
+        //("Decimal Calculator", "Convert decimals to binary");
 
         initControls();
         return rootView;
     }
 
     private void initControls() {
-        // Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
-        TextView tvAnswer = rootView.findViewById(R.id.expandable_text);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
         inputLayout = rootView.findViewById(R.id.til_user_input);
-        //tvAnswer.setTypeface(typeface);
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
@@ -54,21 +53,16 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.raleway_bold);
 
-//        rootView.findViewById(R.id.show_all).setOnClickListener(this);
 
-        etInput.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                //remove the error message from the input layout if any
-                inputLayout.setErrorEnabled(false);
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    onCalculate();
-                    return true;
-                }
-                return false;
+        etInput.setOnKeyListener((view, i, keyEvent) -> {
+            //remove the error message from the input layout if any
+            inputLayout.setErrorEnabled(false);
+            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                onCalculate();
+                return true;
             }
+            return false;
         });
 
         etInput.addTextChangedListener(this);
@@ -109,7 +103,7 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
         String decimal = "00";
 
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
-        ExpandableTextView tvAnswer = rootView.findViewById(R.id.expand_text_view);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
 
         String binary = etInput.getText().toString();
         if (binary.isEmpty()) {
@@ -162,7 +156,7 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
+            Utilities.animateAnswer(rootView.findViewById(R.id.text_answer_binary),
                     (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }

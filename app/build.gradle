@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.foreverrafs.numericals"
-        minSdkVersion 18
-        targetSdkVersion 27
+        minSdkVersion 21
+        targetSdkVersion 28
         versionCode 13
         versionName "1.1.2"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -20,26 +20,29 @@ android {
     }
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 
+    compileOptions {
+        targetCompatibility JavaVersion.current()
+        sourceCompatibility JavaVersion.current()
+    }
+
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:design:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.ms-square:expandableTextView:0.1.4'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
+    implementation 'com.google.android.material:material:1.1.0-alpha06'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    testImplementation 'junit:junit:4.13-beta-3'
+    implementation "androidx.preference:preference:1.1.0-alpha05"
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
 //Mathview
 dependencies {
-    implementation 'in.hourglass.mathrender:katexmathview:1.0'
-    //implementation 'com.github.Nishant-Pathak:MathView:v1.1'
+    implementation 'in.hourglass.mathrender:katexmathview:1.0.2'
 }
 
 //Apache commons for simple math operations and mXparser, the heart of the software
@@ -51,26 +54,22 @@ dependencies {
 
 
 dependencies {
-    //custom awesomedialog
-    dependencies {
-        implementation project(":awesomedialoglib-debug")
-    }
 
     //iconics for svg drawable rendering
-    implementation 'com.mikepenz:iconics-core:3.0.4'
+//    implementation 'com.mikepenz:iconics-core:3.0.4'
 
     //transition everywhere
-    implementation "com.andkulikov:transitionseverywhere:1.7.7"
+//    implementation "com.andkulikov:transitionseverywhere:1.7.7"
 
     //material about
-    implementation 'com.github.daniel-stoneuk:material-about-library:2.3.0'
+//    implementation 'com.github.daniel-stoneuk:material-about-library:2.3.0'
 
     //typefaces for material about
     /*implementation 'com.mikepenz:google-material-typeface:3.0.1.2.original@aar'
     implementation 'com.mikepenz:material-design-iconic-typeface:2.2.0.4@aar'
     implementation 'com.mikepenz:octicons-typeface:3.2.0.4@aar'
     implementation 'com.mikepenz:meteocons-typeface:1.1.0.4@aar'*/
-    implementation 'com.mikepenz:fontawesome-typeface:5.3.1.1@aar'
+//    implementation 'com.mikepenz:fontawesome-typeface:5.3.1.1@aar'
     //implementation 'com.mikepenz:community-material-typeface:2.7.94.1@aar'
 }
 

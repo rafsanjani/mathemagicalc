@@ -4,9 +4,9 @@ package com.foreverrafs.numericals.activities;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -29,10 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
     static InputMethodManager imm;
 
-    //TODO: Delete this method but there are 23 usages as at now.
-    public static void setToolBarInfo(String title, String subtitle) {
-
-    }
 
     public static void hideKeyboard(View view) {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -113,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     }
 
     public void onAbout(MenuItem item) {
-        Fragment fragment = new About();
-        Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer, false);
+        //Fragment fragment = new About();
+       // Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer, false);
     }
 }
