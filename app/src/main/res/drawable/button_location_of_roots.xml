@@ -2,8 +2,8 @@
     android:exitFadeDuration="@android:integer/config_mediumAnimTime">
 
     <!-- NOTE: order is important (the first matching state(s) is what is rendered) -->
-     <item android:drawable="@drawable/button_normal_locationofroots" android:state_pressed="true"/>
-    <item android:drawable="@drawable/button_focused_locationofroots" />
+     <item android:drawable="@drawable/button_focused_locationofroots" android:state_pressed="true"/>
+    <item android:drawable="@drawable/button_normal_locationofroots" />
 
 
 
