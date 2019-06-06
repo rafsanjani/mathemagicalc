@@ -35,7 +35,10 @@ public class HeaderTextView extends AppCompatTextView {
 
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.HeaderTextView);
         String fontName = typedArray.getString(R.styleable.HeaderTextView_font_name);
+        typedArray.recycle();
+
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/" + fontName);
+
 
         this.setTypeface(typeface);
     }

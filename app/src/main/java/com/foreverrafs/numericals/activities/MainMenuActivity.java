@@ -20,13 +20,6 @@ import butterknife.ButterKnife;
 
 public class MainMenuActivity extends AppCompatActivity {
 
-
-//    static InputMethodManager imm;
-
-
-    //    public static void hideKeyboard(View view) {
-//        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-//    }
     @BindView(R.id.list_main_menu)
     RecyclerView mainMenuItems;
 
@@ -40,9 +33,13 @@ public class MainMenuActivity extends AppCompatActivity {
         mainMenuItems.setLayoutManager(new GridLayoutManager(this, 2));
 
         List<OperationMenu> operations = new ArrayList<>();
-        operations.add(new OperationMenu("Conversion", R.drawable.button_focused_nc));
-        operations.add(new OperationMenu("Conversion", R.drawable.button_focused_nc));
-        operations.add(new OperationMenu("Conversion", R.drawable.button_focused_nc));
+        operations.add(new OperationMenu("Conversion", R.drawable.button_number_conversion));
+        operations.add(new OperationMenu("Location of Roots", R.drawable.button_location_of_roots));
+        operations.add(new OperationMenu("Sys. of Eqns", R.drawable.button_system_of_eqns));
+        operations.add(new OperationMenu("Ord. Diff. Eqns", R.drawable.button_ordinary_differential_eqns));
+        operations.add(new OperationMenu("Algorithms", R.drawable.button_algorithms));
+        operations.add(new OperationMenu("About", R.drawable.button_about));
+
 
         OperationsMenuAdapter adapter = new OperationsMenuAdapter(operations);
 

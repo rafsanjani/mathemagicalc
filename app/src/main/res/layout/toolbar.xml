@@ -7,8 +7,8 @@
     android:background="@color/colorPrimary"
     android:elevation="4dp"
     android:minHeight="?attr/actionBarSize"
+    android:theme="@style/MyToolBarTheme"
     app:contentInsetStartWithNavigation="0dp"
-    app:theme="@style/MyToolBarTheme"
     tools:context=".activities.MainMenuActivity"
     tools:showIn="@layout/activity_main_menu">
 
