@@ -38,14 +38,10 @@ public class OperationsMenuAdapter extends RecyclerView.Adapter<OperationsMenuAd
 
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
-
         OperationMenu menu = menuList.get(position);
 
         holder.menuImage.setImageResource(menu.getImageResource());
-
-
         holder.menuTitle.setText(menu.getTitle());
-
     }
 
     @Override
@@ -61,7 +57,7 @@ public class OperationsMenuAdapter extends RecyclerView.Adapter<OperationsMenuAd
         @BindView(R.id.text_menu_title)
         TextView menuTitle;
 
-        public MenuViewHolder(@NonNull View itemView) {
+        MenuViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
