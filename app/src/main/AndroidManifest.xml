@@ -20,7 +20,26 @@
             android:name=".activities.MainMenuActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppMaterialTheme"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan">
+
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
+                <data
+                    android:host="www.foreverrafs.com"
+                    android:pathPrefix="/numericals"
+                    android:scheme="http" />
+                <!-- note that the leading "/" is required for pathPrefix-->
+                <!-- Accepts URIs that begin with "example://gizmos” -->
+                <data
+                    android:host="foreverrafs"
+                    android:scheme="mathemagicalc" />
+
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
@@ -32,8 +51,10 @@
         </activity>
         <activity
             android:name=".activities.ShowAlgorithm"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ConversionMenuActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
