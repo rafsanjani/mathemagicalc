@@ -1,7 +1,5 @@
 package com.foreverrafs.numericals.adapter;
 
-import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +21,8 @@ import butterknife.ButterKnife;
  * Created by Rafsanjani on 6/5/2019
  */
 public class OperationsMenuAdapter extends RecyclerView.Adapter<OperationsMenuAdapter.MenuViewHolder> {
-
-
     private final List<OperationMenu> menuList;
+
 
     public OperationsMenuAdapter(List<OperationMenu> menuList) {
         this.menuList = menuList;
@@ -44,11 +41,11 @@ public class OperationsMenuAdapter extends RecyclerView.Adapter<OperationsMenuAd
 
         OperationMenu menu = menuList.get(position);
 
-        Context mCtx = holder.itemView.getContext();
+        holder.menuImage.setImageResource(menu.getImageResource());
 
-        holder.menuImage.setImageBitmap(BitmapFactory.decodeResource(mCtx.getResources(),
-                menu.getImageResource()));
+
         holder.menuTitle.setText(menu.getTitle());
+
     }
 
     @Override
@@ -56,7 +53,7 @@ public class OperationsMenuAdapter extends RecyclerView.Adapter<OperationsMenuAd
         return menuList.size();
     }
 
-    public class MenuViewHolder extends RecyclerView.ViewHolder {
+    class MenuViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.image_menu_item)
         ImageView menuImage;
