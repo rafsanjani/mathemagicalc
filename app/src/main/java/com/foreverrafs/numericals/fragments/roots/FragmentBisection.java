@@ -1,10 +1,6 @@
 package com.foreverrafs.numericals.fragments.roots;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -15,10 +11,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -178,7 +179,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_back:
-                Utilities.replaceFragment(new FragmentLocationOfRootsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+                //        Utilities.replaceFragment(new FragmentLocationOfRootsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.button_calculate:
@@ -260,7 +261,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
             resultPane.setArguments(eqnArgs);
             resultPane.setResults(roots);
 
-            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
+            //Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
         }
         calculateButton.setText(getResources().getString(R.string.show_iterations));
     }

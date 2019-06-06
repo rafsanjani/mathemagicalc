@@ -93,7 +93,7 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_back:
-                Utilities.replaceFragment(new FragmentLocationOfRootsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+        //        Utilities.replaceFragment(new FragmentLocationOfRootsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.button_calculate:
@@ -169,7 +169,7 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
             resultPane.setArguments(eqnArgs);
             resultPane.setResults(roots);
 
-            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
+            //Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
         }
         calculateButton.setText(getResources().getString(R.string.show_iterations));
     }

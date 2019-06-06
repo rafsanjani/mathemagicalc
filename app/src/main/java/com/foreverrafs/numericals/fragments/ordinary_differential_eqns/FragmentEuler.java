@@ -211,7 +211,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
             resultPane.setArguments(eqnArgs);
             resultPane.setResults(eulerResults);
 
-            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
+            //Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
         }
 
         //replace the calculate button with show iterations so that clicking will show the iteration steps rather

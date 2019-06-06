@@ -122,7 +122,7 @@ public class FragmentEulerResults extends Fragment {
                 eqnArgs.putDouble("h", h);
 
                 fragment.setArguments(eqnArgs);
-                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
+                //Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
             }
         });
 
