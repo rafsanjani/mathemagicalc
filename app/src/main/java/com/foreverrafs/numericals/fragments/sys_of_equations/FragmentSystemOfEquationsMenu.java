@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.utils.Utilities;
 
 /**

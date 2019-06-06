@@ -64,7 +64,7 @@
     </style>
 
     <style name="AppMaterialTheme.ButtonStyle.Exit">
-        <item name="android:textColor">#602d1c</item>
+        <item name="android:textColor">@color/red_A200</item>
     </style>
 
     <style name="MatrixInputStyle">

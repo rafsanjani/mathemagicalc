@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -88,7 +87,7 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnCl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_back:
-                Utilities.replaceFragment(new FragmentLocationOfRootsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+        //        Utilities.replaceFragment(new FragmentLocationOfRootsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.button_calculate:
@@ -163,7 +162,7 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnCl
             resultPane.setArguments(eqnArgs);
             resultPane.setResults(roots);
 
-            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
+            //Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
         }
         calculateButton.setText(getResources().getString(R.string.show_iterations));
     }

@@ -17,12 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppMaterialTheme">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.MainMenuActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppMaterialTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activities.SplashActivity"
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppMaterialTheme.SplashScreen">
             <intent-filter>

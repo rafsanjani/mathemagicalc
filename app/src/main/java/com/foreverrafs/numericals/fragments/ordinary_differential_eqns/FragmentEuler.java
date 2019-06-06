@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.OdeResult;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -212,7 +211,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
             resultPane.setArguments(eqnArgs);
             resultPane.setResults(eulerResults);
 
-            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
+            //Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
         }
 
         //replace the calculate button with show iterations so that clicking will show the iteration steps rather

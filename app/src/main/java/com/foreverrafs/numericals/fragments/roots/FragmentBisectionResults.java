@@ -120,7 +120,7 @@ public class FragmentBisectionResults extends Fragment {
                 eqnArgs.putDouble("tolerance", tolerance);
 
                 fragment.setArguments(eqnArgs);
-                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
+                //Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
             }
         });
 

@@ -27,10 +27,11 @@ android {
 
 }
 
+//UI DEPENDENCIES
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
-    implementation 'com.google.android.material:material:1.1.0-alpha06'
+    implementation 'com.google.android.material:material:1.1.0-alpha07'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
     implementation 'androidx.cardview:cardview:1.0.0'
 
@@ -40,36 +41,15 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
-//Mathview
-dependencies {
-    implementation 'in.hourglass.mathrender:katexmathview:1.0.2'
-}
-
 //Apache commons for simple math operations and mXparser, the heart of the software
 dependencies {
+    implementation 'in.hourglass.mathrender:katexmathview:1.0.2'
     implementation 'org.mariuszgromada.math:MathParser.org-mXparser:4.0.0'
     implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
-}
 
-
-dependencies {
-
-    //iconics for svg drawable rendering
-//    implementation 'com.mikepenz:iconics-core:3.0.4'
-
-    //transition everywhere
-//    implementation "com.andkulikov:transitionseverywhere:1.7.7"
-
-    //material about
-//    implementation 'com.github.daniel-stoneuk:material-about-library:2.3.0'
-
-    //typefaces for material about
-    /*implementation 'com.mikepenz:google-material-typeface:3.0.1.2.original@aar'
-    implementation 'com.mikepenz:material-design-iconic-typeface:2.2.0.4@aar'
-    implementation 'com.mikepenz:octicons-typeface:3.2.0.4@aar'
-    implementation 'com.mikepenz:meteocons-typeface:1.1.0.4@aar'*/
-//    implementation 'com.mikepenz:fontawesome-typeface:5.3.1.1@aar'
-    //implementation 'com.mikepenz:community-material-typeface:2.7.94.1@aar'
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+//    implementation 'com.squareup.picasso:picasso:2.71828'
 }
 

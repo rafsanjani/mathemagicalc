@@ -7,7 +7,7 @@
     android:layout_margin="5dp"
     android:background="@color/colorMainBackground"
     android:orientation="vertical"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.MainMenuActivity">
 
     <ScrollView
         android:layout_width="wrap_content"

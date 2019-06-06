@@ -109,7 +109,7 @@ public class FragmentSecanteResults extends Fragment {
                 eqnArgs.putInt("iterations", iterations);
 
                 fragment.setArguments(eqnArgs);
-                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
+                //Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
             }
         });
         //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);

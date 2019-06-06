@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.activities.MainMenuActivity;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -84,7 +84,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_back:
-                Utilities.replaceFragment(new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+                //Utilities.replaceFragment(new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.button_calculate:
@@ -137,7 +137,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
         } catch (Exception ex) {
             Log.e(Utilities.LOG_TAG, ex.getMessage());
         } finally {
-            MainActivity.hideKeyboard(etInput);
+            Utilities.hideKeyboard(etInput);
         }
     }
 

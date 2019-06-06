@@ -115,7 +115,7 @@ public class FragmentFalsePositionResults extends Fragment {
                 eqnArgs.putDouble("tolerance", tolerance);
 
                 fragment.setArguments(eqnArgs);
-                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
+                //Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
             }
         });
         //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);

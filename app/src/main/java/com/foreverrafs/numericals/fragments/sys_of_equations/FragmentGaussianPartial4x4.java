@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.activities.MainMenuActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 
@@ -111,7 +111,7 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
         etB[2] = rootView.findViewById(R.id.b3);
         etB[3] = rootView.findViewById(R.id.b4);
 
-        MainActivity.hideKeyboard(etA[0][0]);
+        Utilities.hideKeyboard(etA[0][0]);
 
         for (int i = 0; i < etA.length; i++) {
             for (int j = 0; j < etA.length; j++) {
