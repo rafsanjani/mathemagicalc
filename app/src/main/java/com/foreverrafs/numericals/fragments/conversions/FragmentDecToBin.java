@@ -21,6 +21,7 @@ import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainMenuActivity;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
+import com.foreverrafs.numericals.custom_views.RafsTextView;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -34,7 +35,6 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
 
     private View rootView;
     private TextInputLayout inputLayout;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
         inputLayout = rootView.findViewById(R.id.til_user_input);
 
 //        ////Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
-        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
+
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
@@ -77,7 +77,7 @@ public class FragmentDecToBin extends Fragment implements View.OnClickListener, 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+       // ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

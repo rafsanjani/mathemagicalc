@@ -13,11 +13,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainMenuActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputEditText;
@@ -37,7 +35,6 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_allinone, container, false);
-        //("Decimal Calculator", "Convert decimals to binary");
 
         initControls();
         return rootView;
@@ -74,7 +71,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        // ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

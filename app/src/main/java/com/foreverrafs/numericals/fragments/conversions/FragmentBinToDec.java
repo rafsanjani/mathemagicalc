@@ -52,7 +52,7 @@ public class FragmentBinToDec extends Fragment implements View.OnClickListener, 
         Button btnShowAlgo = rootView.findViewById(R.id.button_show_algo);
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
-        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
+
 
 
         etInput.setOnKeyListener((view, i, keyEvent) -> {

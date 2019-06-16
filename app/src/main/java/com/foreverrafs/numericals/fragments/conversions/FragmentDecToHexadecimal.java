@@ -55,22 +55,19 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         ////Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
-        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
+
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
 
 
-        etInput.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                tilUserInput.setErrorEnabled(false);
-                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    onCalculate();
-                    return true;
-                }
-                return false;
+        etInput.setOnKeyListener((view, i, keyEvent) -> {
+            tilUserInput.setErrorEnabled(false);
+            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                onCalculate();
+                return true;
             }
+            return false;
         });
 
         etInput.addTextChangedListener(this);
@@ -90,7 +87,7 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+       // ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

@@ -17,7 +17,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.foreverrafs.numericals.custom_views.HeaderTextView
+            <com.foreverrafs.numericals.custom_views.RafsTextView
                 android:id="@+id/text_header"
                 style="@style/AppMaterialTheme.HeaderStyle"
                 android:layout_width="match_parent"

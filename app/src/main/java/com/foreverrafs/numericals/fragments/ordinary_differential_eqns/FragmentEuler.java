@@ -51,11 +51,6 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnShowAlgorithm = rootView.findViewById(R.id.button_show_algo);
 
-        //Initialize and set typefaces
-        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
-
-
         //initialize TextInputLayouts
         tilX0 = rootView.findViewById(R.id.til_x0);
         tilX1 = rootView.findViewById(R.id.til_x1);

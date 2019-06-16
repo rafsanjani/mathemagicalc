@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentContainer"
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
+
     android:background="@color/colorMainBackground"
     android:orientation="vertical">
 
-    <com.foreverrafs.numericals.custom_views.HeaderTextView
+    <com.foreverrafs.numericals.custom_views.RafsTextView
         android:id="@+id/text_header"
         style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="match_parent"
@@ -49,6 +51,7 @@
                     android:gravity="center_horizontal"
                     android:hint="@string/bisection_enter_eqn"
                     android:imeOptions="actionGo"
+                    android:text="2x + 3"
                     android:inputType="text"
                     android:textAlignment="center" />
             </com.google.android.material.textfield.TextInputLayout>

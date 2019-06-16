@@ -1,10 +1,6 @@
 package com.foreverrafs.numericals.fragments.roots;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -15,10 +11,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -42,10 +43,6 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnCl
     public void initControls() {
         final Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         Button btnBack = rootView.findViewById(R.id.button_back);
-
-        //Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Bitter-Italic.ttf");
-        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
         //initialize TextInputLayouts
         tilX0 = rootView.findViewById(R.id.til_x0);
@@ -87,7 +84,7 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnCl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_back:
-        //        Utilities.replaceFragment(new FragmentLocationOfRootsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+                //        Utilities.replaceFragment(new LocationOfRootsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.button_calculate:

@@ -53,7 +53,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
         inputLayout = rootView.findViewById(R.id.til_user_input);
         //tvAnswer.setTypeface(typeface);
 
-        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
+
 
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
@@ -90,7 +90,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+       // ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
  */
 public class OperationsMenuAdapter extends RecyclerView.Adapter<OperationsMenuAdapter.MenuViewHolder> {
     private final List<OperationMenu> menuList;
+    private MenuItemClickListenener itemClickListener;
 
 
     public OperationsMenuAdapter(List<OperationMenu> menuList) {
@@ -39,14 +40,28 @@ public class OperationsMenuAdapter extends RecyclerView.Adapter<OperationsMenuAd
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
         OperationMenu menu = menuList.get(position);
-
         holder.menuImage.setImageResource(menu.getImageResource());
         holder.menuTitle.setText(menu.getTitle());
+
+        //only attach a listener if there are sub menus
+        holder.menuImage.setOnClickListener(view -> {
+            int menuCategory = menu.getMenuCategory();
+            //if (menuCategory != Constants.MENU_CATEGORY_NONE)
+            itemClickListener.OnMenuItemClicked(menuCategory);
+        });
+    }
+
+    public void setOnItemClickListenener(MenuItemClickListenener itemClickListenener) {
+        this.itemClickListener = itemClickListenener;
     }
 
     @Override
     public int getItemCount() {
         return menuList.size();
+    }
+
+    public interface MenuItemClickListenener {
+        void OnMenuItemClicked(int menuItemType);
     }
 
     class MenuViewHolder extends RecyclerView.ViewHolder {

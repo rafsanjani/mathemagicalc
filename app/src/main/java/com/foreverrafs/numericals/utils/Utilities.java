@@ -1,18 +1,16 @@
 package com.foreverrafs.numericals.utils;
 
 
+import android.animation.AnimatorSet;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -22,6 +20,7 @@ import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 import androidx.transition.Fade;
 import androidx.transition.TransitionManager;
 import androidx.transition.TransitionSet;
+import androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
@@ -41,58 +40,54 @@ public final class Utilities {
             transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
         else
             transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-        //Fade enterFade = new Fade();
-        //enterFade.setDuration(500);
 
         //next.setEnterTransition(enterFade);
         transaction.replace(containerViewId, next);
         transaction.commit();
     }
 
-    public static void setTypeFace(View view, Context mCtx, TypeFaceName typeFaceName) {
-        //cast the view to a TextView, if casting fails then we cast to an edittext and apply the necessary font
-        Typeface typeface = null;
+//    public static void setTypeFace(View view, Context mCtx, TypeFaceName typeFaceName) {
+//        //cast the view to a TextView, if casting fails then we cast to an edittext and apply the necessary font
+//        Typeface typeface = null;
+//
+//        try {
+//            typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/" + typeFaceName.toString() + ".ttf");
+//            TextView tv = (TextView) view;
+//            tv.setTypeface(typeface);
+//        } catch (ClassCastException exception) {
+//            EditText editText = (EditText) view;
+//            editText.setTypeface(typeface);
+//        } catch (Exception exception) {
+//            android.util.Log.e(LOG_TAG, exception.getMessage());
+//        }
+//    }
 
-        try {
-            typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/" + typeFaceName.toString() + ".ttf");
-            TextView tv = (TextView) view;
-            tv.setTypeface(typeface);
-        } catch (ClassCastException exception) {
-            EditText editText = (EditText) view;
-            editText.setTypeface(typeface);
-        } catch (Exception exception) {
-            android.util.Log.e(LOG_TAG, exception.getMessage());
-        }
-    }
-
-    public static void setTypeFace(View view, Context mCtx, String typeFaceName) {
-        //cast the view to a TextView, if casting fails then we cast to an edittext and apply the necessary font
-        Typeface typeface = null;
-
-        try {
-            typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/" + typeFaceName + ".ttf");
-            TextView tv = (TextView) view;
-            tv.setTypeface(typeface);
-        } catch (ClassCastException exception) {
-            EditText editText = (EditText) view;
-            editText.setTypeface(typeface);
-        } catch (Exception exception) {
-            android.util.Log.e(LOG_TAG, exception.getMessage());
-        }
-    }
+//    public static void setTypeFace(View view, Context mCtx, String typeFaceName) {
+//        //cast the view to a TextView, if casting fails then we cast to an edittext and apply the necessary font
+//        Typeface typeface = null;
+//
+//        try {
+//            typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/" + typeFaceName + ".ttf");
+//            TextView tv = (TextView) view;
+//            tv.setTypeface(typeface);
+//        } catch (ClassCastException exception) {
+//            EditText editText = (EditText) view;
+//            editText.setTypeface(typeface);
+//        } catch (Exception exception) {
+//            android.util.Log.e(LOG_TAG, exception.getMessage());
+//        }
+//    }
 
     public static void replaceFragment(Fragment next, FragmentManager fragmentManager,
-                                       int containerViewId) {
+                                       int container) {
         String name = fragmentManager.getClass().getSimpleName();
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fade enterFade = new Fade();
         enterFade.setDuration(300);
-        //Fade enterFade = new Fade();
-        //enterFade.setDuration(500);
 
         next.setEnterTransition(enterFade);
-        transaction.replace(containerViewId, next);
+        transaction.replace(container, next);
         transaction.commit();
     }
 
@@ -120,6 +115,23 @@ public final class Utilities {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(containerViewId, fragment);
         fragmentTransaction.commit();
+    }
+
+    public static void animateTextViewColorAndAlpha(Context mCtx, TextView textView) {
+        AnimatorSet animatorSet = new AnimatorSet();
+
+        Integer colorFrom = textView.getCurrentTextColor();
+        Integer colorTo = mCtx.getResources().getColor(R.color.black);
+
+        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+        ValueAnimator alphaAnimation = ValueAnimator.ofFloat(textView.getAlpha(), 0.2f);
+
+        colorAnimation.addUpdateListener(animator -> textView.setTextColor((Integer) animator.getAnimatedValue()));
+        alphaAnimation.addUpdateListener(animator -> textView.setAlpha((Float) animator.getAnimatedValue()));
+
+        animatorSet.playTogether(alphaAnimation, colorAnimation);
+        animatorSet.setDuration(1000);
+        animatorSet.start();
     }
 
 
@@ -154,20 +166,14 @@ public final class Utilities {
         c.startActivity(new Intent(c, ShowAlgorithm.class).putExtras(bundle));
     }
 
-    private void animateButtonDrawable(ImageButton target, Drawable toDrawable) {
-        target.setImageDrawable(toDrawable);
-        final Animatable animatable = (Animatable) target.getDrawable();
-        animatable.start();
+    public static void hideKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public enum DisplayMode {
         SHOW,
         HIDE
-    }
-
-    public static void hideKeyboard(View view){
-        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(),0);
     }
 
     public enum TypeFaceName {

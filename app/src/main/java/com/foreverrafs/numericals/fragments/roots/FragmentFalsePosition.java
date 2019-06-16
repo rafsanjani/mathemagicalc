@@ -49,7 +49,7 @@ public class FragmentFalsePosition extends FragmentRootBase implements View.OnCl
 
         //  Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Bitter-Italic.ttf");
         //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
-        Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
+        //Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
 
         //initialize TextInputLayouts
         tilX0 = rootView.findViewById(R.id.til_x0);
@@ -94,7 +94,7 @@ public class FragmentFalsePosition extends FragmentRootBase implements View.OnCl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_back:
-        //        Utilities.replaceFragment(new FragmentLocationOfRootsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+        //        Utilities.replaceFragment(new LocationOfRootsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.button_calculate:

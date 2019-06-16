@@ -17,7 +17,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.foreverrafs.numericals.custom_views.HeaderTextView
+            <com.foreverrafs.numericals.custom_views.RafsTextView
                 android:id="@+id/text_header"
                 style="@style/AppMaterialTheme.HeaderStyle"
                 android:layout_width="match_parent"
@@ -56,12 +56,11 @@
                     android:textColor="@color/answerColor" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
+            <com.foreverrafs.numericals.custom_views.RafsTextView
                 android:id="@+id/text_answer_binary"
                 style="@style/AnswerStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/answer_vertical_width"
                 android:layout_marginBottom="@dimen/answer_vertical_width"
                 android:text="0.000000"

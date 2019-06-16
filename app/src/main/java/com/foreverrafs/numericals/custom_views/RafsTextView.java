@@ -11,20 +11,33 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.foreverrafs.numericals.R;
 
-public class HeaderTextView extends AppCompatTextView {
+/**
+ * Custom TextView which gives the user the ability to specify a custom font_name in xml
+ * Usage:
+ * <p>
+ * <com.foreverrafs.numericals.custom_views.HeaderTextView
+ * android:id="@+id/text_header"
+ * font_name="font_file_name.ttf"
+ * android:text="My Custom Text" />
+ * <p>
+ *
+ * font_file_name.ttf must be the name of a font asset stored in assets/fonts directory else an exception will be thrown and a
+ * fallback font will be used instead
+ */
+public class RafsTextView extends AppCompatTextView {
 
 
-    public HeaderTextView(Context context) {
+    public RafsTextView(Context context) {
         super(context);
         init(null);
     }
 
-    public HeaderTextView(Context context, AttributeSet attrs) {
+    public RafsTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public HeaderTextView(Context context, AttributeSet attrs, int defStyle) {
+    public RafsTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(attrs);
     }
@@ -33,8 +46,8 @@ public class HeaderTextView extends AppCompatTextView {
         if (attrs == null)
             return;
 
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.HeaderTextView);
-        String fontName = typedArray.getString(R.styleable.HeaderTextView_font_name);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.RafsTextView);
+        String fontName = typedArray.getString(R.styleable.RafsTextView_font_name);
         typedArray.recycle();
 
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/" + fontName);

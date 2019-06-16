@@ -13,7 +13,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.foreverrafs.numericals.custom_views.HeaderTextView
+        <com.foreverrafs.numericals.custom_views.RafsTextView
             android:id="@+id/text_header"
             style="@style/AppMaterialTheme.HeaderStyle"
             android:layout_width="match_parent"
@@ -62,7 +62,7 @@
             android:layout_marginBottom="@dimen/answer_vertical_width"
             android:text="0.000000"
             android:textAlignment="center"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/button_calculate"

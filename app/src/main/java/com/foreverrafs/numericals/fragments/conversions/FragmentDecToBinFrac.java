@@ -15,17 +15,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainMenuActivity;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-//import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -41,7 +38,6 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_dec_to_bin_frac, container, false);
-        //("Decimal Calculator", "Convert decimals to binary");
 
         initControls();
         return rootView;
@@ -54,9 +50,6 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
-
-        Utilities.setTypeFace(tvAnswer, getContext(), Utilities.TypeFaceName.falling_sky);
-
 
         etInput.setOnKeyListener((view, i, keyEvent) -> {
             inputLayout.setErrorEnabled(false);
@@ -77,7 +70,7 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        // ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

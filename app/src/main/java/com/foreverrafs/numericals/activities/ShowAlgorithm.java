@@ -3,13 +3,14 @@ package com.foreverrafs.numericals.activities;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.dialog.OperationListDialog;
@@ -18,17 +19,6 @@ import com.foreverrafs.numericals.utils.Utilities;
 import java.lang.reflect.Method;
 
 public class ShowAlgorithm extends AppCompatActivity {
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_showalgorithm, menu);
-//        return true;
-//    }
-
-    /*public void onAbout(MenuItem item) {
-        Fragment fragment = new About();
-        Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer, false);
-    }*/
-
 
     public void onGoToOperation(MenuItem item) {
         OperationListDialog dialog = new OperationListDialog();
@@ -52,7 +42,7 @@ public class ShowAlgorithm extends AppCompatActivity {
         //set the typeface of the text which appears on the toolbar
         TextView toolbarAppTitle = findViewById(R.id.toolbarAppTitle);
         toolbarAppTitle.setText("Algorithm");
-        Utilities.setTypeFace(toolbarAppTitle, getApplicationContext(), Utilities.TypeFaceName.philosopher_bold);
+       // Utilities.setTypeFace(toolbarAppTitle, getApplicationContext(), Utilities.TypeFaceName.philosopher_bold);
 
         //TODO: Find something better to do about this region
         if (Build.VERSION.SDK_INT >= 24) {

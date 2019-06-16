@@ -1,16 +1,17 @@
 package com.foreverrafs.numericals.fragments.roots;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.RootResultsAdapter;
@@ -106,22 +107,19 @@ public class FragmentBisectionResults extends Fragment {
         tvIterations.setText(getIteration());
         tvTolerance.setText(getTolerance());
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new FragmentBisection();
-                Bundle eqnArgs = new Bundle();
+        btnBack.setOnClickListener(v -> {
+            Fragment fragment = new FragmentBisection();
+            Bundle eqnArgs = new Bundle();
 
-                //pass eqn and it's paramenters back to the calling fragment
-                eqnArgs.putDouble("x0", x0);
-                eqnArgs.putString("equation", eqn);
-                eqnArgs.putDouble("x1", x1);
-                eqnArgs.putInt("iterations", iterations);
-                eqnArgs.putDouble("tolerance", tolerance);
+            //pass eqn and it's paramenters back to the calling fragment
+            eqnArgs.putDouble("x0", x0);
+            eqnArgs.putString("equation", eqn);
+            eqnArgs.putDouble("x1", x1);
+            eqnArgs.putInt("iterations", iterations);
+            eqnArgs.putDouble("tolerance", tolerance);
 
-                fragment.setArguments(eqnArgs);
-                //Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
-            }
+            fragment.setArguments(eqnArgs);
+            Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
         });
 
         //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);

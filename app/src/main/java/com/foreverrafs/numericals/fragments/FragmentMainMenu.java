@@ -12,10 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.activities.LocationOfRootsMenu;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.fragments.conversions.FragmentConversionsMenu;
 import com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
-import com.foreverrafs.numericals.fragments.roots.FragmentLocationOfRootsMenu;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentSystemOfEquationsMenu;
 import com.foreverrafs.numericals.utils.Utilities;
 
@@ -66,10 +66,10 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
 
-            case R.id.btn_loc_of_roots:
-                fragment = new FragmentLocationOfRootsMenu();
-                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
-                break;
+//            case R.id.btn_loc_of_roots:
+//                fragment = new LocationOfRootsMenu();
+//                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
+//                break;
             case R.id.btn_sys_of_eqn:
                 fragment = new FragmentSystemOfEquationsMenu();
                 Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);

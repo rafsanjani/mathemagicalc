@@ -4,7 +4,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="android:windowEnterAnimation">@anim/slide_in_left</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_left</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_right</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorButtonNormal">@color/colorButtonNormal</item>
         <item name="windowActionModeOverlay">true</item>
@@ -36,19 +36,17 @@
         <item name="android:layout_centerHorizontal">true</item>
     </style>
 
+    <style name="AnswerStyle" parent="AppMaterialTheme.HeaderStyle">
+        <item name="android:textSize">40sp</item>
+        <item name="font_name">falling_sky.otf</item>
+        <item name="android:textColor">@color/answerColor</item>
+    </style>
+
+
     <style name="AppMaterialTheme.TextInputHintStyle" parent="@android:style/TextAppearance">
         <item name="android:textColor">#26a69a</item>
     </style>
 
-
-    <style name="AnswerStyle" parent="TextAppearance.AppCompat.Widget.ActionMode.Title">
-        <item name="android:textSize">32sp</item>
-        <item name="android:textColor">@color/answerColor</item>
-    </style>
-
-    <style name="MyToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
-        <!--<item name="android:background">#a6bdc7</item> -->
-    </style>
 
     <style name="MyPopUpTheme" parent="@android:style/Widget.PopupMenu">
         <item name="android:popupBackground">@color/colorMainBackground</item>
@@ -64,7 +62,7 @@
     </style>
 
     <style name="AppMaterialTheme.ButtonStyle.Exit">
-        <item name="android:textColor">@color/red_A200</item>
+        <item name="android:textColor">@color/blue_900</item>
     </style>
 
     <style name="MatrixInputStyle">
@@ -89,7 +87,6 @@
     <style name="MatrixConstantStyle">
         <item name="android:layout_marginTop">18dp</item>
         <item name="android:layout_width">@dimen/matrix_elements_width</item>
-        <!---<item name="android:layout_marginBottom">10dp</item> -->
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/colorHeading</item>
