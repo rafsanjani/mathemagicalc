@@ -539,7 +539,6 @@ public final class Numericals {
         }
 
         //solve by backsubstitution
-
         return getSolutionByBackSubstitution(A, B, N);
     }
 
@@ -887,15 +886,7 @@ public final class Numericals {
      * @return
      */
     public static boolean isBinary(String input) {
-//        int index = input.indexOf(".");
-//
-//        String afterDot = input.substring(index + 1);
-//        boolean moreDots = afterDot.contains(".");
-
         return input.matches("[01]+") || input.matches("[01.]+");
-
-//        return matches;
-        // return input.matches("[01.]+") && input.lastIndexOf(input.substring(input.indexOf(".") + 1)) == -1;
     }
 
     //get the number of iterations required using the tolerance given

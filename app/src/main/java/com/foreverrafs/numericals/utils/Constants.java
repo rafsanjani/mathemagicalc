@@ -28,6 +28,7 @@ public class Constants {
     public static final int LOCATION_OF_ROOTS_FALSE_POSITION = 16;
     public static final int LOCATION_OF_ROOTS_SECANT = 17;
 
+    //these items do not belong to any menu
     public static final int MENU_CATEGORY_NONE = 999;
 
 }

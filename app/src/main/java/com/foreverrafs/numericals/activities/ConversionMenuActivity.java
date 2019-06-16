@@ -61,6 +61,7 @@ public class ConversionMenuActivity extends AppCompatActivity implements Operati
         operations.add(new OperationMenu("All in One Conversion", R.drawable.button_location_of_roots, Constants.CONVERSION_ALL_IN_ONE));
 
 
+
         header.setText(getString(R.string.number_conversions));
 
         OperationsMenuAdapter adapter = new OperationsMenuAdapter(operations);

@@ -163,6 +163,7 @@
     <string name="algo_header">Dynamic Header Text</string>
     <string name="dynamic_input_hint">dynamic input hint</string>
     <string name="bin_to_decimal_hint">Enter a binary number eg 1010</string>
+    <string name="errormsg_empty_input">Input cannot be empty</string>
 
 
 </resources>

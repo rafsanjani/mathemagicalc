@@ -5,21 +5,17 @@ import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 import androidx.transition.Fade;
 import androidx.transition.TransitionManager;
-import androidx.transition.TransitionSet;
 import androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
 
 import com.foreverrafs.numericals.R;
@@ -135,23 +131,17 @@ public final class Utilities {
     }
 
 
-    public static void animateAnswer(View answerView, ViewGroup viewGroup, DisplayMode
+    public static void animateAnswer(View answerView, View rootView, DisplayMode
             displayMode) {
-
         switch (displayMode) {
             case SHOW:
-                TransitionSet set = new TransitionSet()
-                        .addTransition(new Fade())
-                        .setInterpolator(new LinearOutSlowInInterpolator());
-
-                TransitionManager.beginDelayedTransition(viewGroup);
+                TransitionManager.beginDelayedTransition((ViewGroup) rootView);
                 answerView.setVisibility(View.VISIBLE);
-                //  TransitionManager.beginDelayedTransition(parentContainer, set);
-
                 break;
 
             case HIDE:
-                TransitionManager.beginDelayedTransition(viewGroup);
+
+                TransitionManager.beginDelayedTransition((ViewGroup) rootView);
                 answerView.setVisibility(View.GONE);
                 break;
         }
@@ -174,14 +164,6 @@ public final class Utilities {
     public enum DisplayMode {
         SHOW,
         HIDE
-    }
-
-    public enum TypeFaceName {
-        //TypeFace should be the exact name of file stored in assets/fonts without the extension
-        raleway_bold,
-        falling_sky,
-        bitter_italic,
-        philosopher_bold,
     }
 }
 
