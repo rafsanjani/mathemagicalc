@@ -43,7 +43,7 @@ public class FragmentDecToOctal extends Fragment implements View.OnClickListener
     }
 
     private void initControls() {
-        TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer);
 
 
         ////Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);

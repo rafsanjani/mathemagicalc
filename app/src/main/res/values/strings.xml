@@ -38,7 +38,7 @@
     <string name="cont">Continue...</string>
     <string name="loc_of_rooots">Location of Roots</string>
     <string name="sys_of_eqns">System of Equations</string>
-    <string name="number_conversions">Converter</string>
+    <string name="number_conversions">Numerical Convertions</string>
     <string name="ordinary_diff_eqn">Ord. Diff. Eqns (ODE)</string>
     <string name="show_algorithm">Show Algorithm</string>
     <string name="stopping_criteria">Stopping Criteria</string>
@@ -63,7 +63,7 @@
     <string name="decimal_to_octal_desc"><![CDATA[Converts a decimal integer (N) to it\'s equivalent octal value where N > 0]]></string>
     <string name="back_to_sys_of_eqns">Back to Sys of Eqns</string>
     <string name="all_in_one_converter">ALL IN ONE CONVERTER</string>
-    <string name="conversion_all_in_one">Input a decimal number and it will be converted to binary, octal and hexadecimal</string>
+    <string name="conversion_all_in_one">Enter a decimal number and it will be converted to binary, octal and hexadecimal</string>
     <string name="solve">Solve</string>
     <string name="question_mark">#63</string>
 
@@ -157,6 +157,12 @@
     <string name="euler_expansion_header">Expansion of Iterations for Euler\'s Method</string>
     <string name="method_expansion_desc">The results of each iteration step is given below</string>
     <string name="ode_header">Ordinary Differential Equations</string>
+    <string name="bin_to_dec_header">Convert Binary to Decimal</string>
+    <string name="bin_to_dec_desc">Convert a binary number to it\'s corresponding decimal numeral</string>
+    <string name="algo_desc">dynamic description of algorithm. A short description should be shown here</string>
+    <string name="algo_header">Dynamic Header Text</string>
+    <string name="dynamic_input_hint">dynamic input hint</string>
+    <string name="bin_to_decimal_hint">Enter a binary number eg 1010</string>
 
 
 </resources>

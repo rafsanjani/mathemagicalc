@@ -62,7 +62,7 @@
                 android:id="@+id/layout_answer_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:layout_marginBottom="@dimen/sol_answer_vertical_width"
                 android:orientation="vertical"
                 android:visibility="gone"
                 tools:visibility="visible">
@@ -83,16 +83,8 @@
                         android:textSize="20sp"
                         android:visibility="visible" />
 
-                    <!--<com.ms.square.android.expandabletextview.ExpandableTextView xmlns:android="http://schemas.android.com/apk/res/android"-->
-                    <!--xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"-->
-                    <!--android:id="@+id/answer_binary"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--expandableTextView:animDuration="200"-->
-                    <!--expandableTextView:maxCollapsedLines="1">-->
-
                     <TextView
-                        android:id="@+id/text_answer_binary"
+                        android:id="@+id/text_answer"
                         style="@style/AnswerStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -101,16 +93,6 @@
                         android:text="0.000000"
                         android:textSize="20sp"
                         android:visibility="visible" />
-
-                    <!--<ImageButton-->
-                    <!--android:id="@id/expand_collapse"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="right|bottom"-->
-                    <!--android:background="@android:color/transparent"-->
-                    <!--android:padding="16dp" />-->
-                    <!--</com.ms.square.android.expandabletextview.ExpandableTextView>-->
-
 
                 </LinearLayout>
 

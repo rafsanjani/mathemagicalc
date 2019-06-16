@@ -5,11 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.foreverrafs.numericals.activities.MainMenuActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -49,7 +48,7 @@ public class FragmentDecToHexadecimal extends Fragment implements View.OnClickLi
         //Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
 
 
-        TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer);
 
         tilUserInput = rootView.findViewById(R.id.til_user_input);
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);

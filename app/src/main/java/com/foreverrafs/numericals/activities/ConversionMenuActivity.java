@@ -14,6 +14,7 @@ import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.OperationsMenuAdapter;
 import com.foreverrafs.numericals.custom_views.RafsTextView;
 import com.foreverrafs.numericals.fragments.conversions.FragmentAllInOne;
+import com.foreverrafs.numericals.fragments.conversions.FragmentBinToDec;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBin;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinFrac;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinInt;
@@ -60,7 +61,7 @@ public class ConversionMenuActivity extends AppCompatActivity implements Operati
         operations.add(new OperationMenu("All in One Conversion", R.drawable.button_location_of_roots, Constants.CONVERSION_ALL_IN_ONE));
 
 
-        header.setText("Numerical Conversion");
+        header.setText(getString(R.string.number_conversions));
 
         OperationsMenuAdapter adapter = new OperationsMenuAdapter(operations);
 
@@ -106,6 +107,9 @@ public class ConversionMenuActivity extends AppCompatActivity implements Operati
 
             case Constants.CONVERSION_DEC_TO_OCTAL:
                 Utilities.replaceFragment(new FragmentDecToOctal(), getSupportFragmentManager(), R.id.fragmentContainer);
+                break;
+            case Constants.CONVERSION_BIN_TO_DEC:
+                Utilities.replaceFragment(new FragmentBinToDec(), getSupportFragmentManager(), R.id.fragmentContainer);
                 break;
         }
     }

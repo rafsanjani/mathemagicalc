@@ -34,7 +34,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_allinone, container, false);
+        rootView = inflater.inflate(R.layout.fragment_conversions_allinone, container, false);
 
         initControls();
         return rootView;
@@ -91,7 +91,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
 
         //answer textviews
-        TextView tvBinary = rootView.findViewById(R.id.text_answer_binary);
+        TextView tvBinary = rootView.findViewById(R.id.text_answer);
         TextView tvOctal = rootView.findViewById(R.id.text_answer_octal);
         TextView tvHexadecimal = rootView.findViewById(R.id.text_answer_hexadecimal);
 

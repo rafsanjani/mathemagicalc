@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
@@ -49,7 +48,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
     private void initControls() {
         //Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/FallingSky.otf");
 
-        TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer);
         inputLayout = rootView.findViewById(R.id.til_user_input);
         //tvAnswer.setTypeface(typeface);
 
@@ -178,7 +177,7 @@ public class FragmentDecToBinInt extends Fragment implements View.OnClickListene
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.text_answer_binary),
+            Utilities.animateAnswer(rootView.findViewById(R.id.text_answer),
                     rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }

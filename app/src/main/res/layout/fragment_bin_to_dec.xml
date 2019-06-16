@@ -22,14 +22,14 @@
                 style="@style/AppMaterialTheme.HeaderStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Convert Binary to Decimal" />
+                android:text="@string/bin_to_decimal" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Convert a binary number to it's corresponding decimal numeral"
+                android:text="@string/bin_to_dec_desc"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/desc_text_size" />
@@ -58,7 +58,7 @@
 
 
             <TextView
-                android:id="@+id/text_answer_binary"
+                android:id="@+id/text_answer"
                 style="@style/AnswerStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

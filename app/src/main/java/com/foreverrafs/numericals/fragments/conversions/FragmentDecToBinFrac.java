@@ -44,7 +44,7 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
     }
 
     private void initControls() {
-        TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer);
         inputLayout = rootView.findViewById(R.id.til_user_input);
 
         Button btnBack = rootView.findViewById(R.id.button_back);
@@ -98,7 +98,7 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
 
     private void onCalculate() {
         EditText etInput = rootView.findViewById(R.id.text_user_input);
-        TextView tvAnswer = rootView.findViewById(R.id.text_answer_binary);
+        TextView tvAnswer = rootView.findViewById(R.id.text_answer);
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
@@ -156,7 +156,7 @@ public class FragmentDecToBinFrac extends Fragment implements View.OnClickListen
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable.length() == 0) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.text_answer_binary),
+            Utilities.animateAnswer(rootView.findViewById(R.id.text_answer),
                     rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
         }
     }
