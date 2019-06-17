@@ -3,7 +3,6 @@ package com.foreverrafs.numericals.fragments.conversions;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,7 +29,7 @@ public class FragmentBinToDec extends ConversionsBase {
 
         setHeader(getString(R.string.bin_to_decimal));
         setDescription(getString(R.string.bin_to_dec_desc));
-        setInputHint(getString(R.string.bin_to_decimal_hint));
+        setInputHint(getString(R.string.binary_input_hint));
         setMethodName("bintodec");
     }
 
@@ -58,15 +57,16 @@ public class FragmentBinToDec extends ConversionsBase {
             decimal = String.valueOf(Numericals.BinaryToDecimal(binary));
             tvAnswer.setText(decimal);
             Utilities.animateAnswer(tvAnswer,
-                    (ViewGroup) rootView, Utilities.DisplayMode.SHOW);
+                    rootView, Utilities.DisplayMode.SHOW);
 
         } catch (NotABinaryException ex) {
             Log.e(Utilities.LOG_TAG, ex.getMessage());
             showErrorMessage(ex.getMessage(), true);
         } catch (Exception ex) {
             Log.e(Utilities.LOG_TAG, ex.getMessage());
-        } finally {
-            Utilities.hideKeyboard(etInput);
         }
+//        } finally {
+//            Utilities.hideKeyboard(etInput);
+//        }
     }
 }
