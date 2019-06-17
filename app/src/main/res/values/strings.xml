@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">MathemagicalC</string>
     <string name="remarks">Numerical Methods and Computations</string>
-    <string name="footer_text">...and Computations</string>
     <string name="app_description">Implementation of algorithms</string>
     <string name="description_text">Operation List</string>
     <string name="dec_frac_tobinary">1. Decimal to Binary (Fractional Part Only)</string>
@@ -13,9 +12,7 @@
     <string name="rootlocation_secante">7. Location Of Roots (Secante)</string>
     <string name="systemofequations_partial_pivoting">8. Sys. of Equations (Partial Pivoting)</string>
     <string name="systemofequations_complete_pivoting">9. Sys. of Equations (Complete Pivoting)</string>
-    <string name="button_proceed">Compute</string>
     <string name="calculate">Calculate</string>
-    <string name="proceed">Proceed...</string>
     <string name="back_to_main_menu">Back to main menu</string>
     <string name="button_view_source">View Source…</string>
     <string name="decimal_to_binary_title">Decimal to Binary converter</string>
@@ -35,7 +32,6 @@
     <string name="group_members">Group Members</string>
     <string name="tolerance">Tolerance</string>
     <string name="iterations">Iterations</string>
-    <string name="cont">Continue...</string>
     <string name="loc_of_rooots">Location of Roots</string>
     <string name="sys_of_eqns">System of Equations</string>
     <string name="number_conversions">Numerical Convertions</string>
@@ -67,21 +63,6 @@
     <string name="solve">Solve</string>
     <string name="question_mark">#63</string>
 
-
-    <string-array name="main_menu">
-        <item>1. Number Conversions</item>
-        <item>2. Location Of Roots</item>
-        <item>3. System Of Equations</item>
-        <item>4. Ordinary Diff. Eqns</item>
-        <item>5. Self Test Quiz</item>
-    </string-array>
-
-    <string-array name="conversions_menu">
-        <item>1. Decimal to Binary (Fraction Part Only)</item>
-        <item>2. Decimal to Binary (Integer Part Only)</item>
-        <item>3. Decimal to Binary (Any Number)</item>
-    </string-array>
-
     <string-array name="main_menu_legacy">
         <item>1. Decimal to Binary (Fractions)</item>
         <item>2. Decimal to Binary (Integers)</item>
@@ -101,8 +82,6 @@
         <item>16. Sys of Eqns (Gauss Seidel with SOR)</item>
         <item>17. Sys of Eqns (Jacobi)</item>
         <item>18. Ordinary Differential Equations</item>
-        <!--<item>20. Numerical Interpolation</item>
-        <item>21. Numerical Differentiation</item>!-->
     </string-array>
     <string name="title_activity_scrolling">ScrollingActivity</string>
 
@@ -162,8 +141,8 @@
     <string name="algo_desc">dynamic description of algorithm. A short description should be shown here</string>
     <string name="algo_header">Dynamic Header Text</string>
     <string name="dynamic_input_hint">dynamic input hint</string>
-    <string name="bin_to_decimal_hint">Enter a binary number eg 1010</string>
+    <string name="binary_input_hint">Enter a binary number eg 1010</string>
     <string name="errormsg_empty_input">Input cannot be empty</string>
-
-
+    <string name="decimal_frac_input_hint">Enter a decimal fraction eg 0.123</string>
+    <string name="decimal_int_input_hint">Enter an Integer eg 25</string>
 </resources>
