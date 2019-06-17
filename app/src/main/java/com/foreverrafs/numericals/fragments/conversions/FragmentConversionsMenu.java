@@ -20,29 +20,21 @@ import com.foreverrafs.numericals.utils.Utilities;
 public class FragmentConversionsMenu extends Fragment implements View.OnClickListener {
 
 
-    //    private static TextView header;
     private View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_conversions_menu, container, false);
         initControls();
-        //(getResources().getString(R.string.app_name), getResources().getString(R.string.app_description));
-
         return rootView;
-
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initControls() {
-//        header = rootView.findViewById(R.id.text_header);
-//        header.setVisibility(View.VISIBLE);
-
         rootView.findViewById(R.id.btn_dec_to_binary_integer).setOnClickListener(this);
         rootView.findViewById(R.id.btn_dec_to_binary_fraction).setOnClickListener(this);
         rootView.findViewById(R.id.btn_dec_to_binary_any_number).setOnClickListener(this);
@@ -50,9 +42,6 @@ public class FragmentConversionsMenu extends Fragment implements View.OnClickLis
         rootView.findViewById(R.id.btn_decimal_to_octal).setOnClickListener(this);
         rootView.findViewById(R.id.btn_decimal_to_hexadecimal).setOnClickListener(this);
         rootView.findViewById(R.id.btn_allinone).setOnClickListener(this);
-
-//        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Lobster-Regular.ttf");
-//        header.setTypeface(typeface);
     }
 
     @Override

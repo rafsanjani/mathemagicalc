@@ -28,7 +28,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class FragmentAllInOne extends Fragment implements View.OnClickListener, TextWatcher {
 
-    View rootView;
+    private View rootView;
     private TextInputLayout inputLayout;
 
     @Nullable
@@ -41,7 +41,6 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     }
 
     private void initControls() {
-//        Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFaceName.philosopher_bold);
         inputLayout = rootView.findViewById(R.id.til_user_input);
         inputLayout.setErrorEnabled(true);
 
@@ -71,14 +70,12 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        // ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_back:
-                //Utilities.replaceFragment(new FragmentConversionsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
                 break;
 
             case R.id.button_calculate:
@@ -107,11 +104,10 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
         }
 
         try {
-            Double decLong = Double.parseDouble(decimal);
+            double decLong = Double.parseDouble(decimal);
 
             if (decLong <= 0) {
                 inputLayout.setError("Number should be greater than 0");
-                //Toast.makeText(getContext(), "Number should be greater than 0", Toast.LENGTH_LONG).show();
                 return;
             }
 
@@ -124,9 +120,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
             tvHexadecimal.setText(hexadecimal);
 
             Utilities.animateAnswer(rootView.findViewById(R.id.layout_answer_area),
-                    (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-
-            //rootView.findViewById(R.id.show_all).setVisibility(isAnswerTruncated ? View.VISIBLE : View.GONE);
+                    rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
 
         } catch (NumberFormatException ex) {

@@ -145,4 +145,5 @@
     <string name="errormsg_empty_input">Input cannot be empty</string>
     <string name="decimal_frac_input_hint">Enter a decimal fraction eg 0.123</string>
     <string name="decimal_int_input_hint">Enter an Integer eg 25</string>
+    <string name="errormsg_greater_than_zero">Should be greater than 0!</string>
 </resources>

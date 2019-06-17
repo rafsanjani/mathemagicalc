@@ -12,18 +12,12 @@ import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-//import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
 public class FragmentDecToBin extends ConversionsBase {
-
-    private View rootView;
-    private TextInputLayout inputLayout;
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         initControls();
@@ -33,10 +27,11 @@ public class FragmentDecToBin extends ConversionsBase {
     protected void initControls() {
         super.initControls();
 
-        setMethodName("dectobin");
+        setHeader(getString(R.string.dec_to_bin_any_number));
         setDescription(getString(R.string.decimal_to_bin_desc));
-        setHeader(getString(R.string.decimal_to_bin_desc));
         setInputHint(getString(R.string.enter_decimal));
+        setMethodName("dectobin");
+
 
     }
 
@@ -55,7 +50,7 @@ public class FragmentDecToBin extends ConversionsBase {
             double decLong = Double.parseDouble(decimal);
 
             if (decLong <= 0) {
-                showErrorMessage("Decimal Should be greater than 0", false);
+                showErrorMessage(getString(R.string.errormsg_greater_than_zero), false);
                 return;
             }
 
@@ -70,9 +65,9 @@ public class FragmentDecToBin extends ConversionsBase {
             Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to an integer value");
         } catch (Exception ex) {
             Log.e(Utilities.LOG_TAG, ex.getMessage());
-        } finally {
-            Utilities.hideKeyboard(etInput);
-        }
+        }// finally {
+           // Utilities.hideKeyboard(etInput);
+//        }
     }
 
 
