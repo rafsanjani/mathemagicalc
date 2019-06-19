@@ -14,6 +14,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 public class NumericalsTest {
     private static void printMatrix(double[][] matrix) {
@@ -32,6 +33,12 @@ public class NumericalsTest {
             }
             System.out.print(B[rowIndex]);
             System.out.println();
+        }
+    }
+
+    private static void printMatrix(double system[]) {
+        for (double aSystem : system) {
+            System.out.print(aSystem + " ");
         }
     }
 
@@ -63,12 +70,6 @@ public class NumericalsTest {
     public void testbintodecnew() {
         String bin = "1010.101";
         System.out.println(Numericals.BinaryToDecimal(bin));
-    }
-
-    private static void printMatrix(double system[]) {
-        for (double aSystem : system) {
-            System.out.print(aSystem + " ");
-        }
     }
 
     @Test
@@ -349,13 +350,10 @@ public class NumericalsTest {
         for (OdeResult result : results) {
             System.out.println(result.getN() + " " + result.getX() + "  " + result.getY());
         }
-
-        // assertEquals(0.23681533952, results.get(5).getY());
     }
 
     @Test
-    public void testIsBinary(){
-        boolean isBinary = Numericals.isBinary("101010.1010.10101");
-        assertEquals(isBinary, true);
+    public void testIsBinary() {
+        assertTrue(Numericals.isBinary("101010.1010.10101"));
     }
 }

@@ -137,14 +137,15 @@ public final class Utilities {
             case SHOW:
                 TransitionManager.beginDelayedTransition((ViewGroup) rootView);
                 answerView.setVisibility(View.VISIBLE);
+                hideKeyboard(rootView);
                 break;
 
             case HIDE:
-
                 TransitionManager.beginDelayedTransition((ViewGroup) rootView);
                 answerView.setVisibility(View.GONE);
                 break;
         }
+
     }
 
     public static void showAlgorithmScreen(Context c, String algoName) {

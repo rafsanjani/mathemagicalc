@@ -22,7 +22,7 @@
     <string name="enter_binary_number">Enter a decimal fraction (eg 0.123): </string>
     <string name="dec_to_bin_int_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N >= 1 </string>
     <string name="enter_decimal_int">Enter a decimal Integer (eg 30)</string>
-    <string name="enter_decimal">Enter a decimal Integer (eg 30 or 30.53)</string>
+    <string name="enter_decimal">Enter a decimal number (eg 30 or 30.53)</string>
     <string name="decimal_to_bin_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N > 0 </string>
     <string name="decimal_to_hexadecimal_desc">Converts a decimal integer (N) to it\'s equivalent hexadecimal where  N > 0 </string>
     <string name="bisection_desc">Locate the root of an equation of the form f(x) = 0</string>
@@ -58,8 +58,8 @@
     <string name="dec_to_bin_integers">Dec to Bin (Integers)</string>
     <string name="decimal_to_octal_desc"><![CDATA[Converts a decimal integer (N) to it\'s equivalent octal value where N > 0]]></string>
     <string name="back_to_sys_of_eqns">Back to Sys of Eqns</string>
-    <string name="all_in_one_converter">ALL IN ONE CONVERTER</string>
-    <string name="conversion_all_in_one">Enter a decimal number and it will be converted to binary, octal and hexadecimal</string>
+    <string name="all_in_one_converter">All in one converter</string>
+    <string name="conversion_all_in_one_desc">Enter a decimal number and it will be converted to binary, octal and hexadecimal</string>
     <string name="solve">Solve</string>
     <string name="question_mark">#63</string>
 
@@ -146,4 +146,8 @@
     <string name="decimal_frac_input_hint">Enter a decimal fraction eg 0.123</string>
     <string name="decimal_int_input_hint">Enter an Integer eg 25</string>
     <string name="errormsg_greater_than_zero">Should be greater than 0!</string>
+    <string name="back_to_conversions_menu">Back to Conversions Menu</string>
+    <string name="binary">Binary</string>
+    <string name="octal">Octal</string>
+    <string name="hexadecimal">Hexadecimal</string>
 </resources>

@@ -1,162 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMainBackground"
-    android:orientation="vertical"
-    tools:context=".activities.ConversionMenuActivity">
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
+
 
     <com.foreverrafs.numericals.custom_views.RafsTextView
-        android:id="@+id/text_header"
+        android:id="@+id/rafsTextView"
         style="@style/AppMaterialTheme.HeaderStyle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All in one converter" />
+        android:layout_marginTop="24dp"
+        android:text="@string/all_in_one_converter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="@string/conversion_all_in_one"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/conversion_all_in_one_desc"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/desc_text_size" />
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="20dp" />
+        android:textSize="@dimen/desc_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rafsTextView" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_user_input"
-        android:layout_width="match_parent"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/std_layout_margin"
-        android:layout_marginRight="@dimen/std_layout_margin">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/enter_decimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_user_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:hint="Enter a decimal number"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textColor="@color/answerColor" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_answer_area"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/sol_answer_vertical_width"
-        android:orientation="vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_user_input"
         tools:visibility="visible">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/std_layout_margin"
-            android:layout_marginRight="@dimen/std_layout_margin"
-            android:orientation="horizontal">
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/binary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/answer_vertical_width"
-                android:text="Bin "
-                android:textColor="#263238"
-                android:textSize="20sp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/text_answer"
-                style="@style/AnswerStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/answer_vertical_width"
-                android:gravity="end"
-                android:text="0.000000"
-                android:textSize="20sp"
-                android:visibility="visible" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/std_layout_margin"
-            android:layout_marginRight="@dimen/std_layout_margin"
-            android:orientation="horizontal">
+            android:layout_marginTop="24dp"
+            android:text="@string/octal"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/text_answer_binary" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/answer_vertical_width"
-                android:text="Octal "
-                android:textColor="#263238"
-                android:textSize="20sp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/text_answer_octal"
-                style="@style/AnswerStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/answer_vertical_width"
-                android:gravity="end"
-                android:text="0.000000"
-                android:textSize="20sp"
-                android:visibility="visible" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/std_layout_margin"
-            android:layout_marginRight="@dimen/std_layout_margin"
-            android:orientation="horizontal">
+            android:layout_marginTop="24dp"
+            android:text="@string/hexadecimal"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/answer_vertical_width"
-                android:text="hexa "
-                android:textColor="#263238"
-                android:textSize="20sp"
-                android:visibility="visible" />
+        <TextView
+            android:id="@+id/text_answer_binary"
+            style="@style/AnswerStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="16dp"
+            android:text="0.0000000"
+            android:textAlignment="textEnd"
+            android:textSize="20sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/text_answer_hexadecimal"
-                style="@style/AnswerStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/answer_vertical_width"
-                android:gravity="end"
-                android:text="0.000000"
-                android:textSize="20sp"
-                android:visibility="visible" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/text_answer_octal"
+            style="@style/AnswerStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="236354"
+            android:textAlignment="textEnd"
+            android:textSize="20sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/text_answer_binary"
+            app:layout_constraintStart_toStartOf="@+id/text_answer_binary"
+            app:layout_constraintTop_toBottomOf="@+id/text_answer_binary" />
 
-
-    </LinearLayout>
-
-
-    <Button
-        android:id="@+id/button_calculate"
-        style="@style/AppMaterialTheme.ButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/calculate" />
+        <TextView
+            android:id="@+id/text_answer_hexadecimal"
+            style="@style/AnswerStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="AF332FDC"
+            android:textAlignment="textEnd"
+            android:textSize="20sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/text_answer_octal"
+            app:layout_constraintStart_toStartOf="@+id/text_answer_octal"
+            app:layout_constraintTop_toBottomOf="@+id/text_answer_octal" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/button_back"
         style="@style/AppMaterialTheme.ButtonStyle.Exit"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Back to Conversions Menu"
-        android:textStyle="bold" />
-</LinearLayout>
+        android:layout_marginTop="8dp"
+        android:text="@string/back_to_conversions_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_calculate" />
+
+    <Button
+        android:id="@+id/button_calculate"
+        style="@style/AppMaterialTheme.ButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_answer_area" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

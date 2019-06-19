@@ -77,6 +77,6 @@
         style="@style/AppMaterialTheme.ButtonStyle.Exit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back to Conversions Menu"
+        android:text="@string/back_to_conversions_menu"
         android:textStyle="bold" />
 </LinearLayout>

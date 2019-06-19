@@ -2,11 +2,10 @@ package com.foreverrafs.numericals.activities;
 
 
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,7 +15,6 @@ import com.foreverrafs.numericals.custom_views.RafsTextView;
 import com.foreverrafs.numericals.fragments.conversions.FragmentAllInOne;
 import com.foreverrafs.numericals.fragments.conversions.FragmentBinToDec;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBin;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinFrac;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinInt;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToHexadecimal;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToOctal;
@@ -61,7 +59,6 @@ public class ConversionMenuActivity extends AppCompatActivity implements Operati
         operations.add(new OperationMenu("All in One Conversion", R.drawable.button_location_of_roots, Constants.CONVERSION_ALL_IN_ONE));
 
 
-
         header.setText(getString(R.string.number_conversions));
 
         OperationsMenuAdapter adapter = new OperationsMenuAdapter(operations);
@@ -85,33 +82,35 @@ public class ConversionMenuActivity extends AppCompatActivity implements Operati
     @Override
     public void OnMenuItemClicked(int menuItemType) {
 
+        Fragment fragment = null;
         switch (menuItemType) {
             case Constants.CONVERSION_DEC_TO_BIN_FRACTION:
-                Utilities.replaceFragment(new FragmentDecToBinFrac(), getSupportFragmentManager(), R.id.fragmentContainer);
+                fragment = new FragmentDecToBin();
                 break;
 
             case Constants.CONVERSION_DEC_TO_BIN_INT:
-                Utilities.replaceFragment(new FragmentDecToBinInt(), getSupportFragmentManager(), R.id.fragmentContainer);
+                fragment = new FragmentDecToBinInt();
                 break;
 
             case Constants.CONVERSION_ALL_IN_ONE:
-                Utilities.replaceFragment(new FragmentAllInOne(), getSupportFragmentManager(), R.id.fragmentContainer);
+                fragment = new FragmentAllInOne();
                 break;
 
             case Constants.CONVERSION_DEC_TO_BIN_ALL:
-                Utilities.replaceFragment(new FragmentDecToBin(), getSupportFragmentManager(), R.id.fragmentContainer);
+                fragment = new FragmentDecToBin();
                 break;
 
             case Constants.CONVERSION_DEC_TO_HEXA:
-                Utilities.replaceFragment(new FragmentDecToHexadecimal(), getSupportFragmentManager(), R.id.fragmentContainer);
+                fragment = new FragmentDecToHexadecimal();
                 break;
 
             case Constants.CONVERSION_DEC_TO_OCTAL:
-                Utilities.replaceFragment(new FragmentDecToOctal(), getSupportFragmentManager(), R.id.fragmentContainer);
+                fragment = new FragmentDecToOctal();
                 break;
             case Constants.CONVERSION_BIN_TO_DEC:
-                Utilities.replaceFragment(new FragmentBinToDec(), getSupportFragmentManager(), R.id.fragmentContainer);
+                fragment = new FragmentBinToDec();
                 break;
         }
+        Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
     }
 }
