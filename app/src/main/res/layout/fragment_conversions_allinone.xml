@@ -9,7 +9,6 @@
     android:focusable="true"
     android:orientation="vertical">
 
-
     <com.foreverrafs.numericals.custom_views.RafsTextView
         android:id="@+id/rafsTextView"
         style="@style/AppMaterialTheme.HeaderStyle"
