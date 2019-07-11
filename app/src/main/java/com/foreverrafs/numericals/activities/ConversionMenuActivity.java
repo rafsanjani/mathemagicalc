@@ -75,7 +75,7 @@ public class ConversionMenuActivity extends AppCompatActivity implements Operati
 
     @Override
     public boolean onSupportNavigateUp() {
-        finish();
+        onBackPressed();
         return true;
     }
 
