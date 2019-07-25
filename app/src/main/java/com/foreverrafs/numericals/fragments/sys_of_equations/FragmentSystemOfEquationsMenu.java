@@ -3,13 +3,14 @@ package com.foreverrafs.numericals.fragments.sys_of_equations;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -87,7 +88,7 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements View.OnCl
                 fragment = new FragmentGaussianComplete4x4();
         }
 
-        if (fragment != null)
+        if (fragment != null && getFragmentManager() != null)
             Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
     }
 }

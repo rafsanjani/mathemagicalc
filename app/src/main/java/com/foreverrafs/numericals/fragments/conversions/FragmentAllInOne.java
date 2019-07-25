@@ -109,8 +109,6 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
 
     private void onCalculate() {
         TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
-
-
         String binary, octal, hexadecimal;
 
         String decimal = etInput.getText().toString();

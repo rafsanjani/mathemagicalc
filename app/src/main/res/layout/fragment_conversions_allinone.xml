@@ -9,8 +9,8 @@
     android:focusable="true"
     android:orientation="vertical">
 
-    <com.foreverrafs.numericals.custom_views.RafsTextView
-        android:id="@+id/rafsTextView"
+    <TextView
+        android:id="@+id/text_header"
         style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         android:textSize="@dimen/desc_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rafsTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/text_header" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_user_input"

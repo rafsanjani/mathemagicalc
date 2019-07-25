@@ -4,6 +4,7 @@ package com.foreverrafs.numericals.activities;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -11,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.OperationsMenuAdapter;
-import com.foreverrafs.numericals.custom_views.RafsTextView;
 import com.foreverrafs.numericals.model.OperationMenu;
 import com.foreverrafs.numericals.utils.Constants;
 
@@ -27,8 +27,8 @@ public class MainMenuActivity extends AppCompatActivity {
     @BindView(R.id.list_main_menu)
     RecyclerView mainMenuItems;
 
-    @BindView(R.id.headerTextView)
-    RafsTextView header;
+    @BindView(R.id.text_header)
+    TextView header;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

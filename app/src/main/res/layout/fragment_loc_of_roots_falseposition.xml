@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMainBackground"
     android:orientation="vertical">
 
-    <com.foreverrafs.numericals.custom_views.RafsTextView
+    <TextView
         android:id="@+id/text_header"
         style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="match_parent"
@@ -38,19 +38,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/std_layout_margin"
-                android:layout_marginRight="@dimen/std_layout_margin">
+                android:layout_marginRight="@dimen/std_layout_margin"
+                android:hint="@string/bisection_enter_eqn">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_equation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:font_name="bitter_italic.ttf"
+                    android:fontFamily="@font/bitter_italic"
                     android:gravity="center_horizontal"
-                    android:hint="@string/bisection_enter_eqn"
                     android:imeOptions="actionGo"
                     android:inputType="text"
-                    android:text="2x + 3"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    tools:text="2x + 3 = 25" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -78,7 +78,7 @@
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:hint="x0"
+                        android:hint="@string/x0"
                         android:inputType="numberDecimal|numberSigned"
                         android:textAlignment="center" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -95,7 +95,7 @@
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:hint="x1"
+                        android:hint="@string/x1"
                         android:inputType="numberDecimal|numberSigned"
                         android:textAlignment="center" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -128,7 +128,7 @@
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:hint="Iterations"
+                        android:hint="@string/iterations"
                         android:inputType="numberSigned"
                         android:textAlignment="center" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -146,7 +146,7 @@
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:hint="Tolerance"
+                        android:hint="@string/tolerance"
                         android:inputType="numberDecimal|numberSigned"
                         android:textAlignment="center" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -160,9 +160,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="0.000000"
                 android:textAlignment="center"
-                android:visibility="gone" />
+                android:visibility="gone"
+                tools:text="0.000000" />
 
             <Button
                 android:id="@+id/button_calculate"
@@ -186,7 +186,7 @@
                 style="@style/AppMaterialTheme.ButtonStyle.Exit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Back to LOR Menu"
+                android:text="@string/back_to_main_menu"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/AppMaterialTheme"
-    tools:context=".activities.MainMenuActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMainBackground"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activities.MainMenuActivity">
 
-    <com.foreverrafs.numericals.custom_views.RafsTextView
-        android:id="@+id/headerTextView"
+    <TextView
+        android:id="@+id/text_header"
         style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerTextView"
+        app:layout_constraintTop_toBottomOf="@+id/text_header"
         app:layout_constraintVertical_bias="0.412" />
 
 

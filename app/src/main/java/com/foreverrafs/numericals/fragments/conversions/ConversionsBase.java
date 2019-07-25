@@ -15,7 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.custom_views.RafsTextView;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -35,7 +34,7 @@ public abstract class ConversionsBase extends Fragment {
     @BindView(R.id.til_user_input)
     TextInputLayout inputLayout;
     @BindView(R.id.text_header)
-    RafsTextView txtHeader;
+    TextView txtHeader;
     @BindView(R.id.text_description)
     TextView txtDescription;
     @BindView(R.id.text_user_input)

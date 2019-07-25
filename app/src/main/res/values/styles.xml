@@ -27,7 +27,7 @@
     </style>
 
     <style name="AppMaterialTheme.HeaderStyle" parent="">
-        <item name="font_name">raleway_bold.ttf</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
         <item name="android:layout_marginTop">@dimen/header_margin_top</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textAlignment">center</item>
@@ -38,7 +38,7 @@
 
     <style name="AnswerStyle" parent="AppMaterialTheme.HeaderStyle">
         <item name="android:textSize">32sp</item>
-        <item name="font_name">falling_sky.otf</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/answer_vertical_width</item>

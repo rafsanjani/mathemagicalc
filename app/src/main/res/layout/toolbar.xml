@@ -17,12 +17,12 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.foreverrafs.numericals.custom_views.RafsTextView
+        <TextView
             android:id="@+id/toolbarAppTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:font_name="philosopher_bold.ttf"
-            android:text="MathemagicalC"
+            android:fontFamily="@font/philosopher_bold"
+            android:text="@string/app_name"
             android:textAlignment="center"
             android:textColor="@color/colorWhite"
             android:textSize="30sp"
