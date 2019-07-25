@@ -1,5 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -91,7 +92,9 @@ public abstract class ConversionsBase extends Fragment {
 
     @OnClick(R.id.button_back)
     void onBackPressed() {
-
+        Activity parentActivity = this.getActivity();
+        if (parentActivity != null)
+            parentActivity.finish();
     }
 
     @OnClick(R.id.button_calculate)
@@ -132,6 +135,11 @@ public abstract class ConversionsBase extends Fragment {
             }
         });
 
+    }
+
+    protected void displayAnswer() {
+        Utilities.animateAnswer(tvAnswer,
+                rootView, Utilities.DisplayMode.SHOW);
     }
 
 
