@@ -61,7 +61,7 @@ public abstract class ConversionsBase extends Fragment {
         txtDescription.setText(description);
     }
 
-    protected void showErrorMessage(String errorMessage, boolean clearInput) {
+    void showErrorMessage(String errorMessage, boolean clearInput) {
         inputLayout.setErrorEnabled(true);
         inputLayout.setError(errorMessage);
 
@@ -69,7 +69,7 @@ public abstract class ConversionsBase extends Fragment {
             etInput.setText(null);
     }
 
-    protected void hideErrorMessage() {
+    private void hideErrorMessage() {
         inputLayout.setErrorEnabled(false);
     }
 
@@ -77,16 +77,16 @@ public abstract class ConversionsBase extends Fragment {
         return methodName;
     }
 
-    protected void setMethodName(String value) {
+    void setMethodName(String value) {
         methodName = value;
     }
 
-    protected void setInputHint(String hint) {
+    void setInputHint(String hint) {
         inputLayout.setHint(hint);
     }
 
     @OnClick(R.id.button_show_algo)
-    public void onShowAlgorithm() {
+    void onShowAlgorithm() {
         Utilities.showAlgorithmScreen(getContext(), getMethodName());
     }
 
@@ -98,7 +98,7 @@ public abstract class ConversionsBase extends Fragment {
     }
 
     @OnClick(R.id.button_calculate)
-    public void onCalculateClicked() {
+    void onCalculateClicked() {
         onCalculate();
     }
 
@@ -137,7 +137,7 @@ public abstract class ConversionsBase extends Fragment {
 
     }
 
-    protected void displayAnswer() {
+    void displayAnswer() {
         Utilities.animateAnswer(tvAnswer,
                 rootView, Utilities.DisplayMode.SHOW);
     }
