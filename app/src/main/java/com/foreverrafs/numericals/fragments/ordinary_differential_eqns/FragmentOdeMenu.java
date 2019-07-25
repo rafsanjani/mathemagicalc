@@ -56,6 +56,6 @@ public class FragmentOdeMenu extends Fragment implements View.OnClickListener {
                 break;
         }
 
-        Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
+        Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
     }
 }

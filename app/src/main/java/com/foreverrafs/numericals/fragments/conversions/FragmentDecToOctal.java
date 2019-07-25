@@ -3,8 +3,6 @@ package com.foreverrafs.numericals.fragments.conversions;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,9 +38,6 @@ public class FragmentDecToOctal extends ConversionsBase {
 
     @Override
     protected void onCalculate() {
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
-        TextView tvAnswer = rootView.findViewById(R.id.text_answer_octal);
-
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
             showErrorMessage(getString(R.string.errormsg_empty_input), false);
@@ -61,14 +56,12 @@ public class FragmentDecToOctal extends ConversionsBase {
 
             tvAnswer.setText(octalDecimal);
 
-            Utilities.animateAnswer(tvAnswer, rootView, Utilities.DisplayMode.SHOW);
+            displayAnswer();
 
         } catch (NumberFormatException ex) {
             Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to an integer value");
         } catch (Exception ex) {
             Log.e(Utilities.LOG_TAG, ex.getMessage());
-        } //finally {
-//            Utilities.hideKeyboard(etInput);
-//        }
+        }
     }
 }

@@ -30,50 +30,6 @@ public final class Utilities {
 
     public static final String LOG_TAG = "TAG";
 
-    public static void replaceFragment(Fragment next, FragmentManager fragmentManager, int containerViewId, boolean isGoingBack) {
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        if (!isGoingBack)
-            transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-        else
-            transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-
-        //next.setEnterTransition(enterFade);
-        transaction.replace(containerViewId, next);
-        transaction.commit();
-    }
-
-//    public static void setTypeFace(View view, Context mCtx, TypeFaceName typeFaceName) {
-//        //cast the view to a TextView, if casting fails then we cast to an edittext and apply the necessary font
-//        Typeface typeface = null;
-//
-//        try {
-//            typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/" + typeFaceName.toString() + ".ttf");
-//            TextView tv = (TextView) view;
-//            tv.setTypeface(typeface);
-//        } catch (ClassCastException exception) {
-//            EditText editText = (EditText) view;
-//            editText.setTypeface(typeface);
-//        } catch (Exception exception) {
-//            android.util.Log.e(LOG_TAG, exception.getMessage());
-//        }
-//    }
-
-//    public static void setTypeFace(View view, Context mCtx, String typeFaceName) {
-//        //cast the view to a TextView, if casting fails then we cast to an edittext and apply the necessary font
-//        Typeface typeface = null;
-//
-//        try {
-//            typeface = Typeface.createFromAsset(mCtx.getAssets(), "fonts/" + typeFaceName + ".ttf");
-//            TextView tv = (TextView) view;
-//            tv.setTypeface(typeface);
-//        } catch (ClassCastException exception) {
-//            EditText editText = (EditText) view;
-//            editText.setTypeface(typeface);
-//        } catch (Exception exception) {
-//            android.util.Log.e(LOG_TAG, exception.getMessage());
-//        }
-//    }
-
     public static void replaceFragment(Fragment next, FragmentManager fragmentManager,
                                        int container) {
         String name = fragmentManager.getClass().getSimpleName();
@@ -83,35 +39,37 @@ public final class Utilities {
         enterFade.setDuration(300);
 
         next.setEnterTransition(enterFade);
-        transaction.replace(container, next);
-        transaction.commit();
+
+        transaction.replace(container, next)
+                .addToBackStack(name)
+                .commit();
     }
 
-    public static void replaceFragment(Context mCtx, Fragment next, FragmentManager
-            fragmentManager, int containerViewId) {
-        if (mCtx.getClass().getSimpleName().equals("MainMenuActivity")) {
-            String name = fragmentManager.getClass().getSimpleName();
-
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            Fade enterFade = new Fade();
-            enterFade.setDuration(300);
-            //Fade enterFade = new Fade();
-            //enterFade.setDuration(500);
-
-            next.setEnterTransition(enterFade);
-            transaction.replace(containerViewId, next);
-            transaction.commit();
-            return;
-        }
-        android.util.Log.e(LOG_TAG, "Only MainMenuActivity can process fragments");
-    }
-
-    public static void loadFragment(Fragment fragment, FragmentManager fragmentManager,
-                                    int containerViewId) {
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(containerViewId, fragment);
-        fragmentTransaction.commit();
-    }
+//    public static void replaceFragment(Context mCtx, Fragment next, FragmentManager
+//            fragmentManager, int containerViewId) {
+//        if (mCtx.getClass().getSimpleName().equals("MainMenuActivity")) {
+//            String name = fragmentManager.getClass().getSimpleName();
+//
+//            FragmentTransaction transaction = fragmentManager.beginTransaction();
+//            Fade enterFade = new Fade();
+//            enterFade.setDuration(300);
+//            //Fade enterFade = new Fade();
+//            //enterFade.setDuration(500);
+//
+//            next.setEnterTransition(enterFade);
+//            transaction.replace(containerViewId, next);
+//            transaction.commit();
+//            return;
+//        }
+//        android.util.Log.e(LOG_TAG, "Only MainMenuActivity can process fragments");
+//    }
+//
+//    public static void loadFragment(Fragment fragment, FragmentManager fragmentManager,
+//                                    int containerViewId) {
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(containerViewId, fragment);
+//        fragmentTransaction.commit();
+//    }
 
     public static void animateTextViewColorAndAlpha(Context mCtx, TextView textView) {
         AnimatorSet animatorSet = new AnimatorSet();

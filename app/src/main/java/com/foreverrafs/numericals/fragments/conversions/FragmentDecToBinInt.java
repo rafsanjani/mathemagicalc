@@ -3,6 +3,7 @@ package com.foreverrafs.numericals.fragments.conversions;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,9 +37,6 @@ public class FragmentDecToBinInt extends ConversionsBase {
 
     @Override
     protected void onCalculate() {
-        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
-        TextView tvAnswer = rootView.findViewById(R.id.text_answer_hexadecimal);
-
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
             showErrorMessage("Input cannot be empty", false);
@@ -64,12 +62,10 @@ public class FragmentDecToBinInt extends ConversionsBase {
         } catch (NumberFormatException ex) {
             Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to a double value");
             showErrorMessage("Input isn't an integer", false);
-            Utilities.animateAnswer(tvAnswer, rootView, Utilities.DisplayMode.HIDE);
+            displayAnswer();
 
         } catch (Exception ex) {
             Log.e(Utilities.LOG_TAG, ex.getMessage());
-        } finally {
-            Utilities.hideKeyboard(etInput);
         }
     }
 }

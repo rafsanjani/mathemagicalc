@@ -104,9 +104,9 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.button_back:
-                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
-                break;
+//            case R.id.button_back:
+//                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+//                break;
 
             case R.id.button_calculate:
                 Log.i(Utilities.LOG_TAG, "performing Jacobi's calculation");

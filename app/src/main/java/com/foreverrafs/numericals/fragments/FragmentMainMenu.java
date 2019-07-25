@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.LocationOfRootsMenu;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.fragments.conversions.FragmentConversionsMenu;
 import com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
@@ -59,33 +58,28 @@ public class FragmentMainMenu extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Fragment fragment;
+        Fragment fragment = null;
         switch (view.getId()) {
             case R.id.btn_number_conversion:
                 fragment = new FragmentConversionsMenu();
-                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
 
-//            case R.id.btn_loc_of_roots:
-//                fragment = new LocationOfRootsMenu();
-//                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
-//                break;
             case R.id.btn_sys_of_eqn:
                 fragment = new FragmentSystemOfEquationsMenu();
-                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
             case R.id.btn_ord_diff_eqn:
                 fragment = new FragmentOdeMenu();
-                Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
                 break;
             case R.id.btn_algorithms:
                 startActivity(new Intent(getContext(), ShowAlgorithm.class));
                 mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                break;
+                return;
             case R.id.btn_about:
 
                 break;
         }
+        if (fragment != null)
+            Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
 
     }
 }

@@ -124,7 +124,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_back:
-                Utilities.replaceFragment(new FragmentOdeMenu(), getFragmentManager(), R.id.fragmentContainer, true);
+                Utilities.replaceFragment(new FragmentOdeMenu(), getFragmentManager(), R.id.fragmentContainer);
                 break;
 
             case R.id.button_calculate:

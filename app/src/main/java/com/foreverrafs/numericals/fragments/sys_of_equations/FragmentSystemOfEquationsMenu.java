@@ -88,6 +88,6 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements View.OnCl
         }
 
         if (fragment != null)
-            Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
+            Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
     }
 }

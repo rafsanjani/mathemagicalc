@@ -56,8 +56,8 @@ public class FragmentBinToDec extends ConversionsBase {
         try {
             decimal = String.valueOf(Numericals.BinaryToDecimal(binary));
             tvAnswer.setText(decimal);
-            Utilities.animateAnswer(tvAnswer,
-                    rootView, Utilities.DisplayMode.SHOW);
+
+            displayAnswer();
 
         } catch (NotABinaryException ex) {
             Log.e(Utilities.LOG_TAG, ex.getMessage());
@@ -65,8 +65,5 @@ public class FragmentBinToDec extends ConversionsBase {
         } catch (Exception ex) {
             Log.e(Utilities.LOG_TAG, ex.getMessage());
         }
-//        } finally {
-//            Utilities.hideKeyboard(etInput);
-//        }
     }
 }

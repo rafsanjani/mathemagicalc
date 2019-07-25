@@ -77,6 +77,6 @@ public class FragmentConversionsMenu extends Fragment implements View.OnClickLis
         }
 
         if (fragment != null)
-            Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, false);
+            Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
     }
 }

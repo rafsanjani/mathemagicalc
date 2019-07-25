@@ -39,8 +39,6 @@ public class FragmentDecToBinFrac extends ConversionsBase {
 
     @Override
     protected void onCalculate() {
-        EditText etInput = rootView.findViewById(R.id.text_user_input);
-        TextView tvAnswer = rootView.findViewById(R.id.text_answer);
 
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
@@ -65,14 +63,12 @@ public class FragmentDecToBinFrac extends ConversionsBase {
 
             tvAnswer.setText(rawBinary);
 
-            Utilities.animateAnswer(tvAnswer, rootView, Utilities.DisplayMode.SHOW);
+            displayAnswer();
 
         } catch (NumberFormatException ex) {
             Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to a double value");
         } catch (Exception ex) {
             Log.e(Utilities.LOG_TAG, ex.getMessage());
-        } //finally {
-//            Utilities.hideKeyboard(etInput);
-//        }
+        }
     }
 }

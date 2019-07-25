@@ -78,7 +78,7 @@ public class LocationOfRootsMenu extends AppCompatActivity {
                     break;
             }
             Utilities.animateTextViewColorAndAlpha(this, header);
-            Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer, false);
+            Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
 
         });
 
