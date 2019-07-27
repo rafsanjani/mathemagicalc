@@ -21,7 +21,7 @@ If you'd like to contribute new features or fix an existing issue please open an
 
 ### Command Line
 
-You can build Quran from the command line by running `./gradlew assembleMadaniDebug`.
+You can build Mathemagicalc from the command line by running `./gradlew assembleDebug`.
 
 ### Android Studio
 
