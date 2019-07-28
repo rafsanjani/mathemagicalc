@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_system_of_eqns"
+                    android:drawableTop="@drawable/button_system_of_eqns_4x4"
                     android:text="@string/sys_of_eqns"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />

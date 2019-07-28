@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
  * Created by Aziz Rafsanjani on 11/3/2017.
  */
 
-public class LocationOfRootsMenu extends AppCompatActivity {
+public class LocationOfRootsMenuActivity extends AppCompatActivity {
 
 
     @BindView(R.id.list_main_menu)

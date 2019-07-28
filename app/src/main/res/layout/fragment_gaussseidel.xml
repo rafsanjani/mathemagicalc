@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -198,7 +199,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 
@@ -222,19 +223,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-        </LinearLayout>
 
     </LinearLayout>
 
@@ -244,7 +232,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="0.000000"
+        tools:text="0.000000"
         android:textAlignment="center"
 
         android:visibility="gone" />
@@ -271,7 +259,7 @@
         style="@style/AppMaterialTheme.ButtonStyle.Exit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back to Sys of Eqns"
+        android:text="@string/back_to_main_menu"
         android:textStyle="bold" />
 
 </LinearLayout>

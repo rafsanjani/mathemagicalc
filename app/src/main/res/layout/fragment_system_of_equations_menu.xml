@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_system_of_eqns_gaussian3x3"
+                    android:drawableTop="@drawable/button_system_of_eqns_3x3"
                     android:text="Gaussian (Partial)[3 x 3]"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_system_of_eqns_gaussian3x3"
+                    android:drawableTop="@drawable/button_system_of_eqns_3x3"
                     android:text="Gaussian (Complete)[3 x 3"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_system_of_eqns"
+                    android:drawableTop="@drawable/button_system_of_eqns_4x4"
                     android:text="Gaussian (Partial)[4 x 4]"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@null"
-                    android:drawableTop="@drawable/button_system_of_eqns"
+                    android:drawableTop="@drawable/button_system_of_eqns_4x4"
                     android:text="Gaussian (Complete)[4 x 4]"
                     android:textSize="@dimen/menu_text_size"
                     android:textStyle="bold" />

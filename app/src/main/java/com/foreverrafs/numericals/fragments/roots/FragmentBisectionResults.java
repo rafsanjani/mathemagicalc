@@ -32,7 +32,7 @@ import katex.hourglass.in.mathlib.MathView;
 
 public class FragmentBisectionResults extends Fragment {
 
-    List<LocationOfRootResult> results;
+    private List<LocationOfRootResult> results;
     private View rootView;
     private String eqn;
     private double x0, x1, tolerance;

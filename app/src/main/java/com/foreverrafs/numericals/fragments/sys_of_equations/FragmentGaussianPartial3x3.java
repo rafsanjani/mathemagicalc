@@ -179,10 +179,10 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
     }
 
     @Override

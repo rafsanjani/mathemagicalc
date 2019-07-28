@@ -21,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainMenuActivity;
 import com.foreverrafs.numericals.activities.ShowAlgorithm;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -35,12 +34,12 @@ import org.apache.commons.math3.util.Precision;
 
 public class FragmentJacobi extends Fragment implements View.OnClickListener, TextWatcher, View.OnKeyListener {
 
-    View rootView;
-    ViewGroup viewGroup;
-    Handler handler = new Handler(new Handler.Callback() {
+    private View mRootView;
+    private ViewGroup mViewGroup;
+    private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
-        public boolean handleMessage(Message msg) {
-            Button btnCalculate = rootView.findViewById(R.id.button_calculate);
+        public boolean handleMessage(@NonNull Message msg) {
+            Button btnCalculate = mRootView.findViewById(R.id.button_calculate);
             btnCalculate.setText("CALCULATE");
 
             boolean success = msg.getData().getBoolean("success");
@@ -49,8 +48,8 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
 
                 return false;
             }
-            double solution[] = msg.getData().getDoubleArray("results");
-            TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
+            double[] solution = msg.getData().getDoubleArray("results");
+            TextView tvAnswer = mRootView.findViewById(R.id.textview_answer);
 
 
             tvAnswer.setText(String.valueOf("[ " +
@@ -61,8 +60,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
 
 
             //for transitions sake
-            Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, mViewGroup, Utilities.DisplayMode.SHOW);
             return true;
         }
     });
@@ -70,43 +68,38 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_jacobi, container, false);
+        mRootView = inflater.inflate(R.layout.fragment_jacobi, container, false);
         initControls();
-        return rootView;
+        return mRootView;
     }
 
     public void initControls() {
-        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
-        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnCalculate = mRootView.findViewById(R.id.button_calculate);
+        Button btnBack = mRootView.findViewById(R.id.button_back);
 
-        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
 
-        EditText etEqn[] = new EditText[3];
-        etEqn[0] = rootView.findViewById(R.id.text_equationx1);
-        etEqn[1] = rootView.findViewById(R.id.text_equationx2);
-        etEqn[2] = rootView.findViewById(R.id.text_equationx3);
+        EditText[] etEqn = new EditText[3];
+        etEqn[0] = mRootView.findViewById(R.id.text_equationx1);
+        etEqn[1] = mRootView.findViewById(R.id.text_equationx2);
+        etEqn[2] = mRootView.findViewById(R.id.text_equationx3);
 
-        for (int i = 0; i < etEqn.length; i++) {
-            etEqn[i].addTextChangedListener(this);
-            etEqn[i].setOnKeyListener(this);
+        for (EditText editText : etEqn) {
+            editText.addTextChangedListener(this);
+            editText.setOnKeyListener(this);
         }
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
-        rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
+        mRootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
 
 
-        viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        //("System of Equations", "Jacobi's Method");
-
+        mViewGroup = (LinearLayout) mRootView.findViewById(R.id.parentContainer);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-//            case R.id.button_back:
-//                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
-//                break;
+
 
             case R.id.button_calculate:
                 Log.i(Utilities.LOG_TAG, "performing Jacobi's calculation");
@@ -125,23 +118,23 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     }
 
     private void onCalculate() {
-        EditText etEqn[] = new EditText[3];
-        etEqn[0] = rootView.findViewById(R.id.text_equationx1);
-        etEqn[1] = rootView.findViewById(R.id.text_equationx2);
-        etEqn[2] = rootView.findViewById(R.id.text_equationx3);
+        EditText[] etEqn = new EditText[3];
+        etEqn[0] = mRootView.findViewById(R.id.text_equationx1);
+        etEqn[1] = mRootView.findViewById(R.id.text_equationx2);
+        etEqn[2] = mRootView.findViewById(R.id.text_equationx3);
 
-        EditText etx0[] = new EditText[3];
-        etx0[0] = rootView.findViewById(R.id.x1);
-        etx0[1] = rootView.findViewById(R.id.x2);
-        etx0[2] = rootView.findViewById(R.id.x3);
+        EditText[] etx0 = new EditText[3];
+        etx0[0] = mRootView.findViewById(R.id.x1);
+        etx0[1] = mRootView.findViewById(R.id.x2);
+        etx0[2] = mRootView.findViewById(R.id.x3);
 
-        EditText etEpsilon = rootView.findViewById(R.id.text_tolerance);
+        EditText etEpsilon = mRootView.findViewById(R.id.text_tolerance);
 
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
+        TextView tvAnswer = mRootView.findViewById(R.id.textview_answer);
 
         try {
-            final String equations[] = new String[3];
-            final double initGuess[] = new double[3];
+            final String[] equations = new String[3];
+            final double[] initGuess = new double[3];
             final double epsilon = Double.valueOf(etEpsilon.getText().toString());
 
             for (int i = 0; i < etEqn.length; i++) {
@@ -149,28 +142,23 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
                 initGuess[i] = Double.valueOf(etx0[i].getText().toString());
             }
 
-            Button btnCalculate = rootView.findViewById(R.id.button_calculate);
+            Button btnCalculate = mRootView.findViewById(R.id.button_calculate);
             btnCalculate.setText("CALCULATING....");
 
 
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    double[] solution;
-                    Message message = new Message();
+            Runnable runnable = () -> {
+                double[] solution;
+                Message message = new Message();
 
-                    try {
-                        solution = Numericals.Jacobi(equations, initGuess, epsilon);
-                        message.getData().putDoubleArray("results", solution);
-                        message.getData().putBoolean("success", true);
-                    } catch (Exception ex) {
-                        message.getData().putBoolean("success", false);
-                        message.getData().putString("exception", ex.getMessage());
-                        System.out.println(ex.getMessage());
-                    }
-                    handler.sendMessage(message);
+                try {
+                    solution = Numericals.Jacobi(equations, initGuess, epsilon);
+                    message.getData().putDoubleArray("results", solution);
+                    message.getData().putBoolean("success", true);
+                } catch (Exception ex) {
+                    message.getData().putBoolean("success", false);
+                    message.getData().putString("exception", ex.getMessage());
                 }
-
+                mHandler.sendMessage(message);
             };
 
             Thread thread = new Thread(runnable);
@@ -202,9 +190,9 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     }
 
     private void onEquationChanged() {
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
+        TextView tvAnswer = mRootView.findViewById(R.id.textview_answer);
 
-        Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(tvAnswer, mViewGroup, Utilities.DisplayMode.HIDE);
     }
 
     @Override

@@ -42,7 +42,6 @@ public class ShowAlgorithm extends AppCompatActivity {
         //set the typeface of the text which appears on the toolbar
         TextView toolbarAppTitle = findViewById(R.id.toolbarAppTitle);
         toolbarAppTitle.setText("Algorithm");
-       // Utilities.setTypeFace(toolbarAppTitle, getApplicationContext(), Utilities.TypeFaceName.philosopher_bold);
 
         //TODO: Find something better to do about this region
         if (Build.VERSION.SDK_INT >= 24) {

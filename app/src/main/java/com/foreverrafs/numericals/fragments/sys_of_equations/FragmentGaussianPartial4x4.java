@@ -33,16 +33,12 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_gaussian_partial4x4, container, false);
-        //("System of Equations", "Gaussian Elimination (Partial Pivoting)");
 
         initControls();
         return rootView;
     }
 
     private void initControls() {
-
-        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
-
         Button btnBack = rootView.findViewById(R.id.button_back);
         Button btnCalculate = rootView.findViewById(R.id.button_calculate);
 
@@ -195,10 +191,10 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
     }
 
     @Override

@@ -28,6 +28,16 @@ public class Constants {
     public static final int LOCATION_OF_ROOTS_FALSE_POSITION = 16;
     public static final int LOCATION_OF_ROOTS_SECANT = 17;
 
+    //System of Equations Menu Constants
+    public static final int SYS_OF_EQN_JACOBI = 18;
+    public static final int SYS_OF_EQN_GAUSS_SEIDEL = 19;
+    public static final int SYS_OF_EQN_GAUSS_SEIDEL_SOR = 20;
+    public static final int SYS_OF_EQN_GAUSSIAN_PART_3X3 = 21;
+    public static final int SYS_OF_EQN_GAUSSIAN_PART_4X4 = 22;
+    public static final int SYS_OF_EQN_GAUSSIAN_COMPLETE_3X3 = 23;
+    public static final int SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4 = 24;
+
+
     //these items do not belong to any menu
     public static final int MENU_CATEGORY_NONE = 999;
 

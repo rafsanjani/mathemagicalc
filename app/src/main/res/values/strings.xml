@@ -27,9 +27,7 @@
     <string name="decimal_to_hexadecimal_desc">Converts a decimal integer (N) to it\'s equivalent hexadecimal where  N > 0 </string>
     <string name="bisection_desc">Locate the root of an equation of the form f(x) = 0</string>
     <string name="bisection_enter_eqn">Equation to evaluate [eg "f(x) = 2*x^3 + 2"]</string>
-    <string name="system_of_equations">8. System of equations</string>
-    <string name="credits_group_members">9. Credits (Group Members List)</string>
-    <string name="group_members">Group Members</string>
+    <string name="system_of_equations">System of equations</string>
     <string name="tolerance">Tolerance</string>
     <string name="iterations">Iterations</string>
     <string name="loc_of_rooots">Location of Roots</string>
@@ -40,7 +38,6 @@
     <string name="stopping_criteria">Stopping Criteria</string>
     <string name="initial_guess">Initial Guess:</string>
     <string name="back_to_location_of_roots_menu">Back to lOR Menu</string>
-    <string name="empty_answer">0.000000</string>
     <string name="x1">x1</string>
     <string name="x0">x0</string>
     <string name="header_bisection">Bisection Method</string>
@@ -150,4 +147,9 @@
     <string name="binary">Binary</string>
     <string name="octal">Octal</string>
     <string name="hexadecimal">Hexadecimal</string>
+    <string name="hint_y_0">y(0)</string>
+    <string name="hint_step_size_h">step size (h)</string>
+    <string name="conditions">Conditions</string>
+    <string name="desc_euler_forward_method">Solve numerically an Initial Value Problem using Euler\'s Method</string>
+    <string name="hint_initial_value_problem_ivp">Initial Value Problem (IVP)</string>
 </resources>

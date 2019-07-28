@@ -63,7 +63,7 @@ public class MainMenuActivity extends AppCompatActivity {
                     break;
 
                 case Constants.MENU_LOCATION_OF_ROOTS:
-                    intent = new Intent(this, LocationOfRootsMenu.class);
+                    intent = new Intent(this, LocationOfRootsMenuActivity.class);
                     break;
                 case Constants.MENU_ALGORITHMS:
                     intent = new Intent(this, ConversionMenuActivity.class);
@@ -77,7 +77,7 @@ public class MainMenuActivity extends AppCompatActivity {
                     break;
 
                 case Constants.MENU_SYSTEM_OF_EQUATIONS:
-                    intent = new Intent(this, ConversionMenuActivity.class);
+                    intent = new Intent(this, SystemOfEquationsMenuActivity.class);
                     break;
 
             }

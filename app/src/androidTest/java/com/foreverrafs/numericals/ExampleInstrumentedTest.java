@@ -1,4 +1,4 @@
-package com.example.azizrafsanjani.numericals;
+package com.foreverrafs.numericals;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.azizrafsanjani.numericals", appContext.getPackageName());
+        assertEquals("com.foreverrafs.numericals", appContext.getPackageName());
     }
 }

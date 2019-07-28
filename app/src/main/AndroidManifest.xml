@@ -57,9 +57,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppMaterialTheme" />
         <activity
-            android:name=".activities.LocationOfRootsMenu"
+            android:name=".activities.LocationOfRootsMenuActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppMaterialTheme" />
+        <activity android:name=".activities.SystemOfEquationsMenuActivity" />
     </application>
 
 </manifest>

@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parentContainer"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
     android:background="@color/colorMainBackground"
     android:orientation="vertical">
@@ -29,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
-                android:text="Solve numerically an Initial Value Problem using Euler's Method"
+                android:text="@string/desc_euler_forward_method"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="17sp" />
@@ -47,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:hint="Initial Value Problem (IVP)"
+                    android:hint="@string/hint_initial_value_problem_ivp"
                     android:imeOptions="actionGo"
                     android:inputType="text"
                     android:textAlignment="center" />
@@ -57,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/std_layout_margin"
-                android:text="Interval"
+                android:text="@string/interval"
                 android:textColor="#7e2c1e" />
 
             <LinearLayout
@@ -118,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/std_layout_margin"
-                android:text="Conditions"
+                android:text="@string/conditions"
                 android:textColor="#7e2c1e" />
 
             <LinearLayout
@@ -146,7 +145,7 @@
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:hint="step size (h)"
+                            android:hint="@string/hint_step_size_h"
                             android:inputType="numberDecimal"
                             android:textAlignment="center" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -170,7 +169,7 @@
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:hint="y(0)"
+                            android:hint="@string/hint_y_0"
                             android:inputType="numberDecimal|numberSigned"
                             android:textAlignment="center" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -184,7 +183,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/empty_answer"
                 android:textAlignment="center"
 
                 android:visibility="gone" />
