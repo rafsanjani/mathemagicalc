@@ -40,12 +40,12 @@ public class MainMenuActivity extends AppCompatActivity {
         mainMenuItems.setLayoutManager(new GridLayoutManager(this, 2));
 
         List<OperationMenu> operations = new ArrayList<>();
-        operations.add(new OperationMenu("Conversion", R.drawable.button_location_of_roots, Constants.MENU_NUMBER_CONVERSION));
+        operations.add(new OperationMenu("Conversion", R.drawable.button_number_conversion, Constants.MENU_NUMBER_CONVERSION));
         operations.add(new OperationMenu("Location of Roots", R.drawable.button_location_of_roots, Constants.MENU_LOCATION_OF_ROOTS));
-        operations.add(new OperationMenu("Sys. of Eqns", R.drawable.button_location_of_roots, Constants.MENU_SYSTEM_OF_EQUATIONS));
-        operations.add(new OperationMenu("Ord. Diff. Eqns", R.drawable.button_location_of_roots, Constants.MENU_ODE));
-        operations.add(new OperationMenu("Algorithms", R.drawable.button_location_of_roots, Constants.MENU_ALGORITHMS));
-        operations.add(new OperationMenu("About", R.drawable.button_location_of_roots, Constants.MENU_ABOUT));
+        operations.add(new OperationMenu("Sys. of Eqns", R.drawable.button_system_of_eqns_3x3, Constants.MENU_SYSTEM_OF_EQUATIONS));
+        operations.add(new OperationMenu("Ord. Diff. Eqns", R.drawable.button_ordinary_differential_eqns, Constants.MENU_ODE));
+        operations.add(new OperationMenu("Algorithms", R.drawable.button_algorithms, Constants.MENU_ALGORITHMS));
+        operations.add(new OperationMenu("About", R.drawable.button_about, Constants.MENU_ABOUT));
 
         header.setText(R.string.operations);
 
