@@ -5,7 +5,12 @@
 This is a simple Numerical Methods and Computations Utility App for Android.
 
 ## Screenshots
-[Some screenshot images here]
+[<img height="500" width="256" src="https://github.com/rafsanjani/Numericals-Android/blob/master/app/screenshots/Screenshot_1564344442.png">]
+[<img height="500" width="256" src="https://github.com/rafsanjani/Numericals-Android/blob/master/app/screenshots/Screenshot_1564344447.png">]
+[<img height="500" width="256" src="https://github.com/rafsanjani/Numericals-Android/blob/master/app/screenshots/Screenshot_1564344486.png">]
+
+
+
 
 ## Features
 * Able to convert between number bases such as decimal, binary and hexadecimal
