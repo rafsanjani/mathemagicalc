@@ -1,13 +1,13 @@
 # MathemagicalC  ![alt text](https://travis-ci.com/rafsanjani/Numericals-Android.svg?token=65WwiWJdxPr2FAs6Lim2&branch=master)
 
-[<img align="right" alt="Get it on Google Play" height="128" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png">](https://play.google.com/store/apps/details?id=com.foreverrafs.numericals)
+[<img align="right" alt="Get it on Google Play" height="120" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png">](https://play.google.com/store/apps/details?id=com.foreverrafs.numericals)
 
 This is a simple Numerical Methods and Computations Utility App for Android.
 
 ## Screenshots
-[<img height="500" width="256" src="https://github.com/rafsanjani/Numericals-Android/blob/master/app/screenshots/Screenshot_1564344442.png">]
-[<img height="500" width="256" src="https://github.com/rafsanjani/Numericals-Android/blob/master/app/screenshots/Screenshot_1564344447.png">]
-[<img height="500" width="256" src="https://github.com/rafsanjani/Numericals-Android/blob/master/app/screenshots/Screenshot_1564344486.png">]
+[<img height="500" width="250" src="https://github.com/rafsanjani/Numericals-Android/blob/master/app/screenshots/Screenshot_1564344442.png">]
+[<img height="500" width="250" src="https://github.com/rafsanjani/Numericals-Android/blob/master/app/screenshots/Screenshot_1564344447.png">]
+[<img height="500" width="250" src="https://github.com/rafsanjani/Numericals-Android/blob/master/app/screenshots/Screenshot_1564344486.png">]
 
 
 
