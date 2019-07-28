@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.core.NotABinaryException;
+import com.foreverrafs.numericals.core.exceptions.NotABinaryException;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 

@@ -45,32 +45,6 @@ public final class Utilities {
                 .commit();
     }
 
-//    public static void replaceFragment(Context mCtx, Fragment next, FragmentManager
-//            fragmentManager, int containerViewId) {
-//        if (mCtx.getClass().getSimpleName().equals("MainMenuActivity")) {
-//            String name = fragmentManager.getClass().getSimpleName();
-//
-//            FragmentTransaction transaction = fragmentManager.beginTransaction();
-//            Fade enterFade = new Fade();
-//            enterFade.setDuration(300);
-//            //Fade enterFade = new Fade();
-//            //enterFade.setDuration(500);
-//
-//            next.setEnterTransition(enterFade);
-//            transaction.replace(containerViewId, next);
-//            transaction.commit();
-//            return;
-//        }
-//        android.util.Log.e(LOG_TAG, "Only MainMenuActivity can process fragments");
-//    }
-//
-//    public static void loadFragment(Fragment fragment, FragmentManager fragmentManager,
-//                                    int containerViewId) {
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(containerViewId, fragment);
-//        fragmentTransaction.commit();
-//    }
-
     public static void animateTextViewColorAndAlpha(Context mCtx, TextView textView) {
         AnimatorSet animatorSet = new AnimatorSet();
 

@@ -1,4 +1,4 @@
-package com.foreverrafs.numericals.core;
+package com.foreverrafs.numericals.core.exceptions;
 
 public class InvalidIntervalException extends RuntimeException {
     public InvalidIntervalException(String message) {

@@ -1,6 +1,9 @@
 package com.foreverrafs.numericals.core;
 
 
+import com.foreverrafs.numericals.core.exceptions.InvalidEquationException;
+import com.foreverrafs.numericals.core.exceptions.InvalidIntervalException;
+import com.foreverrafs.numericals.core.exceptions.NotABinaryException;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.model.OdeResult;
 
@@ -231,7 +234,7 @@ public final class Numericals {
      * @param maxIterations The maximum number of times the interval must be bisected
      * @param tol Specifies the tolerance value for which the solution answer must adhere to
      * @return double
-     * @throws IllegalArgumentException When the interval doesn't bracket the root
+     * @throws {@link InvalidIntervalException} When the interval doesn't bracket the root
      */
     public static Double FalsePosition(String expr, double x0, double x1, int maxIterations, double tol) throws InvalidIntervalException {
         if (maxIterations < 1)
@@ -366,7 +369,7 @@ public final class Numericals {
     }
 
 
-    public static double[] GaussianWithCompletePivoting(double[][] A, double B[]) {
+    public static double[] GaussianWithCompletePivoting(double[][] A, double[] B) {
 
         int N = B.length;
         final double[][] IDENTITY = generateIdentityMatrix(N);
@@ -421,36 +424,33 @@ public final class Numericals {
      * @return a square matrix identity matrix where dimension  = dimension
      */
     private static double[][] generateIdentityMatrix(int dimension) {
-        double matrix[][] = null;
+        double[][] matrix = null;
         switch (dimension) {
             case 3:
-                double[][] iMatrix3x3 = {
+
+                matrix = new double[][]{
                         {1, 0, 0},
                         {0, 1, 0},
                         {0, 0, 1}
                 };
-
-                matrix = iMatrix3x3;
                 break;
             case 4:
-                double[][] iMatrix4x4 = {
+                matrix = new double[][]{
                         {1, 0, 0, 0},
                         {0, 1, 0, 0},
                         {0, 0, 1, 0},
                         {0, 0, 0, 1}
                 };
-                matrix = iMatrix4x4;
                 break;
 
             case 5:
-                double[][] iMatrix5x5 = {
+                matrix = new double[][]{
                         {1, 0, 0, 0, 0},
                         {0, 1, 0, 0, 0},
                         {0, 0, 1, 0, 0},
                         {0, 0, 0, 1, 0},
                         {0, 0, 0, 0, 1}
                 };
-                matrix = iMatrix5x5;
                 break;
         }
         return matrix;
@@ -605,12 +605,12 @@ public final class Numericals {
     }
 
     private static void swapRows(double[][] system, int maxRow, int rowIndex) {
-        double tmpRow[] = system[maxRow];
+        double[] tmpRow = system[maxRow];
         system[maxRow] = system[rowIndex];
         system[rowIndex] = tmpRow;
     }
 
-    private static void swapColumns(double system[][], int maxCol, int colIndex) {
+    private static void swapColumns(double[][] system, int maxCol, int colIndex) {
         for (double[] aSystem : system) {
             ArrayUtils.swap(aSystem, maxCol, colIndex);
         }
@@ -637,20 +637,6 @@ public final class Numericals {
         return maxColIndex;
     }
 
-    private static void printMatrix(double system[][]) {
-        for (double[] aSystem : system) {
-            for (int columnIndex = 0; columnIndex < system.length; columnIndex++) {
-                System.out.print(aSystem[columnIndex] + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    private static void printMatrix(double system[]) {
-        for (double aSystem : system) {
-            System.out.println(aSystem + " ");
-        }
-    }
 
     /***
      *
@@ -714,7 +700,7 @@ public final class Numericals {
      * @return an array which is the final system computed after the last Jacobi iterate
      */
     public static double[] Jacobi(String[] system, double[] initGuess, double epsilon) {
-        double iSolution[] = new double[3];
+        double[] iSolution = new double[3];
 
         for (int i = 0; i < system.length; i++) {
             Function fx = new Function("f(x)= " + system[i]);
@@ -760,8 +746,8 @@ public final class Numericals {
      * @param system the system generated after computing all steps
      * @return the system generated after the last gauss seidel iterate
      */
-    public static double[] GaussSeidel(String[] system, double initGuess[], double epsilon) {
-        double iSolution[] = new double[3];
+    public static double[] GaussSeidel(String[] system, double[] initGuess, double epsilon) {
+        double[] iSolution = new double[3];
         double[] initGuessTemp = initGuess.clone();
 
 
@@ -781,7 +767,6 @@ public final class Numericals {
 
         //print out the solution vector
         System.out.println("The solution vector is given as");
-        printArray(iSolution);
 
         double[] difference = new double[3];
         for (int i = 0; i < iSolution.length; i++) {
@@ -798,8 +783,13 @@ public final class Numericals {
         }
     }
 
-    public static double[] GaussSeidelWithSOR(String[] system, double initGuess[], double epsilon, double omega) {
-        double iSolution[] = new double[3];
+    /***
+     * Solves a system of linear equations using Gauss-Seidel's method with Succesive Over Relaxation (SOR)
+     * @param system the system generated after computing all steps
+     * @return the system generated after the last gauss seidel iterate
+     */
+    public static double[] GaussSeidelWithSOR(String[] system, double[] initGuess, double epsilon, double omega) {
+        double[] iSolution = new double[3];
         double[] initGuessTemp = initGuess.clone();
 
 
@@ -817,15 +807,10 @@ public final class Numericals {
                 throw new IllegalArgumentException("Syntax Error, Please check expression");
         }
 
-        printArray(iSolution);
-
         double[] difference = new double[3];
         for (int i = 0; i < iSolution.length; i++) {
             difference[i] = iSolution[i] - initGuess[i];
         }
-
-
-        printArray(difference);
 
         //infinite norm of the difference of kth and (k - 1)th iterate
         double iNorm = getMaxElement(difference);
@@ -834,7 +819,6 @@ public final class Numericals {
         if (iNorm < epsilon) {
             return iSolution;
         } else {
-            printArray(iSolution);
             return GaussSeidelWithSOR(system, iSolution, epsilon, omega);
         }
 
@@ -882,8 +866,8 @@ public final class Numericals {
     /**
      * Determine whether a value is a binary or not. for example 11010 is binary whereas 11021 is not
      *
-     * @param input
-     * @return
+     * @param input a supposedly binary input
+     * @return a boolean indicating whether input is a binary numeral or not
      */
     public static boolean isBinary(String input) {
         return input.matches("[01]+") || input.matches("[01.]+");
@@ -901,9 +885,6 @@ public final class Numericals {
         return (x2 - x1) / Math.pow(2, iterations);
     }
 
-    private static void printArray(double[] array) {
-
-    }
 
     public static String generateTexEquation(String equation) {
         if (equation.isEmpty()) {
@@ -917,11 +898,6 @@ public final class Numericals {
 
     }
 
-
-    enum GaussianType {
-        ThreeByThree,
-        FourByFour
-    }
 
 
     public enum BinaryOperationType {

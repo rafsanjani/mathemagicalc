@@ -1,4 +1,4 @@
-package com.foreverrafs.numericals.core;
+package com.foreverrafs.numericals.core.exceptions;
 
 /**
  * Thrown when an equation is improperly formatted
