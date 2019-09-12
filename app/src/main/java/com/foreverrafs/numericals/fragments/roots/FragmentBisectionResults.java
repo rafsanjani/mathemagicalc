@@ -83,7 +83,7 @@ public class FragmentBisectionResults extends Fragment {
         MathView equation;
         // String tex = " $$f(x) = 3x^3 + 2x - 5$$";
 
-        RootResultsAdapter adapter = new RootResultsAdapter(results, getContext(), LocationOfRootType.BISECTION);
+        RootResultsAdapter adapter = new RootResultsAdapter(results, LocationOfRootType.BISECTION);
         RecyclerView resultView = rootView.findViewById(R.id.resultList);
         resultView.setLayoutManager(new LinearLayoutManager(getContext()));
 

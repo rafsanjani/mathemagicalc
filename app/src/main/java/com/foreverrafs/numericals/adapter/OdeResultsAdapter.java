@@ -1,6 +1,5 @@
 package com.foreverrafs.numericals.adapter;
 
-import android.content.Context;
 import android.graphics.Color;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,18 +17,16 @@ import java.util.Locale;
 public class OdeResultsAdapter extends RecyclerView.Adapter<OdeResultsAdapter.RootResultViewHolder> {
 
     private List<OdeResult> results;
-    private Context mCtx;
 
 
-    public OdeResultsAdapter(List<OdeResult> results, Context mCtx) {
+    public OdeResultsAdapter(List<OdeResult> results) {
         this.results = results;
-        this.mCtx = mCtx;
     }
 
     @NonNull
     @Override
     public RootResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mCtx).inflate(R.layout.item_euler_results, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_euler_results, null);
         return new RootResultViewHolder(view);
     }
 
@@ -46,8 +43,6 @@ public class OdeResultsAdapter extends RecyclerView.Adapter<OdeResultsAdapter.Ro
         holder.tvIteration.setText(String.valueOf(position));
         holder.tvSolX.setText(String.format(Locale.US, "%.3f", resultAtPosition.getX()));
         holder.tvSolY.setText(String.format(Locale.US, "%.6f", resultAtPosition.getY()));
-        // holder.tvSolH.setText(String.format(Locale.US, "%.2f", resultAtPosition.getN()));
-
     }
 
     @Override
@@ -66,9 +61,6 @@ public class OdeResultsAdapter extends RecyclerView.Adapter<OdeResultsAdapter.Ro
             tvIteration = itemView.findViewById(R.id.n);
             tvSolX = itemView.findViewById(R.id.solX);
             tvSolY = itemView.findViewById(R.id.solY);
-            // tvSolH = itemView.findViewById(R.id.solH);
-
-
         }
     }
 }

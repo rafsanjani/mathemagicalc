@@ -22,8 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainMenuActivity;
-import com.foreverrafs.numericals.activities.ShowAlgorithm;
+import com.foreverrafs.numericals.activities.ShowAlgoActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 
@@ -128,7 +127,7 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
     private void onShowAlgorithm() {
         Bundle bundle = new Bundle();
         bundle.putString("algorithm_name", "gaussseidel");
-        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
+        startActivity(new Intent(getContext(), ShowAlgoActivity.class).putExtras(bundle));
     }
 
     private void onCalculate() {

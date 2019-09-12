@@ -19,7 +19,7 @@ import com.foreverrafs.numericals.utils.Utilities;
 
 public class FragmentDecToBinFrac extends ConversionsBase {
 
-    String rawBinary;
+    private String rawBinary;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

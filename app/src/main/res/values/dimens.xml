@@ -1,5 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="app_bar_height">180dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+    <dimen name="answer_vertical_width">5dp</dimen>
+    <dimen name="sol_answer_vertical_width">10dp</dimen>
+    <dimen name="std_layout_margin">30dp</dimen>
+    <dimen name="matrix_margin_right">5dp</dimen>
+    <dimen name="matrix_elements_width">40dp</dimen>
+    <dimen name="desc_text_size">17sp</dimen>
+    <dimen name="std_answer_margin">20dp</dimen>
+    <dimen name="header_margin_top">10dp</dimen>
+    <dimen name="menu_text_size">11sp</dimen>
+
 </resources>

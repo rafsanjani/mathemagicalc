@@ -19,7 +19,7 @@ import androidx.transition.TransitionManager;
 import androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.ShowAlgorithm;
+import com.foreverrafs.numericals.activities.ShowAlgoActivity;
 
 
 /**
@@ -86,7 +86,7 @@ public final class Utilities {
         Bundle bundle = new Bundle();
         bundle.putString("algorithm_name", algoName);
 
-        c.startActivity(new Intent(c, ShowAlgorithm.class).putExtras(bundle));
+        c.startActivity(new Intent(c, ShowAlgoActivity.class).putExtras(bundle));
     }
 
     public static void hideKeyboard(View view) {

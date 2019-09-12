@@ -66,14 +66,14 @@ public class MainMenuActivity extends AppCompatActivity {
                     intent = new Intent(this, LocationOfRootsMenuActivity.class);
                     break;
                 case Constants.MENU_ALGORITHMS:
-                    intent = new Intent(this, ConversionMenuActivity.class);
+                    intent = new Intent(this, ShowAlgoActivity.class);
                     break;
 
                 case Constants.MENU_ABOUT:
                     intent = new Intent(this, ConversionMenuActivity.class);
                     break;
                 case Constants.MENU_ODE:
-                    intent = new Intent(this, ConversionMenuActivity.class);
+                    intent = new Intent(this, ODEMenuActivity.class);
                     break;
 
                 case Constants.MENU_SYSTEM_OF_EQUATIONS:

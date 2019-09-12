@@ -18,7 +18,9 @@ import com.foreverrafs.numericals.utils.Utilities;
 
 import java.lang.reflect.Method;
 
-public class ShowAlgorithm extends AppCompatActivity {
+public class ShowAlgoActivity extends AppCompatActivity {
+
+    private WebView mWebView;
 
     public void onGoToOperation(MenuItem item) {
         OperationListDialog dialog = new OperationListDialog();
@@ -69,14 +71,18 @@ public class ShowAlgorithm extends AppCompatActivity {
     //file into the webview
     private void loadAlgorithm(String algoName) {
         algoName = "file:///android_asset/algorithms/algo_" + algoName + ".html";
-        WebView webView = findViewById(R.id.webView);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(algoName);
+        mWebView = findViewById(R.id.webView);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.loadUrl(algoName);
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        onBackPressed();
+        if (mWebView.canGoBack())
+            mWebView.goBack();
+        else
+            onBackPressed();
+
         return true;
     }
 

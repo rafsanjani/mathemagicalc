@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,7 +19,6 @@ import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
@@ -30,11 +30,11 @@ import java.util.List;
 
 public class FragmentBisection extends FragmentRootBase implements View.OnClickListener, TextWatcher {
 
-    List<LocationOfRootResult> roots = null;
+    private List<LocationOfRootResult> roots = null;
     private TextWatcher etToleranceTextWatcher = null;
     private TextWatcher etIterationsTextWatcher = null;
     private TextInputLayout tilX0, tilX1, tilIterations, tilTolerance, tilEquation;
-    private TextInputEditText etIterations, etX0, etX1, etTolerance, etEquation;
+    private EditText etIterations, etX0, etX1, etTolerance, etEquation;
 
     @Nullable
     @Override
@@ -49,10 +49,6 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
         final Button btnCalculate = rootView.findViewById(R.id.button_calculate);
         Button btnBack = rootView.findViewById(R.id.button_back);
 
-        //Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Bitter-Italic.ttf");
-        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
-       // Utilities.setTypeFace(rootView.findViewById(R.id.text_equation), getContext(), Utilities.TypeFaceName.bitter_italic);
-
 
         //initialize TextInputLayouts
         tilX0 = rootView.findViewById(R.id.til_x0);
@@ -63,11 +59,11 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
 
 
         //initialize EditTexts
-        etEquation = rootView.findViewById(R.id.text_equation);
-        etTolerance = rootView.findViewById(R.id.text_tolerance);
-        etIterations = rootView.findViewById(R.id.text_iterations);
-        etX0 = rootView.findViewById(R.id.x0);
-        etX1 = rootView.findViewById(R.id.x1);
+        etEquation = tilEquation.getEditText();
+        etTolerance = tilTolerance.getEditText();
+        etIterations = tilIterations.getEditText();
+        etX0 = tilX0.getEditText();
+        etX1 = tilX1.getEditText();
 
         Bundle bisectionArgs = getArguments();
 
@@ -167,7 +163,6 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
 
 
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        ////("Location of Roots", "Bisection Method");
     }
 
     @Override
@@ -179,13 +174,14 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_back:
-                //        Utilities.replaceFragment(new LocationOfRootsMenuActivity(), getFragmentManager(), R.id.fragmentContainer, true);
+                if (getActivity() != null) {
+                    getActivity().finish();
+                }
                 break;
 
             case R.id.button_calculate:
-                Button btn = (Button) view;
-                Log.i(Utilities.LOG_TAG, "performing bisection calculation");
-                onCalculate(btn.getText().toString());
+                //we just pass the text property of the button to oncalculate
+                onCalculate(((Button)view).getText().toString());
                 break;
             case R.id.button_show_algo:
                 onShowAlgorithm();
@@ -199,7 +195,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
     }
 
     @Override
-    protected void onCalculate(final String buttonText) {
+    protected void onCalculate(@NonNull final String buttonText) {
         //only handle empty inputs in this module and display using their corresponding TextInputLayouts.
         //Any other errors are handled in Numericals.java. This may check most of the NumberFormatException which
         //gets thrown as a result of passing empty parameters to Type.ParseType(string param)

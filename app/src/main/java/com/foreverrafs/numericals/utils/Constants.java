@@ -37,6 +37,9 @@ public class Constants {
     public static final int SYS_OF_EQN_GAUSSIAN_COMPLETE_3X3 = 23;
     public static final int SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4 = 24;
 
+    //Ordinary Differential Equations
+    public static final int ODE_EULER = 300;
+
 
     //these items do not belong to any menu
     public static final int MENU_CATEGORY_NONE = 999;

@@ -17,7 +17,6 @@ import com.foreverrafs.numericals.adapter.RootResultsAdapter;
 import com.foreverrafs.numericals.core.LocationOfRootType;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
-import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.List;
 import java.util.Locale;
@@ -86,7 +85,7 @@ public class FragmentFalsePositionResults extends Fragment {
         equation = rootView.findViewById(R.id.equation);
         equation.setDisplayText(Numericals.generateTexEquation(this.eqn));
 
-        adapter = new RootResultsAdapter(results, getContext(), LocationOfRootType.FALSE_POSITION);
+        adapter = new RootResultsAdapter(results, LocationOfRootType.FALSE_POSITION);
         RecyclerView resultView = rootView.findViewById(R.id.resultList);
         resultView.setLayoutManager(new LinearLayoutManager(getContext()));
 

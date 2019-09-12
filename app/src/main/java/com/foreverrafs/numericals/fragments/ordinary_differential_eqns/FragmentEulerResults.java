@@ -90,7 +90,7 @@ public class FragmentEulerResults extends Fragment {
         equation = rootView.findViewById(R.id.equation);
         equation.setDisplayText(Numericals.generateTexEquation(this.eqn));
 
-        OdeResultsAdapter adapter = new OdeResultsAdapter(results, getContext());
+        OdeResultsAdapter adapter = new OdeResultsAdapter(results);
         RecyclerView resultView = rootView.findViewById(R.id.resultList);
         resultView.setLayoutManager(new LinearLayoutManager(getContext()));
 

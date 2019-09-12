@@ -10,12 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class MethodListAdapter extends ArrayAdapter<String> {
-    private Context mCtx;
-
 
     public MethodListAdapter(@NonNull Context context, int resource, @NonNull String[] objects) {
         super(context, resource, objects);
-        this.mCtx = context;
     }
 
     @NonNull

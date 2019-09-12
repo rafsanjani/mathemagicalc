@@ -12,12 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.OperationsMenuAdapter;
-import com.foreverrafs.numericals.fragments.conversions.FragmentAllInOne;
-import com.foreverrafs.numericals.fragments.conversions.FragmentBinToDec;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBin;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinInt;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToHexadecimal;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToOctal;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidel;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidelWithSOR;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete3x3;
@@ -102,10 +96,6 @@ public class SystemOfEquationsMenuActivity extends AppCompatActivity implements 
                 fragment = new FragmentGaussianPartial4x4();
                 break;
 
-            case Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4:
-                fragment = new FragmentGaussianPartial4x4();
-                break;
-
             case Constants.SYS_OF_EQN_JACOBI:
                 fragment = new FragmentJacobi();
                 break;
@@ -117,6 +107,8 @@ public class SystemOfEquationsMenuActivity extends AppCompatActivity implements 
                 fragment = new FragmentGaussSeidelWithSOR();
                 break;
         }
-        Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
+
+        if (fragment != null)
+            Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
     }
 }

@@ -21,13 +21,11 @@ import java.util.Locale;
 public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.RootResultViewHolder> {
 
     private List<LocationOfRootResult> locationOfRootResult;
-    private Context mCtx;
     private LocationOfRootType rootType;
 
 
-    public RootResultsAdapter(List<LocationOfRootResult> locationOfRootResult, Context mCtx, LocationOfRootType rootType) {
+    public RootResultsAdapter(List<LocationOfRootResult> locationOfRootResult, LocationOfRootType rootType) {
         this.locationOfRootResult = locationOfRootResult;
-        this.mCtx = mCtx;
         this.rootType = rootType;
     }
 
@@ -35,21 +33,22 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
     @Override
     public RootResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = null;
+        Context context = parent.getContext();
 
         //inflate a view based on the location of root type
         switch (rootType) {
             case BISECTION:
-                view = LayoutInflater.from(mCtx).inflate(R.layout.item_bisection_results, null);
+                view = LayoutInflater.from(context).inflate(R.layout.item_bisection_results, null);
                 break;
             case NEWTON_RAPHSON:
-                view = LayoutInflater.from(mCtx).inflate(R.layout.item_newton_raphson_results, null);
+                view = LayoutInflater.from(context).inflate(R.layout.item_newton_raphson_results, null);
                 break;
 
             case SECANTE:
-                view = LayoutInflater.from(mCtx).inflate(R.layout.item_secante_results, null);
+                view = LayoutInflater.from(context).inflate(R.layout.item_secante_results, null);
                 break;
             case FALSE_POSITION:
-                view = LayoutInflater.from(mCtx).inflate(R.layout.item_falseposition_results, null);
+                view = LayoutInflater.from(context).inflate(R.layout.item_falseposition_results, null);
                 break;
 
             default:
@@ -87,14 +86,6 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
                 holder.etDerX1.setText(String.format(Locale.US, "[%4.4f]", result.getDerX1()));
                 holder.etRoot.setText(String.format(Locale.US, "[%4.4f]", result.getX1()));
                 break;
-            /*case FALSE_POSITION:
-                holder.etDifference.setText(String.format(Locale.US, "[%4.4f]", result.getDifference()));
-                holder.etIteration.setText(String.format(Locale.US, "[%d] ", position + 1));
-                holder.etX1.setText(String.format(Locale.US, "[%4.4f]", result.getX1()));
-                holder.etX2.setText(String.format(Locale.US, "[%4.4f]", result.getX2()));
-                holder.etX3.setText(String.format(Locale.US, "[%4.6f]", result.getX3()));
-                break;*/
-
         }
     }
 

@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
                     .build();
 
             StrictMode.setThreadPolicy(policy);
+
+            StrictMode.VmPolicy vmPolicy = new StrictMode.VmPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .build();
+            StrictMode.setVmPolicy(vmPolicy);
         }
 
     }

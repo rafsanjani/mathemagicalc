@@ -80,14 +80,10 @@ public abstract class FragmentRootBase extends Fragment {
         for (TextInputLayout inputLayout : inputLayouts) {
             if (inputLayout.getEditText().getText().toString().isEmpty()) {
                 inputLayout.setErrorEnabled(true);
-                switch (inputLayout.getId()) {
-                    case R.id.til_user_input:
-                        inputLayout.setError("Cannot be empty!");
-                        break;
-                    default:
-                        inputLayout.setError("???");
-                        break;
-
+                if (inputLayout.getId() == R.id.til_user_input) {
+                    inputLayout.setError("Cannot be empty!");
+                } else {
+                    inputLayout.setError("???");
                 }
                 validated = false;
             }

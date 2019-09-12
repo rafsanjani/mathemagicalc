@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.ShowAlgorithm;
+import com.foreverrafs.numericals.activities.ShowAlgoActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -112,7 +112,7 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
     private void onShowAlgorithm() {
         Bundle bundle = new Bundle();
         bundle.putString("algorithm_name", "secant");
-        startActivity(new Intent(getContext(), ShowAlgorithm.class).putExtras(bundle));
+        startActivity(new Intent(getContext(), ShowAlgoActivity.class).putExtras(bundle));
     }
 
     protected void onCalculate(final String buttonText) {

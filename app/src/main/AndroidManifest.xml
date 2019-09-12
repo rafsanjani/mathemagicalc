@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ShowAlgorithm"
+            android:name=".activities.ShowAlgoActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ConversionMenuActivity"
@@ -61,6 +61,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppMaterialTheme" />
         <activity android:name=".activities.SystemOfEquationsMenuActivity" />
+        <activity android:name=".activities.ODEMenuActivity" />
     </application>
 
 </manifest>

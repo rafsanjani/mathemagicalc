@@ -52,7 +52,7 @@ public class ConversionMenuActivity extends AppCompatActivity implements Operati
         List<OperationMenu> operations = new ArrayList<>();
         operations.add(new OperationMenu("Dec to Bin(Fraction)", R.drawable.button_location_of_roots, Constants.CONVERSION_DEC_TO_BIN_FRACTION));
         operations.add(new OperationMenu("Dec to Bin(Integer)", R.drawable.button_location_of_roots, Constants.CONVERSION_DEC_TO_BIN_INT));
-        operations.add(new OperationMenu("Dec to Bin(Any Number)", R.drawable.button_location_of_roots, Constants.CONVERSION_DEC_TO_BIN_ALL));
+        operations.add(new OperationMenu("Dec to Bin(Any)", R.drawable.button_location_of_roots, Constants.CONVERSION_DEC_TO_BIN_ALL));
         operations.add(new OperationMenu("Bin to Decimal", R.drawable.button_location_of_roots, Constants.CONVERSION_BIN_TO_DEC));
         operations.add(new OperationMenu("Dec to Hexa", R.drawable.button_location_of_roots, Constants.CONVERSION_DEC_TO_HEXA));
         operations.add(new OperationMenu("Dec to Octal", R.drawable.button_location_of_roots, Constants.CONVERSION_DEC_TO_OCTAL));
@@ -96,10 +96,6 @@ public class ConversionMenuActivity extends AppCompatActivity implements Operati
                 fragment = new FragmentAllInOne();
                 break;
 
-            case Constants.CONVERSION_DEC_TO_BIN_ALL:
-                fragment = new FragmentDecToBin();
-                break;
-
             case Constants.CONVERSION_DEC_TO_HEXA:
                 fragment = new FragmentDecToHexadecimal();
                 break;
@@ -111,6 +107,7 @@ public class ConversionMenuActivity extends AppCompatActivity implements Operati
                 fragment = new FragmentBinToDec();
                 break;
         }
-        Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
+        if (fragment != null)
+            Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
     }
 }
