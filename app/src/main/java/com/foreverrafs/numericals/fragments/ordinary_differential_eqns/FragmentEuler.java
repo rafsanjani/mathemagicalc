@@ -1,11 +1,6 @@
 package com.foreverrafs.numericals.fragments.ordinary_differential_eqns;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,10 +12,16 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.OdeResult;
 import com.foreverrafs.numericals.utils.Utilities;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -153,7 +154,10 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
         Button calculateButton = rootView.findViewById(R.id.button_calculate);
 
         String eqn;
-        double x0, x1, h, interval[];
+        double x0;
+        double x1;
+        double h;
+        double[] interval;
         int initY;
 
         try {
@@ -179,7 +183,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
             double answerAtLastIterate = 0;
 
             try {
-                eulerResults = Numericals.SolveOdeByEulersMethod(eqn, h, interval, initY);
+                eulerResults = Numericals.solveOdeByEulersMethod(eqn, h, interval, initY);
             } catch (Exception ex) {
                 tilEquation.setErrorEnabled(true);
                 tilEquation.setError(ex.getMessage());
@@ -192,7 +196,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
             //display the answer
             Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         } else if (buttonText == getResources().getString(R.string.show_iterations)) {
             FragmentEulerResults resultPane = new FragmentEulerResults();
             Bundle eqnArgs = new Bundle();

@@ -1,9 +1,6 @@
 package com.foreverrafs.numericals.fragments.sys_of_equations;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -16,8 +13,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainMenuActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
 
@@ -64,10 +64,10 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
 
     private void onCalculate() {
         if (getMatrices()) {
-            Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         } else {
             Toast.makeText(getContext(), "Error with input", Toast.LENGTH_SHORT).show();
         }
@@ -79,7 +79,7 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
         double[][] a = new double[4][4];
 
         EditText[] etB = new EditText[4];
-        double b[] = new double[4];
+        double[] b = new double[4];
 
 
         etA[0][0] = rootView.findViewById(R.id.a11);
@@ -129,7 +129,7 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
         }
 
         //get the solution matrix
-        double[] solution = Numericals.GaussianWithPartialPivoting(a, b);
+        double[] solution = Numericals.gaussianWithPartialPivoting(a, b);
 
 
         //our previous matrices have been mutated so we can represent them on the textviews

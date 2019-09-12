@@ -3,8 +3,6 @@ package com.foreverrafs.numericals.fragments.conversions;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -59,7 +57,7 @@ public class FragmentDecToBinFrac extends ConversionsBase {
             }
 
             //keep a reference in case user wants to display all
-            rawBinary = Numericals.DecimalFractionToBinary(decDouble);
+            rawBinary = Numericals.decimalFractionToBinary(decDouble);
 
             tvAnswer.setText(rawBinary);
 

@@ -4,10 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -21,10 +17,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.ShowAlgoActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.apache.commons.math3.util.Precision;
 
@@ -49,20 +50,20 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
 
                 return;
             }
-            double solution[] = msg.getData().getDoubleArray("results");
+            double[] solution = msg.getData().getDoubleArray("results");
             TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
 
 
-            tvAnswer.setText(String.valueOf("[ " +
+            tvAnswer.setText("[ " +
                     Precision.round(solution[0], 2) + ", "
                     + Precision.round(solution[1], 2) + ", " +
                     Precision.round(solution[2], 2) +
-                    " ]"));
+                    " ]");
 
 
             //for transitions sake
             Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
 
         }
     };
@@ -87,7 +88,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
         til.setHint(omega.toLowerCase());
 
 
-        EditText etEqn[] = new EditText[3];
+        EditText[] etEqn = new EditText[3];
         etEqn[0] = rootView.findViewById(R.id.text_equationx1);
         etEqn[1] = rootView.findViewById(R.id.text_equationx2);
         etEqn[2] = rootView.findViewById(R.id.text_equationx3);
@@ -115,7 +116,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
                 break;
 
             case R.id.button_calculate:
-                Log.i(Utilities.LOG_TAG, "performing Jacobi's calculation");
+                Log.i(Utilities.LOG_TAG, "performing jacobi's calculation");
                 onCalculate();
                 break;
             case R.id.button_show_algo:
@@ -132,12 +133,12 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
     }
 
     private void onCalculate() {
-        EditText etEqn[] = new EditText[3];
+        EditText[] etEqn = new EditText[3];
         etEqn[0] = rootView.findViewById(R.id.text_equationx1);
         etEqn[1] = rootView.findViewById(R.id.text_equationx2);
         etEqn[2] = rootView.findViewById(R.id.text_equationx3);
 
-        EditText etx0[] = new EditText[3];
+        EditText[] etx0 = new EditText[3];
         etx0[0] = rootView.findViewById(R.id.x1);
         etx0[1] = rootView.findViewById(R.id.x2);
         etx0[2] = rootView.findViewById(R.id.x3);
@@ -146,8 +147,8 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
         EditText etOmega = rootView.findViewById(R.id.text_omega);
 
         try {
-            final String equations[] = new String[3];
-            final double initGuess[] = new double[3];
+            final String[] equations = new String[3];
+            final double[] initGuess = new double[3];
             final double epsilon = Double.valueOf(etEpsilon.getText().toString());
             final double omega = Double.valueOf(etOmega.getText().toString());
             for (int i = 0; i < etEqn.length; i++) {
@@ -166,7 +167,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
                     Message message = new Message();
 
                     try {
-                        solution = Numericals.GaussSeidelWithSOR(equations, initGuess, epsilon, omega);
+                        solution = Numericals.gaussSeidelWithSOR(equations, initGuess, epsilon, omega);
                         message.getData().putDoubleArray("results", solution);
                         message.getData().putBoolean("success", true);
                     } catch (Exception ex) {

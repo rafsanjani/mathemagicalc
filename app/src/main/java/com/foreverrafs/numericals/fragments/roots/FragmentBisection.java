@@ -227,7 +227,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
         //are we displaying all answers or just the last iteration
         if (buttonText == getResources().getString(R.string.calculate)) {
             try {
-                roots = Numericals.BisectAll(eqn, x0, x1, iter, tol);
+                roots = Numericals.bisectAll(eqn, x0, x1, iter, tol);
             } catch (Exception ex) {
                 tilEquation.setErrorEnabled(true);
                 tilEquation.setError(ex.getMessage());
@@ -242,9 +242,9 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
 
             //animate the answer into view
             Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         } else if (buttonText == getResources().getString(R.string.show_iterations)) {
-            List<LocationOfRootResult> roots = Numericals.BisectAll(eqn, x0, x1, iter, tol);
+            List<LocationOfRootResult> roots = Numericals.bisectAll(eqn, x0, x1, iter, tol);
             FragmentBisectionResults resultPane = new FragmentBisectionResults();
             Bundle eqnArgs = new Bundle();
 

@@ -54,7 +54,7 @@ public class SystemOfEquationsMenuActivity extends AppCompatActivity implements 
         operations.add(new OperationMenu("Gaussian (Complete) 3 x 3", R.drawable.button_system_of_eqns_3x3, Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_3X3));
         operations.add(new OperationMenu("Gaussian (Partial ) 4 x 4", R.drawable.button_system_of_eqns_4x4, Constants.SYS_OF_EQN_GAUSSIAN_PART_4X4));
         operations.add(new OperationMenu("Gaussian (Complete) 4 x 4", R.drawable.button_system_of_eqns_4x4, Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4));
-        operations.add(new OperationMenu("Jacobi", R.drawable.button_system_of_eqns_jacobi, Constants.SYS_OF_EQN_JACOBI));
+        operations.add(new OperationMenu("jacobi", R.drawable.button_system_of_eqns_jacobi, Constants.SYS_OF_EQN_JACOBI));
         operations.add(new OperationMenu("Gauss Seidel", R.drawable.button_system_of_eqns_gaussseidel, Constants.SYS_OF_EQN_GAUSS_SEIDEL));
         operations.add(new OperationMenu("Gauss Seidel (SOR)", R.drawable.button_system_of_eqns_gaussseidel, Constants.SYS_OF_EQN_GAUSS_SEIDEL_SOR));
 

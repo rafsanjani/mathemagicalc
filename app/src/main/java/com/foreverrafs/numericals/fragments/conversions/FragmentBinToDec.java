@@ -8,8 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.core.exceptions.NotABinaryException;
 import com.foreverrafs.numericals.core.Numericals;
+import com.foreverrafs.numericals.core.exceptions.NotABinaryException;
 import com.foreverrafs.numericals.utils.Utilities;
 
 /**
@@ -54,7 +54,7 @@ public class FragmentBinToDec extends ConversionsBase {
         }
 
         try {
-            decimal = String.valueOf(Numericals.BinaryToDecimal(binary));
+            decimal = String.valueOf(Numericals.binaryToDecimal(binary));
             tvAnswer.setText(decimal);
 
             displayAnswer();

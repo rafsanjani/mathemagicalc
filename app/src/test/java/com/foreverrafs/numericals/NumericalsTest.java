@@ -26,7 +26,7 @@ public class NumericalsTest {
         }
     }
 
-    private static void printMatrix(double A[][], double B[]) {
+    private static void printMatrix(double[][] A, double[] B) {
         for (int rowIndex = 0; rowIndex < A.length; rowIndex++) {
             for (int columnIndex = 0; columnIndex < A.length; columnIndex++) {
                 System.out.print(A[rowIndex][columnIndex] + " ");
@@ -36,7 +36,7 @@ public class NumericalsTest {
         }
     }
 
-    private static void printMatrix(double system[]) {
+    private static void printMatrix(double[] system) {
         for (double aSystem : system) {
             System.out.print(aSystem + " ");
         }
@@ -69,12 +69,12 @@ public class NumericalsTest {
     @Test
     public void testbintodecnew() {
         String bin = "1010.101";
-        System.out.println(Numericals.BinaryToDecimal(bin));
+        System.out.println(Numericals.binaryToDecimal(bin));
     }
 
     @Test
     public void testDecimalIntToBinaryWith10() {
-        assertEquals("1010", Numericals.DecimalIntToBinary(10));
+        assertEquals("1010", Numericals.decimalIntToBinary(10));
 
     }
 
@@ -92,28 +92,28 @@ public class NumericalsTest {
         int iterations = 1;
         double tolerance = 0.005;
         //double y = Numericals.Bisect(expr, x1, x2, iterations, tolerance);
-        List<LocationOfRootResult> results = Numericals.BisectAll(expr, x1, x2, iterations, tolerance);
+        List<LocationOfRootResult> results = Numericals.bisectAll(expr, x1, x2, iterations, tolerance);
         double root = results.get(results.size() - 1).getX3();
         //assertEquals(y, root);
     }
 
     @Test
     public void testBisectionAllShouldPass() {
-        List<LocationOfRootResult> longBisection = Numericals.BisectAll("x^5 + x^3 + 3*x", -2, -1, 4, 0.005);
+        List<LocationOfRootResult> longBisection = Numericals.bisectAll("x^5 + x^3 + 3*x", -2, -1, 4, 0.005);
         assertEquals(-1.0625, longBisection.get(3).getX3());
     }
 
 //    @Test
 //    public void testNewtonRaphson() {
 //        String eqn = "x^5 + x^3+3";
-//        double y = Numericals.NewtonRaphsonAll(eqn, -1, 20);
+//        double y = Numericals.newtonRaphsonAll(eqn, -1, 20);
 //        assertEquals(-1.1052985460061695, y);
 //    }
 
     @Test
     public void testNewtonRaphsonAll() {
         String eqn = "x^5 + x^3+3";
-        List<LocationOfRootResult> results = Numericals.NewtonRaphsonAll(eqn, -1, 20);
+        List<LocationOfRootResult> results = Numericals.newtonRaphsonAll(eqn, -1, 20);
         for (LocationOfRootResult x : results) {
             System.out.println(x.getX1());
         }
@@ -127,11 +127,11 @@ public class NumericalsTest {
                 {2, 3, -1}
         };
 
-        double B[] = {0, 0, -1};
+        double[] B = {0, 0, -1};
 
         //Note: final answer to this system is {-0.5, 0.5, 0.5}
 
-        double sol[] = Numericals.GaussianWithCompletePivoting(A, B);
+        double[] sol = Numericals.gaussianWithCompletePivoting(A, B);
 
 
         printMatrix(sol);
@@ -145,11 +145,11 @@ public class NumericalsTest {
                 {2, 3, -1}
         };
 
-        double B[] = {0, 0, -1};
+        double[] B = {0, 0, -1};
 
         //Note: final answer to this system is {0.5, -0.5, 0.5}
 
-        double sol[] = Numericals.GaussianWithPartialPivoting(A, B);
+        double[] sol = Numericals.gaussianWithPartialPivoting(A, B);
 
     }
 
@@ -161,7 +161,7 @@ public class NumericalsTest {
                 {2, 3, -1}
         };
 
-        double B[] = {0, 0, -1};
+        double[] B = {0, 0, -1};
 
 
         printMatrix(A);
@@ -179,10 +179,10 @@ public class NumericalsTest {
 
         // double[] solution = {-14.48, 19.56, 34.12, -5.68};
 
-        double B[] = {31, 17, 22, 51};
+        double[] B = {31, 17, 22, 51};
 
 
-        double iSolution[] = Numericals.GaussianWithCompletePivoting(A, B);
+        double[] iSolution = Numericals.gaussianWithCompletePivoting(A, B);
         //note solution to the above big matrix is {59.5, -67.5, 87,-55, -20.5}
         printMatrix(A);
 
@@ -200,7 +200,7 @@ public class NumericalsTest {
 
         double[] solution = {-14.48, 19.56, 34.12, -5.68};
 
-        double B[] = {4, 5, 2, 9};
+        double[] B = {4, 5, 2, 9};
 
         //double sol[] = Numericals.lsolve(A, B);
 
@@ -213,9 +213,9 @@ public class NumericalsTest {
                 {5, 2, 1, 4, 1}
         };
 
-        double BB[] = {5, 6, 7, 8, 9};
+        double[] BB = {5, 6, 7, 8, 9};
 
-        double iSolution[] = Numericals.GaussianWithCompletePivoting(AA, BB);
+        double[] iSolution = Numericals.gaussianWithCompletePivoting(AA, BB);
         //note solution to the above big matrix is {59.5, -67.5, 87,-55, -20.5}
         printMatrix(iSolution);
 
@@ -224,7 +224,7 @@ public class NumericalsTest {
     @Test
     //This test should pass
     public void testMultiplicationOfMatrixPass() {
-        double A[][] = {
+        double[][] A = {
                 {4, 3, 5},
                 {4, 1, 2},
                 {5, 6, 8}
@@ -246,33 +246,33 @@ public class NumericalsTest {
 
     @Test
     public void testMultiplicationofMatrix() {
-        double A[][] = {
+        double[][] A = {
                 {0, 1, 0},
                 {1, 0, 0},
                 {0, 0, 1}
         };
 
-        double B[][] = {
+        double[][] B = {
                 {-0.5, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}
         };
 
-        double C[] = {-0.5, 0.5, 0.5};
+        double[] C = {-0.5, 0.5, 0.5};
 
-        double D[] = Numericals.multiplyMatrix(A, C);
+        double[] D = Numericals.multiplyMatrix(A, C);
         printMatrix(D);
 
     }
 
     @Test
     public void testJacobi() {
-        String system[] = {
+        String[] system = {
                 "(1/2)*(x2+1)",
                 "(1/3)*(x1+x3+8)",
                 "(1/2)*(x2-5)"};
-        double initGuess[] = {0, 0, 0};
-        double sol[] = Numericals.Jacobi(system, initGuess, 0.15);
+        double[] initGuess = {0, 0, 0};
+        double[] sol = Numericals.jacobi(system, initGuess, 0.15);
 
     }
 
@@ -280,14 +280,14 @@ public class NumericalsTest {
     @Test
     public void testRegulaFalsi() {
         String eqn = "f(x)=x^5 + x^3+3";
-        double y = Numericals.FalsePosition(eqn, -2, -1, 100, 0);
+        double y = Numericals.falsePosition(eqn, -2, -1, 100, 0);
 
     }
 
     @Test
     public void testRegulaFalsiAll() {
         String eqn = "x^5 + x^3 +3";
-        List<LocationOfRootResult> here = Numericals.FalsePositionAll(eqn, -2, -1, 100, 0);
+        List<LocationOfRootResult> here = Numericals.falsePositionAll(eqn, -2, -1, 100, 0);
         System.out.println("  x1     x2      x3     fx1    fx2     fx3   diff");
         for (LocationOfRootResult x : here) {
             System.out.printf("%f %f %f %f %f %f %f", x.getX1(), x.getX2(), x.getX3(), x.getFx1(), x.getFx2(), x.getFx3(), x.getDifference());
@@ -298,7 +298,7 @@ public class NumericalsTest {
     @Test
     public void testSecanteAllShouldPass() {
         String eqn = "x^3 + x^3 + 3";
-        List<LocationOfRootResult> result = Numericals.SecanteAll(eqn, 1.0, -1.0, 800);
+        List<LocationOfRootResult> result = Numericals.secanteAll(eqn, 1.0, -1.0, 800);
         System.out.println("X1      X2        X3      DIFFERENCE");
 
         for (LocationOfRootResult y : result) {
@@ -311,7 +311,7 @@ public class NumericalsTest {
     @Test
     public void testDecimalToHexadecimal() {
         String decimal = "10";
-        String hex = Numericals.DecimalToHexadecimal(decimal);
+        String hex = Numericals.decimalToHexadecimal(decimal);
 
         assertEquals(hex, "A");
     }
@@ -319,7 +319,7 @@ public class NumericalsTest {
     @Test
     public void testDecimalToHexadecimalFraction() {
         String decimal = String.valueOf(Math.PI);
-        String hex = Numericals.DecimalToHexadecimal(decimal);
+        String hex = Numericals.decimalToHexadecimal(decimal);
 
         assertEquals(hex, "3.243F6A8885A3");
     }
@@ -331,7 +331,7 @@ public class NumericalsTest {
         double height = 0.2;
         double[] interval = {0, 1};
 
-        List<OdeResult> results = Numericals.SolveOdeByEulersMethod(eqn, height, interval, yo);
+        List<OdeResult> results = Numericals.solveOdeByEulersMethod(eqn, height, interval, yo);
 
 
         assertEquals(0.23681533952, results.get(4).getY());
@@ -345,7 +345,7 @@ public class NumericalsTest {
         double height = 0.2;
         double[] interval = {0, 1};
 
-        List<OdeResult> results = Numericals.SolveOdeByEulersMethod(eqn, height, interval, yo);
+        List<OdeResult> results = Numericals.solveOdeByEulersMethod(eqn, height, interval, yo);
 
         for (OdeResult result : results) {
             System.out.println(result.getN() + " " + result.getX() + "  " + result.getY());

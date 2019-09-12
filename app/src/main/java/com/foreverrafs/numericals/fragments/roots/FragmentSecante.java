@@ -2,10 +2,6 @@ package com.foreverrafs.numericals.fragments.roots;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -16,11 +12,16 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.ShowAlgoActivity;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -80,7 +81,7 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
         etEquation.addTextChangedListener(this);
 
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        ////("Location of Roots", "Secante Method");
+        ////("Location of Roots", "secante Method");
     }
 
     @Override
@@ -148,15 +149,15 @@ public class FragmentSecante extends FragmentRootBase implements View.OnClickLis
 
 
         if (buttonText.equals(getResources().getString(R.string.calculate))) {
-            double root = Numericals.Secante(eqn, x0, x1, iter);
+            double root = Numericals.secante(eqn, x0, x1, iter);
 
             tvAnswer.setText(String.valueOf(root));
 
             //for transitions sake
             Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         } else if (buttonText.equals(getResources().getString(R.string.show_iterations))) {
-            List<LocationOfRootResult> roots = Numericals.SecanteAll(eqn, x0, x1, iter);
+            List<LocationOfRootResult> roots = Numericals.secanteAll(eqn, x0, x1, iter);
             FragmentSecanteResults resultPane = new FragmentSecanteResults();
 
             Bundle eqnArgs = new Bundle();

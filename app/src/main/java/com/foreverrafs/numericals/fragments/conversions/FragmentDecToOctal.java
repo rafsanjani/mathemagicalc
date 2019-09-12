@@ -52,7 +52,7 @@ public class FragmentDecToOctal extends ConversionsBase {
                 return;
             }
 
-            String octalDecimal = Numericals.DecimalToOctal(decimal);
+            String octalDecimal = Numericals.decimalToOctal(decimal);
 
             tvAnswer.setText(octalDecimal);
 

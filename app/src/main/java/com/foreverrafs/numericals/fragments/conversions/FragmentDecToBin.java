@@ -49,7 +49,7 @@ public class FragmentDecToBin extends ConversionsBase {
                 return;
             }
 
-            String rawBinary = Numericals.DecimalToBinary(decLong);
+            String rawBinary = Numericals.decimalToBinary(decLong);
 
             tvAnswer.setText(rawBinary);
 

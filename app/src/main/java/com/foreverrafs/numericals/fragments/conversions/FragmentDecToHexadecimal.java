@@ -50,7 +50,7 @@ public class FragmentDecToHexadecimal extends ConversionsBase {
                 return;
             }
 
-            String hexadecimal = Numericals.DecimalToHexadecimal(decimal);
+            String hexadecimal = Numericals.decimalToHexadecimal(decimal);
 
             tvAnswer.setText(hexadecimal);
 

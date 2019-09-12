@@ -24,7 +24,7 @@ public class LocationOfRootResult {
         this.derX1 = derX1;
     }
 
-    //Secante Signature::: x3 is what most users are interested in
+    //secante Signature::: x3 is what most users are interested in
     public LocationOfRootResult(int iteration, double x1, double x2, double x3, double difference) {
         this.iteration = iteration;
         this.x1 = x1;

@@ -1,10 +1,6 @@
 package com.foreverrafs.numericals.fragments.roots;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -16,10 +12,15 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -154,7 +155,7 @@ public class FragmentFalsePosition extends FragmentRootBase implements View.OnCl
         double root;
         if (buttonText.equals(getResources().getString(R.string.calculate))) {
             try {
-                root = Numericals.FalsePosition(eqn, x0, x1, iter, tol);
+                root = Numericals.falsePosition(eqn, x0, x1, iter, tol);
             } catch (Exception ex) {
                 tilEquation.setErrorEnabled(true);
                 tilEquation.setError(ex.getMessage());
@@ -164,9 +165,9 @@ public class FragmentFalsePosition extends FragmentRootBase implements View.OnCl
             tvAnswer.setText(String.valueOf(root));
             //for transitions sake
             Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         } else if (buttonText.equals(getResources().getString(R.string.show_iterations))) {
-            List<LocationOfRootResult> roots = Numericals.FalsePositionAll(eqn, x0, x1, iter, tol);
+            List<LocationOfRootResult> roots = Numericals.falsePositionAll(eqn, x0, x1, iter, tol);
             FragmentFalsePositionResults resultPane = new FragmentFalsePositionResults();
             Bundle eqnArgs = new Bundle();
 

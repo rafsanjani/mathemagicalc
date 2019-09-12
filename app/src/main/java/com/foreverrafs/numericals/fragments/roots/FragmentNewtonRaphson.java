@@ -132,7 +132,7 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnCl
         //are we displaying all answers or just the last iteration
         if (buttonText.equals(getResources().getString(R.string.calculate))) {
             try {
-                roots = Numericals.NewtonRaphsonAll(eqn, x0, iter);
+                roots = Numericals.newtonRaphsonAll(eqn, x0, iter);
             } catch (Exception ex) {
                 tilEquation.setErrorEnabled(true);
                 tilEquation.setError(ex.getMessage());
@@ -146,9 +146,9 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnCl
 
             //animate the answer into view
             Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(tvAnswer, (ViewGroup) rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         } else if (buttonText.equals(getResources().getString(R.string.show_iterations))) {
-            List<LocationOfRootResult> roots = Numericals.NewtonRaphsonAll(eqn, x0, iter);
+            List<LocationOfRootResult> roots = Numericals.newtonRaphsonAll(eqn, x0, iter);
             FragmentNewtonRaphsonResults resultPane = new FragmentNewtonRaphsonResults();
             Bundle eqnArgs = new Bundle();
 

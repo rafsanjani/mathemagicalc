@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -19,6 +16,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.ShowAlgoActivity;
@@ -52,11 +53,11 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
             TextView tvAnswer = mRootView.findViewById(R.id.textview_answer);
 
 
-            tvAnswer.setText(String.valueOf("[ " +
+            tvAnswer.setText("[ " +
                     Precision.round(solution[0], 2) + ", "
                     + Precision.round(solution[1], 2) + ", " +
                     Precision.round(solution[2], 2) +
-                    " ]"));
+                    " ]");
 
 
             //for transitions sake
@@ -102,7 +103,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
 
 
             case R.id.button_calculate:
-                Log.i(Utilities.LOG_TAG, "performing Jacobi's calculation");
+                Log.i(Utilities.LOG_TAG, "performing jacobi's calculation");
                 onCalculate();
                 break;
             case R.id.button_show_algo:
@@ -151,7 +152,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
                 Message message = new Message();
 
                 try {
-                    solution = Numericals.Jacobi(equations, initGuess, epsilon);
+                    solution = Numericals.jacobi(equations, initGuess, epsilon);
                     message.getData().putDoubleArray("results", solution);
                     message.getData().putBoolean("success", true);
                 } catch (Exception ex) {

@@ -30,17 +30,17 @@ public final class Numericals {
      * @param dec A decimal number(n) where n >= 1
      * @return string a string representation of the binary equivalent of the supplied decimal numeral
      */
-    public static String DecimalIntToBinary(int dec) {
+    public static String decimalIntToBinary(int dec) {
 
         int Nk = dec;
         StringBuilder binary = new StringBuilder();
 
-        int bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalInteger);
+        int bk = appendToResult(Nk, binary, BinaryOperationType.DecimalInteger);
 
         //magically manipulate and append result to the stringbuilder while Nk is greater than 0
         while (Nk != 0 && (Nk - bk != 0)) {
             Nk = (Nk - bk) / 2;
-            bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalInteger);
+            bk = appendToResult(Nk, binary, BinaryOperationType.DecimalInteger);
         }
 
         return binary.reverse().toString();
@@ -51,21 +51,19 @@ public final class Numericals {
      * @param dec A decimal number(n) where 0 < n < 1
      * @return string a string representation of the binary equivalent of the supplied decimal numeral
      */
-    public static String DecimalFractionToBinary(double dec) {
+    public static String decimalFractionToBinary(double dec) {
         double Nk = dec;
         StringBuilder binary = new StringBuilder();
         binary.append(".");
 
         Nk = 2 * Nk;
 
-
-        int bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalFraction);
-
+        int bk = appendToResult(Nk, binary, BinaryOperationType.DecimalFraction);
 
         //the magic recipe, (:)
         while (Nk != 0 && ((Nk - bk) != 0)) {
             Nk = (Nk - bk) * 2;
-            bk = AppendToResult(Nk, binary, BinaryOperationType.DecimalFraction);
+            bk = appendToResult(Nk, binary, BinaryOperationType.DecimalFraction);
         }
 
         return binary.toString();
@@ -79,7 +77,7 @@ public final class Numericals {
      * @param dec a decimal number of the form xx.xxxx
      * @return string a string representation of the binary equivalent of the supplied decimal numeral
      */
-    public static String DecimalToBinary(double dec) {
+    public static String decimalToBinary(double dec) {
 
         String decStr = String.valueOf(dec);
 
@@ -91,8 +89,8 @@ public final class Numericals {
         double fractional = Double.parseDouble(fractionalStr);
 
         //Independently calculate the binary form of the individual parts i.e whole and fractional parts
-        String integerResult = DecimalIntToBinary(whole);
-        String fractionalResult = DecimalFractionToBinary(fractional);
+        String integerResult = decimalIntToBinary(whole);
+        String fractionalResult = decimalFractionToBinary(fractional);
 
 
         //join it all together
@@ -107,7 +105,7 @@ public final class Numericals {
      * @param op the operationType whether decimal integer or decimal fraction
      * @return int
      */
-    private static int AppendToResult(double N, StringBuilder sb, BinaryOperationType op) {
+    private static int appendToResult(double N, StringBuilder sb, BinaryOperationType op) {
         int bk = 0; //assign something dummy to prevent compiler issues
         switch (op) {
             case DecimalInteger: //number is exclusively an integer (eg XXX.00000)
@@ -136,7 +134,7 @@ public final class Numericals {
      * @return double
      */
 
-    public static List<LocationOfRootResult> BisectAll(String expr, double x1, double x2, int iterations, double tol) throws InvalidEquationException {
+    public static List<LocationOfRootResult> bisectAll(String expr, double x1, double x2, int iterations, double tol) throws InvalidEquationException {
         List<LocationOfRootResult> roots = new ArrayList<>();
 
         while (iterations > 0) {
@@ -183,10 +181,9 @@ public final class Numericals {
      * @param x1 the initial guess of the root
      * @param maxIterations maximum number of times we are to iterate
      * @return double
-     * todo replace with full variant of the method
      */
 
-    public static List<LocationOfRootResult> NewtonRaphsonAll(String expr, double x1, int maxIterations) {
+    public static List<LocationOfRootResult> newtonRaphsonAll(String expr, double x1, int maxIterations) {
         List<LocationOfRootResult> roots = new ArrayList<>();
 
         Argument x;
@@ -233,10 +230,11 @@ public final class Numericals {
      * @param x1 The upper boundary of the interval
      * @param maxIterations The maximum number of times the interval must be bisected
      * @param tol Specifies the tolerance value for which the solution answer must adhere to
-     * @return double
+     * @return double which is the final root value without any additional information
+     * @deprecated use {@link #falsePositionAll(String, double, double, int, double)} instead and take the last value
      * @throws {@link InvalidIntervalException} When the interval doesn't bracket the root
      */
-    public static Double FalsePosition(String expr, double x0, double x1, int maxIterations, double tol) throws InvalidIntervalException {
+    public static Double falsePosition(String expr, double x0, double x1, int maxIterations, double tol) throws InvalidIntervalException {
         if (maxIterations < 1)
             return 0.00;
 
@@ -268,10 +266,10 @@ public final class Numericals {
         else
             x0 = x2;
 
-        return FalsePosition(expr, x0, x1, maxIterations - 1, tol);
+        return falsePosition(expr, x0, x1, maxIterations - 1, tol);
     }
 
-    public static List<LocationOfRootResult> FalsePositionAll(String expr, double x0, double x1, int maxIterations, double tol) {
+    public static List<LocationOfRootResult> falsePositionAll(String expr, double x0, double x1, int maxIterations, double tol) {
         List<LocationOfRootResult> results = new ArrayList<>();
         double stoppingCriteria;
         //sanitize the equation
@@ -309,15 +307,15 @@ public final class Numericals {
     }
 
     /***
-     * Computes the root of an equation using the secante method
+     * Computes the root of an equation using the secante method.
      * @param expr an equation of the form f(x) = 0
      * @param x0 the lower limit
      * @param x1 the upper limit
      * @param maxIterations The maximum number of iterations to be conducted
-     * @return double
-     * todo replace with full variant of the method
+     * @return double the final root value without any further or additional information.
+     * @deprecated use #{@link #secanteAll(String, Double, Double, int)} instead and take the last item of the returned collection
      */
-    public static Double Secante(String expr, double x0, double x1, int maxIterations) {
+    public static Double secante(String expr, double x0, double x1, int maxIterations) {
         if (maxIterations < 1)
             return 0.00;
 
@@ -336,10 +334,19 @@ public final class Numericals {
         if (maxIterations == 1 || stoppingCriteria)
             return x2;
 
-        return Secante(expr, x2, x1, maxIterations - 1);
+        return secante(expr, x2, x1, maxIterations - 1);
     }
 
-    public static List<LocationOfRootResult> SecanteAll(String expr, Double x0, Double x1, int maxIterations) {
+
+    /***
+     * Computes the root of an equation using the secante method.
+     * @param expr an equation of the form f(x) = 0
+     * @param x0 the lower limit
+     * @param x1 the upper limit
+     * @param maxIterations The maximum number of iterations to be conducted
+     * @return a collection containing the information about the root at every iterative step
+     */
+    public static List<LocationOfRootResult> secanteAll(String expr, Double x0, Double x1, int maxIterations) {
         List<LocationOfRootResult> result = new ArrayList<>();
 
 
@@ -369,7 +376,7 @@ public final class Numericals {
     }
 
 
-    public static double[] GaussianWithCompletePivoting(double[][] A, double[] B) {
+    public static double[] gaussianWithCompletePivoting(double[][] A, double[] B) {
 
         int N = B.length;
         final double[][] IDENTITY = generateIdentityMatrix(N);
@@ -456,7 +463,7 @@ public final class Numericals {
         return matrix;
     }
 
-    public static String DecimalToHexadecimal(String decimal) {
+    public static String decimalToHexadecimal(String decimal) {
         StringBuilder stringBuilder = new StringBuilder();
         double decimalDouble = Double.parseDouble(decimal);
 
@@ -485,7 +492,7 @@ public final class Numericals {
         return stringBuilder.toString().toUpperCase();
     }
 
-    public static String DecimalToOctal(String decimal) {
+    public static String decimalToOctal(String decimal) {
         StringBuilder stringBuilder = new StringBuilder();
         double decimalDouble = Double.parseDouble(decimal);
 
@@ -520,7 +527,7 @@ public final class Numericals {
         return lhs.multiply(rhs).getColumn(0);
     }
 
-    public static double[] GaussianWithPartialPivoting(double[][] A, double[] B) {
+    public static double[] gaussianWithPartialPivoting(double[][] A, double[] B) {
         int N = B.length;
         for (int k = 0; k < N; k++) {
             //get the pivot row
@@ -645,7 +652,7 @@ public final class Numericals {
      * @param interval the interval to be considered during the computation. a 1d array of 2 elements
      * @return list of OdeResults
      */
-    public static List<OdeResult> SolveOdeByEulersMethod(String function, double h, double[] interval, double initY) throws InvalidEquationException {
+    public static List<OdeResult> solveOdeByEulersMethod(String function, double h, double[] interval, double initY) throws InvalidEquationException {
         if (interval.length == 0)
             throw new InvalidIntervalException("No Interval Provided");
 
@@ -695,11 +702,11 @@ public final class Numericals {
     }
 
     /***
-     * Solves a system of linear equations using Jacobi's method
+     * Solves a system of linear equations using jacobi's method
      * @param system the system of linear equation to be computed
-     * @return an array which is the final system computed after the last Jacobi iterate
+     * @return an array which is the final system computed after the last jacobi iterate
      */
-    public static double[] Jacobi(String[] system, double[] initGuess, double epsilon) {
+    public static double[] jacobi(String[] system, double[] initGuess, double epsilon) {
         double[] iSolution = new double[3];
 
         for (int i = 0; i < system.length; i++) {
@@ -727,15 +734,15 @@ public final class Numericals {
         if (iNorm < epsilon) {
             return iSolution;
         } else {
-            return Jacobi(system, iSolution, epsilon);
+            return jacobi(system, iSolution, epsilon);
         }
     }
 
     private static double getMaxElement(double[] array) {
         double max = 0;
-        for (double anArray : array) {
-            if (Math.abs(anArray) > Math.abs(max))
-                max = anArray;
+        for (double item : array) {
+            if (Math.abs(item) > Math.abs(max))
+                max = item;
         }
 
         return Math.abs(max);
@@ -746,7 +753,7 @@ public final class Numericals {
      * @param system the system generated after computing all steps
      * @return the system generated after the last gauss seidel iterate
      */
-    public static double[] GaussSeidel(String[] system, double[] initGuess, double epsilon) {
+    public static double[] gaussSeidel(String[] system, double[] initGuess, double epsilon) {
         double[] iSolution = new double[3];
         double[] initGuessTemp = initGuess.clone();
 
@@ -779,7 +786,7 @@ public final class Numericals {
         if (iNorm < epsilon) {
             return iSolution;
         } else {
-            return GaussSeidel(system, iSolution, epsilon);
+            return gaussSeidel(system, iSolution, epsilon);
         }
     }
 
@@ -788,7 +795,7 @@ public final class Numericals {
      * @param system the system generated after computing all steps
      * @return the system generated after the last gauss seidel iterate
      */
-    public static double[] GaussSeidelWithSOR(String[] system, double[] initGuess, double epsilon, double omega) {
+    public static double[] gaussSeidelWithSOR(String[] system, double[] initGuess, double epsilon, double omega) {
         double[] iSolution = new double[3];
         double[] initGuessTemp = initGuess.clone();
 
@@ -819,12 +826,12 @@ public final class Numericals {
         if (iNorm < epsilon) {
             return iSolution;
         } else {
-            return GaussSeidelWithSOR(system, iSolution, epsilon, omega);
+            return gaussSeidelWithSOR(system, iSolution, epsilon, omega);
         }
 
     }
 
-    public static double BinaryToDecimal(String bin) throws NotABinaryException {
+    public static double binaryToDecimal(String bin) throws NotABinaryException {
         //if string is not a correct binary, then return
         if (!isBinary(bin)) {
             throw new NotABinaryException("Input is not a binary: " + bin);
@@ -897,7 +904,6 @@ public final class Numericals {
         return str.toString().toLowerCase();
 
     }
-
 
 
     public enum BinaryOperationType {

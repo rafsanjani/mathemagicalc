@@ -3,8 +3,6 @@ package com.foreverrafs.numericals.fragments.conversions;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,7 +10,6 @@ import androidx.annotation.Nullable;
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.utils.Utilities;
-import com.google.android.material.textfield.TextInputEditText;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -51,7 +48,7 @@ public class FragmentDecToBinInt extends ConversionsBase {
                 return;
             }
 
-            String binary = Numericals.DecimalIntToBinary(decInt);
+            String binary = Numericals.decimalIntToBinary(decInt);
             Log.i(Utilities.LOG_TAG, "" + binary.length());
 
             tvAnswer.setText(binary);
