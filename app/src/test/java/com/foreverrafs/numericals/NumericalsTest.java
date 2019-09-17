@@ -353,7 +353,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void lagrante() {
+    public void interpolateLagrangically() {
         double[] x = {-2, -1, 0, 4};
         double[] y = {-2, 4, 1, 8};
         int xx = 2;
