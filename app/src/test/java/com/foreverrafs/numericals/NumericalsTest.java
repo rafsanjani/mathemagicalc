@@ -353,6 +353,15 @@ public class NumericalsTest {
     }
 
     @Test
+    public void lagrante() {
+        double[] x = {-2, -1, 0, 4};
+        double[] y = {-2, 4, 1, 8};
+        int xx = 2;
+        double yy = Numericals.interpolate(x, y, xx);
+        assertEquals(-10.20, Double.parseDouble(String.format("%.2f", yy)));
+    }
+
+    @Test
     public void testIsBinary() {
         assertTrue(Numericals.isBinary("101010.1010.10101"));
     }

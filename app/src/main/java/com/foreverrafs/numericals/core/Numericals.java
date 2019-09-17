@@ -898,6 +898,7 @@ public final class Numericals {
             return "";
         }
 
+
         StringBuilder str = new StringBuilder(equation.replace("*", "").trim());
         str.insert(0, "$$");
         str.append("$$");
@@ -905,6 +906,36 @@ public final class Numericals {
 
     }
 
+    /**
+     * Performs a numerical interpolation using the Lagrange Polynomials.
+     *
+     * @param x      the x values for which there are known y values
+     * @param y      the known values of y
+     * @param knownX the arbitrary value x for which the corresponding y value must be estimated
+     * @return a double value representing the y value for the knownX value which can be rounded to an arbitrary number of decimal places as desired
+     */
+    public static double interpolate(double[] x, double[] y, double knownX) {
+        //number of terms
+        int n = x.length;
+
+        //the unknown y value which we must compute for
+        double unknownY = 0;
+
+        double numerator, denominator;
+        for (int i = 0; i < n; i++) {
+            numerator = 1;
+            denominator = 1;
+
+            for (int j = 0; j < n; j++) {
+                if (j != i) {
+                    numerator = numerator * (knownX - x[j]);
+                    denominator = denominator * (x[i] - x[j]);
+                }
+            }
+            unknownY = unknownY + (numerator / denominator) * y[i];
+        }
+        return unknownY;
+    }
 
     public enum BinaryOperationType {
         DecimalInteger,
