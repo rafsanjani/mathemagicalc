@@ -9,7 +9,7 @@
     android:minHeight="?attr/actionBarSize"
     app:contentInsetStartWithNavigation="0dp"
     tools:context=".activities.MainMenuActivity"
-    tools:showIn="@layout/activity_menu">
+    tools:showIn="@layout/activity_main_menu">
 
     <LinearLayout
         android:layout_width="match_parent"
