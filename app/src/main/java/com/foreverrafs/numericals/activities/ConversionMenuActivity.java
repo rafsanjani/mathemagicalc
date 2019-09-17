@@ -43,7 +43,7 @@ public class ConversionMenuActivity extends AppCompatActivity implements Operati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_main_menu);
 
         ButterKnife.bind(this);
 
