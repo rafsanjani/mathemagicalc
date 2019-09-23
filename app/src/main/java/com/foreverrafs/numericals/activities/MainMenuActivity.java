@@ -50,7 +50,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        tvVersion.setText(BuildConfig.VERSION_NAME);
+        tvVersion.setText(getString(R.string.version, BuildConfig.VERSION_NAME));
 
         sheetBehavior = BottomSheetBehavior.from(bottomSheet);
 

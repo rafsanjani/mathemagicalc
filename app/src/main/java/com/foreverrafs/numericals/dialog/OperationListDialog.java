@@ -23,6 +23,7 @@ import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinFrac;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinInt;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToHexadecimal;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToOctal;
+import com.foreverrafs.numericals.fragments.interpolation.FragmentLagrange;
 import com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
 import com.foreverrafs.numericals.fragments.roots.FragmentBisection;
 import com.foreverrafs.numericals.fragments.roots.FragmentFalsePosition;
@@ -156,6 +157,9 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
                 break;
             case 18:
                 fragment = new FragmentOdeMenu();
+                break;
+            case 19:
+                fragment = new FragmentLagrange();
                 break;
         }
 

@@ -79,7 +79,7 @@
         <item>16. Sys of Eqns (Gauss Seidel with SOR)</item>
         <item>17. Sys of Eqns (Jacobi)</item>
         <item>18. Ordinary Differential Equations</item>
-        <item>19. Numerical Interpolation</item>
+        <item>19. Lagrange Interpolation</item>
     </string-array>
     <string name="title_activity_scrolling">ScrollingActivity</string>
 
@@ -155,6 +155,7 @@
     <string name="conditions">Conditions</string>
     <string name="desc_euler_forward_method">Solve numerically an Initial Value Problem using Euler\'s Method</string>
     <string name="hint_initial_value_problem_ivp">Initial Value Problem (IVP)</string>
-    <string name="about_header">Numerical methods and computations on steriods</string>
+    <string name="about_header">Numerical methods and computations on steroids</string>
     <string name="about_text">Based on lectures, ideas and inspiration from Dr. Francis O. Boateng (Snr Lecturer, UEW-K)</string>
+    <string name="version">Version %1$s</string>
 </resources>
