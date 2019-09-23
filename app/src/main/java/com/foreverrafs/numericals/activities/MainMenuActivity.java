@@ -3,6 +3,7 @@ package com.foreverrafs.numericals.activities;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -123,5 +124,12 @@ public class MainMenuActivity extends AppCompatActivity {
     @OnClick(R.id.btnAboutClose)
     void onAboutClose() {
         toggleBottomSheet();
+    }
+
+    @OnClick(R.id.tvWebsite)
+    void onWebsiteClicked(TextView url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url.getText().toString()));
+        startActivity(intent);
     }
 }
