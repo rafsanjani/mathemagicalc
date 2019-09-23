@@ -42,9 +42,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
+        android:id="@+id/bottom_sheet"
         layout="@layout/about_dialog"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
         android:clipToPadding="true"
         app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"

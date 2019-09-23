@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,12 +15,14 @@ import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.OperationsMenuAdapter;
 import com.foreverrafs.numericals.model.OperationMenu;
 import com.foreverrafs.numericals.utils.Constants;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class MainMenuActivity extends AppCompatActivity {
@@ -30,12 +33,20 @@ public class MainMenuActivity extends AppCompatActivity {
     @BindView(R.id.text_header)
     TextView header;
 
+    @BindView(R.id.bottom_sheet)
+    ConstraintLayout bottomSheet;
+
+    private BottomSheetBehavior sheetBehavior;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
         ButterKnife.bind(this);
+
+        sheetBehavior = BottomSheetBehavior.from(bottomSheet);
+
 
         mainMenuItems.setLayoutManager(new GridLayoutManager(this, 2));
 
@@ -71,8 +82,9 @@ public class MainMenuActivity extends AppCompatActivity {
                     break;
 
                 case Constants.MENU_ABOUT:
+                    toggleBottomSheet();
+                    return;
 
-                    break;
                 case Constants.MENU_ODE:
                     intent = new Intent(this, ODEMenuActivity.class);
                     break;
@@ -91,5 +103,25 @@ public class MainMenuActivity extends AppCompatActivity {
             startActivity(intent, options.toBundle());
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED)
+            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        else
+            super.onBackPressed();
+    }
+
+    private void toggleBottomSheet() {
+        if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED)
+            sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        else
+            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+    }
+
+    @OnClick(R.id.btnAboutClose)
+    void onAboutClose() {
+        toggleBottomSheet();
     }
 }
