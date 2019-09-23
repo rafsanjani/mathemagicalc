@@ -101,7 +101,8 @@
     </style>
 
     <style name="AppMaterialTheme.TableHeaderStyle" parent="android:TextAppearance">
-        <item name="android:textColor">#143864</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="AppMaterialTheme.TableTextStyle" parent="android:TextAppearance">

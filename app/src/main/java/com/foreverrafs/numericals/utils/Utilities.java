@@ -21,6 +21,8 @@ import androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.ShowAlgoActivity;
 
+import java.util.List;
+
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -78,6 +80,12 @@ public final class Utilities {
                 break;
         }
 
+    }
+
+    public static double[] toPrimitiveDouble(List<Double> list) {
+        double[] intArray = new double[list.size()];
+        for (int i = 0; i < list.size(); i++) intArray[i] = list.get(i);
+        return intArray;
     }
 
     public static void showAlgorithmScreen(Context c, String algoName) {

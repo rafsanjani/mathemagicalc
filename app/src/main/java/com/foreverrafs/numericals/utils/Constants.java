@@ -11,37 +11,40 @@ public class Constants {
     public static final int MENU_ABOUT = 4;
     public static final int MENU_LOCATION_OF_ROOTS = 5;
     public static final int MENU_ALGORITHMS = 6;
+    public static final int MENU_INTERPOLATION = 7;
 
 
     //Conversion Menu Constants
-    public static final int CONVERSION_DEC_TO_BIN_FRACTION = 7;
-    public static final int CONVERSION_DEC_TO_BIN_INT = 8;
-    public static final int CONVERSION_DEC_TO_BIN_ALL = 9;
-    public static final int CONVERSION_DEC_TO_OCTAL = 10;
-    public static final int CONVERSION_DEC_TO_HEXA = 11;
-    public static final int CONVERSION_ALL_IN_ONE = 12;
-    public static final int CONVERSION_BIN_TO_DEC = 13;
+    public static final int CONVERSION_DEC_TO_BIN_FRACTION = 10;
+    public static final int CONVERSION_DEC_TO_BIN_INT = 20;
+    public static final int CONVERSION_DEC_TO_BIN_ALL = 30;
+    public static final int CONVERSION_DEC_TO_OCTAL = 40;
+    public static final int CONVERSION_DEC_TO_HEXA = 50;
+    public static final int CONVERSION_ALL_IN_ONE = 60;
+    public static final int CONVERSION_BIN_TO_DEC = 70;
 
     //Location of Roots Menu Constants
-    public static final int LOCATION_OF_ROOTS_BISECTION = 14;
-    public static final int LOCATION_OF_ROOTS_NEWTON_RAPHSON = 15;
-    public static final int LOCATION_OF_ROOTS_FALSE_POSITION = 16;
-    public static final int LOCATION_OF_ROOTS_SECANT = 17;
+    public static final int LOCATION_OF_ROOTS_BISECTION = 100;
+    public static final int LOCATION_OF_ROOTS_NEWTON_RAPHSON = 200;
+    public static final int LOCATION_OF_ROOTS_FALSE_POSITION = 300;
+    public static final int LOCATION_OF_ROOTS_SECANT = 400;
 
     //System of Equations Menu Constants
-    public static final int SYS_OF_EQN_JACOBI = 18;
-    public static final int SYS_OF_EQN_GAUSS_SEIDEL = 19;
-    public static final int SYS_OF_EQN_GAUSS_SEIDEL_SOR = 20;
-    public static final int SYS_OF_EQN_GAUSSIAN_PART_3X3 = 21;
-    public static final int SYS_OF_EQN_GAUSSIAN_PART_4X4 = 22;
-    public static final int SYS_OF_EQN_GAUSSIAN_COMPLETE_3X3 = 23;
-    public static final int SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4 = 24;
+    public static final int SYS_OF_EQN_JACOBI = 1000;
+    public static final int SYS_OF_EQN_GAUSS_SEIDEL = 2000;
+    public static final int SYS_OF_EQN_GAUSS_SEIDEL_SOR = 3000;
+    public static final int SYS_OF_EQN_GAUSSIAN_PART_3X3 = 4000;
+    public static final int SYS_OF_EQN_GAUSSIAN_PART_4X4 = 5000;
+    public static final int SYS_OF_EQN_GAUSSIAN_COMPLETE_3X3 = 6000;
+    public static final int SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4 = 7000;
 
+    //Numerical Interpolation
+    public static final int INTERPOLATION_LAGRANGE = 10000;
     //Ordinary Differential Equations
-    public static final int ODE_EULER = 300;
+    public static final int ODE_EULER = 20000;
 
 
     //these items do not belong to any menu
-    public static final int MENU_CATEGORY_NONE = 999;
+    public static final int MENU_CATEGORY_NONE = 9999999;
 
 }

@@ -79,6 +79,7 @@
         <item>16. Sys of Eqns (Gauss Seidel with SOR)</item>
         <item>17. Sys of Eqns (Jacobi)</item>
         <item>18. Ordinary Differential Equations</item>
+        <item>19. Numerical Interpolation</item>
     </string-array>
     <string name="title_activity_scrolling">ScrollingActivity</string>
 
@@ -109,6 +110,8 @@
     <string name="xo">Xo</string>
     <string name="xn">Xn</string>
     <string name="about">About</string>
+    <string name="interpolation">Interpolation</string>
+    <string name="lagrange_header">Lagrange Interpolation</string>
     <string name="gaussian_complete_header">Gaussian Elimination with Complete Pivoting</string>
     <string name="gaussian_partial_header">Gaussian Elimination with Partial Pivoting</string>
     <string name="gauss_seidel_desc">Equation of the form [i]Ax[/i] = [i]b[/i]</string>

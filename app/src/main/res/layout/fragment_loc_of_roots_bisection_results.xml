@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -104,7 +103,7 @@
     </LinearLayout>
 
     <TableLayout
-        android:id="@+id/tableHeader"
+        android:id="@+id/tableValues"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/parameters"
@@ -168,7 +167,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/buttons"
-        android:layout_below="@id/tableHeader"
+        android:layout_below="@id/tableValues"
         android:layout_margin="10dp"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="vertical|horizontal" />

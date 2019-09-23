@@ -82,7 +82,7 @@
     </LinearLayout>
 
     <TableLayout
-        android:id="@+id/tableHeader"
+        android:id="@+id/tableValues"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/parameters">
@@ -137,7 +137,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/buttons"
-        android:layout_below="@id/tableHeader"
+        android:layout_below="@id/tableValues"
         android:layout_margin="10dp"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="vertical|horizontal" />

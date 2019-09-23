@@ -62,6 +62,7 @@
             android:theme="@style/AppMaterialTheme" />
         <activity android:name=".activities.SystemOfEquationsMenuActivity" />
         <activity android:name=".activities.ODEMenuActivity" />
+        <activity android:name=".activities.InterpolationMenuActivity" />
     </application>
 
 </manifest>
