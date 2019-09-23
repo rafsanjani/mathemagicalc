@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.foreverrafs.numericals.BuildConfig;
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.OperationsMenuAdapter;
 import com.foreverrafs.numericals.model.OperationMenu;
@@ -37,6 +38,9 @@ public class MainMenuActivity extends AppCompatActivity {
     @BindView(R.id.bottom_sheet)
     ConstraintLayout bottomSheet;
 
+    @BindView(R.id.tvVersion)
+    TextView tvVersion;
+
     private BottomSheetBehavior sheetBehavior;
 
     @Override
@@ -45,6 +49,8 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         ButterKnife.bind(this);
+
+        tvVersion.setText(BuildConfig.VERSION_NAME);
 
         sheetBehavior = BottomSheetBehavior.from(bottomSheet);
 
