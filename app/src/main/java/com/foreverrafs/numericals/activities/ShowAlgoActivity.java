@@ -89,4 +89,10 @@ public class ShowAlgoActivity extends AppCompatActivity {
     public void onBack(View view) {
         finish();
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }
