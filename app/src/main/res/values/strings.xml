@@ -156,6 +156,7 @@
     <string name="desc_euler_forward_method">Solve numerically an Initial Value Problem using Euler\'s Method</string>
     <string name="hint_initial_value_problem_ivp">Initial Value Problem (IVP)</string>
     <string name="about_header">Numerical methods and computations on steroids</string>
-    <string name="about_text">Based on lectures, ideas and inspiration from Dr. Francis O. Boateng (Snr Lecturer, UEW-K)</string>
+    <string name="about_text_1">Based on lectures, ideas and inspiration from</string>
     <string name="version">Version %1$s</string>
+    <string name="about_text_2">Dr. Francis O. Boateng (Snr Lecturer, UEW-K)</string>
 </resources>
