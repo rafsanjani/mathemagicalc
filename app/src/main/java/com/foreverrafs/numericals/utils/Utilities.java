@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.transition.Fade;
 import androidx.transition.TransitionManager;
 import androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
 
@@ -37,10 +36,8 @@ public final class Utilities {
         String name = fragmentManager.getClass().getSimpleName();
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        Fade enterFade = new Fade();
-        enterFade.setDuration(300);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
-        next.setEnterTransition(enterFade);
 
         transaction.replace(container, next)
                 .addToBackStack(name)
