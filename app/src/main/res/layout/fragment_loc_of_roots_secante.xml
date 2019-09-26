@@ -43,11 +43,9 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_equation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
+                    style="@style/EquationInputStyle"
                     android:hint="@string/bisection_enter_eqn"
-                    android:textAlignment="center"
+
                     tools:text="2x + 3" />
             </com.google.android.material.textfield.TextInputLayout>
 

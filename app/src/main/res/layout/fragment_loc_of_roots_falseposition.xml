@@ -43,13 +43,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_equation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/bitter_italic"
-                    android:gravity="center_horizontal"
-                    android:imeOptions="actionGo"
-                    android:inputType="text"
-                    android:textAlignment="center"
+                    style="@style/EquationInputStyle"
                     tools:text="2x + 3 = 25" />
             </com.google.android.material.textfield.TextInputLayout>
 
