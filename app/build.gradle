@@ -11,7 +11,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    lintOptions{
+    lintOptions {
         abortOnError false
     }
 
@@ -42,20 +42,18 @@ dependencies {
     //testing
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'junit:junit:4.13-beta-3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
 }
 
 //Apache commons for simple math operations and mXparser
 dependencies {
-    implementation 'in.hourglass.mathrender:katexmathview:1.0.2'
+    implementation 'com.github.rafsanjani:Katex:v1.0.3'
     implementation 'org.mariuszgromada.math:MathParser.org-mXparser:4.3.3'
     implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
 
     implementation 'com.jakewharton:butterknife:10.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }
 
