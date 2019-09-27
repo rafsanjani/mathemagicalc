@@ -33,13 +33,13 @@ public abstract class ConversionsBase extends Fragment {
 
     @BindView(R.id.til_user_input)
     TextInputLayout inputLayout;
-    @BindView(R.id.text_header)
+    @BindView(R.id.tvHeader)
     TextView txtHeader;
-    @BindView(R.id.text_description)
+    @BindView(R.id.tvDescription)
     TextView txtDescription;
     @BindView(R.id.text_user_input)
     TextInputEditText etInput;
-    @BindView(R.id.text_answer)
+    @BindView(R.id.tvAnswer)
     TextView tvAnswer;
     private String methodName;
 
@@ -128,7 +128,7 @@ public abstract class ConversionsBase extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (editable.length() == 0) {
-                    Utilities.animateAnswer(rootView.findViewById(R.id.text_answer),
+                    Utilities.animateAnswer(rootView.findViewById(R.id.tvAnswer),
                             rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
                 }
             }

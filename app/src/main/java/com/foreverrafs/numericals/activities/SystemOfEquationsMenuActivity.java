@@ -35,7 +35,7 @@ public class SystemOfEquationsMenuActivity extends AppCompatActivity implements 
     @BindView(R.id.list_main_menu)
     RecyclerView mainMenuItems;
 
-    @BindView(R.id.text_header)
+    @BindView(R.id.tvHeader)
     TextView header;
 
     @BindView(R.id.toolbar)

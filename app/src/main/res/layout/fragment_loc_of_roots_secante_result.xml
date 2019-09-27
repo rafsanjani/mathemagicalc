@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +9,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/text_header"
+        android:id="@+id/tvHeader"
         style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +21,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_header"
+        android:layout_below="@id/tvHeader"
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:text="@string/secante_expansion_desc"
@@ -46,39 +47,33 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/equation"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:layout_marginStart="@dimen/std_layout_margin"
+            android:text="@string/initial_guess" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/std_layout_margin"
-                android:text="@string/initial_guess" />
+        <TextView
+            android:id="@+id/initGuess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#37963b"
+            tools:text="[-2]" />
 
-            <TextView
-                android:id="@+id/initGuess"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="[-2]"
-                android:textColor="#37963b" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/iterations" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="Iterations: " />
-
-            <TextView
-                android:id="@+id/iterations"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="[9]"
-                android:textColor="#37963b" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/iterations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#37963b"
+            tools:text="[9]" />
     </LinearLayout>
 
     <TableLayout
@@ -108,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="x1"
+                android:text="@string/x1"
                 android:textAlignment="center" />
 
             <TextView
@@ -117,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="x2"
+                android:text="@string/x2"
                 android:textAlignment="center" />
 
             <TextView
@@ -126,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="x3"
+                android:text="@string/x3"
                 android:textAlignment="center" />
 
             <TextView
@@ -134,7 +129,7 @@
                 style="@style/AppMaterialTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x[n] - x[n+1]"
+                android:text="@string/x_n_x_n_1"
                 android:textAlignment="center" />
         </TableRow>
     </TableLayout>
@@ -171,7 +166,7 @@
             style="@style/AppMaterialTheme.ButtonStyle.Exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Back to Secant"
+            android:text="@string/back"
             android:textStyle="bold" />
 
     </LinearLayout>

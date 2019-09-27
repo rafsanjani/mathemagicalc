@@ -144,7 +144,7 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
         etx0[1] = rootView.findViewById(R.id.x2);
         etx0[2] = rootView.findViewById(R.id.x3);
 
-        EditText etEpsilon = rootView.findViewById(R.id.text_tolerance);
+        EditText etEpsilon = rootView.findViewById(R.id.etTolerance);
 
 
         try {

@@ -40,7 +40,7 @@ public class FragmentOdeMenu extends Fragment implements View.OnClickListener {
     }
 
     private void initControls() {
-        header = rootView.findViewById(R.id.text_header);
+        header = rootView.findViewById(R.id.tvHeader);
        // Utilities.setTypeFace(header, getContext(), Utilities.TypeFaceName.raleway_bold);
         header.setVisibility(View.VISIBLE);
 

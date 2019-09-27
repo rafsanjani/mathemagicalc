@@ -117,4 +117,10 @@
     <string name="epsilon">Epsilon</string>
     <string name="calculating">Calculating…</string>
     <string name="lagrange_header_desc">Interpolate the value of a function using Lagrange\'s interpolation formula</string>
+    <string name="step">step</string>
+    <string name="back">BACK</string>
+    <string name="f_x1">f(x1)</string>
+    <string name="der_x1">der(x1)</string>
+    <string name="root">root</string>
+    <string name="x_n_x_n_1">x[n] - x[n+1]</string>
 </resources>

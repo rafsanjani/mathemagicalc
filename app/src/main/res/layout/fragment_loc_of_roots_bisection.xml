@@ -10,7 +10,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/text_header"
+        android:id="@+id/tvHeader"
         style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
                         android:layout_marginRight="@dimen/std_layout_margin">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_tolerance"
+                            android:id="@+id/etTolerance"
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"

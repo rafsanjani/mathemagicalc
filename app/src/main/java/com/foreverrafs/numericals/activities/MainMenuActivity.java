@@ -32,7 +32,7 @@ public class MainMenuActivity extends AppCompatActivity {
     @BindView(R.id.list_main_menu)
     RecyclerView mainMenuItems;
 
-    @BindView(R.id.text_header)
+    @BindView(R.id.tvHeader)
     TextView header;
 
     @BindView(R.id.bottom_sheet)

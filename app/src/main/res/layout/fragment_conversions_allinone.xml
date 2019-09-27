@@ -10,7 +10,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/text_header"
+        android:id="@+id/tvHeader"
         style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,22 +33,22 @@
         android:textSize="@dimen/desc_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_header" />
+        app:layout_constraintTop_toBottomOf="@+id/tvHeader" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_user_input"
-        android:layout_width="395dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:hint="@string/enter_decimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_user_input"
+            android:id="@+id/etDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -102,14 +102,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <TextView
-            android:id="@+id/text_answer_binary"
+            android:id="@+id/tvAnswerBinary"
             style="@style/AnswerStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/raleway_bold"
-            android:text="0.0000000"
+            tools:text="0.0000000"
             android:textAlignment="textEnd"
             android:textSize="20sp"
             android:visibility="visible"
@@ -117,30 +117,30 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_answer_octal"
+            android:id="@+id/tvAnswerOctal"
             style="@style/AnswerStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="236354"
+            tools:text="236354"
             android:textAlignment="textEnd"
             android:textSize="20sp"
             android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="@+id/text_answer_binary"
-            app:layout_constraintTop_toBottomOf="@+id/text_answer_binary" />
+            app:layout_constraintEnd_toEndOf="@+id/tvAnswerBinary"
+            app:layout_constraintTop_toBottomOf="@+id/tvAnswerBinary" />
 
         <TextView
-            android:id="@+id/text_answer_hexadecimal"
+            android:id="@+id/tvAnswerHexadecimal"
             style="@style/AnswerStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="AF332FDC"
+            tools:text="AF332FDC"
             android:textAlignment="textEnd"
             android:textSize="20sp"
             android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="@+id/text_answer_octal"
-            app:layout_constraintTop_toBottomOf="@+id/text_answer_octal" />
+            app:layout_constraintEnd_toEndOf="@+id/tvAnswerOctal"
+            app:layout_constraintTop_toBottomOf="@+id/tvAnswerOctal" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button

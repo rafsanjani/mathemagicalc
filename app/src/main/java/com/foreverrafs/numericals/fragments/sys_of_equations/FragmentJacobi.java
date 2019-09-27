@@ -131,7 +131,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
         etx0[1] = mRootView.findViewById(R.id.x2);
         etx0[2] = mRootView.findViewById(R.id.x3);
 
-        EditText etEpsilon = mRootView.findViewById(R.id.text_tolerance);
+        EditText etEpsilon = mRootView.findViewById(R.id.etTolerance);
 
 
         try {

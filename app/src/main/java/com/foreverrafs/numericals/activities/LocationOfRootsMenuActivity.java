@@ -35,7 +35,7 @@ public class LocationOfRootsMenuActivity extends AppCompatActivity {
     @BindView(R.id.list_main_menu)
     RecyclerView mainMenuItems;
 
-    @BindView(R.id.text_header)
+    @BindView(R.id.tvHeader)
     TextView header;
 
     @Override

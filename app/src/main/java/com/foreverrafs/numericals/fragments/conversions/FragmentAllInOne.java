@@ -46,18 +46,17 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @BindView(R.id.til_user_input)
     TextInputLayout tilUserInput;
 
-    @BindView(R.id.text_answer_binary)
+    @BindView(R.id.tvAnswerBinary)
     TextView tvBinary;
 
-    @BindView(R.id.text_answer_octal)
+    @BindView(R.id.tvAnswerOctal)
     TextView tvOctal;
 
-    @BindView(R.id.text_answer_hexadecimal)
+    @BindView(R.id.tvAnswerHexadecimal)
     TextView tvHexadecimal;
 
 
     private View rootView;
-//    private TextInputLayout inputLayout;
 
     @Nullable
     @Override

@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/text_header"
+        android:id="@+id/tvHeader"
         style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -151,7 +151,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/text_tolerance"
+                android:id="@+id/etTolerance"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -162,13 +162,6 @@
                 android:imeOptions="actionNext"
                 android:inputType="numberDecimal|numberSigned"
                 android:textAlignment="center" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/omega_textInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>

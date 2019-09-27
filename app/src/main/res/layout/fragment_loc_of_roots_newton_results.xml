@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +9,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/text_header"
+        android:id="@+id/tvHeader"
         style="@style/AppMaterialTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_header"
+        android:layout_below="@id/tvHeader"
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:text="@string/newton_raphson_expansion_desc"
@@ -54,28 +55,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/std_layout_margin"
+                android:layout_marginStart="@dimen/std_layout_margin"
                 android:text="@string/initial_guess" />
 
             <TextView
                 android:id="@+id/initGuess"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="[-2]"
-                android:textColor="#37963b" />
+                android:textColor="#37963b"
+                tools:text="[-2]" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="Iterations: " />
+                android:layout_marginStart="8dp"
+                android:text="@string/iterations" />
 
             <TextView
                 android:id="@+id/iterations"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="[9]"
-                android:textColor="#37963b" />
+                android:textColor="#37963b"
+                tools:text="[9]" />
         </LinearLayout>
 
 
@@ -97,8 +98,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="step"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="step" />
 
 
             <TextView
@@ -107,8 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="f(x1)"
-
+                android:text="@string/f_x1"
                 android:textAlignment="center" />
 
             <TextView
@@ -116,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="der(x1)"
+                android:text="@string/der_x1"
                 android:textAlignment="center" />
 
             <TextView
@@ -124,10 +124,8 @@
                 style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_weight="1"
-
-                android:text="root" />
+                android:text="@string/root" />
         </TableRow>
     </TableLayout>
 
@@ -163,7 +161,7 @@
             style="@style/AppMaterialTheme.ButtonStyle.Exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Back to Newtons"
+            android:text="@string/back"
             android:textStyle="bold" />
 
     </LinearLayout>

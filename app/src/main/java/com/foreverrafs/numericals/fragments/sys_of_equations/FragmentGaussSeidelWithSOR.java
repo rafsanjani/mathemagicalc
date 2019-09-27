@@ -140,7 +140,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
         etx0[1] = mRootView.findViewById(R.id.x2);
         etx0[2] = mRootView.findViewById(R.id.x3);
 
-        EditText etEpsilon = mRootView.findViewById(R.id.text_tolerance);
+        EditText etEpsilon = mRootView.findViewById(R.id.etTolerance);
         EditText etOmega = mRootView.findViewById(R.id.text_omega);
 
         try {
