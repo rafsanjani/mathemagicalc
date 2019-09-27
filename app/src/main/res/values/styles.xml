@@ -38,12 +38,13 @@
 
     <style name="AnswerStyle" parent="AppMaterialTheme.HeaderStyle">
         <item name="android:textSize">32sp</item>
-        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:fontFamily">@font/bree_serif</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/answer_vertical_width</item>
         <item name="android:layout_marginBottom">@dimen/answer_vertical_width</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:visibility">gone</item>
         <item name="android:textColor">@color/answerColor</item>
     </style>
