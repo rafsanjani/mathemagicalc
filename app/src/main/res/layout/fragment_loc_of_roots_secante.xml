@@ -52,7 +52,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/std_layout_margin"
+                android:layout_marginStart="@dimen/std_layout_margin"
                 android:text="@string/initial_guess"
                 android:textColor="#7e2c1e" />
 
@@ -74,7 +74,7 @@
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:hint="x0"
+                        android:hint="@string/x0"
                         android:inputType="numberDecimal|numberSigned"
                         android:textAlignment="center" />
 
@@ -92,7 +92,7 @@
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:hint="x1"
+                        android:hint="@string/x1"
                         android:imeOptions="actionDone"
                         android:inputType="numberDecimal|numberSigned"
                         android:textAlignment="center" />
@@ -102,7 +102,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/std_layout_margin"
+                android:layout_marginStart="@dimen/std_layout_margin"
                 android:text="@string/stopping_criteria"
                 android:textColor="#7e2c1e" />
 
@@ -136,14 +136,15 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textview_answer"
+                android:id="@+id/tvAnswer"
                 style="@style/AnswerStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="0.000000"
                 android:textAlignment="center"
-                android:visibility="gone" />
+                android:visibility="gone"
+                tools:text="0.000000"
+                tools:visibility="visible" />
 
             <Button
                 android:id="@+id/button_calculate"
@@ -166,9 +167,8 @@
                 style="@style/AppMaterialTheme.ButtonStyle.Exit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Back to Equations Menu"
+                android:text="@string/back_to_main_menu"
                 android:textStyle="bold" />
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

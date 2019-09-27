@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,41 +19,57 @@ import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.core.Numericals;
 import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnClickListener, TextWatcher {
-    private TextInputLayout tilX0, tilIterations, tilEquation;
-    private TextInputEditText etIterations, etX0, etEquation;
+public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatcher {
+    @BindView(R.id.til_x0)
+    TextInputLayout tilX0;
+
+    @BindView(R.id.til_user_input)
+    TextInputLayout tilEquation;
+
+    @BindView(R.id.til_iterations)
+    TextInputLayout tilIterations;
+
+    @BindView(R.id.tvAnswer)
+    TextView tvAnswer;
+
+    @BindView(R.id.button_calculate)
+    Button btnCalculate;
+
+    EditText etIterations, etX0, etEquation;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_loc_of_roots_newton, container, false);
+
+        ButterKnife.bind(this, rootView);
         return rootView;
     }
 
 
     public void initControls() {
-        final Button btnCalculate = rootView.findViewById(R.id.button_calculate);
-        Button btnBack = rootView.findViewById(R.id.button_back);
-
         //initialize TextInputLayouts
         tilX0 = rootView.findViewById(R.id.til_x0);
         tilIterations = rootView.findViewById(R.id.til_iterations);
         tilEquation = rootView.findViewById(R.id.til_user_input);
 
         //initialize EditTexts
-        etEquation = rootView.findViewById(R.id.text_equation);
-        etIterations = rootView.findViewById(R.id.text_iterations);
-        etX0 = rootView.findViewById(R.id.x0);
+        etEquation = tilEquation.getEditText();
+        etIterations = tilIterations.getEditText();
+        etX0 = tilX0.getEditText();
 
 
         Bundle newtonRaphsonArgs = getArguments();
@@ -65,14 +82,9 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnCl
 
         registerOnKeyListener(tilIterations, tilEquation, tilX0);
 
-        btnCalculate.setOnClickListener(this);
-        btnBack.setOnClickListener(this);
-        rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
-
         etEquation.addTextChangedListener(this);
 
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        //("Location of Roots", "NR Method");
     }
 
     @Override
@@ -80,39 +92,29 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnCl
         initControls();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.button_back:
-                //        Utilities.replaceFragment(new LocationOfRootsMenuActivity(), getFragmentManager(), R.id.fragmentContainer, true);
-                break;
-
-            case R.id.button_calculate:
-                Button btn = (Button) view;
-                Log.i(Utilities.LOG_TAG, "performing Newton Raphson calculation");
-                onCalculate(btn.getText().toString());
-                break;
-            case R.id.button_show_algo:
-                onShowAlgorithm();
-                break;
-        }
+    @OnClick(R.id.button_calculate)
+    void onCalculateClicked(Button button) {
+        onCalculate(button.getText().toString());
     }
+
+    @OnClick(R.id.button_show_algo)
+    void onShowAlgoClicked() {
+        onShowAlgorithm();
+    }
+
 
     private void onShowAlgorithm() {
         Utilities.showAlgorithmScreen(getContext(), "newtonraphson");
     }
 
-    protected void onCalculate(final String buttonText) {
+    protected void onCalculate(@NonNull final String buttonText) {
         //only handle empty inputs in this module and display using their corresponding TextInputLayouts.
         //Any other errors are handled in Numericals.java. This may check most of the NumberFormatException which
         //gets thrown as a result of passing empty parameters to Type.ParseType(string param)
-        if (!checkForEmptyInput(tilEquation, tilX0, tilIterations)) {
+        if (!validateInput(tilEquation, tilX0, tilIterations)) {
             return;
         }
 
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
-
-        Button calculateButton = rootView.findViewById(R.id.button_calculate);
 
         String eqn;
         double x0;
@@ -146,7 +148,6 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnCl
 
             //animate the answer into view
             Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(tvAnswer, rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         } else if (buttonText.equals(getResources().getString(R.string.show_iterations))) {
             List<LocationOfRootResult> roots = Numericals.newtonRaphsonAll(eqn, x0, iter);
             FragmentNewtonRaphsonResults resultPane = new FragmentNewtonRaphsonResults();
@@ -159,9 +160,9 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements View.OnCl
             resultPane.setArguments(eqnArgs);
             resultPane.setResults(roots);
 
-            //Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
+            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer);
         }
-        calculateButton.setText(getResources().getString(R.string.show_iterations));
+        btnCalculate.setText(getResources().getString(R.string.show_iterations));
     }
 
     @Override

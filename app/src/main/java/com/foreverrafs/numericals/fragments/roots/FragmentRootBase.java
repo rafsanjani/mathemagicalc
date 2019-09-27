@@ -18,6 +18,8 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
+import butterknife.OnClick;
+
 //All fragments which will solve a location of root problem must extend from this Fragment and assign
 //appropriate values to the protected field members else a NullPointerException will be thrown when
 //any of the protected methods attempts to execute in the subclasses
@@ -28,8 +30,9 @@ public abstract class FragmentRootBase extends Fragment {
     private View.OnKeyListener myKeyListener;
     private Button btnCalculate;
 
+
     protected void onEquationChanged() {
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
+        TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
         btnCalculate = rootView.findViewById(R.id.button_calculate);
         btnCalculate.setText(getResources().getString(R.string.calculate));
         Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.HIDE);
@@ -61,6 +64,13 @@ public abstract class FragmentRootBase extends Fragment {
         }
     }
 
+    @OnClick(R.id.button_back)
+    protected void onBackClicked() {
+        if (getActivity() != null) {
+            getActivity().finish();
+        }
+    }
+
     protected void unRegisterOnKeyListeners(@NonNull final TextInputLayout... inputLayouts) throws RuntimeException {
         if (myKeyListener == null) {
             throw new RuntimeException("You must call register before calling unregister");
@@ -70,10 +80,11 @@ public abstract class FragmentRootBase extends Fragment {
         }
     }
 
-    protected boolean checkForEmptyInput(@NonNull final TextInputLayout... inputLayouts) {
+
+    protected boolean validateInput(@NonNull final TextInputLayout... inputLayouts) {
         if (inputLayouts.length == 0) {
             Log.e(Utilities.LOG_TAG, "At least one inputLayout must be supplied to registerOnKeyListener");
-            return false;
+            return true;
         }
 
         boolean validated = true;
@@ -83,7 +94,7 @@ public abstract class FragmentRootBase extends Fragment {
                 if (inputLayout.getId() == R.id.til_user_input) {
                     inputLayout.setError("Cannot be empty!");
                 } else {
-                    inputLayout.setError("???");
+                    inputLayout.setError("?");
                 }
                 validated = false;
             }

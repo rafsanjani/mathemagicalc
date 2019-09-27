@@ -149,7 +149,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textview_answer"
+                android:id="@+id/tvAnswer"
                 style="@style/AnswerStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

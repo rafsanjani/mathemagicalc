@@ -116,7 +116,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textview_answer"
+        android:id="@+id/tvAnswer"
         style="@style/AnswerStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
         style="@style/AppMaterialTheme.ButtonStyle.Exit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/back_to_location_of_roots_menu"
+        android:text="@string/back_to_main_menu"
         android:textStyle="bold" />
 </LinearLayout>
 

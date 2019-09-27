@@ -23,17 +23,36 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentBisection extends FragmentRootBase implements View.OnClickListener, TextWatcher {
+public class FragmentBisection extends FragmentRootBase implements TextWatcher {
 
     private List<LocationOfRootResult> roots = null;
     private TextWatcher etToleranceTextWatcher = null;
     private TextWatcher etIterationsTextWatcher = null;
-    private TextInputLayout tilX0, tilX1, tilIterations, tilTolerance, tilEquation;
+
+    @BindView(R.id.til_x0)
+    TextInputLayout tilX0;
+
+    @BindView(R.id.til_x1)
+    TextInputLayout tilX1;
+
+    @BindView(R.id.til_iterations)
+    TextInputLayout tilIterations;
+
+    @BindView(R.id.til_tolerance)
+    TextInputLayout tilTolerance;
+
+    @BindView(R.id.til_user_input)
+    TextInputLayout tilEquation;
+
     private EditText etIterations, etX0, etX1, etTolerance, etEquation;
 
     @Nullable
@@ -41,23 +60,12 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_loc_of_roots_bisection, container, false);
 
+        ButterKnife.bind(this, rootView);
         return rootView;
     }
 
 
     public void initControls() {
-        final Button btnCalculate = rootView.findViewById(R.id.button_calculate);
-        Button btnBack = rootView.findViewById(R.id.button_back);
-
-
-        //initialize TextInputLayouts
-        tilX0 = rootView.findViewById(R.id.til_x0);
-        tilX1 = rootView.findViewById(R.id.til_x1);
-        tilIterations = rootView.findViewById(R.id.til_iterations);
-        tilTolerance = rootView.findViewById(R.id.til_tolerance);
-        tilEquation = rootView.findViewById(R.id.til_user_input);
-
-
         //initialize EditTexts
         etEquation = tilEquation.getEditText();
         etTolerance = tilTolerance.getEditText();
@@ -91,11 +99,10 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
                 try {
                     etTolerance.removeTextChangedListener(etToleranceTextWatcher);
                     int iterations = Integer.parseInt(etIterations.getText().toString());
-                    double x0 = 0, x1 = 0;
+                    double x0, x1;
 
                     x0 = Double.parseDouble(etX0.getText().toString());
                     x1 = Double.parseDouble(etX1.getText().toString());
-
 
                     double tolerance = Numericals.getBisectionTolerance(iterations, x0, x1);
 
@@ -131,7 +138,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
                         return;
                     }
 
-                    double x0 = 0, x1 = 0;
+                    double x0, x1;
 
                     x0 = Double.parseDouble(etX0.getText().toString());
                     x1 = Double.parseDouble(etX1.getText().toString());
@@ -155,10 +162,6 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
         etIterations.addTextChangedListener(etIterationsTextWatcher);
         etTolerance.addTextChangedListener(etToleranceTextWatcher);
 
-        btnCalculate.setOnClickListener(this);
-        btnBack.setOnClickListener(this);
-        rootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
-
         etEquation.addTextChangedListener(this);
 
 
@@ -170,24 +173,15 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
         initControls();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.button_back:
-                if (getActivity() != null) {
-                    getActivity().finish();
-                }
-                break;
 
-            case R.id.button_calculate:
-                //we just pass the text property of the button to oncalculate
-                onCalculate(((Button)view).getText().toString());
-                break;
-            case R.id.button_show_algo:
-                onShowAlgorithm();
-                break;
+    @OnClick(R.id.button_calculate)
+    void onCalculateClicked(Button button) {
+        onCalculate(button.getText().toString());
+    }
 
-        }
+    @OnClick(R.id.button_show_algo)
+    void onShowAlgoClicked() {
+        onShowAlgorithm();
     }
 
     private void onShowAlgorithm() {
@@ -199,11 +193,12 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
         //only handle empty inputs in this module and display using their corresponding TextInputLayouts.
         //Any other errors are handled in Numericals.java. This may check most of the NumberFormatException which
         //gets thrown as a result of passing empty parameters to Type.ParseType(string param)
-        if (!checkForEmptyInput(tilEquation, tilX1, tilX0, tilTolerance, tilIterations)) {
+        if (!validateInput(tilEquation, tilX1, tilX0, tilTolerance, tilIterations)) {
             return;
         }
 
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
+
+        TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
 
         Button calculateButton = rootView.findViewById(R.id.button_calculate);
 
@@ -225,7 +220,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
         }
 
         //are we displaying all answers or just the last iteration
-        if (buttonText == getResources().getString(R.string.calculate)) {
+        if (buttonText.equals(getResources().getString(R.string.calculate))) {
             try {
                 roots = Numericals.bisectAll(eqn, x0, x1, iter, tol);
             } catch (Exception ex) {
@@ -237,14 +232,11 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
             //get the last item from the roots and display in single mode to the user
             double root = roots.get(roots.size() - 1).getX3();
 
-
             tvAnswer.setText(String.valueOf(root));
 
             //animate the answer into view
             Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(tvAnswer, rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-        } else if (buttonText == getResources().getString(R.string.show_iterations)) {
-            List<LocationOfRootResult> roots = Numericals.bisectAll(eqn, x0, x1, iter, tol);
+        } else if (buttonText.equals(getResources().getString(R.string.show_iterations))) {
             FragmentBisectionResults resultPane = new FragmentBisectionResults();
             Bundle eqnArgs = new Bundle();
 
@@ -257,7 +249,7 @@ public class FragmentBisection extends FragmentRootBase implements View.OnClickL
             resultPane.setArguments(eqnArgs);
             resultPane.setResults(roots);
 
-            //Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer, false);
+            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer);
         }
         calculateButton.setText(getResources().getString(R.string.show_iterations));
     }

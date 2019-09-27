@@ -1,16 +1,17 @@
 package com.foreverrafs.numericals.fragments.roots;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.RootResultsAdapter;
@@ -32,7 +33,6 @@ public class FragmentNewtonRaphsonResults extends Fragment {
 
     private List<LocationOfRootResult> results;
     private View rootView;
-    private RootResultsAdapter adapter;
     private String eqn;
     private double x0;
     private int iterations;
@@ -79,7 +79,7 @@ public class FragmentNewtonRaphsonResults extends Fragment {
         equation = rootView.findViewById(R.id.equation);
         equation.setDisplayText(Numericals.generateTexEquation(this.eqn));
 
-        adapter = new RootResultsAdapter(results, LocationOfRootType.NEWTON_RAPHSON);
+        RootResultsAdapter adapter = new RootResultsAdapter(results, LocationOfRootType.NEWTON_RAPHSON);
         RecyclerView resultView = rootView.findViewById(R.id.resultList);
         resultView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -91,22 +91,8 @@ public class FragmentNewtonRaphsonResults extends Fragment {
 
         tvIterations.setText(getIteration());
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new FragmentNewtonRaphson();
-                Bundle eqnArgs = new Bundle();
-
-                //pass eqn and it's paramenters back to the calling fragment
-                eqnArgs.putDouble("x0", x0);
-                eqnArgs.putString("equation", eqn);
-
-                eqnArgs.putInt("iterations", iterations);
-
-                fragment.setArguments(eqnArgs);
-                //Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer, true);
-            }
+        btnBack.setOnClickListener(v -> {
+            getFragmentManager().popBackStack();
         });
-        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
     }
 }

@@ -108,20 +108,7 @@ public class FragmentBisectionResults extends Fragment {
         tvTolerance.setText(getTolerance());
 
         btnBack.setOnClickListener(v -> {
-            Fragment fragment = new FragmentBisection();
-            Bundle eqnArgs = new Bundle();
-
-            //pass eqn and it's paramenters back to the calling fragment
-            eqnArgs.putDouble("x0", x0);
-            eqnArgs.putString("equation", eqn);
-            eqnArgs.putDouble("x1", x1);
-            eqnArgs.putInt("iterations", iterations);
-            eqnArgs.putDouble("tolerance", tolerance);
-
-            fragment.setArguments(eqnArgs);
-            Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
+            getFragmentManager().popBackStack();
         });
-
-        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
     }
 }
