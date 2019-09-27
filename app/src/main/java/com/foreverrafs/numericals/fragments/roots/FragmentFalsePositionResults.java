@@ -78,7 +78,7 @@ public class FragmentFalsePositionResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnBack = rootView.findViewById(R.id.btnBack);
 
         MathView equation;
         // String tex = " $$f(x) = 3x^3 + 2x - 5$$";

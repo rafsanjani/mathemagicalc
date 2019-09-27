@@ -145,7 +145,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button_back"
+        android:id="@+id/btnBack"
         style="@style/AppMaterialTheme.ButtonStyle.Exit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -153,10 +153,10 @@
         android:text="@string/back_to_conversions_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_calculate" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCalculate" />
 
     <Button
-        android:id="@+id/button_calculate"
+        android:id="@+id/btnCalculate"
         style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

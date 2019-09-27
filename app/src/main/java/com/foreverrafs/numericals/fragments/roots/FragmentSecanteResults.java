@@ -77,7 +77,7 @@ public class FragmentSecanteResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.button_back);
+        Button btnBack = rootView.findViewById(R.id.btnBack);
 
         MathView equation;
 

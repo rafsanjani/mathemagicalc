@@ -35,7 +35,7 @@ import butterknife.OnClick;
 
 public class FragmentSecante extends FragmentRootBase implements TextWatcher {
 
-    @BindView(R.id.button_calculate)
+    @BindView(R.id.btnCalculate)
     Button btnCalculate;
 
     @BindView(R.id.tvAnswer)
@@ -89,12 +89,12 @@ public class FragmentSecante extends FragmentRootBase implements TextWatcher {
         initControls();
     }
 
-    @OnClick(R.id.button_calculate)
+    @OnClick(R.id.btnCalculate)
     void onCalculateClicked(Button button) {
         onCalculate(button.getText().toString());
     }
 
-    @OnClick(R.id.button_show_algo)
+    @OnClick(R.id.btnShowAlgo)
     void onShowAlgorithmClicked() {
         onShowAlgorithm();
     }

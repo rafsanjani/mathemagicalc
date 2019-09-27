@@ -290,7 +290,7 @@ public class JacobiMethodTest {
         appCompatEditText21.perform(replaceText("1"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.button_calculate), withText("Solve"),
+                allOf(withId(R.id.btnCalculate), withText("Solve"),
                         childAtPosition(
                                 allOf(withId(R.id.parentContainer),
                                         childAtPosition(

@@ -27,7 +27,7 @@
 
 
         <Button
-            android:id="@+id/button_calculate"
+            android:id="@+id/btnCalculate"
 
             style="@style/AppMaterialTheme.ButtonStyle"
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             android:text="@string/solve" />
 
         <Button
-            android:id="@+id/button_back"
+            android:id="@+id/btnBack"
             style="@style/AppMaterialTheme.ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

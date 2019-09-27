@@ -159,4 +159,10 @@
     <string name="about_text_1">Based on lectures, ideas and inspiration from</string>
     <string name="version">Version %1$s</string>
     <string name="about_text_2">Dr. Francis O. Boateng (Snr Lecturer, UEW-K)</string>
+    <string name="x3">x3</string>
+    <string name="x2">x2</string>
+    <string name="gauss_seidel_eqn3">Eqn 3. (In terms of x3)</string>
+    <string name="gauss_seidel_eqn2">Eqn 2. (In terms of x2)</string>
+    <string name="gauss_seidel_eqn1">Eqn 1. (In terms of x1)</string>
+    <string name="epsilon">Epsilon</string>
 </resources>

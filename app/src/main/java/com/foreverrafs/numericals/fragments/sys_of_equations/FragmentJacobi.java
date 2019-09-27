@@ -40,7 +40,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(@NonNull Message msg) {
-            Button btnCalculate = mRootView.findViewById(R.id.button_calculate);
+            Button btnCalculate = mRootView.findViewById(R.id.btnCalculate);
             btnCalculate.setText("CALCULATE");
 
             boolean success = msg.getData().getBoolean("success");
@@ -50,7 +50,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
                 return false;
             }
             double[] solution = msg.getData().getDoubleArray("results");
-            TextView tvAnswer = mRootView.findViewById(R.id.textview_answer);
+            TextView tvAnswer = mRootView.findViewById(R.id.tvAnswer);
 
 
             tvAnswer.setText("[ " +
@@ -75,8 +75,8 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     }
 
     public void initControls() {
-        Button btnCalculate = mRootView.findViewById(R.id.button_calculate);
-        Button btnBack = mRootView.findViewById(R.id.button_back);
+        Button btnCalculate = mRootView.findViewById(R.id.btnCalculate);
+        Button btnBack = mRootView.findViewById(R.id.btnBack);
 
 
         EditText[] etEqn = new EditText[3];
@@ -91,7 +91,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
-        mRootView.findViewById(R.id.button_show_algo).setOnClickListener(this);
+        mRootView.findViewById(R.id.btnShowAlgo).setOnClickListener(this);
 
 
         mViewGroup = (LinearLayout) mRootView.findViewById(R.id.parentContainer);
@@ -102,11 +102,11 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
         switch (view.getId()) {
 
 
-            case R.id.button_calculate:
+            case R.id.btnCalculate:
                 Log.i(Utilities.LOG_TAG, "performing jacobi's calculation");
                 onCalculate();
                 break;
-            case R.id.button_show_algo:
+            case R.id.btnShowAlgo:
                 onShowAlgorithm();
                 break;
         }
@@ -131,7 +131,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
 
         EditText etEpsilon = mRootView.findViewById(R.id.text_tolerance);
 
-        TextView tvAnswer = mRootView.findViewById(R.id.textview_answer);
+        TextView tvAnswer = mRootView.findViewById(R.id.tvAnswer);
 
         try {
             final String[] equations = new String[3];
@@ -143,7 +143,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
                 initGuess[i] = Double.valueOf(etx0[i].getText().toString());
             }
 
-            Button btnCalculate = mRootView.findViewById(R.id.button_calculate);
+            Button btnCalculate = mRootView.findViewById(R.id.btnCalculate);
             btnCalculate.setText("CALCULATING....");
 
 
@@ -191,7 +191,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     }
 
     private void onEquationChanged() {
-        TextView tvAnswer = mRootView.findViewById(R.id.textview_answer);
+        TextView tvAnswer = mRootView.findViewById(R.id.tvAnswer);
 
         Utilities.animateAnswer(tvAnswer, mViewGroup, Utilities.DisplayMode.HIDE);
     }

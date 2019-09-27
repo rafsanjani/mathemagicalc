@@ -174,12 +174,12 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
     }
 
 
-    @OnClick(R.id.button_calculate)
+    @OnClick(R.id.btnCalculate)
     void onCalculateClicked(Button button) {
         onCalculate(button.getText().toString());
     }
 
-    @OnClick(R.id.button_show_algo)
+    @OnClick(R.id.btnShowAlgo)
     void onShowAlgoClicked() {
         onShowAlgorithm();
     }
@@ -200,7 +200,7 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
 
         TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
 
-        Button calculateButton = rootView.findViewById(R.id.button_calculate);
+        Button calculateButton = rootView.findViewById(R.id.btnCalculate);
 
         String eqn;
         double x0, x1, tol;

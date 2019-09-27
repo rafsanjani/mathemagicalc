@@ -82,8 +82,8 @@ public class FragmentEulerResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.button_back);
-        Button btnShowAlgorithm = rootView.findViewById(R.id.button_show_algo);
+        Button btnBack = rootView.findViewById(R.id.btnBack);
+        Button btnShowAlgorithm = rootView.findViewById(R.id.btnShowAlgo);
 
         MathView equation;
         // String tex = " $$f(x) = 3x^3 + 2x - 5$$";

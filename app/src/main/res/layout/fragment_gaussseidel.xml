@@ -37,7 +37,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:gravity="center_horizontal"
-            android:hint="Eqn 1. (In terms of x1)"
+            android:hint="@string/gauss_seidel_eqn1"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:textAlignment="center" />
@@ -54,7 +54,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:gravity="center_horizontal"
-            android:hint="Eqn 2. (In terms of x2)"
+            android:hint="@string/gauss_seidel_eqn2"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:textAlignment="center" />
@@ -71,7 +71,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:gravity="center_horizontal"
-            android:hint="Eqn 3. (In terms of x3)"
+            android:hint="@string/gauss_seidel_eqn3"
             android:imeOptions="actionGo"
             android:inputType="text"
             android:textAlignment="center" />
@@ -93,10 +93,10 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="2dp"
                 android:gravity="center_horizontal"
-                android:hint="x1"
+                android:hint="@string/x1"
                 android:imeOptions="actionNext"
                 android:inputType="numberDecimal|numberSigned"
                 android:textAlignment="center" />
@@ -112,10 +112,10 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="2dp"
                 android:gravity="center_horizontal"
-                android:hint="x2"
+                android:hint="@string/x2"
                 android:imeOptions="actionNext"
                 android:inputType="numberDecimal|numberSigned"
                 android:textAlignment="center" />
@@ -131,10 +131,10 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="2dp"
                 android:gravity="center_horizontal"
-                android:hint="x3"
+                android:hint="@string/x3"
                 android:imeOptions="actionNext"
                 android:inputType="numberDecimal|numberSigned"
                 android:textAlignment="center" />
@@ -159,7 +159,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center_horizontal"
-                android:hint="Epsilon"
+                android:hint="@string/tolerance"
                 android:imeOptions="actionNext"
                 android:inputType="numberDecimal|numberSigned"
                 android:textAlignment="center" />
@@ -203,28 +203,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/tvAnswer"
@@ -232,13 +210,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        tools:text="0.000000"
         android:textAlignment="center"
+        android:visibility="gone"
 
-        android:visibility="gone" />
+        tools:text="0.000000" />
 
     <Button
-        android:id="@+id/button_calculate"
+        android:id="@+id/btnCalculate"
         style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -246,7 +224,7 @@
         android:text="@string/calculate" />
 
     <Button
-        android:id="@+id/button_show_algo"
+        android:id="@+id/btnShowAlgo"
         style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -255,7 +233,7 @@
         android:text="@string/show_algorithm" />
 
     <Button
-        android:id="@+id/button_back"
+        android:id="@+id/btnBack"
         style="@style/AppMaterialTheme.ButtonStyle.Exit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

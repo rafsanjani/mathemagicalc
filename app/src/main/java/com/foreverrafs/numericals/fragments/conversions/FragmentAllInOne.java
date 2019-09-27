@@ -37,10 +37,10 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     ConstraintLayout layoutAnswerArea;
 
 
-    @BindView(R.id.button_calculate)
+    @BindView(R.id.btnCalculate)
     Button btnCalculate;
 
-    @BindView(R.id.button_back)
+    @BindView(R.id.btnBack)
     Button btnBack;
 
     @BindView(R.id.til_user_input)
@@ -98,10 +98,10 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.button_back:
+            case R.id.btnBack:
                 break;
 
-            case R.id.button_calculate:
+            case R.id.btnCalculate:
                 onCalculate();
                 break;
         }

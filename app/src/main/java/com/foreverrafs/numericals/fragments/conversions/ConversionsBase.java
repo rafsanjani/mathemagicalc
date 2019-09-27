@@ -84,19 +84,19 @@ public abstract class ConversionsBase extends Fragment {
         inputLayout.setHint(hint);
     }
 
-    @OnClick(R.id.button_show_algo)
+    @OnClick(R.id.btnShowAlgo)
     void onShowAlgorithm() {
         Utilities.showAlgorithmScreen(getContext(), getMethodName());
     }
 
-    @OnClick(R.id.button_back)
+    @OnClick(R.id.btnBack)
     void onBackPressed() {
         Activity parentActivity = this.getActivity();
         if (parentActivity != null)
             parentActivity.finish();
     }
 
-    @OnClick(R.id.button_calculate)
+    @OnClick(R.id.btnCalculate)
     void onCalculateClicked() {
         onCalculate();
     }

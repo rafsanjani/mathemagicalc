@@ -48,9 +48,9 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
 
     public void initControls() {
-        final Button btnCalculate = rootView.findViewById(R.id.button_calculate);
-        Button btnBack = rootView.findViewById(R.id.button_back);
-        Button btnShowAlgorithm = rootView.findViewById(R.id.button_show_algo);
+        final Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
+        Button btnBack = rootView.findViewById(R.id.btnBack);
+        Button btnShowAlgorithm = rootView.findViewById(R.id.btnShowAlgo);
 
         //initialize TextInputLayouts
         tilX0 = rootView.findViewById(R.id.til_x0);
@@ -124,16 +124,16 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.button_back:
+            case R.id.btnBack:
                 Utilities.replaceFragment(new FragmentOdeMenu(), getFragmentManager(), R.id.fragmentContainer);
                 break;
 
-            case R.id.button_calculate:
+            case R.id.btnCalculate:
                 Button btn = (Button) view;
                 Log.i(Utilities.LOG_TAG, "performing Euler's Forward calculation");
                 onCalculate(btn.getText().toString());
                 break;
-            case R.id.button_show_algo:
+            case R.id.btnShowAlgo:
                 Utilities.showAlgorithmScreen(getContext(), "euler");
                 break;
 
@@ -150,8 +150,8 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
         //etEquation = rootView.findViewById(R.id.text_equation);
 
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
-        Button calculateButton = rootView.findViewById(R.id.button_calculate);
+        TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
+        Button calculateButton = rootView.findViewById(R.id.btnCalculate);
 
         String eqn;
         double x0;
@@ -269,8 +269,8 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
     }
 
     private void onEquationChanged() {
-        TextView tvAnswer = rootView.findViewById(R.id.textview_answer);
-        Button btnCalculate = rootView.findViewById(R.id.button_calculate);
+        TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
+        Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
         btnCalculate.setText(getResources().getString(R.string.solve));
         Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
     }

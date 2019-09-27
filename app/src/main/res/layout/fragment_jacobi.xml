@@ -242,7 +242,7 @@
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/button_calculate"
+        android:id="@+id/btnCalculate"
         style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -250,7 +250,7 @@
         android:text="@string/calculate" />
 
     <Button
-        android:id="@+id/button_show_algo"
+        android:id="@+id/btnShowAlgo"
         style="@style/AppMaterialTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -259,7 +259,7 @@
         android:text="@string/show_algorithm" />
 
     <Button
-        android:id="@+id/button_back"
+        android:id="@+id/btnBack"
         style="@style/AppMaterialTheme.ButtonStyle.Exit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

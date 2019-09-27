@@ -62,8 +62,7 @@ public final class Utilities {
     }
 
 
-    public static void animateAnswer(View answerView, View rootView, DisplayMode
-            displayMode) {
+    public static void animateAnswer(View answerView, View rootView, DisplayMode displayMode) {
         switch (displayMode) {
             case SHOW:
                 TransitionManager.beginDelayedTransition((ViewGroup) rootView);

@@ -33,7 +33,7 @@ public abstract class FragmentRootBase extends Fragment {
 
     protected void onEquationChanged() {
         TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
-        btnCalculate = rootView.findViewById(R.id.button_calculate);
+        btnCalculate = rootView.findViewById(R.id.btnCalculate);
         btnCalculate.setText(getResources().getString(R.string.calculate));
         Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.HIDE);
     }
@@ -64,7 +64,7 @@ public abstract class FragmentRootBase extends Fragment {
         }
     }
 
-    @OnClick(R.id.button_back)
+    @OnClick(R.id.btnBack)
     protected void onBackClicked() {
         if (getActivity() != null) {
             getActivity().finish();

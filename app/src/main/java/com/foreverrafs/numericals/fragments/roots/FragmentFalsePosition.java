@@ -50,7 +50,7 @@ public class FragmentFalsePosition extends FragmentRootBase implements TextWatch
     @BindView(R.id.tvAnswer)
     TextView tvAnswer;
 
-    @BindView(R.id.button_calculate)
+    @BindView(R.id.btnCalculate)
     Button btnCalculate;
 
 
@@ -86,12 +86,12 @@ public class FragmentFalsePosition extends FragmentRootBase implements TextWatch
     }
 
 
-    @OnClick(R.id.button_calculate)
+    @OnClick(R.id.btnCalculate)
     void onCalculateClicked(Button button) {
         onCalculate(button.getText().toString());
     }
 
-    @OnClick(R.id.button_show_algo)
+    @OnClick(R.id.btnShowAlgo)
     void onShowAlgorithmClicked() {
         onShowAlgorithm();
     }
