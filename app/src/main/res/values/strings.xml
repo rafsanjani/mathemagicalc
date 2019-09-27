@@ -116,4 +116,5 @@
     <string name="gauss_seidel_eqn1">Eqn 1. (In terms of x1)</string>
     <string name="epsilon">Epsilon</string>
     <string name="calculating">Calculating…</string>
+    <string name="lagrange_header_desc">Interpolate the value of a function using Lagrange\'s interpolation formula</string>
 </resources>
