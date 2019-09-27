@@ -1,27 +1,9 @@
 <resources>
     <string name="app_name">MathemagicalC</string>
-    <string name="remarks">Numerical Methods and Computations</string>
-    <string name="app_description">Implementation of algorithms</string>
-    <string name="description_text">Operation List</string>
-    <string name="dec_frac_tobinary">1. Decimal to Binary (Fractional Part Only)</string>
-    <string name="dec_int_tobinary">2. Decimal to Binary (Integer Part Only)</string>
-    <string name="dec_tobinary">3. Decimal to Binary (Any Number)</string>
-    <string name="rootlocation_bisection">4. Location of Roots (Bisection)</string>
-    <string name="rootlocation_falseposition">5. Location Of Roots (Regula Falsi)</string>
-    <string name="rootlocation_newtonraphson">6. Locate Of Roots (Newton Raphson)</string>
-    <string name="rootlocation_secante">7. Location Of Roots (Secante)</string>
-    <string name="systemofequations_partial_pivoting">8. Sys. of Equations (Partial Pivoting)</string>
-    <string name="systemofequations_complete_pivoting">9. Sys. of Equations (Complete Pivoting)</string>
     <string name="calculate">Calculate</string>
     <string name="back_to_main_menu">Back to main menu</string>
-    <string name="button_view_source">View Source…</string>
-    <string name="decimal_to_binary_title">Decimal to Binary converter</string>
-    <string name="decimal_to_binary_subtitle">Convert Decimal Fractions To Binary</string>
-    <string name="title_activity_private_activity">private_activity</string>
     <string name="dec_to_bin_frac_desc">Converts a decimal number (n) to it\'s equivalent binary number where 1 > n > 0 </string>
-    <string name="enter_binary_number">Enter a decimal fraction (eg 0.123): </string>
     <string name="dec_to_bin_int_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N >= 1 </string>
-    <string name="enter_decimal_int">Enter a decimal Integer (eg 30)</string>
     <string name="enter_decimal">Enter a decimal number (eg 30 or 30.53)</string>
     <string name="decimal_to_bin_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N > 0 </string>
     <string name="decimal_to_hexadecimal_desc">Converts a decimal integer (N) to it\'s equivalent hexadecimal where  N > 0 </string>
@@ -31,21 +13,14 @@
     <string name="tolerance">Tolerance</string>
     <string name="iterations">Iterations</string>
     <string name="loc_of_rooots">Location of Roots</string>
-    <string name="sys_of_eqns">System of Equations</string>
     <string name="number_conversions">Numerical Convertions</string>
-    <string name="ordinary_diff_eqn">Ord. Diff. Eqns (ODE)</string>
     <string name="show_algorithm">Show Algorithm</string>
     <string name="stopping_criteria">Stopping Criteria</string>
     <string name="initial_guess">Initial Guess:</string>
-    <string name="back_to_location_of_roots_menu">Back to lOR Menu</string>
     <string name="x1">x1</string>
     <string name="x0">x0</string>
     <string name="header_bisection">Bisection Method</string>
     <string name="show_iterations">show iterations</string>
-    <string name="iteration_table">Iteration: %d</string>
-    <string name="go_to_operation">Go to operation....</string>
-    <string name="settings">Settings</string>
-    <string name="exit">Exit</string>
     <string name="dec_to_hexadecimal">Dec to Hexadecimal</string>
     <string name="dec_to_octal">Dec to Octal</string>
     <string name="dec_to_bin_any_number">Dec to Bin (Any Number)</string>
@@ -54,11 +29,9 @@
     <string name="dec_to_bin_fractions">Dec to Bin (Fractions)</string>
     <string name="dec_to_bin_integers">Dec to Bin (Integers)</string>
     <string name="decimal_to_octal_desc"><![CDATA[Converts a decimal integer (N) to it\'s equivalent octal value where N > 0]]></string>
-    <string name="back_to_sys_of_eqns">Back to Sys of Eqns</string>
     <string name="all_in_one_converter">All in one converter</string>
     <string name="conversion_all_in_one_desc">Enter a decimal number and it will be converted to binary, octal and hexadecimal</string>
     <string name="solve">Solve</string>
-    <string name="question_mark">#63</string>
 
     <string-array name="main_menu_legacy">
         <item>1. Decimal to Binary (Fractions)</item>
@@ -81,35 +54,13 @@
         <item>18. Ordinary Differential Equations</item>
         <item>19. Lagrange Interpolation</item>
     </string-array>
-    <string name="title_activity_scrolling">ScrollingActivity</string>
 
 
-    <string name="overview">
-        <![CDATA[
-        This application\'s primary motive is to solve NUMERICAL METHODS AND COMPUTATIONAL problems.
-        "The main topics covered in this version of the software are <b>Location of roots</b>, <b>Numerical Conversions</b>,
-        <b>Ordinary Differential Equations</b> and <b>Location of roots</b>. Under these main topics, several subtopics have
-        been covered as well. Users are to <font color = "brown"><b>Note</b></font> however that answers provided in this application may be more accurate that those presented in text books because in most cases, rounding
-        off is disabled making the final solution as accurate as possible.
-        ]]>
-    </string>
-
-    <string name="overview_main">
-        This application\'s primary motive is to solve NUMERICAL METHODS AND COMPUTATIONAL problems.
-        The main topics covered in this version of the software are Location of roots,Numerical Conversions, Ordinary Differential
-        Equations and Location of roots.
-    </string>
-
-
-    <string name="action_settings">Settings</string>
     <string name="euler_forward_method">Euler\'s Forward Method</string>
     <string name="back_to_ode_menu">Back to ODE Menu</string>
-    <string name="title_activity_show_algorithm">ShowAlgorithm</string>
-    <string name="algorithms">Algorithms</string>
     <string name="operations">Operations</string>
     <string name="xo">Xo</string>
     <string name="xn">Xn</string>
-    <string name="about">About</string>
     <string name="interpolation">Interpolation</string>
     <string name="lagrange_header">Lagrange Interpolation</string>
     <string name="gaussian_complete_header">Gaussian Elimination with Complete Pivoting</string>
@@ -136,7 +87,6 @@
     <string name="euler_expansion_header">Expansion of Iterations for Euler\'s Method</string>
     <string name="method_expansion_desc">The results of each iteration step is given below</string>
     <string name="ode_header">Ordinary Differential Equations</string>
-    <string name="bin_to_dec_header">Convert Binary to Decimal</string>
     <string name="bin_to_dec_desc">Convert a binary number to it\'s corresponding decimal numeral</string>
     <string name="algo_desc">dynamic description of algorithm. A short description should be shown here</string>
     <string name="algo_header">Dynamic Header Text</string>

@@ -6,7 +6,7 @@
     <item android:drawable="@color/colorSplashBackground" />
 
     <!-- Your product logo - 144dp color version of your app icon -->
-    <item android:id="@+id/logoSplash">
+    <item>
         <bitmap
             android:gravity="center"
             android:src="@drawable/launcher" />

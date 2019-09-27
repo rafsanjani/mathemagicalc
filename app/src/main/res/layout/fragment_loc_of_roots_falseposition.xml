@@ -118,7 +118,6 @@
                     android:layout_marginRight="@dimen/std_layout_margin">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/text_iterations"
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"

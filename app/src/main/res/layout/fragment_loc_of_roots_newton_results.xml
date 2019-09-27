@@ -112,7 +112,6 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/derX1"
                 style="@style/AppMaterialTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
