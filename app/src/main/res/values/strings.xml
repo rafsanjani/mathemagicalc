@@ -165,4 +165,5 @@
     <string name="gauss_seidel_eqn2">Eqn 2. (In terms of x2)</string>
     <string name="gauss_seidel_eqn1">Eqn 1. (In terms of x1)</string>
     <string name="epsilon">Epsilon</string>
+    <string name="calculating">Calculating…</string>
 </resources>

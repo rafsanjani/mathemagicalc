@@ -52,7 +52,9 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnBack:
-                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
+                if (getActivity() != null) {
+                    getActivity().finish();
+                }
                 break;
 
             case R.id.btnCalculate:

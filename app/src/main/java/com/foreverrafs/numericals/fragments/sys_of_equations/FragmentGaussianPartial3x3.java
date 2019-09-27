@@ -55,9 +55,11 @@ public class FragmentGaussianPartial3x3 extends Fragment implements View.OnClick
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-//            case R.id.button_back:
-//                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
-//                break;
+            case R.id.btnBack:
+                if (getActivity() != null) {
+                    getActivity().finish();
+                }
+                break;
 
             case R.id.btnCalculate:
                 Log.i(Utilities.LOG_TAG, "solving the system using gaussian with partial pivoting");

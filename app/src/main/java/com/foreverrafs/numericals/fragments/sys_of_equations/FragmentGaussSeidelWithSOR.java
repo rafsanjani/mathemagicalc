@@ -36,23 +36,23 @@ import org.apache.commons.math3.util.Precision;
 
 public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClickListener, TextWatcher, View.OnKeyListener {
 
-    View rootView;
-    ViewGroup viewGroup;
-    Handler handler = new Handler() {
+    private View mRootView;
+    private ViewGroup mViewGroup;
+
+    private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
-        public void handleMessage(Message msg) {
-            Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
-            btnCalculate.setText("CALCULATE");
+        public boolean handleMessage(@NonNull Message msg) {
+            Button btnCalculate = mRootView.findViewById(R.id.btnCalculate);
+            btnCalculate.setText(getString(R.string.calculating));
 
             boolean success = msg.getData().getBoolean("success");
-            if (success == false) {
+            if (!success) {
                 Toast.makeText(getContext(), msg.getData().getString("exception"), Toast.LENGTH_LONG).show();
-
-                return;
+                return false;
             }
-            double[] solution = msg.getData().getDoubleArray("results");
-            TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
 
+            double[] solution = msg.getData().getDoubleArray("results");
+            TextView tvAnswer = mRootView.findViewById(R.id.tvAnswer);
 
             tvAnswer.setText("[ " +
                     Precision.round(solution[0], 2) + ", "
@@ -62,57 +62,54 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
 
 
             //for transitions sake
-            Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(tvAnswer, rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-
+            Utilities.animateAnswer(tvAnswer, mViewGroup, Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, mRootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            return true;
         }
-    };
+    });
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_gaussseidelsor, container, false);
+        mRootView = inflater.inflate(R.layout.fragment_gaussseidelsor, container, false);
         initControls();
-        return rootView;
+        return mRootView;
     }
 
     public void initControls() {
+        Button btnCalculate = mRootView.findViewById(R.id.btnCalculate);
+        Button btnBack = mRootView.findViewById(R.id.btnBack);
 
-        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
-        Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
-        Button btnBack = rootView.findViewById(R.id.btnBack);
-
-        TextInputLayout til = rootView.findViewById(R.id.omega_textInputLayout);
+        TextInputLayout til = mRootView.findViewById(R.id.omega_textInputLayout);
 
         String omega = "\u03A9";
         til.setHint(omega.toLowerCase());
 
 
         EditText[] etEqn = new EditText[3];
-        etEqn[0] = rootView.findViewById(R.id.text_equationx1);
-        etEqn[1] = rootView.findViewById(R.id.text_equationx2);
-        etEqn[2] = rootView.findViewById(R.id.text_equationx3);
+        etEqn[0] = mRootView.findViewById(R.id.text_equationx1);
+        etEqn[1] = mRootView.findViewById(R.id.text_equationx2);
+        etEqn[2] = mRootView.findViewById(R.id.text_equationx3);
 
-        for (int i = 0; i < etEqn.length; i++) {
-            etEqn[i].addTextChangedListener(this);
-            etEqn[i].setOnKeyListener(this);
+        for (EditText editText : etEqn) {
+            editText.addTextChangedListener(this);
+            editText.setOnKeyListener(this);
         }
 
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
-        rootView.findViewById(R.id.btnShowAlgo).setOnClickListener(this);
+        mRootView.findViewById(R.id.btnShowAlgo).setOnClickListener(this);
 
 
-        viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        //("System of Equations", "Gauss Seidel With SOR");
-
+        mViewGroup = (LinearLayout) mRootView.findViewById(R.id.parentContainer);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnBack:
-                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
+                if (getActivity() != null)
+                    getActivity().finish();
                 break;
 
             case R.id.btnCalculate:
@@ -134,17 +131,17 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
 
     private void onCalculate() {
         EditText[] etEqn = new EditText[3];
-        etEqn[0] = rootView.findViewById(R.id.text_equationx1);
-        etEqn[1] = rootView.findViewById(R.id.text_equationx2);
-        etEqn[2] = rootView.findViewById(R.id.text_equationx3);
+        etEqn[0] = mRootView.findViewById(R.id.text_equationx1);
+        etEqn[1] = mRootView.findViewById(R.id.text_equationx2);
+        etEqn[2] = mRootView.findViewById(R.id.text_equationx3);
 
         EditText[] etx0 = new EditText[3];
-        etx0[0] = rootView.findViewById(R.id.x1);
-        etx0[1] = rootView.findViewById(R.id.x2);
-        etx0[2] = rootView.findViewById(R.id.x3);
+        etx0[0] = mRootView.findViewById(R.id.x1);
+        etx0[1] = mRootView.findViewById(R.id.x2);
+        etx0[2] = mRootView.findViewById(R.id.x3);
 
-        EditText etEpsilon = rootView.findViewById(R.id.text_tolerance);
-        EditText etOmega = rootView.findViewById(R.id.text_omega);
+        EditText etEpsilon = mRootView.findViewById(R.id.text_tolerance);
+        EditText etOmega = mRootView.findViewById(R.id.text_omega);
 
         try {
             final String[] equations = new String[3];
@@ -156,28 +153,23 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
                 initGuess[i] = Double.valueOf(etx0[i].getText().toString());
             }
 
-            Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
-            btnCalculate.setText("CALCULATING....");
+            Button btnCalculate = mRootView.findViewById(R.id.btnCalculate);
+            btnCalculate.setText(getString(R.string.calculating));
 
 
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    double[] solution;
-                    Message message = new Message();
+            Runnable runnable = () -> {
+                double[] solution;
+                Message message = new Message();
 
-                    try {
-                        solution = Numericals.gaussSeidelWithSOR(equations, initGuess, epsilon, omega);
-                        message.getData().putDoubleArray("results", solution);
-                        message.getData().putBoolean("success", true);
-                    } catch (Exception ex) {
-                        message.getData().putBoolean("success", false);
-                        message.getData().putString("exception", ex.getMessage());
-                        System.out.println(ex.getMessage());
-                    }
-                    handler.sendMessage(message);
+                try {
+                    solution = Numericals.gaussSeidelWithSOR(equations, initGuess, epsilon, omega);
+                    message.getData().putDoubleArray("results", solution);
+                    message.getData().putBoolean("success", true);
+                } catch (Exception ex) {
+                    message.getData().putBoolean("success", false);
+                    message.getData().putString("exception", ex.getMessage());
                 }
-
+                mHandler.sendMessage(message);
             };
 
             Thread thread = new Thread(runnable);
@@ -209,9 +201,9 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
     }
 
     private void onEquationChanged() {
-        TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
+        TextView tvAnswer = mRootView.findViewById(R.id.tvAnswer);
 
-        Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(tvAnswer, mViewGroup, Utilities.DisplayMode.HIDE);
     }
 
     @Override

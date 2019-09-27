@@ -45,7 +45,7 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
             btnCalculate.setText("CALCULATE");
 
             boolean success = msg.getData().getBoolean("success");
-            if (success == false) {
+            if (!success) {
                 Toast.makeText(getContext(), msg.getData().getString("exception"), Toast.LENGTH_LONG).show();
 
                 return;
@@ -92,9 +92,9 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
         etEqn[1] = rootView.findViewById(R.id.text_equationx2);
         etEqn[2] = rootView.findViewById(R.id.text_equationx3);
 
-        for (int i = 0; i < etEqn.length; i++) {
-            etEqn[i].addTextChangedListener(this);
-            etEqn[i].setOnKeyListener(this);
+        for (EditText editText : etEqn) {
+            editText.addTextChangedListener(this);
+            editText.setOnKeyListener(this);
         }
 
         btnCalculate.setOnClickListener(this);
@@ -110,9 +110,11 @@ public class FragmentGaussSeidel extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-//            case R.id.button_back:
-//                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
-//                break;
+            case R.id.btnBack:
+                if (getActivity() != null) {
+                    getActivity().finish();
+                }
+                break;
 
             case R.id.btnCalculate:
                 Log.i(Utilities.LOG_TAG, "performing jacobi's calculation");

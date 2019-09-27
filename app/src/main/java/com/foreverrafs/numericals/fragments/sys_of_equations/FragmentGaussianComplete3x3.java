@@ -27,13 +27,12 @@ import com.foreverrafs.numericals.utils.Utilities;
 
 public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClickListener, View.OnKeyListener, TextWatcher {
 
-    View rootView;
+    private View rootView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_gaussian_complete3x3, container, false);
-        //("System of Equations", "Gaussian Elimination (Partial Pivoting)");
 
         initControls();
         return rootView;
@@ -41,11 +40,8 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
 
     private void initControls() {
 
-        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
-
         Button btnBack = rootView.findViewById(R.id.btnBack);
         Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
-
 
         btnBack.setOnClickListener(this);
         btnCalculate.setOnClickListener(this);
@@ -55,9 +51,11 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-//            case R.id.button_back:
-//                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer, true);
-//                break;
+            case R.id.btnBack:
+                if (getActivity() != null) {
+                    getActivity().finish();
+                }
+                break;
 
             case R.id.btnCalculate:
                 Log.i(Utilities.LOG_TAG, "solving the system using gaussian with partial pivoting");
@@ -68,8 +66,6 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
 
     private void onCalculate() {
         if (getMatrices()) {
-            // LinearLayout solutionMatrix = rootView.findViewById(R.id.solutionMatrix);
-            //LinearLayout solutionMatrix2 = rootView.findViewById(R.id.solutionMatrix2);
             Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
             Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
             Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);

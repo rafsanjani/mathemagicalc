@@ -41,7 +41,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
         @Override
         public boolean handleMessage(@NonNull Message msg) {
             Button btnCalculate = mRootView.findViewById(R.id.btnCalculate);
-            btnCalculate.setText("CALCULATE");
+            btnCalculate.setText(getString(R.string.calculate));
 
             boolean success = msg.getData().getBoolean("success");
             if (!success) {
@@ -93,14 +93,16 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
         btnBack.setOnClickListener(this);
         mRootView.findViewById(R.id.btnShowAlgo).setOnClickListener(this);
 
-
         mViewGroup = (LinearLayout) mRootView.findViewById(R.id.parentContainer);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-
+            case R.id.btnBack:
+                if (getActivity() != null)
+                    getActivity().finish();
+                break;
 
             case R.id.btnCalculate:
                 Log.i(Utilities.LOG_TAG, "performing jacobi's calculation");
@@ -131,7 +133,6 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
 
         EditText etEpsilon = mRootView.findViewById(R.id.text_tolerance);
 
-        TextView tvAnswer = mRootView.findViewById(R.id.tvAnswer);
 
         try {
             final String[] equations = new String[3];
@@ -144,7 +145,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
             }
 
             Button btnCalculate = mRootView.findViewById(R.id.btnCalculate);
-            btnCalculate.setText("CALCULATING....");
+            btnCalculate.setText(getString(R.string.calculating));
 
 
             Runnable runnable = () -> {

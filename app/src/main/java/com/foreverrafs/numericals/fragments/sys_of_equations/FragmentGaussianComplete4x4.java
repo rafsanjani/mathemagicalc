@@ -27,22 +27,18 @@ import com.foreverrafs.numericals.utils.Utilities;
 
 public class FragmentGaussianComplete4x4 extends Fragment implements View.OnClickListener, View.OnKeyListener, TextWatcher {
 
-    View rootView;
+    private View rootView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_gaussian_complete4x4, container, false);
-        //("System of Equations", "Gaussian Elimination (Partial Pivoting)");
 
         initControls();
         return rootView;
     }
 
     private void initControls() {
-
-        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
-
         Button btnBack = rootView.findViewById(R.id.btnBack);
         Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
 
@@ -56,7 +52,8 @@ public class FragmentGaussianComplete4x4 extends Fragment implements View.OnClic
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnBack:
-                Utilities.replaceFragment(new FragmentSystemOfEquationsMenu(), getFragmentManager(), R.id.fragmentContainer);
+                if (getActivity() != null)
+                    getActivity().finish();
                 break;
 
             case R.id.btnCalculate:
