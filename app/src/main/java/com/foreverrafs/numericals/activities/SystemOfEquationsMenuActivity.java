@@ -15,6 +15,7 @@ import com.foreverrafs.numericals.adapter.OperationsMenuAdapter;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidel;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidelWithSOR;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete3x3;
+import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete4x4;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial3x3;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial4x4;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentJacobi;
@@ -105,6 +106,9 @@ public class SystemOfEquationsMenuActivity extends AppCompatActivity implements 
                 break;
             case Constants.SYS_OF_EQN_GAUSS_SEIDEL_SOR:
                 fragment = new FragmentGaussSeidelWithSOR();
+                break;
+            case Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4:
+                fragment = new FragmentGaussianComplete4x4();
                 break;
         }
 
