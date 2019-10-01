@@ -1,11 +1,8 @@
-package com.foreverrafs.numericals.core;
+package com.foreverrafs.core;
 
-
-import com.foreverrafs.numericals.core.exceptions.InvalidEquationException;
-import com.foreverrafs.numericals.core.exceptions.InvalidIntervalException;
-import com.foreverrafs.numericals.core.exceptions.NotABinaryException;
-import com.foreverrafs.numericals.model.LocationOfRootResult;
-import com.foreverrafs.numericals.model.OdeResult;
+import com.foreverrafs.core.exceptions.InvalidEquationException;
+import com.foreverrafs.core.exceptions.InvalidIntervalException;
+import com.foreverrafs.core.exceptions.NotABinaryException;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.MatrixUtils;
@@ -31,7 +28,6 @@ public final class Numericals {
      * @return string a string representation of the binary equivalent of the supplied decimal numeral
      */
     public static String decimalIntToBinary(int dec) {
-
         int Nk = dec;
         StringBuilder binary = new StringBuilder();
 
@@ -380,7 +376,6 @@ public final class Numericals {
 
         int N = B.length;
         final double[][] IDENTITY = generateIdentityMatrix(N);
-
 
         List<double[][]> Qn = new ArrayList<>();
 
@@ -939,7 +934,6 @@ public final class Numericals {
 
     public enum BinaryOperationType {
         DecimalInteger,
-        DecimalFraction,
-        Mixed
+        DecimalFraction
     }
 }

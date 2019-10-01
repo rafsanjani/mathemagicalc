@@ -1,4 +1,4 @@
-package com.foreverrafs.numericals.core;
+package com.foreverrafs.core;
 
 public enum LocationOfRootType {
     BISECTION,

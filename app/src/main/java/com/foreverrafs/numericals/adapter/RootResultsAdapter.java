@@ -2,17 +2,18 @@ package com.foreverrafs.numericals.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.foreverrafs.core.LocationOfRootResult;
+import com.foreverrafs.core.LocationOfRootType;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.core.LocationOfRootType;
-import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.List;

@@ -13,10 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.foreverrafs.core.Numericals;
+import com.foreverrafs.core.OdeResult;
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.OdeResultsAdapter;
-import com.foreverrafs.numericals.core.Numericals;
-import com.foreverrafs.numericals.model.OdeResult;
 import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.List;

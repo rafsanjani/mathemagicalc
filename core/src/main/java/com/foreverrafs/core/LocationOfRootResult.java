@@ -1,4 +1,4 @@
-package com.foreverrafs.numericals.model;
+package com.foreverrafs.core;
 
 public class LocationOfRootResult {
     private double x1, x2, x3, tolerance;  //for bisection and secante

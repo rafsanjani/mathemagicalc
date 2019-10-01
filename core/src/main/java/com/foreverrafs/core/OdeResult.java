@@ -1,4 +1,4 @@
-package com.foreverrafs.numericals.model;
+package com.foreverrafs.core;
 
 public class OdeResult {
     private double x, y, n;

@@ -15,9 +15,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.foreverrafs.core.LocationOfRootResult;
+import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.core.Numericals;
-import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputLayout;
 

@@ -13,11 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.foreverrafs.core.LocationOfRootResult;
+import com.foreverrafs.core.LocationOfRootType;
+import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.RootResultsAdapter;
-import com.foreverrafs.numericals.core.LocationOfRootType;
-import com.foreverrafs.numericals.core.Numericals;
-import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.List;

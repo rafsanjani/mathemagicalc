@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.foreverrafs.core.LocationOfRootResult;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.model.LocationOfRootResult;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputLayout;
 

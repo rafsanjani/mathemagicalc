@@ -16,9 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.foreverrafs.core.Numericals;
+import com.foreverrafs.core.OdeResult;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.core.Numericals;
-import com.foreverrafs.numericals.model.OdeResult;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;

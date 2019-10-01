@@ -1,13 +1,13 @@
-package com.foreverrafs.numericals;
+package com.example.core;
 
 /**
  * Created by Aziz Rafsanjani on 10/21/2017.
  */
 
 
-import com.foreverrafs.numericals.core.Numericals;
-import com.foreverrafs.numericals.model.LocationOfRootResult;
-import com.foreverrafs.numericals.model.OdeResult;
+import com.foreverrafs.core.LocationOfRootResult;
+import com.foreverrafs.core.Numericals;
+import com.foreverrafs.core.OdeResult;
 
 import org.junit.Test;
 
