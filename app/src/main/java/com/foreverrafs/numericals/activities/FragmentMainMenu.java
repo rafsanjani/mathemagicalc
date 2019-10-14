@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class MainMenuActivity extends AppCompatActivity {
+public class FragmentMainMenu extends AppCompatActivity {
 
     @BindView(R.id.list_main_menu)
     RecyclerView mainMenuItems;
@@ -46,14 +46,13 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.fragment_main_menu);
 
         ButterKnife.bind(this);
 
         tvVersion.setText(getString(R.string.version, BuildConfig.VERSION_NAME));
 
         sheetBehavior = BottomSheetBehavior.from(bottomSheet);
-
 
         mainMenuItems.setLayoutManager(new GridLayoutManager(this, 2));
 
@@ -103,7 +102,6 @@ public class MainMenuActivity extends AppCompatActivity {
                 case Constants.MENU_INTERPOLATION:
                     intent = new Intent(this, InterpolationMenuActivity.class);
                     break;
-
             }
 
             ActivityOptions options = ActivityOptions.makeCustomAnimation(this, R.anim.slide_in_right, R.anim.slide_out_left);

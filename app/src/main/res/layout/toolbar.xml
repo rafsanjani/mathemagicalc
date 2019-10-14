@@ -8,8 +8,8 @@
     android:elevation="4dp"
     android:minHeight="?attr/actionBarSize"
     app:contentInsetStartWithNavigation="0dp"
-    tools:context=".activities.MainMenuActivity"
-    tools:showIn="@layout/activity_main_menu">
+    tools:context=".activities.FragmentMainMenu"
+    tools:showIn="@layout/fragment_main_menu">
 
     <LinearLayout
         android:layout_width="match_parent"
