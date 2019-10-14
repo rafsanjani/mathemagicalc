@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentMainMenu">
+    <fragment
+        android:id="@+id/fragmentMainMenu"
+        android:name="com.foreverrafs.numericals.fragments.FragmentMainMenu"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu">
+        <action
+            android:id="@+id/action_fragmentMainMenu_to_fragmentConversionMenu"
+            app:destination="@id/fragmentConversionMenu" />
+        <action
+            android:id="@+id/action_fragmentMainMenu_to_fragmentInterpolationMenu"
+            app:destination="@id/fragmentInterpolationMenu" />
+        <action
+            android:id="@+id/action_fragmentMainMenu_to_fragmentLocationOfRootsMenu"
+            app:destination="@id/fragmentLocationOfRootsMenu" />
+        <action
+            android:id="@+id/action_fragmentMainMenu_to_fragmentODEMenu"
+            app:destination="@id/fragmentODEMenu" />
+        <action
+            android:id="@+id/action_fragmentMainMenu_to_fragmentSysOfEquationsMenu"
+            app:destination="@id/fragmentSysOfEquationsMenu" />
+        <action
+            android:id="@+id/action_fragmentMainMenu_to_showAlgoActivity"
+            app:destination="@id/showAlgoActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentConversionMenu"
+        android:name="com.foreverrafs.numericals.fragments.FragmentConversionMenu"
+        android:label="fragment_conversion_menu"
+        tools:layout="@layout/fragment_main_menu" />
+
+    <fragment
+        android:id="@+id/fragmentInterpolationMenu"
+        android:name="com.foreverrafs.numericals.fragments.FragmentInterpolationMenu"
+        android:label="fragment_interpolation_menu"
+        tools:layout="@layout/fragment_main_menu" />
+
+    <fragment
+        android:id="@+id/fragmentLocationOfRootsMenu"
+        android:name="com.foreverrafs.numericals.fragments.FragmentLocationOfRootsMenu"
+        android:label="fragment_locationofroots_menu"
+        tools:layout="@layout/fragment_main_menu" />
+
+    <fragment
+        android:id="@+id/fragmentODEMenu"
+        android:name="com.foreverrafs.numericals.fragments.FragmentODEMenu"
+        android:label="fragment_ODE_menu"
+        tools:layout="@layout/fragment_main_menu" />
+    <fragment
+        android:id="@+id/fragmentSysOfEquationsMenu"
+        android:name="com.foreverrafs.numericals.fragments.FragmentSystemOfEquationsMenu"
+        android:label="fragment_sysofequations_menu"
+        tools:layout="@layout/fragment_main_menu" />
+    <fragment
+        android:id="@+id/showAlgoActivity"
+        android:name="com.foreverrafs.numericals.fragments.FragmentShowAlgorithm"
+        android:label="activity_show_algorithm"
+        tools:layout="@layout/fragment_show_algorithm" />
+
+</navigation>
