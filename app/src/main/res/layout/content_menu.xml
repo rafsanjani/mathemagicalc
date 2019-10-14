@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorMainBackground"
         android:orientation="vertical"
-        tools:context=".activities.FragmentMainMenu">
+        tools:context=".fragments.FragmentMainMenu">
 
         <TextView
             android:id="@+id/tvHeader"

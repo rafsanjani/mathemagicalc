@@ -18,7 +18,7 @@ import androidx.annotation.Nullable;
 import com.foreverrafs.core.LocationOfRootResult;
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.ShowAlgoActivity;
+import com.foreverrafs.numericals.fragments.FragmentShowAlgorithm;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -103,7 +103,7 @@ public class FragmentSecante extends FragmentRootBase implements TextWatcher {
     private void onShowAlgorithm() {
         Bundle bundle = new Bundle();
         bundle.putString("algorithm_name", "secant");
-        startActivity(new Intent(getContext(), ShowAlgoActivity.class).putExtras(bundle));
+        startActivity(new Intent(getContext(), FragmentShowAlgorithm.class).putExtras(bundle));
     }
 
     protected void onCalculate(@NonNull final String buttonText) {

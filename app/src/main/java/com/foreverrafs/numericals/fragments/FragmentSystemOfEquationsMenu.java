@@ -1,10 +1,14 @@
-package com.foreverrafs.numericals.activities;
+package com.foreverrafs.numericals.fragments;
 
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -21,7 +25,6 @@ import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPar
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentJacobi;
 import com.foreverrafs.numericals.model.OperationMenu;
 import com.foreverrafs.numericals.utils.Constants;
-import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class SystemOfEquationsMenuActivity extends AppCompatActivity implements OperationsMenuAdapter.MenuItemClickListenener {
+public class FragmentSystemOfEquationsMenu extends Fragment implements OperationsMenuAdapter.MenuItemClickListenener {
 
     @BindView(R.id.list_main_menu)
     RecyclerView mainMenuItems;
@@ -41,14 +44,18 @@ public class SystemOfEquationsMenuActivity extends AppCompatActivity implements 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_main_menu);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_main_menu, container, false);
+    }
 
-        ButterKnife.bind(this);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ButterKnife.bind(this, view);
 
-        mainMenuItems.setLayoutManager(new GridLayoutManager(this, 2));
+        mainMenuItems.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         List<OperationMenu> operations = new ArrayList<>();
         operations.add(new OperationMenu("Gaussian (Partial) 3 x 3", R.drawable.button_system_of_eqns_3x3, Constants.SYS_OF_EQN_GAUSSIAN_PART_3X3));
@@ -68,17 +75,46 @@ public class SystemOfEquationsMenuActivity extends AppCompatActivity implements 
 
         mainMenuItems.setHasFixedSize(true);
         mainMenuItems.setAdapter(adapter);
-
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
+    //    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.fragment_main_menu);
+//
+//        ButterKnife.bind(this);
+//
+//        mainMenuItems.setLayoutManager(new GridLayoutManager(this, 2));
+//
+//        List<OperationMenu> operations = new ArrayList<>();
+//        operations.add(new OperationMenu("Gaussian (Partial) 3 x 3", R.drawable.button_system_of_eqns_3x3, Constants.SYS_OF_EQN_GAUSSIAN_PART_3X3));
+//        operations.add(new OperationMenu("Gaussian (Complete) 3 x 3", R.drawable.button_system_of_eqns_3x3, Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_3X3));
+//        operations.add(new OperationMenu("Gaussian (Partial ) 4 x 4", R.drawable.button_system_of_eqns_4x4, Constants.SYS_OF_EQN_GAUSSIAN_PART_4X4));
+//        operations.add(new OperationMenu("Gaussian (Complete) 4 x 4", R.drawable.button_system_of_eqns_4x4, Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4));
+//        operations.add(new OperationMenu("jacobi", R.drawable.button_system_of_eqns_jacobi, Constants.SYS_OF_EQN_JACOBI));
+//        operations.add(new OperationMenu("Gauss Seidel", R.drawable.button_system_of_eqns_gaussseidel, Constants.SYS_OF_EQN_GAUSS_SEIDEL));
+//        operations.add(new OperationMenu("Gauss Seidel (SOR)", R.drawable.button_system_of_eqns_gaussseidel, Constants.SYS_OF_EQN_GAUSS_SEIDEL_SOR));
+//
+//
+//        header.setText(getString(R.string.system_of_equations));
+//
+//        OperationsMenuAdapter adapter = new OperationsMenuAdapter(operations);
+//
+//        adapter.setOnItemClickListenener(this);
+//
+//        mainMenuItems.setHasFixedSize(true);
+//        mainMenuItems.setAdapter(adapter);
+//
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//
+//    }
+//
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        onBackPressed();
+//        return true;
+//    }
 
     @Override
     public void OnMenuItemClicked(int menuItemType) {
@@ -112,13 +148,13 @@ public class SystemOfEquationsMenuActivity extends AppCompatActivity implements 
                 break;
         }
 
-        if (fragment != null)
-            Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
+//        if (fragment != null)
+//            Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
     }
 
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
+//    @Override
+//    public void finish() {
+//        super.finish();
+//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+//    }
 }

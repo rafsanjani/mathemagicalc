@@ -23,7 +23,7 @@ import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.ShowAlgoActivity;
+import com.foreverrafs.numericals.fragments.FragmentShowAlgorithm;
 import com.foreverrafs.numericals.utils.Utilities;
 
 import org.apache.commons.math3.util.Precision;
@@ -117,7 +117,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     private void onShowAlgorithm() {
         Bundle bundle = new Bundle();
         bundle.putString("algorithm_name", "jacobi");
-        startActivity(new Intent(getContext(), ShowAlgoActivity.class).putExtras(bundle));
+        startActivity(new Intent(getContext(), FragmentShowAlgorithm.class).putExtras(bundle));
     }
 
     private void onCalculate() {
