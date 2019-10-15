@@ -87,7 +87,6 @@ public class FragmentMainMenu extends Fragment {
         mainMenuItems.setAdapter(adapter);
 
         adapter.setOnItemClickListenener(menuItemType -> {
-            Intent intent = null;
             switch (menuItemType) {
                 case Constants.MENU_NUMBER_CONVERSION:
                     navController.navigate(R.id.action_fragmentMainMenu_to_fragmentConversionMenu);
@@ -97,11 +96,12 @@ public class FragmentMainMenu extends Fragment {
                     navController.navigate(R.id.action_fragmentMainMenu_to_fragmentLocationOfRootsMenu);
                     break;
                 case Constants.MENU_ALGORITHMS:
-
+                    navController.navigate(R.id.action_fragmentMainMenu_to_fragmentShowAlgorithm);
                     break;
 
                 case Constants.MENU_ABOUT:
-
+                    //toggle bottom sheet here
+                    toggleBottomSheet();
                     return;
 
                 case Constants.MENU_ODE:
@@ -118,82 +118,6 @@ public class FragmentMainMenu extends Fragment {
             }
         });
     }
-
-
-    //    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_main_menu);
-//
-//        ButterKnife.bind(this);
-//
-//        tvVersion.setText(getString(R.string.version, BuildConfig.VERSION_NAME));
-//
-//        sheetBehavior = BottomSheetBehavior.from(bottomSheet);
-//
-//        mainMenuItems.setLayoutManager(new GridLayoutManager(this, 2));
-//
-//        List<OperationMenu> operations = new ArrayList<>();
-//        operations.add(new OperationMenu("Conversion", R.drawable.button_number_conversion, Constants.MENU_NUMBER_CONVERSION));
-//        operations.add(new OperationMenu("Location of Roots", R.drawable.button_location_of_roots, Constants.MENU_LOCATION_OF_ROOTS));
-//        operations.add(new OperationMenu("Sys. of Eqns", R.drawable.button_system_of_eqns_3x3, Constants.MENU_SYSTEM_OF_EQUATIONS));
-//        operations.add(new OperationMenu("Ord. Diff. Eqns", R.drawable.button_ordinary_differential_eqns, Constants.MENU_ODE));
-//        operations.add(new OperationMenu("Interpolation", R.drawable.button_interpolation, Constants.MENU_INTERPOLATION));
-//        operations.add(new OperationMenu("Algorithms", R.drawable.button_algorithms, Constants.MENU_ALGORITHMS));
-//        operations.add(new OperationMenu("About", R.drawable.button_about, Constants.MENU_ABOUT));
-//
-//        header.setText(R.string.operations);
-//
-//        OperationsMenuAdapter adapter = new OperationsMenuAdapter(operations);
-//
-//        mainMenuItems.setHasFixedSize(true);
-//        mainMenuItems.setAdapter(adapter);
-//
-//
-//        adapter.setOnItemClickListenener(menuItemType -> {
-//            Intent intent = null;
-//            switch (menuItemType) {
-//                case Constants.MENU_NUMBER_CONVERSION:
-//                    intent = new Intent(this, FragmentConversionMenu.class);
-//                    break;
-//
-//                case Constants.MENU_LOCATION_OF_ROOTS:
-//                    intent = new Intent(this, FragmentLocationOfRootsMenu.class);
-//                    break;
-//                case Constants.MENU_ALGORITHMS:
-//                    intent = new Intent(this, FragmentShowAlgorithm.class);
-//                    break;
-//
-//                case Constants.MENU_ABOUT:
-//                    toggleBottomSheet();
-//                    return;
-//
-//                case Constants.MENU_ODE:
-//                    intent = new Intent(this, FragmentODEMenu.class);
-//                    break;
-//
-//                case Constants.MENU_SYSTEM_OF_EQUATIONS:
-//                    intent = new Intent(this, FragmentSystemOfEquationsMenu.class);
-//                    break;
-//
-//                case Constants.MENU_INTERPOLATION:
-//                    intent = new Intent(this, FragmentInterpolationMenu.class);
-//                    break;
-//            }
-//
-//            ActivityOptions options = ActivityOptions.makeCustomAnimation(this, R.anim.slide_in_right, R.anim.slide_out_left);
-//            startActivity(intent, options.toBundle());
-//        });
-//
-//    }
-
-//    @Override
-//    public void onBackPressed() {
-//        if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED)
-//            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//        else
-//            super.onBackPressed();
-//    }
 
     private void toggleBottomSheet() {
         if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED)
