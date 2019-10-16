@@ -1,5 +1,0 @@
-<selector xmlns:android="http://schemas.android.com/apk/res/android" android:exitFadeDuration="@android:integer/config_mediumAnimTime">
-    <!-- NOTE: order is important (the first matching state(s) is what is rendered) -->
-    <item android:drawable="@drawable/button_focused_about" android:state_pressed="true" />
-    <item android:drawable="@drawable/button_normal_about" />
-</selector>

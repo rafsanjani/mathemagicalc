@@ -25,7 +25,6 @@
     <string name="dec_to_octal">Dec to Octal</string>
     <string name="dec_to_bin_any_number">Dec to Bin (Any Number)</string>
     <string name="bin_to_decimal">Bin to Decimal</string>
-    <string name="numerical_converter">Numerical Converter</string>
     <string name="dec_to_bin_fractions">Dec to Bin (Fractions)</string>
     <string name="dec_to_bin_integers">Dec to Bin (Integers)</string>
     <string name="decimal_to_octal_desc"><![CDATA[Converts a decimal integer (N) to it\'s equivalent octal value where N > 0]]></string>
