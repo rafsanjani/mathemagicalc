@@ -52,7 +52,7 @@ public class FragmentODEMenu extends Fragment implements OperationsMenuAdapter.M
         mainMenuItems.setLayoutManager(new LinearLayoutManager(getContext()));
 
         List<OperationMenu> operations = new ArrayList<>();
-        operations.add(new OperationMenu("Euler's Forward Method", R.drawable.button_ode_euler, Constants.ODE_EULER));
+        operations.add(new OperationMenu("Euler's Forward Method", R.drawable.button_normal_ode_euler, Constants.ODE_EULER));
 
 
         header.setText(getString(R.string.ode_header));
@@ -64,40 +64,6 @@ public class FragmentODEMenu extends Fragment implements OperationsMenuAdapter.M
         mainMenuItems.setHasFixedSize(true);
         mainMenuItems.setAdapter(adapter);
     }
-
-    //    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_main_menu);
-//
-//        ButterKnife.bind(this);
-//
-//        mainMenuItems.setLayoutManager(new LinearLayoutManager(this));
-//
-//        List<OperationMenu> operations = new ArrayList<>();
-//        operations.add(new OperationMenu("Euler's Forward Method", R.drawable.button_ode_euler, Constants.ODE_EULER));
-//
-//
-//        header.setText(getString(R.string.ode_header));
-//
-//        OperationsMenuAdapter adapter = new OperationsMenuAdapter(operations);
-//
-//        adapter.setOnItemClickListenener(this);
-//
-//        mainMenuItems.setHasFixedSize(true);
-//        mainMenuItems.setAdapter(adapter);
-//
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
-//    }
-//
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        onBackPressed();
-//        return true;
-//    }
-
     @Override
     public void OnMenuItemClicked(int menuItemType) {
         if (menuItemType == Constants.ODE_EULER) {
@@ -105,10 +71,4 @@ public class FragmentODEMenu extends Fragment implements OperationsMenuAdapter.M
 //            Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
         }
     }
-
-//    @Override
-//    public void finish() {
-//        super.finish();
-//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-//    }
 }

@@ -58,13 +58,13 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements Operation
         mainMenuItems.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         List<OperationMenu> operations = new ArrayList<>();
-        operations.add(new OperationMenu("Gaussian (Partial) 3 x 3", R.drawable.button_system_of_eqns_3x3, Constants.SYS_OF_EQN_GAUSSIAN_PART_3X3));
-        operations.add(new OperationMenu("Gaussian (Complete) 3 x 3", R.drawable.button_system_of_eqns_3x3, Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_3X3));
-        operations.add(new OperationMenu("Gaussian (Partial ) 4 x 4", R.drawable.button_system_of_eqns_4x4, Constants.SYS_OF_EQN_GAUSSIAN_PART_4X4));
-        operations.add(new OperationMenu("Gaussian (Complete) 4 x 4", R.drawable.button_system_of_eqns_4x4, Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4));
-        operations.add(new OperationMenu("jacobi", R.drawable.button_system_of_eqns_jacobi, Constants.SYS_OF_EQN_JACOBI));
-        operations.add(new OperationMenu("Gauss Seidel", R.drawable.button_system_of_eqns_gaussseidel, Constants.SYS_OF_EQN_GAUSS_SEIDEL));
-        operations.add(new OperationMenu("Gauss Seidel (SOR)", R.drawable.button_system_of_eqns_gaussseidel, Constants.SYS_OF_EQN_GAUSS_SEIDEL_SOR));
+        operations.add(new OperationMenu("Gaussian (Partial) 3 x 3", R.drawable.button_normal_system_of_eqns_gaussian3x3, Constants.SYS_OF_EQN_GAUSSIAN_PART_3X3));
+        operations.add(new OperationMenu("Gaussian (Complete) 3 x 3", R.drawable.button_normal_system_of_eqns_gaussian3x3, Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_3X3));
+        operations.add(new OperationMenu("Gaussian (Partial ) 4 x 4", R.drawable.button_normal_system_of_eqns4x4, Constants.SYS_OF_EQN_GAUSSIAN_PART_4X4));
+        operations.add(new OperationMenu("Gaussian (Complete) 4 x 4", R.drawable.button_normal_system_of_eqns4x4, Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4));
+        operations.add(new OperationMenu("jacobi", R.drawable.button_normal_system_of_eqns_jacobi, Constants.SYS_OF_EQN_JACOBI));
+        operations.add(new OperationMenu("Gauss Seidel", R.drawable.button_normal_system_of_eqns_gaussseidel, Constants.SYS_OF_EQN_GAUSS_SEIDEL));
+        operations.add(new OperationMenu("Gauss Seidel (SOR)", R.drawable.button_normal_system_of_eqns_gaussseidel, Constants.SYS_OF_EQN_GAUSS_SEIDEL_SOR));
 
 
         header.setText(getString(R.string.system_of_equations));
@@ -76,45 +76,6 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements Operation
         mainMenuItems.setHasFixedSize(true);
         mainMenuItems.setAdapter(adapter);
     }
-
-    //    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_main_menu);
-//
-//        ButterKnife.bind(this);
-//
-//        mainMenuItems.setLayoutManager(new GridLayoutManager(this, 2));
-//
-//        List<OperationMenu> operations = new ArrayList<>();
-//        operations.add(new OperationMenu("Gaussian (Partial) 3 x 3", R.drawable.button_system_of_eqns_3x3, Constants.SYS_OF_EQN_GAUSSIAN_PART_3X3));
-//        operations.add(new OperationMenu("Gaussian (Complete) 3 x 3", R.drawable.button_system_of_eqns_3x3, Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_3X3));
-//        operations.add(new OperationMenu("Gaussian (Partial ) 4 x 4", R.drawable.button_system_of_eqns_4x4, Constants.SYS_OF_EQN_GAUSSIAN_PART_4X4));
-//        operations.add(new OperationMenu("Gaussian (Complete) 4 x 4", R.drawable.button_system_of_eqns_4x4, Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4));
-//        operations.add(new OperationMenu("jacobi", R.drawable.button_system_of_eqns_jacobi, Constants.SYS_OF_EQN_JACOBI));
-//        operations.add(new OperationMenu("Gauss Seidel", R.drawable.button_system_of_eqns_gaussseidel, Constants.SYS_OF_EQN_GAUSS_SEIDEL));
-//        operations.add(new OperationMenu("Gauss Seidel (SOR)", R.drawable.button_system_of_eqns_gaussseidel, Constants.SYS_OF_EQN_GAUSS_SEIDEL_SOR));
-//
-//
-//        header.setText(getString(R.string.system_of_equations));
-//
-//        OperationsMenuAdapter adapter = new OperationsMenuAdapter(operations);
-//
-//        adapter.setOnItemClickListenener(this);
-//
-//        mainMenuItems.setHasFixedSize(true);
-//        mainMenuItems.setAdapter(adapter);
-//
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
-//    }
-//
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        onBackPressed();
-//        return true;
-//    }
 
     @Override
     public void OnMenuItemClicked(int menuItemType) {
@@ -151,10 +112,4 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements Operation
 //        if (fragment != null)
 //            Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
     }
-
-//    @Override
-//    public void finish() {
-//        super.finish();
-//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-//    }
 }

@@ -56,13 +56,13 @@ public class FragmentConversionMenu extends Fragment implements OperationsMenuAd
         mainMenuItems.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         List<OperationMenu> operations = new ArrayList<>();
-        operations.add(new OperationMenu("Dec to Bin(Fraction)", R.drawable.button_location_of_roots, Constants.CONVERSION_DEC_TO_BIN_FRACTION));
-        operations.add(new OperationMenu("Dec to Bin(Integer)", R.drawable.button_location_of_roots, Constants.CONVERSION_DEC_TO_BIN_INT));
-        operations.add(new OperationMenu("Dec to Bin(Any)", R.drawable.button_location_of_roots, Constants.CONVERSION_DEC_TO_BIN_ALL));
-        operations.add(new OperationMenu("Bin to Decimal", R.drawable.button_location_of_roots, Constants.CONVERSION_BIN_TO_DEC));
-        operations.add(new OperationMenu("Dec to Hexa", R.drawable.button_location_of_roots, Constants.CONVERSION_DEC_TO_HEXA));
-        operations.add(new OperationMenu("Dec to Octal", R.drawable.button_location_of_roots, Constants.CONVERSION_DEC_TO_OCTAL));
-        operations.add(new OperationMenu("All in One Conversion", R.drawable.button_location_of_roots, Constants.CONVERSION_ALL_IN_ONE));
+        operations.add(new OperationMenu("Dec to Bin(Fraction)", R.drawable.button_normal_nc_bintodecimal, Constants.CONVERSION_DEC_TO_BIN_FRACTION));
+        operations.add(new OperationMenu("Dec to Bin(Integer)", R.drawable.button_normal_nc_bintodecimal, Constants.CONVERSION_DEC_TO_BIN_INT));
+        operations.add(new OperationMenu("Dec to Bin(Any)", R.drawable.button_normal_nc_bintodecimal, Constants.CONVERSION_DEC_TO_BIN_ALL));
+        operations.add(new OperationMenu("Bin to Decimal", R.drawable.button_normal_nc_bintodecimal, Constants.CONVERSION_BIN_TO_DEC));
+        operations.add(new OperationMenu("Dec to Hexa", R.drawable.button_normal_nc_decitohexadecimal, Constants.CONVERSION_DEC_TO_HEXA));
+        operations.add(new OperationMenu("Dec to Octal", R.drawable.button_normal_nc_decitooctal, Constants.CONVERSION_DEC_TO_OCTAL));
+        operations.add(new OperationMenu("All in One Conversion", R.drawable.button_normal_nc, Constants.CONVERSION_ALL_IN_ONE));
 
 
         header.setText(getString(R.string.number_conversions));

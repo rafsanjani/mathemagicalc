@@ -57,10 +57,10 @@ public class FragmentLocationOfRootsMenu extends Fragment {
         mainMenuItems.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         List<OperationMenu> operations = new ArrayList<>();
-        operations.add(new OperationMenu("Bisection", R.drawable.button_location_of_roots, Constants.LOCATION_OF_ROOTS_BISECTION));
-        operations.add(new OperationMenu("Newton Raphson", R.drawable.button_location_of_roots, Constants.LOCATION_OF_ROOTS_NEWTON_RAPHSON));
-        operations.add(new OperationMenu("False Position", R.drawable.button_location_of_roots, Constants.LOCATION_OF_ROOTS_FALSE_POSITION));
-        operations.add(new OperationMenu("Secant", R.drawable.button_location_of_roots, Constants.LOCATION_OF_ROOTS_SECANT));
+        operations.add(new OperationMenu("Bisection", R.drawable.button_normal_locationofroots, Constants.LOCATION_OF_ROOTS_BISECTION));
+        operations.add(new OperationMenu("Newton Raphson", R.drawable.button_normal_locationofroots, Constants.LOCATION_OF_ROOTS_NEWTON_RAPHSON));
+        operations.add(new OperationMenu("False Position", R.drawable.button_normal_locationofroots, Constants.LOCATION_OF_ROOTS_FALSE_POSITION));
+        operations.add(new OperationMenu("Secant", R.drawable.button_normal_locationofroots, Constants.LOCATION_OF_ROOTS_SECANT));
 
 
         OperationsMenuAdapter adapter = new OperationsMenuAdapter(operations);
@@ -89,60 +89,7 @@ public class FragmentLocationOfRootsMenu extends Fragment {
 
         });
     }
-
-    //    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_main_menu);
-//
-//        ButterKnife.bind(this);
-//
-//        initControls();
-//
-//        mainMenuItems.setLayoutManager(new GridLayoutManager(this, 2));
-//
-//        List<OperationMenu> operations = new ArrayList<>();
-//        operations.add(new OperationMenu("Bisection", R.drawable.button_location_of_roots, Constants.LOCATION_OF_ROOTS_BISECTION));
-//        operations.add(new OperationMenu("Newton Raphson", R.drawable.button_location_of_roots, Constants.LOCATION_OF_ROOTS_NEWTON_RAPHSON));
-//        operations.add(new OperationMenu("False Position", R.drawable.button_location_of_roots, Constants.LOCATION_OF_ROOTS_FALSE_POSITION));
-//        operations.add(new OperationMenu("Secant", R.drawable.button_location_of_roots, Constants.LOCATION_OF_ROOTS_SECANT));
-//
-//
-//        OperationsMenuAdapter adapter = new OperationsMenuAdapter(operations);
-//
-//        mainMenuItems.setHasFixedSize(true);
-//        mainMenuItems.setAdapter(adapter);
-//
-//        adapter.setOnItemClickListenener(menuItemType -> {
-//            Fragment fragment = null;
-//            switch (menuItemType) {
-//                case Constants.LOCATION_OF_ROOTS_BISECTION:
-//                    fragment = new FragmentBisection();
-//                    break;
-//                case Constants.LOCATION_OF_ROOTS_NEWTON_RAPHSON:
-//                    fragment = new FragmentNewtonRaphson();
-//                    break;
-//                case Constants.LOCATION_OF_ROOTS_FALSE_POSITION:
-//                    fragment = new FragmentFalsePosition();
-//                    break;
-//                case Constants.LOCATION_OF_ROOTS_SECANT:
-//                    fragment = new FragmentSecante();
-//                    break;
-//            }
-//            if (fragment != null)
-//                Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
-//
-//        });
-//
-//    }
-//
     private void initControls() {
         header.setText(R.string.loc_of_rooots);
     }
-
-//    @Override
-//    public void finish() {
-//        super.finish();
-//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-//    }
 }
