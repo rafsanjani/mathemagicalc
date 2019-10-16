@@ -47,5 +47,5 @@ Please keep use of this code for non-profit purposes only. Also, please note tha
 * [Material Design Components](https://github.com/material-components/material-components-android)
 * [mXParser](https://github.com/mariuszgromada/mXparser)
 * [ButterKnife](https://github.com/JakeWharton/butterknife)
-* [KatexMathView)()
+* [KatexMathView]()
 
