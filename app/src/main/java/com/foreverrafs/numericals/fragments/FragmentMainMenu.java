@@ -71,8 +71,8 @@ public class FragmentMainMenu extends Fragment {
         mainMenuItems.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         List<OperationMenu> operations = new ArrayList<>();
-        operations.add(new OperationMenu("Conversion", R.drawable.button_number_conversion, Constants.MENU_NUMBER_CONVERSION));
-        operations.add(new OperationMenu("Location of Roots", R.drawable.button_location_of_roots, Constants.MENU_LOCATION_OF_ROOTS));
+        operations.add(new OperationMenu("Conversion", R.drawable.button_normal_nc, Constants.MENU_NUMBER_CONVERSION));
+        operations.add(new OperationMenu("Location of Roots", R.drawable.button_normal_locationofroots, Constants.MENU_LOCATION_OF_ROOTS));
         operations.add(new OperationMenu("Sys. of Eqns", R.drawable.button_normal_system_of_eqns_gaussian3x3, Constants.MENU_SYSTEM_OF_EQUATIONS));
         operations.add(new OperationMenu("Ord. Diff. Eqns", R.drawable.button_normal_ordinary_diff_eqns, Constants.MENU_ODE));
         operations.add(new OperationMenu("Interpolation", R.drawable.button_normal_interpolation, Constants.MENU_INTERPOLATION));
