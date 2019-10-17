@@ -13,7 +13,7 @@
     <string name="tolerance">Tolerance</string>
     <string name="iterations">Iterations</string>
     <string name="loc_of_rooots">Location of Roots</string>
-    <string name="number_conversions">Numerical Convertions</string>
+    <string name="number_conversions">Numerical Conversions</string>
     <string name="show_algorithm">Show Algorithm</string>
     <string name="stopping_criteria">Stopping Criteria</string>
     <string name="initial_guess">Initial Guess:</string>
