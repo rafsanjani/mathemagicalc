@@ -14,13 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.foreverrafs.core.LocationOfRootResult;
 import com.foreverrafs.core.LocationOfRootType;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.List;
 import java.util.Locale;
 
 public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.RootResultViewHolder> {
 
+    private static final String TAG = "RootResultsAdapter";
     private List<LocationOfRootResult> locationOfRootResult;
     private LocationOfRootType rootType;
 
@@ -53,7 +53,7 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
                 break;
 
             default:
-                Log.i(Utilities.LOG_TAG, "Equation type not found");
+                Log.i(TAG, "Equation type not found");
                 break;
         }
 

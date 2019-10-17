@@ -28,9 +28,6 @@ import java.util.List;
  */
 
 public final class Utilities {
-
-    public static final String LOG_TAG = "TAG";
-
     public static void replaceFragment(Fragment next, FragmentManager fragmentManager,
                                        int container) {
         String name = fragmentManager.getClass().getSimpleName();

@@ -33,6 +33,7 @@ import butterknife.OnClick;
  */
 
 public class FragmentBisection extends FragmentRootBase implements TextWatcher {
+    private static final String TAG = "FragmentBisection";
 
     private List<LocationOfRootResult> roots = null;
     private TextWatcher etToleranceTextWatcher = null;
@@ -108,7 +109,7 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
 
                     etTolerance.setText(String.valueOf(tolerance));
                 } catch (NumberFormatException ex) {
-                    Log.i(Utilities.LOG_TAG, "Initial guesses are not provided");
+                    Log.i(TAG, "Initial guesses are not provided");
                 } finally {
                     etTolerance.addTextChangedListener(etToleranceTextWatcher);
                 }
@@ -147,7 +148,7 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
 
                     etIterations.setText(String.valueOf(iterations));
                 } catch (NumberFormatException ex) {
-                    Log.i(Utilities.LOG_TAG, "Initial guesses are not provided");
+                    Log.i(TAG, "Initial guesses are not provided");
                 } finally {
                     etIterations.addTextChangedListener(etIterationsTextWatcher);
                 }
@@ -215,7 +216,7 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
-            Log.i(Utilities.LOG_TAG, "Error parsing one or more of the expressions");
+            Log.i(TAG, "Error parsing one or more of the expressions");
             return;
         }
 

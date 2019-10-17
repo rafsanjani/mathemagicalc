@@ -16,6 +16,7 @@ import com.foreverrafs.numericals.utils.Utilities;
  */
 
 public class FragmentDecToBinInt extends ConversionsBase {
+    private static final String TAG = "FragmentDecToBinInt";
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class FragmentDecToBinInt extends ConversionsBase {
             }
 
             String binary = Numericals.decimalIntToBinary(decInt);
-            Log.i(Utilities.LOG_TAG, "" + binary.length());
+            Log.i(TAG, "" + binary.length());
 
             tvAnswer.setText(binary);
 
@@ -57,12 +58,12 @@ public class FragmentDecToBinInt extends ConversionsBase {
 
 
         } catch (NumberFormatException ex) {
-            Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to a double value");
+            Log.e(TAG, "cannot parse " + decimal + " to a double value");
             showErrorMessage("Input isn't an integer", false);
             displayAnswer();
 
         } catch (Exception ex) {
-            Log.e(Utilities.LOG_TAG, ex.getMessage());
+            Log.e(TAG, ex.getMessage());
         }
     }
 }

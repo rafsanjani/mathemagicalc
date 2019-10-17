@@ -8,7 +8,6 @@
     tools:context=".fragments.FragmentShowAlgorithm"
     tools:layout_editor_absoluteY="25dp">
 
-
     <WebView
         android:id="@+id/webView"
         android:layout_width="0dp"

@@ -31,8 +31,9 @@ import java.util.List;
  */
 
 public class FragmentEuler extends Fragment implements View.OnClickListener, TextWatcher {
+    private static final String TAG = "FragmentEuler";
 
-    List<OdeResult> eulerResults = null;
+    private List<OdeResult> eulerResults = null;
     private View rootView;
     private ViewGroup viewGroup;
     private TextInputEditText etH, etX0, etX1, etInitY, etEquation;
@@ -130,7 +131,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
             case R.id.btnCalculate:
                 Button btn = (Button) view;
-                Log.i(Utilities.LOG_TAG, "performing Euler's Forward calculation");
+                Log.i(TAG, "performing Euler's Forward calculation");
                 onCalculate(btn.getText().toString());
                 break;
             case R.id.btnShowAlgo:
@@ -174,7 +175,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
             //Toast.makeText(getContext(), "One or more of the input expressions are invalid", Toast.LENGTH_LONG).show();
-            Log.i(Utilities.LOG_TAG, "Error parsing one or more of the expressions");
+            Log.i(TAG, "Error parsing one or more of the expressions");
             return;
         }
 

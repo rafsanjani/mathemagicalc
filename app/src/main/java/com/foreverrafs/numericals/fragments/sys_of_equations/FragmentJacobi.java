@@ -35,6 +35,7 @@ import org.apache.commons.math3.util.Precision;
 
 public class FragmentJacobi extends Fragment implements View.OnClickListener, TextWatcher, View.OnKeyListener {
 
+    private static final String TAG = "FragmentJacobi";
     private View mRootView;
     private ViewGroup mViewGroup;
     private Handler mHandler = new Handler(new Handler.Callback() {
@@ -105,7 +106,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
                 break;
 
             case R.id.btnCalculate:
-                Log.i(Utilities.LOG_TAG, "performing jacobi's calculation");
+                Log.i(TAG, "performing jacobi's calculation");
                 onCalculate();
                 break;
             case R.id.btnShowAlgo:

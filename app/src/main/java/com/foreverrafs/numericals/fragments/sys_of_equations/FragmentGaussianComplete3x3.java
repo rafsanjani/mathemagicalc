@@ -27,6 +27,7 @@ import com.foreverrafs.numericals.utils.Utilities;
 
 public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClickListener, View.OnKeyListener, TextWatcher {
 
+    private static final String TAG = "FragmentGaussianComplet";
     private View rootView;
 
     @Nullable
@@ -58,7 +59,7 @@ public class FragmentGaussianComplete3x3 extends Fragment implements View.OnClic
                 break;
 
             case R.id.btnCalculate:
-                Log.i(Utilities.LOG_TAG, "solving the system using gaussian with partial pivoting");
+                Log.i(TAG, "solving the system using gaussian with partial pivoting");
                 onCalculate();
                 break;
         }

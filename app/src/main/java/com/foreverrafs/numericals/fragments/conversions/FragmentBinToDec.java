@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.core.exceptions.NotABinaryException;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.utils.Utilities;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -18,6 +17,7 @@ import com.foreverrafs.numericals.utils.Utilities;
 
 public class FragmentBinToDec extends ConversionsBase {
 
+    private static final String TAG = "FragmentBinToDec";
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         initControls();
@@ -60,10 +60,10 @@ public class FragmentBinToDec extends ConversionsBase {
             displayAnswer();
 
         } catch (NotABinaryException ex) {
-            Log.e(Utilities.LOG_TAG, ex.getMessage());
+            Log.e(TAG, ex.getMessage());
             showErrorMessage(ex.getMessage(), true);
         } catch (Exception ex) {
-            Log.e(Utilities.LOG_TAG, ex.getMessage());
+            Log.e(TAG, ex.getMessage());
         }
     }
 }

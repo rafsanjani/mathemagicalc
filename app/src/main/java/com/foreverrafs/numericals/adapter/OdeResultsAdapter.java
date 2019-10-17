@@ -19,7 +19,6 @@ public class OdeResultsAdapter extends RecyclerView.Adapter<OdeResultsAdapter.Ro
 
     private List<OdeResult> results;
 
-
     public OdeResultsAdapter(List<OdeResult> results) {
         this.results = results;
     }

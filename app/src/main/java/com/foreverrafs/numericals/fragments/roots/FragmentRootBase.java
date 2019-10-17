@@ -24,6 +24,7 @@ import butterknife.OnClick;
 //appropriate values to the protected field members else a NullPointerException will be thrown when
 //any of the protected methods attempts to execute in the subclasses
 public abstract class FragmentRootBase extends Fragment {
+    private static final String TAG = "FragmentRootBase";
     protected List<LocationOfRootResult> roots = null;
     protected View rootView;
     protected ViewGroup parentContainer;
@@ -40,7 +41,7 @@ public abstract class FragmentRootBase extends Fragment {
 
     protected void registerOnKeyListener(final TextInputLayout... inputLayouts) throws RuntimeException {
         if (inputLayouts.length == 0) {
-            Log.e(Utilities.LOG_TAG, "At least one inputLayout must be supplied to registerOnKeyListener");
+            Log.e(TAG, "At least one inputLayout must be supplied to registerOnKeyListener");
             return;
         }
         myKeyListener = (view, i, keyEvent) -> {
@@ -83,7 +84,7 @@ public abstract class FragmentRootBase extends Fragment {
 
     protected boolean validateInput(@NonNull final TextInputLayout... inputLayouts) {
         if (inputLayouts.length == 0) {
-            Log.e(Utilities.LOG_TAG, "At least one inputLayout must be supplied to registerOnKeyListener");
+            Log.e(TAG, "At least one inputLayout must be supplied to registerOnKeyListener");
             return true;
         }
 

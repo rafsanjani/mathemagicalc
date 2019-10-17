@@ -36,6 +36,7 @@ import org.apache.commons.math3.util.Precision;
 
 public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClickListener, TextWatcher, View.OnKeyListener {
 
+    private static final String TAG = "FragmentGaussSeidelWith";
     private View mRootView;
     private ViewGroup mViewGroup;
 
@@ -113,7 +114,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
                 break;
 
             case R.id.btnCalculate:
-                Log.i(Utilities.LOG_TAG, "performing jacobi's calculation");
+                Log.i(TAG, "performing jacobi's calculation");
                 onCalculate();
                 break;
             case R.id.btnShowAlgo:

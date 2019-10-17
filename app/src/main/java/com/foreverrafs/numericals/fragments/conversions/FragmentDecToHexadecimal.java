@@ -9,7 +9,6 @@ import androidx.annotation.Nullable;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.utils.Utilities;
 //import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 /**
@@ -17,6 +16,7 @@ import com.foreverrafs.numericals.utils.Utilities;
  */
 
 public class FragmentDecToHexadecimal extends ConversionsBase {
+    private static final String TAG = "FragmentDecToHexadecima";
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -58,9 +58,9 @@ public class FragmentDecToHexadecimal extends ConversionsBase {
 
 
         } catch (NumberFormatException ex) {
-            Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to an integer value");
+            Log.e(TAG, "cannot parse " + decimal + " to an integer value");
         } catch (Exception ex) {
-            Log.e(Utilities.LOG_TAG, ex.getMessage());
+            Log.e(TAG, ex.getMessage());
         }
     }
 }

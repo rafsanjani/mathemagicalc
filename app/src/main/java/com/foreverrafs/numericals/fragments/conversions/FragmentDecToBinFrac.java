@@ -9,13 +9,13 @@ import androidx.annotation.Nullable;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.utils.Utilities;
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
 public class FragmentDecToBinFrac extends ConversionsBase {
+    private static final String TAG = "FragmentDecToBinFrac";
 
     private String rawBinary;
 
@@ -64,9 +64,9 @@ public class FragmentDecToBinFrac extends ConversionsBase {
             displayAnswer();
 
         } catch (NumberFormatException ex) {
-            Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to a double value");
+            Log.e(TAG, "cannot parse " + decimal + " to a double value");
         } catch (Exception ex) {
-            Log.e(Utilities.LOG_TAG, ex.getMessage());
+            Log.e(TAG, ex.getMessage());
         }
     }
 }

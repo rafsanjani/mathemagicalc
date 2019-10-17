@@ -33,6 +33,7 @@ import butterknife.OnClick;
  */
 
 public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatcher {
+    private static final String TAG = "FragmentNewtonRaphson";
     @BindView(R.id.til_x0)
     TextInputLayout tilX0;
 
@@ -127,7 +128,7 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
-            Log.i(Utilities.LOG_TAG, "Error parsing one or more of the expressions");
+            Log.i(TAG, "Error parsing one or more of the expressions");
             return;
         }
 

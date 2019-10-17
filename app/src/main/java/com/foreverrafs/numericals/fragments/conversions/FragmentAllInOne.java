@@ -32,7 +32,7 @@ import butterknife.ButterKnife;
  */
 
 public class FragmentAllInOne extends Fragment implements View.OnClickListener, TextWatcher {
-
+    private static final String TAG = "FragmentAllInOne";
     @BindView(R.id.layout_answer_area)
     ConstraintLayout layoutAnswerArea;
 
@@ -137,9 +137,9 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
 
 
         } catch (NumberFormatException ex) {
-            Log.e(Utilities.LOG_TAG, "cannot parse " + decimal + " to an integer value");
+            Log.e(TAG, "cannot parse " + decimal + " to an integer value");
         } catch (Exception ex) {
-            Log.e(Utilities.LOG_TAG, ex.getMessage());
+            Log.e(TAG, ex.getMessage());
         }
     }
 

@@ -19,6 +19,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     @BindView(R.id.bottom_sheet)
     ConstraintLayout bottomSheet;
 

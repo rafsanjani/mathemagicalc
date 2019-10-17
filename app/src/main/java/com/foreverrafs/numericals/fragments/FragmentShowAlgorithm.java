@@ -17,7 +17,6 @@ import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.dialog.OperationListDialog;
-import com.foreverrafs.numericals.utils.Utilities;
 
 import java.lang.reflect.Method;
 
@@ -26,6 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class FragmentShowAlgorithm extends Fragment {
+    private static final String TAG = "FragmentShowAlgorithm";
     @BindView(R.id.webView)
     WebView mWebView;
 
@@ -61,7 +61,7 @@ public class FragmentShowAlgorithm extends Fragment {
             algoName = bundle.getString("algorithm_name");
         } else {
             //load index page if no file is provided
-            Log.i(Utilities.LOG_TAG, "no file provided, loading index page");
+            Log.i(TAG, "no file provided, loading index page");
             algoName = "index";
         }
 

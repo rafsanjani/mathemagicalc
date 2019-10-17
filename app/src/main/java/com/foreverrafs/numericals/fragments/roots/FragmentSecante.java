@@ -34,6 +34,7 @@ import butterknife.OnClick;
  */
 
 public class FragmentSecante extends FragmentRootBase implements TextWatcher {
+    private static final String TAG = "FragmentSecante";
 
     @BindView(R.id.btnCalculate)
     Button btnCalculate;
@@ -126,7 +127,7 @@ public class FragmentSecante extends FragmentRootBase implements TextWatcher {
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
-            Log.i(Utilities.LOG_TAG, "Error parsing one or more of the expressions");
+            Log.i(TAG, "Error parsing one or more of the expressions");
             return;
         }
 
