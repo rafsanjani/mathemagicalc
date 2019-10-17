@@ -47,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
             sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED)
+            toggleBottomSheet();
+        else
+            super.onBackPressed();
+    }
+
     //tvWebsite is a textview on the bottomsheet
     @OnClick(R.id.tvWebsite)
     void onWebsiteClicked(TextView url) {
