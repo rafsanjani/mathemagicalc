@@ -55,7 +55,61 @@
         android:id="@+id/fragmentConversionMenu"
         android:name="com.foreverrafs.numericals.fragments.FragmentConversionMenu"
         android:label="fragment_conversion_menu"
-        tools:layout="@layout/fragment_main_menu" />
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        tools:layout="@layout/fragment_main_menu">
+        <action
+            android:id="@+id/action_fragmentConversionMenu_to_fragmentDecToBinFrac"
+            app:destination="@id/fragmentDecToBinFrac"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_fragmentConversionMenu_to_fragmentDecToBin"
+            app:destination="@id/fragmentDecToBin"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_fragmentConversionMenu_to_fragmentDecToBinInt"
+            app:destination="@id/fragmentDecToBinInt"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_fragmentConversionMenu_to_fragmentBinToDec"
+            app:destination="@id/fragmentBinToDec"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_fragmentConversionMenu_to_fragmentDecToHexadecimal"
+            app:destination="@id/fragmentDecToHexadecimal"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_fragmentConversionMenu_to_fragmentDecToOctal"
+            app:destination="@id/fragmentDecToOctal"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_fragmentConversionMenu_to_fragmentAllInOne"
+            app:destination="@id/fragmentAllInOne"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragmentInterpolationMenu"
@@ -84,5 +138,34 @@
         android:name="com.foreverrafs.numericals.fragments.FragmentShowAlgorithm"
         android:label="fragment_show_algorithm"
         tools:layout="@layout/fragment_show_algorithm" />
+    <fragment
+        android:id="@+id/fragmentDecToBinFrac"
+        android:name="com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinFrac"
+        android:label="FragmentDecToBinFrac" />
+    <fragment
+        android:id="@+id/fragmentDecToBin"
+        android:name="com.foreverrafs.numericals.fragments.conversions.FragmentDecToBin"
+        android:label="FragmentDecToBin" />
+    <fragment
+        android:id="@+id/fragmentBinToDec"
+        android:name="com.foreverrafs.numericals.fragments.conversions.FragmentBinToDec"
+        android:label="FragmentBinToDec" />
+    <fragment
+        android:id="@+id/fragmentDecToBinInt"
+        android:name="com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinInt"
+        android:label="FragmentDecToBinInt" />
+    <fragment
+        android:id="@+id/fragmentDecToHexadecimal"
+        android:name="com.foreverrafs.numericals.fragments.conversions.FragmentDecToHexadecimal"
+        android:label="FragmentDecToHexadecimal" />
+    <fragment
+        android:id="@+id/fragmentDecToOctal"
+        android:name="com.foreverrafs.numericals.fragments.conversions.FragmentDecToOctal"
+        android:label="FragmentDecToOctal" />
+    <fragment
+        android:id="@+id/fragmentAllInOne"
+        android:name="com.foreverrafs.numericals.fragments.conversions.FragmentAllInOne"
+        android:label="fragment_conversions_allinone"
+        tools:layout="@layout/fragment_conversions_allinone" />
 
 </navigation>

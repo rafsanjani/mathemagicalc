@@ -10,17 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.OperationsMenuAdapter;
-import com.foreverrafs.numericals.fragments.conversions.FragmentAllInOne;
-import com.foreverrafs.numericals.fragments.conversions.FragmentBinToDec;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBin;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinInt;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToHexadecimal;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToOctal;
 import com.foreverrafs.numericals.model.OperationMenu;
 import com.foreverrafs.numericals.utils.Constants;
 
@@ -39,6 +35,8 @@ public class FragmentConversionMenu extends Fragment implements OperationsMenuAd
     @BindView(R.id.tvHeader)
     TextView header;
 
+    NavController navController = null;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,6 +47,8 @@ public class FragmentConversionMenu extends Fragment implements OperationsMenuAd
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
+        navController = Navigation.findNavController(view);
         mainMenuItems.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         List<OperationMenu> operations = new ArrayList<>();
@@ -74,34 +74,33 @@ public class FragmentConversionMenu extends Fragment implements OperationsMenuAd
 
     @Override
     public void OnMenuItemClicked(int menuItemType) {
-
-        Fragment fragment = null;
         switch (menuItemType) {
             case Constants.CONVERSION_DEC_TO_BIN_FRACTION:
-                fragment = new FragmentDecToBin();
+                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentDecToBinFrac);
                 break;
 
             case Constants.CONVERSION_DEC_TO_BIN_INT:
-                fragment = new FragmentDecToBinInt();
+                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentDecToBinInt);
+                break;
+
+            case Constants.CONVERSION_DEC_TO_BIN_ALL:
+                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentDecToBin);
                 break;
 
             case Constants.CONVERSION_ALL_IN_ONE:
-                fragment = new FragmentAllInOne();
+                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentAllInOne);
                 break;
 
             case Constants.CONVERSION_DEC_TO_HEXA:
-                fragment = new FragmentDecToHexadecimal();
+                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentDecToHexadecimal);
                 break;
 
             case Constants.CONVERSION_DEC_TO_OCTAL:
-                fragment = new FragmentDecToOctal();
+                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentDecToOctal);
                 break;
             case Constants.CONVERSION_BIN_TO_DEC:
-                fragment = new FragmentBinToDec();
+                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentBinToDec);
                 break;
         }
-//        if (fragment != null)
-//            Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
     }
-
 }
