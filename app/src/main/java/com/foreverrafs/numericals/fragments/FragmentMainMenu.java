@@ -1,8 +1,6 @@
 package com.foreverrafs.numericals.fragments;
 
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,26 +9,24 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.foreverrafs.numericals.BuildConfig;
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.adapter.OperationsMenuAdapter;
 import com.foreverrafs.numericals.model.OperationMenu;
 import com.foreverrafs.numericals.utils.Constants;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 
 public class FragmentMainMenu extends Fragment {
@@ -41,13 +37,6 @@ public class FragmentMainMenu extends Fragment {
     @BindView(R.id.tvHeader)
     TextView header;
 
-    @BindView(R.id.bottom_sheet)
-    ConstraintLayout bottomSheet;
-
-    @BindView(R.id.tvVersion)
-    TextView tvVersion;
-
-    private BottomSheetBehavior sheetBehavior;
     private NavController navController;
 
 
@@ -63,10 +52,6 @@ public class FragmentMainMenu extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         navController = Navigation.findNavController(view);
-
-        tvVersion.setText(getString(R.string.version, BuildConfig.VERSION_NAME));
-
-        sheetBehavior = BottomSheetBehavior.from(bottomSheet);
 
         mainMenuItems.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
@@ -101,7 +86,7 @@ public class FragmentMainMenu extends Fragment {
 
                 case Constants.MENU_ABOUT:
                     //toggle bottom sheet here
-                    toggleBottomSheet();
+                    ((MainActivity) Objects.requireNonNull(getActivity())).toggleBottomSheet();
                     return;
 
                 case Constants.MENU_ODE:
@@ -117,24 +102,5 @@ public class FragmentMainMenu extends Fragment {
                     break;
             }
         });
-    }
-
-    private void toggleBottomSheet() {
-        if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED)
-            sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        else
-            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-    }
-
-    @OnClick(R.id.btnAboutClose)
-    void onAboutClose() {
-        toggleBottomSheet();
-    }
-
-    @OnClick(R.id.tvWebsite)
-    void onWebsiteClicked(TextView url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(url.getText().toString()));
-        startActivity(intent);
     }
 }
