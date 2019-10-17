@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,9 +39,6 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements Operation
 
     @BindView(R.id.tvHeader)
     TextView header;
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
 
     @Nullable
     @Override
