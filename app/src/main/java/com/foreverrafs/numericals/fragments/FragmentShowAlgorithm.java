@@ -23,6 +23,7 @@ import java.lang.reflect.Method;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class FragmentShowAlgorithm extends Fragment {
     @BindView(R.id.webView)
@@ -65,6 +66,12 @@ public class FragmentShowAlgorithm extends Fragment {
         }
 
         loadAlgorithm(algoName);
+    }
+
+    @OnClick(R.id.btnBack)
+    void onBackPressed() {
+        if (getActivity() != null)
+            getActivity().onBackPressed();
     }
 
     //the algoName is part of an html string so this name is just concatenated to an html file path to load the corresponding html
