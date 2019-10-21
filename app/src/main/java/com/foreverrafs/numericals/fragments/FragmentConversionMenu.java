@@ -35,7 +35,7 @@ public class FragmentConversionMenu extends Fragment implements OperationsMenuAd
     @BindView(R.id.tvHeader)
     TextView header;
 
-    NavController navController = null;
+    private NavController navController = null;
 
     @Nullable
     @Override

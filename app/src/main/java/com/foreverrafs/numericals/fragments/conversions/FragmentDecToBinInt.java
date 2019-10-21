@@ -1,11 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
@@ -18,10 +13,6 @@ import com.foreverrafs.numericals.utils.Utilities;
 public class FragmentDecToBinInt extends ConversionsBase {
     private static final String TAG = "FragmentDecToBinInt";
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        initControls();
-    }
 
     @Override
     protected void initControls() {

@@ -1,11 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
@@ -18,7 +13,6 @@ import com.foreverrafs.numericals.R;
 public class FragmentDecToOctal extends ConversionsBase {
     private static final String TAG = "FragmentDecToOctal";
 
-
     @Override
     protected void initControls() {
         super.initControls();
@@ -28,13 +22,6 @@ public class FragmentDecToOctal extends ConversionsBase {
         setInputHint(getString(R.string.decimal_int_input_hint));
         setMethodName("dectooctal");
     }
-
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        initControls();
-    }
-
 
     @Override
     protected void onCalculate() {

@@ -1,6 +1,5 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.utils.Utilities;
@@ -27,8 +28,7 @@ import butterknife.OnClick;
  * Created by Rafsanjani on 6/16/2019
  */
 public abstract class ConversionsBase extends Fragment {
-
-
+    private static final String TAG = "ConversionsBase";
     protected View rootView;
 
     @BindView(R.id.til_user_input)
@@ -41,19 +41,36 @@ public abstract class ConversionsBase extends Fragment {
     TextInputEditText etInput;
     @BindView(R.id.tvAnswer)
     TextView tvAnswer;
+
     private String methodName;
+    protected NavController navController = null;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_conversions_layout, container, false);
-
         ButterKnife.bind(this, rootView);
         return rootView;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        navController = Navigation.findNavController(view);
+        initControls();
+    }
+
     protected void setHeader(String header) {
         txtHeader.setText(header);
+    }
+
+    @OnClick(R.id.btnBack)
+    void onBackPressed() {
+        goToMainMenu();
+    }
+
+    //Each subclass will have it's own implementation of this method
+    private void goToMainMenu() {
+        navController.navigate(R.id.action_fragmentconversion_to_MainMenu);
     }
 
     protected void setDescription(String description) {
@@ -89,13 +106,6 @@ public abstract class ConversionsBase extends Fragment {
         Utilities.showAlgorithmScreen(getContext(), getMethodName());
     }
 
-    @OnClick(R.id.btnBack)
-    void onBackPressed() {
-        Activity parentActivity = this.getActivity();
-        if (parentActivity != null)
-            parentActivity.finish();
-    }
-
     @OnClick(R.id.btnCalculate)
     void onCalculateClicked() {
         onCalculate();
@@ -112,7 +122,6 @@ public abstract class ConversionsBase extends Fragment {
             }
             return false;
         });
-
 
         etInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -133,7 +142,6 @@ public abstract class ConversionsBase extends Fragment {
                 }
             }
         });
-
     }
 
     void displayAnswer() {

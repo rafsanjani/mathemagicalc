@@ -33,9 +33,9 @@ import butterknife.ButterKnife;
 
 public class FragmentAllInOne extends Fragment implements View.OnClickListener, TextWatcher {
     private static final String TAG = "FragmentAllInOne";
+
     @BindView(R.id.layout_answer_area)
     ConstraintLayout layoutAnswerArea;
-
 
     @BindView(R.id.btnCalculate)
     Button btnCalculate;
@@ -62,14 +62,12 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_conversions_allinone, container, false);
-
         ButterKnife.bind(this, rootView);
         initControls();
         return rootView;
     }
 
     private void initControls() {
-
         EditText etInput = tilUserInput.getEditText();
 
         etInput.setOnKeyListener((view, i, keyEvent) -> {

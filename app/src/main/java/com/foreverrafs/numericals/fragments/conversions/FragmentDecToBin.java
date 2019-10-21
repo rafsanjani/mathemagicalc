@@ -1,11 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
@@ -16,22 +11,17 @@ import com.foreverrafs.numericals.R;
 
 public class FragmentDecToBin extends ConversionsBase {
     private static final String TAG = "FragmentDecToBin";
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        initControls();
-    }
 
     @Override
     protected void initControls() {
         super.initControls();
-
         setHeader(getString(R.string.dec_to_bin_any_number));
         setDescription(getString(R.string.decimal_to_bin_desc));
         setInputHint(getString(R.string.enter_decimal));
         setMethodName("dectobin");
-
-
     }
+
+
 
     @Override
     protected void onCalculate() {

@@ -1,11 +1,6 @@
 package com.foreverrafs.numericals.fragments.conversions;
 
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.core.exceptions.NotABinaryException;
@@ -18,15 +13,10 @@ import com.foreverrafs.numericals.R;
 public class FragmentBinToDec extends ConversionsBase {
 
     private static final String TAG = "FragmentBinToDec";
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        initControls();
-    }
 
     @Override
     protected void initControls() {
         super.initControls();
-
         setHeader(getString(R.string.bin_to_decimal));
         setDescription(getString(R.string.bin_to_dec_desc));
         setInputHint(getString(R.string.binary_input_hint));
