@@ -98,7 +98,7 @@
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_fragmentConversionMenu_to_fragmentDecToOctal"
-            app:destination="@id/fragmentDecToOctal"
+            app:destination="@id/dec_to_octal"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -123,7 +123,36 @@
         android:id="@+id/location_of_roots_menu"
         android:name="com.foreverrafs.numericals.fragments.FragmentLocationOfRootsMenu"
         android:label="Location of roots menu"
-        tools:layout="@layout/fragment_main_menu" />
+        tools:layout="@layout/fragment_main_menu">
+        <action
+            android:id="@+id/action_location_of_roots_menu_to_fragmentNewtonRaphson"
+            app:destination="@id/newton_raphson"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_location_of_roots_menu_to_fragmentSecante"
+            app:destination="@id/secant"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_location_of_roots_menu_to_fragmentBisection"
+            app:destination="@id/bisection"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_location_of_roots_menu_to_fragmentFalsePosition"
+            app:destination="@id/false_position"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/ode_menu"
@@ -161,7 +190,7 @@
         android:name="com.foreverrafs.numericals.fragments.conversions.FragmentDecToHexadecimal"
         android:label="FragmentDecToHexadecimal" />
     <fragment
-        android:id="@+id/fragmentDecToOctal"
+        android:id="@+id/dec_to_octal"
         android:name="com.foreverrafs.numericals.fragments.conversions.FragmentDecToOctal"
         android:label="FragmentDecToOctal" />
     <fragment
@@ -169,5 +198,25 @@
         android:name="com.foreverrafs.numericals.fragments.conversions.FragmentAllInOne"
         android:label="All in one conversion"
         tools:layout="@layout/fragment_conversions_allinone" />
+    <fragment
+        android:id="@+id/bisection"
+        android:name="com.foreverrafs.numericals.fragments.roots.FragmentBisection"
+        android:label="Bisection Method"
+        tools:layout="@layout/fragment_loc_of_roots_bisection" />
+    <fragment
+        android:id="@+id/false_position"
+        android:name="com.foreverrafs.numericals.fragments.roots.FragmentFalsePosition"
+        android:label="False Position"
+        tools:layout="@layout/fragment_loc_of_roots_falseposition" />
+    <fragment
+        android:id="@+id/secant"
+        android:name="com.foreverrafs.numericals.fragments.roots.FragmentSecante"
+        android:label="Secant Method"
+        tools:layout="@layout/fragment_loc_of_roots_secante" />
+    <fragment
+        android:id="@+id/newton_raphson"
+        android:name="com.foreverrafs.numericals.fragments.roots.FragmentNewtonRaphson"
+        android:label="Newton Raphson"
+        tools:layout="@layout/fragment_loc_of_roots_newton" />
 
 </navigation>

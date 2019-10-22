@@ -10,15 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.OperationsMenuAdapter;
-import com.foreverrafs.numericals.fragments.roots.FragmentBisection;
-import com.foreverrafs.numericals.fragments.roots.FragmentFalsePosition;
-import com.foreverrafs.numericals.fragments.roots.FragmentNewtonRaphson;
-import com.foreverrafs.numericals.fragments.roots.FragmentSecante;
 import com.foreverrafs.numericals.model.OperationMenu;
 import com.foreverrafs.numericals.utils.Constants;
 
@@ -41,6 +39,8 @@ public class FragmentLocationOfRootsMenu extends Fragment {
     @BindView(R.id.tvHeader)
     TextView header;
 
+    private NavController navController = null;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class FragmentLocationOfRootsMenu extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
         ButterKnife.bind(this, view);
 
         initControls();
@@ -69,26 +70,23 @@ public class FragmentLocationOfRootsMenu extends Fragment {
         mainMenuItems.setAdapter(adapter);
 
         adapter.setOnItemClickListenener(menuItemType -> {
-            Fragment fragment = null;
             switch (menuItemType) {
                 case Constants.LOCATION_OF_ROOTS_BISECTION:
-                    fragment = new FragmentBisection();
+                    navController.navigate(R.id.action_location_of_roots_menu_to_fragmentBisection);
                     break;
                 case Constants.LOCATION_OF_ROOTS_NEWTON_RAPHSON:
-                    fragment = new FragmentNewtonRaphson();
+                    navController.navigate(R.id.action_location_of_roots_menu_to_fragmentNewtonRaphson);
                     break;
                 case Constants.LOCATION_OF_ROOTS_FALSE_POSITION:
-                    fragment = new FragmentFalsePosition();
+                    navController.navigate(R.id.action_location_of_roots_menu_to_fragmentFalsePosition);
                     break;
                 case Constants.LOCATION_OF_ROOTS_SECANT:
-                    fragment = new FragmentSecante();
+                    navController.navigate(R.id.action_location_of_roots_menu_to_fragmentSecante);
                     break;
             }
-//            if (fragment != null)
-//                Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
-
         });
     }
+
     private void initControls() {
         header.setText(R.string.loc_of_rooots);
     }
