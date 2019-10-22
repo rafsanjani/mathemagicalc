@@ -117,7 +117,11 @@
         android:id="@+id/interpolation_menu"
         android:name="com.foreverrafs.numericals.fragments.FragmentInterpolationMenu"
         android:label="Interpolation Menu"
-        tools:layout="@layout/fragment_main_menu" />
+        tools:layout="@layout/fragment_main_menu">
+        <action
+            android:id="@+id/action_interpolation_menu_to_fragmentLagrange"
+            app:destination="@id/lagrange" />
+    </fragment>
 
     <fragment
         android:id="@+id/location_of_roots_menu"
@@ -218,5 +222,10 @@
         android:name="com.foreverrafs.numericals.fragments.roots.FragmentNewtonRaphson"
         android:label="Newton Raphson"
         tools:layout="@layout/fragment_loc_of_roots_newton" />
+    <fragment
+        android:id="@+id/lagrange"
+        android:name="com.foreverrafs.numericals.fragments.interpolation.FragmentLagrange"
+        android:label="Lagrange Interpolation"
+        tools:layout="@layout/interpolation_lagrange" />
 
 </navigation>
