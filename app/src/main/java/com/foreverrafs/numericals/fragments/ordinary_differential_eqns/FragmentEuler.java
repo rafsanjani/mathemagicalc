@@ -50,7 +50,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
     public void initControls() {
         final Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
-        Button btnBack = rootView.findViewById(R.id.btnBack);
+        Button btnBack = rootView.findViewById(R.id.btnBackToMainMenu);
         Button btnShowAlgorithm = rootView.findViewById(R.id.btnShowAlgo);
 
         //initialize TextInputLayouts
@@ -125,7 +125,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnBack:
+            case R.id.btnBackToMainMenu:
                 Utilities.replaceFragment(new FragmentOdeMenu(), getFragmentManager(), R.id.fragmentContainer);
                 break;
 

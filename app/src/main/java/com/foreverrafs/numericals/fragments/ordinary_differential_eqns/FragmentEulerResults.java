@@ -82,7 +82,7 @@ public class FragmentEulerResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.btnBack);
+        Button btnBack = rootView.findViewById(R.id.btnBackToMainMenu);
         Button btnShowAlgorithm = rootView.findViewById(R.id.btnShowAlgo);
 
         MathView equation;

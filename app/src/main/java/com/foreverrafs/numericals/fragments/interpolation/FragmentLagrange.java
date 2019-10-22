@@ -84,7 +84,7 @@ public class FragmentLagrange extends Fragment {
         });
     }
 
-    @OnClick(R.id.btnBack)
+    @OnClick(R.id.btnBackToMainMenu)
     void onBackButton() {
         Activity parentActivity = getActivity();
         if (parentActivity != null)

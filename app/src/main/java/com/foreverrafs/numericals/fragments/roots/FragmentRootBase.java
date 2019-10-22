@@ -65,7 +65,7 @@ public abstract class FragmentRootBase extends Fragment {
         }
     }
 
-    @OnClick(R.id.btnBack)
+    @OnClick(R.id.btnBackToMainMenu)
     protected void onBackClicked() {
         if (getActivity() != null) {
             getActivity().finish();

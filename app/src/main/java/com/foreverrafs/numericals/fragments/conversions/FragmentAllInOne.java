@@ -40,7 +40,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @BindView(R.id.btnCalculate)
     Button btnCalculate;
 
-    @BindView(R.id.btnBack)
+    @BindView(R.id.btnBackToMainMenu)
     Button btnBack;
 
     @BindView(R.id.til_user_input)
@@ -95,7 +95,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnBack:
+            case R.id.btnBackToMainMenu:
                 break;
 
             case R.id.btnCalculate:

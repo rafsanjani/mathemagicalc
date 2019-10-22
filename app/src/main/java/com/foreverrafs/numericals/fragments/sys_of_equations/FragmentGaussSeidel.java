@@ -39,7 +39,7 @@ public class FragmentGaussSeidel extends Fragment implements TextWatcher, View.O
 
     @BindView(R.id.btnCalculate)
     Button btnCalculate;
-    @BindView(R.id.btnBack)
+    @BindView(R.id.btnBackToMainMenu)
     Button btnBack;
     @BindView(R.id.parentContainer)
     ViewGroup viewGroup;
@@ -99,7 +99,7 @@ public class FragmentGaussSeidel extends Fragment implements TextWatcher, View.O
     }
 
 
-    @OnClick(R.id.btnBack)
+    @OnClick(R.id.btnBackToMainMenu)
     void onBackClicked() {
         if (getActivity() != null)
             getActivity().finish();

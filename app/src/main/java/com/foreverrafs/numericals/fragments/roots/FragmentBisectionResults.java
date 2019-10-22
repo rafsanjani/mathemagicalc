@@ -78,7 +78,7 @@ public class FragmentBisectionResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.btnBack);
+        Button btnBack = rootView.findViewById(R.id.btnBackToMainMenu);
 
         MathView equation;
         // String tex = " $$f(x) = 3x^3 + 2x - 5$$";

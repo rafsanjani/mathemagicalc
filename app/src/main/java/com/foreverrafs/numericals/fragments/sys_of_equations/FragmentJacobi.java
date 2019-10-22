@@ -77,7 +77,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
 
     public void initControls() {
         Button btnCalculate = mRootView.findViewById(R.id.btnCalculate);
-        Button btnBack = mRootView.findViewById(R.id.btnBack);
+        Button btnBack = mRootView.findViewById(R.id.btnBackToMainMenu);
 
 
         EditText[] etEqn = new EditText[3];
@@ -100,7 +100,7 @@ public class FragmentJacobi extends Fragment implements View.OnClickListener, Te
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnBack:
+            case R.id.btnBackToMainMenu:
                 if (getActivity() != null)
                     getActivity().finish();
                 break;

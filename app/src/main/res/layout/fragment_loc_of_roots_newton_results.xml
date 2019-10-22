@@ -157,7 +157,7 @@
             android:text="@string/show_algorithm" />
 
         <Button
-            android:id="@+id/btnBack"
+            android:id="@+id/btnBackToMainMenu"
             style="@style/AppMaterialTheme.ButtonStyle.Exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -68,7 +68,7 @@ public class FragmentShowAlgorithm extends Fragment {
         loadAlgorithm(algoName);
     }
 
-    @OnClick(R.id.btnBack)
+    @OnClick(R.id.btnBackToMainMenu)
     void onBackPressed() {
         if (getActivity() != null)
             getActivity().onBackPressed();

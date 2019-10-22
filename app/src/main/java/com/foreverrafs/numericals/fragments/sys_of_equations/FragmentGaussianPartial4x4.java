@@ -40,7 +40,7 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
     }
 
     private void initControls() {
-        Button btnBack = rootView.findViewById(R.id.btnBack);
+        Button btnBack = rootView.findViewById(R.id.btnBackToMainMenu);
         Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
 
 
@@ -52,7 +52,7 @@ public class FragmentGaussianPartial4x4 extends Fragment implements View.OnClick
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnBack:
+            case R.id.btnBackToMainMenu:
                 if (getActivity() != null) {
                     getActivity().finish();
                 }
