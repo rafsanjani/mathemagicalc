@@ -120,7 +120,11 @@
         tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_interpolation_menu_to_fragmentLagrange"
-            app:destination="@id/lagrange" />
+            app:destination="@id/lagrange"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -165,7 +169,11 @@
         tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_ode_menu_to_fragmentEuler"
-            app:destination="@id/euler" />
+            app:destination="@id/euler"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/sys_of_eqns_menu"
