@@ -8,10 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import com.foreverrafs.numericals.BuildConfig;
 import com.foreverrafs.numericals.R;
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.tvVersion)
     TextView tvVersion;
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     private BottomSheetBehavior sheetBehavior;
 
     @Override
@@ -38,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupWithNavController(toolbar, navController);
 
         sheetBehavior = BottomSheetBehavior.from(bottomSheet);
         tvVersion.setText(getString(R.string.version, BuildConfig.VERSION_NAME));
