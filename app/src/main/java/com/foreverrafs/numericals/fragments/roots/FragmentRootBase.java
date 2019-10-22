@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.core.LocationOfRootResult;
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -66,9 +67,9 @@ public abstract class FragmentRootBase extends Fragment {
     }
 
     @OnClick(R.id.btnBackToMainMenu)
-    protected void onBackClicked() {
+    protected void onBackClicked(Button button) {
         if (getActivity() != null) {
-            getActivity().finish();
+            ((MainActivity) getActivity()).goToMainMenu(button);
         }
     }
 

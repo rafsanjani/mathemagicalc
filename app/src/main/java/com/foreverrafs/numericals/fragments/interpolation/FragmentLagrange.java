@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.ArrayList;
@@ -85,10 +87,10 @@ public class FragmentLagrange extends Fragment {
     }
 
     @OnClick(R.id.btnBackToMainMenu)
-    void onBackButton() {
+    void onBackButton(Button button) {
         Activity parentActivity = getActivity();
         if (parentActivity != null)
-            parentActivity.finish();
+            ((MainActivity) parentActivity).goToMainMenu(button);
     }
 
     @Override

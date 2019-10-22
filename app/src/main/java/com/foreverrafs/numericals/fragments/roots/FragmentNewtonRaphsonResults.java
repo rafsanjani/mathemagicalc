@@ -71,7 +71,7 @@ public class FragmentNewtonRaphsonResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.btnBackToMainMenu);
+        Button btnBack = rootView.findViewById(R.id.btnBackToNewton);
 
         MathView equation;
         // String tex = " $$f(x) = 3x^3 + 2x - 5$$";

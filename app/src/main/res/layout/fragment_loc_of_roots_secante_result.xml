@@ -162,11 +162,11 @@
             android:text="@string/show_algorithm" />
 
         <Button
-            android:id="@+id/btnBackToMainMenu"
+            android:id="@+id/btnBackToSecant"
             style="@style/AppMaterialTheme.ButtonStyle.Exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/back"
+            android:text="@string/back_to_secant"
             android:textStyle="bold" />
 
     </LinearLayout>

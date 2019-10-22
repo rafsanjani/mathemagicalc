@@ -122,4 +122,8 @@
     <string name="der_x1">der(x1)</string>
     <string name="root">root</string>
     <string name="x_n_x_n_1">x[n] - x[n+1]</string>
+    <string name="back_to_secant">Back to Secant</string>
+    <string name="back_to_bisection">Back to Bisection</string>
+    <string name="back_to_newton_raphson">Back to Newton Raphson</string>
+    <string name="back_to_false_position">Back to False Position</string>
 </resources>

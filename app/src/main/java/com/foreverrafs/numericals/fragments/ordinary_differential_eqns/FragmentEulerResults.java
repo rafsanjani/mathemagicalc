@@ -82,7 +82,7 @@ public class FragmentEulerResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.btnBackToMainMenu);
+        Button btnBack = rootView.findViewById(R.id.btnBackToEuler);
         Button btnShowAlgorithm = rootView.findViewById(R.id.btnShowAlgo);
 
         MathView equation;
@@ -125,7 +125,5 @@ public class FragmentEulerResults extends Fragment {
         });
 
         btnShowAlgorithm.setOnClickListener(v -> Utilities.showAlgorithmScreen(getContext(), "euler"));
-
-        //Utilities.setTypeFace(rootView.findViewById(R.id.text_header), getContext(), Utilities.TypeFacename.raleway_bold);
     }
 }

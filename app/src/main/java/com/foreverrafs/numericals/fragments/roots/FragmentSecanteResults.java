@@ -35,7 +35,7 @@ public class FragmentSecanteResults extends Fragment {
     private List<LocationOfRootResult> results;
     private View rootView;
     private String eqn;
-    private double x0, x1, difference;
+    private double x0, x1;
     private int iterations;
 
     private String getInterval() {
@@ -45,11 +45,6 @@ public class FragmentSecanteResults extends Fragment {
     private String getIteration() {
         return String.format(Locale.US, "[%d]", iterations);
     }
-
-    private String getDifference() {
-        return String.format(Locale.US, "[%.7f]", difference);
-    }
-
 
     public void setResults(List<LocationOfRootResult> results) {
         this.results = results;
@@ -77,7 +72,7 @@ public class FragmentSecanteResults extends Fragment {
     }
 
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.btnBackToMainMenu);
+        Button btnBackToSecant = rootView.findViewById(R.id.btnBackToSecant);
 
         MathView equation;
 
@@ -97,7 +92,7 @@ public class FragmentSecanteResults extends Fragment {
         tvInterval.setText(getInterval());
         tvIterations.setText(getIteration());
 
-        btnBack.setOnClickListener(v -> {
+        btnBackToSecant.setOnClickListener(v -> {
             Fragment fragment = new FragmentSecante();
             Bundle eqnArgs = new Bundle();
 

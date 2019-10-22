@@ -1,5 +1,6 @@
 package com.foreverrafs.numericals.fragments.ordinary_differential_eqns;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.core.OdeResult;
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -126,7 +128,9 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnBackToMainMenu:
-                Utilities.replaceFragment(new FragmentOdeMenu(), getFragmentManager(), R.id.fragmentContainer);
+                Activity parentActivity = getActivity();
+                if (parentActivity != null)
+                    ((MainActivity) parentActivity).goToMainMenu((Button) view);
                 break;
 
             case R.id.btnCalculate:
