@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
+import androidx.navigation.Navigation;
 
 import com.foreverrafs.numericals.BuildConfig;
 import com.foreverrafs.numericals.R;
@@ -46,6 +50,18 @@ public class MainActivity extends AppCompatActivity {
             sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         else
             sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+    }
+
+    public void goToMainMenu(Button button) {
+        NavController controller = Navigation.findNavController(button);
+        NavOptions navOptions = new NavOptions.Builder()
+                .setEnterAnim(R.anim.slide_in_left)
+                .setLaunchSingleTop(true)
+                .setPopUpTo(R.id.nav_graph, true)
+                .setExitAnim(R.anim.slide_out_right)
+                .build();
+
+        controller.navigate(R.id.fragment_main_menu, null, navOptions, null);
     }
 
     @Override

@@ -14,10 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -65,22 +65,10 @@ public abstract class ConversionsBase extends Fragment {
         txtHeader.setText(header);
     }
 
-    @OnClick(R.id.btnBack)
-    void onBackPressed(Button button) {
-        goToMainMenu(button);
-    }
-
-    //Navigate to the main menu when the button is clicked
-    private void goToMainMenu(Button button) {
-        NavController controller = Navigation.findNavController(button);
-        NavOptions navOptions = new NavOptions.Builder()
-                .setEnterAnim(R.anim.slide_in_left)
-                .setLaunchSingleTop(true)
-                .setPopUpTo(R.id.nav_graph, true)
-                .setExitAnim(R.anim.slide_out_right)
-                .build();
-
-        controller.navigate(R.id.fragment_main_menu, null, navOptions, null);
+    @OnClick(R.id.btnBackToMainMenu)
+    void backToMainMenuPressed(Button button) {
+        if (getActivity() != null)
+            ((MainActivity) getActivity()).goToMainMenu(button);
     }
 
     protected void setDescription(String description) {
