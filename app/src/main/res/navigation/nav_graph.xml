@@ -162,7 +162,11 @@
         android:id="@+id/ode_menu"
         android:name="com.foreverrafs.numericals.fragments.FragmentODEMenu"
         android:label="ODE  Menu"
-        tools:layout="@layout/fragment_main_menu" />
+        tools:layout="@layout/fragment_main_menu">
+        <action
+            android:id="@+id/action_ode_menu_to_fragmentEuler"
+            app:destination="@id/euler" />
+    </fragment>
     <fragment
         android:id="@+id/sys_of_eqns_menu"
         android:name="com.foreverrafs.numericals.fragments.FragmentSystemOfEquationsMenu"
@@ -227,5 +231,10 @@
         android:name="com.foreverrafs.numericals.fragments.interpolation.FragmentLagrange"
         android:label="Lagrange Interpolation"
         tools:layout="@layout/interpolation_lagrange" />
+    <fragment
+        android:id="@+id/euler"
+        android:name="com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentEuler"
+        android:label="Euler's Forward Method"
+        tools:layout="@layout/fragment_ode_euler" />
 
 </navigation>
