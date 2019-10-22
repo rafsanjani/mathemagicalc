@@ -7,12 +7,14 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import com.foreverrafs.numericals.R;
@@ -64,13 +66,21 @@ public abstract class ConversionsBase extends Fragment {
     }
 
     @OnClick(R.id.btnBack)
-    void onBackPressed() {
-        goToMainMenu();
+    void onBackPressed(Button button) {
+        goToMainMenu(button);
     }
 
-    //Each subclass will have it's own implementation of this method
-    private void goToMainMenu() {
-        navController.navigate(R.id.action_fragmentconversion_to_MainMenu);
+    //Navigate to the main menu when the button is clicked
+    private void goToMainMenu(Button button) {
+        NavController controller = Navigation.findNavController(button);
+        NavOptions navOptions = new NavOptions.Builder()
+                .setEnterAnim(R.anim.slide_in_left)
+                .setLaunchSingleTop(true)
+                .setPopUpTo(R.id.nav_graph, true)
+                .setExitAnim(R.anim.slide_out_right)
+                .build();
+
+        controller.navigate(R.id.fragment_main_menu, null, navOptions, null);
     }
 
     protected void setDescription(String description) {
