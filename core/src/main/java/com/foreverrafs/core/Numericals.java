@@ -1,5 +1,7 @@
 package com.foreverrafs.core;
 
+import android.util.Log;
+
 import com.foreverrafs.core.exceptions.InvalidEquationException;
 import com.foreverrafs.core.exceptions.InvalidIntervalException;
 import com.foreverrafs.core.exceptions.NotABinaryException;
@@ -22,6 +24,8 @@ import java.util.Locale;
 
 
 public final class Numericals {
+    private static final String TAG = "Numericals";
+
     /***
      * Converts a whole number from Base 10 to Base 2. Note: Only Integers
      * @param dec A decimal number(n) where n >= 1
@@ -559,7 +563,7 @@ public final class Numericals {
             roundTo2Dp(A, B);
             roundTo2Dp(solution);
         } catch (ArrayIndexOutOfBoundsException ay) {
-            System.out.println(ay.getMessage());
+            Log.d(TAG, "getSolutionByBackSubstitution: " + ay.getMessage());
         }
 
 
@@ -575,7 +579,7 @@ public final class Numericals {
                 for (int j = k; j < N; j++)
                     A[i][j] -= factor * A[k][j];
             } catch (ArrayIndexOutOfBoundsException ay) {
-                System.out.println(ay.getMessage());
+                Log.e(TAG, "killRowsBeneath: " + ay.getMessage());
             }
         }
     }
@@ -767,9 +771,6 @@ public final class Numericals {
                 throw new IllegalArgumentException("Syntax Error, Please check expression");
         }
 
-        //print out the solution vector
-        System.out.println("The solution vector is given as");
-
         double[] difference = new double[3];
         for (int i = 0; i < iSolution.length; i++) {
             difference[i] = iSolution[i] - initGuess[i];
@@ -927,7 +928,11 @@ public final class Numericals {
                     denominator = denominator * (x[i] - x[j]);
                 }
             }
-            unknownY = unknownY + (numerator / denominator) * y[i];
+            try {
+                unknownY = unknownY + (numerator / denominator) * y[i];
+            } catch (ArrayIndexOutOfBoundsException exception) {
+                Log.i(TAG, "interpolate: Array out of bounds!");
+            }
         }
         return unknownY;
     }
