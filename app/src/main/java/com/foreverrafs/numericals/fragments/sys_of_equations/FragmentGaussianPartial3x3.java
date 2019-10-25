@@ -33,7 +33,6 @@ public class FragmentGaussianPartial3x3 extends FragmentSystemOfEquationsBase im
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_gaussian_partial3x3, container, false);
-        //("System of Equations", "Gaussian Elimination (Partial Pivoting)");
 
         initControls();
         return rootView;
