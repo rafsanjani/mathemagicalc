@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
@@ -25,7 +24,7 @@ import com.foreverrafs.numericals.utils.Utilities;
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentGaussianComplete4x4 extends Fragment implements View.OnClickListener, View.OnKeyListener, TextWatcher {
+public class FragmentGaussianComplete4x4 extends FragmentSystemOfEquationsBase implements View.OnClickListener, View.OnKeyListener, TextWatcher {
 
     private static final String TAG = "FragmentGaussianComplet";
     private View rootView;
@@ -53,8 +52,7 @@ public class FragmentGaussianComplete4x4 extends Fragment implements View.OnClic
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnBackToMainMenu:
-                if (getActivity() != null)
-                    getActivity().finish();
+                goToMainmenu((Button) view);
                 break;
 
             case R.id.btnCalculate:

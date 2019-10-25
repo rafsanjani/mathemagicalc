@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
@@ -34,7 +33,7 @@ import org.apache.commons.math3.util.Precision;
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClickListener, TextWatcher, View.OnKeyListener {
+public class FragmentGaussSeidelWithSOR extends FragmentSystemOfEquationsBase implements View.OnClickListener, TextWatcher, View.OnKeyListener {
 
     private static final String TAG = "FragmentGaussSeidelWith";
     private View mRootView;
@@ -60,7 +59,6 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
                     + Precision.round(solution[1], 2) + ", " +
                     Precision.round(solution[2], 2) +
                     " ]");
-
 
             //for transitions sake
             Utilities.animateAnswer(tvAnswer, mViewGroup, Utilities.DisplayMode.SHOW);
@@ -109,8 +107,7 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnBackToMainMenu:
-                if (getActivity() != null)
-                    getActivity().finish();
+                goToMainmenu((Button) view);
                 break;
 
             case R.id.btnCalculate:
@@ -120,7 +117,6 @@ public class FragmentGaussSeidelWithSOR extends Fragment implements View.OnClick
             case R.id.btnShowAlgo:
                 onShowAlgorithm();
                 break;
-
         }
     }
 

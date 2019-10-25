@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
@@ -35,7 +34,7 @@ import butterknife.OnClick;
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentGaussSeidel extends Fragment implements TextWatcher, View.OnKeyListener {
+public class FragmentGaussSeidel extends FragmentSystemOfEquationsBase implements TextWatcher, View.OnKeyListener {
 
     @BindView(R.id.btnCalculate)
     Button btnCalculate;
@@ -64,7 +63,6 @@ public class FragmentGaussSeidel extends Fragment implements TextWatcher, View.O
                     + Precision.round(solution[1], 2) + ", " +
                     Precision.round(solution[2], 2) +
                     " ]");
-
 
             //for transitions sake
             Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
@@ -100,9 +98,8 @@ public class FragmentGaussSeidel extends Fragment implements TextWatcher, View.O
 
 
     @OnClick(R.id.btnBackToMainMenu)
-    void onBackClicked() {
-        if (getActivity() != null)
-            getActivity().finish();
+    void onBackClicked(Button button) {
+        goToMainmenu(button);
     }
 
     @OnClick(R.id.btnCalculate)
@@ -138,11 +135,11 @@ public class FragmentGaussSeidel extends Fragment implements TextWatcher, View.O
         try {
             final String[] equations = new String[3];
             final double[] initGuess = new double[3];
-            final double epsilon = Double.valueOf(etEpsilon.getText().toString());
+            final double epsilon = Double.parseDouble(etEpsilon.getText().toString());
 
             for (int i = 0; i < etEqn.length; i++) {
                 equations[i] = etEqn[i].getText().toString();
-                initGuess[i] = Double.valueOf(etx0[i].getText().toString());
+                initGuess[i] = Double.parseDouble(etx0[i].getText().toString());
             }
 
             Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
