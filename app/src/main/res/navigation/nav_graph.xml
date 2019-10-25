@@ -179,7 +179,54 @@
         android:id="@+id/sys_of_eqns_menu"
         android:name="com.foreverrafs.numericals.fragments.FragmentSystemOfEquationsMenu"
         android:label="System of equations menu"
-        tools:layout="@layout/fragment_main_menu" />
+        tools:layout="@layout/fragment_main_menu">
+        <action
+            android:id="@+id/action_sys_of_eqns_menu_to_fragmentJacobi"
+            app:destination="@id/fragmentJacobi"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_sys_of_eqns_menu_to_fragmentGaussianPartial4x4"
+            app:destination="@id/fragmentGaussianPartial4x4"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_sys_of_eqns_menu_to_fragmentGaussianPartial3x3"
+            app:destination="@id/fragmentGaussianPartial3x3"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_sys_of_eqns_menu_to_fragmentGaussSeidelWithSOR"
+            app:destination="@id/fragmentGaussSeidelWithSOR" />
+        <action
+            android:id="@+id/action_sys_of_eqns_menu_to_fragmentGaussianComplete4x4"
+            app:destination="@id/fragmentGaussianComplete4x4"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_sys_of_eqns_menu_to_fragmentGaussianComplete3x3"
+            app:destination="@id/fragmentGaussianComplete3x3"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_sys_of_eqns_menu_to_fragmentGaussSeidel"
+            app:destination="@id/fragmentGaussSeidel"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
     <fragment
         android:id="@+id/show_algorithm"
         android:name="com.foreverrafs.numericals.fragments.FragmentShowAlgorithm"
@@ -244,5 +291,41 @@
         android:name="com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentEuler"
         android:label="Euler's Forward Method"
         tools:layout="@layout/fragment_ode_euler" />
+    <fragment
+        android:id="@+id/fragmentGaussianComplete3x3"
+        android:name="com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete3x3"
+        android:label="fragment_gaussian_complete3x3"
+        tools:layout="@layout/fragment_gaussian_complete3x3" />
+    <fragment
+        android:id="@+id/fragmentGaussianComplete4x4"
+        android:name="com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete4x4"
+        android:label="fragment_gaussian_complete4x4"
+        tools:layout="@layout/fragment_gaussian_complete4x4" />
+    <fragment
+        android:id="@+id/fragmentGaussianPartial3x3"
+        android:name="com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial3x3"
+        android:label="fragment_gaussian_Partial3x3"
+        tools:layout="@layout/fragment_gaussian_partial3x3" />
+
+    <fragment
+        android:id="@+id/fragmentGaussianPartial4x4"
+        android:name="com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial4x4"
+        android:label="fragment_gaussian_Partial4x4"
+        tools:layout="@layout/fragment_gaussian_partial4x4" />
+    <fragment
+        android:id="@+id/fragmentJacobi"
+        android:name="com.foreverrafs.numericals.fragments.sys_of_equations.FragmentJacobi"
+        android:label="fragment_jacobi"
+        tools:layout="@layout/fragment_jacobi" />
+    <fragment
+        android:id="@+id/fragmentGaussSeidel"
+        android:name="com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidel"
+        android:label="fragment_gaussseidel"
+        tools:layout="@layout/fragment_gaussseidel" />
+    <fragment
+        android:id="@+id/fragmentGaussSeidelWithSOR"
+        android:name="com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidelWithSOR"
+        android:label="fragment_gaussseidelsor"
+        tools:layout="@layout/fragment_gaussseidelsor" />
 
 </navigation>

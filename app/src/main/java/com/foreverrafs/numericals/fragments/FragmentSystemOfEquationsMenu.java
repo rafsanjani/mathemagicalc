@@ -10,18 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.OperationsMenuAdapter;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidel;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidelWithSOR;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete3x3;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete4x4;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial3x3;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial4x4;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentJacobi;
 import com.foreverrafs.numericals.model.OperationMenu;
 import com.foreverrafs.numericals.utils.Constants;
 
@@ -40,6 +35,8 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements Operation
     @BindView(R.id.tvHeader)
     TextView header;
 
+    private NavController navController = null;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,6 +48,7 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements Operation
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
+        navController = Navigation.findNavController(view);
         mainMenuItems.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         List<OperationMenu> operations = new ArrayList<>();
@@ -75,37 +73,32 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements Operation
 
     @Override
     public void OnMenuItemClicked(int menuItemType) {
-
-        Fragment fragment = null;
         switch (menuItemType) {
             case Constants.SYS_OF_EQN_GAUSSIAN_PART_3X3:
-                fragment = new FragmentGaussianPartial3x3();
+                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussianPartial3x3);
                 break;
 
             case Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_3X3:
-                fragment = new FragmentGaussianComplete3x3();
+                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussianComplete3x3);
                 break;
 
             case Constants.SYS_OF_EQN_GAUSSIAN_PART_4X4:
-                fragment = new FragmentGaussianPartial4x4();
+                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussianPartial4x4);
                 break;
 
             case Constants.SYS_OF_EQN_JACOBI:
-                fragment = new FragmentJacobi();
+                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentJacobi);
                 break;
 
             case Constants.SYS_OF_EQN_GAUSS_SEIDEL:
-                fragment = new FragmentGaussSeidel();
+                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussSeidel);
                 break;
             case Constants.SYS_OF_EQN_GAUSS_SEIDEL_SOR:
-                fragment = new FragmentGaussSeidelWithSOR();
+                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussSeidelWithSOR);
                 break;
             case Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4:
-                fragment = new FragmentGaussianComplete4x4();
+                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussianComplete4x4);
                 break;
         }
-
-//        if (fragment != null)
-//            Utilities.replaceFragment(fragment, getSupportFragmentManager(), R.id.fragmentContainer);
     }
 }
