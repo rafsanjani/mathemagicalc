@@ -95,8 +95,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnBackToMainMenu:
-                break;
+            case R.id.show_algorithm:
 
             case R.id.btnCalculate:
                 onCalculate();

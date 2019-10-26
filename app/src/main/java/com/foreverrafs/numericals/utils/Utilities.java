@@ -77,7 +77,8 @@ public final class Utilities {
 
     public static double[] toPrimitiveDouble(List<Double> list) {
         double[] intArray = new double[list.size()];
-        for (int i = 0; i < list.size(); i++) intArray[i] = list.get(i);
+        for (int i = 0; i < list.size(); i++)
+            intArray[i] = list.get(i);
         return intArray;
     }
 

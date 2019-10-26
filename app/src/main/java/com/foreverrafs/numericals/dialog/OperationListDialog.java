@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.MethodListAdapter;
+import com.foreverrafs.numericals.fragments.FragmentODEMenu;
 import com.foreverrafs.numericals.fragments.conversions.FragmentBinToDec;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBin;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinFrac;
@@ -24,7 +25,6 @@ import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinInt;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToHexadecimal;
 import com.foreverrafs.numericals.fragments.conversions.FragmentDecToOctal;
 import com.foreverrafs.numericals.fragments.interpolation.FragmentLagrange;
-import com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentOdeMenu;
 import com.foreverrafs.numericals.fragments.roots.FragmentBisection;
 import com.foreverrafs.numericals.fragments.roots.FragmentFalsePosition;
 import com.foreverrafs.numericals.fragments.roots.FragmentNewtonRaphson;
@@ -156,7 +156,7 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
                 fragment = new FragmentJacobi();
                 break;
             case 18:
-                fragment = new FragmentOdeMenu();
+                fragment = new FragmentODEMenu();
                 break;
             case 19:
                 fragment = new FragmentLagrange();

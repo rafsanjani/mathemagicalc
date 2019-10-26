@@ -5,6 +5,8 @@ import android.util.Log;
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
 
+import butterknife.OnClick;
+
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
@@ -25,10 +27,13 @@ public class FragmentDecToBinFrac extends ConversionsBase {
         setMethodName("dectobinfrac");
     }
 
+    @OnClick(R.id.btnShowAlgo)
+    void showAlgo() {
+        parentActivity.showAlgorithm(navController, "dectobinfrac");
+    }
 
     @Override
     protected void onCalculate() {
-
         String decimal = etInput.getText().toString();
         if (decimal.isEmpty()) {
             showErrorMessage("Input cannot be empty", false);

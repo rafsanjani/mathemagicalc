@@ -5,6 +5,8 @@ import android.util.Log;
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
 
+import butterknife.OnClick;
+
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
@@ -21,6 +23,10 @@ public class FragmentDecToBin extends ConversionsBase {
         setMethodName("dectobin");
     }
 
+    @OnClick(R.id.btnShowAlgo)
+    void showAlgo() {
+        parentActivity.showAlgorithm(navController, "dectobin");
+    }
 
 
     @Override

@@ -17,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.foreverrafs.numericals.BuildConfig;
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.fragments.FragmentShowAlgorithm;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import butterknife.BindView;
@@ -50,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         sheetBehavior = BottomSheetBehavior.from(bottomSheet);
         tvVersion.setText(getString(R.string.version, BuildConfig.VERSION_NAME));
         enableStrictMode();
-
     }
 
     public void toggleBottomSheet() {
@@ -70,6 +70,15 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         controller.navigate(R.id.fragment_main_menu, null, navOptions, null);
+    }
+
+    public void showAlgorithm(NavController navController, String methodName) {
+        NavOptions navOptions = new NavOptions.Builder()
+                .build();
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FragmentShowAlgorithm.EXTRA_METHOD_NAME, methodName);
+        navController.navigate(R.id.show_algorithm, bundle, navOptions, null);
     }
 
     @Override

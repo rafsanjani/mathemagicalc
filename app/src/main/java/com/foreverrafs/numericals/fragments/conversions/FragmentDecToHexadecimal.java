@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
+
+import butterknife.OnClick;
 //import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 /**
@@ -21,7 +23,11 @@ public class FragmentDecToHexadecimal extends ConversionsBase {
         setDescription(getString(R.string.decimal_to_hexadecimal_desc));
         setInputHint(getString(R.string.decimal_int_input_hint));
         setMethodName("dectohexa");
+    }
 
+    @OnClick(R.id.btnShowAlgo)
+    void showAlgo() {
+        parentActivity.showAlgorithm(navController, "dectohexa");
     }
 
     @Override

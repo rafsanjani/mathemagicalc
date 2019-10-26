@@ -49,6 +49,8 @@ public class FragmentLagrange extends Fragment {
     @BindView(R.id.tvUnknownY)
     TextView tvUnknownY;
 
+    private TextWatcher mWatcher = null;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,7 +62,7 @@ public class FragmentLagrange extends Fragment {
     }
 
     public void initControls() {
-        etKnownX.addTextChangedListener(new TextWatcher() {
+        mWatcher = new TextWatcher() {
             boolean textChanged = false;
 
             @Override
@@ -83,8 +85,11 @@ public class FragmentLagrange extends Fragment {
                     textChanged = false;
                 }
             }
-        });
+        };
+
+        etKnownX.addTextChangedListener(mWatcher);
     }
+
 
     @OnClick(R.id.btnBackToMainMenu)
     void onBackButton(Button button) {
@@ -108,9 +113,9 @@ public class FragmentLagrange extends Fragment {
         for (int x = 0; x < length; x++) {
             if (tableRowX.getChildAt(x) instanceof EditText) {
                 try {
-                    double value = Double.valueOf(((EditText) tableRowX.getChildAt(x)).getText().toString());
+                    double value = Double.parseDouble(((EditText) tableRowX.getChildAt(x)).getText().toString());
                     listOfX.add(value);
-                } catch (NumberFormatException exception) {
+                } catch (NumberFormatException ignored) {
 
                 }
             }
@@ -119,9 +124,9 @@ public class FragmentLagrange extends Fragment {
         for (int y = 0; y < length; y++) {
             if (tableRowY.getChildAt(y) instanceof EditText) {
                 try {
-                    double value = Double.valueOf(((EditText) tableRowY.getChildAt(y)).getText().toString());
+                    double value = Double.parseDouble(((EditText) tableRowY.getChildAt(y)).getText().toString());
                     listOfY.add(value);
-                } catch (NumberFormatException exception) {
+                } catch (NumberFormatException ignored) {
 
                 }
             }
@@ -132,6 +137,4 @@ public class FragmentLagrange extends Fragment {
 
         tvUnknownY.setText(String.valueOf(answer));
     }
-
-
 }

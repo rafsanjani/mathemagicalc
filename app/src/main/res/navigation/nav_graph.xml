@@ -231,7 +231,9 @@
         android:id="@+id/show_algorithm"
         android:name="com.foreverrafs.numericals.fragments.FragmentShowAlgorithm"
         android:label="fragment_show_algorithm"
-        tools:layout="@layout/fragment_show_algorithm" />
+        tools:layout="@layout/fragment_show_algorithm">
+
+    </fragment>
     <fragment
         android:id="@+id/dec_to_bin_fraction"
         android:name="com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinFrac"

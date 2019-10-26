@@ -6,6 +6,8 @@ import com.foreverrafs.core.Numericals;
 import com.foreverrafs.core.exceptions.NotABinaryException;
 import com.foreverrafs.numericals.R;
 
+import butterknife.OnClick;
+
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
@@ -21,6 +23,11 @@ public class FragmentBinToDec extends ConversionsBase {
         setDescription(getString(R.string.bin_to_dec_desc));
         setInputHint(getString(R.string.binary_input_hint));
         setMethodName("bintodec");
+    }
+
+    @OnClick(R.id.btnShowAlgo)
+    void showAlgo() {
+        parentActivity.showAlgorithm(navController, "bintodec");
     }
 
     @Override

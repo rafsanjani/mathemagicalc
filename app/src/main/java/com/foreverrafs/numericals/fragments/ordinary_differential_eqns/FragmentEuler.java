@@ -86,11 +86,11 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 tilEquation.setErrorEnabled(false);
-                // tilEquation.setErrorEnabled(false);
                 tilH.setErrorEnabled(false);
                 tilX0.setErrorEnabled(false);
                 tilX1.setErrorEnabled(false);
                 tilInitY.setErrorEnabled(false);
+
                 if (keyEvent.getAction() != KeyEvent.ACTION_DOWN)
                     return false;
 
@@ -106,16 +106,13 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
         etInitY.setOnKeyListener(myKeyListener);
         etEquation.setOnKeyListener(myKeyListener);
 
-
         btnCalculate.setOnClickListener(this);
         btnBack.setOnClickListener(this);
         btnShowAlgorithm.setOnClickListener(this);
 
         etEquation.addTextChangedListener(this);
 
-
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-        //("Location of Roots", "Bisection Method");
     }
 
     @Override

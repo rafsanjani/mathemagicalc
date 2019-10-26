@@ -45,7 +45,9 @@ public abstract class ConversionsBase extends Fragment {
     TextView tvAnswer;
 
     private String methodName;
-    protected NavController navController = null;
+
+    protected MainActivity parentActivity;
+    protected NavController navController;
 
     @Nullable
     @Override
@@ -57,8 +59,10 @@ public abstract class ConversionsBase extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        navController = Navigation.findNavController(view);
         initControls();
+        navController = Navigation.findNavController(view);
+        if (getActivity() != null)
+            parentActivity = (MainActivity) getActivity();
     }
 
     protected void setHeader(String header) {
@@ -87,9 +91,6 @@ public abstract class ConversionsBase extends Fragment {
         inputLayout.setErrorEnabled(false);
     }
 
-    private String getMethodName() {
-        return methodName;
-    }
 
     void setMethodName(String value) {
         methodName = value;
@@ -97,11 +98,6 @@ public abstract class ConversionsBase extends Fragment {
 
     void setInputHint(String hint) {
         inputLayout.setHint(hint);
-    }
-
-    @OnClick(R.id.btnShowAlgo)
-    void onShowAlgorithm() {
-        Utilities.showAlgorithmScreen(getContext(), getMethodName());
     }
 
     @OnClick(R.id.btnCalculate)
