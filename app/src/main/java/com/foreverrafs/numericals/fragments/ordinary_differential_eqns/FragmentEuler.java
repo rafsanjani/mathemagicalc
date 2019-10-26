@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.core.OdeResult;
@@ -115,6 +116,7 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
         viewGroup = (LinearLayout) rootView.findViewById(R.id.parentContainer);
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         //lets initialize all our views, shall we?
@@ -136,7 +138,8 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
                 onCalculate(btn.getText().toString());
                 break;
             case R.id.btnShowAlgo:
-                Utilities.showAlgorithmScreen(getContext(), "euler");
+                if (getActivity() != null)
+                    ((MainActivity) getActivity()).showAlgorithm(Navigation.findNavController(view), "euler");
                 break;
 
         }
