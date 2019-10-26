@@ -94,12 +94,7 @@ public class FragmentFalsePosition extends FragmentRootBase implements TextWatch
 
     @OnClick(R.id.btnShowAlgo)
     void onShowAlgorithmClicked() {
-        onShowAlgorithm();
-    }
-
-
-    private void onShowAlgorithm() {
-        Utilities.showAlgorithmScreen(getContext(), "falseposition");
+        showAlgorithm("falseposition");
     }
 
     protected void onCalculate(@NonNull final String buttonText) {

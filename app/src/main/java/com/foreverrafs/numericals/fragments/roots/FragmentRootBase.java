@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.foreverrafs.core.LocationOfRootResult;
 import com.foreverrafs.numericals.R;
@@ -64,6 +66,12 @@ public abstract class FragmentRootBase extends Fragment {
         for (TextInputLayout inputLayout : inputLayouts) {
             inputLayout.getEditText().setOnKeyListener(myKeyListener);
         }
+    }
+
+    protected void showAlgorithm(String functionName) {
+        NavController navController = Navigation.findNavController(rootView);
+        if (getActivity() != null)
+            ((MainActivity) getActivity()).showAlgorithm(navController, functionName);
     }
 
     @OnClick(R.id.btnBackToMainMenu)

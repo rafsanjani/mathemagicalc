@@ -100,12 +100,7 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
 
     @OnClick(R.id.btnShowAlgo)
     void onShowAlgoClicked() {
-        onShowAlgorithm();
-    }
-
-
-    private void onShowAlgorithm() {
-        Utilities.showAlgorithmScreen(getContext(), "newtonraphson");
+        showAlgorithm("newtonraphson");
     }
 
     protected void onCalculate(@NonNull final String buttonText) {
