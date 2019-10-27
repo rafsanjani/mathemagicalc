@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -72,16 +73,17 @@ public class FragmentMainMenu extends Fragment {
         mainMenuItems.setAdapter(adapter);
 
         adapter.setOnItemClickListenener(menuItemType -> {
+            NavDirections directions = null;
             switch (menuItemType) {
                 case Constants.MENU_NUMBER_CONVERSION:
-                    navController.navigate(R.id.action_fragmentMainMenu_to_fragmentConversionMenu);
+                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentConversionMenu();
                     break;
 
                 case Constants.MENU_LOCATION_OF_ROOTS:
-                    navController.navigate(R.id.action_fragmentMainMenu_to_fragmentLocationOfRootsMenu);
+                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentLocationOfRootsMenu();
                     break;
                 case Constants.MENU_ALGORITHMS:
-                    navController.navigate(R.id.action_fragmentMainMenu_to_fragmentShowAlgorithm);
+                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentShowAlgorithm();
                     break;
 
                 case Constants.MENU_ABOUT:
@@ -90,17 +92,20 @@ public class FragmentMainMenu extends Fragment {
                     return;
 
                 case Constants.MENU_ODE:
-                    navController.navigate(R.id.action_fragmentMainMenu_to_fragmentODEMenu);
+                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentODEMenu();
                     break;
 
                 case Constants.MENU_SYSTEM_OF_EQUATIONS:
-                    navController.navigate(R.id.action_fragmentMainMenu_to_fragmentSysOfEquationsMenu);
+                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentSysOfEquationsMenu();
                     break;
 
                 case Constants.MENU_INTERPOLATION:
-                    navController.navigate(R.id.action_fragmentMainMenu_to_fragmentInterpolationMenu);
+                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentInterpolationMenu();
                     break;
             }
+
+            if (directions != null)
+                navController.navigate(directions);
         });
     }
 }

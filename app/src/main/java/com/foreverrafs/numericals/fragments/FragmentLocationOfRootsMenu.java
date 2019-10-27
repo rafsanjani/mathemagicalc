@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -70,20 +71,23 @@ public class FragmentLocationOfRootsMenu extends Fragment {
         mainMenuItems.setAdapter(adapter);
 
         adapter.setOnItemClickListenener(menuItemType -> {
+            NavDirections directions = null;
             switch (menuItemType) {
                 case Constants.LOCATION_OF_ROOTS_BISECTION:
-                    navController.navigate(R.id.action_location_of_roots_menu_to_fragmentBisection);
+                    directions = FragmentLocationOfRootsMenuDirections.actionLocationOfRootsMenuToFragmentBisection();
                     break;
                 case Constants.LOCATION_OF_ROOTS_NEWTON_RAPHSON:
-                    navController.navigate(R.id.action_location_of_roots_menu_to_fragmentNewtonRaphson);
+                    directions = FragmentLocationOfRootsMenuDirections.actionLocationOfRootsMenuToFragmentNewtonRaphson();
                     break;
                 case Constants.LOCATION_OF_ROOTS_FALSE_POSITION:
-                    navController.navigate(R.id.action_location_of_roots_menu_to_fragmentFalsePosition);
+                    directions = FragmentLocationOfRootsMenuDirections.actionLocationOfRootsMenuToFragmentFalsePosition();
                     break;
                 case Constants.LOCATION_OF_ROOTS_SECANT:
-                    navController.navigate(R.id.action_location_of_roots_menu_to_fragmentSecante);
+                    directions = FragmentLocationOfRootsMenuDirections.actionLocationOfRootsMenuToFragmentSecante();
                     break;
             }
+            if (directions != null)
+                navController.navigate(directions);
         });
     }
 

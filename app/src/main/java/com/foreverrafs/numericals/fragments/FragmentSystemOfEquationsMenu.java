@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -73,32 +74,36 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements Operation
 
     @Override
     public void OnMenuItemClicked(int menuItemType) {
+        NavDirections navDirections = null;
         switch (menuItemType) {
             case Constants.SYS_OF_EQN_GAUSSIAN_PART_3X3:
-                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussianPartial3x3);
+                navDirections = FragmentSystemOfEquationsMenuDirections.actionSysOfEqnsMenuToFragmentGaussianPartial3x3();
                 break;
 
             case Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_3X3:
-                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussianComplete3x3);
+                navDirections = FragmentSystemOfEquationsMenuDirections.actionSysOfEqnsMenuToFragmentGaussianComplete3x3();
                 break;
 
             case Constants.SYS_OF_EQN_GAUSSIAN_PART_4X4:
-                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussianPartial4x4);
+                navDirections = FragmentSystemOfEquationsMenuDirections.actionSysOfEqnsMenuToFragmentGaussianPartial4x4();
                 break;
 
             case Constants.SYS_OF_EQN_JACOBI:
-                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentJacobi);
+                navDirections = FragmentSystemOfEquationsMenuDirections.actionSysOfEqnsMenuToFragmentJacobi();
                 break;
 
             case Constants.SYS_OF_EQN_GAUSS_SEIDEL:
-                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussSeidel);
+                navDirections = FragmentSystemOfEquationsMenuDirections.actionSysOfEqnsMenuToFragmentGaussSeidel();
                 break;
             case Constants.SYS_OF_EQN_GAUSS_SEIDEL_SOR:
-                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussSeidelWithSOR);
+                navDirections = FragmentSystemOfEquationsMenuDirections.actionSysOfEqnsMenuToFragmentGaussSeidelWithSOR();
                 break;
             case Constants.SYS_OF_EQN_GAUSSIAN_COMPLETE_4X4:
-                navController.navigate(R.id.action_sys_of_eqns_menu_to_fragmentGaussianComplete4x4);
+                navDirections = FragmentSystemOfEquationsMenuDirections.actionSysOfEqnsMenuToFragmentGaussianComplete4x4();
                 break;
         }
+        if (navDirections != null)
+            navController.navigate(navDirections);
+
     }
 }

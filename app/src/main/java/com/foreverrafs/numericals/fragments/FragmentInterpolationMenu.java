@@ -68,7 +68,7 @@ public class FragmentInterpolationMenu extends Fragment implements OperationsMen
     @Override
     public void OnMenuItemClicked(int menuItemType) {
         if (menuItemType == Constants.INTERPOLATION_LAGRANGE) {
-            navController.navigate(R.id.action_interpolation_menu_to_fragmentLagrange);
+            navController.navigate(FragmentInterpolationMenuDirections.actionInterpolationMenuToFragmentLagrange());
         }
     }
 }

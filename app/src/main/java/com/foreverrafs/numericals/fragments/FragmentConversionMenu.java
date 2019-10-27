@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -74,33 +75,37 @@ public class FragmentConversionMenu extends Fragment implements OperationsMenuAd
 
     @Override
     public void OnMenuItemClicked(int menuItemType) {
+        NavDirections directions = null;
         switch (menuItemType) {
             case Constants.CONVERSION_DEC_TO_BIN_FRACTION:
+                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentBinToDec();
                 navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentDecToBinFrac);
                 break;
 
             case Constants.CONVERSION_DEC_TO_BIN_INT:
-                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentDecToBinInt);
+                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentDecToBinInt();
                 break;
 
             case Constants.CONVERSION_DEC_TO_BIN_ALL:
-                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentDecToBin);
+                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentDecToBin();
                 break;
 
             case Constants.CONVERSION_ALL_IN_ONE:
-                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentAllInOne);
+                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentAllInOne();
                 break;
 
             case Constants.CONVERSION_DEC_TO_HEXA:
-                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentDecToHexadecimal);
+                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentDecToHexadecimal();
                 break;
 
             case Constants.CONVERSION_DEC_TO_OCTAL:
-                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentDecToOctal);
+                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentDecToOctal();
                 break;
             case Constants.CONVERSION_BIN_TO_DEC:
-                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentBinToDec);
+                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentBinToDec();
                 break;
         }
+        if (directions != null)
+            navController.navigate(directions);
     }
 }

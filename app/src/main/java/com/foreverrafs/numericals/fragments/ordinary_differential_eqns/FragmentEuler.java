@@ -141,7 +141,6 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
                 if (getActivity() != null)
                     ((MainActivity) getActivity()).showAlgorithm(Navigation.findNavController(view), "euler");
                 break;
-
         }
     }
 

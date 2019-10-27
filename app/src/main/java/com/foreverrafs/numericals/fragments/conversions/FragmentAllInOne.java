@@ -81,6 +81,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
             return false;
         });
 
+
         etInput.addTextChangedListener(this);
 
         btnBack.setOnClickListener(this);
