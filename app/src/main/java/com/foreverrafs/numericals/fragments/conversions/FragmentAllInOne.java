@@ -19,19 +19,20 @@ import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.utils.Utilities;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentAllInOne extends Fragment implements View.OnClickListener, TextWatcher {
+public class FragmentAllInOne extends Fragment implements TextWatcher {
     private static final String TAG = "FragmentAllInOne";
 
     @BindView(R.id.layout_answer_area)
@@ -81,11 +82,7 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
             return false;
         });
 
-
         etInput.addTextChangedListener(this);
-
-        btnBack.setOnClickListener(this);
-        btnCalculate.setOnClickListener(this);
     }
 
     @Override
@@ -93,22 +90,15 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
         super.onActivityCreated(savedInstanceState);
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.show_algorithm:
-
-            case R.id.btnCalculate:
-                onCalculate();
-                break;
-        }
+    @OnClick(R.id.btnBackToMainMenu)
+    void onBackToMainMenu(Button button) {
+        ((MainActivity) getActivity()).goToMainMenu(button);
     }
 
-    private void onCalculate() {
-        TextInputEditText etInput = rootView.findViewById(R.id.text_user_input);
+    @OnClick(R.id.btnCalculate)
+    void onCalculate() {
         String binary, octal, hexadecimal;
-
-        String decimal = etInput.getText().toString();
+        String decimal = tilUserInput.getEditText().getText().toString();
         if (decimal.isEmpty()) {
             tilUserInput.setError("Input field is empty");
             return;
@@ -132,7 +122,6 @@ public class FragmentAllInOne extends Fragment implements View.OnClickListener, 
 
             Utilities.animateAnswer(layoutAnswerArea,
                     rootView, Utilities.DisplayMode.SHOW);
-
 
         } catch (NumberFormatException ex) {
             Log.e(TAG, "cannot parse " + decimal + " to an integer value");
