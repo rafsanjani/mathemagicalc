@@ -78,8 +78,7 @@ public class FragmentConversionMenu extends Fragment implements OperationsMenuAd
         NavDirections directions = null;
         switch (menuItemType) {
             case Constants.CONVERSION_DEC_TO_BIN_FRACTION:
-                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentBinToDec();
-                navController.navigate(R.id.action_fragmentConversionMenu_to_fragmentDecToBinFrac);
+                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentDecToBinFrac();
                 break;
 
             case Constants.CONVERSION_DEC_TO_BIN_INT:
