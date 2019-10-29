@@ -219,7 +219,7 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
         //are we displaying all answers or just the last iteration
         if (buttonText.equals(getResources().getString(R.string.calculate))) {
             try {
-                roots = Numericals.bisectAll(eqn, x0, x1, iter, tol);
+                roots = Numericals.bisect(eqn, x0, x1, iter, tol);
             } catch (Exception ex) {
                 tilEquation.setErrorEnabled(true);
                 tilEquation.setError(ex.getMessage());

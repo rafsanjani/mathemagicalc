@@ -134,7 +134,7 @@ public final class Numericals {
      * @return double
      */
 
-    public static List<LocationOfRootResult> bisectAll(String expr, double x1, double x2, int iterations, double tol) throws InvalidEquationException {
+    public static List<LocationOfRootResult> bisect(String expr, double x1, double x2, int iterations, double tol) throws InvalidEquationException {
         List<LocationOfRootResult> roots = new ArrayList<>();
 
         while (iterations > 0) {

@@ -1,6 +1,6 @@
 package com.example.core;
 
-/**
+/*
  * Created by Aziz Rafsanjani on 10/21/2017.
  */
 
@@ -15,6 +15,7 @@ import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
 
 public class NumericalsTest {
     private static void printMatrix(double[][] matrix) {
@@ -43,7 +44,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void testIterationsWithtolerance() {
+    public void getIterationsWithTolerance() {
         double x1 = -2;
         double x2 = -1;
         double tol = 0.0039;
@@ -55,7 +56,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void testToleranceWithIterations() {
+    public void getToleranceWithIterations() {
         double x1 = -2;
         double x2 = -1;
         int iterations = 8;
@@ -63,43 +64,36 @@ public class NumericalsTest {
         double tolerance = Numericals.getBisectionTolerance(iterations, x1, x2);
 
         assertEquals(tolerance, 0.00390625);
-
     }
 
     @Test
-    public void testbintodecnew() {
-        String bin = "1010.101";
-        System.out.println(Numericals.binaryToDecimal(bin));
-    }
-
-    @Test
-    public void testDecimalIntToBinaryWith10() {
+    public void binaryToDecimal() {
         assertEquals("1010", Numericals.decimalIntToBinary(10));
-
     }
 
     @Test
-    public void testGenerateTexEquation() {
+    public void generateTexEquation() {
         String tex = Numericals.generateTexEquation("f(x) = 3*x^2 - 2");
-        System.out.println(tex);
+        String texFormatted = "$$f(x) = 3x^2 - 2$$";
+        assertEquals(texFormatted, tex);
     }
 
     @Test
-    public void testBisectionShouldPass() {
+    public void Bisection() {
         String expr = "x^5 + x^3 + 3x";
         double x1 = -2;
         double x2 = -1;
         int iterations = 1;
         double tolerance = 0.005;
-        //double y = Numericals.Bisect(expr, x1, x2, iterations, tolerance);
-        List<LocationOfRootResult> results = Numericals.bisectAll(expr, x1, x2, iterations, tolerance);
+
+        List<LocationOfRootResult> results = Numericals.bisect(expr, x1, x2, iterations, tolerance);
         double root = results.get(results.size() - 1).getX3();
         //assertEquals(y, root);
     }
 
     @Test
     public void testBisectionAllShouldPass() {
-        List<LocationOfRootResult> longBisection = Numericals.bisectAll("x^5 + x^3 + 3*x", -2, -1, 4, 0.005);
+        List<LocationOfRootResult> longBisection = Numericals.bisect("x^5 + x^3 + 3*x", -2, -1, 4, 0.005);
         assertEquals(-1.0625, longBisection.get(3).getX3());
     }
 
@@ -114,13 +108,15 @@ public class NumericalsTest {
     public void testNewtonRaphsonAll() {
         String eqn = "x^5 + x^3+3";
         List<LocationOfRootResult> results = Numericals.newtonRaphsonAll(eqn, -1, 20);
-        for (LocationOfRootResult x : results) {
-            System.out.println(x.getX1());
-        }
+        double firstRoot = -1.1052985460061695;
+
+        assertTrue(results.size() > 0);
+        assertEquals(firstRoot, results.get(results.size() - 1).getX1());
     }
 
     @Test
-    public void testGaussianComplete() {
+    public void GaussianComplete() {
+        //Note: final answer to this system is {-0.5, 0.5, 0.5}
         double[][] A = {
                 {1, -2, -3},
                 {3, 5, 2},
@@ -129,16 +125,16 @@ public class NumericalsTest {
 
         double[] B = {0, 0, -1};
 
-        //Note: final answer to this system is {-0.5, 0.5, 0.5}
+        double[] expected = {-0.5, 0.5, 0.5};
 
         double[] sol = Numericals.gaussianWithCompletePivoting(A, B);
 
-
-        printMatrix(sol);
+        assertArrayEquals(expected, sol, 0.1);
     }
 
     @Test
     public void testGaussianWithPartialPivoting() {
+        //Note: final answer to this system is {0.5, -0.5, 0.5}
         double[][] A = {
                 {1, -2, -3},
                 {3, 5, 2},
@@ -147,24 +143,10 @@ public class NumericalsTest {
 
         double[] B = {0, 0, -1};
 
-        //Note: final answer to this system is {0.5, -0.5, 0.5}
-
+        double[] expected = {0.5, -0.5, 0.5};
         double[] sol = Numericals.gaussianWithPartialPivoting(A, B);
 
-    }
-
-    @Test
-    public void testKillRowsBeneath() {
-        double[][] A = {
-                {1, -2, -3},
-                {3, 5, 2},
-                {2, 3, -1}
-        };
-
-        double[] B = {0, 0, -1};
-
-
-        printMatrix(A);
+        assertArrayEquals(expected, sol, 0.1);
     }
 
     @Test
@@ -176,20 +158,17 @@ public class NumericalsTest {
                 {4, 11, 17, 16}
         };
 
-
         // double[] solution = {-14.48, 19.56, 34.12, -5.68};
 
         double[] B = {31, 17, 22, 51};
 
-
         double[] iSolution = Numericals.gaussianWithCompletePivoting(A, B);
         //note solution to the above big matrix is {59.5, -67.5, 87,-55, -20.5}
         printMatrix(A);
-
     }
 
     @Test
-    public void testGaussianComplete4x4Matrix() {
+    public void gaussianComplete4x4Matrix() {
         double[][] A = {
                 {1, -4, 4, 7},
                 {0, 2, -1, 0},
@@ -197,15 +176,17 @@ public class NumericalsTest {
                 {2, -3, 2, -5}
         };
 
-
-        double[] solution = {-14.48, 19.56, 34.12, -5.68};
+        double[] expected = {-14.48, 19.56, 34.12, -5.68};
 
         double[] B = {4, 5, 2, 9};
 
-        //double sol[] = Numericals.lsolve(A, B);
+        double[] sol = Numericals.gaussianWithCompletePivoting(A, B);
+
+        assertArrayEquals(expected, sol, 0.001);
+
 
         //ANOTHER EXAMPLE
-        double[][] AA = {
+        double[][] A2 = {
                 {1, 2, 4, 3, 5},
                 {3, 5, 3, 1, 2},
                 {1, 4, 4, 2, 1},
@@ -213,39 +194,34 @@ public class NumericalsTest {
                 {5, 2, 1, 4, 1}
         };
 
-        double[] BB = {5, 6, 7, 8, 9};
+        double[] B2 = {5, 6, 7, 8, 9};
+        double[] expected2 = {59.5, -67.5, 87, -55, -20.5};
 
-        double[] iSolution = Numericals.gaussianWithCompletePivoting(AA, BB);
+
+        double[] sol2 = Numericals.gaussianWithCompletePivoting(A2, B2);
         //note solution to the above big matrix is {59.5, -67.5, 87,-55, -20.5}
-        printMatrix(iSolution);
+        assertArrayEquals(expected2, sol2, 0.001);
 
     }
 
     @Test
     //This test should pass
-    public void testMultiplicationOfMatrixPass() {
+    public void multiplyMatrices() {
         double[][] A = {
                 {4, 3, 5},
                 {4, 1, 2},
                 {5, 6, 8}
         };
-
         double[] B = {2, 3, 5};
 
         double[] solution = Numericals.multiplyMatrix(A, B);
         double[] expected = {42, 21, 68};
 
-        int valid = 0;
-        for (int a = 0; a < solution.length; a++) {
-            if (solution[a] == expected[a]) {
-                valid++;
-            }
-        }
-        assertEquals(valid, solution.length);
+        assertArrayEquals(expected, solution, 0.001);
     }
 
     @Test
-    public void testMultiplicationofMatrix() {
+    public void multiply() {
         double[][] A = {
                 {0, 1, 0},
                 {1, 0, 0},
@@ -266,7 +242,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void testJacobi() {
+    public void jacobi() {
         String[] system = {
                 "(1/2)*(x2+1)",
                 "(1/3)*(x1+x3+8)",
@@ -281,7 +257,6 @@ public class NumericalsTest {
     public void testRegulaFalsi() {
         String eqn = "f(x)=x^5 + x^3+3";
         double y = Numericals.falsePosition(eqn, -2, -1, 100, 0);
-
     }
 
     @Test
@@ -296,7 +271,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void testSecanteAllShouldPass() {
+    public void secante() {
         String eqn = "x^3 + x^3 + 3";
         List<LocationOfRootResult> result = Numericals.secanteAll(eqn, 1.0, -1.0, 800);
         System.out.println("X1      X2        X3      DIFFERENCE");
@@ -325,7 +300,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void EulerForwardMethodTest() {
+    public void lagrangeForwardInterpolation() {
         String eqn = "x-y^2";
         double yo = 0;
         double height = 0.2;
@@ -333,9 +308,7 @@ public class NumericalsTest {
 
         List<OdeResult> results = Numericals.solveOdeByEulersMethod(eqn, height, interval, yo);
 
-
         assertEquals(0.23681533952, results.get(4).getY());
-
     }
 
     @Test
