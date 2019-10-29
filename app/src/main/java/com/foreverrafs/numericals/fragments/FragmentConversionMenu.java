@@ -78,32 +78,34 @@ public class FragmentConversionMenu extends Fragment implements OperationsMenuAd
         NavDirections directions = null;
         switch (menuItemType) {
             case Constants.CONVERSION_DEC_TO_BIN_FRACTION:
-                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentDecToBinFrac();
+                directions = FragmentConversionMenuDirections.fragmentDecToBinFrac();
                 break;
 
             case Constants.CONVERSION_DEC_TO_BIN_INT:
-                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentDecToBinInt();
+                directions = FragmentConversionMenuDirections.fragmentDecToBinInt();
                 break;
 
             case Constants.CONVERSION_DEC_TO_BIN_ALL:
-                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentDecToBin();
+                directions = FragmentConversionMenuDirections.fragmentDecToBin();
                 break;
 
             case Constants.CONVERSION_ALL_IN_ONE:
-                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentAllInOne();
+                directions = FragmentConversionMenuDirections.fragmentAllInOne();
                 break;
 
             case Constants.CONVERSION_DEC_TO_HEXA:
-                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentDecToHexadecimal();
+                directions = FragmentConversionMenuDirections.fragmentDecToHexadecimal();
                 break;
 
             case Constants.CONVERSION_DEC_TO_OCTAL:
-                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentDecToOctal();
+                directions = FragmentConversionMenuDirections.fragmentDecToOctal();
                 break;
+
             case Constants.CONVERSION_BIN_TO_DEC:
-                directions = FragmentConversionMenuDirections.actionFragmentConversionMenuToFragmentBinToDec();
+                directions = FragmentConversionMenuDirections.fragmentBinToDec();
                 break;
         }
+
         if (directions != null)
             navController.navigate(directions);
     }

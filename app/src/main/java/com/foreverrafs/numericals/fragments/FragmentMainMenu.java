@@ -76,14 +76,15 @@ public class FragmentMainMenu extends Fragment {
             NavDirections directions = null;
             switch (menuItemType) {
                 case Constants.MENU_NUMBER_CONVERSION:
-                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentConversionMenu();
+                    directions = FragmentMainMenuDirections.fragmentConversionMenu();
                     break;
 
                 case Constants.MENU_LOCATION_OF_ROOTS:
-                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentLocationOfRootsMenu();
+                    directions = FragmentMainMenuDirections.fragmentLocationOfRootsMenu();
                     break;
+
                 case Constants.MENU_ALGORITHMS:
-                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentShowAlgorithm();
+                    directions = FragmentMainMenuDirections.fragmentShowAlgorithm();
                     break;
 
                 case Constants.MENU_ABOUT:
@@ -92,15 +93,15 @@ public class FragmentMainMenu extends Fragment {
                     return;
 
                 case Constants.MENU_ODE:
-                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentODEMenu();
+                    directions = FragmentMainMenuDirections.fragmentODEMenu();
                     break;
 
                 case Constants.MENU_SYSTEM_OF_EQUATIONS:
-                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentSysOfEquationsMenu();
+                    directions = FragmentMainMenuDirections.fragmentSysOfEquationsMenu();
                     break;
 
                 case Constants.MENU_INTERPOLATION:
-                    directions = FragmentMainMenuDirections.actionFragmentMainMenuToFragmentInterpolationMenu();
+                    directions = FragmentMainMenuDirections.fragmentInterpolationMenu();
                     break;
             }
 

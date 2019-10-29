@@ -10,42 +10,42 @@
         android:label="Main Menu Fragment"
         tools:layout="@layout/fragment_main_menu">
         <action
-            android:id="@+id/action_fragmentMainMenu_to_fragmentConversionMenu"
+            android:id="@+id/fragmentConversionMenu"
             app:destination="@id/conversion_menu"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentMainMenu_to_fragmentInterpolationMenu"
+            android:id="@+id/fragmentInterpolationMenu"
             app:destination="@id/interpolation_menu"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentMainMenu_to_fragmentLocationOfRootsMenu"
+            android:id="@+id/fragmentLocationOfRootsMenu"
             app:destination="@id/location_of_roots_menu"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentMainMenu_to_fragmentODEMenu"
+            android:id="@+id/fragmentODEMenu"
             app:destination="@id/ode_menu"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentMainMenu_to_fragmentSysOfEquationsMenu"
+            android:id="@+id/fragmentSysOfEquationsMenu"
             app:destination="@id/sys_of_eqns_menu"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentMainMenu_to_fragmentShowAlgorithm"
+            android:id="@+id/fragmentShowAlgorithm"
             app:destination="@id/show_algorithm"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -62,55 +62,54 @@
         app:popExitAnim="@anim/slide_out_right"
         tools:layout="@layout/fragment_main_menu">
         <action
-            android:id="@+id/action_fragmentConversionMenu_to_fragmentDecToBinFrac"
+            android:id="@+id/fragmentDecToBinFrac"
             app:destination="@id/dec_to_bin_fraction"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentConversionMenu_to_fragmentDecToBin"
+            android:id="@+id/fragmentDecToBin"
             app:destination="@id/dec_to_bin"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentConversionMenu_to_fragmentDecToBinInt"
+            android:id="@+id/fragmentDecToBinInt"
             app:destination="@id/dec_to_bin_int"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentConversionMenu_to_fragmentBinToDec"
+            android:id="@+id/fragmentBinToDec"
             app:destination="@id/bin_to_dec"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentConversionMenu_to_fragmentDecToHexadecimal"
+            android:id="@+id/fragmentDecToHexadecimal"
             app:destination="@id/dec_to_hexadecimal"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentConversionMenu_to_fragmentDecToOctal"
+            android:id="@+id/fragmentDecToOctal"
             app:destination="@id/dec_to_octal"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_fragmentConversionMenu_to_fragmentAllInOne"
+            android:id="@+id/fragmentAllInOne"
             app:destination="@id/conversion_all_in_one"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-
     </fragment>
 
     <fragment
