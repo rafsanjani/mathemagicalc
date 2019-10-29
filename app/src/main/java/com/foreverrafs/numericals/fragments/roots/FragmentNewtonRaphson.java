@@ -72,15 +72,6 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
         etIterations = tilIterations.getEditText();
         etX0 = tilX0.getEditText();
 
-
-        Bundle newtonRaphsonArgs = getArguments();
-
-        if (newtonRaphsonArgs != null) {
-            etEquation.setText(newtonRaphsonArgs.getString("equation"));
-            etX0.setText(String.valueOf(newtonRaphsonArgs.getDouble("x0")));
-            etIterations.setText(String.valueOf(newtonRaphsonArgs.getInt("iterations")));
-        }
-
         registerOnKeyListener(tilIterations, tilEquation, tilX0);
 
         etEquation.addTextChangedListener(this);

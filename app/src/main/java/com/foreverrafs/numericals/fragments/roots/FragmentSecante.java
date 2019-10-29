@@ -63,20 +63,7 @@ public class FragmentSecante extends FragmentRootBase implements TextWatcher {
 
 
     public void initControls() {
-        //initialize EditTexts
-        Bundle secanteArgs = getArguments();
-
-        if (secanteArgs != null) {
-            tilEquation.getEditText().setText(secanteArgs.getString("equation"));
-            tilX0.getEditText().setText(String.valueOf(secanteArgs.getDouble("x0")));
-            tilX1.getEditText().setText(String.valueOf(secanteArgs.getDouble("x1")));
-
-            tilIterations.getEditText().setText(String.valueOf(secanteArgs.getInt("iterations")));
-        }
-
         registerOnKeyListener(tilEquation, tilIterations, tilX0, tilX1);
-
-
         tilEquation.getEditText().addTextChangedListener(this);
 
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);

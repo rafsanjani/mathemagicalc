@@ -894,7 +894,6 @@ public final class Numericals {
             return "";
         }
 
-
         StringBuilder str = new StringBuilder(equation.replace("*", "").trim());
         str.insert(0, "$$");
         str.append("$$");

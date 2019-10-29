@@ -74,16 +74,6 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
         etX0 = tilX0.getEditText();
         etX1 = tilX1.getEditText();
 
-        Bundle bisectionArgs = getArguments();
-
-        if (bisectionArgs != null) {
-            etEquation.setText(bisectionArgs.getString("equation"));
-            etX0.setText(String.valueOf(bisectionArgs.getDouble("x0")));
-            etX1.setText(String.valueOf(bisectionArgs.getDouble("x1")));
-            etTolerance.setText(String.valueOf(bisectionArgs.getDouble("tolerance")));
-            etIterations.setText(String.valueOf(bisectionArgs.getInt("iterations")));
-        }
-
         registerOnKeyListener(tilEquation, tilIterations, tilTolerance, tilX0, tilX1);
 
 

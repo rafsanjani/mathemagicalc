@@ -65,16 +65,6 @@ public class FragmentFalsePosition extends FragmentRootBase implements TextWatch
 
 
     public void initControls() {
-        Bundle falsePositionArgs = getArguments();
-
-        if (falsePositionArgs != null) {
-            tilEquation.getEditText().setText(falsePositionArgs.getString("equation"));
-            tilX0.getEditText().setText(String.valueOf(falsePositionArgs.getDouble("x0")));
-            tilX1.getEditText().setText(String.valueOf(falsePositionArgs.getDouble("x1")));
-            tilTolerance.getEditText().setText(String.valueOf(falsePositionArgs.getDouble("tolerance")));
-            tilIterations.getEditText().setText(String.valueOf(falsePositionArgs.getInt("iterations")));
-        }
-
         registerOnKeyListener(tilEquation, tilTolerance, tilIterations, tilX0, tilX1);
 
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
