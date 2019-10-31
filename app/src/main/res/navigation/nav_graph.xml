@@ -231,6 +231,10 @@
         android:name="com.foreverrafs.numericals.fragments.FragmentShowAlgorithm"
         android:label="fragment_show_algorithm"
         tools:layout="@layout/fragment_show_algorithm">
+        <argument
+            android:name="algorithm"
+            android:defaultValue="index"
+            app:argType="string" />
 
     </fragment>
     <fragment

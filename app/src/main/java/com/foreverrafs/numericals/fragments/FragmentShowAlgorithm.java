@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class FragmentShowAlgorithm extends Fragment {
-    public static final String EXTRA_METHOD_NAME = "com.foreverrafs.numericals.algorithm_name";
+    public static final String EXTRA_METHOD_NAME = "algorithm";
     private static final String TAG = "FragmentShowAlgorithm";
     @BindView(R.id.webView)
     WebView mWebView;
@@ -57,7 +57,8 @@ public class FragmentShowAlgorithm extends Fragment {
         }
 
         Bundle bundle = getArguments();
-        String algoName = "";
+        String algoName;
+
         if (bundle != null) {
             algoName = bundle.getString(EXTRA_METHOD_NAME);
         } else {

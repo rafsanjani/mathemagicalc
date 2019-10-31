@@ -46,7 +46,6 @@ public class OperationsMenuAdapter extends RecyclerView.Adapter<OperationsMenuAd
         //only attach a listener if there are sub menus
         holder.menuImage.setOnClickListener(view -> {
             int menuCategory = menu.getMenuCategory();
-            //if (menuCategory != Constants.MENU_CATEGORY_NONE)
             itemClickListener.OnMenuItemClicked(menuCategory);
         });
     }
@@ -64,7 +63,7 @@ public class OperationsMenuAdapter extends RecyclerView.Adapter<OperationsMenuAd
         void OnMenuItemClicked(int menuItemType);
     }
 
-    class MenuViewHolder extends RecyclerView.ViewHolder {
+    static class MenuViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.image_menu_item)
         ImageView menuImage;
