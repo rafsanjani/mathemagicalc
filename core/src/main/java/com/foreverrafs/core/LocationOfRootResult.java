@@ -1,6 +1,9 @@
 package com.foreverrafs.core;
 
-public class LocationOfRootResult {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class LocationOfRootResult implements Parcelable {
     private double x1, x2, x3, tolerance;  //for bisection and secante
     private double fx1, fx2, derX1;             //for newton raphson
     private double difference; //for secante;
@@ -45,6 +48,31 @@ public class LocationOfRootResult {
         this.difference = difference;
     }
 
+    public static final Creator<LocationOfRootResult> CREATOR = new Creator<LocationOfRootResult>() {
+        @Override
+        public LocationOfRootResult createFromParcel(Parcel in) {
+            return new LocationOfRootResult(in);
+        }
+
+        @Override
+        public LocationOfRootResult[] newArray(int size) {
+            return new LocationOfRootResult[size];
+        }
+    };
+
+    protected LocationOfRootResult(Parcel in) {
+        x1 = in.readDouble();
+        x2 = in.readDouble();
+        x3 = in.readDouble();
+        tolerance = in.readDouble();
+        fx1 = in.readDouble();
+        fx2 = in.readDouble();
+        derX1 = in.readDouble();
+        difference = in.readDouble();
+        fx3 = in.readDouble();
+        iteration = in.readInt();
+    }
+
     public double getX1() {
         return x1;
     }
@@ -84,6 +112,25 @@ public class LocationOfRootResult {
 
     public int getIteration() {
         return iteration;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeDouble(x1);
+        parcel.writeDouble(x2);
+        parcel.writeDouble(x3);
+        parcel.writeDouble(tolerance);
+        parcel.writeDouble(fx1);
+        parcel.writeDouble(fx2);
+        parcel.writeDouble(derX1);
+        parcel.writeDouble(difference);
+        parcel.writeDouble(fx3);
+        parcel.writeInt(iteration);
     }
 }
 
