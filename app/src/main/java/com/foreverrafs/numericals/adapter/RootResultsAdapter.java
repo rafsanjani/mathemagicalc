@@ -103,6 +103,7 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
         public RootResultViewHolder(View itemView) {
             super(itemView);
             bg = itemView.findViewById(R.id.background);
+            etIteration = itemView.findViewById(R.id.iteration);
 
             switch (rootType) {
                 case BISECTION:
@@ -112,13 +113,11 @@ public class RootResultsAdapter extends RecyclerView.Adapter<RootResultsAdapter.
                     etX1 = itemView.findViewById(R.id.x1);
                     etX2 = itemView.findViewById(R.id.x2);
                     etX3 = itemView.findViewById(R.id.x3);
-                    etIteration = itemView.findViewById(R.id.iteration);
                     break;
                 case NEWTON_RAPHSON:
                     etRoot = itemView.findViewById(R.id.root);
                     etfX1 = itemView.findViewById(R.id.fx1);
                     etDerX1 = itemView.findViewById(R.id.derx1);
-                    etIteration = itemView.findViewById(R.id.iteration);
                     break;
             }
         }

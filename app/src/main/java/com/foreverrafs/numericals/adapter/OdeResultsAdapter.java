@@ -15,6 +15,9 @@ import com.foreverrafs.numericals.R;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class OdeResultsAdapter extends RecyclerView.Adapter<OdeResultsAdapter.RootResultViewHolder> {
 
     private List<OdeResult> results;
@@ -50,17 +53,23 @@ public class OdeResultsAdapter extends RecyclerView.Adapter<OdeResultsAdapter.Ro
         return results.size();
     }
 
-    class RootResultViewHolder extends RecyclerView.ViewHolder {
+    static class RootResultViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.background)
         ViewGroup bg;
-        TextView tvIteration, tvSolX, tvSolY, tvSolH;
+
+        @BindView(R.id.n)
+        TextView tvIteration;
+
+        @BindView(R.id.solX)
+        TextView tvSolX;
+
+        @BindView(R.id.solY)
+        TextView tvSolY;
 
         RootResultViewHolder(View itemView) {
             super(itemView);
-            bg = itemView.findViewById(R.id.background);
-            tvIteration = itemView.findViewById(R.id.n);
-            tvSolX = itemView.findViewById(R.id.solX);
-            tvSolY = itemView.findViewById(R.id.solY);
+            ButterKnife.bind(this, itemView);
         }
     }
 }
