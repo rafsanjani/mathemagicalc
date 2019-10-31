@@ -46,5 +46,4 @@ public class Constants {
 
     //these items do not belong to any menu
     public static final int MENU_CATEGORY_NONE = 9999999;
-
 }

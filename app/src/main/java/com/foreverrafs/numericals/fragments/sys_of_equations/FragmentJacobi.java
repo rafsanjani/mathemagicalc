@@ -136,11 +136,11 @@ public class FragmentJacobi extends FragmentSystemOfEquationsBase implements Vie
         try {
             final String[] equations = new String[3];
             final double[] initGuess = new double[3];
-            final double epsilon = Double.valueOf(etEpsilon.getText().toString());
+            final double epsilon = Double.parseDouble(etEpsilon.getText().toString());
 
             for (int i = 0; i < etEqn.length; i++) {
                 equations[i] = etEqn[i].getText().toString();
-                initGuess[i] = Double.valueOf(etx0[i].getText().toString());
+                initGuess[i] = Double.parseDouble(etx0[i].getText().toString());
             }
 
             Button btnCalculate = mRootView.findViewById(R.id.btnCalculate);

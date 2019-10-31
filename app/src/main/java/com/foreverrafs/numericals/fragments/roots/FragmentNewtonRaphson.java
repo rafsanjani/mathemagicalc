@@ -109,7 +109,7 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
 
         try {
             eqn = etEquation.getText().toString().toLowerCase();
-            x0 = Double.valueOf(etX0.getText().toString());
+            x0 = Double.parseDouble(etX0.getText().toString());
             iter = Integer.valueOf(etIterations.getText().toString());
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);

@@ -166,12 +166,12 @@ public class FragmentEuler extends Fragment implements View.OnClickListener, Tex
 
         try {
             eqn = etEquation.getText().toString();
-            x0 = Double.valueOf(etX0.getText().toString());
-            x1 = Double.valueOf(etX1.getText().toString());
+            x0 = Double.parseDouble(etX0.getText().toString());
+            x1 = Double.parseDouble(etX1.getText().toString());
 
             interval = new double[]{x0, x1};
 
-            h = Double.valueOf(etH.getText().toString());
+            h = Double.parseDouble(etH.getText().toString());
             initY = Integer.valueOf(etInitY.getText().toString());
 
         } catch (NumberFormatException ex) {

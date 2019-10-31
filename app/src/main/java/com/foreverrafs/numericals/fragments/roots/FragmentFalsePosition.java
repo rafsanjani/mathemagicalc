@@ -104,9 +104,9 @@ public class FragmentFalsePosition extends FragmentRootBase implements TextWatch
 
         try {
             eqn = tilEquation.getEditText().getText().toString().toLowerCase();
-            x0 = Double.valueOf(tilX0.getEditText().getText().toString());
-            x1 = Double.valueOf(tilX1.getEditText().getText().toString());
-            tol = Double.valueOf(tilTolerance.getEditText().getText().toString());
+            x0 = Double.parseDouble(tilX0.getEditText().getText().toString());
+            x1 = Double.parseDouble(tilX1.getEditText().getText().toString());
+            tol = Double.parseDouble(tilTolerance.getEditText().getText().toString());
             iter = Integer.valueOf(tilIterations.getEditText().getText().toString());
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);

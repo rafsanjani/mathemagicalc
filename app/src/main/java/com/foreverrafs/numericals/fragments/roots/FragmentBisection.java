@@ -195,10 +195,10 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
 
         try {
             eqn = etEquation.getText().toString().toLowerCase();
-            x0 = Double.valueOf(etX0.getText().toString());
-            x1 = Double.valueOf(etX1.getText().toString());
-            tol = Double.valueOf(etTolerance.getText().toString());
-            iter = Integer.valueOf(etIterations.getText().toString());
+            x0 = Double.parseDouble(etX0.getText().toString());
+            x1 = Double.parseDouble(etX1.getText().toString());
+            tol = Double.parseDouble(etTolerance.getText().toString());
+            iter = Integer.parseInt(etIterations.getText().toString());
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
