@@ -270,22 +270,55 @@
         android:id="@+id/bisection"
         android:name="com.foreverrafs.numericals.fragments.roots.FragmentBisection"
         android:label="Bisection Method"
-        tools:layout="@layout/fragment_loc_of_roots_bisection" />
+        tools:layout="@layout/fragment_loc_of_roots_bisection">
+
+        <action
+            android:id="@+id/fragmentBisectionResults"
+            app:destination="@id/bisection_results"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"></action>
+    </fragment>
     <fragment
         android:id="@+id/false_position"
         android:name="com.foreverrafs.numericals.fragments.roots.FragmentFalsePosition"
         android:label="False Position"
-        tools:layout="@layout/fragment_loc_of_roots_falseposition" />
+        tools:layout="@layout/fragment_loc_of_roots_falseposition">
+        <action
+            android:id="@+id/fragmentFalsePositionResults"
+            app:destination="@id/false_position_results"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/secant"
         android:name="com.foreverrafs.numericals.fragments.roots.FragmentSecante"
         android:label="Secant Method"
-        tools:layout="@layout/fragment_loc_of_roots_secante" />
+        tools:layout="@layout/fragment_loc_of_roots_secante">
+        <action
+            android:id="@+id/fragmentSecanteResults"
+            app:destination="@id/secant_results"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/newton_raphson"
         android:name="com.foreverrafs.numericals.fragments.roots.FragmentNewtonRaphson"
         android:label="Newton Raphson"
-        tools:layout="@layout/fragment_loc_of_roots_newton" />
+        tools:layout="@layout/fragment_loc_of_roots_newton">
+        <action
+            android:id="@+id/fragmentNewtonRaphsonResults"
+            app:destination="@id/newton_raphson_results"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/lagrange"
         android:name="com.foreverrafs.numericals.fragments.interpolation.FragmentLagrange"
@@ -295,7 +328,15 @@
         android:id="@+id/euler"
         android:name="com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentEuler"
         android:label="Euler's Forward Method"
-        tools:layout="@layout/fragment_ode_euler" />
+        tools:layout="@layout/fragment_ode_euler">
+        <action
+            android:id="@+id/fragmentEulerResults"
+            app:destination="@id/euler_results"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentGaussianComplete3x3"
         android:name="com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete3x3"
@@ -332,5 +373,43 @@
         android:name="com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidelWithSOR"
         android:label="fragment_gaussseidelsor"
         tools:layout="@layout/fragment_gaussseidelsor" />
-
+    <fragment
+        android:id="@+id/newton_raphson_results"
+        android:name="com.foreverrafs.numericals.fragments.roots.FragmentNewtonRaphsonResults"
+        android:label="Newton Raphson Results" />
+    <fragment
+        android:id="@+id/bisection_results"
+        android:name="com.foreverrafs.numericals.fragments.roots.FragmentBisectionResults"
+        android:label="FragmentBisectionResults">
+        <argument
+            android:name="equation"
+            app:argType="string" />
+        <argument
+            android:name="x0"
+            app:argType="float" />
+        <argument
+            android:name="x1"
+            app:argType="float" />
+        <argument
+            android:name="iterations"
+            app:argType="integer" />
+        <argument
+            android:name="tolerance"
+            app:argType="float" />
+        <argument
+            android:name="resultlist"
+            app:argType="com.foreverrafs.core.LocationOfRootResult[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/euler_results"
+        android:name="com.foreverrafs.numericals.fragments.ordinary_differential_eqns.FragmentEulerResults"
+        android:label="FragmentEulerResults" />
+    <fragment
+        android:id="@+id/false_position_results"
+        android:name="com.foreverrafs.numericals.fragments.roots.FragmentFalsePositionResults"
+        android:label="FragmentFalsePositionResults" />
+    <fragment
+        android:id="@+id/secant_results"
+        android:name="com.foreverrafs.numericals.fragments.roots.FragmentSecanteResults"
+        android:label="FragmentSecanteResults" />
 </navigation>

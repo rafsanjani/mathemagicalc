@@ -66,6 +66,7 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
     }
 
 
+    @Override
     public void initControls() {
         //initialize EditTexts
         etEquation = tilEquation.getEditText();
@@ -75,7 +76,6 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
         etX1 = tilX1.getEditText();
 
         registerOnKeyListener(tilEquation, tilIterations, tilTolerance, tilX0, tilX1);
-
 
         etIterationsTextWatcher = new TextWatcher() {
             @Override
@@ -152,16 +152,9 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
 
         etIterations.addTextChangedListener(etIterationsTextWatcher);
         etTolerance.addTextChangedListener(etToleranceTextWatcher);
-
         etEquation.addTextChangedListener(this);
 
-
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        initControls();
     }
 
 
@@ -184,20 +177,19 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
             return;
         }
 
-
         TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
 
         Button calculateButton = rootView.findViewById(R.id.btnCalculate);
 
         String eqn;
-        double x0, x1, tol;
+        float x0, x1, tol;
         int iter;
 
         try {
             eqn = etEquation.getText().toString().toLowerCase();
-            x0 = Double.parseDouble(etX0.getText().toString());
-            x1 = Double.parseDouble(etX1.getText().toString());
-            tol = Double.parseDouble(etTolerance.getText().toString());
+            x0 = (float) Double.parseDouble(etX0.getText().toString());
+            x1 = (float) Double.parseDouble(etX1.getText().toString());
+            tol = (float) Double.parseDouble(etTolerance.getText().toString());
             iter = Integer.parseInt(etIterations.getText().toString());
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
@@ -224,19 +216,8 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
             //animate the answer into view
             Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
         } else if (buttonText.equals(getResources().getString(R.string.show_iterations))) {
-            FragmentBisectionResults resultPane = new FragmentBisectionResults();
-            Bundle eqnArgs = new Bundle();
-
-            eqnArgs.putString("equation", eqn);
-            eqnArgs.putDouble("x0", x0);
-            eqnArgs.putInt("iterations", iter);
-            eqnArgs.putDouble("tolerance", tol);
-            eqnArgs.putDouble("x1", x1);
-
-            resultPane.setArguments(eqnArgs);
-            resultPane.setResults(roots);
-
-            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer);
+            navController.navigate(FragmentBisectionDirections.fragmentBisectionResults(eqn, x0, x1, iter, tol,
+                    roots.toArray(new LocationOfRootResult[0])));
         }
         calculateButton.setText(getResources().getString(R.string.show_iterations));
     }
