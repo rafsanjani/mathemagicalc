@@ -72,7 +72,10 @@ public class FragmentShowAlgorithm extends Fragment {
 
     @OnClick(R.id.btnBackToMainMenu)
     void onBackPressed() {
-        if (getActivity() != null)
+        if (mWebView.canGoBack())
+            mWebView.goBack();
+
+        else if (getActivity() != null)
             getActivity().onBackPressed();
     }
 

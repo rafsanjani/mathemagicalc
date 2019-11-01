@@ -346,7 +346,7 @@ public final class Numericals {
      * @param maxIterations The maximum number of iterations to be conducted
      * @return a collection containing the information about the root at every iterative step
      */
-    public static List<LocationOfRootResult> secanteAll(String expr, Double x0, Double x1, int maxIterations) {
+    public static List<LocationOfRootResult> secanteAll(String expr, double x0, double x1, int maxIterations) {
         List<LocationOfRootResult> result = new ArrayList<>();
 
 
