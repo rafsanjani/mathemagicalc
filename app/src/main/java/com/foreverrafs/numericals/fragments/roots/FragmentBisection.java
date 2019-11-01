@@ -54,6 +54,12 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
     @BindView(R.id.til_user_input)
     TextInputLayout tilEquation;
 
+    @BindView(R.id.tvAnswer)
+    TextView tvAnswer;
+
+    @BindView(R.id.btnCalculate)
+    Button btnCalculate;
+
     private EditText etIterations, etX0, etX1, etTolerance, etEquation;
 
     @Nullable
@@ -177,19 +183,15 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
             return;
         }
 
-        TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
-
-        Button calculateButton = rootView.findViewById(R.id.btnCalculate);
-
         String eqn;
         float x0, x1, tol;
         int iter;
 
         try {
             eqn = etEquation.getText().toString().toLowerCase();
-            x0 = (float) Double.parseDouble(etX0.getText().toString());
-            x1 = (float) Double.parseDouble(etX1.getText().toString());
-            tol = (float) Double.parseDouble(etTolerance.getText().toString());
+            x0 = Float.parseFloat(etX0.getText().toString());
+            x1 = Float.parseFloat(etX1.getText().toString());
+            tol = Float.parseFloat(etTolerance.getText().toString());
             iter = Integer.parseInt(etIterations.getText().toString());
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
@@ -219,7 +221,7 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
             navController.navigate(FragmentBisectionDirections.fragmentBisectionResults(eqn, x0, x1, iter, tol,
                     roots.toArray(new LocationOfRootResult[0])));
         }
-        calculateButton.setText(getResources().getString(R.string.show_iterations));
+        btnCalculate.setText(getResources().getString(R.string.show_iterations));
     }
 
     @Override
