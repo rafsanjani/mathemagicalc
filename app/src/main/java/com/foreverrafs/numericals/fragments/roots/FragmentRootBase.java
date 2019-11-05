@@ -1,6 +1,7 @@
 package com.foreverrafs.numericals.fragments.roots;
 
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -34,6 +36,13 @@ public abstract class FragmentRootBase extends Fragment {
     private View.OnKeyListener myKeyListener;
     private Button btnCalculate;
 
+    protected NavController navController = null;
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        navController = Navigation.findNavController(view);
+        initControls();
+    }
 
     protected void onEquationChanged() {
         TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
@@ -41,6 +50,8 @@ public abstract class FragmentRootBase extends Fragment {
         btnCalculate.setText(getResources().getString(R.string.calculate));
         Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.HIDE);
     }
+
+    abstract protected void initControls();
 
     protected void registerOnKeyListener(final TextInputLayout... inputLayouts) throws RuntimeException {
         if (inputLayouts.length == 0) {

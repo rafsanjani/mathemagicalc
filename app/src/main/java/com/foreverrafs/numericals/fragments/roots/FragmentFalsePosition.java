@@ -70,13 +70,6 @@ public class FragmentFalsePosition extends FragmentRootBase implements TextWatch
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        //Initialize all controls
-        initControls();
-    }
-
-
     @OnClick(R.id.btnCalculate)
     void onCalculateClicked(Button button) {
         onCalculate(button.getText().toString());
@@ -99,14 +92,14 @@ public class FragmentFalsePosition extends FragmentRootBase implements TextWatch
             tilTolerance.getEditText().setText("0.00");
 
         String eqn;
-        double x0, x1, tol;
+        float x0, x1, tol;
         int iter;
 
         try {
             eqn = tilEquation.getEditText().getText().toString().toLowerCase();
-            x0 = Double.parseDouble(tilX0.getEditText().getText().toString());
-            x1 = Double.parseDouble(tilX1.getEditText().getText().toString());
-            tol = Double.parseDouble(tilTolerance.getEditText().getText().toString());
+            x0 = (float) Double.parseDouble(tilX0.getEditText().getText().toString());
+            x1 = (float) Double.parseDouble(tilX1.getEditText().getText().toString());
+            tol = (float) Double.parseDouble(tilTolerance.getEditText().getText().toString());
             iter = Integer.valueOf(tilIterations.getEditText().getText().toString());
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
@@ -130,19 +123,9 @@ public class FragmentFalsePosition extends FragmentRootBase implements TextWatch
             Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
         } else if (buttonText.equals(getResources().getString(R.string.show_iterations))) {
             List<LocationOfRootResult> roots = Numericals.falsePositionAll(eqn, x0, x1, iter, tol);
-            FragmentFalsePositionResults resultPane = new FragmentFalsePositionResults();
-            Bundle eqnArgs = new Bundle();
 
-            eqnArgs.putString("equation", eqn);
-            eqnArgs.putDouble("x0", x0);
-            eqnArgs.putInt("iterations", iter);
-            eqnArgs.putDouble("tolerance", tol);
-            eqnArgs.putDouble("x1", x1);
-
-            resultPane.setArguments(eqnArgs);
-            resultPane.setResults(roots);
-
-            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer);
+            navController.navigate(FragmentFalsePositionDirections.fragmentFalsePositionResults(eqn, x0, x1, iter, tol,
+                    roots.toArray(new LocationOfRootResult[0])));
         }
         btnCalculate.setText(getResources().getString(R.string.show_iterations));
     }

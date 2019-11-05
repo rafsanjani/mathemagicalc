@@ -34,6 +34,7 @@ import butterknife.OnClick;
 public class FragmentSecante extends FragmentRootBase implements TextWatcher {
     private static final String TAG = "FragmentSecante";
 
+    private List<LocationOfRootResult> roots = null;
     @BindView(R.id.btnCalculate)
     Button btnCalculate;
 
@@ -69,12 +70,6 @@ public class FragmentSecante extends FragmentRootBase implements TextWatcher {
         parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        //initialize views
-        initControls();
-    }
-
     @OnClick(R.id.btnCalculate)
     void onCalculateClicked(Button button) {
         onCalculate(button.getText().toString());
@@ -94,14 +89,17 @@ public class FragmentSecante extends FragmentRootBase implements TextWatcher {
         }
 
         String eqn;
-        double x0, x1;
+        float x0;
+        float x1;
         int iter;
 
         try {
             eqn = tilEquation.getEditText().getText().toString().toLowerCase();
-            x0 = Double.parseDouble(tilX0.getEditText().getText().toString());
-            x1 = Double.parseDouble(tilX1.getEditText().getText().toString());
+            x0 = Float.parseFloat(tilX0.getEditText().getText().toString());
+            x1 = Float.parseFloat(tilX1.getEditText().getText().toString());
             iter = Integer.parseInt(tilIterations.getEditText().getText().toString());
+
+            roots = Numericals.secanteAll(eqn, x0, x1, iter);
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
@@ -121,19 +119,9 @@ public class FragmentSecante extends FragmentRootBase implements TextWatcher {
             Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
         } else if (buttonText.equals(getResources().getString(R.string.show_iterations))) {
             List<LocationOfRootResult> roots = Numericals.secanteAll(eqn, x0, x1, iter);
-            FragmentSecanteResults resultPane = new FragmentSecanteResults();
 
-            Bundle eqnArgs = new Bundle();
-
-            eqnArgs.putString("equation", eqn);
-            eqnArgs.putDouble("x0", x0);
-            eqnArgs.putInt("iterations", iter);
-            eqnArgs.putDouble("x1", x1);
-
-            resultPane.setArguments(eqnArgs);
-            resultPane.setResults(roots);
-
-            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer);
+            navController.navigate(FragmentSecanteDirections.fragmentSecanteResults(eqn, x0, x1, iter,
+                    roots.toArray(new LocationOfRootResult[0])));
         }
         btnCalculate.setText(getResources().getString(R.string.show_iterations));
     }

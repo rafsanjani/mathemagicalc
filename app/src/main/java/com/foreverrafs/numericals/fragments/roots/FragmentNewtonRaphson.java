@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,7 +48,8 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
     @BindView(R.id.btnCalculate)
     Button btnCalculate;
 
-    EditText etIterations, etX0, etEquation;
+
+    private EditText etIterations, etX0, etEquation;
 
     @Nullable
     @Override
@@ -62,11 +62,6 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
 
 
     public void initControls() {
-        //initialize TextInputLayouts
-        tilX0 = rootView.findViewById(R.id.til_x0);
-        tilIterations = rootView.findViewById(R.id.til_iterations);
-        tilEquation = rootView.findViewById(R.id.til_user_input);
-
         //initialize EditTexts
         etEquation = tilEquation.getEditText();
         etIterations = tilIterations.getEditText();
@@ -75,8 +70,6 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
         registerOnKeyListener(tilIterations, tilEquation, tilX0);
 
         etEquation.addTextChangedListener(this);
-
-        parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
     }
 
     @Override
@@ -102,15 +95,14 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
             return;
         }
 
-
         String eqn;
-        double x0;
+        float x0;
         int iter;
 
         try {
             eqn = etEquation.getText().toString().toLowerCase();
-            x0 = Double.parseDouble(etX0.getText().toString());
-            iter = Integer.valueOf(etIterations.getText().toString());
+            x0 = Float.parseFloat(etX0.getText().toString());
+            iter = Integer.parseInt(etIterations.getText().toString());
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
@@ -134,20 +126,12 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
             tvAnswer.setText(String.valueOf(root));
 
             //animate the answer into view
-            Utilities.animateAnswer(tvAnswer, parentContainer, Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(tvAnswer, rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
         } else if (buttonText.equals(getResources().getString(R.string.show_iterations))) {
             List<LocationOfRootResult> roots = Numericals.newtonRaphsonAll(eqn, x0, iter);
-            FragmentNewtonRaphsonResults resultPane = new FragmentNewtonRaphsonResults();
-            Bundle eqnArgs = new Bundle();
 
-            eqnArgs.putString("equation", eqn);
-            eqnArgs.putDouble("x0", x0);
-            eqnArgs.putInt("iterations", iter);
-
-            resultPane.setArguments(eqnArgs);
-            resultPane.setResults(roots);
-
-            Utilities.replaceFragment(resultPane, getFragmentManager(), R.id.fragmentContainer);
+            navController.navigate(FragmentNewtonRaphsonDirections.fragmentNewtonRaphsonResults(eqn, x0, iter,
+                    roots.toArray(new LocationOfRootResult[0])));
         }
         btnCalculate.setText(getResources().getString(R.string.show_iterations));
     }

@@ -1,23 +1,18 @@
 package com.foreverrafs.numericals.utils;
 
 
-import android.animation.AnimatorSet;
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.transition.TransitionManager;
-import androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
 
-import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.fragments.FragmentShowAlgorithm;
 
 import java.util.List;
@@ -40,24 +35,6 @@ public final class Utilities {
                 .addToBackStack(name)
                 .commit();
     }
-
-    public static void animateTextViewColorAndAlpha(Context mCtx, TextView textView) {
-        AnimatorSet animatorSet = new AnimatorSet();
-
-        Integer colorFrom = textView.getCurrentTextColor();
-        Integer colorTo = mCtx.getResources().getColor(R.color.black);
-
-        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        ValueAnimator alphaAnimation = ValueAnimator.ofFloat(textView.getAlpha(), 0.2f);
-
-        colorAnimation.addUpdateListener(animator -> textView.setTextColor((Integer) animator.getAnimatedValue()));
-        alphaAnimation.addUpdateListener(animator -> textView.setAlpha((Float) animator.getAnimatedValue()));
-
-        animatorSet.playTogether(alphaAnimation, colorAnimation);
-        animatorSet.setDuration(1000);
-        animatorSet.start();
-    }
-
 
     public static void animateAnswer(View answerView, View rootView, DisplayMode displayMode) {
         switch (displayMode) {

@@ -208,7 +208,7 @@
                 style="@style/AppMaterialTheme.ButtonStyle.Exit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/back_to_ode_menu"
+                android:text="@string/back_to_main_menu"
                 android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>

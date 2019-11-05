@@ -36,7 +36,6 @@ import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianCom
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial3x3;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial4x4;
 import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentJacobi;
-import com.foreverrafs.numericals.utils.Utilities;
 
 
 public class OperationListDialog extends DialogFragment implements AdapterView.OnItemClickListener {
@@ -163,7 +162,7 @@ public class OperationListDialog extends DialogFragment implements AdapterView.O
                 break;
         }
 
-        Utilities.replaceFragment(fragment, myContext.getSupportFragmentManager(), R.id.fragmentContainer);
+        // Utilities.replaceFragment(fragment, myContext.getSupportFragmentManager(), R.id.fragmentContainer);
 
         dismiss();
     }

@@ -157,6 +157,7 @@
     </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:id="@+id/resultList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -10,18 +10,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.core.OdeResult;
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.activities.MainActivity;
 import com.foreverrafs.numericals.adapter.OdeResultsAdapter;
-import com.foreverrafs.numericals.utils.Utilities;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import katex.hourglass.in.mathlib.MathView;
 
 
@@ -32,17 +36,32 @@ import katex.hourglass.in.mathlib.MathView;
 public class FragmentEulerResults extends Fragment {
 
     private List<OdeResult> results;
-    private View rootView;
     private String eqn;
     private double x0, x1, h, initY;
-    private int iterations;
+
+    @BindView(R.id.equation)
+    MathView mvEquation;
+
+    @BindView(R.id.btnBackToEuler)
+    Button btnBack;
+
+    @BindView(R.id.btnShowAlgo)
+    Button btnShowAlgo;
+
+    @BindView(R.id.resultList)
+    RecyclerView rvResults;
+
+    @BindView(R.id.interval)
+    TextView tvInterval;
+
+    @BindView(R.id.initY)
+    TextView tvInitY;
+
+    @BindView(R.id.h)
+    TextView tvH;
 
     private String getInterval() {
         return String.format(Locale.US, "[%.2f, %.2f]", x0, x1);
-    }
-
-    private String getIteration() {
-        return String.format(Locale.US, "[%d]", iterations);
     }
 
     private String getInitY() {
@@ -53,77 +72,50 @@ public class FragmentEulerResults extends Fragment {
         return String.format(Locale.US, "[%.2f]", h);
     }
 
-
-    public void setResults(List<OdeResult> results) {
-        this.results = results;
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_ode_euler_results, container, false);
-
-        return rootView;
+        View view = inflater.inflate(R.layout.fragment_ode_euler_results, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Bundle eqnArgs = getArguments();
-        if (eqnArgs != null) {
-            this.eqn = eqnArgs.getString("equation");
-            this.x0 = eqnArgs.getDouble("x0");
-            this.x1 = eqnArgs.getDouble("x1");
-            this.iterations = eqnArgs.getInt("iterations");
-            this.initY = eqnArgs.getDouble("y");
-            this.h = eqnArgs.getDouble("h");
-        }
+        if (getArguments() == null)
+            return;
+        FragmentEulerResultsArgs eulerResultsArgs = FragmentEulerResultsArgs.fromBundle(getArguments());
+        this.eqn = eulerResultsArgs.getEquation();
+        this.x0 = eulerResultsArgs.getX0();
+        this.x1 = eulerResultsArgs.getX1();
+        this.initY = eulerResultsArgs.getInitY();
+        this.results = Arrays.asList(eulerResultsArgs.getResultlist());
+        this.h = eulerResultsArgs.getH();
 
         initControls();
     }
 
+    @OnClick(R.id.btnBackToEuler)
+    void backToEuler() {
+        if (getActivity() != null)
+            getActivity().onBackPressed();
+    }
+
+    @OnClick(R.id.btnShowAlgo)
+    void showAlgorithm(Button button) {
+        if (getActivity() != null)
+            ((MainActivity) getActivity()).showAlgorithm(Navigation.findNavController(button), "euler");
+    }
+
     public void initControls() {
-        Button btnBack = rootView.findViewById(R.id.btnBackToEuler);
-        Button btnShowAlgorithm = rootView.findViewById(R.id.btnShowAlgo);
-
-        MathView equation;
-        // String tex = " $$f(x) = 3x^3 + 2x - 5$$";
-
-        equation = rootView.findViewById(R.id.equation);
-        equation.setDisplayText(Numericals.generateTexEquation(this.eqn));
+        mvEquation.setDisplayText(Numericals.generateTexEquation(this.eqn));
 
         OdeResultsAdapter adapter = new OdeResultsAdapter(results);
-        RecyclerView resultView = rootView.findViewById(R.id.resultList);
-        resultView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        resultView.setAdapter(adapter);
-
-        TextView tvInterval = rootView.findViewById(R.id.interval);
-        // TextView tvIterations = rootView.findViewById(R.id.iterations);
-        TextView tvInitY = rootView.findViewById(R.id.initY);
-        TextView tvH = rootView.findViewById(R.id.h);
-
+        rvResults.setAdapter(adapter);
 
         tvInterval.setText(getInterval());
-        // tvIterations.setText(getIteration());
         tvInitY.setText(getInitY());
         tvH.setText(getInitH());
-
-
-        btnBack.setOnClickListener(v -> {
-            Fragment fragment = new FragmentEuler();
-            Bundle eqnArgs = new Bundle();
-
-            //pass eqn and it's paramenters back to the calling fragment
-            eqnArgs.putDouble("x0", x0);
-            eqnArgs.putDouble("x1", x1);
-            eqnArgs.putDouble("y", x1);
-            eqnArgs.putInt("iterations", iterations);
-            eqnArgs.putDouble("h", h);
-
-            fragment.setArguments(eqnArgs);
-            Utilities.replaceFragment(fragment, getFragmentManager(), R.id.fragmentContainer);
-        });
-
-        btnShowAlgorithm.setOnClickListener(v -> Utilities.showAlgorithmScreen(getContext(), "euler"));
     }
 }

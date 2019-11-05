@@ -30,7 +30,7 @@
     <katex.hourglass.in.mathlib.MathView
         android:id="@+id/equation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@id/title"
         android:layout_gravity="center"
         android:textColor="#2a2f7c"
@@ -141,6 +141,7 @@
     </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:id="@+id/resultList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
