@@ -1,6 +1,5 @@
 package com.foreverrafs.numericals.fragments.sys_of_equations;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,7 +19,6 @@ import androidx.annotation.Nullable;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.fragments.FragmentShowAlgorithm;
 import com.foreverrafs.numericals.utils.Utilities;
 
 import org.apache.commons.math3.util.Precision;
@@ -109,13 +107,7 @@ public class FragmentGaussSeidel extends FragmentSystemOfEquationsBase implement
 
     @OnClick(R.id.btnShowAlgo)
     void onShowAlgoClicked() {
-        onShowAlgorithm();
-    }
-
-    private void onShowAlgorithm() {
-        Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name", "gaussseidel");
-        startActivity(new Intent(getContext(), FragmentShowAlgorithm.class).putExtras(bundle));
+        showAlgorithm("gaussseidel");
     }
 
     private void onCalculate() {

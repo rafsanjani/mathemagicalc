@@ -1,6 +1,5 @@
 package com.foreverrafs.numericals.fragments.sys_of_equations;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,7 +21,6 @@ import androidx.annotation.Nullable;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.fragments.FragmentShowAlgorithm;
 import com.foreverrafs.numericals.utils.Utilities;
 
 import org.apache.commons.math3.util.Precision;
@@ -108,15 +106,9 @@ public class FragmentJacobi extends FragmentSystemOfEquationsBase implements Vie
                 break;
 
             case R.id.btnShowAlgo:
-                onShowAlgorithm();
+                showAlgorithm("jacobi");
                 break;
         }
-    }
-
-    private void onShowAlgorithm() {
-        Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name", "jacobi");
-        startActivity(new Intent(getContext(), FragmentShowAlgorithm.class).putExtras(bundle));
     }
 
     private void onCalculate() {

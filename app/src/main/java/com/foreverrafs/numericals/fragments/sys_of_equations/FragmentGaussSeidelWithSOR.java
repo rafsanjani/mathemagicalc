@@ -115,7 +115,7 @@ public class FragmentGaussSeidelWithSOR extends FragmentSystemOfEquationsBase im
                 onCalculate();
                 break;
             case R.id.btnShowAlgo:
-                onShowAlgorithm();
+                showAlgorithm("gaussseidelwithsor");
                 break;
         }
     }
