@@ -21,7 +21,7 @@ import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.utils.Utilities;
 
-import org.apache.commons.math3.util.Precision;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,17 +50,23 @@ public class FragmentGaussSeidel extends FragmentSystemOfEquationsBase implement
             boolean success = msg.getData().getBoolean("success");
             if (!success) {
                 Toast.makeText(getContext(), msg.getData().getString("exception"), Toast.LENGTH_LONG).show();
-
                 return false;
             }
             double[] solution = msg.getData().getDoubleArray("results");
+            if (solution == null)
+                return false;
+
             TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
 
-            tvAnswer.setText("[ " +
-                    Precision.round(solution[0], 2) + ", "
-                    + Precision.round(solution[1], 2) + ", " +
-                    Precision.round(solution[2], 2) +
-                    " ]");
+
+            //todo: Perform regression test on this section
+            String answer = String.format(Locale.US, "[%.2f, %.2f, %.2f]", solution[0], solution[1], solution[2]);
+//            tvAnswer.setText("[ " +
+//                    Precision.round(solution[0], 2) + ", "
+//                    + Precision.round(solution[1], 2) + ", " +
+//                    Precision.round(solution[2], 2) +
+//                    " ]");
+            tvAnswer.setText(answer);
 
             //for transitions sake
             Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.SHOW);
