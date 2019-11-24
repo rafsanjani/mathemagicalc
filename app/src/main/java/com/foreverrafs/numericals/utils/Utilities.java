@@ -30,7 +30,6 @@ public final class Utilities {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
-
         transaction.replace(container, next)
                 .addToBackStack(name)
                 .commit();
