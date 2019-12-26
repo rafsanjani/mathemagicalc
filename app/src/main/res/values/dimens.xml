@@ -7,5 +7,7 @@
     <dimen name="desc_text_size">17sp</dimen>
     <dimen name="header_margin_top">10dp</dimen>
     <dimen name="menu_text_size">11sp</dimen>
+    <dimen name="input_margin">5dp</dimen>
+    <dimen name="input_corner_radius">20dp</dimen>
 
 </resources>

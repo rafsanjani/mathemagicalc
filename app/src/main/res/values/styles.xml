@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="BaseTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="BaseTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="android:windowEnterAnimation">@anim/slide_in_left</item>
@@ -63,7 +63,9 @@
     <style name="AppMaterialTheme.ButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginLeft">30dp</item>
-        <item name="android:background">@drawable/btn_rounded_primary</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:layout_marginRight">30dp</item>
         <item name="android:textColor">@color/colorButtonText</item>
     </style>
