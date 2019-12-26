@@ -313,7 +313,7 @@ public final class Numericals {
      * @param x1 the upper limit
      * @param maxIterations The maximum number of iterations to be conducted
      * @return double the final root value without any further or additional information.
-     * @deprecated use #{@link #secanteAll(String, Double, Double, int)} instead and take the last item of the returned collection
+     * @deprecated use #{@link #secanteAll(String, double, double, int)} instead and take the last item of the returned collection
      */
     public static Double secante(String expr, double x0, double x1, int maxIterations) {
         if (maxIterations < 1)
