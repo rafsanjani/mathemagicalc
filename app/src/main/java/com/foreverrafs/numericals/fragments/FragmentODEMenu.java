@@ -66,7 +66,7 @@ public class FragmentODEMenu extends Fragment implements OperationsMenuAdapter.M
     }
 
     @Override
-    public void OnMenuItemClicked(int menuItemType) {
+    public void onMenuItemClicked(int menuItemType) {
         if (menuItemType == Constants.ODE_EULER) {
             navController.navigate(FragmentODEMenuDirections.actionOdeMenuToFragmentEuler());
         }

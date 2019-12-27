@@ -73,7 +73,7 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements Operation
     }
 
     @Override
-    public void OnMenuItemClicked(int menuItemType) {
+    public void onMenuItemClicked(int menuItemType) {
         NavDirections navDirections = null;
         switch (menuItemType) {
             case Constants.SYS_OF_EQN_GAUSSIAN_PART_3X3:

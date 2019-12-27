@@ -74,7 +74,7 @@ public class FragmentConversionMenu extends Fragment implements OperationsMenuAd
 
 
     @Override
-    public void OnMenuItemClicked(int menuItemType) {
+    public void onMenuItemClicked(int menuItemType) {
         NavDirections directions = null;
         switch (menuItemType) {
             case Constants.CONVERSION_DEC_TO_BIN_FRACTION:
