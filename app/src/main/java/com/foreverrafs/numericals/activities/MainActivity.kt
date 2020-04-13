@@ -17,7 +17,7 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import com.foreverrafs.numericals.BuildConfig
 import com.foreverrafs.numericals.R
-import com.foreverrafs.numericals.fragments.FragmentShowAlgorithm
+import com.foreverrafs.numericals.ui.menus.FragmentShowAlgorithm
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.about_dialog.*
 import kotlinx.android.synthetic.main.activity_main.*

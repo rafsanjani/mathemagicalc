@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Numericals.iml" filepath="$PROJECT_DIR$/Numericals.iml" group="Numericals" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Numericals-Android.iml" filepath="$PROJECT_DIR$/.idea/modules/Numericals-Android.iml" group="Numericals-Android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Numericals-Android-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Numericals-Android-app.iml" group="Numericals-Android/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/Numericals-Android-core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/Numericals-Android-core.iml" group="Numericals-Android/core" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Numericals/app" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" group="Numericals/core" />
     </modules>

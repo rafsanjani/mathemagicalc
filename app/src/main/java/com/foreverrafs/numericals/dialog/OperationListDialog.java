@@ -17,25 +17,25 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.adapter.MethodListAdapter;
-import com.foreverrafs.numericals.fragments.FragmentODEMenu;
-import com.foreverrafs.numericals.fragments.conversions.FragmentBinToDec;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBin;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinFrac;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToBinInt;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToHexadecimal;
-import com.foreverrafs.numericals.fragments.conversions.FragmentDecToOctal;
-import com.foreverrafs.numericals.fragments.interpolation.FragmentLagrange;
-import com.foreverrafs.numericals.fragments.roots.FragmentBisection;
-import com.foreverrafs.numericals.fragments.roots.FragmentFalsePosition;
-import com.foreverrafs.numericals.fragments.roots.FragmentNewtonRaphson;
-import com.foreverrafs.numericals.fragments.roots.FragmentSecante;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidel;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussSeidelWithSOR;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete3x3;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianComplete4x4;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial3x3;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentGaussianPartial4x4;
-import com.foreverrafs.numericals.fragments.sys_of_equations.FragmentJacobi;
+import com.foreverrafs.numericals.ui.menus.FragmentODEMenu;
+import com.foreverrafs.numericals.ui.conversions.FragmentBinToDec;
+import com.foreverrafs.numericals.ui.conversions.FragmentDecToBin;
+import com.foreverrafs.numericals.ui.conversions.FragmentDecToBinFrac;
+import com.foreverrafs.numericals.ui.conversions.FragmentDecToBinInt;
+import com.foreverrafs.numericals.ui.conversions.FragmentDecToHexadecimal;
+import com.foreverrafs.numericals.ui.conversions.FragmentDecToOctal;
+import com.foreverrafs.numericals.ui.interpolation.FragmentLagrange;
+import com.foreverrafs.numericals.ui.location_of_roots.FragmentBisection;
+import com.foreverrafs.numericals.ui.location_of_roots.FragmentFalsePosition;
+import com.foreverrafs.numericals.ui.location_of_roots.FragmentNewtonRaphson;
+import com.foreverrafs.numericals.ui.location_of_roots.FragmentSecante;
+import com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussSeidel;
+import com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussSeidelWithSOR;
+import com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussianComplete3x3;
+import com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussianComplete4x4;
+import com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussianPartial3x3;
+import com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussianPartial4x4;
+import com.foreverrafs.numericals.ui.sys_of_equations.FragmentJacobi;
 
 
 public class OperationListDialog extends DialogFragment implements AdapterView.OnItemClickListener {

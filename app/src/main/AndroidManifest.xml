@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppMaterialTheme">
         <activity
-            android:name=".fragments.FragmentMainMenu"
+            android:name=".ui.menus.FragmentMainMenu"
             android:screenOrientation="portrait"
             android:theme="@style/AppMaterialTheme"
             android:windowSoftInputMode="adjustPan">
@@ -50,19 +50,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".fragments.FragmentShowAlgorithm"
+            android:name=".ui.menus.FragmentShowAlgorithm"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".fragments.FragmentConversionMenu"
+            android:name=".ui.menus.FragmentConversionMenu"
             android:screenOrientation="portrait"
             android:theme="@style/AppMaterialTheme" />
         <activity
-            android:name=".fragments.FragmentLocationOfRootsMenu"
+            android:name=".ui.menus.FragmentLocationOfRootsMenu"
             android:screenOrientation="portrait"
             android:theme="@style/AppMaterialTheme" />
-        <activity android:name=".fragments.FragmentSystemOfEquationsMenu" />
-        <activity android:name=".fragments.FragmentODEMenu" />
-        <activity android:name=".fragments.FragmentInterpolationMenu" />
+        <activity android:name=".ui.menus.FragmentSystemOfEquationsMenu" />
+        <activity android:name=".ui.menus.FragmentODEMenu" />
+        <activity android:name=".ui.menus.FragmentInterpolationMenu" />
     </application>
 
 </manifest>

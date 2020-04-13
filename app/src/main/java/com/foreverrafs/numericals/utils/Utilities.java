@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.transition.TransitionManager;
 
-import com.foreverrafs.numericals.fragments.FragmentShowAlgorithm;
+import com.foreverrafs.numericals.ui.menus.FragmentShowAlgorithm;
 
 import java.util.List;
 

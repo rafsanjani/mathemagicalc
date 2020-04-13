@@ -8,7 +8,7 @@
     android:elevation="4dp"
     android:minHeight="?attr/actionBarSize"
     app:contentInsetStartWithNavigation="0dp"
-    tools:context=".fragments.FragmentMainMenu"
+    tools:context=".ui.menus.FragmentMainMenu"
     tools:showIn="@layout/fragment_main_menu">
 
     <TextView
