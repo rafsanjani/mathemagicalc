@@ -232,7 +232,7 @@ public final class Numericals {
      * @param tol Specifies the tolerance value for which the solution answer must adhere to
      * @return double which is the final root value without any additional information
      * @deprecated use {@link #falsePositionAll(String, double, double, int, double)} instead and take the last value
-     * @throws {@link InvalidIntervalException} When the interval doesn't bracket the root
+     * @throws InvalidIntervalException When the interval doesn't bracket the root
      */
     public static Double falsePosition(String expr, double x0, double x1, int maxIterations, double tol) throws InvalidIntervalException {
         if (maxIterations < 1)
@@ -898,7 +898,6 @@ public final class Numericals {
         str.insert(0, "$$");
         str.append("$$");
         return str.toString().toLowerCase();
-
     }
 
     /**

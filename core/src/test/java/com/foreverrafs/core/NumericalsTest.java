@@ -1,13 +1,9 @@
-package com.example.core;
+package com.foreverrafs.core;
 
 /*
  * Created by Aziz Rafsanjani on 10/21/2017.
  */
 
-
-import com.foreverrafs.core.LocationOfRootResult;
-import com.foreverrafs.core.Numericals;
-import com.foreverrafs.core.OdeResult;
 
 import org.junit.Test;
 
@@ -194,7 +190,6 @@ public class NumericalsTest {
         double[] sol2 = Numericals.gaussianWithCompletePivoting(A2, B2);
         //note solution to the above big matrix is {59.5, -67.5, 87,-55, -20.5}
         assertArrayEquals(expected2, sol2, 0.001);
-
     }
 
     @Test
@@ -274,7 +269,6 @@ public class NumericalsTest {
         }
         assertEquals(-1.5, result.get(0).getX3());
     }
-
 
     @Test
     public void testDecimalToHexadecimal() {

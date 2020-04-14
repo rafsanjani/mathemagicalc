@@ -13,33 +13,10 @@
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".NumericalsApp"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppMaterialTheme">
-        <activity
-            android:name=".ui.menus.FragmentMainMenu"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppMaterialTheme"
-            android:windowSoftInputMode="adjustPan">
-
-            <intent-filter android:label="@string/app_name">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
-                <data
-                    android:host="www.foreverrafs.com"
-                    android:pathPrefix="/numericals"
-                    android:scheme="http" />
-                <!-- note that the leading "/" is required for pathPrefix-->
-                <!-- Accepts URIs that begin with "example://gizmos” -->
-                <data
-                    android:host="foreverrafs"
-                    android:scheme="mathemagicalc" />
-
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
@@ -49,20 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.menus.FragmentShowAlgorithm"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.menus.FragmentConversionMenu"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppMaterialTheme" />
-        <activity
-            android:name=".ui.menus.FragmentLocationOfRootsMenu"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppMaterialTheme" />
-        <activity android:name=".ui.menus.FragmentSystemOfEquationsMenu" />
-        <activity android:name=".ui.menus.FragmentODEMenu" />
-        <activity android:name=".ui.menus.FragmentInterpolationMenu" />
     </application>
 
 </manifest>

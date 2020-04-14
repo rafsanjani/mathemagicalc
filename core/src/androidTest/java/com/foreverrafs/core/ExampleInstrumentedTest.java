@@ -1,4 +1,4 @@
-package com.example.core;
+package com.foreverrafs.core;
 
 import android.content.Context;
 

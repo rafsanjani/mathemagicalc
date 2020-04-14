@@ -89,7 +89,7 @@ public class FragmentMainMenu extends Fragment {
 
                 case Constants.MENU_ABOUT:
                     //toggle bottom sheet here
-                    ((MainActivity) Objects.requireNonNull(getActivity())).toggleBottomSheet();
+                    ((MainActivity) requireActivity()).toggleBottomSheet();
                     return;
 
                 case Constants.MENU_ODE:

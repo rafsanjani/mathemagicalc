@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/fragment_main_menu"
         android:name="com.foreverrafs.numericals.ui.menus.FragmentMainMenu"
-        android:label="Main Menu Fragment"
+        android:label="Main Menu"
         tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/fragmentConversionMenu"
@@ -55,7 +55,7 @@
     <fragment
         android:id="@+id/conversion_menu"
         android:name="com.foreverrafs.numericals.ui.menus.FragmentConversionMenu"
-        android:label="fragment_conversion_menu"
+        android:label="Numerical Conversion"
         app:enterAnim="@anim/slide_in_right"
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"
@@ -115,7 +115,7 @@
     <fragment
         android:id="@+id/interpolation_menu"
         android:name="com.foreverrafs.numericals.ui.menus.FragmentInterpolationMenu"
-        android:label="Interpolation Menu"
+        android:label="Interpolation"
         tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_interpolation_menu_to_fragmentLagrange"
@@ -129,7 +129,7 @@
     <fragment
         android:id="@+id/location_of_roots_menu"
         android:name="com.foreverrafs.numericals.ui.menus.FragmentLocationOfRootsMenu"
-        android:label="Location of roots menu"
+        android:label="Location of Roots"
         tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_location_of_roots_menu_to_fragmentNewtonRaphson"
@@ -164,7 +164,7 @@
     <fragment
         android:id="@+id/ode_menu"
         android:name="com.foreverrafs.numericals.ui.menus.FragmentODEMenu"
-        android:label="ODE  Menu"
+        android:label="Ordinary Differential Equations"
         tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_ode_menu_to_fragmentEuler"
@@ -177,7 +177,7 @@
     <fragment
         android:id="@+id/sys_of_eqns_menu"
         android:name="com.foreverrafs.numericals.ui.menus.FragmentSystemOfEquationsMenu"
-        android:label="System of equations menu"
+        android:label="System of Equations"
         tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_sys_of_eqns_menu_to_fragmentJacobi"
@@ -229,7 +229,7 @@
     <fragment
         android:id="@+id/show_algorithm"
         android:name="com.foreverrafs.numericals.ui.menus.FragmentShowAlgorithm"
-        android:label="fragment_show_algorithm"
+        android:label="Algorithms"
         tools:layout="@layout/fragment_show_algorithm">
         <argument
             android:name="algorithm"
@@ -240,7 +240,7 @@
     <fragment
         android:id="@+id/dec_to_bin_fraction"
         android:name="com.foreverrafs.numericals.ui.conversions.FragmentDecToBinFrac"
-        android:label="FragmentDecToBinFrac" />
+        android:label="Decimal Fraction to Binary" />
     <fragment
         android:id="@+id/dec_to_bin"
         android:name="com.foreverrafs.numericals.ui.conversions.FragmentDecToBin"
@@ -248,23 +248,23 @@
     <fragment
         android:id="@+id/bin_to_dec"
         android:name="com.foreverrafs.numericals.ui.conversions.FragmentBinToDec"
-        android:label="FragmentBinToDec" />
+        android:label="Binary to Decimal" />
     <fragment
         android:id="@+id/dec_to_bin_int"
         android:name="com.foreverrafs.numericals.ui.conversions.FragmentDecToBinInt"
-        android:label="Decimal to Binary Integer" />
+        android:label="Decimal Integer to Binary" />
     <fragment
         android:id="@+id/dec_to_hexadecimal"
         android:name="com.foreverrafs.numericals.ui.conversions.FragmentDecToHexadecimal"
-        android:label="FragmentDecToHexadecimal" />
+        android:label="Decimal to Hexadecimal" />
     <fragment
         android:id="@+id/dec_to_octal"
         android:name="com.foreverrafs.numericals.ui.conversions.FragmentDecToOctal"
-        android:label="FragmentDecToOctal" />
+        android:label="Decimal to Octal" />
     <fragment
         android:id="@+id/conversion_all_in_one"
         android:name="com.foreverrafs.numericals.ui.conversions.FragmentAllInOne"
-        android:label="All in one conversion"
+        android:label="All in One Conversion"
         tools:layout="@layout/fragment_conversions_allinone" />
     <fragment
         android:id="@+id/bisection"
@@ -340,38 +340,38 @@
     <fragment
         android:id="@+id/fragmentGaussianComplete3x3"
         android:name="com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussianComplete3x3"
-        android:label="fragment_gaussian_complete3x3"
+        android:label="Gaussian Elimination"
         tools:layout="@layout/fragment_gaussian_complete3x3" />
     <fragment
         android:id="@+id/fragmentGaussianComplete4x4"
         android:name="com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussianComplete4x4"
-        android:label="fragment_gaussian_complete4x4"
+        android:label="Gaussian: Complete Pivoting"
         tools:layout="@layout/fragment_gaussian_complete4x4" />
     <fragment
         android:id="@+id/fragmentGaussianPartial3x3"
         android:name="com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussianPartial3x3"
-        android:label="fragment_gaussian_Partial3x3"
+        android:label="Gaussian with Partial Pivoting"
         tools:layout="@layout/fragment_gaussian_partial3x3" />
 
     <fragment
         android:id="@+id/fragmentGaussianPartial4x4"
         android:name="com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussianPartial4x4"
-        android:label="fragment_gaussian_Partial4x4"
+        android:label="Gaussian: Partial Pivoting"
         tools:layout="@layout/fragment_gaussian_partial4x4" />
     <fragment
         android:id="@+id/fragmentJacobi"
         android:name="com.foreverrafs.numericals.ui.sys_of_equations.FragmentJacobi"
-        android:label="fragment_jacobi"
+        android:label="Jacobi's Method"
         tools:layout="@layout/fragment_jacobi" />
     <fragment
         android:id="@+id/fragmentGaussSeidel"
         android:name="com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussSeidel"
-        android:label="fragment_gaussseidel"
+        android:label="Gauss Seidel"
         tools:layout="@layout/fragment_gaussseidel" />
     <fragment
         android:id="@+id/fragmentGaussSeidelWithSOR"
         android:name="com.foreverrafs.numericals.ui.sys_of_equations.FragmentGaussSeidelWithSOR"
-        android:label="fragment_gaussseidelsor"
+        android:label="Gauss Seidel with SOR"
         tools:layout="@layout/fragment_gaussseidelsor" />
     <fragment
         android:id="@+id/newton_raphson_results"
@@ -394,7 +394,7 @@
     <fragment
         android:id="@+id/bisection_results"
         android:name="com.foreverrafs.numericals.ui.location_of_roots.FragmentBisectionResults"
-        android:label="FragmentBisectionResults">
+        android:label="Bisection Results">
         <argument
             android:name="equation"
             app:argType="string" />
@@ -417,7 +417,7 @@
     <fragment
         android:id="@+id/euler_results"
         android:name="com.foreverrafs.numericals.ui.ordinary_differential_eqns.FragmentEulerResults"
-        android:label="FragmentEulerResults">
+        android:label="Euler Results">
         <argument
             android:name="equation"
             app:argType="string" />
@@ -445,7 +445,7 @@
     <fragment
         android:id="@+id/false_position_results"
         android:name="com.foreverrafs.numericals.ui.location_of_roots.FragmentFalsePositionResults"
-        android:label="FragmentFalsePositionResults">
+        android:label="False Position Results">
         <argument
             android:name="equation"
             app:argType="string" />
@@ -468,7 +468,7 @@
     <fragment
         android:id="@+id/secant_results"
         android:name="com.foreverrafs.numericals.ui.location_of_roots.FragmentSecanteResults"
-        android:label="FragmentSecanteResults">
+        android:label="Secant Results">
         <argument
             android:name="equation"
             app:argType="string" />

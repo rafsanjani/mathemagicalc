@@ -5,14 +5,17 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
+import android.view.Menu
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.foreverrafs.numericals.BuildConfig
@@ -27,17 +30,31 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sheetBehavior: BottomSheetBehavior<*>
     private lateinit var navController: NavController
 
+    private val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                    R.id.conversion_menu, R.id.interpolation_menu, R.id.location_of_roots_menu, R.id.ode_menu,
+                    R.id.sys_of_eqns_menu, R.id.fragment_main_menu
+            )
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
 
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        NavigationUI.setupWithNavController(toolbar as Toolbar, navController)
+        navController = findNavController(this, R.id.nav_host_fragment)
+
         sheetBehavior = BottomSheetBehavior.from(bottom_sheet!!)
         tvVersion.text = getString(R.string.version, BuildConfig.VERSION_NAME)
-        enableStrictMode()
+
+        setSupportActionBar(toolbar)
+
+
+        setupActionBarWithNavController(navController)
     }
+
+    override fun onSupportNavigateUp(): Boolean = navigateUp(navController, appBarConfiguration)
+
 
     fun toggleBottomSheet() {
         if (sheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED)
@@ -81,18 +98,8 @@ class MainActivity : AppCompatActivity() {
         toggleBottomSheet()
     }
 
-    private fun enableStrictMode() {
-        if (BuildConfig.DEBUG) {
-            val policy = StrictMode.ThreadPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build()
-            StrictMode.setThreadPolicy(policy)
-            val vmPolicy = VmPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build()
-            StrictMode.setVmPolicy(vmPolicy)
-        }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
     }
 }
