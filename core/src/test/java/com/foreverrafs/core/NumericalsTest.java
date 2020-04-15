@@ -172,24 +172,6 @@ public class NumericalsTest {
         double[] sol = Numericals.gaussianWithCompletePivoting(A, B);
 
         assertArrayEquals(expected, sol, 0.001);
-
-
-        //ANOTHER EXAMPLE
-        double[][] A2 = {
-                {1, 2, 4, 3, 5},
-                {3, 5, 3, 1, 2},
-                {1, 4, 4, 2, 1},
-                {4, 1, 2, 5, 3},
-                {5, 2, 1, 4, 1}
-        };
-
-        double[] B2 = {5, 6, 7, 8, 9};
-        double[] expected2 = {59.5, -67.5, 87, -55, -20.5};
-
-
-        double[] sol2 = Numericals.gaussianWithCompletePivoting(A2, B2);
-        //note solution to the above big matrix is {59.5, -67.5, 87,-55, -20.5}
-        assertArrayEquals(expected2, sol2, 0.001);
     }
 
     @Test
@@ -287,7 +269,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void lagrangeForwardInterpolation() {
+    public void odeEulerMethod() {
         String eqn = "x-y^2";
         double yo = 0;
         double height = 0.2;
@@ -295,7 +277,7 @@ public class NumericalsTest {
 
         List<OdeResult> results = Numericals.solveOdeByEulersMethod(eqn, height, interval, yo);
 
-        assertEquals(0.23681533952, results.get(4).getY());
+        assertEquals(0.23681533952, results.get(4).getX());
     }
 
     @Test
