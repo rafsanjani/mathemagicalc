@@ -695,6 +695,7 @@ public final class Numericals {
             yn[i + 1] = yn[i] + (h * fxResult);
             xn[i + 1] = xn[i] + h;
 
+
             results.add(new OdeResult(yn[i], xn[i], i));
         }
         return results;
@@ -905,8 +906,8 @@ public final class Numericals {
      *
      * @param x      the x values for which there are known y values
      * @param y      the known values of y
-     * @param knownX the arbitrary value x for which the corresponding y value must be estimated
-     * @return a double value representing the y value for the knownX value which can be rounded to an arbitrary number of decimal places as desired
+     * @param knownX the known value x for which the corresponding unknown y value must be estimated
+     * @return a floating value representing the y value for the knownX value which can be rounded to an arbitrary number of decimal places as desired
      */
     public static double interpolate(double[] x, double[] y, double knownX) {
         //number of terms

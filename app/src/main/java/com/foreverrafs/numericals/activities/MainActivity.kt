@@ -3,9 +3,9 @@ package com.foreverrafs.numericals.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.StrictMode
-import android.os.StrictMode.VmPolicy
+import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -22,11 +22,12 @@ import com.foreverrafs.numericals.BuildConfig
 import com.foreverrafs.numericals.R
 import com.foreverrafs.numericals.ui.menus.FragmentShowAlgorithm
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.about_dialog.*
 import kotlinx.android.synthetic.main.activity_main.*
 
+private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
-
     private lateinit var sheetBehavior: BottomSheetBehavior<*>
     private lateinit var navController: NavController
 
@@ -49,11 +50,17 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
-
         setupActionBarWithNavController(navController)
+
+        btnAboutClose.setOnClickListener {
+            toggleBottomSheet()
+        }
     }
 
-    override fun onSupportNavigateUp(): Boolean = navigateUp(navController, appBarConfiguration)
+    override fun onSupportNavigateUp(): Boolean {
+        navigateUp(navController, appBarConfiguration)
+        return true
+    }
 
 
     fun toggleBottomSheet() {
@@ -93,9 +100,23 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    @OnClick(R.id.btnAboutClose)
-    fun onAboutClose() {
-        toggleBottomSheet()
+//    @OnClick(R.id.btnAboutClose)
+//    fun onAboutClose() {
+//        toggleBottomSheet()
+//    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.gotot) {
+            MaterialAlertDialogBuilder(this)
+                    .setTitle("Jump to Algorithm")
+                    .setItems(R.array.main_menu_legacy) { dialog, which ->
+                        Log.d(TAG, "onOptionsItemSelected: $which")
+                    }.show()
+        } else if (item.itemId == android.R.id.home) {
+            onSupportNavigateUp()
+        }
+
+        return true
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

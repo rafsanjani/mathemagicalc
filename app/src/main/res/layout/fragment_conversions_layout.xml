@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/std_layout_margin"
         android:layout_marginRight="@dimen/std_layout_margin"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:hint="@string/dynamic_input_hint">
 
         <com.google.android.material.textfield.TextInputEditText

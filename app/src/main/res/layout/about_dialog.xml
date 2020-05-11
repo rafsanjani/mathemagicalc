@@ -17,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/launcher" />
+        app:srcCompat="@drawable/launcher"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textView4"
@@ -48,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bree_serif"
-        android:text="Aziz Rafsanjani"
+        android:text="Rafsanjani Aziz"
         android:textColor="@color/blue_grey_700"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/tvWebsite"
@@ -78,7 +79,8 @@
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close" />
+        app:srcCompat="@drawable/ic_close"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textView7"

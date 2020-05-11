@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -16,7 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.dialog.OperationListDialog;
 
 import java.lang.reflect.Method;
 
@@ -29,12 +27,6 @@ public class FragmentShowAlgorithm extends Fragment {
     private static final String TAG = "FragmentShowAlgorithm";
     @BindView(R.id.webView)
     WebView mWebView;
-
-    public void onGoToOperation(MenuItem item) {
-        OperationListDialog dialog = new OperationListDialog();
-        if (getActivity() != null)
-            dialog.show(getActivity().getFragmentManager(), "Fragment dialog");
-    }
 
     @Nullable
     @Override

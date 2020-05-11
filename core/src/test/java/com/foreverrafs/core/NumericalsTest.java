@@ -88,7 +88,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void testBisectionAllShouldPass() {
+    public void testBisectionAll() {
         List<LocationOfRootResult> longBisection = Numericals.bisect("x^5 + x^3 + 3*x", -2, -1, 4, 0.005);
         assertEquals(-1.0625, longBisection.get(3).getX3());
     }
@@ -157,7 +157,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void gaussianComplete4x4Matrix() {
+    public void testGaussianComplete4x4Matrix() {
         double[][] A = {
                 {1, -4, 4, 7},
                 {0, 2, -1, 0},
@@ -176,7 +176,7 @@ public class NumericalsTest {
 
     @Test
     //This test should pass
-    public void multiplyMatrices() {
+    public void testMatrixMultiplication() {
         double[][] A = {
                 {4, 3, 5},
                 {4, 1, 2},
@@ -208,11 +208,10 @@ public class NumericalsTest {
 
         double[] D = Numericals.multiplyMatrix(A, C);
         printMatrix(D);
-
     }
 
     @Test
-    public void jacobi() {
+    public void testJacobi() {
         String[] system = {
                 "(1/2)*(x2+1)",
                 "(1/3)*(x1+x3+8)",
@@ -241,7 +240,7 @@ public class NumericalsTest {
     }
 
     @Test
-    public void secante() {
+    public void testSecant() {
         String eqn = "x^3 + x^3 + 3";
         List<LocationOfRootResult> result = Numericals.secanteAll(eqn, 1.0, -1.0, 800);
         System.out.println("X1      X2        X3      DIFFERENCE");
@@ -279,23 +278,9 @@ public class NumericalsTest {
 
         assertEquals(0.23681533952, results.get(4).getX());
     }
-
+    
     @Test
-    public void EulerForwardMethodTest2() {
-        String eqn = "-2*x*y^2";
-        double yo = 1;
-        double height = 0.2;
-        double[] interval = {0, 1};
-
-        List<OdeResult> results = Numericals.solveOdeByEulersMethod(eqn, height, interval, yo);
-
-        for (OdeResult result : results) {
-            System.out.println(result.getN() + " " + result.getX() + "  " + result.getY());
-        }
-    }
-
-    @Test
-    public void interpolateLagrangically() {
+    public void testLagrangeInterpolation() {
         double[] x = {-2, -1, 0, 4};
         double[] y = {-2, 4, 1, 8};
         int xx = 2;
