@@ -25,6 +25,6 @@ jobs:
       run: chmod +x gradlew
     
     - name: Run numericals jvm tests
-      run: ./gradlew :core test
+      run: ./gradlew :core:test
 
  
