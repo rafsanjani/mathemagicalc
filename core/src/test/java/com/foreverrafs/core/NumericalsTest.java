@@ -276,7 +276,7 @@ public class NumericalsTest {
 
         List<OdeResult> results = Numericals.solveOdeByEulersMethod(eqn, height, interval, yo);
 
-        assertEquals(0.23681533952, results.get(4).getX());
+        assertEquals(0.23681533952, results.get(4).getX(), 0.00001);
     }
     
     @Test
