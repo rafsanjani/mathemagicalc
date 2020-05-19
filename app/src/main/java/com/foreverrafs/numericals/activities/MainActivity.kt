@@ -100,16 +100,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-//    @OnClick(R.id.btnAboutClose)
-//    fun onAboutClose() {
-//        toggleBottomSheet()
-//    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.gotot) {
             MaterialAlertDialogBuilder(this)
                     .setTitle("Jump to Algorithm")
-                    .setItems(R.array.main_menu_legacy) { dialog, which ->
+                    .setItems(R.array.main_menu_legacy) { _, which ->
                         Log.d(TAG, "onOptionsItemSelected: $which")
                     }.show()
         } else if (item.itemId == android.R.id.home) {
@@ -122,5 +117,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
+    }
+}
+
+class SplashActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }
