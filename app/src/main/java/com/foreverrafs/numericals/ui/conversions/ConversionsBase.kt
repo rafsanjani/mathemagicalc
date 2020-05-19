@@ -129,6 +129,10 @@ abstract class ConversionsBase : Fragment() {
         binding.btnCalculate.setOnClickListener {
             onCalculate()
         }
+
+        binding.btnShowAlgo.setOnClickListener {
+            parentActivity.showAlgorithm(navController, methodName)
+        }
     }
 
     fun displayAnswer() {

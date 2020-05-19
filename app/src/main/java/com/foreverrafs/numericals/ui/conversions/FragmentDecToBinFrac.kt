@@ -18,10 +18,6 @@ class FragmentDecToBinFrac : ConversionsBase() {
         setMethodName("dectobinfrac")
     }
 
-    @OnClick(R.id.btnShowAlgo)
-    fun showAlgo() {
-        parentActivity.showAlgorithm(navController, "dectobinfrac")
-    }
 
     override fun onCalculate() {
         val decimal = etInput.text.toString()

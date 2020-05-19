@@ -18,11 +18,6 @@ class FragmentDecToHexadecimal : ConversionsBase() {
         setMethodName("dectohexa")
     }
 
-    @OnClick(R.id.btnShowAlgo)
-    fun showAlgo() {
-        parentActivity.showAlgorithm(navController, "dectohexa")
-    }
-
     override fun onCalculate() {
         val decimal = etInput.text.toString()
         if (decimal.isEmpty()) {

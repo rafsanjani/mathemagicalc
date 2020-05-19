@@ -17,11 +17,6 @@ class FragmentDecToBin : ConversionsBase() {
         setMethodName("dectobin")
     }
 
-    @OnClick(R.id.btnShowAlgo)
-    fun showAlgo() {
-        parentActivity.showAlgorithm(navController, "dectobin")
-    }
-
     override fun onCalculate() {
         val decimal = etInput.text.toString()
         if (decimal.isEmpty()) {

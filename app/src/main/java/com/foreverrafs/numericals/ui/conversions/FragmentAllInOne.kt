@@ -44,7 +44,6 @@ class FragmentAllInOne : Fragment(), TextWatcher {
     @BindView(R.id.tvAnswerOctal)
     lateinit var tvOctal: TextView
 
-
     @BindView(R.id.tvAnswerHexadecimal)
     lateinit var tvHexadecimal: TextView
 
