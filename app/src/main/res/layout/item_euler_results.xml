@@ -17,7 +17,7 @@
 
             <TextView
                 android:id="@+id/n"
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -27,7 +27,7 @@
 
             <TextView
                 android:id="@+id/solX"
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -36,7 +36,7 @@
 
             <TextView
                 android:id="@+id/solY"
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

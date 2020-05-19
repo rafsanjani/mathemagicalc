@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/tvHeader"
-        style="@style/AppMaterialTheme.HeaderStyle"
+        style="@style/AppTheme.HeaderStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -28,6 +28,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        tools:listitem="@layout/item_menu"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

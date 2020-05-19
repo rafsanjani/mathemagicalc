@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/tvHeader"
-            style="@style/AppMaterialTheme.HeaderStyle"
+            style="@style/AppTheme.HeaderStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/gaussian_partial_header" />
@@ -28,7 +28,7 @@
         <Button
             android:id="@+id/btnCalculate"
 
-            style="@style/AppMaterialTheme.ButtonStyle"
+            style="@style/AppTheme.ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -38,7 +38,7 @@
 
         <Button
             android:id="@+id/btnBackToMainMenu"
-            style="@style/AppMaterialTheme.ButtonStyle.Exit"
+            style="@style/AppTheme.ButtonStyle.Exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"

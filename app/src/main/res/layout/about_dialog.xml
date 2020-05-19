@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_400"
+    android:background="@color/colorMainBackground"
     android:clickable="true"
     android:clipToPadding="true"
     android:focusable="true">
@@ -37,12 +37,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bree_serif"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:text="Version 1.3" />
+        tools:text="v1.3" />
 
     <TextView
         android:id="@+id/tvVersion2"
@@ -139,7 +139,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="8dp"
-        android:text="Send an email to daemon@foreverrafs.com if you feel like contributing to this project. Graphic designers, developers and writers are welcome."
+        android:text="Send an email to rafsanjani@foreverrafs.com if you want to contribute to this project."
         android:textAlignment="center"
         android:textColor="@color/blue_700"
         app:layout_constraintBottom_toTopOf="@+id/textView13"

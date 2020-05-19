@@ -5,7 +5,7 @@
 
     <TextView
         android:id="@+id/tvHeader"
-        style="@style/AppMaterialTheme.HeaderStyle"
+        style="@style/AppTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ode_header" />

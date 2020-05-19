@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/tvHeader"
-        style="@style/AppMaterialTheme.HeaderStyle"
+        style="@style/AppTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/jacobi_header" />
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_equationx1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_equationx2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_equationx3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/x1"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/x2"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
@@ -178,7 +178,7 @@
 
     <Button
         android:id="@+id/btnCalculate"
-        style="@style/AppMaterialTheme.ButtonStyle"
+        style="@style/AppTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -186,7 +186,7 @@
 
     <Button
         android:id="@+id/btnShowAlgo"
-        style="@style/AppMaterialTheme.ButtonStyle"
+        style="@style/AppTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -195,7 +195,7 @@
 
     <Button
         android:id="@+id/btnBackToMainMenu"
-        style="@style/AppMaterialTheme.ButtonStyle.Exit"
+        style="@style/AppTheme.ButtonStyle.Exit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/back_to_main_menu"

@@ -2,18 +2,8 @@ package com.foreverrafs.numericals.utils;
 
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.transition.TransitionManager;
-
-import com.foreverrafs.numericals.ui.menus.FragmentShowAlgorithm;
 
 import java.util.List;
 
@@ -23,28 +13,15 @@ import java.util.List;
  */
 
 public final class Utilities {
-    public static void replaceFragment(Fragment next, FragmentManager fragmentManager,
-                                       int container) {
-        String name = fragmentManager.getClass().getSimpleName();
-
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        transaction.replace(container, next)
-                .addToBackStack(name)
-                .commit();
-    }
 
     public static void animateAnswer(View answerView, View rootView, DisplayMode displayMode) {
         switch (displayMode) {
             case SHOW:
-                TransitionManager.beginDelayedTransition((ViewGroup) rootView);
                 answerView.setVisibility(View.VISIBLE);
-                hideKeyboard(rootView);
+                hideKeyboard(answerView);
                 break;
 
             case HIDE:
-                TransitionManager.beginDelayedTransition((ViewGroup) rootView);
                 answerView.setVisibility(View.GONE);
                 break;
         }
@@ -56,15 +33,6 @@ public final class Utilities {
         for (int i = 0; i < list.size(); i++)
             intArray[i] = list.get(i);
         return intArray;
-    }
-
-    public static void showAlgorithmScreen(Context c, String algoName) {
-        if (algoName.isEmpty())
-            algoName = "index";
-        Bundle bundle = new Bundle();
-        bundle.putString("algorithm_name", algoName);
-
-        c.startActivity(new Intent(c, FragmentShowAlgorithm.class).putExtras(bundle));
     }
 
     public static void hideKeyboard(View view) {

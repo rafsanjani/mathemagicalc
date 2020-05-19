@@ -4,7 +4,7 @@
     <string name="back_to_main_menu">Back to main menu</string>
     <string name="dec_to_bin_frac_desc">Converts a decimal number (n) to it\'s equivalent binary number where 1 > n > 0 </string>
     <string name="dec_to_bin_int_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N >= 1 </string>
-    <string name="enter_decimal">Enter a decimal number (eg 30 or 30.53)</string>
+    <string name="enter_decimal">Input decimal numeral (eg 30 or 30.53)</string>
     <string name="decimal_to_bin_desc">Converts a decimal integer (N) to it\'s equivalent binary number where  N > 0 </string>
     <string name="decimal_to_hexadecimal_desc">Converts a decimal integer (N) to it\'s equivalent hexadecimal where  N > 0 </string>
     <string name="bisection_desc">Locate the root of an equation of the form f(x) = 0</string>

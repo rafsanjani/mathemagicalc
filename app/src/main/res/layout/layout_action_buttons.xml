@@ -5,7 +5,7 @@
 
     <Button
         android:id="@+id/btnCalculate"
-        style="@style/AppMaterialTheme.ButtonStyle"
+        style="@style/AppTheme.ButtonStyle"
         android:text="@string/calculate" />
 
     <Button

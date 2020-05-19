@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/text_header2"
-        style="@style/AppMaterialTheme.HeaderStyle"
+        style="@style/AppTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -47,7 +47,7 @@
 
     <Button
         android:id="@+id/btnBackToMainMenu"
-        style="@style/AppMaterialTheme.ButtonStyle"
+        style="@style/AppTheme.ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
@@ -75,7 +75,7 @@
             android:gravity="center_horizontal">
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
+                style="@style/AppTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -83,7 +83,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -91,7 +91,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -99,7 +99,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -107,7 +107,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -115,7 +115,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -123,7 +123,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -131,7 +131,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -139,7 +139,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -156,7 +156,7 @@
             android:gravity="center_horizontal">
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
+                style="@style/AppTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -164,7 +164,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -172,7 +172,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -180,7 +180,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -188,7 +188,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -196,7 +196,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -204,7 +204,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -212,7 +212,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -220,7 +220,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                style="@style/AppMaterialTheme.TableTextStyle"
+                style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

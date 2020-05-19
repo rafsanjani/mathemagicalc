@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/tvHeader"
-        style="@style/AppMaterialTheme.HeaderStyle"
+        style="@style/AppTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/newton_raphson_expansion_header" />
@@ -94,7 +94,7 @@
 
             <TextView
                 android:id="@+id/iteration"
-                style="@style/AppMaterialTheme.TableHeaderStyle"
+                style="@style/AppTheme.TableHeaderStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -104,7 +104,7 @@
 
             <TextView
                 android:id="@+id/fx1"
-                style="@style/AppMaterialTheme.TableHeaderStyle"
+                style="@style/AppTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -112,7 +112,7 @@
                 android:textAlignment="center" />
 
             <TextView
-                style="@style/AppMaterialTheme.TableHeaderStyle"
+                style="@style/AppTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -121,7 +121,7 @@
 
             <TextView
                 android:id="@+id/root"
-                style="@style/AppMaterialTheme.TableHeaderStyle"
+                style="@style/AppTheme.TableHeaderStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -149,7 +149,7 @@
 
         <Button
             android:id="@+id/btnShowAlgo"
-            style="@style/AppMaterialTheme.ButtonStyle"
+            style="@style/AppTheme.ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -158,7 +158,7 @@
 
         <Button
             android:id="@+id/btnBackToNewton"
-            style="@style/AppMaterialTheme.ButtonStyle.Exit"
+            style="@style/AppTheme.ButtonStyle.Exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/back_to_newton_raphson"

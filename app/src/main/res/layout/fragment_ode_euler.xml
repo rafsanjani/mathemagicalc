@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/tvHeader"
-        style="@style/AppMaterialTheme.HeaderStyle"
+        style="@style/AppTheme.HeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/euler_forward_method" />
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/std_layout_margin"
                 android:layout_marginRight="@dimen/std_layout_margin"
-                app:hintTextAppearance="@style/AppMaterialTheme.TextInputHintStyle">
+                app:hintTextAppearance="@style/AppTheme.TextInputHintStyle">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_equation"
@@ -189,14 +189,14 @@
 
             <Button
                 android:id="@+id/btnCalculate"
-                style="@style/AppMaterialTheme.ButtonStyle"
+                style="@style/AppTheme.ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/solve" />
 
             <Button
                 android:id="@+id/btnShowAlgo"
-                style="@style/AppMaterialTheme.ButtonStyle"
+                style="@style/AppTheme.ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -205,7 +205,7 @@
 
             <Button
                 android:id="@+id/btnBackToMainMenu"
-                style="@style/AppMaterialTheme.ButtonStyle.Exit"
+                style="@style/AppTheme.ButtonStyle.Exit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/back_to_main_menu"

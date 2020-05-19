@@ -26,7 +26,6 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
-
 }
 
 dependencies {
@@ -41,6 +40,8 @@ dependencies {
     implementation "androidx.core:core-ktx:1.2.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
 repositories {
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }
