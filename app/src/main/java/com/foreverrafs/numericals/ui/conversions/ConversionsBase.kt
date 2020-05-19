@@ -1,148 +1,131 @@
-package com.foreverrafs.numericals.ui.conversions;
+package com.foreverrafs.numericals.ui.conversions
 
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
-import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
-import com.foreverrafs.numericals.utils.Utilities;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import butterknife.BindView
+import butterknife.ButterKnife
+import butterknife.OnClick
+import com.foreverrafs.numericals.R
+import com.foreverrafs.numericals.activities.MainActivity
+import com.foreverrafs.numericals.utils.Utilities
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 /**
  * Created by Rafsanjani on 6/16/2019
  */
-public abstract class ConversionsBase extends Fragment {
-    private static final String TAG = "ConversionsBase";
-    protected View rootView;
+abstract class ConversionsBase : Fragment() {
 
     @BindView(R.id.til_user_input)
-    TextInputLayout inputLayout;
+    lateinit var inputLayout: TextInputLayout
+
+
     @BindView(R.id.tvHeader)
-    TextView txtHeader;
+    lateinit var txtHeader: TextView
+
+
     @BindView(R.id.tvDescription)
-    TextView txtDescription;
+    lateinit var txtDescription: TextView
+
     @BindView(R.id.text_user_input)
-    TextInputEditText etInput;
+    lateinit var etInput: TextInputEditText
+
     @BindView(R.id.tvAnswer)
-    TextView tvAnswer;
+    lateinit var tvAnswer: TextView
 
-    private String methodName;
+    private lateinit var methodName: String
 
-    protected MainActivity parentActivity;
-    protected NavController navController;
+    protected lateinit var parentActivity: MainActivity
+    protected lateinit var navController: NavController
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_conversions_layout, container, false);
-        ButterKnife.bind(this, rootView);
-        return rootView;
+    protected lateinit var rootView: View
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        rootView = inflater.inflate(R.layout.fragment_conversions_layout, container, false)
+        ButterKnife.bind(this, rootView)
+        return rootView
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        initControls();
-        navController = Navigation.findNavController(view);
-        if (getActivity() != null)
-            parentActivity = (MainActivity) getActivity();
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initControls()
+        navController = Navigation.findNavController(view)
+
+        parentActivity = activity as MainActivity
     }
 
-    protected void setHeader(String header) {
-        txtHeader.setText(header);
+    protected fun setHeader(header: String?) {
+        txtHeader.text = header
     }
 
     @OnClick(R.id.btnBackToMainMenu)
-    void backToMainMenuPressed(Button button) {
-        if (getActivity() != null)
-            ((MainActivity) getActivity()).goToMainMenu(button);
+    fun backToMainMenuPressed(button: Button?) {
+        parentActivity.goToMainMenu(button)
     }
 
-    protected void setDescription(String description) {
-        txtDescription.setText(description);
+    protected fun setDescription(description: String?) {
+        txtDescription.text = description
     }
 
-    void showErrorMessage(String errorMessage, boolean clearInput) {
-        inputLayout.setErrorEnabled(true);
-        inputLayout.setError(errorMessage);
+    fun showErrorMessage(errorMessage: String?, clearInput: Boolean) {
+        inputLayout.isErrorEnabled = true
+        inputLayout.error = errorMessage
 
         if (clearInput)
-            etInput.setText(null);
+            etInput.text?.clear()
     }
 
-    private void hideErrorMessage() {
-        inputLayout.setErrorEnabled(false);
+    private fun hideErrorMessage() {
+        inputLayout.isErrorEnabled = false
     }
 
-
-    void setMethodName(String value) {
-        methodName = value;
+    fun setMethodName(value: String) {
+        methodName = value
     }
 
-    void setInputHint(String hint) {
-        inputLayout.setHint(hint);
+    fun setInputHint(hint: String) {
+        inputLayout.hint = hint
     }
 
     @OnClick(R.id.btnCalculate)
-    void onCalculateClicked() {
-        onCalculate();
+    fun onCalculateClicked() {
+        onCalculate()
     }
 
-
-    protected void initControls() {
-        etInput.setOnKeyListener((view, i, keyEvent) -> {
+    protected open fun initControls() {
+        etInput.setOnKeyListener { _: View?, _: Int, keyEvent: KeyEvent ->
             //remove the error message from the input layout if any
-            hideErrorMessage();
-            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                onCalculate();
-                return true;
+            hideErrorMessage()
+            if (keyEvent.keyCode == KeyEvent.KEYCODE_ENTER) {
+                onCalculate()
+                return@setOnKeyListener true
             }
-            return false;
-        });
-
-        etInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() == 0) {
+            false
+        }
+        etInput.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(editable: Editable) {
+                if (editable.isEmpty()) {
                     Utilities.animateAnswer(rootView.findViewById(R.id.tvAnswer),
-                            rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+                            rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE)
                 }
             }
-        });
+        })
     }
 
-    void displayAnswer() {
+    fun displayAnswer() {
         Utilities.animateAnswer(tvAnswer,
-                rootView, Utilities.DisplayMode.SHOW);
+                rootView, Utilities.DisplayMode.SHOW)
     }
 
-
-    protected abstract void onCalculate();
+    protected abstract fun onCalculate()
 }

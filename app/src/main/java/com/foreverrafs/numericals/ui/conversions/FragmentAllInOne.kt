@@ -1,151 +1,122 @@
-package com.foreverrafs.numericals.ui.conversions;
+package com.foreverrafs.numericals.ui.conversions
 
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-
-import com.foreverrafs.core.Numericals;
-import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
-import com.foreverrafs.numericals.utils.Utilities;
-import com.google.android.material.textfield.TextInputLayout;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
+import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
+import butterknife.BindView
+import butterknife.ButterKnife
+import butterknife.OnClick
+import com.foreverrafs.core.Numericals
+import com.foreverrafs.numericals.R
+import com.foreverrafs.numericals.activities.MainActivity
+import com.foreverrafs.numericals.utils.Utilities
+import com.google.android.material.textfield.TextInputLayout
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
-
-public class FragmentAllInOne extends Fragment implements TextWatcher {
-    private static final String TAG = "FragmentAllInOne";
-
+class FragmentAllInOne : Fragment(), TextWatcher {
     @BindView(R.id.layout_answer_area)
-    ConstraintLayout layoutAnswerArea;
+    lateinit var layoutAnswerArea: ConstraintLayout
 
     @BindView(R.id.btnCalculate)
-    Button btnCalculate;
+    lateinit var btnCalculate: Button
+
 
     @BindView(R.id.btnBackToMainMenu)
-    Button btnBack;
+    lateinit var btnBack: Button
 
     @BindView(R.id.til_user_input)
-    TextInputLayout tilUserInput;
+    lateinit var tilUserInput: TextInputLayout
 
     @BindView(R.id.tvAnswerBinary)
-    TextView tvBinary;
+    lateinit var tvBinary: TextView
 
     @BindView(R.id.tvAnswerOctal)
-    TextView tvOctal;
+    lateinit var tvOctal: TextView
+
 
     @BindView(R.id.tvAnswerHexadecimal)
-    TextView tvHexadecimal;
+    lateinit var tvHexadecimal: TextView
 
-
-    private View rootView;
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_conversions_allinone, container, false);
-        ButterKnife.bind(this, rootView);
-        initControls();
-        return rootView;
+    private lateinit var rootView: View
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        rootView = inflater.inflate(R.layout.fragment_conversions_allinone, container, false)
+        ButterKnife.bind(this, rootView)
+        initControls()
+        return rootView
     }
 
-    private void initControls() {
-        EditText etInput = tilUserInput.getEditText();
-
-        etInput.setOnKeyListener((view, i, keyEvent) -> {
+    private fun initControls() {
+        val etInput = tilUserInput.editText
+        etInput!!.setOnKeyListener { view: View?, i: Int, keyEvent: KeyEvent ->
             //take the error message away
-            tilUserInput.setErrorEnabled(false);
-
-            if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                onCalculate();
-                return true;
+            tilUserInput.isErrorEnabled = false
+            if (keyEvent.keyCode == KeyEvent.KEYCODE_ENTER) {
+                onCalculate()
+                return@setOnKeyListener true
             }
-            return false;
-        });
-
-        etInput.addTextChangedListener(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+            false
+        }
+        etInput.addTextChangedListener(this)
     }
 
     @OnClick(R.id.btnBackToMainMenu)
-    void onBackToMainMenu(Button button) {
-        ((MainActivity) getActivity()).goToMainMenu(button);
+    fun onBackToMainMenu(button: Button?) {
+        (activity as MainActivity?)!!.goToMainMenu(button)
     }
 
     @OnClick(R.id.btnCalculate)
-    void onCalculate() {
-        String binary, octal, hexadecimal;
-        String decimal = tilUserInput.getEditText().getText().toString();
+    fun onCalculate() {
+        val binary: String
+        val octal: String
+        val hexadecimal: String
+        val decimal = tilUserInput.editText?.text.toString()
+
         if (decimal.isEmpty()) {
-            tilUserInput.setError("Input field is empty");
-            return;
+            tilUserInput.error = "Input field is empty"
+            return
         }
-
         try {
-            double decLong = Double.parseDouble(decimal);
-
+            val decLong = decimal.toDouble()
             if (decLong <= 0) {
-                tilUserInput.setError("Number should be greater than 0");
-                return;
+                tilUserInput.error = "Number should be greater than 0"
+                return
             }
-
-            binary = Numericals.decimalToBinary(decLong);
-            octal = Numericals.decimalToOctal(decimal);
-            hexadecimal = Numericals.decimalToHexadecimal(decimal);
-
-            tvBinary.setText(binary);
-            tvOctal.setText(octal);
-            tvHexadecimal.setText(hexadecimal);
-
+            binary = Numericals.decimalToBinary(decLong)
+            octal = Numericals.decimalToOctal(decimal)
+            hexadecimal = Numericals.decimalToHexadecimal(decimal)
+            tvBinary.text = binary
+            tvOctal.text = octal
+            tvHexadecimal.text = hexadecimal
             Utilities.animateAnswer(layoutAnswerArea,
-                    rootView, Utilities.DisplayMode.SHOW);
-
-        } catch (NumberFormatException ex) {
-            Log.e(TAG, "cannot parse " + decimal + " to an integer value");
-        } catch (Exception ex) {
-            Log.e(TAG, ex.getMessage());
+                    rootView, Utilities.DisplayMode.SHOW)
+        } catch (ex: NumberFormatException) {
+            Log.e(TAG, "cannot parse $decimal to an integer value")
+        } catch (ex: Exception) {
+            Log.e(TAG, ex.message)
         }
     }
 
-
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable editable) {
-        if (editable.length() == 0) {
+    override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+    override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+    override fun afterTextChanged(editable: Editable) {
+        if (editable.isEmpty()) {
             Utilities.animateAnswer(layoutAnswerArea,
-                    rootView, Utilities.DisplayMode.HIDE);
+                    rootView, Utilities.DisplayMode.HIDE)
         }
+    }
+
+    companion object {
+        private const val TAG = "FragmentAllInOne"
     }
 }
