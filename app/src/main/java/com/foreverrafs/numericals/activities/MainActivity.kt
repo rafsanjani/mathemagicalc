@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToMainMenu(button: Button?) {
-        val controller = Navigation.findNavController(button!!)
+        val controller = findNavController(button!!)
         val navOptions = NavOptions.Builder()
                 .setEnterAnim(R.anim.slide_in_left)
                 .setLaunchSingleTop(true)

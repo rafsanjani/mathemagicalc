@@ -40,7 +40,7 @@ class FragmentBinToDec : ConversionsBase() {
         }
         try {
             decimal = Numericals.binaryToDecimal(binary).toString()
-            tvAnswer.text = decimal
+            tvAnswer?.text = decimal
             displayAnswer()
         } catch (ex: NotABinaryException) {
             Log.e(TAG, ex.message)
