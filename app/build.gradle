@@ -8,11 +8,11 @@ apply plugin: 'androidx.navigation.safeargs'
 
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
         applicationId "com.foreverrafs.numericals"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 21
         versionName "2.1.0-beta05"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
