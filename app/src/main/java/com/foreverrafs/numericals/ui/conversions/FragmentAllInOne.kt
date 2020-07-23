@@ -3,7 +3,6 @@ package com.foreverrafs.numericals.ui.conversions
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +19,7 @@ import com.foreverrafs.numericals.R
 import com.foreverrafs.numericals.activities.MainActivity
 import com.foreverrafs.numericals.utils.Utilities
 import com.google.android.material.textfield.TextInputLayout
+import timber.log.Timber
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -100,9 +100,9 @@ class FragmentAllInOne : Fragment(), TextWatcher {
             Utilities.animateAnswer(layoutAnswerArea,
                     rootView, Utilities.DisplayMode.SHOW)
         } catch (ex: NumberFormatException) {
-            Log.e(TAG, "cannot parse $decimal to an integer value")
+            Timber.e("cannot parse $decimal to an integer value : $ex")
         } catch (ex: Exception) {
-            Log.e(TAG, ex.message)
+            Timber.e(ex)
         }
     }
 
@@ -115,7 +115,4 @@ class FragmentAllInOne : Fragment(), TextWatcher {
         }
     }
 
-    companion object {
-        private const val TAG = "FragmentAllInOne"
-    }
 }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -117,7 +116,7 @@ public class FragmentEuler extends Fragment implements TextWatcher {
 
     @OnClick(R.id.btnCalculate)
     void onCalculate(Button button) {
-        Log.i(TAG, "performing Euler's Forward calculation");
+        Timber.i("performing Euler's Forward calculation");
         onCalculate(button.getText().toString());
     }
 
@@ -173,7 +172,7 @@ public class FragmentEuler extends Fragment implements TextWatcher {
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
-            Log.i(TAG, "Error parsing one or more of the expressions");
+            Timber.i("Error parsing one or more of the expressions");
         } catch (Exception exception) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError(exception.getMessage());

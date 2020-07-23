@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +27,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 
 /**
@@ -79,7 +79,7 @@ public class FragmentLagrange extends Fragment {
             public void afterTextChanged(Editable editable) {
                 if (textChanged) {
                     //do some work here
-                    Log.d(TAG, "afterTextChanged: " + editable.toString());
+                    Timber.d("afterTextChanged: %s", editable.toString());
                     if (editable.length() != 0)
                         onCalculate(Double.parseDouble(editable.toString()));
                     textChanged = false;

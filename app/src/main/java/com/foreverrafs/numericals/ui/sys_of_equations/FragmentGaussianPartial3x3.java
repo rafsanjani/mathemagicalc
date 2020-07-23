@@ -3,7 +3,6 @@ package com.foreverrafs.numericals.ui.sys_of_equations;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +53,7 @@ public class FragmentGaussianPartial3x3 extends FragmentSystemOfEquationsBase im
                 break;
 
             case R.id.btnCalculate:
-                Log.i(TAG, "solving the system using gaussian with partial pivoting");
+                Timber.i("solving the system using gaussian with partial pivoting");
                 onCalculate();
                 break;
         }

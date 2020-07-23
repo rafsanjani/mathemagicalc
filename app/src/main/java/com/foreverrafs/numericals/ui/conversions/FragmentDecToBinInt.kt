@@ -1,10 +1,9 @@
 package com.foreverrafs.numericals.ui.conversions
 
-import android.util.Log
-import butterknife.OnClick
 import com.foreverrafs.core.Numericals
 import com.foreverrafs.numericals.R
 import com.foreverrafs.numericals.utils.Utilities
+import timber.log.Timber
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -31,19 +30,15 @@ class FragmentDecToBinInt : ConversionsBase() {
                 return
             }
             val binary = Numericals.decimalIntToBinary(decInt)
-            Log.i(TAG, "" + binary.length)
+            Timber.i(binary.length.toString())
             tvAnswer.text = binary
             Utilities.animateAnswer(tvAnswer, rootView, Utilities.DisplayMode.SHOW)
         } catch (ex: NumberFormatException) {
-            Log.e(TAG, "cannot parse $decimal to a double value")
+            Timber.e("cannot parse $decimal to a double value")
             showErrorMessage("Input isn't an integer", false)
             displayAnswer()
         } catch (ex: Exception) {
-            Log.e(TAG, ex.message)
+            Timber.e(ex)
         }
-    }
-
-    companion object {
-        private const val TAG = "FragmentDecToBinInt"
     }
 }

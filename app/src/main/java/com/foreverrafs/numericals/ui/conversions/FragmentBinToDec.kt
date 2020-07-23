@@ -1,10 +1,9 @@
 package com.foreverrafs.numericals.ui.conversions
 
-import android.util.Log
-import butterknife.OnClick
 import com.foreverrafs.core.Numericals
 import com.foreverrafs.core.exceptions.NotABinaryException
 import com.foreverrafs.numericals.R
+import timber.log.Timber
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -38,14 +37,10 @@ class FragmentBinToDec : ConversionsBase() {
             tvAnswer.text = decimal
             displayAnswer()
         } catch (ex: NotABinaryException) {
-            Log.e(TAG, ex.message)
+            Timber.e(ex)
             showErrorMessage(ex.message, true)
         } catch (ex: Exception) {
-            Log.e(TAG, ex.message)
+            Timber.e(ex)
         }
-    }
-
-    companion object {
-        private const val TAG = "FragmentBinToDec"
     }
 }

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +20,7 @@ import java.lang.reflect.Method;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 public class FragmentShowAlgorithm extends Fragment {
     public static final String EXTRA_METHOD_NAME = "algorithm";
@@ -55,7 +55,7 @@ public class FragmentShowAlgorithm extends Fragment {
             algoName = bundle.getString(EXTRA_METHOD_NAME);
         } else {
             //load index page if no file is provided
-            Log.i(TAG, "no file provided, loading index page");
+            Timber.i("no file provided, loading index page");
             algoName = "index";
         }
 

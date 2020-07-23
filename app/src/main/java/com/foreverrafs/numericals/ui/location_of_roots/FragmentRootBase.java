@@ -2,7 +2,6 @@ package com.foreverrafs.numericals.ui.location_of_roots;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +23,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.List;
 
 import butterknife.OnClick;
+import timber.log.Timber;
 
 //All fragments which will solve a location of root problem must extend from this Fragment and assign
 //appropriate values to the protected field members else a NullPointerException will be thrown when
@@ -55,7 +55,7 @@ public abstract class FragmentRootBase extends Fragment {
 
     protected void registerOnKeyListener(final TextInputLayout... inputLayouts) throws RuntimeException {
         if (inputLayouts.length == 0) {
-            Log.e(TAG, "At least one inputLayout must be supplied to registerOnKeyListener");
+            Timber.e("At least one inputLayout must be supplied to registerOnKeyListener");
             return;
         }
         myKeyListener = (view, i, keyEvent) -> {
@@ -104,7 +104,7 @@ public abstract class FragmentRootBase extends Fragment {
 
     protected boolean validateInput(@NonNull final TextInputLayout... inputLayouts) {
         if (inputLayouts.length == 0) {
-            Log.e(TAG, "At least one inputLayout must be supplied to registerOnKeyListener");
+            Timber.e("At least one inputLayout must be supplied to registerOnKeyListener");
             return true;
         }
 

@@ -3,7 +3,6 @@ package com.foreverrafs.numericals.ui.location_of_roots;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 
 /**
@@ -106,7 +106,7 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
         } catch (NumberFormatException ex) {
             tilEquation.setErrorEnabled(true);
             tilEquation.setError("One or more of the input expressions are invalid!");
-            Log.i(TAG, "Error parsing one or more of the expressions");
+            Timber.i("Error parsing one or more of the expressions");
             return;
         }
 

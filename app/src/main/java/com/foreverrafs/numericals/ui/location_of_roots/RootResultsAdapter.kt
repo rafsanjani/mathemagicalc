@@ -1,7 +1,6 @@
 package com.foreverrafs.numericals.ui.location_of_roots
 
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +23,7 @@ class RootResultsAdapter(private val locationOfRootResult: List<LocationOfRootRe
             LocationOfRootType.NEWTON_RAPHSON -> view = LayoutInflater.from(context).inflate(R.layout.item_newton_raphson_results, null)
             LocationOfRootType.SECANTE -> view = LayoutInflater.from(context).inflate(R.layout.item_secante_results, null)
             LocationOfRootType.FALSE_POSITION -> view = LayoutInflater.from(context).inflate(R.layout.item_falseposition_results, null)
-            else -> Log.i(TAG, "Equation type not found")
+            else -> Timber.i("Equation type not found")
         }
         return RootResultViewHolder(view!!)
     }

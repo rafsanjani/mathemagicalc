@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -105,7 +104,7 @@ public class FragmentJacobi extends FragmentSystemOfEquationsBase implements Vie
                 break;
 
             case R.id.btnCalculate:
-                Log.i(TAG, "performing jacobi's calculation");
+                Timber.i("performing jacobi's calculation");
                 onCalculate();
                 break;
 

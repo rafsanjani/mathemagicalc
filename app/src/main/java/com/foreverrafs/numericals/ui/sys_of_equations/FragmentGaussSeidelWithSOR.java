@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -116,7 +115,7 @@ public class FragmentGaussSeidelWithSOR extends FragmentSystemOfEquationsBase im
                 break;
 
             case R.id.btnCalculate:
-                Log.i(TAG, "performing jacobi's calculation");
+                Timber.i("performing jacobi's calculation");
                 onCalculate();
                 break;
             case R.id.btnShowAlgo:

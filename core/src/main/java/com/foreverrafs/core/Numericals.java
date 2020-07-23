@@ -1,7 +1,5 @@
 package com.foreverrafs.core;
 
-import android.util.Log;
-
 import com.foreverrafs.core.exceptions.InvalidEquationException;
 import com.foreverrafs.core.exceptions.InvalidIntervalException;
 import com.foreverrafs.core.exceptions.NotABinaryException;
@@ -563,7 +561,7 @@ public final class Numericals {
             roundTo2Dp(A, B);
             roundTo2Dp(solution);
         } catch (ArrayIndexOutOfBoundsException ay) {
-            Log.d(TAG, "getSolutionByBackSubstitution: " + ay.getMessage());
+            Timber.d("getSolutionByBackSubstitution: " + ay.getMessage());
         }
 
 
@@ -579,7 +577,7 @@ public final class Numericals {
                 for (int j = k; j < N; j++)
                     A[i][j] -= factor * A[k][j];
             } catch (ArrayIndexOutOfBoundsException ay) {
-                Log.e(TAG, "killRowsBeneath: " + ay.getMessage());
+                Timber.e("killRowsBeneath: " + ay.getMessage());
             }
         }
     }
@@ -930,7 +928,7 @@ public final class Numericals {
             try {
                 unknownY = unknownY + (numerator / denominator) * y[i];
             } catch (ArrayIndexOutOfBoundsException exception) {
-                Log.i(TAG, "interpolate: Array out of bounds!");
+                Timber.i("interpolate: Array out of bounds!");
             }
         }
         return unknownY;
