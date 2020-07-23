@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_loc_of_roots_newton_results.view.
 import kotlinx.android.synthetic.main.item_bisection_results.view.*
 import kotlinx.android.synthetic.main.item_bisection_results.view.iteration
 import kotlinx.android.synthetic.main.item_newton_raphson_results.view.*
+import timber.log.Timber
 import java.util.*
 
 class RootResultsAdapter(private val locationOfRootResult: List<LocationOfRootResult>, private val rootType: LocationOfRootType) : RecyclerView.Adapter<RootResultsAdapter.RootResultViewHolder>() {
@@ -19,10 +20,10 @@ class RootResultsAdapter(private val locationOfRootResult: List<LocationOfRootRe
         var view: View? = null
         val context = parent.context
         when (rootType) {
-            LocationOfRootType.BISECTION -> view = LayoutInflater.from(context).inflate(R.layout.item_bisection_results, null)
-            LocationOfRootType.NEWTON_RAPHSON -> view = LayoutInflater.from(context).inflate(R.layout.item_newton_raphson_results, null)
-            LocationOfRootType.SECANTE -> view = LayoutInflater.from(context).inflate(R.layout.item_secante_results, null)
-            LocationOfRootType.FALSE_POSITION -> view = LayoutInflater.from(context).inflate(R.layout.item_falseposition_results, null)
+            LocationOfRootType.BISECTION -> view = LayoutInflater.from(context).inflate(R.layout.item_bisection_results, parent, false)
+            LocationOfRootType.NEWTON_RAPHSON -> view = LayoutInflater.from(context).inflate(R.layout.item_newton_raphson_results, parent, false)
+            LocationOfRootType.SECANTE -> view = LayoutInflater.from(context).inflate(R.layout.item_secante_results, parent, false)
+            LocationOfRootType.FALSE_POSITION -> view = LayoutInflater.from(context).inflate(R.layout.item_falseposition_results, parent, false)
             else -> Timber.i("Equation type not found")
         }
         return RootResultViewHolder(view!!)
@@ -63,10 +64,6 @@ class RootResultsAdapter(private val locationOfRootResult: List<LocationOfRootRe
                 }
             }
         }
-    }
-
-    companion object {
-        private const val TAG = "RootResultsAdapter"
     }
 
 }
