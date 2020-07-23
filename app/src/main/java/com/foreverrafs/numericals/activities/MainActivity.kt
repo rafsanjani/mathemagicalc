@@ -3,7 +3,6 @@ package com.foreverrafs.numericals.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -11,7 +10,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.navigateUp
@@ -105,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             MaterialAlertDialogBuilder(this)
                     .setTitle("Jump to Algorithm")
                     .setItems(R.array.main_menu_legacy) { _, which ->
-                        Log.d(TAG, "onOptionsItemSelected: $which")
+                        Timber.d("onOptionsItemSelected: $which")
                     }.show()
         } else if (item.itemId == android.R.id.home) {
             onSupportNavigateUp()

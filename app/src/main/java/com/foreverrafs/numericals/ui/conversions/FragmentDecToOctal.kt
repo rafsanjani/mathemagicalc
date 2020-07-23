@@ -1,8 +1,8 @@
 package com.foreverrafs.numericals.ui.conversions
 
-import android.util.Log
 import com.foreverrafs.core.Numericals
 import com.foreverrafs.numericals.R
+import timber.log.Timber
 
 //import com.ms.square.android.expandabletextview.ExpandableTextView;
 /**
@@ -33,13 +33,9 @@ class FragmentDecToOctal : ConversionsBase() {
             tvAnswer.text = octalDecimal
             displayAnswer()
         } catch (ex: NumberFormatException) {
-            Log.e(TAG, "cannot parse $decimal to an integer value")
+            Timber.e("cannot parse $decimal to an integer value")
         } catch (ex: Exception) {
-            Log.e(TAG, ex.message)
+            Timber.e(ex)
         }
-    }
-
-    companion object {
-        private const val TAG = "FragmentDecToOctal"
     }
 }

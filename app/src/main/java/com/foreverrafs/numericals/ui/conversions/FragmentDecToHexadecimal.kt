@@ -1,9 +1,8 @@
 package com.foreverrafs.numericals.ui.conversions
 
-import android.util.Log
-import butterknife.OnClick
 import com.foreverrafs.core.Numericals
 import com.foreverrafs.numericals.R
+import timber.log.Timber
 
 //import com.ms.square.android.expandabletextview.ExpandableTextView;
 /**
@@ -34,13 +33,9 @@ class FragmentDecToHexadecimal : ConversionsBase() {
             tvAnswer.text = hexadecimal
             displayAnswer()
         } catch (ex: NumberFormatException) {
-            Log.e(TAG, "cannot parse $decimal to an integer value")
+            Timber.e("cannot parse $decimal to an integer value")
         } catch (ex: Exception) {
-            Log.e(TAG, ex.message)
+            Timber.e(ex)
         }
-    }
-
-    companion object {
-        private const val TAG = "FragmentDecToHexadecima"
     }
 }

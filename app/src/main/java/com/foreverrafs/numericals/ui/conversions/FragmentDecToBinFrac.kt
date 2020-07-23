@@ -1,9 +1,8 @@
 package com.foreverrafs.numericals.ui.conversions
 
-import android.util.Log
-import butterknife.OnClick
 import com.foreverrafs.core.Numericals
 import com.foreverrafs.numericals.R
+import timber.log.Timber
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
@@ -41,13 +40,9 @@ class FragmentDecToBinFrac : ConversionsBase() {
             tvAnswer.text = rawBinary
             displayAnswer()
         } catch (ex: NumberFormatException) {
-            Log.e(TAG, "cannot parse $decimal to a double value")
+            Timber.e("cannot parse $decimal to a double value")
         } catch (ex: Exception) {
-            Log.e(TAG, ex.message)
+            Timber.e(ex)
         }
-    }
-
-    companion object {
-        private const val TAG = "FragmentDecToBinFrac"
     }
 }
