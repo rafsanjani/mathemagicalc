@@ -16,14 +16,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import timber.log.Timber;
+
 /**
  * Created by Aziz Rafsanjani on 11/2/2017.
  */
 
 
 public final class Numericals {
-    private static final String TAG = "Numericals";
-
     /***
      * Converts a whole number from Base 10 to Base 2. Note: Only Integers
      * @param dec A decimal number(n) where n >= 1
@@ -561,7 +561,7 @@ public final class Numericals {
             roundTo2Dp(A, B);
             roundTo2Dp(solution);
         } catch (ArrayIndexOutOfBoundsException ay) {
-            Timber.d("getSolutionByBackSubstitution: " + ay.getMessage());
+            Timber.d("getSolutionByBackSubstitution: %s", ay.getMessage());
         }
 
 
@@ -577,7 +577,7 @@ public final class Numericals {
                 for (int j = k; j < N; j++)
                     A[i][j] -= factor * A[k][j];
             } catch (ArrayIndexOutOfBoundsException ay) {
-                Timber.e("killRowsBeneath: " + ay.getMessage());
+                Timber.e("killRowsBeneath: %s", ay.getMessage());
             }
         }
     }
