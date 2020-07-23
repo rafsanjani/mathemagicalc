@@ -35,6 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:background="@android:color/transparent"
             android:gravity="center_horizontal"
             android:hint="@string/gauss_seidel_eqn1"
             android:imeOptions="actionGo"
@@ -52,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:background="@android:color/transparent"
             android:gravity="center_horizontal"
             android:hint="@string/gauss_seidel_eqn2"
             android:imeOptions="actionGo"
@@ -69,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:background="@android:color/transparent"
             android:gravity="center_horizontal"
             android:hint="@string/gauss_seidel_eqn3"
             android:imeOptions="actionGo"
@@ -94,6 +97,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
                 android:gravity="center_horizontal"
                 android:hint="@string/x1"
                 android:imeOptions="actionGo"
@@ -113,6 +117,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
                 android:gravity="center_horizontal"
                 android:hint="@string/x2"
                 android:imeOptions="actionGo"
@@ -125,13 +130,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/x3"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
                 android:gravity="center_horizontal"
                 android:hint="@string/x3"
                 android:imeOptions="actionGo"
@@ -149,13 +155,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTolerance"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
                 android:gravity="center_horizontal"
                 android:hint="@string/epsilon"
                 android:imeOptions="actionGo"
@@ -176,7 +183,7 @@
         tools:text="0.000000"
         tools:visibility="visible" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCalculate"
         style="@style/AppTheme.ButtonStyle"
         android:layout_width="match_parent"
@@ -184,7 +191,7 @@
 
         android:text="@string/calculate" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnShowAlgo"
         style="@style/AppTheme.ButtonStyle"
         android:layout_width="match_parent"
@@ -193,7 +200,7 @@
         android:layout_marginRight="30dp"
         android:text="@string/show_algorithm" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBackToMainMenu"
         style="@style/AppTheme.ButtonStyle.Exit"
         android:layout_width="match_parent"

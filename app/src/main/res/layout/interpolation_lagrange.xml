@@ -45,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_header2" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBackToMainMenu"
         style="@style/AppTheme.ButtonStyle"
         android:layout_width="match_parent"

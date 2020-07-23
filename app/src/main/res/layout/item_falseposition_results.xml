@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -21,8 +22,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="x"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="x" />
 
             <TextView
                 android:id="@+id/x1"
@@ -30,8 +31,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="TextView" />
 
             <TextView
                 android:id="@+id/x2"
@@ -39,8 +40,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="x2" />
 
             <TextView
                 android:id="@+id/x3"
@@ -48,16 +49,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="x3" />
 
             <TextView
                 android:id="@+id/difference"
                 style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="TextView" />
         </TableRow>
 
     </TableLayout>

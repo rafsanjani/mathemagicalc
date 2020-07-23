@@ -24,7 +24,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="15dp"
 
-                    android:src="@drawable/left_bracket" />
+                    android:src="@drawable/left_bracket"
+                    tools:ignore="ContentDescription" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -43,7 +44,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
-                            <EditText
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/a11"
                                 style="@style/MatrixInputStyle"
                                 android:hint="a11" />
@@ -231,9 +232,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-
                     android:src="@drawable/left_bracket"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    tools:ignore="ContentDescription" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -247,7 +248,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1">
 
-                        <EditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/b1"
                             style="@style/MatrixInputStyle"
                             android:hint="b1" />
@@ -258,7 +259,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1">
 
-                        <EditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/b2"
                             style="@style/MatrixInputStyle"
                             android:hint="b2" />
@@ -269,22 +270,20 @@
                         android:layout_height="0dp"
                         android:layout_weight="1">
 
-                        <EditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/b3"
                             style="@style/MatrixInputStyle"
                             android:hint="b3" />
                     </com.google.android.material.textfield.TextInputLayout>
-
-
                 </LinearLayout>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_marginTop="15dp"
                     android:src="@drawable/right_bracket"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    tools:ignore="ContentDescription" />
             </LinearLayout>
 
             <TextView
@@ -309,7 +308,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/left_bracket_sol" />
+                    android:src="@drawable/left_bracket_sol"
+                    tools:ignore="ContentDescription" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -515,7 +515,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:src="@drawable/right_bracket_sol"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    tools:ignore="ContentDescription" />
 
             </LinearLayout>
         </LinearLayout>

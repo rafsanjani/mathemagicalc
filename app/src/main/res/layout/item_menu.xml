@@ -23,7 +23,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/button_focused" />
+            app:srcCompat="@drawable/button_focused"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/text_menu_title"

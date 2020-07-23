@@ -23,8 +23,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.about_dialog.*
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
-private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     private lateinit var sheetBehavior: BottomSheetBehavior<*>
     private lateinit var navController: NavController

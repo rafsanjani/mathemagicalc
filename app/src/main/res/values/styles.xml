@@ -70,7 +70,7 @@
 
     <style name="MatrixInputStyle">
         <item name="android:inputType">numberSigned|numberDecimal</item>
-
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_width">@dimen/matrix_elements_width</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
@@ -87,6 +87,11 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="matrixEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
     <style name="MatrixConstantStyle">
         <item name="android:layout_marginTop">18dp</item>
         <item name="android:layout_width">@dimen/matrix_elements_width</item>
@@ -99,6 +104,7 @@
 
     <style name="EquationInputStyle">
         <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:imeOptions">actionGo</item>

@@ -27,6 +27,8 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Locale;
 
+import timber.log.Timber;
+
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */

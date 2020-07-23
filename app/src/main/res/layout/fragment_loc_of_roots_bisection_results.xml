@@ -81,8 +81,8 @@
                 android:id="@+id/iterations"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="[9]"
-                android:textColor="#37963b" />
+                android:textColor="#37963b"
+                tools:text="[9]" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -95,8 +95,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                tools:text="[-0.000000000000]"
-                android:textColor="#8c1453" />
+                android:textColor="#8c1453"
+                tools:text="[-0.000000000000]" />
 
         </LinearLayout>
 
@@ -113,6 +113,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
                 android:id="@+id/iteration"
                 style="@style/AppTheme.TableHeaderStyle"
@@ -161,7 +162,6 @@
     </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:id="@+id/resultList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -169,7 +169,8 @@
         android:layout_below="@id/tableValues"
         android:layout_margin="10dp"
         android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="vertical|horizontal" />
+        android:scrollbars="vertical|horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <LinearLayout
         android:id="@+id/buttons"
@@ -178,7 +179,7 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnShowAlgo"
             style="@style/AppTheme.ButtonStyle"
             android:layout_width="match_parent"
@@ -187,14 +188,13 @@
             android:layout_marginRight="30dp"
             android:text="@string/show_algorithm" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBackToBisection"
             style="@style/AppTheme.ButtonStyle.Exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/back_to_bisection"
             android:textStyle="bold" />
-
     </LinearLayout>
 
 </RelativeLayout>

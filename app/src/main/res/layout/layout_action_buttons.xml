@@ -3,12 +3,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCalculate"
         style="@style/AppTheme.ButtonStyle"
         android:text="@string/calculate" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnShowAlgo"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         android:layout_marginRight="30dp"
         android:text="@string/show_algorithm" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBackToMainMenu"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="match_parent"

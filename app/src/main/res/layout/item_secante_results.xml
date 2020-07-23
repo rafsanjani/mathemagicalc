@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -29,8 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="x1"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="x1" />
 
             <TextView
                 android:id="@+id/x2"
@@ -38,8 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="x2"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="x2" />
 
             <TextView
                 android:id="@+id/x3"
@@ -47,16 +48,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="x3"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="x3" />
 
             <TextView
                 android:id="@+id/difference"
                 style="@style/AppTheme.TableTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x[n] - x[n+1]"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="x[n] - x[n+1]" />
         </TableRow>
 
     </TableLayout>
