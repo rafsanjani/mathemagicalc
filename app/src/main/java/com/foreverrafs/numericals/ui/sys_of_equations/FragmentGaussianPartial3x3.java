@@ -16,7 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.foreverrafs.core.Numericals;
-import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.databinding.FragmentGaussianPartial3x3Binding;
+import com.foreverrafs.numericals.databinding.LayoutMatrix3x3Binding;
 import com.foreverrafs.numericals.utils.Utilities;
 
 import timber.log.Timber;
@@ -25,50 +26,41 @@ import timber.log.Timber;
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentGaussianPartial3x3 extends FragmentSystemOfEquationsBase implements View.OnClickListener, View.OnKeyListener, TextWatcher {
+public class FragmentGaussianPartial3x3 extends FragmentSystemOfEquationsBase implements View.OnKeyListener, TextWatcher {
 
-    private static final String TAG = "FragmentGaussianPartial";
-    private View rootView;
+    FragmentGaussianPartial3x3Binding binding = null;
+    LayoutMatrix3x3Binding matrixBinding = null;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_gaussian_partial3x3, container, false);
-
-        initControls();
-        return rootView;
+        binding = FragmentGaussianPartial3x3Binding.inflate(inflater, container, false);
+        matrixBinding = binding.layoutMatrix;
+        return binding.getRoot();
     }
-
-    private void initControls() {
-        Button btnBack = rootView.findViewById(R.id.btnBackToMainMenu);
-        Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
-        btnBack.setOnClickListener(this);
-        btnCalculate.setOnClickListener(this);
-    }
-
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnBackToMainMenu:
-                goToMainmenu((Button) view);
-                break;
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setUpClickListeners();
+    }
 
-            case R.id.btnCalculate:
-                Timber.i("solving the system using gaussian with partial pivoting");
-                onCalculate();
-                break;
-        }
+    private void setUpClickListeners() {
+        binding.btnBackToMainMenu.setOnClickListener(view -> goToMainmenu((Button) view));
+
+        binding.btnCalculate.setOnClickListener(view -> {
+            Timber.i("solving the system using gaussian with partial pivoting");
+            onCalculate();
+        });
     }
 
     private void onCalculate() {
         if (getMatrices()) {
-            // LinearLayout solutionMatrix = rootView.findViewById(R.id.solutionMatrix);
-            //LinearLayout solutionMatrix2 = rootView.findViewById(R.id.solutionMatrix2);
-            Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
-            Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(matrixBinding.solutionMatrix, binding.parentContainer, Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(matrixBinding.solutionMatrix2, binding.parentContainer, Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(matrixBinding.solHeader1, binding.parentContainer, Utilities.DisplayMode.SHOW);
+            Utilities.animateAnswer(matrixBinding.solHeader2, binding.parentContainer, Utilities.DisplayMode.SHOW);
         } else {
             Toast.makeText(getContext(), "Error with input", Toast.LENGTH_SHORT).show();
         }
@@ -82,23 +74,19 @@ public class FragmentGaussianPartial3x3 extends FragmentSystemOfEquationsBase im
         EditText[] etB = new EditText[3];
         double[] b = new double[3];
 
-        EditText[] etX = new EditText[3];
+        etA[0][0] = matrixBinding.a11;
+        etA[0][1] = matrixBinding.a12;
+        etA[0][2] = matrixBinding.a13;
+        etA[1][0] = matrixBinding.a21;
+        etA[1][1] = matrixBinding.a22;
+        etA[1][2] = matrixBinding.a23;
+        etA[2][0] = matrixBinding.a31;
+        etA[2][1] = matrixBinding.a32;
+        etA[2][2] = matrixBinding.a33;
 
-        etA[0][0] = rootView.findViewById(R.id.a11);
-        etA[0][1] = rootView.findViewById(R.id.a12);
-        etA[0][2] = rootView.findViewById(R.id.a13);
-        etA[1][0] = rootView.findViewById(R.id.a21);
-        etA[1][1] = rootView.findViewById(R.id.a22);
-        etA[1][2] = rootView.findViewById(R.id.a23);
-        etA[2][0] = rootView.findViewById(R.id.a31);
-        etA[2][1] = rootView.findViewById(R.id.a32);
-        etA[2][2] = rootView.findViewById(R.id.a33);
-
-        etB[0] = rootView.findViewById(R.id.b1);
-        etB[1] = rootView.findViewById(R.id.b2);
-        etB[2] = rootView.findViewById(R.id.b3);
-
-        etX[0] = rootView.findViewById(R.id.x1);
+        etB[0] = matrixBinding.b1;
+        etB[1] = matrixBinding.b2;
+        etB[2] = matrixBinding.b3;
 
 
         Utilities.hideKeyboard(etA[0][0]);
@@ -129,27 +117,27 @@ public class FragmentGaussianPartial3x3 extends FragmentSystemOfEquationsBase im
 
         //our previous matrices have been mutated so we can represent them on the textviews
         TextView[][] tvA = new TextView[3][3];
-        tvA[0][0] = rootView.findViewById(R.id.sa11);
-        tvA[0][1] = rootView.findViewById(R.id.sa12);
-        tvA[0][2] = rootView.findViewById(R.id.sa13);
-        tvA[1][0] = rootView.findViewById(R.id.sa21);
-        tvA[1][1] = rootView.findViewById(R.id.sa22);
-        tvA[1][2] = rootView.findViewById(R.id.sa23);
-        tvA[2][0] = rootView.findViewById(R.id.sa31);
-        tvA[2][1] = rootView.findViewById(R.id.sa32);
-        tvA[2][2] = rootView.findViewById(R.id.sa33);
+        tvA[0][0] = matrixBinding.sa11;
+        tvA[0][1] = matrixBinding.sa12;
+        tvA[0][2] = matrixBinding.sa13;
+        tvA[1][0] = matrixBinding.sa21;
+        tvA[1][1] = matrixBinding.sa22;
+        tvA[1][2] = matrixBinding.sa23;
+        tvA[2][0] = matrixBinding.sa31;
+        tvA[2][1] = matrixBinding.sa32;
+        tvA[2][2] = matrixBinding.sa33;
 
 
         TextView[] tvX = new TextView[3];
         TextView[] tvB = new TextView[3];
 
-        tvB[0] = rootView.findViewById(R.id.sab1);
-        tvB[1] = rootView.findViewById(R.id.sab2);
-        tvB[2] = rootView.findViewById(R.id.sab3);
+        tvB[0] = matrixBinding.sab1;
+        tvB[1] = matrixBinding.sab2;
+        tvB[2] = matrixBinding.sab3;
 
-        tvX[0] = rootView.findViewById(R.id.sax1);
-        tvX[1] = rootView.findViewById(R.id.sax2);
-        tvX[2] = rootView.findViewById(R.id.sax3);
+        tvX[0] = matrixBinding.sax1;
+        tvX[1] = matrixBinding.sax2;
+        tvX[2] = matrixBinding.sax3;
 
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a.length; j++) {
@@ -174,10 +162,10 @@ public class FragmentGaussianPartial3x3 extends FragmentSystemOfEquationsBase im
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solutionMatrix2), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader1), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
-        Utilities.animateAnswer(rootView.findViewById(R.id.solHeader2), rootView.findViewById(R.id.parentContainer), Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(matrixBinding.solutionMatrix, binding.parentContainer, Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(matrixBinding.solutionMatrix2, binding.parentContainer, Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(matrixBinding.solHeader1, binding.parentContainer, Utilities.DisplayMode.HIDE);
+        Utilities.animateAnswer(matrixBinding.solHeader2, binding.parentContainer, Utilities.DisplayMode.HIDE);
     }
 
     @Override
