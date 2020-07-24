@@ -127,4 +127,6 @@
     <string name="back_to_newton_raphson">Back to Newton Raphson</string>
     <string name="back_to_false_position">Back to False Position</string>
     <string name="i_understand_now">i understand now</string>
+    <string name="label_reduced_matrix">Reduced Matrix form</string>
+    <string name="label_solution_matrix">The Solution Matrix</string>
 </resources>
