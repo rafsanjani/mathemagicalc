@@ -13,8 +13,8 @@ android {
         applicationId "com.foreverrafs.numericals"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 22
-        versionName "2.2.0"
+        versionCode 23
+        versionName "2.2.0 - beta01"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
