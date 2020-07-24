@@ -22,7 +22,9 @@
             android:layout_height="wrap_content"
             android:text="@string/gaussian_partial_header" />
 
-        <include layout="@layout/layout_matrix3x3" />
+        <include
+            android:id="@+id/layoutMatrix"
+            layout="@layout/layout_matrix3x3" />
 
 
         <Button

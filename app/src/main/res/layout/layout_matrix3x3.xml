@@ -1,525 +1,559 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:showIn="@layout/fragment_gaussian_partial3x3">
+    android:orientation="vertical">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--User input section. FrameLayout used solely for centering children. Should be removed
+        if a proper centering of multiple elements on a ConstraintLayout is possible-->
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
                 <ImageView
+                    android:id="@+id/openBracket"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
                     android:src="@drawable/left_bracket"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/inputLayoutA11"
                     tools:ignore="ContentDescription" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="3">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/a11"
-                                style="@style/MatrixInputStyle"
-                                android:hint="a11" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <EditText
-                                android:id="@+id/a12"
-                                style="@style/MatrixInputStyle"
-                                android:hint="a12" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <EditText
-                                android:id="@+id/a13"
-                                style="@style/MatrixInputStyle"
-                                android:hint="a13" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <EditText
-                                android:id="@+id/a21"
-                                style="@style/MatrixInputStyle"
-                                android:hint="a21" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <EditText
-                                android:id="@+id/a22"
-                                style="@style/MatrixInputStyle"
-                                android:hint="a22" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <EditText
-                                android:id="@+id/a23"
-                                style="@style/MatrixInputStyle"
-                                android:hint="a23" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <EditText
-                                android:id="@+id/a31"
-                                style="@style/MatrixInputStyle"
-                                android:hint="a31" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <EditText
-                                android:id="@+id/a32"
-                                style="@style/MatrixInputStyle"
-                                android:hint="a32" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <EditText
-                                android:id="@+id/a33"
-                                style="@style/MatrixInputStyle"
-                                android:hint="a33" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
                 <ImageView
+                    android:id="@+id/closeBracket"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/right_bracket" />
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/left_bracket"
-                    android:visibility="visible" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:visibility="visible"
-                    android:weightSum="3">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
-
-                        <TextView
-                            style="@style/MatrixConstantStyle"
-                            android:layout_gravity="center"
-                            android:text="x1" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
-
-                        <TextView
-                            style="@style/MatrixConstantStyle"
-                            android:layout_gravity="center"
-                            android:text="x2" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
-
-                        <TextView
-                            style="@style/MatrixConstantStyle"
-                            android:layout_gravity="center"
-                            android:text="x3" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:src="@drawable/right_bracket"
-                    android:visibility="visible" />
+                    app:layout_constraintLeft_toRightOf="@+id/inputLayoutA13"
+                    app:layout_constraintTop_toTopOf="@+id/openBracket"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutA11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="a11"
+                    app:layout_constraintLeft_toLeftOf="@id/openBracket"
+                    app:layout_constraintTop_toTopOf="@id/openBracket">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/a11"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutA12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="a12"
+                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA11"
+                    app:layout_constraintTop_toTopOf="@+id/inputLayoutA11">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/a12"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutA13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="a13"
+                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA12"
+                    app:layout_constraintTop_toTopOf="@+id/inputLayoutA12">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/a13"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutA21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="a21"
+                    app:layout_constraintLeft_toLeftOf="@id/openBracket"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA11">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/a21"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutA22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="a22"
+                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA21"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA11">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/a22"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutA23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="a23"
+                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA22"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA11">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/a23"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutA31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="a31"
+                    app:layout_constraintLeft_toLeftOf="@id/openBracket"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA21">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/a31"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutA32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="a32"
+                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA31"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA21">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/a32"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutA33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="a33"
+                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA32"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA21">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/a33"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/openBracket2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/left_bracket"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/closeBracket"
+                    app:layout_constraintTop_toTopOf="@+id/closeBracket"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/x1"
+                    style="@style/MatrixConstantStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:text="x1"
+                    app:layout_constraintStart_toEndOf="@+id/openBracket2"
+                    app:layout_constraintTop_toTopOf="@+id/openBracket2" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/MatrixConstantStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="x2"
+                    app:layout_constraintBottom_toTopOf="@+id/textView6"
+                    app:layout_constraintStart_toEndOf="@+id/openBracket2"
+                    app:layout_constraintTop_toBottomOf="@+id/x1" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/MatrixConstantStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:text="x3"
+                    app:layout_constraintBottom_toBottomOf="@+id/openBracket2"
+                    app:layout_constraintStart_toEndOf="@+id/openBracket2" />
+
+                <ImageView
+                    android:id="@+id/closeBracket2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/right_bracket"
+                    app:layout_constraintStart_toEndOf="@+id/textView5"
+                    app:layout_constraintTop_toTopOf="@+id/openBracket2"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/equals"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:gravity="center"
+                    android:layout_marginStart="10dp"
                     android:text="="
                     android:textColor="#000000"
-                    android:textSize="32sp" />
+                    android:textSize="32sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                    app:layout_constraintEnd_toStartOf="@+id/openBracket3"
+                    app:layout_constraintHorizontal_bias="0.358"
+                    app:layout_constraintStart_toEndOf="@+id/closeBracket2"
+                    app:layout_constraintTop_toTopOf="@+id/x1"
+                    app:layout_constraintVertical_bias="0.457" />
 
                 <ImageView
+                    android:id="@+id/openBracket3"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/left_bracket"
-                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@id/openBracket2"
+                    app:layout_constraintStart_toEndOf="@+id/equals"
+                    app:layout_constraintTop_toTopOf="@id/openBracket2"
+                    app:layout_constraintVertical_bias="1.0"
                     tools:ignore="ContentDescription" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:visibility="visible"
-                    android:weightSum="3">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/b1"
-                            style="@style/MatrixInputStyle"
-                            android:hint="b1" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/b2"
-                            style="@style/MatrixInputStyle"
-                            android:hint="b2" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/b3"
-                            style="@style/MatrixInputStyle"
-                            android:hint="b3" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-                <ImageView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutB1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:hint="b1"
+                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA12"
+                    app:layout_constraintStart_toEndOf="@+id/openBracket3"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/b1"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutB2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="b2"
+                    app:layout_constraintLeft_toRightOf="@id/openBracket3"
+                    app:layout_constraintTop_toBottomOf="@id/inputLayoutB1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/b2"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutB3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="b2"
+                    app:layout_constraintLeft_toRightOf="@id/openBracket3"
+                    app:layout_constraintTop_toBottomOf="@id/inputLayoutB2">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/b3"
+                        style="@style/MatrixInputStyle" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/closeBracket3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@drawable/right_bracket"
-                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@+id/inputLayoutB2"
+                    app:layout_constraintTop_toTopOf="@+id/openBracket3"
                     tools:ignore="ContentDescription" />
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
 
-            <TextView
-                android:id="@+id/solHeader1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Reduced Matrix form:"
-                android:textAlignment="center"
-                android:visibility="gone"
-                tools:visibility="visible" />
 
-            <LinearLayout
-                android:id="@+id/solutionMatrix"
+        <TextView
+            android:id="@+id/solHeader1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/label_reduced_matrix"
+            android:textAlignment="center"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            tools:visibility="visible" />
+
+        <FrameLayout
+            android:id="@+id/solutionMatrix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/solHeader1"
+            tools:visibility="visible">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:visibility="gone"
-                tools:visibility="visible">
+                android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/left_bracket_sol"
-                    tools:ignore="ContentDescription" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="3">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/sa11"
-                            style="@style/MatrixSolutionStyle"
-                            android:layout_gravity="center"
-                            android:text="0.0" />
-
-                        <TextView
-                            android:id="@+id/sa12"
-                            style="@style/MatrixSolutionStyle"
-                            android:layout_gravity="center"
-                            android:text="0.0" />
-
-                        <TextView
-                            android:id="@+id/sa13"
-                            style="@style/MatrixSolutionStyle"
-                            android:layout_gravity="center"
-                            android:text="0.0" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/sa21"
-                            style="@style/MatrixSolutionStyle"
-                            android:layout_gravity="center"
-                            android:text="0.0" />
-
-                        <TextView
-                            android:id="@+id/sa22"
-                            style="@style/MatrixSolutionStyle"
-                            android:layout_gravity="center"
-                            android:text="0.0" />
-
-
-                        <TextView
-                            android:id="@+id/sa23"
-                            style="@style/MatrixSolutionStyle"
-                            android:layout_gravity="center"
-                            android:text="0.0" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/sa31"
-                            style="@style/MatrixSolutionStyle"
-                            android:layout_gravity="center"
-                            android:text="0.0" />
-
-                        <TextView
-                            android:id="@+id/sa32"
-                            style="@style/MatrixSolutionStyle"
-                            android:layout_gravity="center"
-                            android:text="0.0" />
-
-                        <TextView
-                            android:id="@+id/sa33"
-                            style="@style/MatrixSolutionStyle"
-                            android:layout_gravity="center"
-                            android:text="0.0" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <ImageView
+                    android:id="@+id/openBracket4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:src="@drawable/augment_bracket_sol" />
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
-                    android:visibility="visible"
-                    android:weightSum="3">
-
-                    <TextView
-                        android:id="@+id/sab1"
-                        style="@style/MatrixSolutionStyle"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="0.0" />
-
-                    <TextView
-                        android:id="@+id/sab2"
-                        style="@style/MatrixSolutionStyle"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="0.0" />
-
-                    <TextView
-                        android:id="@+id/sab3"
-                        style="@style/MatrixSolutionStyle"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="0.0" />
-
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/right_bracket_sol"
-                    android:visibility="visible" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/solHeader2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="The solution Matrix:"
-                android:textAlignment="center"
-                android:visibility="gone"
-                tools:visibility="visible" />
-
-            <LinearLayout
-                android:id="@+id/solutionMatrix2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:visibility="gone"
-                tools:visibility="visible">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/left_bracket_sol"
-                    android:visibility="visible" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
-                    android:visibility="visible"
-                    android:weightSum="3">
-
-                    <TextView
-                        android:id="@+id/sax1"
-                        style="@style/MatrixSolutionStyle"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="0.0" />
-
-                    <TextView
-                        android:id="@+id/sax2"
-                        style="@style/MatrixSolutionStyle"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="0.0" />
-
-                    <TextView
-                        android:id="@+id/sax3"
-                        style="@style/MatrixSolutionStyle"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="0.0" />
-
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/right_bracket_sol"
-                    android:visibility="visible"
+                    android:src="@drawable/left_bracket"
+                    app:layout_constraintEnd_toStartOf="@+id/sa11"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="ContentDescription" />
 
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+                <TextView
+                    android:id="@+id/sa11"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toTopOf="@+id/sa21"
+                    app:layout_constraintEnd_toStartOf="@+id/sa12"
+                    app:layout_constraintStart_toEndOf="@id/openBracket4"
+                    app:layout_constraintTop_toTopOf="@id/openBracket4"
+                    tools:text="0.0" />
 
-</LinearLayout>
+                <TextView
+                    android:id="@+id/sa21"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="0dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toTopOf="@+id/sa31"
+                    app:layout_constraintEnd_toEndOf="@+id/sa11"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/sa11"
+                    app:layout_constraintTop_toBottomOf="@id/sa11"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/sa31"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="0dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/sa11"
+                    app:layout_constraintStart_toStartOf="@+id/sa21"
+                    app:layout_constraintTop_toBottomOf="@id/sa21"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/sa12"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/sa13"
+                    app:layout_constraintStart_toEndOf="@+id/sa11"
+                    app:layout_constraintTop_toTopOf="@+id/sa11"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/sa22"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sa12"
+                    app:layout_constraintStart_toStartOf="@+id/sa12"
+                    app:layout_constraintTop_toTopOf="@+id/sa21"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/sa32"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sa22"
+                    app:layout_constraintStart_toStartOf="@+id/sa22"
+                    app:layout_constraintTop_toTopOf="@+id/sa31"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/sa13"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toStartOf="@+id/imageAugment"
+                    app:layout_constraintStart_toEndOf="@+id/sa12"
+                    app:layout_constraintTop_toTopOf="@+id/sa12"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/sa23"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sa13"
+                    app:layout_constraintStart_toStartOf="@+id/sa13"
+                    app:layout_constraintTop_toTopOf="@+id/sa22"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/sa33"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sa23"
+                    app:layout_constraintStart_toStartOf="@+id/sa23"
+                    app:layout_constraintTop_toTopOf="@+id/sa32"
+                    tools:text="0.0" />
+
+                <ImageView
+                    android:id="@+id/imageAugment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/augment_bracket_sol"
+                    app:layout_constraintBottom_toBottomOf="@+id/openBracket4"
+                    app:layout_constraintLeft_toRightOf="@+id/sa33"
+                    app:layout_constraintTop_toTopOf="@+id/openBracket4"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/sab1"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageAugment"
+                    app:layout_constraintTop_toTopOf="@+id/sa13"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/sab2"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sab1"
+                    app:layout_constraintStart_toStartOf="@+id/sab1"
+                    app:layout_constraintTop_toTopOf="@+id/sa23"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/sab3"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sab1"
+                    app:layout_constraintStart_toStartOf="@+id/sab1"
+                    app:layout_constraintTop_toTopOf="@+id/sa33"
+                    tools:text="0.0" />
+
+                <ImageView
+                    android:id="@+id/closeBracket4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/right_bracket"
+                    app:layout_constraintStart_toEndOf="@id/sab1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/solHeader2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/label_solution_matrix"
+            android:textAlignment="center"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/solutionMatrix"
+            tools:visibility="visible" />
+
+        <FrameLayout
+            android:id="@+id/solutionMatrix2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/solHeader2"
+            tools:visibility="visible">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/openBracket5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/left_bracket"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/sax1"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toTopOf="@+id/sax2"
+                    app:layout_constraintStart_toEndOf="@id/openBracket5"
+                    app:layout_constraintTop_toTopOf="@id/openBracket5"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/sax2"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toTopOf="@+id/sax3"
+                    app:layout_constraintStart_toEndOf="@id/openBracket5"
+                    app:layout_constraintTop_toBottomOf="@+id/sax1"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/sax3"
+                    style="@style/MatrixSolutionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/openBracket5"
+                    app:layout_constraintStart_toEndOf="@id/openBracket5"
+                    app:layout_constraintTop_toBottomOf="@+id/sax2"
+                    tools:text="0.0" />
+
+                <ImageView
+                    android:id="@+id/closeBracket5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/right_bracket"
+                    app:layout_constraintStart_toEndOf="@id/sax1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
