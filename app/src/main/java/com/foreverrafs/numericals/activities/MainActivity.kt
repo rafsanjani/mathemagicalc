@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(this, R.id.nav_host_fragment)
 
-        sheetBehavior = BottomSheetBehavior.from(bottom_sheet!!)
+        sheetBehavior = BottomSheetBehavior.from(bottom_sheet)
         tvVersion.text = getString(R.string.version, BuildConfig.VERSION_NAME)
 
         setSupportActionBar(toolbar)
@@ -103,6 +103,7 @@ class MainActivity : AppCompatActivity() {
             MaterialAlertDialogBuilder(this)
                     .setTitle("Jump to Algorithm")
                     .setItems(R.array.main_menu_legacy) { _, which ->
+                        //todo: navigate to proper page when selected
                         Timber.d("onOptionsItemSelected: $which")
                     }.show()
         } else if (item.itemId == android.R.id.home) {

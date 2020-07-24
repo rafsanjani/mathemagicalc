@@ -3,7 +3,7 @@
     <dimen name="answer_vertical_width">10dp</dimen>
     <dimen name="sol_answer_vertical_width">10dp</dimen>
     <dimen name="std_layout_margin">30dp</dimen>
-    <dimen name="matrix_elements_width">43dp</dimen>
+    <dimen name="matrix_elements_width">60dp</dimen>
     <dimen name="desc_text_size">17sp</dimen>
     <dimen name="header_margin_top">10dp</dimen>
 </resources>

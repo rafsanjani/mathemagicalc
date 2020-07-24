@@ -36,7 +36,7 @@ abstract class ConversionsBase : Fragment() {
 
     private lateinit var methodName: String
 
-    protected lateinit var parentActivity: MainActivity
+    private lateinit var parentActivity: MainActivity
 
     protected lateinit var navController: NavController
 

@@ -3,11 +3,11 @@
     <dimen name="answer_vertical_width">5dp</dimen>
     <dimen name="sol_answer_vertical_width">10dp</dimen>
     <dimen name="std_layout_margin">30dp</dimen>
-    <dimen name="matrix_elements_width">40dp</dimen>
+    <dimen name="matrix_elements_width">100dp</dimen>
     <dimen name="desc_text_size">17sp</dimen>
     <dimen name="header_margin_top">10dp</dimen>
     <dimen name="menu_text_size">11sp</dimen>
     <dimen name="input_margin">5dp</dimen>
     <dimen name="input_corner_radius">20dp</dimen>
-
+    <dimen name="matrix_margin_start">5dp</dimen>
 </resources>
