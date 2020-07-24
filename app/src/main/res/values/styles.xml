@@ -72,19 +72,16 @@
         <item name="android:inputType">numberSigned|numberDecimal</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_width">@dimen/matrix_elements_width</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="MatrixSolutionStyle">
-        <item name="android:layout_marginTop">@dimen/sol_answer_vertical_width</item>
-        <item name="android:layout_width">@dimen/matrix_elements_width</item>
-
-        <item name="android:layout_marginBottom">5dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/colorHeading</item>
-        <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
     </style>
 
     <style name="matrixEditTextStyle" parent="Widget.AppCompat.EditText">
@@ -93,13 +90,12 @@
 
 
     <style name="MatrixConstantStyle">
-        <item name="android:layout_marginTop">18dp</item>
-        <item name="android:layout_width">@dimen/matrix_elements_width</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorHeading</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="EquationInputStyle">
