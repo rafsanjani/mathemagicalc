@@ -79,7 +79,7 @@ dependencies {
 dependencies {
     implementation 'com.github.rafsanjani:Katex:v1.0.3'
     implementation 'com.jakewharton:butterknife:10.2.1'
-    kapt 'com.jakewharton:butterknife-compiler:10.2.1'
+    kapt 'com.jakewharton:butterknife-compiler:10.2.2'
 }
 
 //Firebase crashlytics
