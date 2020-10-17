@@ -27,11 +27,10 @@
                     android:id="@+id/openBracket"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="30dp"
                     android:src="@drawable/left_bracket"
+                    app:layout_constraintEnd_toStartOf="@+id/a11"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/inputLayoutA11"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="ContentDescription" />
 
                 <ImageView
@@ -39,128 +38,115 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/right_bracket"
-                    app:layout_constraintLeft_toRightOf="@+id/inputLayoutA13"
+                    app:layout_constraintLeft_toRightOf="@+id/a13"
                     app:layout_constraintTop_toTopOf="@+id/openBracket"
                     tools:ignore="ContentDescription" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutA11"
+                <EditText
+                    android:id="@+id/a11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:background="@android:color/transparent"
                     android:hint="a11"
+                    app:layout_constraintEnd_toStartOf="@+id/a12"
                     app:layout_constraintLeft_toLeftOf="@id/openBracket"
-                    app:layout_constraintTop_toTopOf="@id/openBracket">
+                    app:layout_constraintTop_toTopOf="@+id/x1" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/a11"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutA12"
+                <EditText
+                    android:id="@+id/a12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:background="@android:color/transparent"
                     android:hint="a12"
-                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA11"
-                    app:layout_constraintTop_toTopOf="@+id/inputLayoutA11">
+                    app:layout_constraintEnd_toStartOf="@+id/a13"
+                    app:layout_constraintLeft_toRightOf="@id/a11"
+                    app:layout_constraintTop_toTopOf="@+id/a11" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/a12"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutA13"
+                <EditText
+                    android:id="@+id/a13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:hint="a13"
-                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA12"
-                    app:layout_constraintTop_toTopOf="@+id/inputLayoutA12">
+                    app:layout_constraintEnd_toStartOf="@+id/closeBracket"
+                    app:layout_constraintLeft_toRightOf="@id/a12"
+                    app:layout_constraintTop_toTopOf="@+id/a12" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/a13"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutA21"
+                <EditText
+                    android:id="@+id/a21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:hint="a21"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                    app:layout_constraintEnd_toEndOf="@+id/a11"
                     app:layout_constraintLeft_toLeftOf="@id/openBracket"
-                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA11">
+                    app:layout_constraintStart_toStartOf="@+id/a11"
+                    app:layout_constraintTop_toTopOf="@+id/textView5" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/a21"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutA22"
+                <EditText
+                    android:id="@+id/a22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:hint="a22"
-                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA21"
-                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA11">
+                    app:layout_constraintBottom_toBottomOf="@+id/a21"
+                    app:layout_constraintLeft_toRightOf="@id/a21"
+                    app:layout_constraintStart_toStartOf="@+id/a12"
+                    app:layout_constraintTop_toTopOf="@+id/a21" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/a22"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutA23"
+                <EditText
+                    android:id="@+id/a23"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:hint="a23"
-                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA22"
-                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA11">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/a23"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintBottom_toBottomOf="@+id/a22"
+                    app:layout_constraintEnd_toStartOf="@+id/closeBracket"
+                    app:layout_constraintLeft_toRightOf="@id/a22"
+                    app:layout_constraintStart_toStartOf="@+id/a13" />
 
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutA31"
+                <EditText
+                    android:id="@+id/a31"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@android:color/transparent"
                     android:hint="a31"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView6"
                     app:layout_constraintLeft_toLeftOf="@id/openBracket"
-                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA21">
+                    app:layout_constraintStart_toStartOf="@+id/a21"
+                    app:layout_constraintTop_toTopOf="@+id/textView6" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/a31"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutA32"
+                <EditText
+                    android:id="@+id/a32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:hint="a32"
-                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA31"
-                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA21">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/a32"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintBottom_toBottomOf="@+id/a31"
+                    app:layout_constraintLeft_toRightOf="@id/a31"
+                    app:layout_constraintStart_toStartOf="@+id/a22" />
 
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutA33"
+                <EditText
+                    android:id="@+id/a33"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:hint="a33"
-                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA32"
-                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutA21">
+                    app:layout_constraintBottom_toBottomOf="@+id/a32"
+                    app:layout_constraintEnd_toStartOf="@+id/closeBracket"
+                    app:layout_constraintLeft_toRightOf="@id/a32"
+                    app:layout_constraintStart_toStartOf="@+id/a23" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/a33"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
                     android:id="@+id/openBracket2"
@@ -217,7 +203,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
+                    android:padding="10dp"
                     android:text="="
                     android:textColor="#000000"
                     android:textSize="32sp"
@@ -233,7 +219,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
 
-                    android:layout_marginStart="10dp"
                     android:src="@drawable/left_bracket"
                     app:layout_constraintBottom_toBottomOf="@id/openBracket2"
                     app:layout_constraintStart_toEndOf="@+id/equals"
@@ -241,52 +226,54 @@
                     app:layout_constraintVertical_bias="1.0"
                     tools:ignore="ContentDescription" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutB1"
+                <EditText
+                    android:id="@+id/b1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@android:color/transparent"
                     android:hint="b1"
-                    app:layout_constraintLeft_toRightOf="@id/inputLayoutA12"
+                    app:layout_constraintBottom_toBottomOf="@+id/x1"
+                    app:layout_constraintEnd_toStartOf="@+id/closeBracket3"
                     app:layout_constraintStart_toEndOf="@+id/openBracket3"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="@+id/x1"
+                    tools:text="b1" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/b1"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutB2"
+                <EditText
+                    android:id="@+id/b2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:hint="b2"
-                    app:layout_constraintLeft_toRightOf="@id/openBracket3"
-                    app:layout_constraintTop_toBottomOf="@id/inputLayoutB1">
+                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                    app:layout_constraintEnd_toStartOf="@+id/closeBracket3"
+                    app:layout_constraintStart_toEndOf="@+id/openBracket3"
+                    app:layout_constraintTop_toTopOf="@+id/textView5"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:text="b2" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/b2"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutB3"
+                <EditText
+                    android:id="@+id/b3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="b2"
+                    android:background="@android:color/transparent"
+                    android:hint="b3"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                    app:layout_constraintEnd_toEndOf="@+id/b2"
                     app:layout_constraintLeft_toRightOf="@id/openBracket3"
-                    app:layout_constraintTop_toBottomOf="@id/inputLayoutB2">
+                    app:layout_constraintStart_toStartOf="@+id/b2"
+                    app:layout_constraintTop_toTopOf="@+id/textView6" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/b3"
-                        style="@style/MatrixInputStyle" />
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
                     android:id="@+id/closeBracket3"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
                     android:src="@drawable/right_bracket"
-                    app:layout_constraintStart_toEndOf="@+id/inputLayoutB2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/b1"
                     app:layout_constraintTop_toTopOf="@+id/openBracket3"
                     tools:ignore="ContentDescription" />
             </androidx.constraintlayout.widget.ConstraintLayout>

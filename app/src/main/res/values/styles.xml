@@ -6,10 +6,21 @@
         <item name="android:windowEnterAnimation">@anim/slide_in_left</item>
         <item name="android:windowExitAnimation">@anim/slide_out_right</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="editTextStyle">@style/editTextStyle</item>
         <item name="colorButtonNormal">@color/colorButtonNormal</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/textColorHint</item>
+    </style>
+
+
+    <style name="editTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#1D3267</item>
+        <item name="android:maxLength">4</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/montserrat</item>
     </style>
 
     <style name="AppTheme" parent="BaseTheme">
@@ -124,7 +135,6 @@
     <style name="TextInputLayoutStyle">
         <item name="boxBackgroundColor">@android:color/transparent</item>
     </style>
-
 
 
 </resources>
