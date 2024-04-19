@@ -19,13 +19,11 @@ import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.utils.Utilities;
 
-import timber.log.Timber;
-
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentGaussianPartial4x4 extends FragmentSystemOfEquationsBase implements View.OnClickListener, View.OnKeyListener, TextWatcher {
+public class FragmentGaussianPartial4x4 extends FragmentSystemOfEquationsBase implements View.OnKeyListener, TextWatcher {
 
     private static final String TAG = "FragmentGaussianPartial";
     private View rootView;
@@ -44,23 +42,8 @@ public class FragmentGaussianPartial4x4 extends FragmentSystemOfEquationsBase im
         Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
 
 
-        btnBack.setOnClickListener(this);
-        btnCalculate.setOnClickListener(this);
-    }
-
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnBackToMainMenu:
-                goToMainmenu((Button) view);
-                break;
-
-            case R.id.btnCalculate:
-                Timber.i("solving the system using gaussian with partial pivoting");
-                onCalculate();
-                break;
-        }
+        btnBack.setOnClickListener(v -> goToMainmenu());
+        btnCalculate.setOnClickListener(v -> onCalculate());
     }
 
     private void onCalculate() {

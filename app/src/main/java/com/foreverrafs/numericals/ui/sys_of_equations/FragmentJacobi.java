@@ -24,14 +24,12 @@ import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.Locale;
 
-import timber.log.Timber;
-
 
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentJacobi extends FragmentSystemOfEquationsBase implements View.OnClickListener, TextWatcher, View.OnKeyListener {
+public class FragmentJacobi extends FragmentSystemOfEquationsBase implements TextWatcher, View.OnKeyListener {
 
     private static final String TAG = "FragmentJacobi";
     private View mRootView;
@@ -91,29 +89,11 @@ public class FragmentJacobi extends FragmentSystemOfEquationsBase implements Vie
             editText.setOnKeyListener(this);
         }
 
-        btnCalculate.setOnClickListener(this);
-        btnBack.setOnClickListener(this);
-        mRootView.findViewById(R.id.btnShowAlgo).setOnClickListener(this);
+        btnCalculate.setOnClickListener(v -> onCalculate());
+        btnBack.setOnClickListener(v -> goToMainmenu());
+        mRootView.findViewById(R.id.btnShowAlgo).setOnClickListener(v -> showAlgorithm("jacobi"));
 
         mViewGroup = (LinearLayout) mRootView.findViewById(R.id.parentContainer);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnBackToMainMenu:
-                goToMainmenu((Button) view);
-                break;
-
-            case R.id.btnCalculate:
-                Timber.i("performing jacobi's calculation");
-                onCalculate();
-                break;
-
-            case R.id.btnShowAlgo:
-                showAlgorithm("jacobi");
-                break;
-        }
     }
 
     private void onCalculate() {

@@ -4,11 +4,11 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.foreverrafs.core.OdeResult
 import com.foreverrafs.numericals.R
-import kotlinx.android.synthetic.main.item_euler_results.view.*
-import java.util.*
+import java.util.Locale
 
 class OdeResultsAdapter(private val results: List<OdeResult>) : RecyclerView.Adapter<OdeResultsAdapter.RootResultViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RootResultViewHolder {
@@ -25,17 +25,21 @@ class OdeResultsAdapter(private val results: List<OdeResult>) : RecyclerView.Ada
     }
 
     inner class RootResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val container: ViewGroup = itemView.findViewById(R.id.container)
+        private val n: TextView = itemView.findViewById(R.id.n)
+        private val solX: TextView = itemView.findViewById(R.id.solX)
+        private val solY: TextView = itemView.findViewById(R.id.solY)
         fun bind(position: Int) {
             if (position % 2 == 0) {
-                itemView.container.setBackgroundColor(Color.argb(30, 238, 232, 232))
+                container.setBackgroundColor(Color.argb(30, 238, 232, 232))
             } else {
-                itemView.container.setBackgroundColor(Color.argb(30, 120, 200, 250))
+                container.setBackgroundColor(Color.argb(30, 120, 200, 250))
             }
 
             val (x, y) = results[position]
-            itemView.n.text = position.toString()
-            itemView.solX.text = String.format(Locale.US, "%.3f", x)
-            itemView.solY.text = String.format(Locale.US, "%.6f", y)
+            n.text = position.toString()
+            solX.text = String.format(Locale.US, "%.3f", x)
+            solY.text = String.format(Locale.US, "%.6f", y)
         }
     }
 

@@ -7,7 +7,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,7 +46,7 @@ public class FragmentGaussianComplete3x3 extends FragmentSystemOfEquationsBase i
     }
 
     private void setUpClickListeners() {
-        binding.btnBackToMainMenu.setOnClickListener(view -> goToMainmenu((Button) view));
+        binding.btnBackToMainMenu.setOnClickListener(view -> goToMainmenu());
 
         binding.btnCalculate.setOnClickListener(view -> {
             Timber.i("solving the system using gaussian with Complete pivoting");

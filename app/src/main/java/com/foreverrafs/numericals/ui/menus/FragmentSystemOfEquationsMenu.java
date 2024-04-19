@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,32 +23,28 @@ import com.foreverrafs.numericals.utils.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 
 public class FragmentSystemOfEquationsMenu extends Fragment implements OperationsMenuAdapter.MenuItemClickListenener {
 
-    @BindView(R.id.list_main_menu)
-    RecyclerView mainMenuItems;
 
-    @BindView(R.id.tvHeader)
-    TextView header;
-
+    com.foreverrafs.numericals.databinding.FragmentMainMenuBinding binding;
     private NavController navController = null;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main_menu, container, false);
+        binding = com.foreverrafs.numericals.databinding.FragmentMainMenuBinding.inflate(inflater);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
 
         navController = Navigation.findNavController(view);
+
+        RecyclerView mainMenuItems = binding.contentMenu.listMainMenu;
+
         mainMenuItems.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         List<OperationMenu> operations = new ArrayList<>();
@@ -62,7 +57,7 @@ public class FragmentSystemOfEquationsMenu extends Fragment implements Operation
         operations.add(new OperationMenu("Gauss Seidel (SOR)", R.drawable.button_normal_system_of_eqns_gaussseidel, Constants.SYS_OF_EQN_GAUSS_SEIDEL_SOR));
 
 
-        header.setText(getString(R.string.system_of_equations));
+        binding.contentMenu.tvHeader.setText(getString(R.string.system_of_equations));
 
         OperationsMenuAdapter adapter = new OperationsMenuAdapter(operations);
 

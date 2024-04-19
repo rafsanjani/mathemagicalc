@@ -5,8 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
@@ -14,15 +12,12 @@ import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import butterknife.ButterKnife
-import butterknife.OnClick
 import com.foreverrafs.numericals.BuildConfig
 import com.foreverrafs.numericals.R
+import com.foreverrafs.numericals.databinding.ActivityMainBinding
 import com.foreverrafs.numericals.ui.menus.FragmentShowAlgorithm
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.android.synthetic.main.about_dialog.*
-import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -30,28 +25,35 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
     private val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                    R.id.conversion_menu, R.id.interpolation_menu, R.id.location_of_roots_menu, R.id.ode_menu,
-                    R.id.sys_of_eqns_menu, R.id.fragment_main_menu
-            )
+        setOf(
+            R.id.conversion_menu, R.id.interpolation_menu, R.id.location_of_roots_menu, R.id.ode_menu,
+            R.id.sys_of_eqns_menu, R.id.fragment_main_menu
+        )
     )
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        ButterKnife.bind(this)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         navController = findNavController(this, R.id.nav_host_fragment)
 
-        sheetBehavior = BottomSheetBehavior.from(bottom_sheet)
-        tvVersion.text = getString(R.string.version, BuildConfig.VERSION_NAME)
+        sheetBehavior = BottomSheetBehavior.from(binding.bottomSheet.root)
+        binding.bottomSheet.tvVersion.text = getString(R.string.version, BuildConfig.VERSION_NAME)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
 
         setupActionBarWithNavController(navController)
 
-        btnAboutClose.setOnClickListener {
+        binding.bottomSheet.btnAboutClose.setOnClickListener {
             toggleBottomSheet()
+        }
+
+        binding.bottomSheet.tvWebsite.setOnClickListener {
+            onWebsiteClicked(binding.bottomSheet.tvWebsite.text.toString())
         }
     }
 
@@ -67,20 +69,19 @@ class MainActivity : AppCompatActivity() {
         else sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED)
     }
 
-    fun goToMainMenu(button: Button?) {
-        val controller = findNavController(button!!)
+    fun goToMainMenu() {
         val navOptions = NavOptions.Builder()
-                .setEnterAnim(R.anim.slide_in_left)
-                .setLaunchSingleTop(true)
-                .setPopUpTo(R.id.nav_graph, true)
-                .setExitAnim(R.anim.slide_out_right)
-                .build()
-        controller.navigate(R.id.fragment_main_menu, null, navOptions, null)
+            .setEnterAnim(R.anim.slide_in_left)
+            .setLaunchSingleTop(true)
+            .setPopUpTo(R.id.nav_graph, true)
+            .setExitAnim(R.anim.slide_out_right)
+            .build()
+        navController.navigate(R.id.fragment_main_menu, null, navOptions, null)
     }
 
     fun showAlgorithm(navController: NavController, methodName: String?) {
         val navOptions = NavOptions.Builder()
-                .build()
+            .build()
         val bundle = Bundle()
         bundle.putString(FragmentShowAlgorithm.EXTRA_METHOD_NAME, methodName)
         navController.navigate(R.id.show_algorithm, bundle, navOptions, null)
@@ -91,21 +92,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     //tvWebsite is a textview on the bottomsheet
-    @OnClick(R.id.tvWebsite)
-    fun onWebsiteClicked(url: TextView) {
+    private fun onWebsiteClicked(url: String) {
         val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(url.text.toString())
+        intent.data = Uri.parse(url)
         startActivity(intent)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.gotot) {
             MaterialAlertDialogBuilder(this)
-                    .setTitle("Jump to Algorithm")
-                    .setItems(R.array.main_menu_legacy) { _, which ->
-                        //todo: navigate to proper page when selected
-                        Timber.d("onOptionsItemSelected: $which")
-                    }.show()
+                .setTitle("Jump to Algorithm")
+                .setItems(R.array.main_menu_legacy) { _, which ->
+                    //todo: navigate to proper page when selected
+                    Timber.d("onOptionsItemSelected: $which")
+                }.show()
         } else if (item.itemId == android.R.id.home) {
             onSupportNavigateUp()
         }

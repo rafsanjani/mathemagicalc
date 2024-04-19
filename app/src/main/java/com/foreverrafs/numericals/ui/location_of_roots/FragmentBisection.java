@@ -17,14 +17,12 @@ import androidx.annotation.Nullable;
 import com.foreverrafs.core.LocationOfRootResult;
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.databinding.FragmentLocOfRootsBisectionBinding;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import timber.log.Timber;
 
 
@@ -39,36 +37,39 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
     private TextWatcher etToleranceTextWatcher = null;
     private TextWatcher etIterationsTextWatcher = null;
 
-    @BindView(R.id.til_x0)
     TextInputLayout tilX0;
 
-    @BindView(R.id.til_x1)
     TextInputLayout tilX1;
 
-    @BindView(R.id.til_iterations)
     TextInputLayout tilIterations;
 
-    @BindView(R.id.til_tolerance)
     TextInputLayout tilTolerance;
 
-    @BindView(R.id.til_user_input)
     TextInputLayout tilEquation;
 
-    @BindView(R.id.tvAnswer)
     TextView tvAnswer;
 
-    @BindView(R.id.btnCalculate)
     Button btnCalculate;
+
+    FragmentLocOfRootsBisectionBinding binding;
 
     private EditText etIterations, etX0, etX1, etTolerance, etEquation;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_loc_of_roots_bisection, container, false);
+        binding = FragmentLocOfRootsBisectionBinding.inflate(inflater);
+        btnCalculate = binding.btnCalculate;
+        tvAnswer = binding.tvAnswer;
+        tilEquation = binding.tilUserInput;
+        tilTolerance = binding.tilTolerance;
+        tilIterations = binding.tilIterations;
+        tilX0 = binding.tilX0;
+        tilX1 = binding.tilX1;
+        parentContainer = binding.parentContainer;
+        rootView = binding.getRoot();
 
-        ButterKnife.bind(this, rootView);
-        return rootView;
+        return binding.getRoot();
     }
 
 
@@ -160,16 +161,15 @@ public class FragmentBisection extends FragmentRootBase implements TextWatcher {
         etTolerance.addTextChangedListener(etToleranceTextWatcher);
         etEquation.addTextChangedListener(this);
 
-        parentContainer = (LinearLayout) rootView.findViewById(R.id.parentContainer);
+        btnCalculate.setOnClickListener(v -> onCalculateClicked(btnCalculate));
+        binding.btnShowAlgo.setOnClickListener(v -> onShowAlgoClicked());
     }
 
 
-    @OnClick(R.id.btnCalculate)
     void onCalculateClicked(Button button) {
         onCalculate(button.getText().toString());
     }
 
-    @OnClick(R.id.btnShowAlgo)
     void onShowAlgoClicked() {
         showAlgorithm("bisection");
     }

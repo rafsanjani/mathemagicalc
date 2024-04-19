@@ -22,7 +22,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
-import butterknife.OnClick;
 import timber.log.Timber;
 
 //All fragments which will solve a location of root problem must extend from this Fragment and assign
@@ -85,10 +84,9 @@ public abstract class FragmentRootBase extends Fragment {
             ((MainActivity) getActivity()).showAlgorithm(navController, functionName);
     }
 
-    @OnClick(R.id.btnBackToMainMenu)
     protected void onBackClicked(Button button) {
         if (getActivity() != null) {
-            ((MainActivity) getActivity()).goToMainMenu(button);
+            ((MainActivity) getActivity()).goToMainMenu();
         }
     }
 

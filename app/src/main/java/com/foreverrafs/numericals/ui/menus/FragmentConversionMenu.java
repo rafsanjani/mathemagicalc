@@ -24,30 +24,31 @@ import com.foreverrafs.numericals.utils.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 public class FragmentConversionMenu extends Fragment implements OperationsMenuAdapter.MenuItemClickListenener {
 
-    @BindView(R.id.list_main_menu)
     RecyclerView mainMenuItems;
 
-    @BindView(R.id.tvHeader)
     TextView header;
+
+    com.foreverrafs.numericals.databinding.FragmentMainMenuBinding binding;
 
     private NavController navController = null;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main_menu, container, false);
+        binding = com.foreverrafs.numericals.databinding.FragmentMainMenuBinding.inflate(inflater);
+        mainMenuItems = binding.contentMenu.listMainMenu;
+        header = binding.contentMenu.tvHeader;
+
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
 
         navController = Navigation.findNavController(view);
         mainMenuItems.setLayoutManager(new GridLayoutManager(getContext(), 2));

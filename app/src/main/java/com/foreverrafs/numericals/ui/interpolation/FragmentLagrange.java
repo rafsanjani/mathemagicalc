@@ -7,7 +7,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -17,16 +16,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.foreverrafs.core.Numericals;
-import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.databinding.InterpolationLagrangeBinding;
 import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import timber.log.Timber;
 
 
@@ -37,28 +33,30 @@ import timber.log.Timber;
 public class FragmentLagrange extends Fragment {
     private static final String TAG = "FragmentLagrange";
 
-    @BindView(R.id.etKnownX)
     EditText etKnownX;
 
-    @BindView(R.id.tRowX)
     TableRow tableRowX;
 
-    @BindView(R.id.tRowY)
     TableRow tableRowY;
 
-    @BindView(R.id.tvUnknownY)
     TextView tvUnknownY;
 
     private TextWatcher mWatcher = null;
 
+    InterpolationLagrangeBinding binding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.interpolation_lagrange, container, false);
-        ButterKnife.bind(this, view);
+        binding = InterpolationLagrangeBinding.inflate(inflater);
+        tvUnknownY = binding.tvUnknownY;
+        tableRowX = binding.tRowX;
+        tableRowY = binding.tRowY;
+        etKnownX = binding.etKnownX;
+
         initControls();
 
-        return view;
+        return binding.getRoot();
     }
 
     public void initControls() {
@@ -88,14 +86,14 @@ public class FragmentLagrange extends Fragment {
         };
 
         etKnownX.addTextChangedListener(mWatcher);
+        binding.btnBackToMainMenu.setOnClickListener(v -> onBackButton());
     }
 
 
-    @OnClick(R.id.btnBackToMainMenu)
-    void onBackButton(Button button) {
+    void onBackButton() {
         Activity parentActivity = getActivity();
         if (parentActivity != null)
-            ((MainActivity) parentActivity).goToMainMenu(button);
+            ((MainActivity) parentActivity).goToMainMenu();
     }
 
     @Override
