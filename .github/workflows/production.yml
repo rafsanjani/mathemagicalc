@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app
-          path: app/build/outputs/bundle/release/app-release.aab
+          path: app/release/app-release.aab
 
       - name: Deploy to Play Store (BETA)
         id: deploy
@@ -54,6 +54,6 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{secrets.SERVICE_ACCOUNT_JSON}}
           packageName: com.foreverrafs.numericals
-          releaseFile: app/build/outputs/bundle/release/app-release.aab
+          releaseFiles: app/release/app-release.aab
           track: beta
           whatsNewDirectory: whatsnew/
