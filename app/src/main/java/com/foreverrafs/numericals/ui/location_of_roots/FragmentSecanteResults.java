@@ -14,14 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.foreverrafs.core.LocationOfRootResult;
 import com.foreverrafs.core.LocationOfRootType;
 import com.foreverrafs.core.Numericals;
-import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.databinding.FragmentLocOfRootsSecanteResultBinding;
 
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import katex.hourglass.in.mathlib.MathView;
 
 
@@ -36,17 +33,15 @@ public class FragmentSecanteResults extends Fragment {
     private double x0, x1;
     private int iterations;
 
-    @BindView(R.id.equation)
     MathView mvEquation;
 
-    @BindView(R.id.iterations)
     TextView tvIterations;
 
-    @BindView(R.id.initGuess)
     TextView tvInterval;
 
-    @BindView(R.id.resultList)
     RecyclerView rvResults;
+
+    FragmentLocOfRootsSecanteResultBinding binding;
 
 
     private String getInterval() {
@@ -64,9 +59,13 @@ public class FragmentSecanteResults extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_loc_of_roots_secante_result, container, false);
-        ButterKnife.bind(this, rootView);
-        return rootView;
+        binding = FragmentLocOfRootsSecanteResultBinding.inflate(inflater);
+        rvResults = binding.resultList;
+        tvInterval = binding.initGuess;
+        tvIterations = binding.iterations;
+        mvEquation = binding.equation;
+
+        return binding.getRoot();
     }
 
     @Override
@@ -91,9 +90,10 @@ public class FragmentSecanteResults extends Fragment {
 
         tvInterval.setText(getInterval());
         tvIterations.setText(getIteration());
+
+        binding.btnBackToSecant.setOnClickListener(v -> onBackToSecant());
     }
 
-    @OnClick(R.id.btnBackToSecant)
     void onBackToSecant() {
         if (getActivity() != null)
             getActivity().onBackPressed();

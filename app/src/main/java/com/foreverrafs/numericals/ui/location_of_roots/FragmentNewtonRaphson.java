@@ -16,14 +16,12 @@ import androidx.annotation.Nullable;
 import com.foreverrafs.core.LocationOfRootResult;
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.databinding.FragmentLocOfRootsNewtonBinding;
 import com.foreverrafs.numericals.utils.Utilities;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import timber.log.Timber;
 
 
@@ -33,20 +31,17 @@ import timber.log.Timber;
 
 public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatcher {
     private static final String TAG = "FragmentNewtonRaphson";
-    @BindView(R.id.til_x0)
     TextInputLayout tilX0;
 
-    @BindView(R.id.til_user_input)
     TextInputLayout tilEquation;
 
-    @BindView(R.id.til_iterations)
     TextInputLayout tilIterations;
 
-    @BindView(R.id.tvAnswer)
     TextView tvAnswer;
 
-    @BindView(R.id.btnCalculate)
     Button btnCalculate;
+
+    FragmentLocOfRootsNewtonBinding binding;
 
 
     private EditText etIterations, etX0, etEquation;
@@ -54,10 +49,14 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_loc_of_roots_newton, container, false);
-
-        ButterKnife.bind(this, rootView);
-        return rootView;
+        binding = FragmentLocOfRootsNewtonBinding.inflate(inflater);
+        btnCalculate = binding.btnCalculate;
+        tvAnswer = binding.tvAnswer;
+        tilIterations = binding.tilIterations;
+        tilEquation = binding.tilUserInput;
+        tilX0 = binding.tilX0;
+        rootView = binding.getRoot();
+        return binding.getRoot();
     }
 
 
@@ -70,6 +69,10 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
         registerOnKeyListener(tilIterations, tilEquation, tilX0);
 
         etEquation.addTextChangedListener(this);
+
+        btnCalculate.setOnClickListener(v -> onCalculateClicked(btnCalculate));
+
+        binding.btnShowAlgo.setOnClickListener(v -> onShowAlgoClicked());
     }
 
     @Override
@@ -77,12 +80,10 @@ public class FragmentNewtonRaphson extends FragmentRootBase implements TextWatch
         initControls();
     }
 
-    @OnClick(R.id.btnCalculate)
     void onCalculateClicked(Button button) {
         onCalculate(button.getText().toString());
     }
 
-    @OnClick(R.id.btnShowAlgo)
     void onShowAlgoClicked() {
         showAlgorithm("newtonraphson");
     }

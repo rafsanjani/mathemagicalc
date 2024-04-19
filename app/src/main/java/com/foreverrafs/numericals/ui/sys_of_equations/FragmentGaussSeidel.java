@@ -9,7 +9,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,13 +18,10 @@ import androidx.annotation.Nullable;
 
 import com.foreverrafs.core.Numericals;
 import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.databinding.FragmentGaussseidelBinding;
 import com.foreverrafs.numericals.utils.Utilities;
 
 import java.util.Locale;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 
 /**
@@ -34,18 +30,14 @@ import butterknife.OnClick;
 
 public class FragmentGaussSeidel extends FragmentSystemOfEquationsBase implements TextWatcher, View.OnKeyListener {
 
-    @BindView(R.id.btnCalculate)
-    Button btnCalculate;
-    @BindView(R.id.btnBackToMainMenu)
-    Button btnBack;
-    @BindView(R.id.parentContainer)
-    ViewGroup viewGroup;
-    private View rootView;
-    private Handler mHandler = new Handler(new Handler.Callback() {
+
+    private ViewGroup viewGroup;
+
+    private FragmentGaussseidelBinding binding;
+    private final Handler mHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(@NonNull Message msg) {
-            Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
-            btnCalculate.setText(getString(R.string.calculate));
+            binding.btnCalculate.setText(getString(R.string.calculate));
 
             boolean success = msg.getData().getBoolean("success");
             if (!success) {
@@ -56,16 +48,11 @@ public class FragmentGaussSeidel extends FragmentSystemOfEquationsBase implement
             if (solution == null)
                 return false;
 
-            TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
+            TextView tvAnswer = binding.tvAnswer;
 
 
             //todo: Perform regression test on this section
             String answer = String.format(Locale.US, "[%.2f, %.2f, %.2f]", solution[0], solution[1], solution[2]);
-//            tvAnswer.setText("[ " +
-//                    Precision.round(solution[0], 2) + ", "
-//                    + Precision.round(solution[1], 2) + ", " +
-//                    Precision.round(solution[2], 2) +
-//                    " ]");
             tvAnswer.setText(answer);
 
             //for transitions sake
@@ -75,59 +62,63 @@ public class FragmentGaussSeidel extends FragmentSystemOfEquationsBase implement
         }
     });
 
+    public FragmentGaussSeidel() {
+    }
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_gaussseidel, container, false);
+        binding = FragmentGaussseidelBinding.inflate(inflater);
+        viewGroup = binding.parentContainer;
 
-        ButterKnife.bind(this, rootView);
         initControls();
 
-        return rootView;
+        return binding.getRoot();
     }
 
 
     public void initControls() {
         EditText[] etEqn = new EditText[3];
-        etEqn[0] = rootView.findViewById(R.id.text_equationx1);
-        etEqn[1] = rootView.findViewById(R.id.text_equationx2);
-        etEqn[2] = rootView.findViewById(R.id.text_equationx3);
+        etEqn[0] = binding.textEquationx1;
+        etEqn[1] = binding.textEquationx2;
+        etEqn[2] = binding.textEquationx3;
 
         for (EditText editText : etEqn) {
             editText.addTextChangedListener(this);
             editText.setOnKeyListener(this);
         }
+
+        binding.btnBackToMainMenu.setOnClickListener(v -> onBackClicked());
+        binding.btnCalculate.setOnClickListener(v -> onCalculateClicked());
+        binding.btnShowAlgo.setOnClickListener(v -> onShowAlgoClicked());
     }
 
 
-    @OnClick(R.id.btnBackToMainMenu)
-    void onBackClicked(Button button) {
-        goToMainmenu(button);
+    void onBackClicked() {
+        goToMainmenu();
     }
 
-    @OnClick(R.id.btnCalculate)
     void onCalculateClicked() {
         onCalculate();
     }
 
-    @OnClick(R.id.btnShowAlgo)
     void onShowAlgoClicked() {
         showAlgorithm("gaussseidel");
     }
 
     private void onCalculate() {
         EditText[] etEqn = new EditText[3];
-        etEqn[0] = rootView.findViewById(R.id.text_equationx1);
-        etEqn[1] = rootView.findViewById(R.id.text_equationx2);
-        etEqn[2] = rootView.findViewById(R.id.text_equationx3);
+        etEqn[0] = binding.textEquationx1;
+        etEqn[1] = binding.textEquationx2;
+        etEqn[2] = binding.textEquationx3;
 
         EditText[] etx0 = new EditText[3];
-        etx0[0] = rootView.findViewById(R.id.x1);
-        etx0[1] = rootView.findViewById(R.id.x2);
-        etx0[2] = rootView.findViewById(R.id.x3);
+        etx0[0] = binding.x1;
+        etx0[1] = binding.x2;
+        etx0[2] = binding.x3;
 
-        EditText etEpsilon = rootView.findViewById(R.id.etTolerance);
+        EditText etEpsilon = binding.etTolerance;
 
 
         try {
@@ -140,8 +131,7 @@ public class FragmentGaussSeidel extends FragmentSystemOfEquationsBase implement
                 initGuess[i] = Double.parseDouble(etx0[i].getText().toString());
             }
 
-            Button btnCalculate = rootView.findViewById(R.id.btnCalculate);
-            btnCalculate.setText(getString(R.string.calculating));
+            binding.btnCalculate.setText(getString(R.string.calculating));
 
 
             Runnable runnable = () -> {
@@ -155,7 +145,6 @@ public class FragmentGaussSeidel extends FragmentSystemOfEquationsBase implement
                 } catch (Exception ex) {
                     message.getData().putBoolean("success", false);
                     message.getData().putString("exception", ex.getMessage());
-                    System.out.println(ex.getMessage());
                 }
                 mHandler.sendMessage(message);
             };
@@ -189,7 +178,7 @@ public class FragmentGaussSeidel extends FragmentSystemOfEquationsBase implement
     }
 
     private void onEquationChanged() {
-        TextView tvAnswer = rootView.findViewById(R.id.tvAnswer);
+        TextView tvAnswer = binding.tvAnswer;
 
         Utilities.animateAnswer(tvAnswer, viewGroup, Utilities.DisplayMode.HIDE);
     }

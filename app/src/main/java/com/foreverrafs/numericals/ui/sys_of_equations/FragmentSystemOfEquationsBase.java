@@ -18,9 +18,9 @@ import com.foreverrafs.numericals.ui.menus.FragmentShowAlgorithm;
 abstract class FragmentSystemOfEquationsBase extends Fragment {
     protected NavController navController = null;
 
-    protected void goToMainmenu(Button button) {
+    protected void goToMainmenu() {
         if (getActivity() != null)
-            ((MainActivity) getActivity()).goToMainMenu(button);
+            ((MainActivity) getActivity()).goToMainMenu();
     }
 
     @Override

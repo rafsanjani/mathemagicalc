@@ -7,7 +7,6 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -70,8 +69,8 @@ abstract class ConversionsBase : Fragment() {
         txtHeader.text = header
     }
 
-    private fun backToMainMenu(button: Button?) {
-        parentActivity.goToMainMenu(button)
+    private fun backToMainMenu() {
+        parentActivity.goToMainMenu()
     }
 
     protected fun setDescription(description: String?) {
@@ -123,7 +122,7 @@ abstract class ConversionsBase : Fragment() {
         })
 
         binding.btnBackToMainMenu.setOnClickListener {
-            backToMainMenu(binding.btnBackToMainMenu)
+            backToMainMenu()
         }
 
         binding.btnCalculate.setOnClickListener {

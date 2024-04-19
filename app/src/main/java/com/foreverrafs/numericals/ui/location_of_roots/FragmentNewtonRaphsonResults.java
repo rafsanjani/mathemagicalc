@@ -14,14 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.foreverrafs.core.LocationOfRootResult;
 import com.foreverrafs.core.LocationOfRootType;
 import com.foreverrafs.core.Numericals;
-import com.foreverrafs.numericals.R;
+import com.foreverrafs.numericals.databinding.FragmentLocOfRootsNewtonResultsBinding;
 
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import katex.hourglass.in.mathlib.MathView;
 
 
@@ -36,18 +33,15 @@ public class FragmentNewtonRaphsonResults extends Fragment {
     private double x0;
     private int iterations;
 
-    @BindView(R.id.iterations)
     TextView tvIterations;
 
-    @BindView(R.id.initGuess)
     TextView tvInitGuess;
 
-    @BindView(R.id.equation)
     MathView mvEquation;
 
-    @BindView(R.id.resultList)
     RecyclerView rvResults;
 
+    FragmentLocOfRootsNewtonResultsBinding binding;
 
     private String getIteration() {
         return String.format(Locale.US, "[%d]", iterations);
@@ -64,10 +58,12 @@ public class FragmentNewtonRaphsonResults extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_loc_of_roots_newton_results, container, false);
-
-        ButterKnife.bind(this, rootView);
-        return rootView;
+        binding = FragmentLocOfRootsNewtonResultsBinding.inflate(inflater);
+        tvIterations = binding.iterations;
+        tvInitGuess = binding.initGuess;
+        mvEquation = binding.equation;
+        rvResults = binding.resultList;
+        return binding.root;
     }
 
     @Override
@@ -80,6 +76,8 @@ public class FragmentNewtonRaphsonResults extends Fragment {
         this.eqn = newtonArgs.getEquation();
         this.x0 = newtonArgs.getX0();
         this.iterations = newtonArgs.getIterations();
+
+        binding.btnBackToNewton.setOnClickListener(v -> backToNewton());
 
         initControls();
     }
@@ -94,7 +92,6 @@ public class FragmentNewtonRaphsonResults extends Fragment {
         tvIterations.setText(getIteration());
     }
 
-    @OnClick(R.id.btnBackToNewton)
     void backToNewton() {
         if (getActivity() != null)
             getActivity().onBackPressed();

@@ -16,16 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.foreverrafs.core.LocationOfRootResult;
 import com.foreverrafs.core.LocationOfRootType;
 import com.foreverrafs.core.Numericals;
-import com.foreverrafs.numericals.R;
 import com.foreverrafs.numericals.activities.MainActivity;
+import com.foreverrafs.numericals.databinding.FragmentLocOfRootsBisectionResultsBinding;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import katex.hourglass.in.mathlib.MathView;
 
 
@@ -41,20 +38,18 @@ public class FragmentBisectionResults extends Fragment {
     private double x0, x1, tolerance;
     private int iterations;
 
-    @BindView(R.id.interval)
     TextView tvInterval;
 
-    @BindView(R.id.tolerance)
     TextView tvTolerance;
 
-    @BindView(R.id.iterations)
     TextView tvIterations;
 
-    @BindView(R.id.equation)
     MathView mvEquation;
 
-    @BindView(R.id.resultList)
     RecyclerView rvResultsList;
+
+    FragmentLocOfRootsBisectionResultsBinding binding;
+
 
     private String getInterval() {
         return String.format(Locale.US, "[%.2f, %.2f]", x0, x1);
@@ -71,9 +66,14 @@ public class FragmentBisectionResults extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_loc_of_roots_bisection_results, container, false);
-        ButterKnife.bind(this, rootView);
-        return rootView;
+        binding = FragmentLocOfRootsBisectionResultsBinding.inflate(inflater);
+        rvResultsList = binding.resultList;
+        mvEquation = binding.equation;
+        tvIterations = binding.iterations;
+        tvInterval = binding.interval;
+        tvTolerance = binding.tolerance;
+
+        return binding.getRoot();
     }
 
     @Override
@@ -101,15 +101,17 @@ public class FragmentBisectionResults extends Fragment {
         RootResultsAdapter adapter = new RootResultsAdapter(results, LocationOfRootType.BISECTION);
 
         rvResultsList.setAdapter(adapter);
+
+        binding.btnBackToBisection.setOnClickListener(v -> onBackPressed());
+
+        binding.btnShowAlgo.setOnClickListener(v -> onShowAlgorithm());
     }
 
-    @OnClick(R.id.btnBackToBisection)
     void onBackPressed() {
         if (getActivity() != null)
             getActivity().onBackPressed();
     }
 
-    @OnClick(R.id.btnShowAlgo)
     void onShowAlgorithm() {
         NavController navController = Navigation.findNavController(rootView);
         if (getActivity() != null)

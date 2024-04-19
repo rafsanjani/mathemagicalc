@@ -1,120 +1,77 @@
-package com.foreverrafs.numericals.ui.ordinary_differential_eqns;
+package com.foreverrafs.numericals.ui.ordinary_differential_eqns
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.foreverrafs.core.Numericals
+import com.foreverrafs.core.OdeResult
+import com.foreverrafs.numericals.activities.MainActivity
+import com.foreverrafs.numericals.databinding.FragmentOdeEulerResultsBinding
+import java.util.Arrays
+import java.util.Locale
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.RecyclerView;
+/** Created by Aziz Rafsanjani on 11/4/2017. */
+class FragmentEulerResults : Fragment() {
+    private var results: List<OdeResult>? = null
+    private var eqn: String? = null
+    private var x0 = 0.0
+    private var x1 = 0.0
+    private var h = 0.0
+    private var initY = 0.0
 
-import com.foreverrafs.core.Numericals;
-import com.foreverrafs.core.OdeResult;
-import com.foreverrafs.numericals.R;
-import com.foreverrafs.numericals.activities.MainActivity;
+    private lateinit var binding: FragmentOdeEulerResultsBinding
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+    private val interval: String
+        get() = String.format(Locale.US, "[%.2f, %.2f]", x0, x1)
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import katex.hourglass.in.mathlib.MathView;
-
-
-/**
- * Created by Aziz Rafsanjani on 11/4/2017.
- */
-
-public class FragmentEulerResults extends Fragment {
-
-    private List<OdeResult> results;
-    private String eqn;
-    private double x0, x1, h, initY;
-
-    @BindView(R.id.equation)
-    MathView mvEquation;
-
-    @BindView(R.id.btnBackToEuler)
-    Button btnBack;
-
-    @BindView(R.id.btnShowAlgo)
-    Button btnShowAlgo;
-
-    @BindView(R.id.resultList)
-    RecyclerView rvResults;
-
-    @BindView(R.id.interval)
-    TextView tvInterval;
-
-    @BindView(R.id.initY)
-    TextView tvInitY;
-
-    @BindView(R.id.h)
-    TextView tvH;
-
-    private String getInterval() {
-        return String.format(Locale.US, "[%.2f, %.2f]", x0, x1);
+    private fun getInitY(): String {
+        return String.format(Locale.US, "[%.2f]", initY)
     }
 
-    private String getInitY() {
-        return String.format(Locale.US, "[%.2f]", initY);
+    private val initH: String
+        get() = String.format(Locale.US, "[%.2f]", h)
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentOdeEulerResultsBinding.inflate(inflater)
+        return binding.root
     }
 
-    private String getInitH() {
-        return String.format(Locale.US, "[%.2f]", h);
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val eulerResultsArgs: FragmentEulerResultsArgs = FragmentEulerResultsArgs.fromBundle(requireArguments())
+        eqn = eulerResultsArgs.getEquation()
+        x0 = eulerResultsArgs.getX0().toDouble()
+        x1 = eulerResultsArgs.getX1().toDouble()
+        initY = eulerResultsArgs.getInitY().toDouble()
+        results = eulerResultsArgs.getResultlist().toList()
+        h = eulerResultsArgs.getH().toDouble()
+        initControls()
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ode_euler_results, container, false);
-        ButterKnife.bind(this, view);
-        return view;
+    private fun backToEuler() {
+        requireActivity().onBackPressed()
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        if (getArguments() == null)
-            return;
-        FragmentEulerResultsArgs eulerResultsArgs = FragmentEulerResultsArgs.fromBundle(getArguments());
-        this.eqn = eulerResultsArgs.getEquation();
-        this.x0 = eulerResultsArgs.getX0();
-        this.x1 = eulerResultsArgs.getX1();
-        this.initY = eulerResultsArgs.getInitY();
-        this.results = Arrays.asList(eulerResultsArgs.getResultlist());
-        this.h = eulerResultsArgs.getH();
-
-        initControls();
+    fun showAlgorithm() {
+        if (activity != null) (activity as MainActivity?)?.showAlgorithm(findNavController(), "euler")
     }
 
-    @OnClick(R.id.btnBackToEuler)
-    void backToEuler() {
-        if (getActivity() != null)
-            getActivity().onBackPressed();
-    }
+    fun initControls() {
+        binding.equation.setDisplayText(Numericals.generateTexEquation(eqn))
+        val adapter = OdeResultsAdapter(results!!)
+        binding.resultList.setAdapter(adapter)
+        binding.interval.text = interval
+        binding.initY.text = getInitY()
+        binding.h.text = initH
 
-    @OnClick(R.id.btnShowAlgo)
-    void showAlgorithm(Button button) {
-        if (getActivity() != null)
-            ((MainActivity) getActivity()).showAlgorithm(Navigation.findNavController(button), "euler");
-    }
+        binding.btnShowAlgo.setOnClickListener {
+            showAlgorithm()
+        }
 
-    public void initControls() {
-        mvEquation.setDisplayText(Numericals.generateTexEquation(this.eqn));
-
-        OdeResultsAdapter adapter = new OdeResultsAdapter(results);
-
-        rvResults.setAdapter(adapter);
-
-        tvInterval.setText(getInterval());
-        tvInitY.setText(getInitY());
-        tvH.setText(getInitH());
+        binding.btnBackToEuler.setOnClickListener {
+            backToEuler()
+        }
     }
 }

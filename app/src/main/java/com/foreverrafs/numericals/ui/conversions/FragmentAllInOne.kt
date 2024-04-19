@@ -11,53 +11,48 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnClick
 import com.foreverrafs.core.Numericals
-import com.foreverrafs.numericals.R
 import com.foreverrafs.numericals.activities.MainActivity
+import com.foreverrafs.numericals.databinding.FragmentConversionsAllinoneBinding
 import com.foreverrafs.numericals.utils.Utilities
 import com.google.android.material.textfield.TextInputLayout
 import timber.log.Timber
 
-/**
- * Created by Aziz Rafsanjani on 11/4/2017.
- */
+/** Created by Aziz Rafsanjani on 11/4/2017. */
 class FragmentAllInOne : Fragment(), TextWatcher {
-    @BindView(R.id.layout_answer_area)
-    lateinit var layoutAnswerArea: ConstraintLayout
+    private lateinit var layoutAnswerArea: ConstraintLayout
 
-    @BindView(R.id.btnCalculate)
     lateinit var btnCalculate: Button
 
+    private lateinit var btnBack: Button
 
-    @BindView(R.id.btnBackToMainMenu)
-    lateinit var btnBack: Button
+    private lateinit var tilUserInput: TextInputLayout
 
-    @BindView(R.id.til_user_input)
-    lateinit var tilUserInput: TextInputLayout
+    private lateinit var tvBinary: TextView
 
-    @BindView(R.id.tvAnswerBinary)
-    lateinit var tvBinary: TextView
+    private lateinit var tvOctal: TextView
 
-    @BindView(R.id.tvAnswerOctal)
-    lateinit var tvOctal: TextView
+    private lateinit var tvHexadecimal: TextView
 
-    @BindView(R.id.tvAnswerHexadecimal)
-    lateinit var tvHexadecimal: TextView
+    lateinit var binding: FragmentConversionsAllinoneBinding;
 
-    private lateinit var rootView: View
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater.inflate(R.layout.fragment_conversions_allinone, container, false)
-        ButterKnife.bind(this, rootView)
+        binding = FragmentConversionsAllinoneBinding.inflate(inflater)
         initControls()
-        return rootView
+        return binding.root
     }
 
     private fun initControls() {
-        val etInput = tilUserInput.editText
-        etInput!!.setOnKeyListener { view: View?, i: Int, keyEvent: KeyEvent ->
+        tvHexadecimal = binding.tvAnswerHexadecimal
+        tvOctal = binding.tvAnswerOctal
+        tvBinary = binding.tvAnswerBinary
+        tilUserInput = binding.tilUserInput
+        btnBack = binding.btnBackToMainMenu
+        layoutAnswerArea = binding.layoutAnswerArea;
+        btnCalculate = binding.btnCalculate;
+
+
+        binding.tilUserInput.setOnKeyListener { _: View?, i: Int, keyEvent: KeyEvent ->
             //take the error message away
             tilUserInput.isErrorEnabled = false
             if (keyEvent.keyCode == KeyEvent.KEYCODE_ENTER) {
@@ -66,15 +61,17 @@ class FragmentAllInOne : Fragment(), TextWatcher {
             }
             false
         }
-        etInput.addTextChangedListener(this)
+        binding.tilUserInput.editText?.addTextChangedListener(this)
+
+        btnBack.setOnClickListener { onBackToMainMenu() }
+
+        btnCalculate.setOnClickListener { onCalculate() }
     }
 
-    @OnClick(R.id.btnBackToMainMenu)
-    fun onBackToMainMenu(button: Button?) {
-        (activity as MainActivity?)!!.goToMainMenu(button)
+    private fun onBackToMainMenu() {
+        (activity as MainActivity?)!!.goToMainMenu()
     }
 
-    @OnClick(R.id.btnCalculate)
     fun onCalculate() {
         val binary: String
         val octal: String
@@ -97,8 +94,10 @@ class FragmentAllInOne : Fragment(), TextWatcher {
             tvBinary.text = binary
             tvOctal.text = octal
             tvHexadecimal.text = hexadecimal
-            Utilities.animateAnswer(layoutAnswerArea,
-                    rootView, Utilities.DisplayMode.SHOW)
+            Utilities.animateAnswer(
+                layoutAnswerArea,
+                binding.root, Utilities.DisplayMode.SHOW
+            )
         } catch (ex: NumberFormatException) {
             Timber.e("cannot parse $decimal to an integer value : $ex")
         } catch (ex: Exception) {
@@ -110,9 +109,10 @@ class FragmentAllInOne : Fragment(), TextWatcher {
     override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
     override fun afterTextChanged(editable: Editable) {
         if (editable.isEmpty()) {
-            Utilities.animateAnswer(layoutAnswerArea,
-                    rootView, Utilities.DisplayMode.HIDE)
+            Utilities.animateAnswer(
+                layoutAnswerArea,
+                binding.root, Utilities.DisplayMode.HIDE
+            )
         }
     }
-
 }

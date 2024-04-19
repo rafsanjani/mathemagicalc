@@ -27,13 +27,11 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Locale;
 
-import timber.log.Timber;
-
 /**
  * Created by Aziz Rafsanjani on 11/4/2017.
  */
 
-public class FragmentGaussSeidelWithSOR extends FragmentSystemOfEquationsBase implements View.OnClickListener, TextWatcher, View.OnKeyListener {
+public class FragmentGaussSeidelWithSOR extends FragmentSystemOfEquationsBase implements TextWatcher, View.OnKeyListener {
 
     private static final String TAG = "FragmentGaussSeidelWith";
     private View mRootView;
@@ -59,11 +57,6 @@ public class FragmentGaussSeidelWithSOR extends FragmentSystemOfEquationsBase im
             TextView tvAnswer = mRootView.findViewById(R.id.tvAnswer);
 
             String answer = String.format(Locale.US, "[%.2f, %.2f, %.2f]", solution[0], solution[1], solution[2]);
-//            tvAnswer.setText("[ " +
-//                    Precision.round(solution[0], 2) + ", "
-//                    + Precision.round(solution[1], 2) + ", " +
-//                    Precision.round(solution[2], 2) +
-//                    " ]");
             tvAnswer.setText(answer);
 
             //for transitions sake
@@ -84,6 +77,7 @@ public class FragmentGaussSeidelWithSOR extends FragmentSystemOfEquationsBase im
     public void initControls() {
         Button btnCalculate = mRootView.findViewById(R.id.btnCalculate);
         Button btnBack = mRootView.findViewById(R.id.btnBackToMainMenu);
+        Button btnShowAlgo = mRootView.findViewById(R.id.btnShowAlgo);
 
         TextInputLayout til = mRootView.findViewById(R.id.omega_textInputLayout);
 
@@ -101,29 +95,13 @@ public class FragmentGaussSeidelWithSOR extends FragmentSystemOfEquationsBase im
             editText.setOnKeyListener(this);
         }
 
-        btnCalculate.setOnClickListener(this);
-        btnBack.setOnClickListener(this);
-        mRootView.findViewById(R.id.btnShowAlgo).setOnClickListener(this);
-
 
         mViewGroup = (LinearLayout) mRootView.findViewById(R.id.parentContainer);
-    }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnBackToMainMenu:
-                goToMainmenu((Button) view);
-                break;
+        btnBack.setOnClickListener(v -> goToMainmenu());
+        btnCalculate.setOnClickListener(v -> onCalculate());
+        btnShowAlgo.setOnClickListener(v -> onShowAlgorithm());
 
-            case R.id.btnCalculate:
-                Timber.i("performing jacobi's calculation");
-                onCalculate();
-                break;
-            case R.id.btnShowAlgo:
-                showAlgorithm("gaussseidelwithsor");
-                break;
-        }
     }
 
     private void onShowAlgorithm() {
