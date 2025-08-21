@@ -71,7 +71,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.7.0'
     testImplementation 'junit:junit:4.13.2'
 
-    implementation "androidx.core:core-ktx:1.16.0"
+    implementation "androidx.core:core-ktx:1.17.0"
 }
 
 
