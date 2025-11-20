@@ -2,7 +2,7 @@
 
 buildscript {
     ext.kotlin_version = '1.9.25'
-    ext.nav_version = "2.9.3"
+    ext.nav_version = "2.9.6"
 
     repositories {
         maven { url 'https://maven.google.com' }
